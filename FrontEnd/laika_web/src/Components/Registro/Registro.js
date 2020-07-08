@@ -36,7 +36,7 @@ class Registro extends React.Component {
 
   onSubmitRegister = (event) => {
     this.validate();
-    //Todo Falta agregar el cambio de la página usando react router
+    //Todo Falta agregar funcianamiento con el servidor
   };
 
   //Valida si se metieron datos correctos a la página
