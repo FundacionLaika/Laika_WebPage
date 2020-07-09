@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import ExpedienteMedico from '../Components/Expediente_Medico/ExpedienteMedico';
-import HogarTemporal from '../Components/Hogar_Temporal/HogarTemporal';
+
+import RegistroGeneral from '../Components/RegistroGeneral/RegistroGeneral'
 
 function App() {
   return (
     <div className="App">
-      <ExpedienteMedico/><br/>
-      <HogarTemporal/>
+      <RegistroGeneral />
     </div>
   );
 }
