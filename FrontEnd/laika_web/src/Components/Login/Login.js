@@ -9,14 +9,12 @@ class Login extends React.Component {
     };
   }
 
-  //Actualiza el estado de correoLogin cada vez que se haga un cambio dentro del input de correo
-  onEmailChange = (event) => {
-    this.setState({ correoLogin: event.target.value });
-  };
-
-  //Actualiza el estado de contrasenaLogin
-  onPasswordChange = (event) => {
-    this.setState({ contrasenaLogin: event.target.value });
+  //Actualiza el estado de los inputs.
+  //cuando un input es actualizado llama a esta función y con el nombre los inputs identifica cual debe de modificar
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   };
 
   //Valida si se metieron datos correctos a la página
@@ -70,7 +68,7 @@ class Login extends React.Component {
                   name="correoLogin"
                   id="correoLogin"
                   placeholder="Ingresa tu correo"
-                  onChange={this.onEmailChange} //En cada cambio del input se llamara la funcion onPasswordChange
+                  onChange={this.handleChange} //En cada cambio del input se llamara la funcion onPasswordChange
                 />
                 <div style={{ fontSize: 12, color: "red" }}>
                   {this.state.errorCorreo}
@@ -83,9 +81,9 @@ class Login extends React.Component {
                 <input
                   className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
-                  name="constrasena"
+                  name="contrasenaLogin"
                   placeholder="Ingresa tu contraseña"
-                  onChange={this.onPasswordChange} //En cada cambio del input se llamara la funcion onPasswordChange
+                  onChange={this.handleChange} //En cada cambio del input se llamara la funcion onPasswordChange
                 />
                 <div style={{ fontSize: 12, color: "red" }}>
                   {this.state.errorContrasena}

@@ -14,24 +14,10 @@ class Registro extends React.Component {
 
   //* --------------- Funciones para recibir el Input ---------------
 
-  onEmailChange = (event) => {
-    this.setState({ correo: event.target.value });
-  };
-
-  onNameChange = (event) => {
-    this.setState({ nombre: event.target.value });
-  };
-
-  onLastNameChange = (event) => {
-    this.setState({ apeido: event.target.value });
-  };
-
-  onPasswordChange = (event) => {
-    this.setState({ contrasena: event.target.value });
-  };
-
-  onConfirmPasswordChange = (event) => {
-    this.setState({ confirmacionContrasena: event.target.value });
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   };
 
   onSubmitRegister = (event) => {
@@ -103,7 +89,7 @@ class Registro extends React.Component {
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="email"
                   name="correo"
-                  onChange={this.onEmailChange} //Funcion para actulizar el input
+                  onChange={this.handleChange} //Funcion para actulizar el input
                 />
                 <div style={{ fontSize: 12, color: "red" }}>
                   {this.state.errorCorreo}
@@ -118,7 +104,7 @@ class Registro extends React.Component {
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="text"
                   name="nombre"
-                  onChange={this.onNameChange} //Funcion para actulizar el input
+                  onChange={this.handleChange} //Funcion para actulizar el input
                 />
                 <div style={{ fontSize: 12, color: "red" }}>
                   {/*Div de mensaje de erro*/}
@@ -134,7 +120,7 @@ class Registro extends React.Component {
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="text"
                   name="apeido"
-                  onChange={this.onLastNameChange} //Funcion para actulizar el input
+                  onChange={this.handleChange} //Funcion para actulizar el input
                 />
                 <div style={{ fontSize: 12, color: "red" }}>
                   {/*Div de mensaje de erro*/}
@@ -150,7 +136,7 @@ class Registro extends React.Component {
                   className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
                   name="contrasena"
-                  onChange={this.onPasswordChange} //Funcion para actulizar el input
+                  onChange={this.handleChange} //Funcion para actulizar el input
                 />
                 <div style={{ fontSize: 12, color: "red" }}>
                   {/*Div de mensaje de erro*/}
@@ -169,7 +155,7 @@ class Registro extends React.Component {
                   className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
                   name="confirmarContrasena"
-                  onChange={this.onConfirmPasswordChange} //Actualizara el valor de la variable
+                  onChange={this.handleChange} //Actualizara el valor de la variable
                 />
                 <div style={{ fontSize: 12, color: "red" }}>
                   {/*Div de mensaje de erro*/}
