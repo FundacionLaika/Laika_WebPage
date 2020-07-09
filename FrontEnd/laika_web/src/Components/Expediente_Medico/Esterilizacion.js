@@ -1,6 +1,12 @@
 import React,{Component} from 'react';
 
 class Esterilizacion extends Component {
+    state = {
+        esterilizado: null,
+        citaEsterilizacion: null,
+        fechaEsterilizacion: new Date()
+    }
+
     render() {
         return (
             <div>
@@ -17,7 +23,7 @@ class Esterilizacion extends Component {
                 <input type = "radio" id = "citaEsterilizadoNo" name = "citaEsterilizacion"/>
                 <label htmlFor = "citaEsterilizadoNo">No</label>
 
-                <input type = "date" id = "Date" name = "Date"/>
+                <input type = "date" id = "fechaEsterilizacion" name = "fechaEsterilizacion"/>
             </div>
         );
     }

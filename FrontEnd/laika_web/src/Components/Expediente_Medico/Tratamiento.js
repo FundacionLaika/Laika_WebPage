@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class Tratamiento extends Component {
+    state = {
+        fechaInicio: new Date(),
+        fechaFinal: new Date()
+    }
     render() {
         return (
             <div>

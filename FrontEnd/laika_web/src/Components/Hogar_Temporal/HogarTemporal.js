@@ -5,6 +5,22 @@ import ComentariosHT from './ComentariosHT';
 import FotoHT from './FotoHT';
 
 class HogarTemporal extends Component {
+    state = {
+        tipoHT:"",
+        nombre: "",
+        telefono: "",
+        fechaInicio: "",
+        fechaFinal: "",
+        calle: "",
+        numero: "",
+        colonia: "",
+        municipio: ""
+    }
+
+    preventDefault = (event) => {
+        event.preventDefault();
+    }
+
     render() {
         return (
             <form>
@@ -13,7 +29,7 @@ class HogarTemporal extends Component {
                 <DireccionHT/>
                 <ComentariosHT/>
                 <FotoHT/>
-                <button type = "submit">Guardar</button>
+                <button type = "submit" onClick = {this.preventDefault}>Guardar</button>
             </form>
         );
     }

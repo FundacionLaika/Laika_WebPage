@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 class CartillaVacunacion extends Component {
+    state = {
+        puppy: false,
+        RefuerzoPuppy: false,
+        multiple: false,
+        refuerzoMultiple: false,
+        rabia: false
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target
+        });
+        console.log(event.target);
+    }
+
     render() {
         return (
             <div>

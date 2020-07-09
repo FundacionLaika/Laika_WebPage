@@ -18,7 +18,7 @@ class Foto extends Component {
     render () {
         return (
             <div>
-                <img src = {this.state.foto} alt = "Foto" height = "100" width = "100"/><br/>
+                <img src = {this.state.foto} alt = "Foto" height = "100" width = "100" onClick = {this.imageHandler}/><br/>
                 <input type = "file" id = "foto" name = "foto" accept = "image/*" onChange = {this.imageHandler}/>
             </div>
         );

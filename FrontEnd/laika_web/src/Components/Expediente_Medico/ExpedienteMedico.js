@@ -6,6 +6,10 @@ import Tratamiento from './Tratamiento';
 import FotosExpedienteMedico from './FotosExpedienteMedico';
 
 class ExpedienteMedico extends Component {
+    preventDefault = (event) => {
+        event.preventDefault();
+    }
+
     render() {
         return (
             <form>
@@ -14,7 +18,7 @@ class ExpedienteMedico extends Component {
                 <CartillaVacunacion/><br/>
                 <Tratamiento/><br/>
                 <FotosExpedienteMedico/>
-                <button type = "submit">Guardar</button>
+                <button type = "submit" onClick = {this.preventDefault}>Guardar</button>
             </form>
         );
     }
