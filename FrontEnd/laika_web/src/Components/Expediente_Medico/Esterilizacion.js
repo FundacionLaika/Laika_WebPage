@@ -4,17 +4,18 @@ class Esterilizacion extends Component {
     render() {
         return (
             <div>
+                <label>Esterilización</label><br/>
                 <label>Esterilizado</label>
                 <input type = "radio" id = "esterilizadoSi" name = "esterilizado"/>
-                <label for = "esterilizadoSi">Sí</label>
+                <label htmlFor = "esterilizadoSi">Sí</label>
                 <input type = "radio" id = "esterilizadoNo" name = "esterilizado"/>
-                <label for = "esterilzadoNo">No</label>
+                <label htmlFor = "esterilzadoNo">No</label>
 
                 <label>¿Desea agendar cita?</label>
                 <input type = "radio" id = "citaEsterilizadoSi" name = "citaEsterilizacion"/>
-                <label for = "citaEsterilizadoSi">Sí</label>
+                <label htmlFor = "citaEsterilizadoSi">Sí</label>
                 <input type = "radio" id = "citaEsterilizadoNo" name = "citaEsterilizacion"/>
-                <label for = "citaEsterilizadoNo">No</label>
+                <label htmlFor = "citaEsterilizadoNo">No</label>
 
                 <input type = "date" id = "Date" name = "Date"/>
             </div>

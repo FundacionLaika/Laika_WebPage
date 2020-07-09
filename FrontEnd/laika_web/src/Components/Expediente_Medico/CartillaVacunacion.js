@@ -4,28 +4,29 @@ class CartillaVacunacion extends Component {
     render() {
         return (
             <div>
+                <label>Cartilla de vacunación</label>
                 <table>
                     <tbody>
                         <tr>
                             <td>
                                 <input type="checkbox" id = "Puppy" name = "Puppy" value = "Puppy"/>
-                                <label for = "Puppy">Puppy</label>
+                                <label htmlFor = "Puppy">Puppy</label>
                             </td>
                             <td>
                                 <input type="checkbox" id = "RefuerzoPuppy" name = "RefuerzoPuppy" value = "RefuerzoPuppy"/>
-                                <label for = "RefuerzoPuppy">Refuerzo Puppy</label>
+                                <label htmlFor = "RefuerzoPuppy">Refuerzo Puppy</label>
                             </td>
                             <td>
                                 <input type="checkbox" id = "Multiple" name = "Multiple" value = "Multiple"/>
-                                <label for = "Multiple">Múltiple</label>
+                                <label htmlFor = "Multiple">Múltiple</label>
                             </td>
                             <td>
                                 <input type="checkbox" id = "RefuerzoMutiple" name = "RefuerzoMultiple" value = "RefuerzoMultiple"/>
-                                <label for = "RefuerzoMultiple">Refuerzo Múltiple</label>
+                                <label htmlFor = "RefuerzoMultiple">Refuerzo Múltiple</label>
                             </td>
                             <td>
                                 <input type="checkbox" id = "Rabia" name = "Rabia" value = "Rabia"/>
-                                <label for = "Rabia">Rabia</label>
+                                <label htmlFor = "Rabia">Rabia</label>
                             </td>
                         </tr>
 

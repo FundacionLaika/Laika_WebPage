@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import Expediente_Medico from '../Components/Expediente_Medico/ExpedienteMedico';
+import ExpedienteMedico from '../Components/Expediente_Medico/ExpedienteMedico';
+import HogarTemporal from '../Components/Hogar_Temporal/HogarTemporal';
 
 function App() {
   return (
     <div className="App">
-      <Expediente_Medico />
+      <ExpedienteMedico/><br/>
+      <HogarTemporal/>
     </div>
   );
 }

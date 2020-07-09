@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import Diagnostico from './Diagnostico';
 import Esterilizacion from './Esterilizacion';
 import CartillaVacunacion from './CartillaVacunacion';
-import Foto from './Foto';
+import Tratamiento from './Tratamiento';
+import FotosExpedienteMedico from './FotosExpedienteMedico';
 
 class ExpedienteMedico extends Component {
     render() {
@@ -11,17 +12,8 @@ class ExpedienteMedico extends Component {
                 <Diagnostico /><br/>
                 <Esterilizacion/><br/>
                 <CartillaVacunacion/><br/>
-                <div>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td><Foto/></td>
-                                <td><Foto/></td>
-                                <td><Foto/></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <Tratamiento/><br/>
+                <FotosExpedienteMedico/>
                 <button type = "submit">Guardar</button>
             </form>
         );
