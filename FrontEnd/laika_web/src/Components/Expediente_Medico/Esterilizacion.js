@@ -1,32 +1,72 @@
-import React,{Component} from 'react';
+import React, { Component } from "react";
 
 class Esterilizacion extends Component {
-    state = {
-        esterilizado: null,
-        citaEsterilizacion: null,
-        fechaEsterilizacion: new Date()
-    }
+	state = {
+		esterilizado: "",
+		citaEsterilizacion: "",
+		fechaEsterilizacion: new Date(),
+	};
 
-    render() {
-        return (
-            <div>
-                <label>Esterilización</label><br/>
-                <label>Esterilizado</label>
-                <input type = "radio" id = "esterilizadoSi" name = "esterilizado"/>
-                <label htmlFor = "esterilizadoSi">Sí</label>
-                <input type = "radio" id = "esterilizadoNo" name = "esterilizado"/>
-                <label htmlFor = "esterilzadoNo">No</label>
+	handleChange = (event) => {
+        console.log(event.target.name);
+        console.log(event.target.value);
+		this.setState({
+			[event.target.name]: event.target.value,
+		});
+	};
+	render() {
+		return (
+			<div>
+				<label>Esterilización</label>
+                <br />
+                <div>
+                    <label>Esterilizado</label>
+                    <input
+                        type="radio"
+                        name="esterilizado"
+                        value="Si"
+                        checked={this.state.esterilizado === "Si"}
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type="radio"
+                        name="esterilizado"
+                        value="No"
+                        checked={this.state.esterilizado === "No"}
+                        onChange={this.handleChange}
+                    />
+                </div>
+                
+                <div>
+                    <label>¿Desea agendar cita?</label>
+                    <input
+                        type="radio"
+                        name="citaEsterilizacion"
+                        value="Si"
+                        checked={this.state.citaEsterilizacion === "Si"}
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type="radio"
+                        name="citaEsterilizacion"
+                        value="No"
+                        checked={this.state.citaEsterilizacion === "No"}
+                        onChange={this.handleChange}
+                    />
+                </div>
+				
 
-                <label>¿Desea agendar cita?</label>
-                <input type = "radio" id = "citaEsterilizadoSi" name = "citaEsterilizacion"/>
-                <label htmlFor = "citaEsterilizadoSi">Sí</label>
-                <input type = "radio" id = "citaEsterilizadoNo" name = "citaEsterilizacion"/>
-                <label htmlFor = "citaEsterilizadoNo">No</label>
 
-                <input type = "date" id = "fechaEsterilizacion" name = "fechaEsterilizacion"/>
-            </div>
-        );
-    }
+
+				<input
+					type="date"
+					id="fechaEsterilizacion"
+					name="fechaEsterilizacion"
+					onChange={this.handleChange}
+				/>
+			</div>
+		);
+	}
 }
 
 export default Esterilizacion;

@@ -17,19 +17,21 @@ class HogarTemporal extends Component {
         municipio: ""
     }
 
-    preventDefault = (event) => {
-        event.preventDefault();
+    handleContactotHT = (event) => {
+        this.setState({
+            
+        });
     }
 
     render() {
         return (
             <form>
                 <label>Hogar HogarTemporal</label><br/><br/>
-                <ContactoHT/>
+                <ContactoHT onChange = {this.handleContactotHT}/>
                 <DireccionHT/>
                 <ComentariosHT/>
                 <FotoHT/>
-                <button type = "submit" onClick = {this.preventDefault}>Guardar</button>
+                <button type = "submit" onClick = {this.handleSubmit}>Guardar</button>
             </form>
         );
     }
