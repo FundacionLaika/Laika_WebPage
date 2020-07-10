@@ -10,6 +10,8 @@ class ExpedienteMedico extends Component {
         event.preventDefault();
     }
 
+    
+
     render() {
         return (
             <form>
