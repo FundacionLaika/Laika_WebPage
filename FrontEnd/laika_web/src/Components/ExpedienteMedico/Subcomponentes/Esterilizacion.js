@@ -12,15 +12,15 @@ class Esterilizacion extends Component {
             type="radio"
             name="esterilizado"
             value="Si"
-            checked={this.state.esterilizado === "Si"}
-            onChange={this.handleChange}
+            checked={this.props.esterilizado === "Si"}
+            onChange={this.props.handleChange}
           />
           <input
             type="radio"
             name="esterilizado"
             value="No"
-            checked={this.state.esterilizado === "No"}
-            onChange={this.handleChange}
+            checked={this.props.esterilizado === "No"}
+            onChange={this.props.handleChange}
           />
         </div>
 
@@ -30,15 +30,15 @@ class Esterilizacion extends Component {
             type="radio"
             name="citaEsterilizacion"
             value="Si"
-            checked={this.state.citaEsterilizacion === "Si"}
-            onChange={this.handleChange}
+            checked={this.props.citaEsterilizacion === "Si"}
+            onChange={this.props.handleChange}
           />
           <input
             type="radio"
             name="citaEsterilizacion"
             value="No"
-            checked={this.state.citaEsterilizacion === "No"}
-            onChange={this.handleChange}
+            checked={this.props.citaEsterilizacion === "No"}
+            onChange={this.props.handleChange}
           />
         </div>
 
@@ -46,7 +46,7 @@ class Esterilizacion extends Component {
           type="date"
           id="fechaEsterilizacion"
           name="fechaEsterilizacion"
-          onChange={this.handleChange}
+          onChange={this.props.handleChange}
         />
       </div>
     );
