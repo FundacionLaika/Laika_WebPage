@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-
-import RegistroGeneral from '../Components/RegistroGeneral/RegistroGeneral'
+import RegistroGeneral from '../Components/RegistroGeneral/RegistroGeneral';
 
 function App() {
   return (
