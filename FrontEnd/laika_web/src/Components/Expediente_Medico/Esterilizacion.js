@@ -2,9 +2,19 @@ import React,{Component} from 'react';
 
 class Esterilizacion extends Component {
     state = {
-        esterilizado: null,
-        citaEsterilizacion: null,
+        esterilizado: "",
+        citaEsterilizacion: "",
         fechaEsterilizacion: new Date()
+    }
+
+    handleChange = (event) => {
+        const value = event.target.value;
+        this.setState({
+            ...this.state,
+            [event.target.name]: value
+        });
+        console.log(event.target.name);
+        console.log(value);
     }
 
     render() {
@@ -12,18 +22,18 @@ class Esterilizacion extends Component {
             <div>
                 <label>Esterilización</label><br/>
                 <label>Esterilizado</label>
-                <input type = "radio" id = "esterilizadoSi" name = "esterilizado"/>
+                <input type = "radio" id = "esterilizadoSi" name = "esterilizado" value = "si" checked = {this.state.esterilizado === "si"} onChange = {this.handleChange}/>
                 <label htmlFor = "esterilizadoSi">Sí</label>
-                <input type = "radio" id = "esterilizadoNo" name = "esterilizado"/>
+                <input type = "radio" id = "esterilizadoNo" name = "esterilizado" value = "no" checked = {this.state.esterilizado === "no"} onChange = {this.handleChange}/>
                 <label htmlFor = "esterilzadoNo">No</label>
-
+                
                 <label>¿Desea agendar cita?</label>
-                <input type = "radio" id = "citaEsterilizadoSi" name = "citaEsterilizacion"/>
+                <input type = "radio" id = "citaEsterilizadoSi" name = "citaEsterilizacion" value = "si" checked = {this.state.citaEsterilizado === "si"} onChange = {this.handleChange}/>
                 <label htmlFor = "citaEsterilizadoSi">Sí</label>
-                <input type = "radio" id = "citaEsterilizadoNo" name = "citaEsterilizacion"/>
+                <input type = "radio" id = "citaEsterilizadoNo" name = "citaEsterilizacion" value = "no" checked = {this.state.citaEsterilizado === "no"} onChange = {this.handleChange}/>
                 <label htmlFor = "citaEsterilizadoNo">No</label>
 
-                <input type = "date" id = "fechaEsterilizacion" name = "fechaEsterilizacion"/>
+                <input type = "date" id = "fechaEsterilizacion" name = "fechaEsterilizacion" onChange = {this.handleChange}/>
             </div>
         );
     }
