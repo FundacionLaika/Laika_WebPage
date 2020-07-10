@@ -28,9 +28,9 @@ class Esterilizacion extends Component {
                 <label htmlFor = "esterilzadoNo">No</label>
                 
                 <label>¿Desea agendar cita?</label>
-                <input type = "radio" id = "citaEsterilizadoSi" name = "citaEsterilizacion" value = "si" checked = {this.state.citaEsterilizado === "si"} onChange = {this.handleChange}/>
+                <input type = "radio" id = "citaEsterilizadoSi" name = "citaEsterilizacion" value = "si" checked = {this.state.citaEsterilizacion === "si"} onChange = {this.handleChange}/>
                 <label htmlFor = "citaEsterilizadoSi">Sí</label>
-                <input type = "radio" id = "citaEsterilizadoNo" name = "citaEsterilizacion" value = "no" checked = {this.state.citaEsterilizado === "no"} onChange = {this.handleChange}/>
+                <input type = "radio" id = "citaEsterilizadoNo" name = "citaEsterilizacion" value = "no" checked = {this.state.citaEsterilizacion === "no"} onChange = {this.handleChange}/>
                 <label htmlFor = "citaEsterilizadoNo">No</label>
 
                 <input type = "date" id = "fechaEsterilizacion" name = "fechaEsterilizacion" onChange = {this.handleChange}/>
