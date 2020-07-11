@@ -7,6 +7,7 @@ import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import Login from "../Components/Login/Login";
 import Consulta from "../Components/Consulta/Consulta";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
+import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 
 function App() {
     return (
@@ -30,6 +31,11 @@ function App() {
                         path="/Components/ExpedienteMedico"
                         exact
                         component={ExpedienteMedico}
+                    />
+                    <Route
+                        path="/Components/HogarTemporal"
+                        exact
+                        component={HogarTemporal}
                     />
         
                     {/* Primer Render de la app */}
