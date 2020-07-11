@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Foto extends Component {
   state = {
+    id: "",
     foto:
       "https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
   };
@@ -19,17 +20,19 @@ class Foto extends Component {
   render() {
     return (
       <div>
-        <img
-          src={this.state.foto}
-          alt="Foto"
-          height="100"
-          width="100"
-          onClick={this.imageHandler}
-        />
+        <label htmlFor={this.props.id}>
+          <img
+            src={this.state.foto}
+            alt="Foto"
+            height="100"
+            width="100"
+          />
+        </label>
         <br />
         <input
           type="file"
-          id="foto"
+          style={{display:'none'}}
+          id={this.props.id}
           name="foto"
           accept="image/*"
           onChange={this.imageHandler}
