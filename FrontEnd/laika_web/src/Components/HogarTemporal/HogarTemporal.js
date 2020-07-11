@@ -14,13 +14,13 @@ class HogarTemporal extends Component {
 		fechaFinalHT: "",
 
 		/*Dirección HT*/
-		calleHT: "",
-		numeroHT: "",
-		coloniaHT: "",
-		municipioHT: "",
+		calle: "",
+		numero: "",
+		colonia: "",
+		municipio: "",
 
 		/*Foto*/
-		fotoHT:
+		foto:
 			"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
 	};
 
@@ -42,7 +42,8 @@ class HogarTemporal extends Component {
 		console.log(event.target.name);
     };
     
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         console.log(this.state);
     }
 
@@ -57,17 +58,19 @@ class HogarTemporal extends Component {
 					nombreHT={this.state.nombreHT}
 					telefonoHT={this.state.telefonoHT}
 					fechaInicioHT={this.state.fechaInicioHT}
-					fechaFinalHT={this.state.fechaFinalHT}
+                    fechaFinalHT={this.state.fechaFinalHT}
+                    handleChange={this.state.handleChange}
 				/>
 				<Direccion
-					calleHT={this.state.calleHT}
-					numeroHT={this.state.numeroHT}
-					coloniaHT={this.state.coloniaHT}
-					municipioHT={this.state.municipioHT}
+					calle={this.state.calle}
+					numero={this.state.numero}
+					colonia={this.state.colonia}
+                    municipio={this.state.municipio}
+                    handleChange={this.handleChange}
 				/>
 				<ComentariosHT />
 				<Foto
-					id={"fotoHT"}
+					id={"foto"}
 					foto={this.state.foto}
 					imageHandler={this.imageHandler}
 				/>
