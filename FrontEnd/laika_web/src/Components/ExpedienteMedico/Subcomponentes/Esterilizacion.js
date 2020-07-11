@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Esterilizacion extends Component {
   render() {
     return (
-      <div>
+      <div id="esterilizacion">
         <label>Esterilización</label>
         <br />
         <div>

@@ -74,33 +74,11 @@ class ExpedienteMedico extends Component {
     console.log(value);
   };
 
+  /*Manejador del botón submit*/
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.atropellamiento);
-    console.log(this.state.tvt);
-    console.log(this.state.sarnaPiel);
-    console.log(this.state.viral);
-    console.log(this.state.embarazo);
-    console.log(this.state.cachorros);
-    console.log(this.state.hemoparasitos);
-    console.log(this.state.otro);
-    console.log(this.state.otroEspecificar);
-    console.log(this.state.esterilizado);
-    console.log(this.state.citaEsterilizacion);
-    console.log(this.state.fechaEsterilizacion);
-    console.log(this.state.puppy);
-    console.log(this.state.refuerzoPuppy);
-    console.log(this.state.multiple);
-    console.log(this.state.refuerzoMultiple);
-    console.log(this.state.fechaPuppy);
-    console.log(this.state.fechaRefuerzoPuppy);
-    console.log(this.state.fechaMultiple);
-    console.log(this.state.fechaRefuerzoMultiple);
-    console.log(this.state.fechaRabia);
-    console.log(this.state.foto1);
-    console.log(this.state.foto2);
-    console.log(this.state.foto3);
-  }
+    console.log(this.state);
+  };
 
   /*Expediente Médico*/
   render() {
@@ -147,7 +125,7 @@ class ExpedienteMedico extends Component {
           foto3={this.state.foto3}
           imageHandler={this.imageHandler}
         />
-        <button type="submit" onClick={this.handleSubmit}>
+        <button id="idGuardarMed" type="submit" onClick={this.handleSubmit}>
           Guardar
         </button>
       </form>
