@@ -7,18 +7,6 @@ import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import Login from "../Components/Login/Login";
 import Consulta from "../Components/Consulta/Consulta";
 
-<<<<<<< HEAD
-import RegistroGeneral from '../Components/RegistroGeneral/RegistroGeneral'
-import ExpedienteMedico from '../Components/ExpedienteMedico/ExpedienteMedico';
-
-function App() {
-  return (
-    <div className="App">
-      <RegistroGeneral/>
-    </div>
-  );
-=======
-
 function App() {
     return (
         <div className="App">
@@ -57,7 +45,6 @@ function App() {
             </Router>
         </div>
     );
->>>>>>> master
 }
 
 export default App;
