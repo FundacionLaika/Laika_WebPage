@@ -55,6 +55,11 @@ function App() {
                         exact
                         component={ExpedienteMedico}
                     />
+                    <Route
+                        path="/Components/HogarTemporal"
+                        exact
+                        component={HogarTemporal}
+                    />
 
                     {/* Primer Render de la app */}
                     <Route

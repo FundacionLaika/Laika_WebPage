@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Assets/Diagnostico.css";
 
 class Diagnostico extends Component {
   render() {
