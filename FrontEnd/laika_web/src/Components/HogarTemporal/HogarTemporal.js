@@ -7,7 +7,7 @@ import Foto from "../SharedComponents/Foto";
 class HogarTemporal extends Component {
 	state = {
 		/*Contacto HT*/
-		tipoHT: "",
+		tipoHT: "Persona",
 		nombreHT: "",
 		telefonoHT: "",
 		fechaInicioHT: "",
@@ -50,7 +50,7 @@ class HogarTemporal extends Component {
 	render() {
 		return (
 			<form>
-				<label>Hogar HogarTemporal</label>
+				<label>HogarTemporal</label>
 				<br />
 				<br />
 				<ContactoHT
@@ -59,7 +59,7 @@ class HogarTemporal extends Component {
 					telefonoHT={this.state.telefonoHT}
 					fechaInicioHT={this.state.fechaInicioHT}
                     fechaFinalHT={this.state.fechaFinalHT}
-                    handleChange={this.state.handleChange}
+                    handleChange={this.handleChange}
 				/>
 				<Direccion
 					calle={this.state.calle}
