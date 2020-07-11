@@ -6,18 +6,7 @@ import MenuBar from "../Components/MenuBar/MenuBar";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import Login from "../Components/Login/Login";
 import Consulta from "../Components/Consulta/Consulta";
-
-<<<<<<< HEAD
-import RegistroGeneral from '../Components/RegistroGeneral/RegistroGeneral'
-import ExpedienteMedico from '../Components/ExpedienteMedico/ExpedienteMedico';
-
-function App() {
-  return (
-    <div className="App">
-      <RegistroGeneral/>
-    </div>
-  );
-=======
+import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 
 function App() {
     return (
@@ -36,6 +25,11 @@ function App() {
                         path="/Components/Consulta/Consulta"
                         exact
                         component={Consulta}
+                    />
+                     <Route
+                        path="/Components/ExpedienteMedico"
+                        exact
+                        component={ExpedienteMedico}
                     />
                     {/* Primer Render de la app */}
                     <Route path="/" exact render={() => <Login />} />
@@ -57,7 +51,6 @@ function App() {
             </Router>
         </div>
     );
->>>>>>> master
 }
 
 export default App;
