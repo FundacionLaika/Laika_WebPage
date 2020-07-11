@@ -66,8 +66,8 @@ class ExpedienteMedico extends Component {
         <br />
         <Esterilizacion
           esterilizado={this.state.esterilizado}
-          citaEsterilizacion={this.citaEsterilizacion}
-          fechaEsterilizacion={this.fechaEsterilizacion}
+          citaEsterilizacion={this.state.citaEsterilizacion}
+          fechaEsterilizacion={this.state.fechaEsterilizacion}
           handleChange = {this.handleChange}
         />
         <br />

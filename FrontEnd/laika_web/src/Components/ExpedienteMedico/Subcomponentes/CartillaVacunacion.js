@@ -23,7 +23,7 @@ class CartillaVacunacion extends Component {
                 <input
                   type="checkbox"
                   id="refuerzoPuppy"
-                  name="RefuerzoPuppy"
+                  name="refuerzoPuppy"
                   value="refuerzoPuppy"
                   checked={this.props.refuerzoPuppy}
                   onChange={this.props.handleChange}
