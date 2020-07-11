@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Foto from "./Foto";
+import Foto from "../../SharedComponents/Foto";
 
 class FotosExpedienteMedico extends Component {
   render() {

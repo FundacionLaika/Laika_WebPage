@@ -9,7 +9,6 @@ import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 
-
 function App() {
     return (
         <div className="App">
@@ -51,12 +50,17 @@ function App() {
                         component={HogarTemporal}
                     />
 
-                     <Route
+                    <Route
                         path="/Components/ExpedienteMedico"
                         exact
                         component={ExpedienteMedico}
                     />
-        
+                    <Route
+                        path="/Components/HogarTemporal"
+                        exact
+                        component={HogarTemporal}
+                    />
+
                     {/* Primer Render de la app */}
                     <Route
                         path="/"
