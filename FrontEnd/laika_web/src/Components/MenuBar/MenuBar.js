@@ -8,13 +8,13 @@ const MenuBar = () => {
             <span>
                 <span className="flex justify-center fondo pa2">
                     <Link to="../Consulta/Consulta">
-                        <button className="f2 ph3  bw0 bg-transparent white dim pointer">
+                        <button className="f2 ph3 pt2 b bw0 bg-transparent white dim pointer">
                             Consulta
                         </button>
                     </Link>
 
                     <Link to="../RegistroGeneral/RegistroGeneral">
-                        <button className="f2 ph3  bw0 bg-transparent white dim pointer">
+                        <button className="f2 ph3 pt2 b bw0 bg-transparent white dim pointer">
                             Registro de Animal
                         </button>
                     </Link>
