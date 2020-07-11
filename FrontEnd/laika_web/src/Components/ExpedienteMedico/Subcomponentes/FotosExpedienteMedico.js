@@ -10,13 +10,25 @@ class FotosExpedienteMedico extends Component {
           <tbody>
             <tr>
               <td>
-                <Foto />
+                <Foto
+                  id="foto1"
+                  foto={this.props.foto1}
+                  imageHandler={this.props.imageHandler}
+                />
               </td>
               <td>
-                <Foto />
+                <Foto
+                  id="foto2"
+                  foto={this.props.foto2}
+                  imageHandler={this.props.imageHandler}
+                />
               </td>
               <td>
-                <Foto />
+                <Foto
+                  id="foto3"
+                  foto={this.props.foto3}
+                  imageHandler={this.props.imageHandler}
+                />
               </td>
             </tr>
           </tbody>

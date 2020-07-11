@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ContactoHT from "./Subcomponentes/ContactoHT";
 import DireccionHT from "./Subcomponentes/DireccionHT";
 import ComentariosHT from "./Subcomponentes/ComentariosHT";
-import FotoHT from "./Subcomponentes/Foto";
+import FotoHT from "./Subcomponentes/FotoHT";
 
 class HogarTemporal extends Component {
   state = {
@@ -18,6 +18,20 @@ class HogarTemporal extends Component {
     numeroHT: "",
     coloniaHT: "",
     municipioHT: "",
+
+    /*Foto*/
+    fotoHT: "https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
+  };
+
+  imageHandler = (event) => {
+    const reader = new FileReader();
+    const foto = event.target.id;
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        this.setState({ [foto]: reader.result });
+      }
+    };
+    reader.readAsDataURL(event.target.files[0]);
   };
 
   handleChange = (event) => {
@@ -48,8 +62,8 @@ class HogarTemporal extends Component {
           municipioHT={this.state.municipioHT}
         />
         <ComentariosHT />
-        <FotoHT />
-        <button type="submit" onClick={this.handleSubmit}>
+        <FotoHT id={"fotoHT"} fotoHT={this.state.fotoHT} imageHandler={this.imageHandler}/>
+        <button type="submit">
           Guardar
         </button>
       </form>

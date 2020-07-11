@@ -6,7 +6,7 @@ import MenuBar from "../Components/MenuBar/MenuBar";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import Login from "../Components/Login/Login";
 import Consulta from "../Components/Consulta/Consulta";
-
+import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 
 function App() {
     return (
@@ -26,7 +26,12 @@ function App() {
                         exact
                         component={Consulta}
                     />
-
+                     <Route
+                        path="/Components/ExpedienteMedico"
+                        exact
+                        component={ExpedienteMedico}
+                    />
+        
                     {/* Primer Render de la app */}
                     <Route path="/" exact render={() => <Login />} />
                     {/*Cuando el path metido en el buscador no existe en la app muestra esta página*/}
