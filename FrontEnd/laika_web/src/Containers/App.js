@@ -5,12 +5,9 @@ import "./App.css";
 import MenuBar from "../Components/MenuBar/MenuBar";
 import Login from "../Components/Login/Login";
 import Consulta from "../Components/Consulta/Consulta";
-<<<<<<< HEAD
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
-=======
->>>>>>> master
 
 function App() {
     return (
