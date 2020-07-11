@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+
+//Todo crear un arreglo de las diferentes páginas
 
 class Login extends React.Component {
     constructor(props) {
@@ -7,6 +9,7 @@ class Login extends React.Component {
         this.state = {
             correoLogin: "",
             contrasenaLogin: "",
+            usuarioValido: false,
         };
     }
 
@@ -49,6 +52,7 @@ class Login extends React.Component {
             this.state.contrasenaLogin === "bye"
         ) {
             this.setState({ usuarioValido: true });
+            console.log("valido: " + this.state.usuarioValido);
         }
     };
 
@@ -101,15 +105,16 @@ class Login extends React.Component {
                             </div>
                         </fieldset>
                         <div className="">
-                            <Link to="Components/Consulta/Consulta">
-                                <input
-                                    onClick={this.onSubmitSignIn} // Llama a la función onSubmitSignIn cada vez que se da click al boton
-                                    className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                                    type="submit"
-                                    value="SignIn"
-                                />
-                            </Link>
+                            <input
+                                onClick={this.onSubmitSignIn} // Llama a la función onSubmitSignIn cada vez que se da click al boton
+                                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                                type="submit"
+                                value="SignIn"
+                            />
                         </div>
+                        {this.state.usuarioValido === true ? (
+                            <Redirect to="Components/Consulta/Consulta" />
+                        ) : null}
                     </div>
                 </main>
             </article>
