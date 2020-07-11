@@ -31,6 +31,7 @@ function App() {
                         exact
                         component={ExpedienteMedico}
                     />
+        
                     {/* Primer Render de la app */}
                     <Route path="/" exact render={() => <Login />} />
                     {/*Cuando el path metido en el buscador no existe en la app muestra esta página*/}

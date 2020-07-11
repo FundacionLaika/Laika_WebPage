@@ -8,7 +8,7 @@ class Esterilizacion extends Component {
         <br />
         <div>
           <label>Esterilizado</label>
-          <label htmlFor = "idEsterilizadoSi">Sí</label>
+          <label htmlFor="idEsterilizadoSi">Sí</label>
           <input
             type="radio"
             id="idEsterilizadoSi"
@@ -17,7 +17,7 @@ class Esterilizacion extends Component {
             checked={this.props.esterilizado === "Si"}
             onChange={this.props.handleChange}
           />
-          <label htmlFor = "idEsterilizadoNo">No</label>
+          <label htmlFor="idEsterilizadoNo">No</label>
           <input
             type="radio"
             id="idEsterilizadoNo"
@@ -30,7 +30,7 @@ class Esterilizacion extends Component {
 
         <div>
           <label>¿Desea agendar cita?</label>
-          <label htmlFor = "idCitaEsterilzacionSi">Sí</label>
+          <label htmlFor="idCitaEsterilzacionSi">Sí</label>
           <input
             type="radio"
             id="idCitaEsterilzacionSi"
@@ -39,7 +39,7 @@ class Esterilizacion extends Component {
             checked={this.props.citaEsterilizacion === "Si"}
             onChange={this.props.handleChange}
           />
-          <label htmlFor = "idCitaEsterilzacionNo">Sí</label>
+          <label htmlFor="idCitaEsterilzacionNo">No</label>
           <input
             type="radio"
             id="idCitaEsterilzacionNo"

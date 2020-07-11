@@ -2,12 +2,6 @@ import React, { Component } from "react";
 import Foto from "./Foto";
 
 class FotosExpedienteMedico extends Component {
-  state = {
-    foto1: "foto1",
-    foto2: "foto2",
-    foto3: "foto3",
-  }
-
   render() {
     return (
       <div>
@@ -16,13 +10,25 @@ class FotosExpedienteMedico extends Component {
           <tbody>
             <tr>
               <td>
-                <Foto id={1}/>
+                <Foto
+                  id="foto1"
+                  foto={this.props.foto1}
+                  imageHandler={this.props.imageHandler}
+                />
               </td>
               <td>
-                <Foto id={2}/>
+                <Foto
+                  id="foto2"
+                  foto={this.props.foto2}
+                  imageHandler={this.props.imageHandler}
+                />
               </td>
               <td>
-                <Foto id={3}/>
+                <Foto
+                  id="foto3"
+                  foto={this.props.foto3}
+                  imageHandler={this.props.imageHandler}
+                />
               </td>
             </tr>
           </tbody>
