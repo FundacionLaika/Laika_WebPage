@@ -2,6 +2,7 @@ import React from "react";
 import Rescatistas from "./Subcomponents/Rescatistas";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import DireccionRescate from "./Subcomponents/DireccionRescate";
+import ImageChooser from "./Subcomponents/ImageChooser";
 
 export default class RegistroGeneral extends React.Component {
 	state = {
@@ -16,7 +17,7 @@ export default class RegistroGeneral extends React.Component {
 		colonia: "",
 		municipio: "",
 		senasParticulares: "",
-		imagen: "",
+		imagen: ""
 	};
 
 	handleChange = (event) => {
@@ -75,6 +76,9 @@ export default class RegistroGeneral extends React.Component {
 					value={this.props.senasParticulares}
 					onChange={this.handleChange}
 				/>
+
+
+				<ImageChooser />
 
 				<button type="submit">Registrar</button>
 			</form>
