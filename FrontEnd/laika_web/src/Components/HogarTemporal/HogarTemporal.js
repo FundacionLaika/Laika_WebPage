@@ -22,8 +22,7 @@ class HogarTemporal extends Component {
 		municipio: "",
 
 		/*Foto*/
-		foto:
-			"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
+		foto: "/iconoPerro.png",
 	};
 
 	/*Manejador de fotos*/
@@ -35,6 +34,7 @@ class HogarTemporal extends Component {
 				this.setState({ [foto]: reader.result });
 			}
 		};
+		console.log(event.target.id);
 		reader.readAsDataURL(event.target.files[0]);
 	};
 
@@ -61,26 +61,25 @@ class HogarTemporal extends Component {
 	/*Manejador de Restablecer*/
 	handleRestablecer = () => {
 		this.setState({
-		tipoHT: "Ninguno",
-		nombreHT: "",
-		telefonoHT: "",
-		fechaInicioHT: "",
-		fechaFinalHT: "",
-		calle: "",
-		numero: "",
-		colonia: "",
-		municipio: "",
-		foto:
-			"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
-	
+			tipoHT: "Ninguno",
+			nombreHT: "",
+			telefonoHT: "",
+			fechaInicioHT: "",
+			fechaFinalHT: "",
+			calle: "",
+			numero: "",
+			colonia: "",
+			municipio: "",
+			foto:
+				"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
 		});
-	}
+	};
 
 	/*Expediente Hogar Temporal*/
 	render() {
 		return (
 			<div>
-				<NavBarRegistros/>
+				<NavBarRegistros />
 				<form onSubmit={this.handleSubmit}>
 					<label>HogarTemporal</label>
 					<br />

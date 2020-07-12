@@ -38,12 +38,9 @@ class ExpedienteMedico extends Component {
 		fechaRabia: "",
 
 		/*Fotos*/
-		foto1:
-			"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
-		foto2:
-			"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
-		foto3:
-			"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
+		foto1: "/iconoPerro.png",
+		foto2: "/iconoPerro.png",
+		foto3: "/iconoPerro.png",
 	};
 
 	/*Manejador de imágenes*/
@@ -86,7 +83,7 @@ class ExpedienteMedico extends Component {
 		});
 	};
 
-    /*Manejadores de Restablecer*/
+	/*Manejadores de Restablecer*/
 	handleRestablecer = () => {
 		this.setState({
 			atropellamiento: false,
@@ -111,12 +108,9 @@ class ExpedienteMedico extends Component {
 			fechaMultiple: "",
 			fechaRefuerzoMultiple: "",
 			fechaRabia: "",
-			foto1:
-				"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
-			foto2:
-				"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
-			foto3:
-				"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
+			foto1: "/iconoPerro.png",
+			foto2: "/iconoPerro.png",
+			foto3: "/iconoPerro.png",
 		});
 	};
 
@@ -124,7 +118,7 @@ class ExpedienteMedico extends Component {
 	render() {
 		return (
 			<div>
-                <NavBarRegistros/>
+				<NavBarRegistros />
 				<form onSubmit={this.handleSubmit}>
 					<Diagnostico
 						atropellamiento={this.state.atropellamiento}
@@ -135,6 +129,7 @@ class ExpedienteMedico extends Component {
 						cachorros={this.state.cachorros}
 						hemoparasitos={this.state.hemoparasitos}
 						otro={this.state.otro}
+						otroEspecificar={this.state.otroEspecificar}
 						handleChange={this.handleChange}
 					/>
 					<br />
