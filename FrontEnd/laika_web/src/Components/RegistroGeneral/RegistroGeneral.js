@@ -2,7 +2,10 @@ import React from "react";
 import Rescatistas from "./Subcomponents/Rescatistas";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Direccion from "../SharedComponents/Direccion";
-import Foto from "../SharedComponents/Foto"
+import Foto from "../SharedComponents/Foto";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import { Link } from "react-router-dom";
+
 export default class RegistroGeneral extends React.Component {
 	state = {
 		nombre: "",
@@ -16,7 +19,7 @@ export default class RegistroGeneral extends React.Component {
 		colonia: "",
 		municipio: "",
 		senasParticulares: "",
-		foto: "/iconoPerro.png"
+		foto: "/iconoPerro.png",
 	};
 
 	handleChange = (event) => {
@@ -47,11 +50,11 @@ export default class RegistroGeneral extends React.Component {
 	imageHandler = (event) => {
 		const reader = new FileReader();
 		const foto = event.target.id;
-	
+
 		reader.onload = () => {
-		  if (reader.readyState === 2) {
-			this.setState({ [foto]: reader.result });
-		  }
+			if (reader.readyState === 2) {
+				this.setState({ [foto]: reader.result });
+			}
 		};
 		console.log(event.target.id);
 		reader.readAsDataURL(event.target.files[0]);
@@ -59,47 +62,59 @@ export default class RegistroGeneral extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<DatosGenerales
-					handleChange={this.handleChange}
-					nombre={this.state.nombre}
-					edad={this.state.edad}
-					genero={this.state.genero}
-					especie={this.state.especie}
-					fechaDeRescate={this.state.fechaDeRescate}
-				/>
+			<div>
+				<NavBarRegistros />
+				<form onSubmit={this.handleSubmit}>
+					<DatosGenerales
+						handleChange={this.handleChange}
+						nombre={this.state.nombre}
+						edad={this.state.edad}
+						genero={this.state.genero}
+						especie={this.state.especie}
+						fechaDeRescate={this.state.fechaDeRescate}
+					/>
 
-				<Rescatistas
-					rescatistas={this.state.rescatistas}
-					agregarRescatista={this.agregarRescatista}
-					eliminarRescatista={this.eliminarRescatista}
-				/>
+					<Rescatistas
+						rescatistas={this.state.rescatistas}
+						agregarRescatista={this.agregarRescatista}
+						eliminarRescatista={this.eliminarRescatista}
+					/>
 
-				<Direccion
-					handleChange={this.handleChange}
-					calle={this.state.calle}
-					numero={this.state.numero}
-					colonia={this.state.colonia}
-					municipio={this.state.municipio}
-				/>
+					<Direccion
+						handleChange={this.handleChange}
+						calle={this.state.calle}
+						numero={this.state.numero}
+						colonia={this.state.colonia}
+						municipio={this.state.municipio}
+					/>
 
-				<label htmlFor="senasParticulares">Señas Particulares: </label>
-				<textarea
-					id="senasParticulares"
-					type="text"
-					name="senasParticulares"
-					value={this.props.senasParticulares}
-					onChange={this.handleChange}
-				/>
+					<label htmlFor="senasParticulares">
+						Señas Particulares:{" "}
+					</label>
+					<textarea
+						id="senasParticulares"
+						type="text"
+						name="senasParticulares"
+						value={this.props.senasParticulares}
+						onChange={this.handleChange}
+					/>
 
-				<Foto
-                  id="fotoDefault"
-                  foto={this.state.foto}
-                  imageHandler={this.state.imageHandler}
-				/>
+					<Foto
+						id="fotoDefault"
+						foto={this.state.foto}
+						imageHandler={this.state.imageHandler}
+					/>
 
-				<button type="submit">Registrar</button>
-			</form>
+					<button type="submit">Registrar</button>
+				</form>
+				<Link to="/Components/Adopcion/Adopcion">
+					<button>Adopcion</button>
+				</Link>
+				<button onClick={this.handleRestablecer}>Restablecer</button>
+				<Link to="/Components/ExpedienteMedico/ExpedienteMedico">
+					<button>Expediente Médico</button>
+				</Link>
+			</div>
 		);
 	}
 }
