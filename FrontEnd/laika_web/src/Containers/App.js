@@ -34,29 +34,9 @@ function App() {
                         exact
                         component={ExpedienteMedico}
                     />
-                    <Route
-                        path="/Components/ExpedienteMedico/ExpedienteMedico"
-                        exact
-                        component={ExpedienteMedico}
-                    />
+                    
                     <Route
                         path="/Components/HogarTemporal/HogarTemporal"
-                        exact
-                        component={HogarTemporal}
-                    />
-                    <Route
-                        path="/Components/Adopcion/Adopcion"
-                        exact
-                        component={HogarTemporal}
-                    />
-
-                     <Route
-                        path="/Components/ExpedienteMedico"
-                        exact
-                        component={ExpedienteMedico}
-                    />
-                    <Route
-                        path="/Components/HogarTemporal"
                         exact
                         component={HogarTemporal}
                     />
