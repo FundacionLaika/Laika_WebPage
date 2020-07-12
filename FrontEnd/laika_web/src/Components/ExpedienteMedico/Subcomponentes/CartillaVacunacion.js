@@ -70,7 +70,7 @@ class CartillaVacunacion extends Component {
                 <input
                   type="date"
                   id="fechaPuppy"
-                  name="fecha"
+                  name="fechaPuppy"
                   value={this.props.fechaPuppy}
                   onChange={this.props.handleChange}
                 />
@@ -79,7 +79,7 @@ class CartillaVacunacion extends Component {
                 <input
                   type="date"
                   id="fechaRefuerzoPuppy"
-                  name="fecha"
+                  name="fechaRefuerzoPuppy"
                   value={this.props.fechaRefuerzoPuppy}
                   onChange={this.props.handleChange}
                 />
@@ -88,7 +88,7 @@ class CartillaVacunacion extends Component {
                 <input
                   type="date"
                   id="fechaMultiple"
-                  name="fecha"
+                  name="fechaMultiple"
                   value={this.props.fechaMultiple}
                   onChange={this.props.handleChange}
                 />
@@ -97,7 +97,7 @@ class CartillaVacunacion extends Component {
                 <input
                   type="date"
                   id="fechaRefuerzoMultiple"
-                  name="fecha"
+                  name="fechaRefuerzoMultiple"
                   value={this.props.fechaRefuerzoMultiple}
                   onChange={this.props.handleChange}
                 />
@@ -106,7 +106,7 @@ class CartillaVacunacion extends Component {
                 <input
                   type="date"
                   id="fechaRabia"
-                  name="fecha"
+                  name="fechaRabia"
                   value={this.props.fechaRabia}
                   onChange={this.props.handleChange}
                 />

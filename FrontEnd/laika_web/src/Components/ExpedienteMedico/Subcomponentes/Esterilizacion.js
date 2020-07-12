@@ -54,6 +54,7 @@ class Esterilizacion extends Component {
           type="date"
           id="fechaEsterilizacion"
           name="fechaEsterilizacion"
+          value={this.props.fechaEsterilizacion}
           onChange={this.props.handleChange}
         />
       </div>
