@@ -8,8 +8,10 @@ import Consulta from "../Components/Consulta/Consulta";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
+import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
 
 function App() {
+
 	return (
 		<div className="App">
 			<Router>
@@ -65,6 +67,8 @@ function App() {
 			</Router>
 		</div>
 	);
+
+ 
 }
 
 export default App;
