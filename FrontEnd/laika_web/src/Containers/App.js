@@ -8,6 +8,7 @@ import Consulta from "../Components/Consulta/Consulta";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
+import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
 
 function App() {
     return (
@@ -35,30 +36,14 @@ function App() {
                         component={ExpedienteMedico}
                     />
                     <Route
-                        path="/Components/ExpedienteMedico/ExpedienteMedico"
-                        exact
-                        component={ExpedienteMedico}
-                    />
-                    <Route
                         path="/Components/HogarTemporal/HogarTemporal"
                         exact
                         component={HogarTemporal}
                     />
                     <Route
-                        path="/Components/Adopcion/Adopcion"
+                        path="/Components/GenerarPDF/GenerarPDF"
                         exact
-                        component={HogarTemporal}
-                    />
-
-                    <Route
-                        path="/Components/ExpedienteMedico"
-                        exact
-                        component={ExpedienteMedico}
-                    />
-                    <Route
-                        path="/Components/HogarTemporal"
-                        exact
-                        component={HogarTemporal}
+                        component={GenerarPDF}
                     />
 
                     {/* Primer Render de la app */}
