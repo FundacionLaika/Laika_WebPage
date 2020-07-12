@@ -1,22 +1,26 @@
-import React from "react";
 
-const NavBarRegistros = () => {
-    return (
-        <div className="center mt4 pa0 pb0 mb0 w-two-thirds bg-light-purple">
-            <button className="mt3" name="general">
-                General
-            </button>
-            <button className="mt3" name="medico">
-                Expediente Medico
-            </button>
-            <button className="mt3" name="hogar">
-                Hogar Temporal
-            </button>
-            <button className="mt3" name="adopcion">
-                Adopcion
-            </button>
-        </div>
-    );
-};
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+class NavBarRegistros extends Component {
+	render() {
+		return (
+			<div>
+				<Link to="/Components/RegistroGeneral/RegistroGeneral">
+					<button>Registro General</button>
+				</Link>
+				<Link to="/Components/ExpedienteMedico/ExpedienteMedico">
+					<button>Expediente Médico</button>
+				</Link>
+				<Link to="/Components/HogarTemporal/HogarTemporal">
+					<button>Hogar Temporal</button>
+				</Link>
+				<Link to="/Components/Adopcion/Adopcion">
+					<button>Adopción</button>
+				</Link>
+			</div>
+		);
+	}
+}
 
 export default NavBarRegistros;

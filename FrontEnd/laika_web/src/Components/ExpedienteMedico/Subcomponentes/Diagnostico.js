@@ -90,6 +90,7 @@ class Diagnostico extends Component {
           <input
             type="text"
             name="otroEspecificar"
+            value={this.props.otroEspecificar}
             onChange={this.props.handleChange}
           />
         </div>
