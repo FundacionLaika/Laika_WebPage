@@ -8,6 +8,7 @@ import Consulta from "../Components/Consulta/Consulta";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
+import Adopcion from "../Components/Adopcion/Adopcion";
 
 function App() {
     return (
@@ -35,9 +36,9 @@ function App() {
                         component={ExpedienteMedico}
                     />
                     <Route
-                        path="/Components/ExpedienteMedico/ExpedienteMedico"
+                        path="/Components/Adopcion"
                         exact
-                        component={ExpedienteMedico}
+                        component={Adopcion}
                     />
                     <Route
                         path="/Components/HogarTemporal/HogarTemporal"

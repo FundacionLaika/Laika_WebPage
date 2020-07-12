@@ -1,23 +1,22 @@
 import React from "react";
 import Rescatistas from "./Subcomponents/Rescatistas";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
-import DireccionRescate from "./Subcomponents/DireccionRescate";
-import ImageChooser from "./Subcomponents/ImageChooser";
-
+import Direccion from "../SharedComponents/Direccion";
+import Foto from "../SharedComponents/Foto"
 export default class RegistroGeneral extends React.Component {
 	state = {
 		nombre: "",
 		edad: "",
 		genero: "",
 		especie: "",
-		fechaDeRescate: new Date(),
+		fechaDeRescate: "",
 		rescatistas: [],
 		calle: "",
 		numero: "",
 		colonia: "",
 		municipio: "",
 		senasParticulares: "",
-		imagen: ""
+		foto: "/iconoPerro.png"
 	};
 
 	handleChange = (event) => {
@@ -45,6 +44,19 @@ export default class RegistroGeneral extends React.Component {
 		}));
 	};
 
+	imageHandler = (event) => {
+		const reader = new FileReader();
+		const foto = event.target.id;
+	
+		reader.onload = () => {
+		  if (reader.readyState === 2) {
+			this.setState({ [foto]: reader.result });
+		  }
+		};
+		console.log(event.target.id);
+		reader.readAsDataURL(event.target.files[0]);
+	};
+
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
@@ -63,7 +75,7 @@ export default class RegistroGeneral extends React.Component {
 					eliminarRescatista={this.eliminarRescatista}
 				/>
 
-				<DireccionRescate
+				<Direccion
 					handleChange={this.handleChange}
 					calle={this.state.calle}
 					numero={this.state.numero}
@@ -71,14 +83,20 @@ export default class RegistroGeneral extends React.Component {
 					municipio={this.state.municipio}
 				/>
 
+				<label htmlFor="senasParticulares">Señas Particulares: </label>
 				<textarea
+					id="senasParticulares"
+					type="text"
 					name="senasParticulares"
 					value={this.props.senasParticulares}
 					onChange={this.handleChange}
 				/>
 
-
-				<ImageChooser />
+				<Foto
+                  id="fotoDefault"
+                  foto={this.state.foto}
+                  imageHandler={this.state.imageHandler}
+				/>
 
 				<button type="submit">Registrar</button>
 			</form>
