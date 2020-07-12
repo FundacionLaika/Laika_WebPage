@@ -3,6 +3,7 @@ import Direccion from "../SharedComponents/Direccion";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
+import HelloWorld from "./HelloWorld"
 
 export default class Adopcion extends React.Component {
 
@@ -79,6 +80,8 @@ export default class Adopcion extends React.Component {
                     deleteRow={this.deleteRow}
                     handleChange={this.modifyRow}
                 />
+
+                <HelloWorld/>
 
                 <button type="submit">Registrar</button>
             </form>
