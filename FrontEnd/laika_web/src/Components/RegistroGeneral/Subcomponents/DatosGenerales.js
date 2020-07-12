@@ -5,18 +5,26 @@ export default class DatosGenerales extends React.Component {
 	render() {
 		return (
 			<div>
+				<label htmlFor="nombre">Nombre: </label>
 				<input
+					id="nombre"
+					type="text"
 					name="nombre"
 					value={this.props.nombre}
 					onChange={this.props.handleChange}
 				/>
+
+				<label htmlFor="edad">Edad: </label>
 				<input
+					id="edad"
+					type="text"
 					name="edad"
 					value={this.props.edad}
 					onChange={this.props.handleChange}
 				/>
 
-				<div>
+				<label htmlFor="radio-genero">Genero: </label>
+				<div id="radio-genero">
 					<input
 						type="radio"
 						value="Macho"
@@ -35,7 +43,8 @@ export default class DatosGenerales extends React.Component {
 					Hembra
 				</div>
 
-				<div>
+				<label htmlFor="radio-especie">Especie: </label>
+				<div id="radio-especie">
 					<input
 						type="radio"
 						value="Canino"
@@ -62,7 +71,9 @@ export default class DatosGenerales extends React.Component {
 					Otro
 				</div>
 
+				<label htmlFor="fechaDeRescate">Fecha de Rescate: </label>
 				<input
+					id="fechaDeRescate"
 					type="date"
 					name="fechaDeRescate"
 					value={this.props.fechaDeRescate}
