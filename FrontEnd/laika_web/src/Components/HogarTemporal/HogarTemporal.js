@@ -4,6 +4,7 @@ import Direccion from "../SharedComponents/Direccion";
 import ComentariosHT from "./Subcomponentes/ComentariosHT";
 import Foto from "../SharedComponents/Foto";
 import { Link } from "react-router-dom";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 
 class HogarTemporal extends Component {
 	state = {
@@ -79,6 +80,7 @@ class HogarTemporal extends Component {
 	render() {
 		return (
 			<div>
+				<NavBarRegistros/>
 				<form onSubmit={this.handleSubmit}>
 					<label>HogarTemporal</label>
 					<br />

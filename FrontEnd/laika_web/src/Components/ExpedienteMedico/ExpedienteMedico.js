@@ -5,6 +5,7 @@ import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
 import Tratamiento from "./Subcomponentes/Tratamiento";
 import FotosExpedienteMedico from "./Subcomponentes/FotosExpedienteMedico";
 import { Link } from "react-router-dom";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 
 class ExpedienteMedico extends Component {
 	state = {
@@ -123,6 +124,7 @@ class ExpedienteMedico extends Component {
 	render() {
 		return (
 			<div>
+                <NavBarRegistros/>
 				<form onSubmit={this.handleSubmit}>
 					<Diagnostico
 						atropellamiento={this.state.atropellamiento}
