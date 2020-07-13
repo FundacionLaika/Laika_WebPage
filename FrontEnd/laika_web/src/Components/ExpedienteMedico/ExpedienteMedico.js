@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
-import Tratamiento from "./Subcomponentes/Tratamiento";
 import FotosExpedienteMedico from "./Subcomponentes/FotosExpedienteMedico";
 import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import shortid from "shortid";
+import DataGridMed from "./Subcomponentes/DataGridMed";
 
 class ExpedienteMedico extends Component {
 	state = {
@@ -43,6 +44,7 @@ class ExpedienteMedico extends Component {
 		foto3: "/iconoPerro.png",
 
 		/*Tratamiento*/
+		tratamiento: [],
 	};
 
 	/*Manejador de imágenes*/
@@ -116,6 +118,51 @@ class ExpedienteMedico extends Component {
 		});
 	};
 
+	/*Manejador de datagrid medico*/
+	addRow = (event) => {
+		event.preventDefault();
+		const newRow = {
+			id: shortid.generate(),
+			fechaInicio: "",
+			fechaFinal: "",
+			comentarios: "",
+			accion: "",
+			citaMedica: "",
+		};
+		this.setState((state) => ({
+			tratamiento: [newRow, ...state.tratamiento],
+		}));
+	};
+
+	deleteRow = (id) => {
+		this.setState((state) => ({
+			tratamiento: state.tratamiento.filter((row) => row.id !== id),
+		}));
+	};
+
+	modifyRow = (event) => {
+		let dataTemp = this.state.tratamiento;
+
+		dataTemp.forEach((element) => {
+			if (element.id === event.target.id) {
+				if (event.target.name === "fechaInicio")
+					element.fechaInicio = event.target.value;
+				else if (event.target.name === "fechaFinal")
+					element.fechaFinal = event.target.value;
+				else if (event.target.name === "comentarios")
+					element.comentarios = event.target.value;
+				else if (event.target.name === "accion")
+					element.accion = event.target.value;
+				else if (event.target.name === "citaMedica")
+					element.citaMedica = event.target.value;
+			}
+		});
+
+		this.setState({
+			tratamiento: dataTemp,
+		});
+	};
+
 	/*Expediente Médico*/
 	render() {
 		return (
@@ -163,7 +210,12 @@ class ExpedienteMedico extends Component {
 						imageHandler={this.imageHandler}
 					/>
 					<br />
-					<Tratamiento />
+					<DataGridMed
+						data={this.state.tratamiento}
+						modifyRow={this.modifyRow}
+						addRow={this.addRow}
+						deleteRow={this.deleteRow}
+					/>
 					<button>Guardar</button>
 				</form>
 				<Link to="/RegistroGeneral">

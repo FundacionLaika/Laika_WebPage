@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import ContactoHT from "./Subcomponentes/ContactoHT";
 import Direccion from "../SharedComponents/Direccion";
-import ComentariosHT from "./Subcomponentes/ComentariosHT";
 import Foto from "../SharedComponents/Foto";
 import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import DataGrid from "../SharedComponents/DataGrid/DataGrid";
+import shortid from "shortid";
 
 class HogarTemporal extends Component {
 	state = {
@@ -23,6 +24,9 @@ class HogarTemporal extends Component {
 
 		/*Foto*/
 		foto: "/iconoPerro.png",
+
+		/**/
+		comentarios:[]
 	};
 
 	/*Manejador de fotos*/
@@ -70,8 +74,45 @@ class HogarTemporal extends Component {
 			numero: "",
 			colonia: "",
 			municipio: "",
-			foto:
-				"https://icons-for-free.com/iconfiles/png/512/avatar+person+profile+user+icon-1320086059654790795.png",
+			foto: "/iconoPerro.png",
+		});
+	};
+
+	addRow = (event) => {
+		event.preventDefault();
+		const newRow = {
+			id: shortid.generate(),
+			observaciones: "",
+			accion: "",
+			fecha: "",
+		};
+		this.setState((state) => ({
+			comentarios: [newRow, ...state.comentarios],
+		}));
+	};
+
+	deleteRow = (id) => {
+		this.setState((state) => ({
+			comentarios: state.comentarios.filter((row) => row.id !== id),
+		}));
+	};
+
+	modifyRow = (event) => {
+		let dataTemp = this.state.comentarios;
+
+		dataTemp.forEach((element) => {
+			if (element.id === event.target.id) {
+				if (event.target.name === "observaciones")
+					element.observaciones = event.target.value;
+				else if (event.target.name === "accion")
+					element.accion = event.target.value;
+				else if (event.target.name === "fecha")
+					element.fecha = event.target.value;
+			}
+		});
+
+		this.setState({
+			comentarios: dataTemp,
 		});
 	};
 
@@ -99,11 +140,18 @@ class HogarTemporal extends Component {
 						municipio={this.state.municipio}
 						handleChange={this.handleChange}
 					/>
-					<ComentariosHT />
+
 					<Foto
 						id={"foto"}
 						foto={this.state.foto}
 						imageHandler={this.imageHandler}
+					/>
+
+					<DataGrid
+						data={this.state.comentarios}
+						modifyRow={this.modifyRow}
+						addRow={this.addRow}
+						deleteRow={this.deleteRow}
 					/>
 					<button>Guardar</button>
 				</form>

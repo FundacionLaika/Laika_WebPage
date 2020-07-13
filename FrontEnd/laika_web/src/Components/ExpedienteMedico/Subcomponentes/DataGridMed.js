@@ -1,23 +1,27 @@
 import React from "react";
-import Row from "./Row";
+import RowMed from "./RowMed";
 
-export default class DataGrid extends React.Component {
+export default class DataGridMed extends React.Component {
 	render() {
 		return (
 			<div>
 				<button onClick={this.props.addRow}>Agregar</button>
 				<div style={{ display: "flex", justifyContent: "center" }}>
-					<label displayOnly="true">Observaciones</label>
+					<label displayOnly="true">Fecha Inicio</label>
+					<label displayOnly="true">Fecha Final</label>
+					<label displayOnly="true">Comentarios</label>
 					<label displayOnly="true">Acción</label>
-					<label displayOnly="true">Fecha</label>
+					<label displayOnly="true">Cita médica</label>
 				</div>
 				{this.props.data.map((row) => (
-					<Row
+					<RowMed
 						key={row.id}
 						id={row.id}
-						observaciones={row.observaciones}
+						fechaInicio={row.fechaInicio}
+						fechaFinal={row.fechaFinal}
+						comentarios={row.comentarios}
 						accion={row.accion}
-						fecha={row.fecha}
+						citaMedica={row.citaMedica}
 						handleChange={this.props.modifyRow}
 						deleteRow={() => this.props.deleteRow(row.id)}
 					/>
