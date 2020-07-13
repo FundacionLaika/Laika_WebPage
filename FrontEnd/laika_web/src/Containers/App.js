@@ -16,11 +16,11 @@ function App() {
 	return (
 		<div className="App">
 			<Router>
-				<Route path="/Components" render={() => <MenuBar />} />
+				<Route path="/" render={() => <MenuBar />} />
 				<Switch>
 					{/* El Switch solo hara render de un componente a la vez */}
 					{/* exact se encarga que el componente se muestre solo cuando el path es esxactamente igual el especificado*/}
-					<Route path="/" exact render={() => <Login />} />
+					<Route path="/Login" exact render={() => <Login />} />
 					{/*Login es la primera página mostrada*/}
 					<Route path="/Consulta" exact component={Consulta} />
 					<Route
@@ -38,6 +38,18 @@ function App() {
 						path="/HogarTemporal"
 						exact
 						component={HogarTemporal}
+					/>
+
+					<Route
+						path="/GenerarPDF"
+						exact
+						component={GenerarPDF}
+					/>
+
+					<Route
+						path="/MenuUsuario"
+						exact
+						component={MenuUsuario}
 					/>
 
 					<Route path="/Adopcion" exact component={Adopcion} />

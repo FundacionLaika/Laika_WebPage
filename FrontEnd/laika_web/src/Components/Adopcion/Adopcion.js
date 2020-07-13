@@ -93,11 +93,10 @@ export default class Adopcion extends React.Component {
 						municipio={this.state.municipio}
 					/>
 
-
                     <Foto
                       id="fotoDefault"
                       foto={this.state.foto}
-                      imageHandler={this..imageHandler}
+                      imageHandler={this.imageHandler}
                     />
                 
                     <DataGrid 

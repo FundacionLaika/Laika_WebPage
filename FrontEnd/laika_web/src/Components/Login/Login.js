@@ -113,7 +113,7 @@ class Login extends React.Component {
 							/>
 						</div>
 						{this.state.usuarioValido === true ? (
-							<Redirect to="Components/Consulta/Consulta" />
+							<Redirect to="/Consulta" />
 						) : null}
 					</div>
 				</main>

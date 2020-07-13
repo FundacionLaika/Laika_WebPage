@@ -166,11 +166,11 @@ class ExpedienteMedico extends Component {
 					<Tratamiento />
 					<button>Guardar</button>
 				</form>
-				<Link to="/Components/RegistroGeneral/RegistroGeneral">
+				<Link to="/RegistroGeneral">
 					<button>Registro General</button>
 				</Link>
 				<button onClick={this.handleRestablecer}>Restablecer</button>
-				<Link to="/Components/HogarTemporal/HogarTemporal">
+				<Link to="/HogarTemporal">
 					<button>Hogar Temporal</button>
 				</Link>
 			</div>

@@ -20,9 +20,8 @@ class MenuUsuario extends Component {
 	}
 
 	handleChange = (event) => {
-		const val = event.target.checked;
 
-		// console.log(this.state);
+		console.log(this.state);
 	};
 
 	imageHandler = (event) => {

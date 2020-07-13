@@ -64,7 +64,6 @@ class GenerarPDF extends Component {
 						</label>
 						<input
 							type="checkbox"
-							checked="checked"
 							name="general"
 							value="general"
 							checked={this.state.general}

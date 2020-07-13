@@ -67,7 +67,7 @@ class Consulta extends Component {
 					<div className="center mv0 pv0  bg-light-gray w-two-thirds vh-50">
 						{/*Todo Agregar los componentes de las tarjetas*/}
 					</div>
-					<Link to="../GenerarPDF/GenerarPDF">
+					<Link to="/GenerarPDF">
 						<button
 							className="mv0 pa2 f4 bw0 bg-light-purple white"
 							name="PDF"

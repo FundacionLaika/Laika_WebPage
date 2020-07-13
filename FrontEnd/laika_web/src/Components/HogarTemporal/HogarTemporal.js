@@ -107,11 +107,11 @@ class HogarTemporal extends Component {
 					/>
 					<button>Guardar</button>
 				</form>
-				<Link to="/Components/ExpedienteMedico/ExpedienteMedico">
+				<Link to="/ExpedienteMedico">
 					<button>Expediente Médico</button>
 				</Link>
 				<button onClick={this.handleRestablecer}>Restablecer</button>
-				<Link to="/Components/Adopcion/Adopcion">
+				<Link to="/Adopcion">
 					<button>Adopción</button>
 				</Link>
 			</div>

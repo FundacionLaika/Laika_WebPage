@@ -6,16 +6,16 @@ class NavBarRegistros extends Component {
 	render() {
 		return (
 			<div>
-				<Link to="/Components/RegistroGeneral/RegistroGeneral">
+				<Link to="/RegistroGeneral">
 					<button>Registro General</button>
 				</Link>
-				<Link to="/Components/ExpedienteMedico/ExpedienteMedico">
+				<Link to="/ExpedienteMedico">
 					<button>Expediente Médico</button>
 				</Link>
-				<Link to="/Components/HogarTemporal/HogarTemporal">
+				<Link to="/HogarTemporal">
 					<button>Hogar Temporal</button>
 				</Link>
-				<Link to="/Components/Adopcion/Adopcion">
+				<Link to="/Adopcion">
 					<button>Adopción</button>
 				</Link>
 			</div>
