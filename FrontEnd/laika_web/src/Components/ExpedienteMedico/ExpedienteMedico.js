@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
-import FotosExpedienteMedico from "./Subcomponentes/FotosExpedienteMedico";
 import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import DataGridMed from "./Subcomponentes/DataGridMed";
+import Foto from "../SharedComponents/Foto";
 
 class ExpedienteMedico extends Component {
 	state = {
@@ -167,64 +167,88 @@ class ExpedienteMedico extends Component {
 	render() {
 		return (
 			<div>
-				<NavBarRegistros />
-				<form onSubmit={this.handleSubmit}>
-					<Diagnostico
-						atropellamiento={this.state.atropellamiento}
-						tvt={this.state.tvt}
-						sarnaPiel={this.state.sarnaPiel}
-						viral={this.state.viral}
-						embarazo={this.state.embarazo}
-						cachorros={this.state.cachorros}
-						hemoparasitos={this.state.hemoparasitos}
-						otro={this.state.otro}
-						otroEspecificar={this.state.otroEspecificar}
-						handleChange={this.handleChange}
-					/>
-					<br />
-					<Esterilizacion
-						esterilizado={this.state.esterilizado}
-						citaEsterilizacion={this.state.citaEsterilizacion}
-						fechaEsterilizacion={this.state.fechaEsterilizacion}
-						handleChange={this.handleChange}
-					/>
-					<br />
-					<CartillaVacunacion
-						puppy={this.state.puppy}
-						refuerzoPuppy={this.state.refuerzoPuppy}
-						multiple={this.state.multiple}
-						refuerzoMultiple={this.state.refuerzoMultiple}
-						rabia={this.state.rabia}
-						fechaPuppy={this.state.fechaPuppy}
-						fechaRefuerzoPuppy={this.state.fechaRefuerzoPuppy}
-						fechaMultiple={this.state.fechaMultiple}
-						fechaRefuerzoMultiple={this.state.fechaRefuerzoMultiple}
-						fechaRabia={this.state.fechaRabia}
-						handleChange={this.handleChange}
-					/>
-					<br />
-					<FotosExpedienteMedico
-						foto1={this.state.foto1}
-						foto2={this.state.foto2}
-						foto3={this.state.foto3}
-						imageHandler={this.imageHandler}
-					/>
-					<br />
-					<DataGridMed
-						data={this.state.tratamiento}
-						modifyRow={this.modifyRow}
-						addRow={this.addRow}
-						deleteRow={this.deleteRow}
-					/>
+				<div>
+					<NavBarRegistros />
+				</div>
+				<div onSubmit={this.handleSubmit}>
+					<div>
+						<Diagnostico
+							atropellamiento={this.state.atropellamiento}
+							tvt={this.state.tvt}
+							sarnaPiel={this.state.sarnaPiel}
+							viral={this.state.viral}
+							embarazo={this.state.embarazo}
+							cachorros={this.state.cachorros}
+							hemoparasitos={this.state.hemoparasitos}
+							otro={this.state.otro}
+							otroEspecificar={this.state.otroEspecificar}
+							handleChange={this.handleChange}
+						/>
+					</div>
+					<div>
+						<Esterilizacion
+							esterilizado={this.state.esterilizado}
+							citaEsterilizacion={this.state.citaEsterilizacion}
+							fechaEsterilizacion={this.state.fechaEsterilizacion}
+							handleChange={this.handleChange}
+						/>
+					</div>
+					<div>
+						<CartillaVacunacion
+							puppy={this.state.puppy}
+							refuerzoPuppy={this.state.refuerzoPuppy}
+							multiple={this.state.multiple}
+							refuerzoMultiple={this.state.refuerzoMultiple}
+							rabia={this.state.rabia}
+							fechaPuppy={this.state.fechaPuppy}
+							fechaRefuerzoPuppy={this.state.fechaRefuerzoPuppy}
+							fechaMultiple={this.state.fechaMultiple}
+							fechaRefuerzoMultiple={
+								this.state.fechaRefuerzoMultiple
+							}
+							fechaRabia={this.state.fechaRabia}
+							handleChange={this.handleChange}
+						/>
+					</div>
+					<div>
+						<Foto
+							id="foto1"
+							foto={this.state.foto1}
+							imageHandler={this.imageHandler}
+						/>
+						<Foto
+							id="foto2"
+							foto={this.state.foto2}
+							imageHandler={this.imageHandler}
+						/>
+						<Foto
+							id="foto3"
+							foto={this.state.foto3}
+							imageHandler={this.imageHandler}
+						/>
+					</div>
+
+					<div>
+						<DataGridMed
+							data={this.state.tratamiento}
+							modifyRow={this.modifyRow}
+							addRow={this.addRow}
+							deleteRow={this.deleteRow}
+						/>
+					</div>
 					<button>Guardar</button>
-				</form>
-				<Link to="/RegistroGeneral">
-					<button>Registro General</button>
-				</Link>
-				<button onClick={this.handleRestablecer}>Restablecer</button>
-				<Link to="/HogarTemporal">
-					<button>Hogar Temporal</button>
-				</Link>
+				</div>
+				<div>
+					<Link to="/RegistroGeneral">
+						<button>Registro General</button>
+					</Link>
+					<button onClick={this.handleRestablecer}>
+						Restablecer
+					</button>
+					<Link to="/HogarTemporal">
+						<button>Hogar Temporal</button>
+					</Link>
+				</div>
 			</div>
 		);
 	}
