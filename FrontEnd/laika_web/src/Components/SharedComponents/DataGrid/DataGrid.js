@@ -1,21 +1,24 @@
 import React from "react";
-import Row from "./Row";
-import RowForm from "./RowForm";
+import Row from "./Row"
 
-export default class Rescatistas extends React.Component {
+export default class DataGrid extends React.Component {
 
-  	render() {
+	render() {
 		return (
-      		<div>
-        		<RowForm onSubmit={this.props.addRow} />
-        			{this.props.rows.map(row => (
-						<Row
-							key={row.id}
-							onDelete={() => this.props.deleteRow(row.id)}
-                            row={row}
-						/>
-        			))}
-      		</div>
-    	);
-  	}
+            <div>
+                <button onClick={this.props.addRow}>Agregar</button>
+                {this.props.data.map(row => (
+                    <Row key={row.id}
+                        id={row.id}
+                        observaciones={row.observaciones}
+                        accion={row.accion}
+                        fecha={row.fecha}
+                        handleChange={this.props.modifyRow}
+                        deleteRow={() => this.props.deleteRow(row.id)}
+                    />
+                ))}
+			</div>	
+		);
+	}
 }
+
