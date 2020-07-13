@@ -3,7 +3,7 @@ import ContactoHT from "./Subcomponentes/ContactoHT";
 import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import shortid from "shortid";
 import "./Styles/HogarTemporal.css";
@@ -117,7 +117,10 @@ class HogarTemporal extends Component {
 		return (
 			<div className="RegistroHT">
 				<div className="NavBarRegistrosHT">
-					<NavBarRegistros />
+					<NavBarRegistros 
+						tabIndicatorPosition={"50%"}
+						activePosition={"HogarTemporal"}
+					/>
 				</div>
 				<div className="FormularioHT">
 					<label>HogarTemporal</label>
@@ -153,7 +156,7 @@ class HogarTemporal extends Component {
 				<div className="BotonesRegistroHT">
 					<Link to="/ExpedienteMedico">
 						<button className="BotonHTTransicion BotonAnteriorHT">
-							<i class="fa fa-chevron-circle-left fa-fw"></i>
+							<i className="fa fa-chevron-circle-left fa-fw"></i>
 							Expediente Médico
 						</button>
 					</Link>
@@ -162,19 +165,19 @@ class HogarTemporal extends Component {
 						onClick={this.handleRestablecer}
 					>
 						Restablecer
-						<i class="fa fa-eraser fa-fw"></i>
+						<i className="fa fa-eraser fa-fw"></i>
 					</button>
 					<button
 						className="BotonHTGuardar BotonCentralHT"
 						onClick={this.handleSubmit}
 					>
 						Guardar
-						<i class="fa fa-save fa-fw"></i>
+						<i className="fa fa-save fa-fw"></i>
 					</button>
 					<Link to="/Adopcion">
 						<button className="BotonHTTransicion BotonSiguienteHT">
 							Adopción
-							<i class="fa fa-chevron-circle-right fa-fw"></i>
+							<i className="fa fa-chevron-circle-right fa-fw"></i>
 						</button>
 					</Link>
 				</div>

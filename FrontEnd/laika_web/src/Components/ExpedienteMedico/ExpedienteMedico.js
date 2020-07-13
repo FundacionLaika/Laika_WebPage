@@ -3,7 +3,7 @@ import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 import shortid from "shortid";
 import DataGridMed from "./Subcomponentes/DataGridMed";
 import Foto from "../SharedComponents/Foto";
@@ -168,7 +168,10 @@ class ExpedienteMedico extends Component {
 		return (
 			<div className="RegistroMedico">
 				<div className="NavBarRegistrosMedico">
-					<NavBarRegistros />
+					<NavBarRegistros 
+						tabIndicatorPosition={"25%"}
+						activePosition={"ExpedienteMedico"}
+					/>
 				</div>
 				<div className="FormularioMedico">
 					<div>
@@ -223,7 +226,7 @@ class ExpedienteMedico extends Component {
 					<Link to="/RegistroGeneral">
 						<button className="BotonMedicoTransicion BotonAnteriorMedico">
 							{" "}
-							<i class="fa fa-chevron-circle-left fa-fw"></i>
+							<i className="fa fa-chevron-circle-left fa-fw"></i>
 							Registro General
 						</button>
 					</Link>
@@ -231,18 +234,18 @@ class ExpedienteMedico extends Component {
 						className="BotonMedicoRestablecer BotonCentralMedico"
 						onClick={this.handleRestablecer}
 					>
-						Restablecer <i class="fa fa-eraser fa-fw"></i>
+						Restablecer <i className="fa fa-eraser fa-fw"></i>
 					</button>
 					<button
 						className="BotonMedicoGuardar BotonCentralMedico"
 						onClick={this.handleSubmit}
 					>
-						Guardar <i class="fa fa-save fa-fw"></i>
+						Guardar <i className="fa fa-save fa-fw"></i>
 					</button>
 					<Link to="/HogarTemporal">
 						<button className="BotonMedicoTransicion BotonSiguienteMedico">
 							Hogar Temporal{" "}
-							<i class="fa fa-chevron-circle-right fa-fw"></i>
+							<i className="fa fa-chevron-circle-right fa-fw"></i>
 						</button>
 					</Link>
 				</div>
