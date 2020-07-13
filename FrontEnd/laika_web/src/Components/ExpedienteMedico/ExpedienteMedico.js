@@ -7,6 +7,7 @@ import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import DataGridMed from "./Subcomponentes/DataGridMed";
 import Foto from "../SharedComponents/Foto";
+import "./Styles/ExpedienteMedico.css";
 
 class ExpedienteMedico extends Component {
 	state = {
@@ -79,12 +80,6 @@ class ExpedienteMedico extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
-		const data = new FormData(event.target);
-
-		fetch("/api/form-submit-url", {
-			method: "POST",
-			body: data,
-		});
 	};
 
 	/*Manejadores de Restablecer*/
@@ -166,11 +161,11 @@ class ExpedienteMedico extends Component {
 	/*Expediente Médico*/
 	render() {
 		return (
-			<div>
-				<div>
+			<div className="RegistroMedico">
+				<div className="NavBarRegistrosMedico">
 					<NavBarRegistros />
 				</div>
-				<div onSubmit={this.handleSubmit}>
+				<div className="FormularioMedico">
 					<div>
 						<Diagnostico
 							atropellamiento={this.state.atropellamiento}
@@ -211,24 +206,6 @@ class ExpedienteMedico extends Component {
 						/>
 					</div>
 					<div>
-						<Foto
-							id="foto1"
-							foto={this.state.foto1}
-							imageHandler={this.imageHandler}
-						/>
-						<Foto
-							id="foto2"
-							foto={this.state.foto2}
-							imageHandler={this.imageHandler}
-						/>
-						<Foto
-							id="foto3"
-							foto={this.state.foto3}
-							imageHandler={this.imageHandler}
-						/>
-					</div>
-
-					<div>
 						<DataGridMed
 							data={this.state.tratamiento}
 							modifyRow={this.modifyRow}
@@ -236,18 +213,50 @@ class ExpedienteMedico extends Component {
 							deleteRow={this.deleteRow}
 						/>
 					</div>
-					<button>Guardar</button>
 				</div>
-				<div>
+				<div className="BotonesRegistroMedico">
 					<Link to="/RegistroGeneral">
-						<button>Registro General</button>
+						<button className="BotonMedicoTransicion BotonAnteriorMedico">
+							{" "}
+							<i class="fa fa-chevron-circle-left fa-fw"></i>
+							Registro General
+						</button>
 					</Link>
-					<button onClick={this.handleRestablecer}>
-						Restablecer
+					<button
+						className="BotonMedicoRestablecer BotonCentralMedico"
+						onClick={this.handleRestablecer}
+					>
+						Restablecer <i class="fa fa-eraser fa-fw"></i>
+					</button>
+					<button
+						className="BotonMedicoGuardar BotonCentralMedico"
+						onClick={this.handleSubmit}
+					>
+						Guardar <i class="fa fa-save fa-fw"></i>
 					</button>
 					<Link to="/HogarTemporal">
-						<button>Hogar Temporal</button>
+						<button className="BotonMedicoTransicion BotonSiguienteMedico">
+							Hogar Temporal{" "}
+							<i class="fa fa-chevron-circle-right fa-fw"></i>
+						</button>
 					</Link>
+				</div>
+				<div className="BarraLateralMedico">
+					<Foto
+						id="foto1"
+						foto={this.state.foto1}
+						imageHandler={this.imageHandler}
+					/>
+					<Foto
+						id="foto2"
+						foto={this.state.foto2}
+						imageHandler={this.imageHandler}
+					/>
+					<Foto
+						id="foto3"
+						foto={this.state.foto3}
+						imageHandler={this.imageHandler}
+					/>
 				</div>
 			</div>
 		);

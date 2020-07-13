@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import shortid from "shortid";
+import "./Styles/HogarTemporal.css";
 
 class HogarTemporal extends Component {
 	state = {
@@ -26,7 +27,7 @@ class HogarTemporal extends Component {
 		foto: "/iconoPerro.png",
 
 		/**/
-		comentarios:[]
+		comentarios: [],
 	};
 
 	/*Manejador de fotos*/
@@ -54,12 +55,6 @@ class HogarTemporal extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
-		const data = new FormData(event.target);
-
-		fetch("/api/form-submit-url", {
-			method: "POST",
-			body: data,
-		});
 	};
 
 	/*Manejador de Restablecer*/
@@ -119,49 +114,76 @@ class HogarTemporal extends Component {
 	/*Expediente Hogar Temporal*/
 	render() {
 		return (
-			<div>
-				<NavBarRegistros />
-				<form onSubmit={this.handleSubmit}>
+			<div className="RegistroHT">
+				<div className="NavBarRegistrosHT">
+					<NavBarRegistros />
+				</div>
+				<div className="FormularioHT">
 					<label>HogarTemporal</label>
-					<br />
-					<br />
-					<ContactoHT
-						tipoHT={this.state.tipoHT}
-						nombreHT={this.state.nombreHT}
-						telefonoHT={this.state.telefonoHT}
-						fechaInicioHT={this.state.fechaInicioHT}
-						fechaFinalHT={this.state.fechaFinalHT}
-						handleChange={this.handleChange}
-					/>
-					<Direccion
-						calle={this.state.calle}
-						numero={this.state.numero}
-						colonia={this.state.colonia}
-						municipio={this.state.municipio}
-						handleChange={this.handleChange}
-					/>
+					<div>
+						<ContactoHT
+							tipoHT={this.state.tipoHT}
+							nombreHT={this.state.nombreHT}
+							telefonoHT={this.state.telefonoHT}
+							fechaInicioHT={this.state.fechaInicioHT}
+							fechaFinalHT={this.state.fechaFinalHT}
+							handleChange={this.handleChange}
+						/>
+					</div>
+					<div>
+						<Direccion
+							calle={this.state.calle}
+							numero={this.state.numero}
+							colonia={this.state.colonia}
+							municipio={this.state.municipio}
+							handleChange={this.handleChange}
+						/>
+					</div>
+					<div>
+						<DataGrid
+							data={this.state.comentarios}
+							modifyRow={this.modifyRow}
+							addRow={this.addRow}
+							deleteRow={this.deleteRow}
+						/>
+					</div>
+				</div>
 
+				<div className="BotonesRegistroHT">
+					<Link to="/ExpedienteMedico">
+						<button className="BotonHTTransicion BotonAnteriorHT">
+							<i class="fa fa-chevron-circle-left fa-fw"></i>
+							Expediente Médico
+						</button>
+					</Link>
+					<button
+						className="BotonHTRestablecer BotonCentralHT"
+						onClick={this.handleRestablecer}
+					>
+						Restablecer
+						<i class="fa fa-eraser fa-fw"></i>
+					</button>
+					<button
+						className="BotonHTGuardar BotonCentralHT"
+						onClick={this.handleSubmit}
+					>
+						Guardar
+						<i class="fa fa-save fa-fw"></i>
+					</button>
+					<Link to="/Adopcion">
+						<button className="BotonHTTransicion BotonSiguienteHT">
+							Adopción
+							<i class="fa fa-chevron-circle-right fa-fw"></i>
+						</button>
+					</Link>
+				</div>
+				<div className="BarraLateralHT">
 					<Foto
 						id={"foto"}
 						foto={this.state.foto}
 						imageHandler={this.imageHandler}
 					/>
-
-					<DataGrid
-						data={this.state.comentarios}
-						modifyRow={this.modifyRow}
-						addRow={this.addRow}
-						deleteRow={this.deleteRow}
-					/>
-					<button>Guardar</button>
-				</form>
-				<Link to="/ExpedienteMedico">
-					<button>Expediente Médico</button>
-				</Link>
-				<button onClick={this.handleRestablecer}>Restablecer</button>
-				<Link to="/Adopcion">
-					<button>Adopción</button>
-				</Link>
+				</div>
 			</div>
 		);
 	}
