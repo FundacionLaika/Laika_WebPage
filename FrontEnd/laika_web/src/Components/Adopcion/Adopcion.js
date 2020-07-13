@@ -3,7 +3,7 @@ import Direccion from "../SharedComponents/Direccion";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
-import HelloWorld from "./HelloWorld"
+import HelloWorld from "./DataGrid"
 
 export default class Adopcion extends React.Component {
 
@@ -75,10 +75,7 @@ export default class Adopcion extends React.Component {
                 />
                 
                 <DataGrid 
-                    rows={this.state.dataGrid}
-					addRow={this.addRow}
-                    deleteRow={this.deleteRow}
-                    handleChange={this.modifyRow}
+                    
                 />
 
                 <HelloWorld/>
