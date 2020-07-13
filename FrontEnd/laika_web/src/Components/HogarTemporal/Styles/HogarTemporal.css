@@ -5,29 +5,29 @@
 	display: grid;
 	/* grid-template-columns: repeat(3, 1fr); */
 	/* grid-gap: 10px; */
-	grid-auto-columns: minmax(25%, auto);
+	grid-auto-columns: minmax(25%, 25%);
 }
 
 .NavBarRegistrosHT {
-	grid-column: 1 / 3;
+	grid-column: 1 / 4;
 	grid-row: 1;
 }
 
 .FormularioHT {
-	grid-column: 1 /3;
+	grid-column: 1 /4;
 	grid-row: 3 / 10;
 	background-color: #b5cfd8;
 }
 
 .BotonesRegistroHT {
-	grid-column: 1 / 3;
+	grid-column: 1 / 4;
 	grid-row: 10;
 	background-color: #dddddd;
 }
 
 .BarraLateralHT {
 	background-color: #0072bb;
-	grid-column: 3;
+	grid-column: 4;
 	grid-row: 1 / 11;
 }
 
