@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
-import Tratamiento from "./Subcomponentes/Tratamiento";
 import FotosExpedienteMedico from "./Subcomponentes/FotosExpedienteMedico";
 import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
@@ -163,7 +162,6 @@ class ExpedienteMedico extends Component {
 						imageHandler={this.imageHandler}
 					/>
 					<br />
-					<Tratamiento />
 					<button>Guardar</button>
 				</form>
 				<Link to="/RegistroGeneral">

@@ -60,6 +60,23 @@ export default class RegistroGeneral extends React.Component {
 		reader.readAsDataURL(event.target.files[0]);
 	};
 
+	handleRestablecer = () => {
+		this.setState({
+			nombre: "",
+			edad: "",
+			genero: "",
+			especie: "",
+			fechaDeRescate: "",
+			rescatistas: [],
+			calle: "",
+			numero: "",
+			colonia: "",
+			municipio: "",
+			senasParticulares: "",
+			foto: "/iconoPerro.png",
+		});
+	};
+
 	render() {
 		return (
 			<div>
@@ -100,7 +117,7 @@ export default class RegistroGeneral extends React.Component {
 					/>
 
 					<Foto
-						id="fotoDefault"
+						id="foto"
 						foto={this.state.foto}
 						imageHandler={this.imageHandler}
 					/>
