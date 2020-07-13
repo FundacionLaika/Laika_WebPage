@@ -9,7 +9,6 @@ import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
-import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
 
 function App() {
 
@@ -23,29 +22,29 @@ function App() {
 					<Route path="/" exact render={() => <Login />} />
 					{/*Login es la primera página mostrada*/}
 					<Route
-						path="/Components/Consulta/Consulta"
+						path="/Consulta"
 						exact
 						component={Consulta}
 					/>
 					<Route
-						path="/Components/RegistroGeneral/RegistroGeneral"
+						path="/RegistroGeneral"
 						exact
 						component={RegistroGeneral}
 					/>
 					<Route
-						path="/Components/ExpedienteMedico/ExpedienteMedico"
+						path="/ExpedienteMedico"
 						exact
 						component={ExpedienteMedico}
 					/>
 
 					<Route
-						path="/Components/HogarTemporal/HogarTemporal"
+						path="/HogarTemporal"
 						exact
 						component={HogarTemporal}
 					/>
 
 					<Route
-						path="/Components/Adopcion/Adopcion"
+						path="/Adopcion"
 						exact
 						component={Adopcion}
 					/>

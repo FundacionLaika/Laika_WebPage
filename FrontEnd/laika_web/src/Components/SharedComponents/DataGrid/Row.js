@@ -1,31 +1,42 @@
 import React from "react";
 
-export default props => (
-	<div style={{ display: "flex", justifyContent: "center" }}>
-		<div>
+export default class Row extends React.Component {
+	state = {
+		id: this.props.id,
+		observaciones: this.props.observaciones,
+		accion: this.props.accion,
+		fecha: this.props.fecha,
+	};
 
-			<textarea
-				id="comentarios"
-				type="text"
-				name="comentarios"
-				defaultValue={props.row.comentarios}
-				placeholder="Comentarios"
-			/>
-			<textarea
-				id="accion"
-				type="text"
-				name="accion"
-				defaultValue={props.row.accion}
-				placeholder="Accion"
-			/>
-			<input
-				id="fecha"
-				type="date"
-				name="fecha"
-				defaultValue={props.row.fecha}
-				placeholder="Fecha"
-			/>
-    	</div>
-    	<button onClick={props.onDelete}>x</button>
-  	</div>
-);
+	render() {
+		return (
+			<div style={{ display: "flex", justifyContent: "center" }}>
+				<textarea
+					id={this.props.id}
+					type="text"
+					name="observaciones"
+					value={this.props.observaciones}
+					onChange={this.props.handleChange}
+					placeholder="Observaciones"
+				/>
+				<textarea
+					id={this.props.id}
+					type="text"
+					name="accion"
+					value={this.props.accion}
+					onChange={this.props.handleChange}
+					placeholder="Acción"
+				/>
+				<input
+					id={this.props.id}
+					type="date"
+					name="fecha"
+					value={this.props.fecha}
+					onChange={this.props.handleChange}
+					placeholder="Fecha"
+				/>
+				<button onClick={this.props.deleteRow}>-</button>
+			</div>
+		);
+	}
+}

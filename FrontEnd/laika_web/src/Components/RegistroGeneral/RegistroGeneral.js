@@ -95,7 +95,7 @@ export default class RegistroGeneral extends React.Component {
 				<Foto
                   id="fotoDefault"
                   foto={this.state.foto}
-                  imageHandler={this.state.imageHandler}
+                  imageHandler={this.imageHandler}
 				/>
 
 				<button type="submit">Registrar</button>
