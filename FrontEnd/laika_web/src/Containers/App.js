@@ -10,6 +10,7 @@ import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
 import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
+import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
 
 function App() {
     return (
@@ -46,13 +47,18 @@ function App() {
                     <Route
                         path="/Components/Adopcion/Adopcion"
                         exact
-                        component={HogarTemporal}
+                        component={Adopcion}
                     />
 
                     <Route
                         path="/Components/GenerarPDF/GenerarPDF"
                         exact
                         component={GenerarPDF}
+                    />
+                    <Route
+                        path="/Components/MenuUsuario/MenuUsuario"
+                        exact
+                        component={MenuUsuario}
                     />
 
                     {/* Primer Render de la app */}
