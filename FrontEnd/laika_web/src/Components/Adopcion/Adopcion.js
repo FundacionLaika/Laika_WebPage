@@ -3,7 +3,9 @@ import Direccion from "../SharedComponents/Direccion";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
-import HelloWorld from "./HelloWorld"
+import { Link } from "react-router-dom";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import shortid from "shortid";
 
 export default class Adopcion extends React.Component {
 
@@ -18,7 +20,7 @@ export default class Adopcion extends React.Component {
         municipio: "",
         fechaAdopcion: "",
         medioAdopcion: "",
-        dataGrid: [],
+        comentarios: [],
         foto: "/iconoPerro.png"
 	};
 
@@ -33,58 +35,92 @@ export default class Adopcion extends React.Component {
 		console.log(this.state);
     };
     
-    addRow = (row) => {
+    addRow = (event) => {
+        event.preventDefault();
+        const newRow = {id:shortid.generate(), observaciones:"", accion:"", fecha:""};
 		this.setState((state) => ({
-			dataGrid: [row, ...state.dataGrid],
+			comentarios: [newRow, ...state.comentarios],
 		}));
-	};
-
-	deleteRow = (id) => {
+    };
+    
+    deleteRow = (id) => {
 		this.setState((state) => ({
-			dataGrid: state.dataGrid.filter(
+			comentarios: state.comentarios.filter(
 				(row) => row.id !== id
 			),
 		}));
+	};
+
+    modifyRow = (event) => {
+
+        let dataTemp = this.state.comentarios;
+
+        dataTemp.forEach(element => {
+            if (element.id === event.target.id) {
+                if (event.target.name === "observaciones") element.observaciones = event.target.value;
+                else if (event.target.name === "accion") element.accion = event.target.value;
+                else if (event.target.name === "fecha") element.fecha = event.target.value;
+            }
+            
+        });
+
+		this.setState({
+			comentarios: dataTemp,
+		});
     };
 
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <DatosGenerales
-                    handleChange={this.handleChange}
-                    visitaDeAdopcion={this.state.visitaDeAdopcion}
-                    adoptante={this.state.adoptante}
-                    adoptado={this.state.adoptado}
-                    telefono={this.state.telefono}
-                    fechaAdopcion={this.state.fechaAdopcion}
-                    medioAdopcion={this.state.medioAdopcion}
-                />    
 
-                <Direccion
-                    handleChange={this.handleChange}
-                    calle={this.state.calle}
-                    numero={this.state.numero}
-                    colonia={this.state.colonia}
-                    municipio={this.state.municipio}
-                />
+	render() {
+		return (
+			<div>
+                <NavBarRegistros/>
+				<form onSubmit={this.handleSubmit}>
+					<DatosGenerales
+						handleChange={this.handleChange}
+						visitaDeAdopcion={this.state.visitaDeAdopcion}
+						adoptante={this.state.adoptante}
+						adoptado={this.state.adoptado}
+						telefono={this.state.telefono}
+						fechaAdopcion={this.state.fechaAdopcion}
+						medioAdopcion={this.state.medioAdopcion}
+					/>
 
-                <Foto
-                  id="fotoDefault"
-                  foto={this.state.foto}
-                  imageHandler={this.state.imageHandler}
-                />
+					<Direccion
+						handleChange={this.handleChange}
+						calle={this.state.calle}
+						numero={this.state.numero}
+						colonia={this.state.colonia}
+						municipio={this.state.municipio}
+					/>
+
+
+                    <Foto
+                      id="fotoDefault"
+                      foto={this.state.foto}
+                      imageHandler={this..imageHandler}
+                    />
                 
-                <DataGrid 
-                    rows={this.state.dataGrid}
-					addRow={this.addRow}
-                    deleteRow={this.deleteRow}
-                    handleChange={this.modifyRow}
-                />
+                    <DataGrid 
+                        data={this.state.comentarios}
+                        modifyRow={this.modifyRow}
+                        addRow={this.addRow}
+                        deleteRow={this.deleteRow}
+                    />
 
-                <HelloWorld/>
-
-                <button type="submit">Registrar</button>
-            </form>
-        );
-    }
+					<button type="submit">Registrar</button>
+				</form>
+            
+				<Link to="/HogarTemporal">
+					<button>Hogar Temporal</button>
+				</Link>
+            
+				<button onClick={this.handleRestablecer}>Restablecer</button>
+            
+				<Link to="/RegistroGeneral">
+					<button>Registro General</button>
+				</Link>
+            
+			</div>
+		);
+	}
 }

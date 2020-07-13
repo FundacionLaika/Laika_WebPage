@@ -12,54 +12,44 @@ import Adopcion from "../Components/Adopcion/Adopcion";
 import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
 
+
 function App() {
-    return (
-        <div className="App">
-            <Router>
-                <Route path="/Components" render={() => <MenuBar />} />
-                <Switch>
-                    {/* El Switch solo hara render de un componente a la vez */}
-                    {/* exact se encarga que el componente se muestre solo cuando el path es esxactamente igual el especificado*/}
-                    <Route path="/" exact render={() => <Login />} />
-                    {/*Login es la primera página mostrada*/}
-                    <Route
-                        path="/Components/Consulta/Consulta"
-                        exact
-                        component={Consulta}
-                    />
-                    <Route
-                        path="/Components/RegistroGeneral/RegistroGeneral"
-                        exact
-                        component={RegistroGeneral}
-                    />
-                    <Route
-                        path="/Components/ExpedienteMedico/ExpedienteMedico"
-                        exact
-                        component={ExpedienteMedico}
-                    />
+	return (
+		<div className="App">
+			<Router>
+              <Route path="/Components" render={() => <MenuBar />} />
+              <Switch>
+                {/* El Switch solo hara render de un componente a la vez */}
+                {/* exact se encarga que el componente se muestre solo cuando el path es esxactamente igual el especificado*/}
+                <Route path="/" exact render={() => <Login />} />
+                {/*Login es la primera página mostrada*/}
+                <Route
+                  path="/Consulta"
+                  exact
+                  component={Consulta}
+                />
+                <Route
+                  path="/RegistroGeneral"
+                  exact
+                  component={RegistroGeneral}
+                />
+                <Route
+                  path="/ExpedienteMedico"
+                  exact
+                  component={ExpedienteMedico}
+                />
 
-                    <Route
-                        path="/Components/HogarTemporal/HogarTemporal"
-                        exact
-                        component={HogarTemporal}
-                    />
+                <Route
+                  path="/HogarTemporal"
+                  exact
+                  component={HogarTemporal}
+                />
 
-                    <Route
-                        path="/Components/Adopcion/Adopcion"
-                        exact
-                        component={Adopcion}
-                    />
-
-                    <Route
-                        path="/Components/GenerarPDF/GenerarPDF"
-                        exact
-                        component={GenerarPDF}
-                    />
-                    <Route
-                        path="/Components/MenuUsuario/MenuUsuario"
-                        exact
-                        component={MenuUsuario}
-                    />
+                <Route
+                  path="/Adopcion"
+                  exact
+                  component={Adopcion}
+                />
 
                     {/* Primer Render de la app */}
                     <Route
