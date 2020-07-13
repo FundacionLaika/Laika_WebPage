@@ -99,21 +99,21 @@ export default class RegistroGeneral extends React.Component {
 						onChange={this.handleChange}
 					/>
 
-                    <Foto
-                      id="fotoDefault"
-                      foto={this.state.foto}
-                      imageHandler={this.imageHandler}
-                    />
+					<Foto
+						id="fotoDefault"
+						foto={this.state.foto}
+						imageHandler={this.imageHandler}
+					/>
 
 					<button type="submit">Registrar</button>
 				</form>
-            
+
 				<Link to="/Adopcion">
 					<button>Adopcion</button>
 				</Link>
-            
+
 				<button onClick={this.handleRestablecer}>Restablecer</button>
-            
+
 				<Link to="/ExpedienteMedico">
 					<button>Expediente Médico</button>
 				</Link>

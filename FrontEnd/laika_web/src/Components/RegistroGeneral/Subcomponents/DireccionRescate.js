@@ -1,10 +1,10 @@
 import React from "react";
 
 export default class DireccionRescate extends React.Component {
-    render() {
-        return (
-            <div>   
-                <input
+	render() {
+		return (
+			<div>
+				<input
 					name="calle"
 					value={this.props.calle}
 					onChange={this.props.handleChange}
@@ -26,8 +26,8 @@ export default class DireccionRescate extends React.Component {
 					name="municipio"
 					value={this.props.municipio}
 					onChange={this.props.handleChange}
-                />
-            </div> 
-        );
-    }
+				/>
+			</div>
+		);
+	}
 }

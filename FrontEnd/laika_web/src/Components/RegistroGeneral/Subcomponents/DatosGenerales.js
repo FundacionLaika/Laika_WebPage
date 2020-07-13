@@ -1,7 +1,6 @@
 import React from "react";
 
 export default class DatosGenerales extends React.Component {
-
 	render() {
 		return (
 			<div>
