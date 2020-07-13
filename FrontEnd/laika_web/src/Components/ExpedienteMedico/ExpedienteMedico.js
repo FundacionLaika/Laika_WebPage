@@ -7,113 +7,113 @@ import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 
 class ExpedienteMedico extends Component {
-	state = {
-		/*Diagnóstico*/
-		atropellamiento: false,
-		tvt: false,
-		sarnaPiel: false,
-		viral: false,
-		embarazo: false,
-		cachorros: false,
-		hemoparasitos: false,
-		otro: false,
-		otroEspecificar: "",
+    state = {
+        /*Diagnóstico*/
+        atropellamiento: false,
+        tvt: false,
+        sarnaPiel: false,
+        viral: false,
+        embarazo: false,
+        cachorros: false,
+        hemoparasitos: false,
+        otro: false,
+        otroEspecificar: "",
 
-		/*Esterilización*/
-		esterilizado: "",
-		citaEsterilizacion: "",
-		fechaEsterilizacion: "",
+        /*Esterilización*/
+        esterilizado: "",
+        citaEsterilizacion: "",
+        fechaEsterilizacion: "",
 
-		/*Cartilla de Vacunación*/
-		puppy: false,
-		refuerzoPuppy: false,
-		multiple: false,
-		refuerzoMultiple: false,
-		rabia: false,
-		fechaPuppy: "",
-		fechaRefuerzoPuppy: "",
-		fechaMultiple: "",
-		fechaRefuerzoMultiple: "",
-		fechaRabia: "",
+        /*Cartilla de Vacunación*/
+        puppy: false,
+        refuerzoPuppy: false,
+        multiple: false,
+        refuerzoMultiple: false,
+        rabia: false,
+        fechaPuppy: "",
+        fechaRefuerzoPuppy: "",
+        fechaMultiple: "",
+        fechaRefuerzoMultiple: "",
+        fechaRabia: "",
 
-		/*Fotos*/
-		foto1: "/iconoPerro.png",
-		foto2: "/iconoPerro.png",
-		foto3: "/iconoPerro.png",
+        /*Fotos*/
+        foto1: "/iconoPerro.png",
+        foto2: "/iconoPerro.png",
+        foto3: "/iconoPerro.png",
 
-		/*Tratamiento*/
-	};
+        /*Tratamiento*/
+    };
 
-	/*Manejador de imágenes*/
-	imageHandler = (event) => {
-		const reader = new FileReader();
-		const foto = event.target.id;
+    /*Manejador de imágenes*/
+    imageHandler = (event) => {
+        const reader = new FileReader();
+        const foto = event.target.id;
 
-		reader.onload = () => {
-			if (reader.readyState === 2) {
-				this.setState({ [foto]: reader.result });
-			}
-		};
-		console.log(event.target.id);
-		reader.readAsDataURL(event.target.files[0]);
-	};
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                this.setState({ [foto]: reader.result });
+            }
+        };
+        console.log(event.target.id);
+        reader.readAsDataURL(event.target.files[0]);
+    };
 
-	/*Manejador de eventos*/
-	handleChange = (event) => {
-		const value =
-			event.target.type === "checkbox"
-				? event.target.checked
-				: event.target.value;
-		this.setState({
-			...this.state,
-			[event.target.name]: value,
-		});
-		console.log(event.target.name);
-		console.log(value);
-	};
+    /*Manejador de eventos*/
+    handleChange = (event) => {
+        const value =
+            event.target.type === "checkbox"
+                ? event.target.checked
+                : event.target.value;
+        this.setState({
+            ...this.state,
+            [event.target.name]: value,
+        });
+        console.log(event.target.name);
+        console.log(value);
+    };
 
-	/*Manejador del botón submit*/
-	handleSubmit = (event) => {
-		event.preventDefault();
-		console.log(this.state);
-		const data = new FormData(event.target);
+    /*Manejador del botón submit*/
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state);
+        const data = new FormData(event.target);
 
-		fetch("/api/form-submit-url", {
-			method: "POST",
-			body: data,
-		});
-	};
+        fetch("/api/form-submit-url", {
+            method: "POST",
+            body: data,
+        });
+    };
 
-	/*Manejadores de Restablecer*/
-	handleRestablecer = () => {
-		this.setState({
-			atropellamiento: false,
-			tvt: false,
-			sarnaPiel: false,
-			viral: false,
-			embarazo: false,
-			cachorros: false,
-			hemoparasitos: false,
-			otro: false,
-			otroEspecificar: "",
-			esterilizado: "",
-			citaEsterilizacion: "",
-			fechaEsterilizacion: "",
-			puppy: false,
-			refuerzoPuppy: false,
-			multiple: false,
-			refuerzoMultiple: false,
-			rabia: false,
-			fechaPuppy: "",
-			fechaRefuerzoPuppy: "",
-			fechaMultiple: "",
-			fechaRefuerzoMultiple: "",
-			fechaRabia: "",
-			foto1: "/iconoPerro.png",
-			foto2: "/iconoPerro.png",
-			foto3: "/iconoPerro.png",
-		});
-	};
+    /*Manejadores de Restablecer*/
+    handleRestablecer = () => {
+        this.setState({
+            atropellamiento: false,
+            tvt: false,
+            sarnaPiel: false,
+            viral: false,
+            embarazo: false,
+            cachorros: false,
+            hemoparasitos: false,
+            otro: false,
+            otroEspecificar: "",
+            esterilizado: "",
+            citaEsterilizacion: "",
+            fechaEsterilizacion: "",
+            puppy: false,
+            refuerzoPuppy: false,
+            multiple: false,
+            refuerzoMultiple: false,
+            rabia: false,
+            fechaPuppy: "",
+            fechaRefuerzoPuppy: "",
+            fechaMultiple: "",
+            fechaRefuerzoMultiple: "",
+            fechaRabia: "",
+            foto1: "/iconoPerro.png",
+            foto2: "/iconoPerro.png",
+            foto3: "/iconoPerro.png",
+        });
+    };
 
 	/*Expediente Médico*/
 	render() {
