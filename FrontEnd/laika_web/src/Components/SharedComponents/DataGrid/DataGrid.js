@@ -7,9 +7,9 @@ export default class DataGrid extends React.Component {
 			<div>
 				<button onClick={this.props.addRow}>Agregar</button>
 				<div style={{ display: "flex", justifyContent: "center" }}>
-					<label displayOnly="true">Observaciones</label>
-					<label displayOnly="true">Acción</label>
-					<label displayOnly="true">Fecha</label>
+					<label>Observaciones</label>
+					<label>Acción</label>
+					<label>Fecha</label>
 				</div>
 				{this.props.data.map((row) => (
 					<Row

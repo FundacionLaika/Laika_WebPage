@@ -7,11 +7,11 @@ export default class DataGridMed extends React.Component {
 			<div>
 				<button onClick={this.props.addRow}>Agregar</button>
 				<div style={{ display: "flex", justifyContent: "center" }}>
-					<label displayOnly="true">Fecha Inicio</label>
-					<label displayOnly="true">Fecha Final</label>
-					<label displayOnly="true">Comentarios</label>
-					<label displayOnly="true">Acción</label>
-					<label displayOnly="true">Cita médica</label>
+					<label>Fecha Inicio</label>
+					<label>Fecha Final</label>
+					<label>Comentarios</label>
+					<label>Acción</label>
+					<label>Cita médica</label>
 				</div>
 				{this.props.data.map((row) => (
 					<RowMed
