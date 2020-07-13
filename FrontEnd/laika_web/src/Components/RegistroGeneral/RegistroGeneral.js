@@ -3,7 +3,7 @@ import Rescatistas from "./Subcomponents/Rescatistas";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
 
@@ -82,7 +82,11 @@ export default class RegistroGeneral extends React.Component {
 		return (
 			<div className="Registro">
 				<div id="NavBarRegistros">
-					<NavBarRegistros />
+					
+					<NavBarRegistros 
+						tabIndicatorPosition={"0%"}
+						activePosition={"RegistroGeneral"}
+					/>
 				</div>
 
 				<div onSubmit={this.handleSubmit} id="Formulario">
@@ -131,7 +135,7 @@ export default class RegistroGeneral extends React.Component {
 					<button onClick={this.handleRestablecer}>Restablecer</button>
 
 					<Link to="/ExpedienteMedico">
-						<button class="button">Expediente Médico</button>
+						<button className="button">Expediente Médico</button>
 					</Link>
 				</div>
 
