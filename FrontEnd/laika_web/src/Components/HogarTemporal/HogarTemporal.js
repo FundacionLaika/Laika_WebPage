@@ -8,6 +8,7 @@ import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import shortid from "shortid";
 import "./Styles/HogarTemporal.css";
 
+
 class HogarTemporal extends Component {
 	state = {
 		/*Contacto HT*/
