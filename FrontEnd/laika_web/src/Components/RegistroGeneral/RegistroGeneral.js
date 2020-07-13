@@ -5,6 +5,7 @@ import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import { Link } from "react-router-dom";
+import "./Styles/RegistroGeneral.css";
 
 export default class RegistroGeneral extends React.Component {
 	state = {
@@ -60,11 +61,31 @@ export default class RegistroGeneral extends React.Component {
 		reader.readAsDataURL(event.target.files[0]);
 	};
 
+	handleRestablecer = () => {
+		this.setState({
+			nombre: "",
+			edad: "",
+			genero: "",
+			especie: "",
+			fechaDeRescate: "",
+			rescatistas: [],
+			calle: "",
+			numero: "",
+			colonia: "",
+			municipio: "",
+			senasParticulares: "",
+			foto: "/iconoPerro.png",
+		});
+	};
+
 	render() {
 		return (
-			<div>
-				<NavBarRegistros />
-				<form onSubmit={this.handleSubmit}>
+			<div className="Registro">
+				<div id="NavBarRegistros">
+					<NavBarRegistros />
+				</div>
+
+				<div onSubmit={this.handleSubmit} id="Formulario">
 					<DatosGenerales
 						handleChange={this.handleChange}
 						nombre={this.state.nombre}
@@ -99,25 +120,35 @@ export default class RegistroGeneral extends React.Component {
 						onChange={this.handleChange}
 					/>
 
+					<button type="submit">Registrar</button>
+				</div>
+
+				<div id="BotonesRegistro">
+					<Link to="/Adopcion">
+						<button>Adopcion</button>
+					</Link>
+
+					<button onClick={this.handleRestablecer}>Restablecer</button>
+
+					<Link to="/ExpedienteMedico">
+						<button class="button">Expediente Médico</button>
+					</Link>
+				</div>
+
+				<div
+					id="BarraLateral"
+				>
 					<Foto
-						id="fotoDefault"
+						id="foto"
 						foto={this.state.foto}
 						imageHandler={this.imageHandler}
 					/>
-
-					<button type="submit">Registrar</button>
-				</form>
-
-				<Link to="/Adopcion">
-					<button>Adopcion</button>
-				</Link>
-
-				<button onClick={this.handleRestablecer}>Restablecer</button>
-
-				<Link to="/ExpedienteMedico">
-					<button>Expediente Médico</button>
-				</Link>
+				</div>
+				
 			</div>
 		);
 	}
 }
+
+
+

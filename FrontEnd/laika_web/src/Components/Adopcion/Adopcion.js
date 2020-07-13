@@ -67,8 +67,37 @@ export default class Adopcion extends React.Component {
 		this.setState({
 			comentarios: dataTemp,
 		});
-    };
+	};
+	
+	handleRestablecer = () => {
+		this.setState({
+			visitaDeAdopcion: "",
+			adoptante: "",
+			adoptado: "",
+			telefono: "",
+			calle: "",
+			numero: "",
+			colonia: "",
+			municipio: "",
+			fechaAdopcion: "",
+			medioAdopcion: "",
+			comentarios: [],
+			foto: "/iconoPerro.png"
+		});
+	};
 
+	imageHandler = (event) => {
+		const reader = new FileReader();
+		const foto = event.target.id;
+
+		reader.onload = () => {
+			if (reader.readyState === 2) {
+				this.setState({ [foto]: reader.result });
+			}
+		};
+		console.log(event.target.id);
+		reader.readAsDataURL(event.target.files[0]);
+	};
 
 	render() {
 		return (
@@ -94,7 +123,7 @@ export default class Adopcion extends React.Component {
 					/>
 
                     <Foto
-                      id="fotoDefault"
+                      id="foto"
                       foto={this.state.foto}
                       imageHandler={this.imageHandler}
                     />
