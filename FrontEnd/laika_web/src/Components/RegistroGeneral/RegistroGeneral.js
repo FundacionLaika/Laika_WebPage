@@ -80,16 +80,15 @@ export default class RegistroGeneral extends React.Component {
 
 	render() {
 		return (
-			<div className="Registro">
-				<div id="NavBarRegistros">
-					
-					<NavBarRegistros 
+			<div className="RegistroGeneral">
+				<div className="NavBarRegistrosGeneral">
+					<NavBarRegistros
 						tabIndicatorPosition={"0%"}
 						activePosition={"RegistroGeneral"}
 					/>
 				</div>
 
-				<div onSubmit={this.handleSubmit} id="Formulario">
+				<div onSubmit={this.handleSubmit} className="FormularioGeneral">
 					<DatosGenerales
 						handleChange={this.handleChange}
 						nombre={this.state.nombre}
@@ -123,36 +122,47 @@ export default class RegistroGeneral extends React.Component {
 						value={this.props.senasParticulares}
 						onChange={this.handleChange}
 					/>
-
-					<button type="submit">Registrar</button>
 				</div>
 
-				<div id="BotonesRegistro">
+				<div className="BotonesRegistroGeneral">
 					<Link to="/Adopcion">
-						<button>Adopcion</button>
+						<button className="BotonGeneralTransicion BotonAnteriorGeneral">
+							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							Adopcion
+						</button>
 					</Link>
 
-					<button onClick={this.handleRestablecer}>Restablecer</button>
+					<button
+						className="BotonGeneralRestablecer BotonCentralGeneral"
+						onClick={this.handleRestablecer}
+					>
+						Restablecer
+						<i className="fa fa-eraser fa-fw"></i>
+					</button>
+					<button
+						className="BotonGeneralGuardar BotonCentralGeneral"
+						onClick={this.handleSubmit}
+					>
+						Registrar
+						<i className="fa fa-save fa-fw"></i>
+					</button>
 
 					<Link to="/ExpedienteMedico">
-						<button className="button">Expediente Médico</button>
+						<button className="BotonGeneralTransicion BotonSiguienteGeneral">
+							Expediente Médico
+							<i className="fa fa-chevron-circle-right fa-fw"></i>
+						</button>
 					</Link>
 				</div>
 
-				<div
-					id="BarraLateral"
-				>
+				<div className="BarraLateralGeneral">
 					<Foto
 						id="foto"
 						foto={this.state.foto}
 						imageHandler={this.imageHandler}
 					/>
 				</div>
-				
 			</div>
 		);
 	}
 }
-
-
-
