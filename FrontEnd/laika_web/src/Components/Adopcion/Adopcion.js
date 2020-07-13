@@ -3,7 +3,7 @@ import Direccion from "../SharedComponents/Direccion";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
-import HelloWorld from "./DataGrid"
+import shortid from "shortid";
 
 export default class Adopcion extends React.Component {
 
@@ -18,7 +18,7 @@ export default class Adopcion extends React.Component {
         municipio: "",
         fechaAdopcion: "",
         medioAdopcion: "",
-        dataGrid: [],
+        comentarios: [],
         foto: "/iconoPerro.png"
 	};
 
@@ -33,18 +33,38 @@ export default class Adopcion extends React.Component {
 		console.log(this.state);
     };
     
-    addRow = (row) => {
+    addRow = (event) => {
+        event.preventDefault();
+        const newRow = {id:shortid.generate(), observaciones:"", accion:"", fecha:""};
 		this.setState((state) => ({
-			dataGrid: [row, ...state.dataGrid],
+			comentarios: [newRow, ...state.comentarios],
 		}));
-	};
-
-	deleteRow = (id) => {
+    };
+    
+    deleteRow = (id) => {
 		this.setState((state) => ({
-			dataGrid: state.dataGrid.filter(
+			comentarios: state.comentarios.filter(
 				(row) => row.id !== id
 			),
 		}));
+    };
+
+    modifyRow = (event) => {
+
+        let dataTemp = this.state.comentarios;
+
+        dataTemp.forEach(element => {
+            if (element.id === event.target.id) {
+                if (event.target.name === "observaciones") element.observaciones = event.target.value;
+                else if (event.target.name === "accion") element.accion = event.target.value;
+                else if (event.target.name === "fecha") element.fecha = event.target.value;
+            }
+            
+        });
+
+		this.setState({
+			comentarios: dataTemp,
+		});
     };
 
     render() {
@@ -75,10 +95,13 @@ export default class Adopcion extends React.Component {
                 />
                 
                 <DataGrid 
-                    
+                    data={this.state.comentarios}
+                    modifyRow={this.modifyRow}
+                    addRow={this.addRow}
+                    deleteRow={this.deleteRow}
                 />
 
-                <HelloWorld/>
+             
 
                 <button type="submit">Registrar</button>
             </form>

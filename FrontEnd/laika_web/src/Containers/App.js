@@ -9,7 +9,6 @@ import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
-import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
 
 function App() {
 
