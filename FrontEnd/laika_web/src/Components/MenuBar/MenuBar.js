@@ -19,13 +19,17 @@ const MenuBar = () => {
                         </button>
                     </Link>
 
-                    <img
-                        className="der ph2 pointer"
-                        width="65"
-                        height="65"
-                        alt="ajustes"
-                        src="/Circulo.png"
-                    />
+                    <div className="der">
+                        <Link to="/Components/MenuUsuario/MenuUsuario">
+                            <img
+                                className="ph2 pointer dim"
+                                width="65"
+                                height="65"
+                                alt="ajustes"
+                                src="/Circulo.png"
+                            />
+                        </Link>
+                    </div>
                 </span>
             </span>
         </nav>
