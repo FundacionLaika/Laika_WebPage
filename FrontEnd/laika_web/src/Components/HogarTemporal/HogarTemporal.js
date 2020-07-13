@@ -4,7 +4,7 @@ import Direccion from "../SharedComponents/Direccion";
 import ComentariosHT from "./Subcomponentes/ComentariosHT";
 import Foto from "../SharedComponents/Foto";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 
 class HogarTemporal extends Component {
 	state = {

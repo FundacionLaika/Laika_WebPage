@@ -4,7 +4,7 @@ import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
 import FotosExpedienteMedico from "./Subcomponentes/FotosExpedienteMedico";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 
 class ExpedienteMedico extends Component {
 	state = {

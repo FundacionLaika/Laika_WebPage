@@ -4,7 +4,7 @@ import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 import shortid from "shortid";
 
 export default class Adopcion extends React.Component {
@@ -102,7 +102,10 @@ export default class Adopcion extends React.Component {
 	render() {
 		return (
 			<div>
-                <NavBarRegistros/>
+                <NavBarRegistros 
+					tabIndicatorPosition={"75%"}
+					activePosition={"Adopcion"}
+				/>
 				<form onSubmit={this.handleSubmit}>
 					<DatosGenerales
 						handleChange={this.handleChange}
