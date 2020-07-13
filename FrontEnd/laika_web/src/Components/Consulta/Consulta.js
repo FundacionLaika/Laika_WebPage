@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 class Consulta extends Component {
     constructor(props) {
         super(props);
@@ -15,9 +16,12 @@ class Consulta extends Component {
     };
 
     onButtonClicked = (event) => {
-        this.setState({
-            tipoConsulta: event.target.name,
-        });
+        if (event.target.name === "PDF") console.log("PDF");
+        else {
+            this.setState({
+                tipoConsulta: event.target.name,
+            });
+        }
     };
 
     render() {
@@ -60,9 +64,18 @@ class Consulta extends Component {
                             Adopcion
                         </button>
                     </div>
-                    <div className="center mt0 pt0 bg-light-gray w-two-thirds vh-75">
+                    <div className="center mv0 pv0  bg-light-gray w-two-thirds vh-50">
                         {/*Todo Agregar los componentes de las tarjetas*/}
                     </div>
+                    <Link to="../GenerarPDF/GenerarPDF">
+                        <button
+                            className="mv0 pa2 f4 bw0 bg-light-purple white"
+                            name="PDF"
+                            onClick={this.onButtonClicked}
+                        >
+                            GenerarPDF
+                        </button>
+                    </Link>
                 </div>
             </div>
         );
