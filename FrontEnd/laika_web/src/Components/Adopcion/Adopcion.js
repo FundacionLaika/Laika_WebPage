@@ -6,22 +6,22 @@ import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 import shortid from "shortid";
+import "./Styles/Adopcion.css";
 
 export default class Adopcion extends React.Component {
-
-    state = {
-        visitaDeAdopcion: "",
-        adoptante: "",
-        adoptado: "",
-        telefono: "",
-        calle: "",
-        numero: "",
-        colonia: "",
-        municipio: "",
-        fechaAdopcion: "",
-        medioAdopcion: "",
-        comentarios: [],
-        foto: "/iconoPerro.png"
+	state = {
+		visitaDeAdopcion: "",
+		adoptante: "",
+		adoptado: "",
+		telefono: "",
+		calle: "",
+		numero: "",
+		colonia: "",
+		municipio: "",
+		fechaAdopcion: "",
+		medioAdopcion: "",
+		comentarios: [],
+		foto: "/iconoPerro.png",
 	};
 
 	handleChange = (event) => {
@@ -33,42 +33,46 @@ export default class Adopcion extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
-    };
-    
-    addRow = (event) => {
-        event.preventDefault();
-        const newRow = {id:shortid.generate(), observaciones:"", accion:"", fecha:""};
+	};
+
+	addRow = (event) => {
+		event.preventDefault();
+		const newRow = {
+			id: shortid.generate(),
+			observaciones: "",
+			accion: "",
+			fecha: "",
+		};
 		this.setState((state) => ({
 			comentarios: [newRow, ...state.comentarios],
 		}));
-    };
-    
-    deleteRow = (id) => {
+	};
+
+	deleteRow = (id) => {
 		this.setState((state) => ({
-			comentarios: state.comentarios.filter(
-				(row) => row.id !== id
-			),
+			comentarios: state.comentarios.filter((row) => row.id !== id),
 		}));
 	};
 
-    modifyRow = (event) => {
+	modifyRow = (event) => {
+		let dataTemp = this.state.comentarios;
 
-        let dataTemp = this.state.comentarios;
-
-        dataTemp.forEach(element => {
-            if (element.id === event.target.id) {
-                if (event.target.name === "observaciones") element.observaciones = event.target.value;
-                else if (event.target.name === "accion") element.accion = event.target.value;
-                else if (event.target.name === "fecha") element.fecha = event.target.value;
-            }
-            
-        });
+		dataTemp.forEach((element) => {
+			if (element.id === event.target.id) {
+				if (event.target.name === "observaciones")
+					element.observaciones = event.target.value;
+				else if (event.target.name === "accion")
+					element.accion = event.target.value;
+				else if (event.target.name === "fecha")
+					element.fecha = event.target.value;
+			}
+		});
 
 		this.setState({
 			comentarios: dataTemp,
 		});
 	};
-	
+
 	handleRestablecer = () => {
 		this.setState({
 			visitaDeAdopcion: "",
@@ -82,7 +86,7 @@ export default class Adopcion extends React.Component {
 			fechaAdopcion: "",
 			medioAdopcion: "",
 			comentarios: [],
-			foto: "/iconoPerro.png"
+			foto: "/iconoPerro.png",
 		});
 	};
 
@@ -101,12 +105,14 @@ export default class Adopcion extends React.Component {
 
 	render() {
 		return (
-			<div>
-                <NavBarRegistros 
-					tabIndicatorPosition={"75%"}
-					activePosition={"Adopcion"}
-				/>
-				<form onSubmit={this.handleSubmit}>
+			<div className="RegistroAdopcion">
+				<div className="NavBarRegistrosAdopcion">
+					<NavBarRegistros
+						tabIndicatorPosition={"75%"}
+						activePosition={"Adopcion"}
+					/>
+				</div>
+				<div className="FormularioAdopcion">
 					<DatosGenerales
 						handleChange={this.handleChange}
 						visitaDeAdopcion={this.state.visitaDeAdopcion}
@@ -125,32 +131,51 @@ export default class Adopcion extends React.Component {
 						municipio={this.state.municipio}
 					/>
 
-                    <Foto
-                      id="foto"
-                      foto={this.state.foto}
-                      imageHandler={this.imageHandler}
-                    />
-                
-                    <DataGrid 
-                        data={this.state.comentarios}
-                        modifyRow={this.modifyRow}
-                        addRow={this.addRow}
-                        deleteRow={this.deleteRow}
-                    />
+					<DataGrid
+						data={this.state.comentarios}
+						modifyRow={this.modifyRow}
+						addRow={this.addRow}
+						deleteRow={this.deleteRow}
+					/>
+				</div>
 
-					<button type="submit">Registrar</button>
-				</form>
-            
-				<Link to="/HogarTemporal">
-					<button>Hogar Temporal</button>
-				</Link>
-            
-				<button onClick={this.handleRestablecer}>Restablecer</button>
-            
-				<Link to="/RegistroGeneral">
-					<button>Registro General</button>
-				</Link>
-            
+				<div className="BotonesRegistroAdopcion">
+					<Link to="/HogarTemporal">
+						<button className="BotonAdopcionTransicion BotonAnteriorAdopcion">
+							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							Hogar Temporal
+						</button>
+					</Link>
+
+					<button
+						className="BotonAdopcionRestablecer BotonCentralAdopcion"
+						onClick={this.handleRestablecer}
+					>
+						Restablecer
+						<i className="fa fa-eraser fa-fw"></i>
+					</button>
+					<button
+						className="BotonAdopcionGuardar BotonCentralAdopcion"
+						onClick={this.handleSubmit}
+					>
+						Registrar
+						<i className="fa fa-save fa-fw"></i>
+					</button>
+
+					<Link to="/RegistroGeneral">
+						<button className="BotonAdopcionTransicion BotonSiguienteAdopcion">
+							Registro General
+							<i className="fa fa-chevron-circle-right fa-fw"></i>
+						</button>
+					</Link>
+				</div>
+				<div className="BarraLateralAdopcion">
+					<Foto
+						id="foto"
+						foto={this.state.foto}
+						imageHandler={this.imageHandler}
+					/>
+				</div>
 			</div>
 		);
 	}
