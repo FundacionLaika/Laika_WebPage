@@ -41,6 +41,8 @@ class ExpedienteMedico extends Component {
 		foto1: "/iconoPerro.png",
 		foto2: "/iconoPerro.png",
 		foto3: "/iconoPerro.png",
+
+		/*Tratamiento*/
 	};
 
 	/*Manejador de imágenes*/
@@ -154,14 +156,14 @@ class ExpedienteMedico extends Component {
 						handleChange={this.handleChange}
 					/>
 					<br />
-					<Tratamiento />
-					<br />
 					<FotosExpedienteMedico
 						foto1={this.state.foto1}
 						foto2={this.state.foto2}
 						foto3={this.state.foto3}
 						imageHandler={this.imageHandler}
 					/>
+					<br />
+					<Tratamiento />
 					<button>Guardar</button>
 				</form>
 				<Link to="/Components/RegistroGeneral/RegistroGeneral">

@@ -3,6 +3,8 @@ import Direccion from "../SharedComponents/Direccion";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
+import { Link } from "react-router-dom";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 
 export default class Adopcion extends React.Component {
@@ -47,7 +49,7 @@ export default class Adopcion extends React.Component {
 				(row) => row.id !== id
 			),
 		}));
-    };
+	};
 
     modifyRow = (event) => {
 
@@ -67,44 +69,58 @@ export default class Adopcion extends React.Component {
 		});
     };
 
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <DatosGenerales
-                    handleChange={this.handleChange}
-                    visitaDeAdopcion={this.state.visitaDeAdopcion}
-                    adoptante={this.state.adoptante}
-                    adoptado={this.state.adoptado}
-                    telefono={this.state.telefono}
-                    fechaAdopcion={this.state.fechaAdopcion}
-                    medioAdopcion={this.state.medioAdopcion}
-                />    
 
-                <Direccion
-                    handleChange={this.handleChange}
-                    calle={this.state.calle}
-                    numero={this.state.numero}
-                    colonia={this.state.colonia}
-                    municipio={this.state.municipio}
-                />
+	render() {
+		return (
+			<div>
+                <NavBarRegistros/>
+				<form onSubmit={this.handleSubmit}>
+					<DatosGenerales
+						handleChange={this.handleChange}
+						visitaDeAdopcion={this.state.visitaDeAdopcion}
+						adoptante={this.state.adoptante}
+						adoptado={this.state.adoptado}
+						telefono={this.state.telefono}
+						fechaAdopcion={this.state.fechaAdopcion}
+						medioAdopcion={this.state.medioAdopcion}
+					/>
 
-                <Foto
-                  id="fotoDefault"
-                  foto={this.state.foto}
-                  imageHandler={this.state.imageHandler}
-                />
+					<Direccion
+						handleChange={this.handleChange}
+						calle={this.state.calle}
+						numero={this.state.numero}
+						colonia={this.state.colonia}
+						municipio={this.state.municipio}
+					/>
+
+
+                    <Foto
+                      id="fotoDefault"
+                      foto={this.state.foto}
+                      imageHandler={this..imageHandler}
+                    />
                 
-                <DataGrid 
-                    data={this.state.comentarios}
-                    modifyRow={this.modifyRow}
-                    addRow={this.addRow}
-                    deleteRow={this.deleteRow}
-                />
+                    <DataGrid 
+                        data={this.state.comentarios}
+                        modifyRow={this.modifyRow}
+                        addRow={this.addRow}
+                        deleteRow={this.deleteRow}
+                    />
 
-             
-
-                <button type="submit">Registrar</button>
-            </form>
-        );
-    }
+					<button type="submit">Registrar</button>
+				</form>
+            
+				<Link to="/HogarTemporal">
+					<button>Hogar Temporal</button>
+				</Link>
+            
+				<button onClick={this.handleRestablecer}>Restablecer</button>
+            
+				<Link to="/RegistroGeneral">
+					<button>Registro General</button>
+				</Link>
+            
+			</div>
+		);
+	}
 }
