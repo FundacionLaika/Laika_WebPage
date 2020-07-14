@@ -5,8 +5,10 @@ class Direccion extends Component {
 	render() {
 		return (
 			<div className="direccion">
-				<label>Dirección</label>
-				<div className="calle"> 
+				<div>
+					<label>Dirección</label>
+				</div>
+				<div className="calle">
 					<label htmlFor="calle" className="inp">
 						<input
 							type="text"

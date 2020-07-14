@@ -1,0 +1,44 @@
+.adopcion {
+    display: grid;
+	grid-auto-columns: minmax(50%, 50%);
+    padding: 15px;
+    padding: 15px;
+}
+
+.adoptante {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    padding: 15px;
+}
+
+.adoptado {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    padding: 15px;
+}
+
+.medioAdopcion {
+    grid-column: 2 / 3;
+    grid-row: 2;
+    padding: 15px;
+}
+
+.telefonoAdopcion {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    padding: 15px;
+}
+
+.visitaDeAdopcion {
+    grid-column: 1;
+    grid-row: 4;
+    padding: 15px;
+}
+
+.fechaAdopcion {
+    grid-column: 2;
+    grid-row: 4;
+    padding: 15px;
+}
+
+
