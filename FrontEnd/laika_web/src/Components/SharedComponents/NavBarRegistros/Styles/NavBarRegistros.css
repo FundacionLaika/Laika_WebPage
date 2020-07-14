@@ -1,0 +1,38 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+.tabs {
+  background-color: #f9f9f9;
+}
+
+.tabs .tab-header {
+  height:50px;
+  display:flex;
+  align-items:center;
+}
+.tabs .tab-header > div {
+  width:calc(100% / 4);
+  text-align:center;
+  color:#888;
+  font-weight:600;
+  cursor:pointer;
+  font-size:14px;
+  text-transform:uppercase;
+  outline:none;
+}
+
+.tabs .tab-header > div > i {
+  display:block;
+  margin-bottom:5px;
+}
+.tabs .tab-header > div.active {
+  color:#00acee;
+}
+.tabs .tab-indicator {
+  position:relative;
+  width:calc(100% / 4);
+  height:5px;
+  background:#00acee;
+  left:75%;
+  border-radius:5px;
+  transition:all 500ms ease-in-out;
+}

@@ -1,19 +1,19 @@
 @import "https://fonts.googleapis.com/css?family=Raleway:400,700|Raleway:300,400";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
-.RegistroGeneral {
+.RegistroAdopcion {
 	display: grid;
 	/* grid-template-columns: repeat(3, 1fr); */
 	/* grid-gap: 10px; */
 	grid-auto-columns: minmax(25%, 25%);
 }
 
-.NavBarRegistrosGeneral {
+.NavBarRegistrosAdopcion {
 	grid-column: 1 / 4;
 	grid-row: 1;
 }
 
-.FormularioGeneral {
+.FormularioAdopcion {
 	grid-column: 1 /4;
 	grid-row: 3 / 10;
 	display: grid;
@@ -21,44 +21,39 @@
 	background-color: #b5cfd8;
 }
 
-.DatosGenerales {
-	grid-column:1;
-	grid-row:1;
-}
-
-.Rescatistas {
+.DatosGeneralesAdopcion {
 	grid-column: 1;
-	grid-row:2;
+	grid-row: 1;
 }
 
-.DireccionGeneral {
-	grid-column: 2;
+.DireccionAdopcion {
+	grid-column:2;
 	grid-row:1;
 }
 
-.SenasParticulares {
-	grid-column: 2;
+.DataGridAdopcion {
+	grid-column: 1 / 3;
 	grid-row: 2;
 }
 
-.BotonesRegistroGeneral {
+.BotonesRegistroAdopcion {
 	grid-column: 1 / 4;
 	grid-row: 10;
 	background-color: #dddddd;
 }
 
-.BarraLateralGeneral {
+.BarraLateralAdopcion {
 	background-color: #0072bb;
 	grid-column: 4;
 	grid-row: 1 / 11;
 }
 
 /*Boton Restablecer*/
-.BotonGeneralRestablecer {
-	color: #494949 !important;
-	font-family: "Raleway";
-	font-weight: bold;
-	border-radius: 50px;
+.BotonAdopcionRestablecer {
+    color: #494949 !important;
+    font-family: "Raleway";
+    font-weight: bold;
+    border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -66,7 +61,7 @@
 	display: inline-block;
 	transition: all 0.4s ease 0s;
 }
-.BotonGeneralRestablecer:hover {
+.BotonAdopcionRestablecer:hover {
 	color: #ffffff !important;
 	background: #e42d2d;
 	border-color: #e42d2d !important;
@@ -74,11 +69,11 @@
 }
 
 /*Boton Guardar*/
-.BotonGeneralGuardar {
-	color: #494949 !important;
-	font-family: "Raleway";
-	font-weight: bold;
-	border-radius: 50px;
+.BotonAdopcionGuardar {
+    color: #494949 !important;
+    font-family: "Raleway";
+    font-weight: bold;
+    border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -86,23 +81,23 @@
 	display: inline-block;
 	transition: all 0.4s ease 0s;
 }
-.BotonGeneralGuardar:hover {
+.BotonAdopcionGuardar:hover {
 	color: #ffffff !important;
 	background: #6ba70b;
 	border-color: #6ba70b !important;
 	transition: all 0.4s ease 0s;
 }
 
-.BotonCentralGeneral {
-	float: center;
+.BotonCentralAdopcion{
+	float:center;
 }
 
 /*Botones transiciones*/
-.BotonGeneralTransicion {
-	color: #494949 !important;
-	font-family: "Raleway";
-	font-weight: bold;
-	border-radius: 50px;
+.BotonAdopcionTransicion {
+    color: #494949 !important;
+    font-family: "Raleway";
+    font-weight: bold;
+    border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -110,7 +105,7 @@
 	display: inline-block;
 	transition: all 0.4s ease 0s;
 }
-.BotonGeneralTransicion:hover {
+.BotonAdopcionTransicion:hover {
 	color: #ffffff !important;
 	background: #8c948a;
 	border-color: #8c948a !important;
@@ -118,11 +113,13 @@
 }
 
 /*Boton siguiente expediente*/
-.BotonSiguienteGeneral {
+.BotonSiguienteAdopcion{
 	float: right;
-}
+}	
 
 /*Boton expediente previo*/
-.BotonAnteriorGeneral {
-	float: left;
+.BotonAnteriorAdopcion{
+	float:left;
 }
+
+

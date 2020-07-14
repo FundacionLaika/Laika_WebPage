@@ -4,35 +4,53 @@ import "./MenuBar.css";
 
 const MenuBar = () => {
     return (
-        <nav>
-            <span>
-                <span className="flex justify-center fondo pa2">
-                    <Link to="/Consulta/">
-                        <button className="f2 ph3 pt2 b bw0 bg-transparent white dim pointer">
-                            Consulta
-                        </button>
-                    </Link>
+        <div className="navBar">
+				<div className="navBar-header">
+					<div>
+                        <img src="/laikalogo.png" alt="logo" id="logo"/>
+					</div>
 
-                    <Link to="/RegistroGeneral/">
-                        <button className="f2 ph3 pt2 b bw0 bg-transparent white dim pointer">
-                            Registro de Animal
-                        </button>
-                    </Link>
+					<div>
+						<Link
+							to="/Consulta"
+							style={{
+								color: "inherit",
+								textDecoration: "inherit",
+							}}
+						>
+							<i className="fa fa-search fa-fw"></i>
+							Consulta
+						</Link>
+					</div>
 
-                    <div className="der">
-                        <Link to="/MenuUsuario/">
-                            <img
-                                className="ph2 pointer dim"
-                                width="65"
-                                height="65"
-                                alt="ajustes"
-                                src="/Circulo.png"
-                            />
-                        </Link>
-                    </div>
-                </span>
-            </span>
-        </nav>
+
+					<div>
+						<Link
+							to="/RegistroGeneral"
+							style={{
+								color: "inherit",
+								textDecoration: "inherit",
+							}}
+						>
+							<i className="fa fa-pencil-square-o fa-fw"></i>
+							Registro
+						</Link>
+					</div>
+
+					<div>
+						<Link
+							to="/MenuUsuario"
+							style={{
+								color: "inherit",
+								textDecoration: "inherit",
+							}}
+						>
+                        <img src="/user.ico" alt="user" id="user"/>
+						</Link>
+					</div>
+                </div>
+            </div>
+
     );
 };
 

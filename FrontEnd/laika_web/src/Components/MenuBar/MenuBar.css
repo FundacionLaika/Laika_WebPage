@@ -1,8 +1,48 @@
-.fondo {
-  /* background-color: #5dc8db; */
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+.navBar {
   background-color: #596e79;
 }
 
-.der {
-  margin-left: auto;
+.navBar .navBar-header {
+  height:60px;
+  display:flex;
+  align-items:center;
 }
+.navBar .navBar-header > div {
+  width:calc(100% / 4);
+  text-align:center;
+  color:#f0ece3;
+  font-weight:600;
+  cursor:pointer;
+  font-size:14px;
+  text-transform:uppercase;
+  outline:none;
+}
+
+.navBar .navBar-header > div > i {
+  display:block;
+  margin-bottom:5px;
+}
+.navBar .navBar-header > div.active {
+  color:#00acee;
+}
+
+#logo {
+  max-height: 50px;
+  max-width: auto;
+  object-fit: contain;
+  float: left;
+  padding-left: 1em;
+}
+
+#user {
+  max-height: 50px;
+  max-width: auto;
+  object-fit: contain;
+  float: right;
+  padding-right: 1em;
+}
+
+
+
