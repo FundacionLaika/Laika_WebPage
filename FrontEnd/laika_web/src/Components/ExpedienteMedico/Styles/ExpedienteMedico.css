@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400";
+@import "https://fonts.googleapis.com/css?family=Raleway:400,700|Raleway:300,400";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
 .RegistroMedico {
@@ -16,6 +16,8 @@
 .FormularioMedico {
 	grid-column: 1 /4;
 	grid-row: 3 / 10;
+	display:grid;
+	grid-auto-columns: minmax(50%, 50%);
 	background-color: #b5cfd8;
 }
 
@@ -31,10 +33,67 @@
 	grid-row: 1 / 11;
 }
 
+/*Bloques*/
+.diagnostico{
+	grid-column: 1;
+	grid-row:1;
+	background-color: green;
+}
+
+.esterilizacion{
+	grid-column:2;
+	grid-row:1;
+	background-color: #e42d2d;
+}
+
+.cartillaVacunacion{
+	grid-column:1 / 3;
+	grid-row:2;
+	display:grid;
+	/* grid-auto-columns: minmax(20%, 20%); */
+	background-color: orange;
+}
+
+.puppy {
+	grid-row: 1;
+	grid-column: 1;
+	background-color: aquamarine;
+}
+
+.refuerzoPuppy {
+	grid-row: 1;
+	grid-column: 2;
+	background-color: yellow;
+}
+
+.multiple {
+	grid-row: 1;
+	grid-column: 3;
+}
+
+.refuerzoMultiple {
+	grid-row: 1;
+	grid-column: 4;
+	background-color: #6ba70b;
+}
+
+.rabia {
+	grid-row: 1;
+	grid-column: 5;
+}
+
+.tratamiento{
+	grid-column:1 / 3;
+	grid-row: 3;
+	background-color: aqua;
+}
+
+
+
 /*Boton Restablecer*/
 .BotonMedicoRestablecer {
     color: #494949 !important;
-    font-family: "Montserrat";
+    font-family: "Raleway";
     font-weight: bold;
     border-radius: 50px;
 	text-decoration: none;
@@ -54,7 +113,7 @@
 /*Boton Guardar*/
 .BotonMedicoGuardar {
     color: #494949 !important;
-    font-family: "Montserrat";
+    font-family: "Raleway";
     font-weight: bold;
     border-radius: 50px;
 	text-decoration: none;
@@ -78,7 +137,7 @@
 /*Botones transiciones*/
 .BotonMedicoTransicion {
     color: #494949 !important;
-    font-family: "Montserrat";
+    font-family: "Raleway";
     font-weight: bold;
     border-radius: 50px;
 	text-decoration: none;
@@ -104,5 +163,7 @@
 .BotonAnteriorMedico{
 	float:left;
 }
+
+
 
 
