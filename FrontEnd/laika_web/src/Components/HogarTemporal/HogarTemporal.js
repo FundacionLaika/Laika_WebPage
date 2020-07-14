@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import shortid from "shortid";
+import "../SharedComponents/Styles/InputText.css";
 import "./Styles/HogarTemporal.css";
-
 
 class HogarTemporal extends Component {
 	state = {
@@ -27,7 +27,7 @@ class HogarTemporal extends Component {
 		/*Foto*/
 		foto: "/iconoPerro.png",
 
-		/**/
+		/*Comentarios*/
 		comentarios: [],
 	};
 
@@ -117,14 +117,13 @@ class HogarTemporal extends Component {
 		return (
 			<div className="RegistroHT">
 				<div className="NavBarRegistrosHT">
-					<NavBarRegistros 
+					<NavBarRegistros
 						tabIndicatorPosition={"50%"}
 						activePosition={"HogarTemporal"}
 					/>
 				</div>
 				<div className="FormularioHT">
-					<label>HogarTemporal</label>
-					<div>
+					<div className="contactoHT">
 						<ContactoHT
 							tipoHT={this.state.tipoHT}
 							nombreHT={this.state.nombreHT}
@@ -134,7 +133,7 @@ class HogarTemporal extends Component {
 							handleChange={this.handleChange}
 						/>
 					</div>
-					<div>
+					<div className="direccionHT">
 						<Direccion
 							calle={this.state.calle}
 							numero={this.state.numero}
@@ -143,7 +142,7 @@ class HogarTemporal extends Component {
 							handleChange={this.handleChange}
 						/>
 					</div>
-					<div>
+					<div className="dataGridHT">
 						<DataGrid
 							data={this.state.comentarios}
 							modifyRow={this.modifyRow}
