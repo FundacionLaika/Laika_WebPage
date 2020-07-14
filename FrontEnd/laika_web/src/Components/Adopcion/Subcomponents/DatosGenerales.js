@@ -15,8 +15,8 @@ export default class DatosGenerales extends React.Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Adoptante</span>
-						<span class="focus-bg"></span>
+						<span className="label">Adoptante</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 				<div className="adoptado">
@@ -29,8 +29,8 @@ export default class DatosGenerales extends React.Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Adoptado</span>
-						<span class="focus-bg"></span>
+						<span className="label">Adoptado</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 				<div className="medioAdopcion">
@@ -59,8 +59,8 @@ export default class DatosGenerales extends React.Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Teléfono</span>
-						<span class="focus-bg"></span>
+						<span className="label">Teléfono</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 				<div className="visitaDeAdopcion">

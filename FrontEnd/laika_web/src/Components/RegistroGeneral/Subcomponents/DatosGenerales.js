@@ -15,8 +15,8 @@ export default class DatosGenerales extends React.Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Nombre</span>
-						<span class="focus-bg"></span>
+						<span className="label">Nombre</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 				<div className="edad">
@@ -29,8 +29,8 @@ export default class DatosGenerales extends React.Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Edad</span>
-						<span class="focus-bg"></span>
+						<span className="label">Edad</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 				<div className="genero">

@@ -29,8 +29,8 @@ class ContactoHT extends Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Nombre</span>
-						<span class="focus-bg"></span>
+						<span className="label">Nombre</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 
@@ -44,8 +44,8 @@ class ContactoHT extends Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Teléfono</span>
-						<span class="focus-bg"></span>
+						<span className="label">Teléfono</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 

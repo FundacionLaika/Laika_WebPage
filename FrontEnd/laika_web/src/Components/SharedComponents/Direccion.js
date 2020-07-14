@@ -18,8 +18,8 @@ class Direccion extends Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Calle</span>
-						<span class="focus-bg"></span>
+						<span className="label">Calle</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 				<div className="numero">
@@ -32,8 +32,8 @@ class Direccion extends Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Número</span>
-						<span class="focus-bg"></span>
+						<span className="label">Número</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 				<div className="colonia">
@@ -46,8 +46,8 @@ class Direccion extends Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Colonia</span>
-						<span class="focus-bg"></span>
+						<span className="label">Colonia</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 				<div className="municipio">
@@ -60,8 +60,8 @@ class Direccion extends Component {
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>
-						<span class="label">Municipio</span>
-						<span class="focus-bg"></span>
+						<span className="label">Municipio</span>
+						<span className="focus-bg"></span>
 					</label>
 				</div>
 			</div>
