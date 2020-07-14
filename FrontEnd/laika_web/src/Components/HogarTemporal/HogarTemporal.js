@@ -8,6 +8,7 @@ import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import shortid from "shortid";
 import "../SharedComponents/Styles/InputText.css";
 import "./Styles/HogarTemporal.css";
+import "../SharedComponents/Styles/SelectBox.css";
 
 class HogarTemporal extends Component {
 	state = {
