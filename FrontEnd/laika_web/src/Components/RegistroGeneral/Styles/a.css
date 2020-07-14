@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400";
+@import "https://fonts.googleapis.com/css?family=Raleway:400,700|Raleway:300,400";
 /* colors */
 /* tab setting */
 /* breakpoints */
@@ -41,7 +41,7 @@ body h1 {
 }
 .tabs .content section h2,
 .tabs ul li label {
-  font-family: "Montserrat";
+  font-family: "Raleway";
   font-weight: bold;
   font-size: 18px;
   color: #428BFF;

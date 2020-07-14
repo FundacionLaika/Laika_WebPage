@@ -17,7 +17,7 @@ class NavBarRegistros extends Component {
 								textDecoration: "inherit",
 							}}
 						>
-							<i className="fa fa-code fa-fw"></i>
+							<i className="fa fa-id-card-o fa-fw"></i>
 							Registro General
 						</Link>
 					</div>
@@ -56,7 +56,7 @@ class NavBarRegistros extends Component {
 								textDecoration: "inherit",
 							}}
 						>
-							<i className="fa fa-code fa-fw"></i>
+							<i className="fa fa-users fa-fw"></i>
 							Adopción
 						</Link>
 					</div>
