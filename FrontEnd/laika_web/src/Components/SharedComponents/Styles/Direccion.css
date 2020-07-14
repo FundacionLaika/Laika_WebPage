@@ -1,0 +1,29 @@
+.direccion {
+	display: grid;
+	grid-auto-columns: minmax(25%, 25%);
+	padding: 15px;
+}
+
+.calle {
+	grid-column: 1 / 4;
+	grid-row: 1;
+	padding: 15px;
+}
+
+.numero {
+	grid-column: 4;
+	grid-row: 1;
+	padding: 15px;
+}
+
+.colonia {
+	grid-column: 1 / 5;
+	grid-row: 2;
+	padding: 15px;
+}
+
+.municipio {
+	grid-column: 1 / 5;
+	grid-row: 3;
+	padding: 15px;
+}

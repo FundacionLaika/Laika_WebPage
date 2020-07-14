@@ -113,30 +113,34 @@ export default class Adopcion extends React.Component {
 					/>
 				</div>
 				<div className="FormularioAdopcion">
-					<DatosGenerales
-						handleChange={this.handleChange}
-						visitaDeAdopcion={this.state.visitaDeAdopcion}
-						adoptante={this.state.adoptante}
-						adoptado={this.state.adoptado}
-						telefono={this.state.telefono}
-						fechaAdopcion={this.state.fechaAdopcion}
-						medioAdopcion={this.state.medioAdopcion}
-					/>
-
-					<Direccion
-						handleChange={this.handleChange}
-						calle={this.state.calle}
-						numero={this.state.numero}
-						colonia={this.state.colonia}
-						municipio={this.state.municipio}
-					/>
-
-					<DataGrid
-						data={this.state.comentarios}
-						modifyRow={this.modifyRow}
-						addRow={this.addRow}
-						deleteRow={this.deleteRow}
-					/>
+					<div className="DatosGeneralesAdopcion">
+						<DatosGenerales
+							handleChange={this.handleChange}
+							visitaDeAdopcion={this.state.visitaDeAdopcion}
+							adoptante={this.state.adoptante}
+							adoptado={this.state.adoptado}
+							telefono={this.state.telefono}
+							fechaAdopcion={this.state.fechaAdopcion}
+							medioAdopcion={this.state.medioAdopcion}
+						/>
+					</div>
+					<div className="DireccionAdopcion">
+						<Direccion
+							handleChange={this.handleChange}
+							calle={this.state.calle}
+							numero={this.state.numero}
+							colonia={this.state.colonia}
+							municipio={this.state.municipio}
+						/>
+					</div>
+					<div className="DataGridAdopcion">
+						<DataGrid
+							data={this.state.comentarios}
+							modifyRow={this.modifyRow}
+							addRow={this.addRow}
+							deleteRow={this.deleteRow}
+						/>
+					</div>
 				</div>
 
 				<div className="BotonesRegistroAdopcion">

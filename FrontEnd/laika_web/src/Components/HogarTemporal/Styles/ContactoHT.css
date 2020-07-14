@@ -1,0 +1,42 @@
+.contactoHT {
+	display: grid;
+	grid-auto-columns: minmax(100%, 100%);
+    padding: 15px;
+}
+
+.tipoHT {
+	grid-column: 1;
+	grid-row: 1;
+    padding: 15px;
+}
+
+.nombreHT {
+	grid-column: 1;
+	grid-row: 2;
+	padding: 15px;
+}
+
+.telefonoHT {
+	grid-column: 1;
+	grid-row: 3;
+	padding: 15px;
+}
+
+.fechas {
+    grid-column: 1;
+    grid-row: 4;
+    display: grid;
+	padding: 15px;
+}
+
+.fechaInicio {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.fechaFinal {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+

@@ -16,7 +16,29 @@
 .FormularioGeneral {
 	grid-column: 1 /4;
 	grid-row: 3 / 10;
+	display: grid;
+	grid-auto-columns: minmax(50%, 50%);
 	background-color: #b5cfd8;
+}
+
+.DatosGenerales {
+	grid-column:1;
+	grid-row:1;
+}
+
+.Rescatistas {
+	grid-column: 1;
+	grid-row:2;
+}
+
+.DireccionGeneral {
+	grid-column: 2;
+	grid-row:1;
+}
+
+.SenasParticulares {
+	grid-column: 2;
+	grid-row: 2;
 }
 
 .BotonesRegistroGeneral {
@@ -33,10 +55,10 @@
 
 /*Boton Restablecer*/
 .BotonGeneralRestablecer {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -53,10 +75,10 @@
 
 /*Boton Guardar*/
 .BotonGeneralGuardar {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -71,16 +93,16 @@
 	transition: all 0.4s ease 0s;
 }
 
-.BotonCentralGeneral{
-	float:center;
+.BotonCentralGeneral {
+	float: center;
 }
 
 /*Botones transiciones*/
 .BotonGeneralTransicion {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -96,13 +118,11 @@
 }
 
 /*Boton siguiente expediente*/
-.BotonSiguienteGeneral{
+.BotonSiguienteGeneral {
 	float: right;
-}	
-
-/*Boton expediente previo*/
-.BotonAnteriorGeneral{
-	float:left;
 }
 
-
+/*Boton expediente previo*/
+.BotonAnteriorGeneral {
+	float: left;
+}
