@@ -20,7 +20,7 @@ const MenuBar = () => {
                     </Link>
 
                     <div className="der">
-                        <Link to="/MenuUsuario">
+                        <Link to="/MenuUsuario/">
                             <img
                                 className="ph2 pointer dim"
                                 width="65"
