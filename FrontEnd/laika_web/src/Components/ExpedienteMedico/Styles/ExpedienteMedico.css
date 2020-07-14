@@ -6,6 +6,7 @@
 	/* grid-template-columns: repeat(3, 1fr); */
 	/* grid-gap: 10px; */
 	grid-auto-columns: minmax(25%, 25%);
+	font-family: 'Raleway';
 }
 
 .NavBarRegistrosMedico {
@@ -54,10 +55,29 @@
 	background-color: orange;
 }
 
+.cartillaVacunacion > div{
+	padding: 10px;
+}
+
+.cb {
+	grid-row: 1;
+	padding-top: 10px;
+}
+
+
+#lb {
+	padding-top: 10px;
+	grid-row: 2;
+}
+
+#dt {
+	padding-top: 10px;
+	grid-row: 3;
+}
+
 .puppy {
 	grid-row: 1;
 	grid-column: 1;
-	background-color: aquamarine;
 }
 
 .refuerzoPuppy {

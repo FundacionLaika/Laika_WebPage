@@ -6,26 +6,34 @@ class CartillaVacunacion extends Component {
 		return (
 			<div className="cartillaVacunacion cbx">
 				<div className="puppy">
-					<input
-						type="checkbox"
-						id="puppy"
-						name="puppy"
-						value="puppy"
-						checked={this.props.puppy}
-						onChange={this.props.handleChange}
-					/>
+					<div className="cb">
+			
+						<input
+							type="checkbox"
+							id="puppy"
+							name="puppy"
+							value="puppy"
+							checked={this.props.puppy}
+							onChange={this.props.handleChange}
+						/>
+						<label htmlFor="puppy">
+							<span></span>
+						</label>
+					</div>
 
-					<label htmlFor="puppy" class="label">
-						Puppy
-					</label>
+					<div id="lb">
+						<label>Puppy</label>
+					</div>
 
-					<input
-						type="date"
-						id="fechaPuppy"
-						name="fechaPuppy"
-						value={this.props.fechaPuppy}
-						onChange={this.props.handleChange}
-					/>
+					<div id="dt">
+						<input
+							type="date"
+							id="fechaPuppy"
+							name="fechaPuppy"
+							value={this.props.fechaPuppy}
+							onChange={this.props.handleChange}
+						/>
+					</div>
 				</div>
 				<div className="refuerzoPuppy">
 					<input
