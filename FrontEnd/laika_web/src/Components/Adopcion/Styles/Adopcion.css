@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400";
+@import "https://fonts.googleapis.com/css?family=Raleway:400,700|Raleway:300,400";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
 .RegistroAdopcion {
@@ -34,7 +34,7 @@
 /*Boton Restablecer*/
 .BotonAdopcionRestablecer {
     color: #494949 !important;
-    font-family: "Montserrat";
+    font-family: "Raleway";
     font-weight: bold;
     border-radius: 50px;
 	text-decoration: none;
@@ -54,7 +54,7 @@
 /*Boton Guardar*/
 .BotonAdopcionGuardar {
     color: #494949 !important;
-    font-family: "Montserrat";
+    font-family: "Raleway";
     font-weight: bold;
     border-radius: 50px;
 	text-decoration: none;
@@ -78,7 +78,7 @@
 /*Botones transiciones*/
 .BotonAdopcionTransicion {
     color: #494949 !important;
-    font-family: "Montserrat";
+    font-family: "Raleway";
     font-weight: bold;
     border-radius: 50px;
 	text-decoration: none;

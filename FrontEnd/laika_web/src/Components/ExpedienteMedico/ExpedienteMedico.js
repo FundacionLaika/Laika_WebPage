@@ -174,7 +174,7 @@ class ExpedienteMedico extends Component {
 					/>
 				</div>
 				<div className="FormularioMedico">
-					<div>
+					<div className="diagnostico">
 						<Diagnostico
 							atropellamiento={this.state.atropellamiento}
 							tvt={this.state.tvt}
@@ -188,7 +188,7 @@ class ExpedienteMedico extends Component {
 							handleChange={this.handleChange}
 						/>
 					</div>
-					<div>
+					<div className="esterilizacion">
 						<Esterilizacion
 							esterilizado={this.state.esterilizado}
 							citaEsterilizacion={this.state.citaEsterilizacion}
@@ -196,7 +196,7 @@ class ExpedienteMedico extends Component {
 							handleChange={this.handleChange}
 						/>
 					</div>
-					<div>
+					<div className="cartillaVacunacion">
 						<CartillaVacunacion
 							puppy={this.state.puppy}
 							refuerzoPuppy={this.state.refuerzoPuppy}
@@ -213,7 +213,7 @@ class ExpedienteMedico extends Component {
 							handleChange={this.handleChange}
 						/>
 					</div>
-					<div>
+					<div className="tratamiento">
 						<DataGridMed
 							data={this.state.tratamiento}
 							modifyRow={this.modifyRow}
