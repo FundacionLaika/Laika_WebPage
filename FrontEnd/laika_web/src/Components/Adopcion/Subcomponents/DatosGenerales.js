@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/DatosGenerales.css";
+import "../Styles/DatosGeneralesAdopcion.css";
 
 export default class DatosGenerales extends React.Component {
 	render() {

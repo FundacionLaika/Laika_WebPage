@@ -113,7 +113,7 @@ export default class Adopcion extends React.Component {
 					/>
 				</div>
 				<div className="FormularioAdopcion">
-					<div className="DatosGenerales">
+					<div className="DatosGeneralesAdopcion">
 						<DatosGenerales
 							handleChange={this.handleChange}
 							visitaDeAdopcion={this.state.visitaDeAdopcion}
