@@ -6,7 +6,7 @@
 	/* grid-template-columns: repeat(3, 1fr); */
 	/* grid-gap: 10px; */
 	grid-auto-columns: minmax(25%, 25%);
-	font-family: 'Raleway';
+	font-family: "Raleway";
 }
 
 .NavBarRegistrosMedico {
@@ -17,7 +17,7 @@
 .FormularioMedico {
 	grid-column: 1 /4;
 	grid-row: 3 / 10;
-	display:grid;
+	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
 	background-color: #b5cfd8;
 }
@@ -35,27 +35,32 @@
 }
 
 /*Bloques*/
-.diagnostico{
+.diagnostico {
 	grid-column: 1;
-	grid-row:1;
+	grid-row: 1;
 	background-color: green;
 }
 
-.esterilizacion{
-	grid-column:2;
-	grid-row:1;
+.esterilizacion {
+	grid-column: 2;
+	grid-row: 1;
 	background-color: #e42d2d;
 }
 
-.cartillaVacunacion{
-	grid-column:1 / 3;
-	grid-row:2;
-	display:grid;
-	/* grid-auto-columns: minmax(20%, 20%); */
-	background-color: orange;
+.cartillaVacunacion {
+	grid-column: 1 / 3;
+	grid-row: 2;
+	display: grid;
+	text-align: center;
+	color: #f0ece3;
+	font-weight: 600;
+	cursor: default;
+	font-size: 14px;
+	outline: none;
+	padding-left: 10px;
 }
 
-.cartillaVacunacion > div{
+.cartillaVacunacion > div {
 	padding: 10px;
 }
 
@@ -64,8 +69,8 @@
 	padding-top: 10px;
 }
 
-
 #lb {
+	padding-right: 10px;
 	padding-top: 10px;
 	grid-row: 2;
 }
@@ -73,6 +78,7 @@
 #dt {
 	padding-top: 10px;
 	grid-row: 3;
+	padding-right: 10px;
 }
 
 .puppy {
@@ -83,7 +89,6 @@
 .refuerzoPuppy {
 	grid-row: 1;
 	grid-column: 2;
-	background-color: yellow;
 }
 
 .multiple {
@@ -94,7 +99,6 @@
 .refuerzoMultiple {
 	grid-row: 1;
 	grid-column: 4;
-	background-color: #6ba70b;
 }
 
 .rabia {
@@ -102,20 +106,18 @@
 	grid-column: 5;
 }
 
-.tratamiento{
-	grid-column:1 / 3;
+.tratamiento {
+	grid-column: 1 / 3;
 	grid-row: 3;
 	background-color: aqua;
 }
 
-
-
 /*Boton Restablecer*/
 .BotonMedicoRestablecer {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -132,10 +134,10 @@
 
 /*Boton Guardar*/
 .BotonMedicoGuardar {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -150,16 +152,16 @@
 	transition: all 0.4s ease 0s;
 }
 
-.BotonCentralMedico{
-	float:center;
+.BotonCentralMedico {
+	float: center;
 }
 
 /*Botones transiciones*/
 .BotonMedicoTransicion {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -175,15 +177,11 @@
 }
 
 /*Boton siguiente expediente*/
-.BotonSiguienteMedico{
+.BotonSiguienteMedico {
 	float: right;
-}	
-
-/*Boton expediente previo*/
-.BotonAnteriorMedico{
-	float:left;
 }
 
-
-
-
+/*Boton expediente previo*/
+.BotonAnteriorMedico {
+	float: left;
+}
