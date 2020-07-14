@@ -6,17 +6,23 @@ class ContactoHT extends Component {
 		return (
 			<div className="contactoHT">
 				<div className="tipoHT">
-					<label htmlFor="tipoHT">Seleccionar tipo de HT: </label>
-					<select
-						id="tipoHT"
-						name="tipoHT"
-						value={this.props.tipoHT}
-						onChange={this.props.handleChange}
-					>
-						<option value="ninguno">Ninguno</option>
-						<option value="persona">Persona</option>
-						<option value="veterinaria">Veterinaria</option>
-					</select>
+					<div className="select">
+						<select
+							className="select-text"
+							required
+							id="tipoHT"
+							name="tipoHT"
+							value={this.props.tipoHT}
+							onChange={this.props.handleChange}
+						>
+							<option value=""></option>
+							<option value="persona">Persona</option>
+							<option value="veterinaria">Veterinaria</option>
+						</select>
+						<span className="select-highlight"></span>
+						<span className="select-bar"></span>
+						<label className="select-label">Tipo de HT</label>
+					</div>
 				</div>
 
 				<div className="nombreHT">
@@ -51,24 +57,32 @@ class ContactoHT extends Component {
 
 				<div className="fechas">
 					<div className="fechaInicio">
-						<label htmlFor="fechaInicioHT">Fecha Inicio</label>
-						<input
-							type="date"
-							id="fechaInicioHT"
-							name="fechaInicioHT"
-							value={this.props.fechaInicioHT}
-							onChange={this.props.handleChange}
-						/>
+						<div className="labelFechaHT">
+							<label htmlFor="fechaInicioHT">Fecha Inicio</label>
+						</div>
+						<div className="fechaInputHT">
+							<input
+								type="date"
+								id="fechaInicioHT"
+								name="fechaInicioHT"
+								value={this.props.fechaInicioHT}
+								onChange={this.props.handleChange}
+							/>
+						</div>
 					</div>
 					<div className="fechaFinal">
-						<label htmlFor="fechaFinalHT">Fecha Final</label>
-						<input
-							type="date"
-							id="fechaFinalHT"
-							name="fechaFinalHT"
-							value={this.props.fechaFinalHT}
-							onChange={this.props.handleChange}
-						/>
+						<div className="labelFechaHT">
+							<label htmlFor="fechaFinalHT">Fecha Final</label>
+						</div>
+						<div className="fechaInputHT">
+							<input
+								type="date"
+								id="fechaFinalHT"
+								name="fechaFinalHT"
+								value={this.props.fechaFinalHT}
+								onChange={this.props.handleChange}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

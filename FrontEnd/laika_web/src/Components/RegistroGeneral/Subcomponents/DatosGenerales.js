@@ -84,14 +84,20 @@ export default class DatosGenerales extends React.Component {
 					</div>
 				</div>
 				<div className="fechaRescate">
-					<label htmlFor="fechaDeRescate">Fecha de Rescate: </label>
-					<input
-						id="fechaDeRescate"
-						type="date"
-						name="fechaDeRescate"
-						value={this.props.fechaDeRescate}
-						onChange={this.props.handleChange}
-					/>
+					<div className="labelFechaRescate">
+						<label htmlFor="fechaDeRescate">
+							Fecha de Rescate:{" "}
+						</label>
+					</div>
+					<div className="fechaInputRescate">
+						<input
+							id="fechaDeRescate"
+							type="date"
+							name="fechaDeRescate"
+							value={this.props.fechaDeRescate}
+							onChange={this.props.handleChange}
+						/>
+					</div>
 				</div>
 			</div>
 		);

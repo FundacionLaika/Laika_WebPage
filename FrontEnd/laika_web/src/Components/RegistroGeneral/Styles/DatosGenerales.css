@@ -1,35 +1,47 @@
 .datosGenerales {
-    display: grid;
+	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
-    padding: 15px;
+	padding: 15px;
 }
 
 .nombre {
-    grid-column: 1;
-    grid-row:1;
-    padding: 15px;
+	grid-column: 1;
+	grid-row: 1;
+	padding: 15px;
 }
 
 .edad {
-    grid-column: 2;
-    grid-row:1;
-    padding: 15px;
+	grid-column: 2;
+	grid-row: 1;
+	padding: 15px;
 }
 
 .genero {
-    grid-column: 1;
-    grid-row: 2;
-    padding: 15px;
+	grid-column: 1;
+	grid-row: 2;
+	padding: 15px;
 }
 
 .especie {
-    grid-column: 1;
-    grid-row: 3;
-    padding: 15px;
+	grid-column: 1;
+	grid-row: 3;
+	padding: 15px;
 }
 
 .fechaRescate {
-    grid-column: 2;
-    grid-row:2;
-    padding: 15px;
+	grid-column: 2;
+	grid-row: 2;
+	display: grid;
+	padding: 15px;
+}
+
+.labelFechaRescate {
+	grid-column: 1;
+    grid-row: 1;
+    padding-bottom: 7px;
+}
+
+.fechaInputRescate {
+	grid-column: 1;
+	grid-row: 2;
 }
