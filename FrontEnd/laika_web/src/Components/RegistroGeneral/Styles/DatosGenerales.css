@@ -1,18 +1,18 @@
 .datosGenerales {
     display: grid;
-	grid-auto-columns: minmax(50%, 50%);
+    grid-auto-columns: minmax(50%, 50%);
     padding: 15px;
 }
 
 .nombre {
     grid-column: 1;
-    grid-row:1;
+    grid-row: 1;
     padding: 15px;
 }
 
 .edad {
     grid-column: 2;
-    grid-row:1;
+    grid-row: 1;
     padding: 15px;
 }
 
@@ -30,6 +30,6 @@
 
 .fechaRescate {
     grid-column: 2;
-    grid-row:2;
+    grid-row: 2;
     padding: 15px;
 }
