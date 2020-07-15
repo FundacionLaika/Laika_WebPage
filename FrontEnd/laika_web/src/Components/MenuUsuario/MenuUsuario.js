@@ -17,9 +17,11 @@ class MenuUsuario extends Component {
             cambiarContrasena: false,
             contrasenaNueva: "",
             confirmarContrasena: "",
+            cambiosContrasena: false,
             cambiarCorreo: false,
             correoNuevo: "",
             confirmarCorreo: "",
+            cambiosCorreo: false,
         };
     }
 
@@ -27,10 +29,19 @@ class MenuUsuario extends Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
+        console.log("H: " + event.target.value);
     };
 
     onSubmit = (event) => {
-        this.validate();
+        this.setState({
+            [event.target.name]: true,
+        });
+        if (
+            event.target.name === "cambiosCorreo" ||
+            event.target.name === "cambiosContrasena"
+        ) {
+            this.validate();
+        }
     };
 
     imageHandler = (event) => {
@@ -48,22 +59,31 @@ class MenuUsuario extends Component {
         reader.readAsDataURL(event.target.files[0]);
     };
 
-    onChangeData = (event) => {
-        this.setState({
-            [event.target.name]: true,
-        });
-    };
-
     validate = () => {
         let errorCorreo = "";
-        let errorConfirmacionCorreo = "";
+        let errorConfirmarCorreo = "";
         let errorContrasena = "";
         let errorConfirmarContrasena = "";
 
         //Si uno de las condiciconales se cumple actualiza una de las variables de mensajes de error
 
         console.log(this.state.cambiarCorreo);
-        if (this.state.cambiarCorreo) {
+        if (this.state.cambiosContrasena) {
+            if (!this.state.contrasenaNueva)
+                errorContrasena = "Introduzca una contraseña";
+
+            if (!this.state.confirmarContrasena)
+                errorConfirmarContrasena = "Introduzca una contraseña";
+
+            if (this.state.confirmarContrasena !== this.state.contrasenaNueva) {
+                errorContrasena = "Las contraseñas no son iguales";
+                errorConfirmarContrasena = "Las contraseñas no son iguales";
+            } else {
+                this.setState({
+                    contrasena: this.state.cambiarContrasena,
+                });
+            }
+        } else if (this.state.cambiosCorreo) {
             if (!this.state.correoNuevo) errorCorreo = "Introduzca un correo";
             else if (!this.state.correoNuevo.includes("@"))
                 errorCorreo = "Correo invalido";
@@ -73,39 +93,34 @@ class MenuUsuario extends Component {
             else if (!this.state.confirmarCorreo.includes("@"))
                 errorCorreo = "Correo invalido";
 
-            if (this.state.confirmarContrasena !== this.state.contrasenaNueva) {
+            if (this.state.confirmarCorreo !== this.state.correoNuevo) {
                 errorContrasena = "Los correos no son iguales";
                 errorConfirmarContrasena = "Los correos no son iguales";
             }
-        } else if (this.state.cambiarContrasena) {
-            if (!this.state.contrasenaNueva)
-                errorContrasena = "Introduzca una contraseña";
-
-            if (!this.state.confirmarContrasena)
-                errorConfirmarContrasena = "Introduzca una contraseña";
-
-            if (this.state.confirmacionContrasena !== this.state.contrasena) {
-                errorContrasena = "Las contraseñas no son iguales";
-                errorConfirmarContrasena = "Las contraseñas no son iguales";
-            }
         }
 
-        //si un mensaje fue actualiza se actulizara sus estados para poder mostrarlos o quitarlos de la tarjeta de registro
+        //si un mensaje fue actualiza se actualizara sus estados para poder mostrarlos o quitarlos de la tarjeta de registro
         if (
             errorCorreo ||
-            errorConfirmacionCorreo ||
+            errorConfirmarCorreo ||
             errorContrasena ||
             errorConfirmarContrasena
         ) {
             this.setState({
                 errorCorreo,
-                errorConfirmacionCorreo,
+                errorConfirmarCorreo,
                 errorContrasena,
                 errorConfirmarContrasena,
             });
-            return false;
+        } else {
+            this.setState({
+                errorCorreo: "",
+                errorConfirmarCorreo: "",
+                errorContrasena: "",
+                errorConfirmarContrasena: "",
+            });
         }
-        return true;
+        console.log(this.state);
     };
 
     render() {
@@ -125,9 +140,11 @@ class MenuUsuario extends Component {
                     <p>Rol: {this.state.usuario.rol}</p>
                 </div>
 
-                <div className="pa2" onClick={this.onChangeData}>
+                <div className="pa2">
                     <label className="ph3">Cambiar Contrasena</label>
-                    <button name="cambiarContrasena">Cambiar</button>
+                    <button onClick={this.onSubmit} name="cambiarContrasena">
+                        Cambiar
+                    </button>
                 </div>
                 {this.state.cambiarContrasena === true ? (
                     <div>
@@ -145,15 +162,20 @@ class MenuUsuario extends Component {
                                 {this.state.errorConfirmarContrasena}
                             </div>
                         </div>
-                        <button onClick={this.onSubmit}>
+                        <button
+                            onClick={this.onSubmit}
+                            name="cambiosContrasena"
+                        >
                             Confirmar Cambios
                         </button>
                     </div>
                 ) : null}
 
-                <div className="pa2" onClick={this.onChangeData}>
+                <div className="pa2">
                     <label className="ph3">Cambiar Correo</label>
-                    <button name="cambiarCorreo">Cambiar</button>
+                    <button onClick={this.onSubmit} name="cambiarCorreo">
+                        Cambiar
+                    </button>
                 </div>
                 {this.state.cambiarCorreo === true ? (
                     <div>
@@ -166,12 +188,12 @@ class MenuUsuario extends Component {
                         </div>
                         <div>
                             <label>Confirmar Correo: </label>
-                            <input type="text" name="confrimarCorreo" />
+                            <input type="text" name="confirmarCorreo" />
                             <div className="f6 red">
-                                {this.state.errorConfirmacionCorreo}
+                                {this.state.errorConfirmarCorreo}
                             </div>
                         </div>
-                        <button onClick={this.onSubmit}>
+                        <button onClick={this.onSubmit} name="cambiosCorreo">
                             Confirmar Cambios
                         </button>
                     </div>

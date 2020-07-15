@@ -23,6 +23,7 @@ const MenuBar = () => {
 						</Link>
 					</div>
 
+
 					<div>
 						<Link
 							to="/RegistroGeneral"
@@ -49,6 +50,7 @@ const MenuBar = () => {
 					</div>
                 </div>
             </div>
+
     );
 };
 
