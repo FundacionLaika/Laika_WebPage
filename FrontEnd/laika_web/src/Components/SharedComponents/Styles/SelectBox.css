@@ -4,7 +4,6 @@
 /* select starting stylings ------------------------------*/
 .select {
 	font-family: inherit;
-	font-weight: bold;
 	position: relative;
 	width: 100%;
 }
@@ -26,7 +25,7 @@
 	border: none;
 	text-indent: 10px;
 	padding-top:27px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.247);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 /* Remove focus */
@@ -53,17 +52,17 @@
 	content: "";
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-top: 6px solid rgba(0, 0, 0, 0.308);
+	border-top: 6px solid rgba(0, 0, 0, 0.5);
 	pointer-events: none;
 }
 
 /* LABEL ======================================= */
 .select-label {
-	color: rgba(0, 0, 0, 0.31);
+    color: rgba(0, 0, 0, 0.5);
 	margin-left: 11px;
 	margin-top: 12px;
 	font-size: 16px;
-	font-weight: 770;
+	font-weight: 600;
 	position: absolute;
 	pointer-events: none;
 	left: 0;
@@ -74,7 +73,7 @@
 /* active state */
 .select-text:focus ~ .select-label,
 .select-text:valid ~ .select-label {
-	color: #2f80ed;
+	color: #0077FF;
 	top: -8px;
 	transition: 0.2s ease all;
 	font-size: 14px;
@@ -94,7 +93,7 @@
 	width: 0;
 	bottom: 1px;
 	position: absolute;
-	background: #2f80ed;
+	background:#0077FF;
 	transition: 0.2s ease all;
 }
 
