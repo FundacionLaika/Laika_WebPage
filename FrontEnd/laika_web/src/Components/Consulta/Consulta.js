@@ -29,12 +29,16 @@ class Consulta extends Component {
     render() {
         return (
             <div className="center">
-                <input
-                    className="mt3 w-40"
-                    type="text"
-                    name="apeido"
-                    onChange={this.handleChange}
-                />
+                <div class="search__container mt3 w-40 center">
+                    <input
+                        className="searchInput search"
+                        type="text"
+                        name="busqueda"
+                        placeholder="Buscar"
+                        onChange={this.handleChange}
+                    />
+                </div>
+
                 <div>
                     <div className="center mt4 pa0 pb0 mb0 w-two-thirds bg-light-purple flex center stretch justify-between">
                         <button
