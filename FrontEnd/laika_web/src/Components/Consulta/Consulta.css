@@ -1,0 +1,11 @@
+.bta {
+    user-select: none;
+}
+
+.bta::active {
+    background-color: pink;
+}
+
+.bta:focus {
+    background-color: pink;
+}
