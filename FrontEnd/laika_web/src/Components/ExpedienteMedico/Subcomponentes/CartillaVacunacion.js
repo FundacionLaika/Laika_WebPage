@@ -6,7 +6,7 @@ class CartillaVacunacion extends Component {
 		return (
 			<div className="cartillaVacunacion">
 				<div className="puppy">
-					<div className="cb">
+					<div className="cb cb-cv">
 						<input
 							type="checkbox"
 							id="puppy"
@@ -36,7 +36,7 @@ class CartillaVacunacion extends Component {
 				</div>
 
 				<div className="refuerzoPuppy">
-					<div className="cb">
+					<div className="cb cb-cv">
 						<input
 							type="checkbox"
 							id="refuerzoPuppy"
@@ -66,7 +66,7 @@ class CartillaVacunacion extends Component {
 				</div>
 
 				<div className="multiple">
-					<div className="cb">
+					<div className="cb cb-cv">
 						<input
 							type="checkbox"
 							id="multiple"
@@ -95,7 +95,7 @@ class CartillaVacunacion extends Component {
 					</div>
 				</div>
 				<div className="refuerzoMultiple">
-					<div className="cb">
+					<div className="cb cb-cv">
 						<input
 							type="checkbox"
 							id="refuerzoMultiple"
@@ -124,7 +124,7 @@ class CartillaVacunacion extends Component {
 					</div>
 				</div>
 				<div className="rabia">
-					<div className="cb">
+					<div className="cb cb-cv">
 						<input
 							type="checkbox"
 							id="rabia"
