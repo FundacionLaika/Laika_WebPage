@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import shortid from "shortid";
 import Foto from "../SharedComponents/Foto";
+import UsuarioGrid from "./UsuarioGrid";
 import { Link } from "react-router-dom";
 
 class MenuUsuario extends Component {
@@ -22,6 +24,7 @@ class MenuUsuario extends Component {
             correoNuevo: "",
             confirmarCorreo: "",
             cambiosCorreo: false,
+            usuarios: [],
         };
     }
 
@@ -123,47 +126,132 @@ class MenuUsuario extends Component {
         console.log(this.state);
     };
 
+    addRow = (event) => {
+        event.preventDefault();
+        const newRow = {
+            id: shortid.generate(),
+            nombre: "",
+            apeido: "",
+            correo: "",
+            contrasena: "",
+            rol: "",
+        };
+        this.setState((state) => ({
+            usuarios: [newRow, ...state.usuarios],
+        }));
+    };
+
+    deleteRow = (id) => {
+        this.setState((state) => ({
+            usuarios: state.usuarios.filter((row) => row.id !== id),
+        }));
+    };
+
+    modifyRow = (event) => {
+        let dataTemp = this.state.usuarios;
+
+        dataTemp.forEach((element) => {
+            if (element.id === event.target.id) {
+                if (event.target.name === "nombre")
+                    element.nombre = event.target.value;
+                else if (event.target.name === "apellido")
+                    element.apellido = event.target.value;
+                else if (event.target.name === "correo")
+                    element.correo = event.target.value;
+                else if (event.target.name === "contrasena")
+                    element.contrasena = event.target.value;
+                else if (event.target.name === "rol")
+                    element.rol = event.target.value;
+            }
+        });
+
+        this.setState({
+            usuarios: dataTemp,
+        });
+    };
+
     render() {
         return (
             <div>
-                <div className="">
-                    <h3>Información del usuario</h3>
+                <div>
+                    <h2 className="blue b">Información del usuario</h2>
                     <Foto
                         id="fotoDefault"
                         foto={this.state.usuario.fotoPerfil}
                         imageHandler={this.imageHandler}
                     />
-                    <p>Nombre: {this.state.usuario.nombre}</p>
-                    <p>Apellido: {this.state.usuario.apellido}</p>
-                    <p>Correo: {this.state.usuario.correo}</p>
-                    <p>contrasena: {this.state.usuario.contrasena}</p>
-                    <p>Rol: {this.state.usuario.rol}</p>
+                    <div className="pa3 flex justify-center flex-column">
+                        <div className="labelD">
+                            <label>Nombre: {this.state.usuario.nombre}</label>
+                        </div>
+                        <br />
+                        <div className="labelD">
+                            <label>
+                                Apellido: {this.state.usuario.apellido}
+                            </label>
+                        </div>
+                        <br />
+                        <div className="labelD">
+                            <label>Correo: {this.state.usuario.correo}</label>
+                        </div>
+                        <br />
+                        <div className="labelD">
+                            <label>
+                                Contraseña: {this.state.usuario.contrasena}
+                            </label>
+                        </div>
+                        <br />
+                        <div className="labelD">
+                            <label>Rol: {this.state.usuario.rol}</label>
+                        </div>
+                    </div>
                 </div>
+                <br />
 
                 <div className="pa2">
-                    <label className="ph3">Cambiar Contrasena</label>
-                    <button onClick={this.onSubmit} name="cambiarContrasena">
+                    <label className="ph3 labelD">Cambiar Contrasena</label>
+                    <button
+                        className="f5 pa2 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba"
+                        onClick={this.onSubmit}
+                        name="cambiarContrasena"
+                    >
                         Cambiar
                     </button>
                 </div>
                 {this.state.cambiarContrasena === true ? (
                     <div>
-                        <div>
-                            <label>Contrasena Nueva: </label>
-                            <input type="text" name="contrasenaNueva" />
-                            <div className="f6 red">
-                                {this.state.errorContrasena}
-                            </div>
+                        <div className="center w-33">
+                            <label htmlFor="Contrasena" className="inp">
+                                <input
+                                    type="text"
+                                    name="contrasenaNueva"
+                                    onChange={this.handleChange}
+                                    placeholder="&nbsp;"
+                                />
+                                <span className="label w-20">Contraseña</span>
+                                <div className="f6 red">
+                                    {this.state.errorContrasena}
+                                </div>
+                            </label>
                         </div>
-                        <div>
-                            <label>Confirmar Contrasena: </label>
-                            <input type="text" name="confirmarContrasena" />
-                            <div className="f6 red">
-                                {this.state.errorConfirmarContrasena}
-                            </div>
+
+                        <div className="center w-33 pt30">
+                            <label htmlFor="confirmarContra" className="inp">
+                                <input
+                                    type="text"
+                                    name="confirmarContrasena"
+                                    onChange={this.handleChange}
+                                    placeholder="&nbsp;"
+                                />
+                                <span className="label w-20">Confirmar</span>
+                                <div className="f6 red">
+                                    {this.state.errorConfirmarContrasena}
+                                </div>
+                            </label>
                         </div>
                         <button
                             onClick={this.onSubmit}
+                            className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba "
                             name="cambiosContrasena"
                         >
                             Confirmar Cambios
@@ -172,30 +260,59 @@ class MenuUsuario extends Component {
                 ) : null}
 
                 <div className="pa2">
-                    <label className="ph3">Cambiar Correo</label>
-                    <button onClick={this.onSubmit} name="cambiarCorreo">
+                    <label className="ph3 labelD">Cambiar Correo</label>
+                    <button
+                        className="f5 pa2 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba"
+                        onClick={this.onSubmit}
+                        name="cambiarCorreo"
+                    >
                         Cambiar
                     </button>
                 </div>
                 {this.state.cambiarCorreo === true ? (
                     <div>
                         <div>
-                            <label>Correo Nuevo: </label>
-                            <input type="text" name="correoNuevo" />
-                            <div className="f6 red">
-                                {this.state.errorCorreo}
+                            <div className="center w-33">
+                                <label htmlFor="correoNuevo" className="inp">
+                                    <input
+                                        type="text"
+                                        name="correoNuevo"
+                                        onChange={this.handleChange}
+                                        placeholder="&nbsp;"
+                                    />
+                                    <span className="label w-20">Correo</span>
+                                    <div className="f6 red">
+                                        {this.state.errorCorreo}
+                                    </div>
+                                </label>
                             </div>
-                        </div>
-                        <div>
-                            <label>Confirmar Correo: </label>
-                            <input type="text" name="confirmarCorreo" />
-                            <div className="f6 red">
-                                {this.state.errorConfirmarCorreo}
+                            <div className="center w-33 pt30">
+                                <label
+                                    htmlFor="confirmarCorreo"
+                                    className="inp"
+                                >
+                                    <input
+                                        type="text"
+                                        name="confirmarCorreo"
+                                        onChange={this.handleChange}
+                                        placeholder="&nbsp;"
+                                    />
+                                    <span className="label w-20">
+                                        Confirmar
+                                    </span>
+                                    <div className="f6 red">
+                                        {this.state.errorConfirmarCorreo}
+                                    </div>
+                                </label>
                             </div>
+                            <button
+                                className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba"
+                                onClick={this.onSubmit}
+                                name="cambiosContrasena"
+                            >
+                                Confirmar Cambios
+                            </button>
                         </div>
-                        <button onClick={this.onSubmit} name="cambiosCorreo">
-                            Confirmar Cambios
-                        </button>
                     </div>
                 ) : null}
 
@@ -204,13 +321,27 @@ class MenuUsuario extends Component {
                         <h1>Panel Admin</h1>
                         <h3>Tabla de Usuarios</h3>
 
-                        <button>Agregar Usuario</button>
-                        <button>Eliminar Usuario</button>
+                        {/* <button className="f5 pa2 br3 bw1 b--green pointer hover-bg-green hover-white b ba">
+                            Agregar Usuario
+                        </button>
+                        <button className="f5 pa2 br3 bw1 b--red pointer hover-bg-red hover-white b ba">
+                            Eliminar Usuario
+                        </button> */}
                     </div>
                 ) : null}
-                <div>
+
+                <UsuarioGrid
+                    data={this.state.usuarios}
+                    modifyRow={this.modifyRow}
+                    addRow={this.addRow}
+                    deleteRow={this.deleteRow}
+                />
+
+                <div className="pt5">
                     <Link to="/">
-                        <button>Cerrar Sesion</button>
+                        <button className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba">
+                            Cerrar Sesion
+                        </button>
                     </Link>
                 </div>
             </div>
