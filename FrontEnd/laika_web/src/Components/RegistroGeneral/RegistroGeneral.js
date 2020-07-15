@@ -1,6 +1,6 @@
 import React from "react";
 import Rescatistas from "./Subcomponents/Rescatistas";
-import DatosGenerales from "./Subcomponents/DatosGenerales";
+import DatosGeneralesRG from "./Subcomponents/DatosGeneralesRG";
 import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
@@ -93,7 +93,7 @@ export default class RegistroGeneral extends React.Component {
 
                 <div className="FormularioGeneral">
                     <div className="DatosGenerales">
-                        <DatosGenerales
+                        <DatosGeneralesRG
                             handleChange={this.handleChange}
                             nombre={this.state.nombre}
                             edad={this.state.edad}

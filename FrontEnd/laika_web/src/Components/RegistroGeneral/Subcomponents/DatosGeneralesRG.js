@@ -2,7 +2,7 @@ import React from "react";
 import "../Styles/DatosGenerales.css";
 import "../../SharedComponents/Styles/RadioB.css";
 
-export default class DatosGenerales extends React.Component {
+export default class DatosGeneralesRG extends React.Component {
     render() {
         return (
             <div className="datosGenerales">
@@ -40,7 +40,6 @@ export default class DatosGenerales extends React.Component {
                     <div className="switch center">
                         <div className="quality" id="radio-especie">
                             <input
-                                checked
                                 id="q1"
                                 name="genero"
                                 type="radio"
