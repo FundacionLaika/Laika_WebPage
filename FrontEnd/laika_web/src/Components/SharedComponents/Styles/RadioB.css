@@ -1,0 +1,72 @@
+.switch {
+    position: relative;
+    width: 180px;
+    height: 40px;
+    border: 3px solid purple;
+    color: purple;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.switch2 {
+    position: relative;
+    width: 210px;
+    height: 40px;
+    border: 3px solid purple;
+    color: purple;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.quality {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    line-height: 40px;
+}
+.quality:first-child label {
+    border-radius: 5px 0 0 5px;
+}
+.quality:nth-child(2) label {
+    border-radius: 0;
+}
+.quality:last-child label {
+    border-radius: 0 5px 5px 0;
+}
+.quality label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.4s, color 0.4s, background-color 0.4s;
+}
+.quality input[type="radio"] {
+    appearance: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.quality input[type="radio"]:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+.quality input[type="radio"]:checked ~ label {
+    background-color: pink;
+    color: white;
+    font-weight: bold;
+}
+.quality input[type="radio"]:active ~ label {
+    transform: scale(1.05);
+}
+
+.quality2 {
+    display: inline-block;
+    position: relative;
+    width: 33%;
+    height: 100%;
+    line-height: 40px;
+}
