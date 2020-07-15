@@ -15,9 +15,9 @@ class ContactoHT extends Component {
 							value={this.props.tipoHT}
 							onChange={this.props.handleChange}
 						>
-							<option value=""></option>
-							<option value="persona">Persona</option>
-							<option value="veterinaria">Veterinaria</option>
+							<option className="pad" value=""></option>
+							<option className="pad" value="persona">Persona</option>
+							<option className="pad" value="veterinaria">Veterinaria</option>
 						</select>
 						<span className="select-highlight"></span>
 						<span className="select-bar"></span>

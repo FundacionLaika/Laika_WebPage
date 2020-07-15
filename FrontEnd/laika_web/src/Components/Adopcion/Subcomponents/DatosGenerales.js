@@ -34,20 +34,26 @@ export default class DatosGenerales extends React.Component {
 					</label>
 				</div>
 				<div className="medioAdopcion">
-					<label htmlFor="medioAdopcion">Medio:</label>
-					<select
-						id="medioAdopcion"
-						name="medioAdopcion"
-						value={this.props.medioAdopcion}
-						onChange={this.props.handleChange}
-					>
-						<option value="ninguno">Ninguno</option>
-						<option value="instagram">Instagram</option>
-						<option value="facebook">Facebook</option>
-						<option value="Petco">Petco</option>
-						<option value="referencia">Referencia</option>
-						<option value="otro">Otro</option>
-					</select>
+					<div className="select">
+						<select
+							className="select-text"
+							required
+							id="medioAdopcion"
+							name="medioAdopcion"
+							value={this.props.medioAdopcion}
+							onChange={this.props.handleChange}
+						>
+							<option value=""></option>
+							<option value="instagram">Instagram</option>
+							<option value="facebook">Facebook</option>
+							<option value="Petco">Petco</option>
+							<option value="referencia">Referencia</option>
+							<option value="otro">Otro</option>
+						</select>
+						<span className="select-highlight"></span>
+						<span className="select-bar"></span>
+						<label className="select-label">Medio</label>
+					</div>
 				</div>
 				<div className="telefonoAdopcion">
 					<label htmlFor="telefono" className="inp">
