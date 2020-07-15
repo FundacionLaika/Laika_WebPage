@@ -1,0 +1,123 @@
+@import "https://fonts.googleapis.com/css?family=Raleway:400,700|Raleway:300,400";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+/* select starting stylings ------------------------------*/
+.select {
+	font-family: inherit;
+	position: relative;
+	width: 100%;
+}
+
+.select:hover {
+	background: rgba(0, 0, 0, 0.04);
+	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.select-text {
+	height: 55px;
+	position: relative;
+	font-family: inherit;
+	background-color: transparent;
+	width: 100%;
+	padding: 10px 10px 10px 0;
+	font-size: 16px;
+	border-radius: 0;
+	border: none;
+	text-indent: 10px;
+	padding-top:27px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Remove focus */
+.select-text:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+/* Use custom arrow */
+.select .select-text {
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.select:after {
+	position: absolute;
+	top: 18px;
+	right: 10px;
+	/* Styling the down arrow */
+	width: 0;
+	height: 0;
+	padding: 0;
+	margin-top: 9px;
+	content: "";
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid rgba(0, 0, 0, 0.5);
+	pointer-events: none;
+}
+
+/* LABEL ======================================= */
+.select-label {
+    color: rgba(0, 0, 0, 0.5);
+	margin-left: 11px;
+	margin-top: 12px;
+	font-size: 16px;
+	font-weight: 600;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	top: 7px;
+	transition: 0.2s ease all;
+}
+
+/* active state */
+.select-text:focus ~ .select-label,
+.select-text:valid ~ .select-label {
+	color: #0077FF;
+	top: -8px;
+	transition: 0.2s ease all;
+	font-size: 14px;
+}
+
+/* BOTTOM BARS ================================= */
+.select-bar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.select-bar:before,
+.select-bar:after {
+	content: "";
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background:#0077FF;
+	transition: 0.2s ease all;
+}
+
+.select-bar:before {
+	left: 50%;
+}
+
+.select-bar:after {
+	right: 50%;
+}
+
+/* active state */
+.select-text:focus ~ .select-bar:before,
+.select-text:focus ~ .select-bar:after {
+	width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.select-highlight {
+	position: absolute;
+	height: 60%;
+	width: 100px;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}

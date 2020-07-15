@@ -38,13 +38,60 @@
 .diagnostico {
 	grid-column: 1;
 	grid-row: 1;
-	background-color: green;
 }
+
+
+#diagnostico {
+	display: grid;
+	grid-auto-columns: minmax(50%, 50%);
+}
+
+#bloque1Diag {
+	grid-column: 1;
+	grid-row: 2;
+	display: grid;
+	padding-top: 10%;
+}
+
+#bloque2Diag {
+	grid-column: 2;
+	grid-row: 2;
+	display: grid;
+	padding-top: 10%;
+}
+
+#bloqueOtro {
+	grid-column: 2;
+	grid-row: 3;
+	padding-left: 20%;
+	padding-top: 5%;
+	padding-bottom: 20%;
+}
+
+#row-diag {
+	display: grid;
+	grid-auto-columns: minmax(50%, 50%);
+	padding: 5%;
+
+}
+
+.cb-diag { 
+	grid-column: 1;
+	grid-row: 1;
+} 
+
+
+#lb-diag { 
+	grid-column: 2;
+	grid-row: 1;
+	display: flex;
+	align-items: center;
+} 
+
 
 .esterilizacion {
 	grid-column: 2;
 	grid-row: 1;
-	background-color: #e42d2d;
 }
 
 .cartillaVacunacion {
@@ -64,7 +111,7 @@
 	padding: 10px;
 }
 
-.cb {
+.cb-cv {
 	grid-row: 1;
 	padding-top: 10px;
 }

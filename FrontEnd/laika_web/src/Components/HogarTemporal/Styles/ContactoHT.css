@@ -30,13 +30,27 @@
 }
 
 .fechaInicio {
-    grid-column: 1;
+	grid-column: 1;
+	display: grid;
     grid-row: 1;
 }
 
 .fechaFinal {
-    grid-column: 2;
-    grid-row: 1;
+	grid-column: 2;
+	display: grid;
+	grid-row: 1;
 }
+
+.labelFechaHT {
+	grid-column: 1;
+	grid-row: 1;
+	padding-bottom:7px;
+}
+
+.fechaInputHT {
+	grid-column:1;
+	grid-row:2;
+}
+
 
 
