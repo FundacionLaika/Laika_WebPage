@@ -4,26 +4,35 @@
 	padding: 15px;
 }
 
+.labelDireccion {
+	grid-column: 1 / 2;
+	grid-row: 1;
+	font-weight:700;
+	font-family: inherit;
+	float: left;
+	color: rgba(0, 0, 0, 0.5);
+}
+
 .calle {
 	grid-column: 1 / 4;
-	grid-row: 1;
+	grid-row: 2;
 	padding: 15px;
 }
 
 .numero {
 	grid-column: 4;
-	grid-row: 1;
+	grid-row: 2;
 	padding: 15px;
 }
 
 .colonia {
 	grid-column: 1 / 5;
-	grid-row: 2;
+	grid-row: 3;
 	padding: 15px;
 }
 
 .municipio {
 	grid-column: 1 / 5;
-	grid-row: 3;
+	grid-row: 4;
 	padding: 15px;
 }

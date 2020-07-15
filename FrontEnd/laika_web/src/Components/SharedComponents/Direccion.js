@@ -5,7 +5,7 @@ class Direccion extends Component {
 	render() {
 		return (
 			<div className="direccion">
-				<div>
+				<div className="labelDireccion">
 					<label>Dirección</label>
 				</div>
 				<div className="calle">
