@@ -82,7 +82,8 @@ export default class DatosGenerales extends React.Component {
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
-						customInput={<DatePickerInput />}
+						customInput={<DatePickerInput id titulo />}
+						title="Visita adopción"
 						id="visitaDeAdopcion"
 						name="visitaDeAdopcion"
 						locale="es"
@@ -99,7 +100,8 @@ export default class DatosGenerales extends React.Component {
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
-						customInput={<DatePickerInput />}
+						customInput={<DatePickerInput id titulo />}
+						title="Fecha Adopción"
 						id="fechaAdopcion"
 						name="fechaAdopcion"
 						locale="es"
