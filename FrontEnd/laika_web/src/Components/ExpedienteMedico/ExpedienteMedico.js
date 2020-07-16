@@ -78,6 +78,13 @@ class ExpedienteMedico extends Component {
 		console.log(value);
 	};
 
+	/*Manejador de dates*/
+	handleDate = (fecha, name) => {
+		this.setState({
+			[name]: fecha,
+		});
+	};
+
 	/*Manejador del botón submit*/
 	handleSubmit = (event) => {
 		event.preventDefault();
@@ -191,6 +198,7 @@ class ExpedienteMedico extends Component {
 							citaEsterilizacion={this.state.citaEsterilizacion}
 							fechaEsterilizacion={this.state.fechaEsterilizacion}
 							handleChange={this.handleChange}
+							handleDate={this.handleDate}
 						/>
 					</div>
 					<div className="cartillaVacunacion">
@@ -208,6 +216,7 @@ class ExpedienteMedico extends Component {
 							}
 							fechaRabia={this.state.fechaRabia}
 							handleChange={this.handleChange}
+							handleDate={this.handleDate}
 						/>
 					</div>
 					<div className="tratamiento">
