@@ -110,6 +110,9 @@ export default class DatosGeneralesRG extends React.Component {
 				<div className="fechaRescate">
 					<div className="date">
 						<DatePicker
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
 							className="date-text"
 							id="fechaDeRescate"
 							name="fechaDeRescate"

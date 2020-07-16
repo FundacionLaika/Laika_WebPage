@@ -1,7 +1,7 @@
 .date {
 	font-family: inherit;
 	position: relative;
-    width: 100%;
+	width: 100%;
     padding-right:50px;
 }
 
@@ -47,7 +47,7 @@
 .date-text:focus ~ .date-label,
 .date-text:valid ~ .date-label {
 	color: #0077FF;
-	top: -8px;
+	top: -12px;
 	transition: 0.2s ease all;
 	font-size: 14px;
 }
