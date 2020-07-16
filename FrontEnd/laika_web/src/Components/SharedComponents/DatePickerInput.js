@@ -9,6 +9,7 @@ const DatePickerInput = React.forwardRef((props, ref) => (
 				name={props.id}
 				value={props.value}
 				onClick={props.onClick}
+				readOnly
 				placeholder="&nbsp;"
 			/>
 			<span className="label">{props.title}</span>
