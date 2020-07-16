@@ -115,7 +115,7 @@ export default class DatosGeneralesRG extends React.Component {
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
-						customInput={<DatePickerInput id titulo/>}
+						customInput={<DatePickerInput/>}
 						title="Fecha de rescate"
 						id="fechaDeRescate"
 						name="fechaDeRescate"

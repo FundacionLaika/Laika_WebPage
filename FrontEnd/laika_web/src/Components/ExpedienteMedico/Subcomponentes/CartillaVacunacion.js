@@ -37,7 +37,7 @@ class CartillaVacunacion extends Component {
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput id titulo />}
+							customInput={<DatePickerInput/>}
 							title="Fecha Puppy"
 							id="fechaPuppy"
 							name="fechaPuppy"
@@ -76,7 +76,7 @@ class CartillaVacunacion extends Component {
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput id titulo />}
+							customInput={<DatePickerInput/>}
 							title="Fecha RP"
 							id="fechaRefuerzoPuppy"
 							name="fechaRefuerzoPuppy"
@@ -118,7 +118,7 @@ class CartillaVacunacion extends Component {
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput id titulo />}
+							customInput={<DatePickerInput/>}
 							title="Fecha Múltiple"
 							id="fechaMultiple"
 							name="fechaMultiple"
@@ -156,7 +156,7 @@ class CartillaVacunacion extends Component {
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput id titulo />}
+							customInput={<DatePickerInput/>}
 							title="Fecha RM"
 							id="fechaRefuerzoMultiple"
 							name="fechaRefuerzoMultiple"
@@ -197,7 +197,7 @@ class CartillaVacunacion extends Component {
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput id titulo />}
+							customInput={<DatePickerInput/>}
 							title="Fecha Rabia"
 							id="fechaRabia"
 							name="fechaRabia"

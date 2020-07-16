@@ -73,7 +73,7 @@ class ContactoHT extends Component {
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput id titulo />}
+							customInput={<DatePickerInput/>}
 							title="Fecha Inicio"
 							id="fechaInicioHT"
 							name="fechaInicioHT"
@@ -91,7 +91,7 @@ class ContactoHT extends Component {
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput id titulo />}
+							customInput={<DatePickerInput/>}
 							title="Fecha Final"
 							id="fechaFinalHT"
 							name="fechaFinalHT"

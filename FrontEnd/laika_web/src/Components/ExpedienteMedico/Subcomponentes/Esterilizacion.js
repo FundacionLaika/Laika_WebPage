@@ -77,7 +77,7 @@ class Esterilizacion extends Component {
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
-						customInput={<DatePickerInput id titulo />}
+						customInput={<DatePickerInput/>}
 						title="Fecha de Esterilización"
 						id="fechaEsterilizacion"
 						name="fechaEsterilizacion"
