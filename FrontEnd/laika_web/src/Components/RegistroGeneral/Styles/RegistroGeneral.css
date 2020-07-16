@@ -34,11 +34,13 @@
 .DireccionGeneral {
 	grid-column: 2;
 	grid-row:1;
+	
 }
 
 .SenasParticulares {
 	grid-column: 2;
 	grid-row: 2;
+	padding: 15px 15px 15px 12px;
 }
 
 .BotonesRegistroGeneral {

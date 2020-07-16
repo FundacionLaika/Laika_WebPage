@@ -1,7 +1,6 @@
 import React from "react";
 import "../Styles/DatosGenerales.css";
 import "../../SharedComponents/Styles/RadioB.css";
-
 export default class DatosGeneralesRG extends React.Component {
     render() {
         return (

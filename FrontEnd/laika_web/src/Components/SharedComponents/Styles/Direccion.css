@@ -16,23 +16,23 @@
 .calle {
 	grid-column: 1 / 4;
 	grid-row: 2;
-	padding: 15px;
+	padding: 15px 15px 15px 0px;
 }
 
 .numero {
 	grid-column: 4;
 	grid-row: 2;
-	padding: 15px;
+	padding: 15px 15px 15px 0px;
 }
 
 .colonia {
 	grid-column: 1 / 5;
 	grid-row: 3;
-	padding: 15px;
+	padding: 15px 15px 15px 0px;
 }
 
 .municipio {
 	grid-column: 1 / 5;
 	grid-row: 4;
-	padding: 15px;
+	padding: 15px 15px 15px 0px;
 }
