@@ -30,6 +30,13 @@ export default class Adopcion extends React.Component {
 		});
 	};
 
+	/*Manejador de dates*/
+	handleDate = (fecha, name) => {
+		this.setState({
+			[name]: fecha,
+		});
+	};
+
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
@@ -123,6 +130,7 @@ export default class Adopcion extends React.Component {
 							telefono={this.state.telefono}
 							fechaAdopcion={this.state.fechaAdopcion}
 							medioAdopcion={this.state.medioAdopcion}
+							handleDate={this.state.handleDate}
 						/>
 					</div>
 					<div className="DireccionAdopcion">
