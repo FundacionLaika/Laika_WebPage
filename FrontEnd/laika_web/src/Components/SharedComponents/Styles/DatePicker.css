@@ -1,0 +1,63 @@
+.date {
+	font-family: inherit;
+	position: relative;
+    width: 100%;
+    padding-right:50px;
+}
+
+.date:hover {
+	background: rgba(0, 0, 0, 0.04);
+	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.date-text {
+	height: 55px;
+	position: relative;
+	font-family: inherit;
+	background-color: transparent;
+	width: 100%;
+	padding: 10px 10px 10px 0;
+	font-size: 16px;
+	border-radius: 0;
+	border: none;
+	text-indent: 10px;
+	padding-top:27px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Remove focus */
+.date-text:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+.date-label {
+    color: rgba(0, 0, 0, 0.5);
+	margin-left: 11px;
+	margin-top: 12px;
+	font-size: 16px;
+	font-weight: 600;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	top: 7px;
+	transition: 0.2s ease all;
+}
+
+.date-text:focus ~ .date-label,
+.date-text:valid ~ .date-label {
+	color: #0077FF;
+	top: -8px;
+	transition: 0.2s ease all;
+	font-size: 14px;
+}
+
+.date-highlight {
+	position: absolute;
+	height: 60%;
+	width: 100px;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
