@@ -7,6 +7,7 @@ import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
 import "../SharedComponents/Styles/DatePicker.css";
+import "../SharedComponents/Styles/TextArea.css";
 
 export default class RegistroGeneral extends React.Component {
 	state = {
@@ -129,18 +130,26 @@ export default class RegistroGeneral extends React.Component {
 						/>
 					</div>
 					<div className="SenasParticulares">
-						<div>
-							<label htmlFor="senasParticulares">
-								Señas Particulares:{" "}
-							</label>
+						<div className="form-field">
+							<div className="form-field__control">
+								<textarea
+									id="senasParticulares"
+									className="form-field__textarea"
+									placeholder=" "
+									rows="4"
+									name="senasParticulares"
+									value={this.props.senasParticulares}
+									onChange={this.handleChange}
+								></textarea>
+								<label
+									htmlFor="senasParticulares"
+									className="form-field__label"
+								>
+									Señas Particulares
+								</label>
+								<div className="form-field__bar"></div>
+							</div>
 						</div>
-						<textarea
-							id="senasParticulares"
-							type="text"
-							name="senasParticulares"
-							value={this.props.senasParticulares}
-							onChange={this.handleChange}
-						/>
 					</div>
 				</div>
 

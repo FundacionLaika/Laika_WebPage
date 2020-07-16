@@ -1,12 +1,15 @@
 import React from "react";
 import "../Styles/DatosGenerales.css";
 import "../../SharedComponents/Styles/RadioB.css";
+<<<<<<< HEAD
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
 registerLocale("es", es);
 
+=======
+>>>>>>> master
 export default class DatosGeneralesRG extends React.Component {
 	render() {
 		return (
