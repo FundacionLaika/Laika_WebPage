@@ -4,9 +4,9 @@ import "../../SharedComponents/Styles/RadioB.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
-import "../../SharedComponents/Styles/DatePicker.css";
 import "../../SharedComponents/Styles/TextArea.css";
 import es from "date-fns/locale/es";
+import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 
@@ -109,26 +109,22 @@ export default class DatosGeneralesRG extends React.Component {
 						</div>
 					</div>
 				</div>
-
 				<div className="fechaRescate">
-					<div className="date">
-						<DatePicker
-							useWeekdaysShort
-							fixedHeight
-							autoComplete
-							className="date-text"
-							id="fechaDeRescate"
-							name="fechaDeRescate"
-							locale="es"
-							selected={this.props.fechaDeRescate}
-							dateFormat="dd/MM/yyyy"
-							onChange={(date) =>
-								this.props.handleDate(date, "fechaDeRescate")
-							}
-						/>
-						<span className="date-highlight"></span>
-						<label className="date-label">Fecha de rescate</label>
-					</div>
+					<DatePicker
+						isClearable
+						useWeekdaysShort
+						fixedHeight
+						autoComplete
+						customInput={<DatePickerInput />}
+						id="fechaDeRescate"
+						name="fechaDeRescate"
+						locale="es"
+						selected={this.props.fechaDeRescate}
+						dateFormat="dd/MM/yyyy"
+						onChange={(date) =>
+							this.props.handleDate(date, "fechaDeRescate")
+						}
+					/>
 				</div>
 			</div>
 		);

@@ -55,6 +55,13 @@ class HogarTemporal extends Component {
 		console.log(event.target.name);
 	};
 
+	/*Manejador de dates*/
+	handleDate = (fecha, name) => {
+		this.setState({
+			[name]: fecha,
+		});
+	};
+
 	/*Manejador del botón submit*/
 	handleSubmit = (event) => {
 		event.preventDefault();
@@ -134,6 +141,7 @@ class HogarTemporal extends Component {
 							fechaInicioHT={this.state.fechaInicioHT}
 							fechaFinalHT={this.state.fechaFinalHT}
 							handleChange={this.handleChange}
+							handleDate={this.handleDate}
 						/>
 					</div>
 					<div className="direccionHT">

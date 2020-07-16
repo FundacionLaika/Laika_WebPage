@@ -7,7 +7,6 @@ import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
 
-
 export default class RegistroGeneral extends React.Component {
 	state = {
 		nombre: "",
