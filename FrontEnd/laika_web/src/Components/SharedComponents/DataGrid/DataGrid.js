@@ -4,7 +4,7 @@ import Row from "./Row";
 export default class DataGrid extends React.Component {
     render() {
         return (
-            <div>
+            <div className="DGAArea">
                 <button
                     className="f5 pa2 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba "
                     onClick={this.props.addRow}

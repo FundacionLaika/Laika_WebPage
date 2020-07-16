@@ -1,0 +1,28 @@
+.row {
+    background-color: yellow;
+    display: grid;
+}
+
+.observacionesGA {
+    grid-row: 1;
+    grid-column: 1;
+    background-color: red;
+}
+
+.accionGA {
+    grid-row: 1;
+    grid-column: 2;
+    background-color: blue;
+}
+
+.fechaGA {
+    grid-row: 1;
+    grid-column: 3;
+    background-color: purple;
+}
+
+.botonBorar {
+    grid-row: 1;
+    grid-column: 4;
+    background-color: aqua;
+}
