@@ -1,7 +1,7 @@
 import React from "react";
 
-const DatePickerInput = React.forwardRef( (props,ref) => (
-	<div className="fecha example-custom-input">
+const DatePickerInput = React.forwardRef((props, ref) => (
+	<div ref={ref} className="fecha">
 		<label htmlFor={props.id} className="inp">
 			<input
 				id={props.id}

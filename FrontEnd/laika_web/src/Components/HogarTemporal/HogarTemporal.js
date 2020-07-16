@@ -16,8 +16,8 @@ class HogarTemporal extends Component {
 		tipoHT: "Ninguno",
 		nombreHT: "",
 		telefonoHT: "",
-		fechaInicioHT: "",
-		fechaFinalHT: "",
+		fechaInicioHT: null,
+		fechaFinalHT: null,
 
 		/*Dirección HT*/
 		calle: "",
@@ -74,8 +74,8 @@ class HogarTemporal extends Component {
 			tipoHT: "Ninguno",
 			nombreHT: "",
 			telefonoHT: "",
-			fechaInicioHT: "",
-			fechaFinalHT: "",
+			fechaInicioHT: null,
+			fechaFinalHT: null,
 			calle: "",
 			numero: "",
 			colonia: "",

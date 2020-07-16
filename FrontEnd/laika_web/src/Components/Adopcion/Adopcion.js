@@ -10,7 +10,7 @@ import "./Styles/Adopcion.css";
 
 export default class Adopcion extends React.Component {
 	state = {
-		visitaDeAdopcion: "",
+		visitaDeAdopcion: null,
 		adoptante: "",
 		adoptado: "",
 		telefono: "",
@@ -18,7 +18,7 @@ export default class Adopcion extends React.Component {
 		numero: "",
 		colonia: "",
 		municipio: "",
-		fechaAdopcion: "",
+		fechaAdopcion: null,
 		medioAdopcion: "",
 		comentarios: [],
 		foto: "/iconoPerro.png",
@@ -82,7 +82,7 @@ export default class Adopcion extends React.Component {
 
 	handleRestablecer = () => {
 		this.setState({
-			visitaDeAdopcion: "",
+			visitaDeAdopcion: null,
 			adoptante: "",
 			adoptado: "",
 			telefono: "",
@@ -90,7 +90,7 @@ export default class Adopcion extends React.Component {
 			numero: "",
 			colonia: "",
 			municipio: "",
-			fechaAdopcion: "",
+			fechaAdopcion: null,
 			medioAdopcion: "",
 			comentarios: [],
 			foto: "/iconoPerro.png",
