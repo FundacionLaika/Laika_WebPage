@@ -4,8 +4,11 @@ import "../../SharedComponents/Styles/RadioB.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
+import "../../SharedComponents/Styles/DatePicker.css";
+import "../../SharedComponents/Styles/TextArea.css";
 import es from "date-fns/locale/es";
 registerLocale("es", es);
+
 
 export default class DatosGeneralesRG extends React.Component {
 	render() {

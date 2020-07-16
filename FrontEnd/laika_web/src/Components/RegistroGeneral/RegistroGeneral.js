@@ -6,8 +6,7 @@ import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
-import "../SharedComponents/Styles/DatePicker.css";
-import "../SharedComponents/Styles/TextArea.css";
+
 
 export default class RegistroGeneral extends React.Component {
 	state = {
