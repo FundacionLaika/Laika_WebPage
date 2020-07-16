@@ -1,20 +1,20 @@
 import React from "react";
 
-const DatePickerInput = ({ value, onClick ,id,title}) => (
+const DatePickerInput = React.forwardRef( (props,ref) => (
 	<div className="fecha example-custom-input">
-		<label htmlFor={id} className="inp">
+		<label htmlFor={props.id} className="inp">
 			<input
-				id={id}
+				id={props.id}
 				type="text"
-				name={id}
-				value={value}
-				onClick={onClick}
+				name={props.id}
+				value={props.value}
+				onClick={props.onClick}
 				placeholder="&nbsp;"
 			/>
-			<span className="label">{title}</span>
+			<span className="label">{props.title}</span>
 			<span className="focus-bg"></span>
 		</label>
 	</div>
-);
+));
 
 export default DatePickerInput;

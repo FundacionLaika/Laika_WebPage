@@ -130,7 +130,7 @@ export default class Adopcion extends React.Component {
 							telefono={this.state.telefono}
 							fechaAdopcion={this.state.fechaAdopcion}
 							medioAdopcion={this.state.medioAdopcion}
-							handleDate={this.state.handleDate}
+							handleDate={this.handleDate}
 						/>
 					</div>
 					<div className="DireccionAdopcion">
