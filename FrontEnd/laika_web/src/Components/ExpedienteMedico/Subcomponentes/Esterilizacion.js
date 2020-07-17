@@ -11,6 +11,9 @@ class Esterilizacion extends Component {
 	render() {
 		return (
 			<div id="esterilizacion">
+				<div className="headerEsterilizacion">
+					Esterilizacion
+				</div>
 				<div className="labelEsterilizado">
 					<label htmlFor="radio-genero">Esterilizado: </label>
 				</div>

@@ -162,138 +162,135 @@ class ExpedienteMedico extends Component {
 					element.citaMedica = event.target.value;
 			}
 		});
-    
-    	this.setState({
+
+		this.setState({
 			tratamiento: dataTemp,
 		});
 	};
 
+	/*Expediente Médico*/
+	render() {
+		return (
+			<div className="RegistroMedico">
+				<div className="NavBarRegistrosMedico">
+					<NavBarRegistros
+						tabIndicatorPosition={"25%"}
+						activePosition={"ExpedienteMedico"}
+					/>
+				</div>
 
-    /*Expediente Médico*/
-    render() {
-        return (
-            <div className="RegistroMedico">
-                <div className="NavBarRegistrosMedico">
-                    <NavBarRegistros
-                        tabIndicatorPosition={"25%"}
-                        activePosition={"ExpedienteMedico"}
-                    />
-                </div>
+				<div
+					className="FormularioMedico"
+					style={{ overflowY: "scroll", height: "85vh" }}
+				>
+					<div className="diagnostico">
+						<Diagnostico
+							atropellamiento={this.state.atropellamiento}
+							tvt={this.state.tvt}
+							sarnaPiel={this.state.sarnaPiel}
+							viral={this.state.viral}
+							embarazo={this.state.embarazo}
+							cachorros={this.state.cachorros}
+							hemoparasitos={this.state.hemoparasitos}
+							otro={this.state.otro}
+							otroEspecificar={this.state.otroEspecificar}
+							handleChange={this.handleChange}
+						/>
+					</div>
+					<div className="esterilizacion">
+						<Esterilizacion
+							esterilizado={this.state.esterilizado}
+							citaEsterilizacion={this.state.citaEsterilizacion}
+							fechaEsterilizacion={this.state.fechaEsterilizacion}
+							handleChange={this.handleChange}
+							handleDate={this.handleDate}
+						/>
+					</div>
+					<div className="cartillaVacunacion">
+						<CartillaVacunacion
+							puppy={this.state.puppy}
+							refuerzoPuppy={this.state.refuerzoPuppy}
+							multiple={this.state.multiple}
+							refuerzoMultiple={this.state.refuerzoMultiple}
+							rabia={this.state.rabia}
+							fechaPuppy={this.state.fechaPuppy}
+							fechaRefuerzoPuppy={this.state.fechaRefuerzoPuppy}
+							fechaMultiple={this.state.fechaMultiple}
+							fechaRefuerzoMultiple={
+								this.state.fechaRefuerzoMultiple
+							}
+							fechaRabia={this.state.fechaRabia}
+							handleChange={this.handleChange}
+							handleDate={this.handleDate}
+						/>
+					</div>
+					<div className="tratamiento">
+						<div className="headerTratamiento">Tratamiento</div>
 
-                <div
-                    className="FormularioMedico"
-                    style={{ overflowY: "scroll", height: "85vh" }}
-                >
-                    <div className="diagnostico">
-                        <Diagnostico
-                            atropellamiento={this.state.atropellamiento}
-                            tvt={this.state.tvt}
-                            sarnaPiel={this.state.sarnaPiel}
-                            viral={this.state.viral}
-                            embarazo={this.state.embarazo}
-                            cachorros={this.state.cachorros}
-                            hemoparasitos={this.state.hemoparasitos}
-                            otro={this.state.otro}
-                            otroEspecificar={this.state.otroEspecificar}
-                            handleChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="esterilizacion">
-                        <Esterilizacion
-                            esterilizado={this.state.esterilizado}
-                            citaEsterilizacion={this.state.citaEsterilizacion}
-                            fechaEsterilizacion={this.state.fechaEsterilizacion}
-                            handleChange={this.handleChange}
-          						    	handleDate={this.handleDate}
+						<DataGridMed
+							data={this.state.tratamiento}
+							modifyRow={this.modifyRow}
+							addRow={this.addRow}
+							deleteRow={this.deleteRow}
+						/>
+					</div>
+				</div>
 
-                        />
-                    </div>
-                    <div className="cartillaVacunacion">
-                        <CartillaVacunacion
-                            puppy={this.state.puppy}
-                            refuerzoPuppy={this.state.refuerzoPuppy}
-                            multiple={this.state.multiple}
-                            refuerzoMultiple={this.state.refuerzoMultiple}
-                            rabia={this.state.rabia}
-                            fechaPuppy={this.state.fechaPuppy}
-                            fechaRefuerzoPuppy={this.state.fechaRefuerzoPuppy}
-                            fechaMultiple={this.state.fechaMultiple}
-                            fechaRefuerzoMultiple={
-                                this.state.fechaRefuerzoMultiple
-                            }
-                            fechaRabia={this.state.fechaRabia}
-                            handleChange={this.handleChange}
-          							  handleDate={this.handleDate}
+				<div className="BarraLateralMedico flex flex-column">
+					<Scroll>
+						<div>
+							<Foto
+								id="foto1"
+								className="pt3"
+								foto={this.state.foto1}
+								imageHandler={this.imageHandler}
+							/>
+							<Foto
+								id="foto2"
+								className="pt3"
+								foto={this.state.foto2}
+								imageHandler={this.imageHandler}
+							/>
+							<Foto
+								id="foto3"
+								className="pt3"
+								foto={this.state.foto3}
+								imageHandler={this.imageHandler}
+							/>
+						</div>
+					</Scroll>
+				</div>
 
-                        />
-                    </div>
-                    <div className="tratamiento">
-                        <DataGridMed
-                            data={this.state.tratamiento}
-                            modifyRow={this.modifyRow}
-                            addRow={this.addRow}
-                            deleteRow={this.deleteRow}
-                        />
-                    </div>
-                </div>
-
-                <div className="BarraLateralMedico flex flex-column">
-                    <Scroll>
-                        <div>
-                            <Foto
-                                id="foto1"
-                                className="pt3"
-                                foto={this.state.foto1}
-                                imageHandler={this.imageHandler}
-                            />
-                            <Foto
-                                id="foto2"
-                                className="pt3"
-                                foto={this.state.foto2}
-                                imageHandler={this.imageHandler}
-                            />
-                            <Foto
-                                id="foto3"
-                                className="pt3"
-                                foto={this.state.foto3}
-                                imageHandler={this.imageHandler}
-                            />
-                        </div>
-                    </Scroll>
-                </div>
-
-                <div className="BotonesRegistroMedico">
-                    <Link to="/RegistroGeneral">
-                        <button className="BotonMedicoTransicion BotonAnteriorMedico">
-                            {" "}
-                            <i className="fa fa-chevron-circle-left fa-fw"></i>
-                            Registro General
-                        </button>
-                    </Link>
-                    <button
-                        className="BotonMedicoRestablecer BotonCentralMedico"
-                        onClick={this.handleRestablecer}
-                    >
-                        Restablecer <i className="fa fa-eraser fa-fw"></i>
-                    </button>
-                    <button
-                        className="BotonMedicoGuardar BotonCentralMedico"
-                        onClick={this.handleSubmit}
-                    >
-                        Guardar <i className="fa fa-save fa-fw"></i>
-                    </button>
-                    <Link to="/HogarTemporal">
-                        <button className="BotonMedicoTransicion BotonSiguienteMedico">
-                            Hogar Temporal{" "}
-                            <i className="fa fa-chevron-circle-right fa-fw"></i>
-                        </button>
-                    </Link>
-                </div>
-            </div>
-        );
-    }
-	
-	
+				<div className="BotonesRegistroMedico">
+					<Link to="/RegistroGeneral">
+						<button className="BotonMedicoTransicion BotonAnteriorMedico">
+							{" "}
+							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							Registro General
+						</button>
+					</Link>
+					<button
+						className="BotonMedicoRestablecer BotonCentralMedico"
+						onClick={this.handleRestablecer}
+					>
+						Restablecer <i className="fa fa-eraser fa-fw"></i>
+					</button>
+					<button
+						className="BotonMedicoGuardar BotonCentralMedico"
+						onClick={this.handleSubmit}
+					>
+						Guardar <i className="fa fa-save fa-fw"></i>
+					</button>
+					<Link to="/HogarTemporal">
+						<button className="BotonMedicoTransicion BotonSiguienteMedico">
+							Hogar Temporal{" "}
+							<i className="fa fa-chevron-circle-right fa-fw"></i>
+						</button>
+					</Link>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default ExpedienteMedico;

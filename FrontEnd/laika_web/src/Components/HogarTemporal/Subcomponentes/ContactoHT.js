@@ -12,7 +12,7 @@ class ContactoHT extends Component {
 	render() {
 		return (
 			<div className="contactoHT">
-				<div className="labelHT">
+				<div className="headerHT">
 					Hogar Temporal
 				</div>
 				<div className="tipoHT">

@@ -14,6 +14,22 @@
 	grid-row: 1;
 }
 
+.headerDiagnostico {
+	padding-top: 12%;
+	font-weight: 700;
+	font-family: inherit;
+	float: left;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.headerEsterilizacion {
+	padding-top: 6%;
+	padding-bottom: 5%;
+	font-weight: 700;
+	font-family: inherit;
+	color: rgba(0, 0, 0, 0.5);
+}
+
 .FormularioMedico {
 	grid-column: 1 /4;
 	grid-row: 3 / 10;
@@ -121,6 +137,14 @@
 	padding-bottom: 5%;
 }
 
+.headerCartillaVacunacion {
+	font-weight: 700;
+	font-family: inherit;
+	color: rgba(0, 0, 0, 0.5);
+	padding-bottom: 1%;
+	font-size: 16px;
+}
+
 .cartillaVacunacion {
 	grid-column: 1 / 3;
 	grid-row: 2;
@@ -180,10 +204,16 @@
 	grid-column: 5;
 }
 
+.headerTratamiento {
+	padding-bottom: 2%;
+	font-weight: 700;
+	font-family: inherit;
+	color: rgba(0, 0, 0, 0.5);
+}
+
 .tratamiento {
 	grid-column: 1 / 3;
 	grid-row: 3;
-	background-color: aqua;
 }
 
 /*Boton Restablecer*/
