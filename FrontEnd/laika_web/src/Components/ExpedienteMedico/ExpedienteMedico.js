@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Scroll from "../Scroll/Scroll";
 import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
@@ -168,7 +169,11 @@ class ExpedienteMedico extends Component {
                         activePosition={"ExpedienteMedico"}
                     />
                 </div>
-                <div className="FormularioMedico">
+
+                <div
+                    className="FormularioMedico"
+                    style={{ overflowY: "scroll", height: "85vh" }}
+                >
                     <div className="diagnostico">
                         <Diagnostico
                             atropellamiento={this.state.atropellamiento}
@@ -217,6 +222,32 @@ class ExpedienteMedico extends Component {
                         />
                     </div>
                 </div>
+
+                <div className="BarraLateralMedico flex flex-column">
+                    <Scroll>
+                        <div>
+                            <Foto
+                                id="foto1"
+                                className="pt3"
+                                foto={this.state.foto1}
+                                imageHandler={this.imageHandler}
+                            />
+                            <Foto
+                                id="foto2"
+                                className="pt3"
+                                foto={this.state.foto2}
+                                imageHandler={this.imageHandler}
+                            />
+                            <Foto
+                                id="foto3"
+                                className="pt3"
+                                foto={this.state.foto3}
+                                imageHandler={this.imageHandler}
+                            />
+                        </div>
+                    </Scroll>
+                </div>
+
                 <div className="BotonesRegistroMedico">
                     <Link to="/RegistroGeneral">
                         <button className="BotonMedicoTransicion BotonAnteriorMedico">
@@ -243,26 +274,6 @@ class ExpedienteMedico extends Component {
                             <i className="fa fa-chevron-circle-right fa-fw"></i>
                         </button>
                     </Link>
-                </div>
-                <div className="BarraLateralMedico flex items-center justify-center flex-column justify-between pv3">
-                    <Foto
-                        id="foto1"
-                        className="pt3"
-                        foto={this.state.foto1}
-                        imageHandler={this.imageHandler}
-                    />
-                    <Foto
-                        id="foto2"
-                        className="pt3"
-                        foto={this.state.foto2}
-                        imageHandler={this.imageHandler}
-                    />
-                    <Foto
-                        id="foto3"
-                        className="pt3"
-                        foto={this.state.foto3}
-                        imageHandler={this.imageHandler}
-                    />
                 </div>
             </div>
         );

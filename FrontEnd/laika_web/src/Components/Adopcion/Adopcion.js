@@ -112,7 +112,10 @@ export default class Adopcion extends React.Component {
                         activePosition={"Adopcion"}
                     />
                 </div>
-                <div className="FormularioAdopcion">
+                <div
+                    className="FormularioAdopcion"
+                    style={{ overflowY: "scroll", height: "80vh" }}
+                >
                     <div className="DatosGeneralesAdopcion">
                         <DatosGenerales
                             handleChange={this.handleChange}

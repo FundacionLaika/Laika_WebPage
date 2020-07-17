@@ -123,7 +123,10 @@ class HogarTemporal extends Component {
                         activePosition={"HogarTemporal"}
                     />
                 </div>
-                <div className="FormularioHT">
+                <div
+                    className="FormularioHT"
+                    style={{ overflowY: "scroll", height: "80vh" }}
+                >
                     <div className="contactoHT">
                         <ContactoHT
                             tipoHT={this.state.tipoHT}

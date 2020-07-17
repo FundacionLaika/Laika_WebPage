@@ -1,12 +1,13 @@
 import React from "react";
 import RowUsuario from "./RowUsuario";
+import "./MenuUsuario.css";
 
 export default class UsuarioGrid extends React.Component {
     render() {
         return (
-            <div className="pt2">
+            <div className="pt3">
                 <button
-                    className="f5 pa2 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba "
+                    className="f5 pa2 mb3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba "
                     onClick={this.props.addRow}
                 >
                     Agregar

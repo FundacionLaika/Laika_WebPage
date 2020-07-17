@@ -91,7 +91,10 @@ export default class RegistroGeneral extends React.Component {
                     />
                 </div>
 
-                <div className="FormularioGeneral">
+                <div
+                    className="FormularioGeneral"
+                    style={{ overflowY: "scroll", height: "80vh" }}
+                >
                     <div className="DatosGenerales">
                         <DatosGeneralesRG
                             handleChange={this.handleChange}
