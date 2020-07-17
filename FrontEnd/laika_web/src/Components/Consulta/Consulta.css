@@ -1,3 +1,8 @@
+.bgimg {
+    background-image: url(../../Images/pup4.jpg);
+    background-size: cover;
+}
+
 .bta {
     user-select: none;
 }

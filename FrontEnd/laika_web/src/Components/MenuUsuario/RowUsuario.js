@@ -29,7 +29,7 @@ export default class RowUsuario extends React.Component {
                     onChange={this.props.handleChange}
                     placeholder="Apellido"
                 />
-                <textarea
+                <input
                     id={this.props.id}
                     type="text"
                     name="correo"
@@ -37,7 +37,7 @@ export default class RowUsuario extends React.Component {
                     onChange={this.props.handleChange}
                     placeholder="Correo"
                 />
-                <textarea
+                <input
                     id={this.props.id}
                     type="text"
                     name="contrasena"
