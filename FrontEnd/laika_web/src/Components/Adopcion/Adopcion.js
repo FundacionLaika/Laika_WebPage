@@ -10,7 +10,7 @@ import "./Styles/Adopcion.css";
 
 export default class Adopcion extends React.Component {
     state = {
-        visitaDeAdopcion: "",
+        visitaDeAdopcion: null,
         adoptante: "",
         adoptado: "",
         telefono: "",
@@ -18,7 +18,7 @@ export default class Adopcion extends React.Component {
         numero: "",
         colonia: "",
         municipio: "",
-        fechaAdopcion: "",
+		    fechaAdopcion: null,
         medioAdopcion: "",
         comentarios: [],
         foto: "/iconoPerro.png",
@@ -28,6 +28,13 @@ export default class Adopcion extends React.Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
+    };
+
+    /*Manejador de dates*/
+    handleDate = (fecha, name) => {
+      this.setState({
+        [name]: fecha,
+      });
     };
 
     handleSubmit = (event) => {
@@ -74,20 +81,20 @@ export default class Adopcion extends React.Component {
     };
 
     handleRestablecer = () => {
-        this.setState({
-            visitaDeAdopcion: "",
-            adoptante: "",
-            adoptado: "",
-            telefono: "",
-            calle: "",
-            numero: "",
-            colonia: "",
-            municipio: "",
-            fechaAdopcion: "",
-            medioAdopcion: "",
-            comentarios: [],
-            foto: "/iconoPerro.png",
-        });
+      this.setState({
+        visitaDeAdopcion: null,
+        adoptante: "",
+        adoptado: "",
+        telefono: "",
+        calle: "",
+        numero: "",
+        colonia: "",
+        municipio: "",
+        fechaAdopcion: null,
+        medioAdopcion: "",
+        comentarios: [],
+        foto: "/iconoPerro.png",
+      });
     };
 
     imageHandler = (event) => {
@@ -112,10 +119,14 @@ export default class Adopcion extends React.Component {
                         activePosition={"Adopcion"}
                     />
                 </div>
-                <div className="FormularioAdopcion">
+                <div
+                    className="FormularioAdopcion"
+                    style={{ overflowY: "scroll", height: "80vh" }}
+                >
                     <div className="DatosGeneralesAdopcion">
                         <DatosGenerales
                             handleChange={this.handleChange}
+                            handleDate={this.handleDate}
                             visitaDeAdopcion={this.state.visitaDeAdopcion}
                             adoptante={this.state.adoptante}
                             adoptado={this.state.adoptado}

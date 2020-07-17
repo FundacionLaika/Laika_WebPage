@@ -12,24 +12,26 @@ import "../SharedComponents/Styles/SelectBox.css";
 
 class HogarTemporal extends Component {
     state = {
-        /*Contacto HT*/
-        tipoHT: "Ninguno",
-        nombreHT: "",
-        telefonoHT: "",
-        fechaInicioHT: "",
-        fechaFinalHT: "",
 
-        /*Dirección HT*/
-        calle: "",
-        numero: "",
-        colonia: "",
-        municipio: "",
+      /*Contacto HT*/
+      tipoHT: "Ninguno",
+      nombreHT: "",
+      telefonoHT: "",
+      fechaInicioHT: null,
+      fechaFinalHT: null,
 
-        /*Foto*/
-        foto: "/iconoPerro.png",
+      /*Dirección HT*/
+      calle: "",
+      numero: "",
+      colonia: "",
+      municipio: "",
 
-        /*Comentarios*/
-        comentarios: [],
+      /*Foto*/
+      foto: "/iconoPerro.png",
+
+      /*Comentarios*/
+      comentarios: [],
+
     };
 
     /*Manejador de fotos*/
@@ -59,21 +61,21 @@ class HogarTemporal extends Component {
         console.log(this.state);
     };
 
-    /*Manejador de Restablecer*/
-    handleRestablecer = () => {
-        this.setState({
-            tipoHT: "Ninguno",
-            nombreHT: "",
-            telefonoHT: "",
-            fechaInicioHT: "",
-            fechaFinalHT: "",
-            calle: "",
-            numero: "",
-            colonia: "",
-            municipio: "",
-            foto: "/iconoPerro.png",
-        });
-    };
+	/*Manejador de Restablecer*/
+	handleRestablecer = () => {
+		this.setState({
+			tipoHT: "Ninguno",
+			nombreHT: "",
+			telefonoHT: "",
+			fechaInicioHT: null,
+			fechaFinalHT: null,
+			calle: "",
+			numero: "",
+			colonia: "",
+			municipio: "",
+			foto: "/iconoPerro.png",
+		});
+	};
 
     addRow = (event) => {
         event.preventDefault();
@@ -113,6 +115,13 @@ class HogarTemporal extends Component {
         });
     };
 
+    /*Manejador de dates*/
+    handleDate = (fecha, name) => {
+      this.setState({
+        [name]: fecha,
+      });
+    };
+
     /*Expediente Hogar Temporal*/
     render() {
         return (
@@ -123,7 +132,10 @@ class HogarTemporal extends Component {
                         activePosition={"HogarTemporal"}
                     />
                 </div>
-                <div className="FormularioHT">
+                <div
+                    className="FormularioHT"
+                    style={{ overflowY: "scroll", height: "80vh" }}
+                >
                     <div className="contactoHT">
                         <ContactoHT
                             tipoHT={this.state.tipoHT}
@@ -132,6 +144,7 @@ class HogarTemporal extends Component {
                             fechaInicioHT={this.state.fechaInicioHT}
                             fechaFinalHT={this.state.fechaFinalHT}
                             handleChange={this.handleChange}
+                            handleDate={this.handleDate}
                         />
                     </div>
                     <div className="direccionHT">

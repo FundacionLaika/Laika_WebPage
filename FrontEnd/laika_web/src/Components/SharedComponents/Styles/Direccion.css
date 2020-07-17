@@ -1,16 +1,22 @@
 .direccion {
-	display: grid;
-	grid-auto-columns: minmax(25%, 25%);
-	padding: 15px;
+    display: grid;
+    grid-auto-columns: minmax(25%, 25%);
+    padding: 15px;
 }
 
 .labelDireccion {
-	grid-column: 1 / 2;
-	grid-row: 1;
-	font-weight:700;
-	font-family: inherit;
-	float: left;
-	color: rgba(0, 0, 0, 0.5);
+    grid-column: 1 / 2;
+    grid-row: 1;
+    font-weight: 700;
+    font-family: inherit;
+    float: left;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.labelD {
+    font-weight: 700;
+    font-family: inherit;
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .calle {

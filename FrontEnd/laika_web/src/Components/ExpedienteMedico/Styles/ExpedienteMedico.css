@@ -40,7 +40,6 @@
 	grid-row: 1;
 }
 
-
 #diagnostico {
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
@@ -72,26 +71,54 @@
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
 	padding: 5%;
-
 }
 
-.cb-diag { 
+.cb-diag {
 	grid-column: 1;
 	grid-row: 1;
-} 
+}
 
-
-#lb-diag { 
+#lb-diag {
 	grid-column: 2;
 	grid-row: 1;
 	display: flex;
 	align-items: center;
-} 
-
+}
 
 .esterilizacion {
 	grid-column: 2;
 	grid-row: 1;
+	display: grid;
+}
+
+.labelEsterilizado {
+	grid-column: 1;
+	grid-row: 1;
+	padding-bottom: 2.5%;
+}
+
+.inputEsterilizado {
+	grid-column: 1;
+	grid-row: 2;
+	padding-bottom: 5%;
+}
+
+.labelCitaEsterilizacion {
+	grid-column: 1;
+	grid-row: 3;
+	padding-bottom: 2.5%;
+}
+
+.inputCitaEsterilizacion {
+	grid-column: 1;
+	grid-row: 4;
+	padding-bottom: 5%;
+}
+
+.fechaEsterilizacion {
+	grid-column: 1;
+	grid-row: 5;
+	padding-bottom: 5%;
 }
 
 .cartillaVacunacion {

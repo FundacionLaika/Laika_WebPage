@@ -1,0 +1,26 @@
+.item-amu {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    background-color: #b5cfd8;
+}
+.item-bmu {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+
+    background-color: #b5cfd8;
+}
+.item-cmu {
+    grid-column: 1/3;
+    grid-row: 2;
+    background-color: #e0e7eb;
+    border-top: solid 1px;
+    margin: 0;
+}
+
+.containerUs {
+    display: grid;
+    background-color: #b5cfd8;
+    grid-auto-columns: minmax(50%, 50%);
+}

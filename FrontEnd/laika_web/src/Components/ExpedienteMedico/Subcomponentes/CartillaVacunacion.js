@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import "../Styles/Checkboxes.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from "react-datepicker";
+import "../../SharedComponents/Styles/TextArea.css";
+import es from "date-fns/locale/es";
+import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
+registerLocale("es", es);
 
 class CartillaVacunacion extends Component {
 	render() {
@@ -25,12 +32,21 @@ class CartillaVacunacion extends Component {
 					</div>
 
 					<div id="dt">
-						<input
-							type="date"
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput/>}
+							title="Fecha Puppy"
 							id="fechaPuppy"
 							name="fechaPuppy"
-							value={this.props.fechaPuppy}
-							onChange={this.props.handleChange}
+							locale="es"
+							selected={this.props.fechaPuppy}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(date, "fechaPuppy")
+							}
 						/>
 					</div>
 				</div>
@@ -55,12 +71,24 @@ class CartillaVacunacion extends Component {
 					</div>
 
 					<div id="dt">
-						<input
-							type="date"
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput/>}
+							title="Fecha RP"
 							id="fechaRefuerzoPuppy"
 							name="fechaRefuerzoPuppy"
-							value={this.props.fechaRefuerzoPuppy}
-							onChange={this.props.handleChange}
+							locale="es"
+							selected={this.props.fechaRefuerzoPuppy}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(
+									date,
+									"fechaRefuerzoPuppy"
+								)
+							}
 						/>
 					</div>
 				</div>
@@ -85,12 +113,21 @@ class CartillaVacunacion extends Component {
 					</div>
 
 					<div id="dt">
-						<input
-							type="date"
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput/>}
+							title="Fecha Múltiple"
 							id="fechaMultiple"
 							name="fechaMultiple"
-							value={this.props.fechaMultiple}
-							onChange={this.props.handleChange}
+							locale="es"
+							selected={this.props.fechaMultiple}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(date, "fechaMultiple")
+							}
 						/>
 					</div>
 				</div>
@@ -114,12 +151,24 @@ class CartillaVacunacion extends Component {
 					</div>
 
 					<div id="dt">
-						<input
-							type="date"
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput/>}
+							title="Fecha RM"
 							id="fechaRefuerzoMultiple"
 							name="fechaRefuerzoMultiple"
-							value={this.props.fechaRefuerzoMultiple}
-							onChange={this.props.handleChange}
+							locale="es"
+							selected={this.props.fechaRefuerzoMultiple}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(
+									date,
+									"fechaRefuerzoMultiple"
+								)
+							}
 						/>
 					</div>
 				</div>
@@ -143,12 +192,21 @@ class CartillaVacunacion extends Component {
 					</div>
 
 					<div id="dt">
-						<input
-							type="date"
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput/>}
+							title="Fecha Rabia"
 							id="fechaRabia"
 							name="fechaRabia"
-							value={this.props.fechaRabia}
-							onChange={this.props.handleChange}
+							locale="es"
+							selected={this.props.fechaRabia}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(date, "fechaRabia")
+							}
 						/>
 					</div>
 				</div>
