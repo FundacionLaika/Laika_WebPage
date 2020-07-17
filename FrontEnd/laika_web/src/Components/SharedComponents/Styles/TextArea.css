@@ -60,7 +60,9 @@
 	margin-top: 24px;
 	outline: 0;
 	padding: 5%;
-    width: 100%;
+	width: 100%;
+	resize: none;
+
 }
 .form-field__input:-ms-input-placeholder ~ .form-field__label,
 .form-field__textarea:-ms-input-placeholder ~ .form-field__label {

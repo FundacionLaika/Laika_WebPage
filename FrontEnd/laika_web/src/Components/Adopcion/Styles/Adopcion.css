@@ -37,9 +37,10 @@
 }
 
 .DGAArea {
-	background-color: green;
-	margin: 0 5% 0 5%;
+	margin: 0 3% 0 4.5%;
 	display: grid;
+	padding-bottom: 5%;
+
 }
 
 .BotonesRegistroAdopcion {
