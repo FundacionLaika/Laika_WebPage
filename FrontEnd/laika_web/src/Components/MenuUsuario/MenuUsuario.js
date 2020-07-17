@@ -16,11 +16,9 @@ class MenuUsuario extends Component {
                 fotoPerfil: "/iconoPerro.png",
                 rol: "Administrador",
             },
-            cambiarContrasena: false,
             contrasenaNueva: "",
             confirmarContrasena: "",
             cambiosContrasena: false,
-            cambiarCorreo: false,
             correoNuevo: "",
             confirmarCorreo: "",
             cambiosCorreo: false,
@@ -32,18 +30,19 @@ class MenuUsuario extends Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
-        console.log("H: " + event.target.value);
     };
 
     onSubmit = (event) => {
-        this.setState({
-            [event.target.name]: true,
-        });
-        if (
-            event.target.name === "cambiosCorreo" ||
-            event.target.name === "cambiosContrasena"
-        ) {
-            this.validate();
+        if (event.target.name === "cambiosCorreo") {
+            this.setState({
+                [event.target.name]: !this.state.cambiosCorreo,
+            });
+            this.validateCorreo();
+        } else if (event.target.name === "cambiosContrasena") {
+            this.setState({
+                [event.target.name]: !this.state.cambiosContrasena,
+            });
+            this.validateContra();
         }
     };
 
@@ -58,67 +57,81 @@ class MenuUsuario extends Component {
                 );
             }
         };
-        console.log(event.target.id);
         reader.readAsDataURL(event.target.files[0]);
     };
 
-    validate = () => {
+    validateCorreo = () => {
         let errorCorreo = "";
         let errorConfirmarCorreo = "";
-        let errorContrasena = "";
-        let errorConfirmarContrasena = "";
 
-        //Si uno de las condiciconales se cumple actualiza una de las variables de mensajes de error
+        console.log("Cambios correo");
+        if (!this.state.correoNuevo) errorCorreo = "Introduzca un correo";
 
-        console.log(this.state.cambiarCorreo);
-        if (this.state.cambiosContrasena) {
-            if (!this.state.contrasenaNueva)
-                errorContrasena = "Introduzca una contraseña";
+        if (!this.state.confirmarCorreo)
+            errorConfirmarCorreo = "Introduzca un correo";
 
-            if (!this.state.confirmarContrasena)
-                errorConfirmarContrasena = "Introduzca una contraseña";
-
-            if (this.state.confirmarContrasena !== this.state.contrasenaNueva) {
-                errorContrasena = "Las contraseñas no son iguales";
-                errorConfirmarContrasena = "Las contraseñas no son iguales";
-            } else {
-                this.setState({
-                    contrasena: this.state.cambiarContrasena,
-                });
-            }
-        } else if (this.state.cambiosCorreo) {
-            if (!this.state.correoNuevo) errorCorreo = "Introduzca un correo";
-            else if (!this.state.correoNuevo.includes("@"))
-                errorCorreo = "Correo invalido";
-
-            if (!this.state.confirmarCorreo)
-                errorCorreo = "Introduzca un correo";
-            else if (!this.state.confirmarCorreo.includes("@"))
-                errorCorreo = "Correo invalido";
-
-            if (this.state.confirmarCorreo !== this.state.correoNuevo) {
-                errorContrasena = "Los correos no son iguales";
-                errorConfirmarContrasena = "Los correos no son iguales";
-            }
+        if (
+            this.state.confirmarCorreo !== this.state.correoNuevo ||
+            !this.state.correoNuevo
+        ) {
+            errorCorreo = "Los correos no son iguales";
+            errorConfirmarCorreo = "Los correos no son iguales";
+        } else {
+            this.setState(
+                Object.assign(this.state.usuario, {
+                    correo: this.state.correoNuevo,
+                })
+            );
         }
 
         //si un mensaje fue actualiza se actualizara sus estados para poder mostrarlos o quitarlos de la tarjeta de registro
-        if (
-            errorCorreo ||
-            errorConfirmarCorreo ||
-            errorContrasena ||
-            errorConfirmarContrasena
-        ) {
+        if (errorCorreo || errorConfirmarCorreo) {
             this.setState({
                 errorCorreo,
                 errorConfirmarCorreo,
-                errorContrasena,
-                errorConfirmarContrasena,
             });
         } else {
             this.setState({
                 errorCorreo: "",
                 errorConfirmarCorreo: "",
+            });
+        }
+        console.log(this.state);
+    };
+
+    validateContra = () => {
+        let errorContrasena = "";
+        let errorConfirmarContrasena = "";
+
+        console.log("Cambios Contra");
+        if (!this.state.contrasenaNueva)
+            errorContrasena = "Introduzca un correo";
+
+        if (!this.state.confirmarContrasena)
+            errorConfirmarContrasena = "Introduzca un correo";
+
+        if (
+            this.state.contrasenaNueva !== this.state.confirmarContrasena ||
+            !this.state.contrasenaNueva
+        ) {
+            errorContrasena = "Los correos no son iguales";
+            errorConfirmarContrasena = "Los correos no son iguales";
+        } else {
+            this.setState(
+                Object.assign(this.state.usuario, {
+                    contrasena: this.state.contrasenaNueva,
+                })
+            );
+        }
+
+        //si un mensaje fue actualiza se actualizara sus estados para poder mostrarlos o quitarlos de la tarjeta de registro
+        if (errorContrasena || errorConfirmarContrasena) {
+            this.setState({
+                errorContrasena,
+                errorConfirmarContrasena,
+            });
+        } else {
+            this.setState({
                 errorContrasena: "",
                 errorConfirmarContrasena: "",
             });
@@ -172,9 +185,9 @@ class MenuUsuario extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <h2 className="blue b">Información del usuario</h2>
+            <div className="containerUs">
+                <div className="item-amu">
+                    <h2 className="f4 b">Información del usuario</h2>
                     <Foto
                         id="fotoDefault"
                         foto={this.state.usuario.fotoPerfil}
@@ -208,71 +221,15 @@ class MenuUsuario extends Component {
                 </div>
                 <br />
 
-                <div className="pa2">
-                    <label className="ph3 labelD">Cambiar Contrasena</label>
-                    <button
-                        className="f5 pa2 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba"
-                        onClick={this.onSubmit}
-                        name="cambiarContrasena"
-                    >
-                        Cambiar
-                    </button>
-                </div>
-                {this.state.cambiarContrasena === true ? (
+                <div className="item-bmu">
                     <div>
-                        <div className="center w-33">
-                            <label htmlFor="Contrasena" className="inp">
-                                <input
-                                    type="text"
-                                    name="contrasenaNueva"
-                                    onChange={this.handleChange}
-                                    placeholder="&nbsp;"
-                                />
-                                <span className="label w-20">Contraseña</span>
-                                <div className="f6 red">
-                                    {this.state.errorContrasena}
-                                </div>
+                        <div className="pa2">
+                            <label className="f4 ph3 labelD">
+                                Cambiar Correo
                             </label>
                         </div>
-
-                        <div className="center w-33 pt30">
-                            <label htmlFor="confirmarContra" className="inp">
-                                <input
-                                    type="text"
-                                    name="confirmarContrasena"
-                                    onChange={this.handleChange}
-                                    placeholder="&nbsp;"
-                                />
-                                <span className="label w-20">Confirmar</span>
-                                <div className="f6 red">
-                                    {this.state.errorConfirmarContrasena}
-                                </div>
-                            </label>
-                        </div>
-                        <button
-                            onClick={this.onSubmit}
-                            className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba "
-                            name="cambiosContrasena"
-                        >
-                            Confirmar Cambios
-                        </button>
-                    </div>
-                ) : null}
-
-                <div className="pa2">
-                    <label className="ph3 labelD">Cambiar Correo</label>
-                    <button
-                        className="f5 pa2 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba"
-                        onClick={this.onSubmit}
-                        name="cambiarCorreo"
-                    >
-                        Cambiar
-                    </button>
-                </div>
-                {this.state.cambiarCorreo === true ? (
-                    <div>
                         <div>
-                            <div className="center w-33">
+                            <div className="center w-50">
                                 <label htmlFor="correoNuevo" className="inp">
                                     <input
                                         type="text"
@@ -280,13 +237,13 @@ class MenuUsuario extends Component {
                                         onChange={this.handleChange}
                                         placeholder="&nbsp;"
                                     />
-                                    <span className="label w-20">Correo</span>
+                                    <span className="label w-33">Correo</span>
                                     <div className="f6 red">
                                         {this.state.errorCorreo}
                                     </div>
                                 </label>
                             </div>
-                            <div className="center w-33 pt30">
+                            <div className="center w-50 pt30">
                                 <label
                                     htmlFor="confirmarCorreo"
                                     className="inp"
@@ -297,7 +254,7 @@ class MenuUsuario extends Component {
                                         onChange={this.handleChange}
                                         placeholder="&nbsp;"
                                     />
-                                    <span className="label w-20">
+                                    <span className="label w-33">
                                         Confirmar
                                     </span>
                                     <div className="f6 red">
@@ -310,40 +267,92 @@ class MenuUsuario extends Component {
                                 onClick={this.onSubmit}
                                 name="cambiosContrasena"
                             >
-                                Confirmar Cambios
+                                Confirmar Correo
                             </button>
                         </div>
                     </div>
-                ) : null}
+
+                    <div className="pa2">
+                        <label className="f4 ph3 labelD">
+                            Cambiar Contrasena
+                        </label>
+                    </div>
+                    <div>
+                        <div className="center w-50">
+                            <label htmlFor="Contrasena" className="inp">
+                                <input
+                                    type="text"
+                                    name="contrasenaNueva"
+                                    onChange={this.handleChange}
+                                    placeholder="&nbsp;"
+                                />
+                                <span className="label w-33">Contraseña</span>
+                                <div className="f6 red">
+                                    {this.state.errorContrasena}
+                                </div>
+                            </label>
+                        </div>
+
+                        <div className="center w-50 pt30">
+                            <label htmlFor="confirmarContra" className="inp">
+                                <input
+                                    type="text"
+                                    name="confirmarContrasena"
+                                    onChange={this.handleChange}
+                                    placeholder="&nbsp;"
+                                />
+                                <span className="label w-33">Confirmar</span>
+                                <div className="f6 red">
+                                    {this.state.errorConfirmarContrasena}
+                                </div>
+                            </label>
+                        </div>
+                        <button
+                            onClick={this.onSubmit}
+                            className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba "
+                            name="cambiosContrasena"
+                        >
+                            Confirmar Contraseñas
+                        </button>
+                    </div>
+                </div>
 
                 {this.state.usuario.rol === "Administrador" ? (
-                    <div>
-                        <h1>Panel Admin</h1>
-                        <h3>Tabla de Usuarios</h3>
+                    <div className="item-cmu">
+                        <div>
+                            <h2 className="center blue">Tabla de Usuarios</h2>
 
-                        {/* <button className="f5 pa2 br3 bw1 b--green pointer hover-bg-green hover-white b ba">
-                            Agregar Usuario
-                        </button>
-                        <button className="f5 pa2 br3 bw1 b--red pointer hover-bg-red hover-white b ba">
-                            Eliminar Usuario
-                        </button> */}
+                            <UsuarioGrid
+                                data={this.state.usuarios}
+                                modifyRow={this.modifyRow}
+                                addRow={this.addRow}
+                                deleteRow={this.deleteRow}
+                            />
+                        </div>
+                        <div className="pv5 center">
+                            <Link to="/">
+                                <button className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba">
+                                    Cerrar Sesion
+                                </button>
+                            </Link>
+                        </div>
                     </div>
-                ) : null}
-
-                <UsuarioGrid
-                    data={this.state.usuarios}
-                    modifyRow={this.modifyRow}
-                    addRow={this.addRow}
-                    deleteRow={this.deleteRow}
-                />
-
-                <div className="pt5">
+                ) : (
+                    <div className="pv5 center item-cmu">
+                        <Link to="/">
+                            <button className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba">
+                                Cerrar Sesion
+                            </button>
+                        </Link>
+                    </div>
+                )}
+                {/* <div className="pv5 center item-dmu">
                     <Link to="/">
                         <button className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba">
                             Cerrar Sesion
                         </button>
                     </Link>
-                </div>
+                </div> */}
             </div>
         );
     }

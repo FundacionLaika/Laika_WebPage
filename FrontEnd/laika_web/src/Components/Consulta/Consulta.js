@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// import Scroll from "../Scroll/Scroll";
 import "./Consulta.css";
 
 class Consulta extends Component {
@@ -29,7 +30,7 @@ class Consulta extends Component {
     render() {
         return (
             <div className="center">
-                <div class="search__container mt3 w-40 center">
+                <div className="search__container mt3 w-40 center">
                     <input
                         className="searchInput search"
                         type="text"
@@ -70,7 +71,10 @@ class Consulta extends Component {
                             Adopcion
                         </button>
                     </div>
-                    <div className="center mv0 pv0  bg-light-gray w-two-thirds vh-50">
+                    <div
+                        className="center mv0 pv0  bg-light-gray w-two-thirds"
+                        style={{ overflowY: "scroll", height: "65vh" }}
+                    >
                         {/*Todo Agregar los componentes de las tarjetas*/}
                     </div>
                     <Link to="/GenerarPDF">
