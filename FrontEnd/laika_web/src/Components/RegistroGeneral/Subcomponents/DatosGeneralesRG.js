@@ -14,6 +14,9 @@ export default class DatosGeneralesRG extends React.Component {
 	render() {
 		return (
 			<div className="datosGenerales">
+				<div className="labelDatosGenerales">
+					Datos Generales
+				</div>
 				<div className="nombre">
 					<label htmlFor="nombre" className="inp">
 						<input
@@ -43,7 +46,7 @@ export default class DatosGeneralesRG extends React.Component {
 					</label>
 				</div>
 
-				<div>
+				<div className="genero">
 					<label htmlFor="radio-genero">Genero: </label>
 					<div className="switch center">
 						<div className="quality" id="radio-especie">
@@ -71,7 +74,7 @@ export default class DatosGeneralesRG extends React.Component {
 					</div>
 				</div>
 
-				<div>
+				<div className="especie">
 					<label htmlFor="radio-especie">Especie: </label>
 					<div className="switch2 center">
 						<div className="quality quality2">

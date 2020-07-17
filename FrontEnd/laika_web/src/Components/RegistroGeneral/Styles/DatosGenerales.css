@@ -4,44 +4,50 @@
 	padding: 15px;
 }
 
+.labelDatosGenerales {
+	padding-top: 6%;
+	padding-bottom: 0.5%;
+	grid-column: 1; 
+	grid-row:1;
+	text-align: left;
+	padding-left: 10%;
+	font-weight: 700;
+	font-family: inherit;
+	color: rgba(0, 0, 0, 0.5);
+}
+
 .nombre {
 	grid-column: 1;
-	grid-row: 1;
+	grid-row: 2;
 	padding: 15px;
+	padding-bottom: 12%;
 }
 
 .edad {
 	grid-column: 2;
-	grid-row: 1;
+	grid-row: 2;
 	padding: 15px;
+	padding-bottom: 12%;
 }
 
 .genero {
 	grid-column: 1;
-	grid-row: 2;
-	padding: 15px;
+	grid-row: 3;
+	padding-bottom: 6.7%;
 }
 
 .especie {
-	grid-column: 1;
+	grid-column: 2;
 	grid-row: 3;
-	padding: 15px;
+	padding-bottom: 6.7%;
 }
 
 .fechaRescate {
-	grid-column: 2;
-	grid-row: 2;
-	display: grid;
+	grid-column: 1;
+	grid-row: 4;
 	padding: 15px;
 }
 
-.labelFechaRescate {
-	grid-column: 1;
-    grid-row: 1;
-    padding-bottom: 7px;
-}
 
-.fechaInputRescate {
-	grid-column: 1;
-	grid-row: 2;
-}
+
+

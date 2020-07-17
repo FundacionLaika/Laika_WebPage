@@ -1,45 +1,53 @@
 .contactoHT {
 	display: grid;
 	grid-auto-columns: minmax(100%, 100%);
-    padding: 15px;
+	padding: 15px;
+}
+
+.labelHT {
+	text-align: left;
+	grid-column: 1;
+	padding-left: 2%;
+	padding-bottom: 3.4%;
+	grid-row: 1;
+	font-weight: 700;
+	font-family: inherit;
+	color: rgba(0, 0, 0, 0.5);
 }
 
 .tipoHT {
 	grid-column: 1;
-	grid-row: 1;
-    padding: 15px;
+	grid-row: 2;
+	padding-bottom: 6.75%;
 }
 
 .nombreHT {
 	grid-column: 1;
-	grid-row: 2;
-	padding: 15px;
+	grid-row: 3;
+	padding-bottom: 6.75%;
 }
 
 .telefonoHT {
 	grid-column: 1;
-	grid-row: 3;
-	padding: 15px;
+	grid-row: 4;
+	padding-bottom: 6.75%;
 }
 
 .fechas {
-    grid-column: 1;
-    grid-row: 4;
-    display: grid;
-	padding: 15px;
+	grid-column: 1;
+	grid-row: 5;
+	display: grid;
+	padding-bottom: 6.75%;
 }
 
 .fechaInicio {
 	grid-column: 1;
-    grid-row: 1;
+	grid-row: 1;
+	width: 100%;
 }
 
 .fechaFinal {
 	grid-column: 2;
 	grid-row: 1;
+	width: 100%;
 }
-
-
-
-
-
