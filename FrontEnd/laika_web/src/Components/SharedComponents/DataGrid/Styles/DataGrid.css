@@ -1,28 +1,60 @@
-.row {
-    background-color: yellow;
+.agregarGA {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.headerGA {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.rowGA {
+    grid-column: 1;
     display: grid;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid  #949494;
+	bottom: 0;
+}
+
+.rowGA:hover {
+    background-color: #db2525;
 }
 
 .observacionesGA {
     grid-row: 1;
     grid-column: 1;
-    background-color: red;
+}
+
+.rowGA > * {
+    margin: 1% 2% 1% 0;
+    background-color: #f1f1f1;
+    
+}
+
+.rowGA > * > TextArea {
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    border: 0px;
+    background-color: #f1f1f1;
+}
+
+.rowGA > * > TextArea:focus {
+    background-color: #b1e9fa;
+    border: 0px;
 }
 
 .accionGA {
     grid-row: 1;
     grid-column: 2;
-    background-color: blue;
 }
 
 .fechaGA {
     grid-row: 1;
     grid-column: 3;
-    background-color: purple;
 }
 
-.botonBorar {
+.botonBorrar {
     grid-row: 1;
     grid-column: 4;
-    background-color: aqua;
 }

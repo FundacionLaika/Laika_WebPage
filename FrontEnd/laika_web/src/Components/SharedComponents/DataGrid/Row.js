@@ -10,50 +10,28 @@ export default class Row extends React.Component {
 
 	render() {
 		return (
-			<div className="flex justify-center">
-				<div className="form-field">
-					<div className="form-field__control">
-						<textarea
-							id={this.props.id}
-							className="form-field__textarea"
-							placeholder=" "
-							rows="4"
-							name="observaciones"
-							value={this.props.observaciones}
-							onChange={this.props.handleChange}
-						></textarea>
-						<label
-							htmlFor={this.props.id}
-							className="form-field__label"
-						>
-							Observaciones
-						</label>
-						<div className="form-field__bar"></div>
-					</div>
+			<div className="rowGA">
+				<div className="observacionesGA">
+					<textarea
+						id={this.props.id}
+						type="text"
+						name="observaciones"
+						value={this.props.observaciones}
+						onChange={this.props.handleChange}
+                        rows="3"
+					/>
 				</div>
-
-				<div className="form-field">
-					<div className="form-field__control">
-						<textarea
-							id={this.props.id}
-							className="form-field__textarea"
-							placeholder=" "
-							rows="4"
-							name="accion"
-							value={this.props.accion}
-							onChange={this.props.handleChange}
-						></textarea>
-						<label
-							htmlFor={this.props.id}
-							className="form-field__label"
-						>
-							Acción
-						</label>
-						<div className="form-field__bar"></div>
-					</div>
+				<div className="accionGA">
+					<textarea
+						id={this.props.id}
+						type="text"
+						name="accion"
+						value={this.props.accion}
+						onChange={this.props.handleChange}
+                        rows="3"
+					/>
 				</div>
-
-				<div>
+				<div className="fechaGA">
 					<input
 						id={this.props.id}
 						type="date"
@@ -63,11 +41,8 @@ export default class Row extends React.Component {
 						placeholder="Fecha"
 					/>
 				</div>
-
-				<div>
-					<button onClick={this.props.deleteRow}>
-						<i className="fa fa-eraser fa-fw"></i>
-					</button>
+				<div className="botonBorrar">
+					<button onClick={this.props.deleteRow}>-</button>
 				</div>
 			</div>
 		);
