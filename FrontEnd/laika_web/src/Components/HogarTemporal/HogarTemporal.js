@@ -11,186 +11,196 @@ import "./Styles/HogarTemporal.css";
 import "../SharedComponents/Styles/SelectBox.css";
 
 class HogarTemporal extends Component {
-    state = {
-        /*Contacto HT*/
-        tipoHT: "Ninguno",
-        nombreHT: "",
-        telefonoHT: "",
-        fechaInicioHT: "",
-        fechaFinalHT: "",
+	state = {
+		/*Contacto HT*/
+		tipoHT: "Ninguno",
+		nombreHT: "",
+		telefonoHT: "",
+		fechaInicioHT: null,
+		fechaFinalHT: null,
 
-        /*Dirección HT*/
-        calle: "",
-        numero: "",
-        colonia: "",
-        municipio: "",
+		/*Dirección HT*/
+		calle: "",
+		numero: "",
+		colonia: "",
+		municipio: "",
 
-        /*Foto*/
-        foto: "/iconoPerro.png",
+		/*Foto*/
+		foto: "/iconoPerro.png",
 
-        /*Comentarios*/
-        comentarios: [],
-    };
+		/*Comentarios*/
+		comentarios: [],
+	};
 
-    /*Manejador de fotos*/
-    imageHandler = (event) => {
-        const reader = new FileReader();
-        const foto = event.target.id;
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                this.setState({ [foto]: reader.result });
-            }
-        };
-        console.log(event.target.id);
-        reader.readAsDataURL(event.target.files[0]);
-    };
+	/*Manejador de fotos*/
+	imageHandler = (event) => {
+		try {
+			const reader = new FileReader();
+			const foto = event.target.id;
+			reader.onload = () => {
+				if (reader.readyState === 2) {
+					this.setState({ [foto]: reader.result });
+				}
+			};
+			console.log(event.target.id);
+			reader.readAsDataURL(event.target.files[0]);
+		} catch (error) {}
+	};
 
-    /*Manejador de eventos*/
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value,
-        });
-        console.log(event.target.name);
-    };
+	/*Manejador de eventos*/
+	handleChange = (event) => {
+		this.setState({
+			[event.target.name]: event.target.value,
+		});
+		console.log(event.target.name);
+	};
 
-    /*Manejador del botón submit*/
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state);
-    };
+	/*Manejador de dates*/
+	handleDate = (fecha, name) => {
+		this.setState({
+			[name]: fecha,
+		});
+	};
 
-    /*Manejador de Restablecer*/
-    handleRestablecer = () => {
-        this.setState({
-            tipoHT: "Ninguno",
-            nombreHT: "",
-            telefonoHT: "",
-            fechaInicioHT: "",
-            fechaFinalHT: "",
-            calle: "",
-            numero: "",
-            colonia: "",
-            municipio: "",
-            foto: "/iconoPerro.png",
-        });
-    };
+	/*Manejador del botón submit*/
+	handleSubmit = (event) => {
+		event.preventDefault();
+		console.log(this.state);
+	};
 
-    addRow = (event) => {
-        event.preventDefault();
-        const newRow = {
-            id: shortid.generate(),
-            observaciones: "",
-            accion: "",
-            fecha: "",
-        };
-        this.setState((state) => ({
-            comentarios: [newRow, ...state.comentarios],
-        }));
-    };
+	/*Manejador de Restablecer*/
+	handleRestablecer = () => {
+		this.setState({
+			tipoHT: "Ninguno",
+			nombreHT: "",
+			telefonoHT: "",
+			fechaInicioHT: null,
+			fechaFinalHT: null,
+			calle: "",
+			numero: "",
+			colonia: "",
+			municipio: "",
+			foto: "/iconoPerro.png",
+		});
+	};
 
-    deleteRow = (id) => {
-        this.setState((state) => ({
-            comentarios: state.comentarios.filter((row) => row.id !== id),
-        }));
-    };
+	addRow = (event) => {
+		event.preventDefault();
+		const newRow = {
+			id: shortid.generate(),
+			observaciones: "",
+			accion: "",
+			fecha: "",
+		};
+		this.setState((state) => ({
+			comentarios: [newRow, ...state.comentarios],
+		}));
+	};
 
-    modifyRow = (event) => {
-        let dataTemp = this.state.comentarios;
+	deleteRow = (id) => {
+		this.setState((state) => ({
+			comentarios: state.comentarios.filter((row) => row.id !== id),
+		}));
+	};
 
-        dataTemp.forEach((element) => {
-            if (element.id === event.target.id) {
-                if (event.target.name === "observaciones")
-                    element.observaciones = event.target.value;
-                else if (event.target.name === "accion")
-                    element.accion = event.target.value;
-                else if (event.target.name === "fecha")
-                    element.fecha = event.target.value;
-            }
-        });
+	modifyRow = (event) => {
+		let dataTemp = this.state.comentarios;
 
-        this.setState({
-            comentarios: dataTemp,
-        });
-    };
+		dataTemp.forEach((element) => {
+			if (element.id === event.target.id) {
+				if (event.target.name === "observaciones")
+					element.observaciones = event.target.value;
+				else if (event.target.name === "accion")
+					element.accion = event.target.value;
+				else if (event.target.name === "fecha")
+					element.fecha = event.target.value;
+			}
+		});
 
-    /*Expediente Hogar Temporal*/
-    render() {
-        return (
-            <div className="RegistroHT">
-                <div className="NavBarRegistrosHT">
-                    <NavBarRegistros
-                        tabIndicatorPosition={"50%"}
-                        activePosition={"HogarTemporal"}
-                    />
-                </div>
-                <div className="FormularioHT">
-                    <div className="contactoHT">
-                        <ContactoHT
-                            tipoHT={this.state.tipoHT}
-                            nombreHT={this.state.nombreHT}
-                            telefonoHT={this.state.telefonoHT}
-                            fechaInicioHT={this.state.fechaInicioHT}
-                            fechaFinalHT={this.state.fechaFinalHT}
-                            handleChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="direccionHT">
-                        <Direccion
-                            calle={this.state.calle}
-                            numero={this.state.numero}
-                            colonia={this.state.colonia}
-                            municipio={this.state.municipio}
-                            handleChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="dataGridHT">
-                        <DataGrid
-                            data={this.state.comentarios}
-                            modifyRow={this.modifyRow}
-                            addRow={this.addRow}
-                            deleteRow={this.deleteRow}
-                        />
-                    </div>
-                </div>
+		this.setState({
+			comentarios: dataTemp,
+		});
+	};
 
-                <div className="BotonesRegistroHT">
-                    <Link to="/ExpedienteMedico">
-                        <button className="BotonHTTransicion BotonAnteriorHT">
-                            <i className="fa fa-chevron-circle-left fa-fw"></i>
-                            Expediente Médico
-                        </button>
-                    </Link>
-                    <button
-                        className="BotonHTRestablecer BotonCentralHT"
-                        onClick={this.handleRestablecer}
-                    >
-                        Restablecer
-                        <i className="fa fa-eraser fa-fw"></i>
-                    </button>
-                    <button
-                        className="BotonHTGuardar BotonCentralHT"
-                        onClick={this.handleSubmit}
-                    >
-                        Guardar
-                        <i className="fa fa-save fa-fw"></i>
-                    </button>
-                    <Link to="/Adopcion">
-                        <button className="BotonHTTransicion BotonSiguienteHT">
-                            Adopción
-                            <i className="fa fa-chevron-circle-right fa-fw"></i>
-                        </button>
-                    </Link>
-                </div>
-                <div className="BarraLateralHT flex items-center justify-center">
-                    <Foto
-                        id={"foto"}
-                        foto={this.state.foto}
-                        imageHandler={this.imageHandler}
-                    />
-                </div>
-            </div>
-        );
-    }
+	/*Expediente Hogar Temporal*/
+	render() {
+		return (
+			<div className="RegistroHT">
+				<div className="NavBarRegistrosHT">
+					<NavBarRegistros
+						tabIndicatorPosition={"50%"}
+						activePosition={"HogarTemporal"}
+					/>
+				</div>
+				<div className="FormularioHT">
+					<div className="contactoHT">
+						<ContactoHT
+							tipoHT={this.state.tipoHT}
+							nombreHT={this.state.nombreHT}
+							telefonoHT={this.state.telefonoHT}
+							fechaInicioHT={this.state.fechaInicioHT}
+							fechaFinalHT={this.state.fechaFinalHT}
+							handleChange={this.handleChange}
+							handleDate={this.handleDate}
+						/>
+					</div>
+					<div className="direccionHT">
+						<Direccion
+							calle={this.state.calle}
+							numero={this.state.numero}
+							colonia={this.state.colonia}
+							municipio={this.state.municipio}
+							handleChange={this.handleChange}
+						/>
+					</div>
+					<div className="dataGridHT">
+						<DataGrid
+							data={this.state.comentarios}
+							modifyRow={this.modifyRow}
+							addRow={this.addRow}
+							deleteRow={this.deleteRow}
+						/>
+					</div>
+				</div>
+
+				<div className="BotonesRegistroHT">
+					<Link to="/ExpedienteMedico">
+						<button className="BotonHTTransicion BotonAnteriorHT">
+							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							Expediente Médico
+						</button>
+					</Link>
+					<button
+						className="BotonHTRestablecer BotonCentralHT"
+						onClick={this.handleRestablecer}
+					>
+						Restablecer
+						<i className="fa fa-eraser fa-fw"></i>
+					</button>
+					<button
+						className="BotonHTGuardar BotonCentralHT"
+						onClick={this.handleSubmit}
+					>
+						Guardar
+						<i className="fa fa-save fa-fw"></i>
+					</button>
+					<Link to="/Adopcion">
+						<button className="BotonHTTransicion BotonSiguienteHT">
+							Adopción
+							<i className="fa fa-chevron-circle-right fa-fw"></i>
+						</button>
+					</Link>
+				</div>
+				<div className="BarraLateralHT flex items-center justify-center">
+					<Foto
+						id={"foto"}
+						foto={this.state.foto}
+						imageHandler={this.imageHandler}
+					/>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default HogarTemporal;

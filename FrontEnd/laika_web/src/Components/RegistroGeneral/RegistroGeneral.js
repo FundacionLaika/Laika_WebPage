@@ -6,7 +6,6 @@ import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
-import "../SharedComponents/Styles/TextArea.css";
 
 export default class RegistroGeneral extends React.Component {
 	state = {
@@ -14,7 +13,7 @@ export default class RegistroGeneral extends React.Component {
 		edad: "",
 		genero: "",
 		especie: "",
-		fechaDeRescate: "",
+		fechaDeRescate: null,
 		rescatistas: [],
 		calle: "",
 		numero: "",
@@ -27,6 +26,12 @@ export default class RegistroGeneral extends React.Component {
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value,
+		});
+	};
+
+	handleDate = (fecha, name) => {
+		this.setState({
+			[name]: fecha,
 		});
 	};
 
@@ -53,16 +58,18 @@ export default class RegistroGeneral extends React.Component {
 	};
 
 	imageHandler = (event) => {
-		const reader = new FileReader();
-		const foto = event.target.id;
+		try {
+			const reader = new FileReader();
+			const foto = event.target.id;
 
-		reader.onload = () => {
-			if (reader.readyState === 2) {
-				this.setState({ [foto]: reader.result });
-			}
-		};
-		console.log(event.target.id);
-		reader.readAsDataURL(event.target.files[0]);
+			reader.onload = () => {
+				if (reader.readyState === 2) {
+					this.setState({ [foto]: reader.result });
+				}
+			};
+			console.log(event.target.id);
+			reader.readAsDataURL(event.target.files[0]);
+		} catch (error) {}
 	};
 
 	handleRestablecer = () => {
@@ -71,7 +78,7 @@ export default class RegistroGeneral extends React.Component {
 			edad: "",
 			genero: "",
 			especie: "",
-			fechaDeRescate: "",
+			fechaDeRescate: null,
 			rescatistas: [],
 			calle: "",
 			numero: "",
@@ -96,6 +103,7 @@ export default class RegistroGeneral extends React.Component {
 					<div className="DatosGenerales">
 						<DatosGeneralesRG
 							handleChange={this.handleChange}
+							handleDate={this.handleDate}
 							nombre={this.state.nombre}
 							edad={this.state.edad}
 							genero={this.state.genero}
