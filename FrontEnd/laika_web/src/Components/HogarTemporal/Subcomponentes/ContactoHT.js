@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import "../Styles/ContactoHT.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from "react-datepicker";
+import "../../SharedComponents/Styles/TextArea.css";
+import es from "date-fns/locale/es";
+import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
+registerLocale("es", es);
 
 class ContactoHT extends Component {
 	render() {
@@ -16,8 +23,12 @@ class ContactoHT extends Component {
 							onChange={this.props.handleChange}
 						>
 							<option className="pad" value=""></option>
-							<option className="pad" value="persona">Persona</option>
-							<option className="pad" value="veterinaria">Veterinaria</option>
+							<option className="pad" value="persona">
+								Persona
+							</option>
+							<option className="pad" value="veterinaria">
+								Veterinaria
+							</option>
 						</select>
 						<span className="select-highlight"></span>
 						<span className="select-bar"></span>
@@ -57,32 +68,40 @@ class ContactoHT extends Component {
 
 				<div className="fechas">
 					<div className="fechaInicio">
-						<div className="labelFechaHT">
-							<label htmlFor="fechaInicioHT">Fecha Inicio</label>
-						</div>
-						<div className="fechaInputHT">
-							<input
-								type="date"
-								id="fechaInicioHT"
-								name="fechaInicioHT"
-								value={this.props.fechaInicioHT}
-								onChange={this.props.handleChange}
-							/>
-						</div>
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput/>}
+							title="Fecha Inicio"
+							id="fechaInicioHT"
+							name="fechaInicioHT"
+							locale="es"
+							selected={this.props.fechaInicioHT}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(date, "fechaInicioHT")
+							}
+						/>
 					</div>
 					<div className="fechaFinal">
-						<div className="labelFechaHT">
-							<label htmlFor="fechaFinalHT">Fecha Final</label>
-						</div>
-						<div className="fechaInputHT">
-							<input
-								type="date"
-								id="fechaFinalHT"
-								name="fechaFinalHT"
-								value={this.props.fechaFinalHT}
-								onChange={this.props.handleChange}
-							/>
-						</div>
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput/>}
+							title="Fecha Final"
+							id="fechaFinalHT"
+							name="fechaFinalHT"
+							locale="es"
+							selected={this.props.fechaFinalHT}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(date, "fechaFinalHT")
+							}
+						/>
 					</div>
 				</div>
 			</div>

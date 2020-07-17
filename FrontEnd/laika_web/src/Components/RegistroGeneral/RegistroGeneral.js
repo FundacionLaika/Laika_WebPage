@@ -8,174 +8,192 @@ import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
 
 export default class RegistroGeneral extends React.Component {
-    state = {
-        nombre: "",
-        edad: "",
-        genero: "",
-        especie: "",
-        fechaDeRescate: "",
-        rescatistas: [],
-        calle: "",
-        numero: "",
-        colonia: "",
-        municipio: "",
-        senasParticulares: "",
-        foto: "/iconoPerro.png",
-    };
+	state = {
+		nombre: "",
+		edad: "",
+		genero: "",
+		especie: "",
+		fechaDeRescate: null,
+		rescatistas: [],
+		calle: "",
+		numero: "",
+		colonia: "",
+		municipio: "",
+		senasParticulares: "",
+		foto: "/iconoPerro.png",
+	};
 
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value,
-        });
-    };
+	handleChange = (event) => {
+		this.setState({
+			[event.target.name]: event.target.value,
+		});
+	};
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state);
-    };
+	handleDate = (fecha, name) => {
+		this.setState({
+			[name]: fecha,
+		});
+	};
 
-    agregarRescatista = (rescatista) => {
-        console.log(rescatista.text);
-        if (rescatista.text !== "") {
-            this.setState((state) => ({
-                rescatistas: [rescatista, ...state.rescatistas],
-            }));
-        }
-    };
+	handleSubmit = (event) => {
+		event.preventDefault();
+		console.log(this.state);
+	};
 
-    eliminarRescatista = (id) => {
-        this.setState((state) => ({
-            rescatistas: state.rescatistas.filter(
-                (rescatista) => rescatista.id !== id
-            ),
-        }));
-    };
+	agregarRescatista = (rescatista) => {
+		console.log(rescatista.text);
+		if (rescatista.text !== "") {
+			this.setState((state) => ({
+				rescatistas: [rescatista, ...state.rescatistas],
+			}));
+		}
+	};
 
-    imageHandler = (event) => {
-        const reader = new FileReader();
-        const foto = event.target.id;
+	eliminarRescatista = (id) => {
+		this.setState((state) => ({
+			rescatistas: state.rescatistas.filter(
+				(rescatista) => rescatista.id !== id
+			),
+		}));
+	};
 
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                this.setState({ [foto]: reader.result });
-            }
-        };
-        console.log(event.target.id);
-        reader.readAsDataURL(event.target.files[0]);
-    };
+	imageHandler = (event) => {
+		try {
+			const reader = new FileReader();
+			const foto = event.target.id;
 
-    handleRestablecer = () => {
-        this.setState({
-            nombre: "",
-            edad: "",
-            genero: "",
-            especie: "",
-            fechaDeRescate: "",
-            rescatistas: [],
-            calle: "",
-            numero: "",
-            colonia: "",
-            municipio: "",
-            senasParticulares: "",
-            foto: "/iconoPerro.png",
-        });
-    };
+			reader.onload = () => {
+				if (reader.readyState === 2) {
+					this.setState({ [foto]: reader.result });
+				}
+			};
+			console.log(event.target.id);
+			reader.readAsDataURL(event.target.files[0]);
+		} catch (error) {}
+	};
 
-    render() {
-        return (
-            <div className="RegistroGeneral">
-                <div className="NavBarRegistrosGeneral">
-                    <NavBarRegistros
-                        tabIndicatorPosition={"0%"}
-                        activePosition={"RegistroGeneral"}
-                    />
-                </div>
+	handleRestablecer = () => {
+		this.setState({
+			nombre: "",
+			edad: "",
+			genero: "",
+			especie: "",
+			fechaDeRescate: null,
+			rescatistas: [],
+			calle: "",
+			numero: "",
+			colonia: "",
+			municipio: "",
+			senasParticulares: "",
+			foto: "/iconoPerro.png",
+		});
+	};
 
-                <div
-                    className="FormularioGeneral"
-                    style={{ overflowY: "scroll", height: "80vh" }}
-                >
-                    <div className="DatosGenerales">
-                        <DatosGeneralesRG
-                            handleChange={this.handleChange}
-                            nombre={this.state.nombre}
-                            edad={this.state.edad}
-                            genero={this.state.genero}
-                            especie={this.state.especie}
-                            fechaDeRescate={this.state.fechaDeRescate}
-                        />
-                    </div>
-                    <div className="Rescatistas">
-                        <Rescatistas
-                            rescatistas={this.state.rescatistas}
-                            agregarRescatista={this.agregarRescatista}
-                            eliminarRescatista={this.eliminarRescatista}
-                        />
-                    </div>
-                    <div className="DireccionGeneral">
-                        <Direccion
-                            handleChange={this.handleChange}
-                            calle={this.state.calle}
-                            numero={this.state.numero}
-                            colonia={this.state.colonia}
-                            municipio={this.state.municipio}
-                        />
-                    </div>
-                    <div className="SenasParticulares">
-                        <div>
-                            <label htmlFor="senasParticulares">
-                                Señas Particulares:{" "}
-                            </label>
-                        </div>
-                        <textarea
-                            id="senasParticulares"
-                            type="text"
-                            name="senasParticulares"
-                            value={this.props.senasParticulares}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                </div>
+	render() {
+		return (
+			<div className="RegistroGeneral">
+				<div className="NavBarRegistrosGeneral">
+					<NavBarRegistros
+						tabIndicatorPosition={"0%"}
+						activePosition={"RegistroGeneral"}
+					/>
+				</div>
 
-                <div className="BotonesRegistroGeneral">
-                    <Link to="/Adopcion">
-                        <button className="BotonGeneralTransicion BotonAnteriorGeneral">
-                            <i className="fa fa-chevron-circle-left fa-fw"></i>
-                            Adopcion
-                        </button>
-                    </Link>
 
-                    <button
-                        className="BotonGeneralRestablecer BotonCentralGeneral"
-                        onClick={this.handleRestablecer}
-                    >
-                        Restablecer
-                        <i className="fa fa-eraser fa-fw"></i>
-                    </button>
-                    <button
-                        className="BotonGeneralGuardar BotonCentralGeneral"
-                        onClick={this.handleSubmit}
-                    >
-                        Registrar
-                        <i className="fa fa-save fa-fw"></i>
-                    </button>
+				   <div
+                className="FormularioGeneral"
+                style={{ overflowY: "scroll", height: "80vh" }}
+            >
+					<div className="DatosGenerales">
+						<DatosGeneralesRG
+							handleChange={this.handleChange}
+							handleDate={this.handleDate}
+							nombre={this.state.nombre}
+							edad={this.state.edad}
+							genero={this.state.genero}
+							especie={this.state.especie}
+							fechaDeRescate={this.state.fechaDeRescate}
+						/>
+					</div>
+					<div className="Rescatistas">
+						<Rescatistas
+							rescatistas={this.state.rescatistas}
+							agregarRescatista={this.agregarRescatista}
+							eliminarRescatista={this.eliminarRescatista}
+						/>
+					</div>
+					<div className="DireccionGeneral">
+						<Direccion
+							handleChange={this.handleChange}
+							calle={this.state.calle}
+							numero={this.state.numero}
+							colonia={this.state.colonia}
+							municipio={this.state.municipio}
+						/>
+					</div>
+					<div className="SenasParticulares">
+						<div className="form-field">
+							<div className="form-field__control">
+								<textarea
+									id="senasParticulares"
+									className="form-field__textarea"
+									placeholder=" "
+									rows="4"
+									name="senasParticulares"
+									value={this.props.senasParticulares}
+									onChange={this.handleChange}
+								></textarea>
+								<label
+									htmlFor="senasParticulares"
+									className="form-field__label"
+								>
+									Señas Particulares
+								</label>
+								<div className="form-field__bar"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                    <Link to="/ExpedienteMedico">
-                        <button className="BotonGeneralTransicion BotonSiguienteGeneral">
-                            Expediente Médico
-                            <i className="fa fa-chevron-circle-right fa-fw"></i>
-                        </button>
-                    </Link>
-                </div>
+				<div className="BotonesRegistroGeneral">
+					<Link to="/Adopcion">
+						<button className="BotonGeneralTransicion BotonAnteriorGeneral">
+							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							Adopcion
+						</button>
+					</Link>
 
-                <div className="BarraLateralGeneral flex items-center justify-around">
-                    <Foto
-                        id="foto"
-                        foto={this.state.foto}
-                        imageHandler={this.imageHandler}
-                    />
-                </div>
-            </div>
-        );
-    }
+					<button
+						className="BotonGeneralRestablecer BotonCentralGeneral"
+						onClick={this.handleRestablecer}
+					>
+						Restablecer
+						<i className="fa fa-eraser fa-fw"></i>
+					</button>
+					<button
+						className="BotonGeneralGuardar BotonCentralGeneral"
+						onClick={this.handleSubmit}
+					>
+						Registrar
+						<i className="fa fa-save fa-fw"></i>
+					</button>
+
+					<Link to="/ExpedienteMedico">
+						<button className="BotonGeneralTransicion BotonSiguienteGeneral">
+							Expediente Médico
+							<i className="fa fa-chevron-circle-right fa-fw"></i>
+						</button>
+					</Link>
+				</div>
+
+				<div className="BarraLateralGeneral flex items-center justify-around">
+					<Foto
+						id="foto"
+						foto={this.state.foto}
+						imageHandler={this.imageHandler}
+					/>
+				</div>
+			</div>
+		);
+	}
 }

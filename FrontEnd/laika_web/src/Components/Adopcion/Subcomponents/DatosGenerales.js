@@ -1,5 +1,12 @@
 import React from "react";
 import "../Styles/DatosGeneralesAdopcion.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from "react-datepicker";
+import "../../SharedComponents/Styles/TextArea.css";
+import es from "date-fns/locale/es";
+import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
+registerLocale("es", es);
 
 export default class DatosGenerales extends React.Component {
 	render() {
@@ -70,36 +77,40 @@ export default class DatosGenerales extends React.Component {
 					</label>
 				</div>
 				<div className="visitaDeAdopcion">
-					<div className="labelAdopcion">
-						<label htmlFor="labelAdopcion">
-							Visita de Adopcion:{" "}
-						</label>
-					</div>
-					<div className="fechaInputAdopcion">
-						<input
-							id="visitaDeAdopcion"
-							type="date"
-							name="visitaDeAdopcion"
-							value={this.props.visitaDeAdopcion}
-							onChange={this.props.handleChange}
-						/>
-					</div>
+					<DatePicker
+						isClearable
+						useWeekdaysShort
+						fixedHeight
+						autoComplete
+						customInput={<DatePickerInput/>}
+						title="Visita adopción"
+						id="visitaDeAdopcion"
+						name="visitaDeAdopcion"
+						locale="es"
+						selected={this.props.visitaDeAdopcion}
+						dateFormat="dd/MM/yyyy"
+						onChange={(date) =>
+							this.props.handleDate(date, "visitaDeAdopcion")
+						}
+					/>
 				</div>
 				<div className="fechaAdopcion">
-					<div className="labelAdopcion">
-						<label htmlFor="fechaAdopcion">
-							Fecha de Adopcion:{" "}
-						</label>
-					</div>
-					<div className="fechaInputAdopcion">
-						<input
-							id="fechaAdopcion"
-							type="date"
-							name="fechaAdopcion"
-							value={this.props.fechaAdopcion}
-							onChange={this.props.handleChange}
-						/>
-					</div>
+					<DatePicker
+						isClearable
+						useWeekdaysShort
+						fixedHeight
+						autoComplete
+						customInput={<DatePickerInput/>}
+						title="Fecha Adopción"
+						id="fechaAdopcion"
+						name="fechaAdopcion"
+						locale="es"
+						selected={this.props.fechaAdopcion}
+						dateFormat="dd/MM/yyyy"
+						onChange={(date) =>
+							this.props.handleDate(date, "fechaAdopcion")
+						}
+					/>
 				</div>
 			</div>
 		);
