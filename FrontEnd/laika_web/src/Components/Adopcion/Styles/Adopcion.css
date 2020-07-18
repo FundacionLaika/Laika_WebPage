@@ -32,6 +32,9 @@
 }
 
 .labelDataGridAdopcion {
+	text-align: left;
+	padding-top: 2%;
+	padding-left: 4%;
 	padding-bottom: 2%;
 	font-weight: 700;
 	font-family: inherit;

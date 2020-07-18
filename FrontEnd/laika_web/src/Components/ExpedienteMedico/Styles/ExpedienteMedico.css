@@ -15,14 +15,17 @@
 }
 
 .headerDiagnostico {
+	text-align: left;
+	padding-left: 20%;
 	padding-top: 12%;
 	font-weight: 700;
 	font-family: inherit;
-	float: left;
 	color: rgba(0, 0, 0, 0.5);
 }
 
 .headerEsterilizacion {
+	text-align: left;
+	padding-left: 8%;
 	padding-top: 6%;
 	padding-bottom: 5%;
 	font-weight: 700;
@@ -138,6 +141,8 @@
 }
 
 .headerCartillaVacunacion {
+	text-align: left;
+	padding-left: 3%;
 	font-weight: 700;
 	font-family: inherit;
 	color: rgba(0, 0, 0, 0.5);
@@ -205,6 +210,9 @@
 }
 
 .headerTratamiento {
+	padding-top: 3%;
+	text-align: left;
+	padding-left: 5%;
 	padding-bottom: 2%;
 	font-weight: 700;
 	font-family: inherit;
