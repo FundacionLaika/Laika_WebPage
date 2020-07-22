@@ -14,6 +14,7 @@ export default class RegistroGeneral extends React.Component {
 		genero: "",
 		especie: "",
 		fechaDeRescate: null,
+		estatus: "",
 		rescatistas: [],
 		calle: "",
 		numero: "",
@@ -79,6 +80,7 @@ export default class RegistroGeneral extends React.Component {
 			genero: "",
 			especie: "",
 			fechaDeRescate: null,
+			estatus: "",
 			rescatistas: [],
 			calle: "",
 			numero: "",
@@ -113,6 +115,7 @@ export default class RegistroGeneral extends React.Component {
 							genero={this.state.genero}
 							especie={this.state.especie}
 							fechaDeRescate={this.state.fechaDeRescate}
+							estatus={this.state.estatus}
 						/>
 					</div>
 					<div className="Rescatistas">

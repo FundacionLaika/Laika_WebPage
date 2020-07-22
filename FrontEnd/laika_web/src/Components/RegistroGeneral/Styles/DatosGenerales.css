@@ -48,6 +48,12 @@
 	padding: 15px;
 }
 
+.estatus {
+	grid-column: 2;
+	grid-row: 4;
+	padding: 15px;
+}
+
 
 
 

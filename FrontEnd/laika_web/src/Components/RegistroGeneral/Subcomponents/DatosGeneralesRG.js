@@ -9,14 +9,11 @@ import es from "date-fns/locale/es";
 import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
-
 export default class DatosGeneralesRG extends React.Component {
 	render() {
 		return (
 			<div className="datosGenerales">
-				<div className="labelDatosGenerales">
-					Datos Generales
-				</div>
+				<div className="labelDatosGenerales">Datos Generales</div>
 				<div className="nombre">
 					<label htmlFor="nombre" className="inp">
 						<input
@@ -118,7 +115,7 @@ export default class DatosGeneralesRG extends React.Component {
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
-						customInput={<DatePickerInput/>}
+						customInput={<DatePickerInput />}
 						title="Fecha de rescate"
 						id="fechaDeRescate"
 						name="fechaDeRescate"
@@ -129,6 +126,35 @@ export default class DatosGeneralesRG extends React.Component {
 							this.props.handleDate(date, "fechaDeRescate")
 						}
 					/>
+				</div>
+				<div className="estatus">
+					<div className="select">
+						<select
+							className="select-text"
+							required
+							id="estatus"
+							name="estatus"
+							value={this.props.estatus}
+							onChange={this.props.handleChange}
+						>
+							<option className="pad" value=""></option>
+							<option className="pad" value="activo">
+								Activo
+							</option>
+							<option className="pad" value="fallecido">
+								Fallecido
+							</option>
+							<option className="pad" value="enTratamiento">
+								En tratamiento
+							</option>
+							<option className="pad" value="adoptado">
+								Adoptado
+							</option>
+						</select>
+						<span className="select-highlight"></span>
+						<span className="select-bar"></span>
+						<label className="select-label">Estatus</label>
+					</div>
 				</div>
 			</div>
 		);
