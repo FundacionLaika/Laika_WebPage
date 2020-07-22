@@ -29,18 +29,90 @@ export default class DatosGeneralesRG extends React.Component {
 					</label>
 				</div>
 				<div className="edad">
-					<label htmlFor="edad" className="inp">
-						<input
+					<div className="select">
+						<select
+							className="select-text"
+							required
 							id="edad"
-							type="text"
 							name="edad"
 							value={this.props.edad}
 							onChange={this.props.handleChange}
-							placeholder="&nbsp;"
-						/>
-						<span className="label">Edad</span>
-						<span className="focus-bg"></span>
-					</label>
+						>
+							<option className="pad" value=""></option>
+							<option className="pad" value="03m">
+								0 a 3 meses
+							</option>
+							<option className="pad" value="46m">
+								4 a 6 meses
+							</option>
+							<option className="pad" value="711m">
+								7 a 11 meses
+							</option>
+							<option className="pad" value="1a">
+								1 año
+							</option>
+							<option className="pad" value="2a">
+								2 años
+							</option>
+							<option className="pad" value="3a">
+								3 años
+							</option>
+							<option className="pad" value="4a">
+								4 años
+							</option>
+							<option className="pad" value="5a">
+								5 años
+							</option>
+							<option className="pad" value="6a">
+								6 años
+							</option>
+							<option className="pad" value="7a">
+								7 años
+							</option>
+							<option className="pad" value="8a">
+								8 años
+							</option>
+							<option className="pad" value="9a">
+								9 años
+							</option>
+							<option className="pad" value="10a">
+								10 años
+							</option>
+							<option className="pad" value="11a">
+								11 años
+							</option>
+							<option className="pad" value="12a">
+								12 años
+							</option>
+							<option className="pad" value="13a">
+								13 años
+							</option>
+							<option className="pad" value="14a">
+								14 años
+							</option>
+							<option className="pad" value="15a">
+								15 años
+							</option>
+							<option className="pad" value="16a">
+								16 años
+							</option>
+							<option className="pad" value="17a">
+								17 años
+							</option>
+							<option className="pad" value="18a">
+								18 años
+							</option>
+							<option className="pad" value="19a">
+								19 años
+							</option>
+							<option className="pad" value="20aOmas">
+								20 años o más
+							</option>
+						</select>
+						<span className="select-highlight"></span>
+						<span className="select-bar"></span>
+						<label className="select-label">Edad</label>
+					</div>
 				</div>
 
 				<div className="genero">
