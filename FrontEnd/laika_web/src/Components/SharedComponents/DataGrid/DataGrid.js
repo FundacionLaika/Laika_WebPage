@@ -8,7 +8,14 @@ export default class DataGrid extends React.Component {
 		return (
 			<div className="DGAArea">
 				<div className="agregarGA">
-					<button onClick={this.props.addRow}>Agregar Fila</button>
+					<button onClick={this.props.addRow}>
+                        <span>Agregar Fila
+                        <i
+							className="fa fa-plus-circle fa-fw"
+							aria-hidden="true"
+                        ></i>
+                        </span>
+					</button>
 				</div>
 
 				<div className="headerGA">

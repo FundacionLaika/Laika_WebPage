@@ -34,6 +34,8 @@
 	grid-row: 1 / 11;
 }
 
+
+
 /*Bloques*/
 .diagnostico {
 	grid-column: 1;
@@ -184,6 +186,13 @@
 	grid-column: 1 / 3;
 	grid-row: 3;
 	background-color: aqua;
+}
+
+.DGAArea {
+	margin: 0 3% 0 4.5%;
+	display: grid;
+	padding-bottom: 5%;
+
 }
 
 /*Boton Restablecer*/

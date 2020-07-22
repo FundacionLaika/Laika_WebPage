@@ -59,12 +59,11 @@ export default class Row extends React.Component {
 						onChange={(date) =>
 							this.handleDate(date, "fecha")
                         }
-                        
 					/>
 				</div>
 
 				<div className="botonBorrar">
-					<button onClick={this.props.deleteRow}>
+                    <button onClick={this.props.deleteRow}>
 						<i
 							className="fa fa-times-circle"
 							aria-hidden="true"
