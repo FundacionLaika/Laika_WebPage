@@ -18,7 +18,7 @@
 	grid-row: 3 / 10;
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
-	background-color: #b5cfd8;
+	background-color: #e0e7eb;
 }
 
 .contactoHT {
@@ -52,7 +52,7 @@
 }
 
 .BarraLateralHT {
-	background-color: #0072bb;
+	background-color: #588da8;
 	grid-column: 4;
 	grid-row: 1 / 11;
 }
