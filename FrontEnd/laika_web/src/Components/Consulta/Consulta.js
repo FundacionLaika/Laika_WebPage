@@ -2,19 +2,28 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import Scroll from "../Scroll/Scroll";
 import "./Consulta.css";
+import TarjetaExpedienteMedico from "./Subcomponentes/TarjetaExpedienteMedico.js";
 
-class Consulta extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            textField: "",
-            tipoConsulta: "general",
-        };
-    }
+export default class Consulta extends Component {
+
+    state = {
+        data: [
+            {
+                id: "1",
+                nombre: "firulais",
+                edad: "5",
+                especie: "perro",
+                fechaRescate: "25/05/2019",
+                direccion: "Monterrubio #32, Paseos del Sol, Guadalajara, Jalisco",
+                rescatistas: "Homero Simpson",
+                senasParticulares: "Mancha de la colita"
+            }
+        ]
+    };
 
     handleChange = (event) => {
         this.setState({
-            textField: event.target.value,
+            [event.target.name]: event.target.value,
         });
     };
 
@@ -71,12 +80,29 @@ class Consulta extends Component {
                             Adopcion
                         </button>
                     </div>
+
+
+
                     <div
                         className="center mv0 pv0  bg-light-gray w-two-thirds"
                         style={{ overflowY: "scroll", height: "65vh" }}
                     >
-                        {/*Todo Agregar los componentes de las tarjetas*/}
+                        {this.state.data.map((tarjeta) => (
+                            <TarjetaExpedienteMedico
+                                id={tarjeta.id}
+                                nombre={tarjeta.nombre}
+                                edad={tarjeta.edad}
+                                especie={tarjeta.especie}
+                                fechaRescate={tarjeta.fechaRescate}
+                                direccion={tarjeta.direccion}
+                                rescatistas={tarjeta.rescatistas}
+                                senasParticulares={tarjeta.senasParticulares}
+                            />
+                        ))}
                     </div>
+
+
+
                     <Link to="/GenerarPDF">
                         <button
                             className="mv0 pa2 f4 bw0 bg-light-purple white"
@@ -91,5 +117,3 @@ class Consulta extends Component {
         );
     }
 }
-
-export default Consulta;
