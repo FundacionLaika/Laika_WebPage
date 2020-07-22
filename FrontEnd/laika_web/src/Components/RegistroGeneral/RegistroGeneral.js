@@ -9,6 +9,7 @@ import "./Styles/RegistroGeneral.css";
 
 export default class RegistroGeneral extends React.Component {
 	state = {
+		id: "perro",
 		nombre: "",
 		edad: "",
 		genero: "",
@@ -190,6 +191,11 @@ export default class RegistroGeneral extends React.Component {
 				</div>
 
 				<div className="BarraLateralGeneral flex items-center justify-around">
+					<div>
+						<label>
+							{this.state.id}
+						</label>
+					</div>
 					<Foto
 						id="foto"
 						foto={this.state.foto}
