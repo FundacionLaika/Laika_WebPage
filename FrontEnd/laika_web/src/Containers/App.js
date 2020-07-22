@@ -11,59 +11,111 @@ import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
 import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
+import { ProtectedRoute } from "../Components/ProtectedRoute/ProtectedRoute";
+import auth from "../Components/Auth/Auth";
 
-function App() {
-    return (
-        <div className="App">
-            <Router>
-                <Route path="/" render={() => <MenuBar />} />
-                <Switch>
-                    {/* El Switch solo hara render de un componente a la vez */}
-                    {/* exact se encarga que el componente se muestre solo cuando el path es esxactamente igual el especificado*/}
-                    <Route path="/Login" exact render={() => <Login />} />
-                    {/*Login es la primera página mostrada*/}
-                    <Route path="/Consulta" exact component={Consulta} />
-                    <Route
-                        path="/RegistroGeneral"
-                        exact
-                        component={RegistroGeneral}
-                    />
-                    <Route
-                        path="/ExpedienteMedico"
-                        exact
-                        component={ExpedienteMedico}
-                    />
+const initialState = {
+    iniciadoSesion: auth.esAutenticado(),
+};
 
-                    <Route
-                        path="/HogarTemporal"
-                        exact
-                        component={HogarTemporal}
-                    />
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = initialState;
+    }
 
-                    <Route path="/GenerarPDF" exact component={GenerarPDF} />
+    cambioRuta = (val) => {
+        this.setState({ iniciadoSesion: auth.esAutenticado() });
+        console.log("It works!!!!!");
+        //Puede tener una condicional de volver al estado original para que la cuenta se borre del estado
+    };
 
-                    <Route path="/MenuUsuario" exact component={MenuUsuario} />
+    render() {
+        return (
+            <div className="App">
+                <Router>
+                    {/* <ProtectedRoute path="/" render={() => <MenuBar />} /> */}
 
-                    <Route path="/Adopcion" exact component={Adopcion} />
+                    {auth.esAutenticado() === true ? (
+                        <Route path="/" render={() => <MenuBar />} />
+                    ) : null}
+                    <Switch>
+                        {/* El Switch solo hara render de un componente a la vez */}
+                        {/*Login es la primera página mostrada*/}
+                        <Route
+                            exact
+                            path="/"
+                            render={() => (
+                                <Login cambioRuta={this.cambioRuta} />
+                            )}
+                        />
 
-                    {/* Primer Render de la app */}
-                    <Route
-                        path="/"
-                        render={() => (
-                            <div>
-                                <div className="App-header">
-                                    <h1>
-                                        Pagina no
-                                        <p className="red">Disponible</p>
-                                    </h1>
+                        <ProtectedRoute
+                            path="/Consulta"
+                            exact
+                            component={Consulta}
+                        />
+                        {/* <Route /> */}
+                        <ProtectedRoute
+                            path="/RegistroGeneral"
+                            exact
+                            component={RegistroGeneral}
+                        />
+                        <ProtectedRoute
+                            path="/ExpedienteMedico"
+                            exact
+                            component={ExpedienteMedico}
+                        />
+
+                        <ProtectedRoute
+                            path="/HogarTemporal"
+                            exact
+                            component={HogarTemporal}
+                        />
+
+                        <ProtectedRoute
+                            path="/GenerarPDF"
+                            exact
+                            component={GenerarPDF}
+                        />
+
+                        <ProtectedRoute
+                            path="/MenuUsuario"
+                            exact
+                            component={MenuUsuario}
+                            // render={(props) => (
+                            //     <MenuUsuario
+                            //         {...props}
+                            //         cambioRuta={this.cambioRuta}
+                            //     />
+                            // )}
+                        />
+
+                        <ProtectedRoute
+                            path="/Adopcion"
+                            exact
+                            component={Adopcion}
+                        />
+
+                        {/* Primer Render de la app */}
+                        <Route
+                            path="/"
+                            render={() => (
+                                <div>
+                                    <div className="App-header">
+                                        <h1>
+                                            Pagina no
+                                            <p className="red">Disponible</p>
+                                        </h1>
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    />
-                </Switch>
-            </Router>
-        </div>
-    );
+                            )}
+                        />
+                    </Switch>
+                </Router>
+            </div>
+        );
+    }
 }
 
 export default App;
