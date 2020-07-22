@@ -3,6 +3,7 @@ import shortid from "shortid";
 import Foto from "../SharedComponents/Foto";
 import UsuarioGrid from "./UsuarioGrid";
 import { Link } from "react-router-dom";
+import auth from "../Auth/Auth";
 
 class MenuUsuario extends Component {
     constructor(props) {
@@ -35,14 +36,19 @@ class MenuUsuario extends Component {
     onSubmit = (event) => {
         if (event.target.name === "cambiosCorreo") {
             this.setState({
-                [event.target.name]: !this.state.cambiosCorreo,
+                [event.target.name]: true,
             });
             this.validateCorreo();
         } else if (event.target.name === "cambiosContrasena") {
             this.setState({
-                [event.target.name]: !this.state.cambiosContrasena,
+                [event.target.name]: true,
             });
             this.validateContra();
+        } else {
+            auth.logout(() => {
+                this.props.history.push("/");
+            });
+            this.props.cambioRuta(false);
         }
     };
 
@@ -265,7 +271,7 @@ class MenuUsuario extends Component {
                             <button
                                 className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba"
                                 onClick={this.onSubmit}
-                                name="cambiosContrasena"
+                                name="cambiosCorreo"
                             >
                                 Confirmar Correo
                             </button>
@@ -331,7 +337,10 @@ class MenuUsuario extends Component {
                         </div>
                         <div className="pv5 center">
                             <Link to="/">
-                                <button className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba">
+                                <button
+                                    className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba"
+                                    onClick={this.onSubmit}
+                                >
                                     Cerrar Sesion
                                 </button>
                             </Link>
@@ -340,19 +349,15 @@ class MenuUsuario extends Component {
                 ) : (
                     <div className="pv5 center item-cmu">
                         <Link to="/">
-                            <button className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba">
+                            <button
+                                className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba"
+                                onClick={this.onSubmit}
+                            >
                                 Cerrar Sesion
                             </button>
                         </Link>
                     </div>
                 )}
-                {/* <div className="pv5 center item-dmu">
-                    <Link to="/">
-                        <button className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba">
-                            Cerrar Sesion
-                        </button>
-                    </Link>
-                </div> */}
             </div>
         );
     }

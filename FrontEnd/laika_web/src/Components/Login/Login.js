@@ -1,6 +1,7 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import "./Login.css";
+import auth from "../Auth/Auth";
 
 //Todo crear un arreglo de las diferentes páginas
 
@@ -64,8 +65,13 @@ class Login extends React.Component {
             this.state.correoLogin === "Hello" &&
             this.state.contrasenaLogin === "bye"
         ) {
-            this.setState({ usuarioValido: true });
-            console.log("valido: " + this.state.usuarioValido);
+            auth.login(() => {
+                this.props.history.push("/Consulta");
+                console.log(auth.esAutenticado());
+                this.props.cambioRuta();
+            });
+            // this.setState({ usuarioValido: true });
+            // this.props.cambioRuta(true);
         }
     };
 
@@ -139,4 +145,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);
