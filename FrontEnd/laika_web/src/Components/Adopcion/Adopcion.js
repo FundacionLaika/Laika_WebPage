@@ -145,6 +145,9 @@ export default class Adopcion extends React.Component {
                         />
                     </div>
                     <div className="DataGridAdopcion">
+                        <div className="labelDataGridAdopcion">
+                            Comentarios
+                        </div>
                         <DataGrid
                             data={this.state.comentarios}
                             modifyRow={this.modifyRow}

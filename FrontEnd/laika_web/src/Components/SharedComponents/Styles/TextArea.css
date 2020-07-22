@@ -16,10 +16,9 @@
 	-webkit-transition: all 0.4s;
 	transition: all 0.4s;
     width: 100%;
-    color: rgba(0, 0, 0, 0.5);
-    font-weight: 500;
-    font-family: 'Raleway';
-
+	font-weight: 500;
+	font-family: inherit;
+	color: rgba(0, 0, 0, 0.5);
 }
 
 .form-field__control {

@@ -12,6 +12,9 @@ export default class DatosGenerales extends React.Component {
 	render() {
 		return (
 			<div className="adopcion">
+				<div className="labelAdopcion">
+					Datos de Adopción
+				</div>
 				<div className="adoptante">
 					<label htmlFor="adoptante" className="inp">
 						<input

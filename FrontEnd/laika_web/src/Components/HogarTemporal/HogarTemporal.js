@@ -157,6 +157,9 @@ class HogarTemporal extends Component {
                         />
                     </div>
                     <div className="dataGridHT">
+                        <div className="headerDataGridHT">
+                            Comentarios
+                        </div>
                         <DataGrid
                             data={this.state.comentarios}
                             modifyRow={this.modifyRow}

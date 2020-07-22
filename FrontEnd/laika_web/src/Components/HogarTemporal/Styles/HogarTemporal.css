@@ -22,13 +22,22 @@
 }
 
 .contactoHT {
-	grid-column:1;
+	grid-column: 1;
 	grid-row: 1;
 }
 
 .direccionHT {
-	grid-column:2;
+	grid-column: 2;
 	grid-row: 1;
+}
+
+.headerDataGridHT {
+	padding-left: 4%;
+	text-align: left;
+	padding-bottom: 2%;
+	font-weight: 700;
+	font-family: inherit;
+	color: rgba(0, 0, 0, 0.5);
 }
 
 .dataGridHT {
@@ -50,10 +59,10 @@
 
 /*Boton Restablecer*/
 .BotonHTRestablecer {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -70,10 +79,10 @@
 
 /*Boton Guardar*/
 .BotonHTGuardar {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -88,16 +97,16 @@
 	transition: all 0.4s ease 0s;
 }
 
-.BotonCentralHT{
-	float:center;
+.BotonCentralHT {
+	float: center;
 }
 
 /*Botones transiciones*/
 .BotonHTTransicion {
-    color: #494949 !important;
-    font-family: "Raleway";
-    font-weight: bold;
-    border-radius: 50px;
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
@@ -113,13 +122,11 @@
 }
 
 /*Boton siguiente expediente*/
-.BotonSiguienteHT{
+.BotonSiguienteHT {
 	float: right;
-}	
-
-/*Boton expediente previo*/
-.BotonAnteriorHT{
-	float:left;
 }
 
-
+/*Boton expediente previo*/
+.BotonAnteriorHT {
+	float: left;
+}

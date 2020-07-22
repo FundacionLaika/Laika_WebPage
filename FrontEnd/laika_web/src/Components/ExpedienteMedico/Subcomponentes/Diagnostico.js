@@ -4,7 +4,7 @@ class Diagnostico extends Component {
 	render() {
 		return (
 			<div id="diagnostico">
-				<label>Diagnóstico</label>
+				<div className="headerDiagnostico">Diagnóstico</div>
 				<div id="bloque1Diag">
 					<div id="cbs-diag">
 						<div id="row-diag">
