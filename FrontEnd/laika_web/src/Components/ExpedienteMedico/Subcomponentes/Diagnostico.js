@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 
 class Diagnostico extends Component {
+	state = {
+		showMeEspecificar: false,
+	};
+
+	showMeEspecificar = () => {
+		this.setState({
+			showMeEspecificar: !this.state.showMeEspecificar,
+		});
+	};
+
 	render() {
 		return (
 			<div id="diagnostico">
@@ -152,6 +162,7 @@ class Diagnostico extends Component {
 								value="otro"
 								checked={this.props.otro}
 								onChange={this.props.handleChange}
+								onClick={this.showMeEspecificar}
 							/>
 							<label htmlFor="otro">
 								<span></span>
@@ -164,18 +175,20 @@ class Diagnostico extends Component {
 				</div>
 
 				<div id="bloqueOtro">
-					<label htmlFor="otroEspecificar" className="inp">
-						<input
-							type="text"
-							id="otroEspecificar"
-							name="otroEspecificar"
-							value={this.props.otroEspecificar}
-							onChange={this.props.handleChange}
-							placeholder="&nbsp;"
-						/>
-						<span className="label">Especificar</span>
-						<span className="focus-bg"></span>
-					</label>
+					{this.state.showMeEspecificar ? (
+						<label htmlFor="otroEspecificar" className="inp">
+							<input
+								type="text"
+								id="otroEspecificar"
+								name="otroEspecificar"
+								value={this.props.otroEspecificar}
+								onChange={this.props.handleChange}
+								placeholder="&nbsp;"
+							/>
+							<span className="label">Especificar</span>
+							<span className="focus-bg"></span>
+						</label>
+					) : null}
 				</div>
 			</div>
 		);

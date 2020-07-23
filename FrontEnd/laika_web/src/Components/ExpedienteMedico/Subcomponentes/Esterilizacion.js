@@ -8,14 +8,29 @@ import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 class Esterilizacion extends Component {
+	state = {
+		showMeCitaEsterilziacion: false,
+	};
+
+	
+	showCitaEsterilizacionTrue = () => {
+		this.setState({
+			showMeCitaEsterilziacion: true,
+		});
+	}
+
+	showCitaEsterilizacionFalse = () => {
+		this.setState({
+			showMeCitaEsterilziacion: false,
+		});
+	}
+
 	render() {
 		return (
 			<div id="esterilizacion">
-				<div className="headerEsterilizacion">
-					Esterilizacion
-				</div>
+				<div className="headerEsterilizacion">Esterilizacion</div>
 				<div className="labelEsterilizado">
-					<label htmlFor="radio-genero">Esterilizado: </label>
+					<label htmlFor="radio-genero">Esterilizado</label>
 				</div>
 				<div className="inputEsterilizado">
 					<div className="switch center">
@@ -45,7 +60,7 @@ class Esterilizacion extends Component {
 				</div>
 
 				<div className="labelCitaEsterilizacion">
-					<label htmlFor="radio-genero">Desea Agendar Cita: </label>
+					<label htmlFor="radio-genero">¿Desea Agendar Cita? </label>
 				</div>
 				<div className="inputCitaEsterilizacion">
 					<div className="switch center">
@@ -57,6 +72,7 @@ class Esterilizacion extends Component {
 								value="Si"
 								checked={this.props.citaEsterilizacion === "Si"}
 								onChange={this.props.handleChange}
+								onClick={this.showCitaEsterilizacionTrue}
 							/>
 							<label htmlFor="idCitaEsterilzacionSi">Si</label>
 						</div>
@@ -68,6 +84,7 @@ class Esterilizacion extends Component {
 								value="No"
 								checked={this.props.citaEsterilizacion === "No"}
 								onChange={this.props.handleChange}
+								onClick={this.showCitaEsterilizacionFalse}
 							/>
 							<label htmlFor="idCitaEsterilzacionNo">No</label>
 						</div>
@@ -75,22 +92,27 @@ class Esterilizacion extends Component {
 				</div>
 
 				<div className="fechaEsterilizacion">
-					<DatePicker
-						isClearable
-						useWeekdaysShort
-						fixedHeight
-						autoComplete
-						customInput={<DatePickerInput/>}
-						title="Fecha de Esterilización"
-						id="fechaEsterilizacion"
-						name="fechaEsterilizacion"
-						locale="es"
-						selected={this.props.fechaEsterilizacion}
-						dateFormat="dd/MM/yyyy"
-						onChange={(date) =>
-							this.props.handleDate(date, "fechaEsterilizacion")
-						}
-					/>
+					{this.state.showMeCitaEsterilziacion ? (
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput />}
+							title="Fecha de Esterilización"
+							id="fechaEsterilizacion"
+							name="fechaEsterilizacion"
+							locale="es"
+							selected={this.props.fechaEsterilizacion}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(
+									date,
+									"fechaEsterilizacion"
+								)
+							}
+						/>
+					) : null}
 				</div>
 			</div>
 		);
