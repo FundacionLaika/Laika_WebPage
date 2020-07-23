@@ -4,22 +4,31 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const knex = require('knex');
 
+const consulta = require('./controllers/consulta');
+
 const app = express();
 
+app.use(cors())
+app.use(bodyParser.json());
+
 const db = knex({
-    client: '',
+    client: 'mysql',
     connection: {
-        host: '',
-        user: '',
-        password: '',
-        database: ''
+        host: '107.180.41.48',
+        user: 'dbmanager',
+        password: 'Laika2012',
+        database: 'LaikaDBTest'
     }
 });
+
+
+
+app.get('/consulta', (req, res) => { consulta.handleConsultaGet(req, res, db)})
 
 app.get('/', (req,res) => {
     res.send('this is working');
 })
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log('app is running on port 3000');
 })
