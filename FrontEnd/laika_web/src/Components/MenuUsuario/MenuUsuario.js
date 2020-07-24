@@ -243,7 +243,8 @@ class MenuUsuario extends Component {
                                         onChange={this.handleChange}
                                         placeholder="&nbsp;"
                                     />
-                                    <span className="label w-33">Correo</span>
+                                    <span className="label">Correo</span>
+                                    <span className="focus-bg"></span>
                                     <div className="f6 red">
                                         {this.state.errorCorreo}
                                     </div>
@@ -260,9 +261,10 @@ class MenuUsuario extends Component {
                                         onChange={this.handleChange}
                                         placeholder="&nbsp;"
                                     />
-                                    <span className="label w-33">
+                                    <span className="label">
                                         Confirmar
                                     </span>
+                                    <span className="focus-bg"></span>
                                     <div className="f6 red">
                                         {this.state.errorConfirmarCorreo}
                                     </div>
@@ -292,7 +294,8 @@ class MenuUsuario extends Component {
                                     onChange={this.handleChange}
                                     placeholder="&nbsp;"
                                 />
-                                <span className="label w-33">Contraseña</span>
+                                <span className="label">Contraseña</span>
+                                <span className="focus-bg"></span>
                                 <div className="f6 red">
                                     {this.state.errorContrasena}
                                 </div>
@@ -307,7 +310,8 @@ class MenuUsuario extends Component {
                                     onChange={this.handleChange}
                                     placeholder="&nbsp;"
                                 />
-                                <span className="label w-33">Confirmar</span>
+                                <span className="label">Confirmar</span>
+                                <span className="focus-bg"></span>
                                 <div className="f6 red">
                                     {this.state.errorConfirmarContrasena}
                                 </div>

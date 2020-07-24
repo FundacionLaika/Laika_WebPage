@@ -1,8 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcryptjs');
-const cors = require('cors');
-const knex = require('knex');
+const express = require("express");
+const bodyParser = require("body-parser");
+const bcrypt = require("bcryptjs");
+const cors = require("cors");
+const knex = require("knex");
 
 const consulta = require('./controllers/consulta');
 
@@ -12,6 +12,7 @@ app.use(cors())
 app.use(bodyParser.json());
 
 const db = knex({
+
     client: 'mysql',
     connection: {
         host: '107.180.41.48',
@@ -32,3 +33,4 @@ app.get('/', (req,res) => {
 app.listen(3001, () => {
     console.log('app is running on port 3000');
 })
+
