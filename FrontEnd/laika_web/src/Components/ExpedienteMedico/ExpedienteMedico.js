@@ -71,10 +71,19 @@ class ExpedienteMedico extends Component {
 			event.target.type === "checkbox"
 				? event.target.checked
 				: event.target.value;
-		this.setState({
-			...this.state,
-			[event.target.name]: value,
-		});
+		if(event.target.name === "otro") {
+			this.setState({
+				...this.state,
+				otroEspecificar:"",
+				[event.target.name]: value,
+			});
+		} else {
+			this.setState({
+				...this.state,
+				[event.target.name]: value,
+			});
+		}
+		
 		console.log(event.target.name);
 		console.log(value);
 	};

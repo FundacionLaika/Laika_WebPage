@@ -1,16 +1,7 @@
 import React, { Component } from "react";
 
 class Diagnostico extends Component {
-	state = {
-		showMeEspecificar: false,
-	};
-
-	showMeEspecificar = () => {
-		this.setState({
-			showMeEspecificar: !this.state.showMeEspecificar,
-		});
-	};
-
+	
 	render() {
 		return (
 			<div id="diagnostico">
@@ -162,7 +153,6 @@ class Diagnostico extends Component {
 								value="otro"
 								checked={this.props.otro}
 								onChange={this.props.handleChange}
-								onClick={this.showMeEspecificar}
 							/>
 							<label htmlFor="otro">
 								<span></span>
@@ -175,7 +165,7 @@ class Diagnostico extends Component {
 				</div>
 
 				<div id="bloqueOtro">
-					{this.state.showMeEspecificar ? (
+					{this.props.otro ? (
 						<label htmlFor="otroEspecificar" className="inp">
 							<input
 								type="text"
