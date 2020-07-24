@@ -59,13 +59,35 @@ export default class Consulta extends Component {
 	};
 
 	selectHandler = (selectedList,selectedItem, id) => {
-		console.log(selectedList);
-		console.log(id);
+		if(id === "Genero") {
+
+		} else if(id === "Vacunas") {
+
+		} else if(id === "Esterilizado") {
+
+		} else if(id === "Diagnostico") {
+
+		} else if(id === "TipoHT") {
+
+		} else if(id === "Medio") {
+
+		}
 	}
 
 	removeHandler = (selectedList,removeItem,id) => {
-		console.log(selectedList)
-		console.log(id);
+		if(id === "Genero") {
+
+		} else if(id === "Vacunas") {
+
+		} else if(id === "Esterilizado") {
+
+		} else if(id === "Diagnostico") {
+
+		} else if(id === "TipoHT") {
+
+		} else if(id === "Medio") {
+
+		}
 	}
 
 	handleChange = (event) => {
