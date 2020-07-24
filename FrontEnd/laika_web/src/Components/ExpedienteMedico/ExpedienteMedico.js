@@ -77,6 +77,12 @@ class ExpedienteMedico extends Component {
 				otroEspecificar:"",
 				[event.target.name]: value,
 			});
+		} else if(event.target.id === "idCitaEsterilzacionNo") {
+			this.setState({
+				...this.state,
+				fechaEsterilizacion: null,
+				[event.target.name]: value,
+			});
 		} else {
 			this.setState({
 				...this.state,

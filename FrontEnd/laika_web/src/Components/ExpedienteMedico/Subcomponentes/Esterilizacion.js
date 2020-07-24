@@ -8,23 +8,7 @@ import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 class Esterilizacion extends Component {
-	state = {
-		showMeCitaEsterilziacion: false,
-	};
-
 	
-	showCitaEsterilizacionTrue = () => {
-		this.setState({
-			showMeCitaEsterilziacion: true,
-		});
-	}
-
-	showCitaEsterilizacionFalse = () => {
-		this.setState({
-			showMeCitaEsterilziacion: false,
-		});
-	}
-
 	render() {
 		return (
 			<div id="esterilizacion">
@@ -72,7 +56,6 @@ class Esterilizacion extends Component {
 								value="Si"
 								checked={this.props.citaEsterilizacion === "Si"}
 								onChange={this.props.handleChange}
-								onClick={this.showCitaEsterilizacionTrue}
 							/>
 							<label htmlFor="idCitaEsterilzacionSi">Si</label>
 						</div>
@@ -84,7 +67,6 @@ class Esterilizacion extends Component {
 								value="No"
 								checked={this.props.citaEsterilizacion === "No"}
 								onChange={this.props.handleChange}
-								onClick={this.showCitaEsterilizacionFalse}
 							/>
 							<label htmlFor="idCitaEsterilzacionNo">No</label>
 						</div>
@@ -92,7 +74,7 @@ class Esterilizacion extends Component {
 				</div>
 
 				<div className="fechaEsterilizacion">
-					{this.state.showMeCitaEsterilziacion ? (
+					{this.props.citaEsterilizacion === "Si" ? (
 						<DatePicker
 							isClearable
 							useWeekdaysShort
