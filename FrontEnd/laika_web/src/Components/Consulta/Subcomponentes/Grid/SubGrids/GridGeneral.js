@@ -1,5 +1,5 @@
 import React from "react";
-import TarjetaGeneral from "../../Tarjetas/TarjetaGeneral";
+import TarjetaGeneral from "../Tarjetas/TarjetaGeneral";
 
 export default class GridGeneral extends React.Component {
 	render() {

@@ -1,5 +1,5 @@
 import React from "react";
-import TarjetaHogarTemporal from "../../Tarjetas/TarjetaHogarTemporal";
+import TarjetaHogarTemporal from "../Tarjetas/TarjetaHogarTemporal";
 
 export default class GridHogarTemporal extends React.Component {
 	render() {
