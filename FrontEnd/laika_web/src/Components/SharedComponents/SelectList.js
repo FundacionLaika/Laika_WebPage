@@ -11,8 +11,8 @@ export default class SelectList extends React.Component {
 			},
 			searchBox: {
 				border: "none",
-				"border-bottom": "1px solid blue",
-				"border-radius": "0px",
+				borderBottom: "1px solid blue",
+				borderRadius: "0px",
 			},
 			multiselectContainer: {
                 color: "blue",
@@ -24,7 +24,10 @@ export default class SelectList extends React.Component {
 		return (
 			<div>
 				<Multiselect
+					id={this.props.id}
 					options={this.props.options}
+					onSelect={this.props.onSelect}
+					onRemove={this.props.onRemove}
 					placeholder={this.props.placeholder}
                     isObject={false}
 					avoidHighlightFirstOption={true}

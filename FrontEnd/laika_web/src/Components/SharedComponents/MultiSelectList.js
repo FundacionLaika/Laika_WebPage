@@ -10,8 +10,8 @@ export default class MultiSelectList extends React.Component {
 			},
 			searchBox: {
 				border: "none",
-				"border-bottom": "1px solid blue",
-				"border-radius": "0px",
+				borderBottom: "1px solid blue",
+				borderRadius: "0px",
 			},
 			multiselectContainer: {
 				color: "blue",
@@ -23,6 +23,9 @@ export default class MultiSelectList extends React.Component {
 		return (
 			<div>
 				<Multiselect
+					id={this.props.id}
+					onSelect={this.props.onSelect}
+					onRemove={this.props.onRemove}
 					options={this.props.options}
 					placeholder={this.props.placeholder}
 					isObject={false}

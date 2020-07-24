@@ -8,7 +8,7 @@ export default class FiltroGeneral extends React.Component {
 	render() {
 		return (
 			<div>
-				<SelectList options={this.state.plainArray} placeholder="Género"/>
+				<SelectList id="Genero" options={this.state.plainArray} placeholder="Género"/>
 			</div>
 		);
 	}
