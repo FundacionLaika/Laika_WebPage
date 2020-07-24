@@ -1,5 +1,5 @@
 import React from "react";
-import TarjetaExpedienteMedico from "../../Tarjetas/TarjetaExpedienteMedico";
+import TarjetaExpedienteMedico from "../Tarjetas/TarjetaExpedienteMedico";
 
 export default class GridExpedienteMedico extends React.Component {
 	render() {

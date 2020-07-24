@@ -1,5 +1,5 @@
 import React from "react";
-import TarjetaAdopcion from "../../Tarjetas/TarjetaAdopcion";
+import TarjetaAdopcion from "../Tarjetas/TarjetaAdopcion";
 
 export default class GridAdopcion extends React.Component {
 	render() {
