@@ -22,7 +22,7 @@ export default class TarjetaExpedienteMedico extends React.Component {
 					</div>
 					<div className="tarjEMf2">
 						<label> Esterilizado: </label>
-						<label> {this.props.esterilizado} </label>
+						<label> {this.props.estaEsterilizado==="1" ? "Si" : "No"} </label>
 
 						<label> Cita Agendada: </label>
 						<label> {this.props.citaAgendada} </label>
