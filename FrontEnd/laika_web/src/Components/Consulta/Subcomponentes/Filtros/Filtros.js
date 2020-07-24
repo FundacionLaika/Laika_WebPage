@@ -10,6 +10,9 @@ export default class Filtros extends React.Component {
 		return (
             <div>
                 <div>
+                    <button> Aplicar Filtro </button>
+                </div>
+                <div>
                     <FiltroGlobal filtros={this.props.filtros}/>
                 </div>   
                 <div>
