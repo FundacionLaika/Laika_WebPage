@@ -1,5 +1,5 @@
 import React from "react";
-import SelectList from "../../../SharedComponents/SelectList";
+import SelectList from "../../../../SharedComponents/SelectList";
 
 export default class FiltroHogarTemporal extends React.Component {
 	state = {

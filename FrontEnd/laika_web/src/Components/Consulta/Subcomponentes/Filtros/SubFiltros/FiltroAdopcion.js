@@ -1,5 +1,5 @@
 import React from "react";
-import MultiSelectList from "../../../SharedComponents/MultiSelectList";
+import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 export default class FiltroAdopcion extends React.Component {
 	state = {

@@ -1,6 +1,6 @@
 import React from "react";
-import SelectList from "../../../SharedComponents/SelectList";
-import MultiSelectList from "../../../SharedComponents/MultiSelectList";
+import SelectList from "../../../../SharedComponents/SelectList";
+import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 
 export default class FiltroExpedienteMedico extends React.Component {

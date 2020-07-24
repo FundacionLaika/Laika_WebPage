@@ -9,7 +9,7 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 export default class Consulta extends Component {
 	state = {
 		filtros: {
-			tarjeta: "ExpedienteMedico",
+			tarjeta: "General",
 			keyword: "",
 			filtroPorKeyWord: "",
 			ordenar: "",
