@@ -17,13 +17,13 @@ const db = knex({
         host: '107.180.41.48',
         user: 'dbmanager',
         password: 'Laika2012',
-        database: 'LaikaDBTest'
+        database: 'LaikaDBTest',
     }
 });
 
 
 
-app.get('/consulta', (req, res) => { consulta.handleConsultaGet(req, res, db)})
+app.post('/consulta', (req, res) => { consulta.handleConsultaPost(req, res, db)})
 
 app.get('/', (req,res) => {
     res.send('this is working');

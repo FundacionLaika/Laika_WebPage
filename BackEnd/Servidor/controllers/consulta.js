@@ -1,7 +1,7 @@
-const handleConsultaGet = (req, res, db) => {
+const handleConsultaPost = (req, res, db) => {
 
     const selectClause = {
-        RegistroGeneral: `select    ar.ID_Animal,
+        General:         `select    ar.ID_Animal,
                                     ar.Nombre,
                                     ar.Edad,
                                     ar.Genero,
@@ -29,11 +29,6 @@ const handleConsultaGet = (req, res, db) => {
                                     cv.Multiple,
                                     cv.RefuerzoMultiple,
                                     cv.Rabia,
-                                    cv.FechaPuppy,
-                                    cv.FechaRefuerzoPuppy,
-                                    cv.FechaRefuerzoPuppy,
-                                    cv.FechaMultiple,
-                                    cv.FechaRabia,
                                     est.Fecha AS FechaEsterilizacion,
                                     est.EstaEsterilizado `,
 
@@ -48,7 +43,7 @@ const handleConsultaGet = (req, res, db) => {
                                     dirht.Colonia AS ColoniaHT,
                                     dirht.Municipio AS MunicipioHT `,
 
-        Adopcion:   `select         ar.ID_Animal,
+        Adopcion:       `select     ar.ID_Animal,
                                     adte.Nombre AS NombreAdte,
                                     adte.Telefono AS TelefonoAdte,
                                     adop.NombreAdoptado AS Adoptado,
@@ -164,13 +159,15 @@ const handleConsultaGet = (req, res, db) => {
         filterConditions += "AND ht.Tipo_HT = '" + tipoHogar.toUpperCase() + "' ";
     }
 
+
     if (rangoFechaHT.fechaInicioHT.length) {
-        filterConditions += "AND ht.FechaInicio >= DATE(" + Date.parse(rangoFechaHT.fechaInicioHT) + ") ";
+        filterConditions += "AND DATE_FORMAT(ht.FechaInicio , '%Y-%m-%d') >= '" + rangoFechaHT.fechaInicioHT + "' ";
     }
 
     if (rangoFechaHT.fechaFinalHT.length) {
-        filterConditions += "AND ht.FechaFinal <= DATE(" + Date.parse(rangoFechaHT.fechaFinalHT) + ") ";
+        filterConditions += "AND DATE_FORMAT(ht.FechaFinal , '%Y-%m-%d') <= '" + rangoFechaHT.fechaFinalHT + "' ";
     }
+
 
     if (medioAdopcion) {
         var mediosFiltrados = []
@@ -179,16 +176,15 @@ const handleConsultaGet = (req, res, db) => {
                 mediosFiltrados.push("'" + medio + "'")
             }
           }
-        console.log("medios:", mediosFiltrados.toString())
         filterConditions += mediosFiltrados.length ? "AND adop.Medio in (" + mediosFiltrados.toString() + ") " : "";
     }
 
     if (rangoFechaAdopcion.fechaInicioAdop.length) {
-        filterConditions += "AND adop.Fecha_Adopcion >= DATE(" + Date.parse(rrangoFechaAdopcion.fechaInicioAdop) + ") ";
+        filterConditions += "AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') >= '" + rangoFechaAdopcion.fechaInicioAdop + "' ";
     }
 
     if (rangoFechaAdopcion.fechaFinalAdop.length) {
-        filterConditions += "AND adop.Fecha_Adopcion <= DATE(" + Date.parse(rangoFechaAdopcion.fechaFinalAdop) + ") ";
+        filterConditions += "AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') <= '" + rangoFechaAdopcion.fechaFinalAdop + "' ";
     }
 
 
@@ -200,5 +196,5 @@ const handleConsultaGet = (req, res, db) => {
 };
 
 module.exports = {
-	handleConsultaGet,
+	handleConsultaPost,
 };
