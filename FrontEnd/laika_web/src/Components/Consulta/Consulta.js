@@ -6,10 +6,13 @@ import TarjetaGeneral from "./Subcomponentes/TarjetaGeneral";
 import TarjetaExpedienteMedico from "./Subcomponentes/TarjetaExpedienteMedico";
 import TarjetaHogarTemporal from "./Subcomponentes/TarjetaHogarTemporal";
 import TarjetaAdopcion from "./Subcomponentes/TarjetaAdopcion";
+
+//var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
+    
 	state = {
 		filtros: {
-			tarjeta: "General",
+			tarjeta: "Adopcion",
 			keyword: "",
 			filtroPorKeyWord: "",
 			ordenar: "",
@@ -65,7 +68,16 @@ export default class Consulta extends Component {
 
 	onButtonClicked = (event) => {
 		this.handleFetch();
-	};
+    };
+    
+    concatDate = (calle, numero, colonia, municipio) => {
+        var direccion = "";
+        if (calle.length) direccion += calle
+        if (numero.length && calle.length) direccion += " #" + numero;
+        if (colonia.length) direccion += (direccion.length ? ", " : "") + colonia;
+        direccion += (direccion.length ? ", " : "") + municipio + ".";
+        return direccion;
+    }
 
 	handleFetch = () => {
 		fetch("http://localhost:3001/consulta", {
@@ -80,8 +92,8 @@ export default class Consulta extends Component {
 				});
 			})
 			.catch((err) => console.log(err));
-	};
-
+    };
+    
 	render() {
 		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data
 
@@ -153,7 +165,8 @@ export default class Consulta extends Component {
 													numero={tarjeta.RteNumero}
 													colonia={tarjeta.RteColonia}
 													municipio={tarjeta.RteMunicipio}
-													rescatistas={tarjeta.Rescatistas}
+                                                    rescatistas={tarjeta.Rescatistas}
+                                                    concatDate={this.concatDate}
 												/>
 											)
 										);
@@ -163,8 +176,25 @@ export default class Consulta extends Component {
 									if (this.state.data.length) {
 										return this.state.data.map(
 											(tarjeta) => (
-                                                <TarjetaExpedienteMedico
-                                                
+												<TarjetaExpedienteMedico
+													key={tarjeta.ID_Animal}
+                                                    id={tarjeta.ID_Animal}
+                                                    atropellamiento={tarjeta.Atropellamiento}
+                                                    tvt={tarjeta.TVT}
+                                                    sarnaPiel={tarjeta.Sarna_Piel}
+                                                    viral={tarjeta.Viral}
+                                                    embarazo={tarjeta.Embarazo}
+                                                    cachorros={tarjeta.Cachorros}
+                                                    hemoparasitos={tarjeta.Hemoparasitos}
+                                                    otro={tarjeta.Otro}
+                                                    puppy={tarjeta.Puppy}
+                                                    refuerzoPuppy={tarjeta.RefuerzoPuppy}
+                                                    multiple={tarjeta.Multiple}
+                                                    refuerzoMultiple={tarjeta.RefuerzoMultiple}
+                                                    rabia={tarjeta.Rabia}
+                                                    fechaEsterilizacion={tarjeta.FechaEsterilizacion}
+                                                    citaAgendada={tarjeta.CitaAgendada}
+                                                    estaEsterilizado={tarjeta.EstaEsterilizado}
 												/>
 											)
 										);
@@ -175,6 +205,18 @@ export default class Consulta extends Component {
 										return this.state.data.map(
 											(tarjeta) => (
 												<TarjetaHogarTemporal
+													key={tarjeta.ID_Animal}
+													id={tarjeta.ID_Animal}
+													tipoHT={tarjeta.Tipo_HT}
+													responsableHT={tarjeta.ResponsableHT}
+													telefonoHT={tarjeta.TelefonoHT}
+													fechaInicioHT={tarjeta.FechaInicioHT}
+													fechaFinalHT={tarjeta.FechaFinalHT}
+													calle={tarjeta.CalleHT}
+													numero={tarjeta.NumeroHT}
+													colonia={tarjeta.ColoniaHT}
+													municipio={tarjeta.MunicipioHT}
+													concatDate={this.concatDate}
 												/>
 											)
 										);
@@ -185,6 +227,19 @@ export default class Consulta extends Component {
 										return this.state.data.map(
 											(tarjeta) => (
 												<TarjetaAdopcion
+													key={tarjeta.ID_Animal}
+													id={tarjeta.ID_Animal}
+													nombreAdte={tarjeta.NombreAdte}
+													telefonoAdte={tarjeta.TelefonoAdte}
+													adoptado={tarjeta.Adoptado}
+													medioAdop={tarjeta.MedioAdop}
+													fechaAdop={tarjeta.FechaAdop}
+													visitaAdop={tarjeta.VisitaAdop}
+													calle={tarjeta.CalleAdte}
+													numero={tarjeta.NumeroAdte}
+													colonia={tarjeta.ColoniaAdte}
+													municipio={tarjeta.MunicipioAdte}
+													concatDate={this.concatDate}
 												/>
 											)
 										);

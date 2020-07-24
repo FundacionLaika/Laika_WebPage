@@ -9,44 +9,37 @@ export default class TarjetaExpedienteMedico extends React.Component {
 
 				<div>
 					<div className="tarjEMf1">
-						<label> Nombre: </label>
-						<label> {this.props.nombre} </label>
-
-						<label> Edad: </label>
-						<label> {this.props.edad} </label>
-
-						<label> Genero: </label>
-						<label> {this.props.genero} </label>
-
-						<label> Estatus: </label>
-						<label> {this.props.estatus} </label>
+						<label> Diagnostico: </label>
+						{this.props.atropellamiento ? <li> Atropellamiento </li> : null}
+						{this.props.tvt ? <li> TVT </li> : null}
+						{this.props.sarnaPiel ? <li> Sarna Piel </li> : null}
+						{this.props.viral ? <li> Viral </li> : null}
+						{this.props.embarazo ? <li> Embarazo </li> : null}
+						{this.props.cachorros ? <li> Cachorros </li> : null}
+						{this.props.hemoparasitos ? <li> Hemoparasitos </li> : null}
+						{this.props.otro.length ? <li> {this.props.otro} </li> : null}
+						
 					</div>
 					<div className="tarjEMf2">
-						<label> Especie: </label>
-						<label> {this.props.especie} </label>
+						<label> Esterilizado: </label>
+						<label> {this.props.esterilizado} </label>
 
-						<label> Fecha De Rescate: </label>
-						<label> {this.props.fechaRescate} </label>
+						<label> Cita Agendada: </label>
+						<label> {this.props.citaAgendada} </label>
 
-						<label> Direccion: </label>
-						<label>
-							{" "}
-							{this.props.calle +
-								" #" +
-								this.props.numero +
-								", " +
-								this.props.colonia +
-								", " +
-								this.props.municipio}{" "}
-						</label>
+						<label> Fecha de Esterilización: </label>
+						<label> {this.props.fechaEsterilizacion} </label>
 					</div>
 					<div className="tarjEMf3">
-						<label> Rescatistas: </label>
-						<label> {this.props.rescatistas} </label>
-					</div>
-					<div className="tarjEMf4">
-						<label> Senas Particulares: </label>
-						<label> {this.props.senasParticulares} </label>
+						<label> Vacunas Recibidas: </label>
+
+						
+							{this.props.puppy ? <li> Puppy </li> : null}
+							{this.props.refuerzoPuppy ? <li> Refuerzo Puppy </li> : null}
+							{this.props.multiple ? <li> Multiple </li> : null}
+							{this.props.refuerzoMultiple ? <li> Refuerzo Multiple </li> : null}
+							{this.props.rabia ? <li> Rabia </li> : null}
+						
 					</div>
 				</div>
 			</div>

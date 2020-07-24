@@ -9,45 +9,34 @@ export default class TarjetaAdopcion extends React.Component {
 
 				<div>
 					<div className="tarjEMf1">
-						<label> Nombre: </label>
-						<label> {this.props.nombre} </label>
+						<label> Adoptante: </label>
+						<label> {this.props.nombreAdte} </label>
 
-						<label> Edad: </label>
-						<label> {this.props.edad} </label>
+						<label> Telefono del Adoptante: </label>
+						<label> {this.props.telefonoAdte} </label>
 
-						<label> Genero: </label>
-						<label> {this.props.genero} </label>
-
-						<label> Estatus: </label>
-						<label> {this.props.estatus} </label>
 					</div>
 					<div className="tarjEMf2">
-						<label> Especie: </label>
-						<label> {this.props.especie} </label>
+						
+					<label> Adoptado: </label>
+					<label> {this.props.adoptado} </label>
 
-						<label> Fecha De Rescate: </label>
-						<label> {this.props.fechaRescate} </label>
+					<label> Medio de Adopcion: </label>
+					<label> {this.props.medioAdop} </label>
 
-						<label> Direccion: </label>
-						<label>
-							{" "}
-							{this.props.calle +
-								" #" +
-								this.props.numero +
-								", " +
-								this.props.colonia +
-								", " +
-								this.props.municipio}{" "}
-						</label>
+					<label> Fecha de Adopcion: </label>
+					<label> {this.props.fechaAdop} </label>
+						
 					</div>
 					<div className="tarjEMf3">
-						<label> Rescatistas: </label>
-						<label> {this.props.rescatistas} </label>
+						<label> Visita de Adopcion: </label>
+						<label> {this.props.visitaAdop} </label>
+
+						<label> Direccion: </label>
+						<label> {this.props.concatDate(this.props.calle, this.props.numero, this.props.colonia, this.props.municipio)} </label>
 					</div>
-					<div className="tarjEMf4">
-						<label> Senas Particulares: </label>
-						<label> {this.props.senasParticulares} </label>
-					</div>
+
+					
 				</div>
 			</div>
 		);

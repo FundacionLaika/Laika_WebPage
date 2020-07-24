@@ -30,14 +30,7 @@ export default class TarjetaGeneral extends React.Component {
 
 						<label> Direccion: </label>
 						<label>
-							{" "}
-							{this.props.calle +
-								" #" +
-								this.props.numero +
-								", " +
-								this.props.colonia +
-								", " +
-								this.props.municipio}{" "}
+							{this.props.concatDate(this.props.calle, this.props.numero, this.props.colonia, this.props.municipio)}
 						</label>
 					</div>
 					<div className="tarjEMf3">
