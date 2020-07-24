@@ -58,12 +58,14 @@ export default class Consulta extends Component {
 		transaccionCompletada: true,
 	};
 
-	selectHandler = (selectedList,selectedItem) => {
+	selectHandler = (selectedList,selectedItem, id) => {
 		console.log(selectedList);
+		console.log(id);
 	}
 
-	removeHandler = (selectedList,removeItem) => {
+	removeHandler = (selectedList,removeItem,id) => {
 		console.log(selectedList)
+		console.log(id);
 	}
 
 	handleChange = (event) => {
