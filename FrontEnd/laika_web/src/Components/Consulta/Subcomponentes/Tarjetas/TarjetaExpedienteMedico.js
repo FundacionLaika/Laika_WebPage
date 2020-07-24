@@ -1,5 +1,5 @@
 import React from "react";
-import FotoFrame from "../../SharedComponents/Tarjetas/FotoFrame.js";
+import FotoFrame from "../../../SharedComponents/Tarjetas/FotoFrame.js";
 
 export default class TarjetaExpedienteMedico extends React.Component {
 	render() {
