@@ -8,7 +8,7 @@ export default class FiltroHogarTemporal extends React.Component {
 	render() {
 		return (
 			<div>
-				<SelectList id="TipoHT" options={this.state.plainArray} placeholder="Tipo de HT"/>
+				<SelectList id="TipoHT" options={this.state.plainArray} placeholder="Tipo de HT" onSelect={this.props.onSelect} onRemove={this.props.onRemove}/>
 			</div>
 		);
 	}

@@ -20,25 +20,25 @@ export default class Filtros extends React.Component {
                         switch (this.props.filtros.tarjeta) {
                             case "General":
                                 if (this.props.dataLength && this.props.transaccionCompletada) {
-                                    return <FiltroGeneral filtros={this.props.filtros}/>
+                                    return <FiltroGeneral filtros={this.props.filtros} onSelect={this.props.onSelect} onRemove={this.props.onRemove}/>
                                 }
                                 break;
 
                             case "ExpedienteMedico":
                                 if (this.props.dataLength && this.props.transaccionCompletada) {
-                                    return <FiltroExpedienteMedico filtros={this.props.filtros}/>
+                                    return <FiltroExpedienteMedico filtros={this.props.filtros} onSelect={this.props.onSelect} onRemove={this.props.onRemove}/>
                                 }
                                 break;
 
                             case "HogarTemporal":
                                 if (this.props.dataLength && this.props.transaccionCompletada) {
-                                    return <FiltroHogarTemporal filtros={this.props.filtros}/>
+                                    return <FiltroHogarTemporal filtros={this.props.filtros} onSelect={this.props.onSelect} onRemove={this.props.onRemove}/>
                                 }
                                 break;
 
                             case "Adopcion":
                                 if (this.props.dataLength && this.props.transaccionCompletada) {
-                                    return <FiltroAdopcion filtros={this.props.filtros}/>
+                                    return <FiltroAdopcion filtros={this.props.filtros} onSelect={this.props.onSelect} onRemove={this.props.onRemove}/>
                                 }
                             break;
 

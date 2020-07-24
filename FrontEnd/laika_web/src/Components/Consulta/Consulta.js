@@ -58,6 +58,14 @@ export default class Consulta extends Component {
 		transaccionCompletada: true,
 	};
 
+	selectHandler = (selectedList,selectedItem) => {
+		console.log(selectedList);
+	}
+
+	removeHandler = (selectedList,removeItem) => {
+		console.log(selectedList)
+	}
+
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value,
@@ -119,6 +127,8 @@ export default class Consulta extends Component {
 							dataLength = {this.state.data.length}
 							transaccionCompletada = {this.state.transaccionCompletada}
 							filtros = {this.state.filtros}
+							onSelect={this.selectHandler}
+							onRemove={this.removeHandler}
 						/>
 					</div>
 					<div>

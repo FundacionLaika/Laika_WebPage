@@ -8,7 +8,7 @@ export default class FiltroAdopcion extends React.Component {
 	render() {
 		return (
 			<div>
-				<MultiSelectList id="Medio" options={this.state.plainArray} placeholder="Medio de adopción"/>
+				<MultiSelectList id="Medio" options={this.state.plainArray} placeholder="Medio de adopción" onSelect={this.props.onSelect} onRemove={this.props.onRemove}/>
 			</div>
 		);
 	}
