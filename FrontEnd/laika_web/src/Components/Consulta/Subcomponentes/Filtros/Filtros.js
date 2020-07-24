@@ -4,6 +4,7 @@ import FiltroExpedienteMedico from "./SubFiltros/FiltroExpedienteMedico";
 import FiltroGeneral from "./SubFiltros/FiltroGeneral";
 import FiltroHogarTemporal from "./SubFiltros/FiltroHogarTemporal";
 import FiltroGlobal from "./SubFiltros/FiltroGlobal";
+import FiltroRegistros from "./SubFiltros/FiltroRegistros";
 
 export default class Filtros extends React.Component {
 	render() {
@@ -14,7 +15,10 @@ export default class Filtros extends React.Component {
                 </div>
                 <div>
                     <FiltroGlobal filtros={this.props.filtros}/>
-                </div>   
+                </div> 
+                <div>
+                    <FiltroRegistros handleFiltroRegistros={this.props.handleFiltroRegistros} registroSeleccionado={this.props.filtros.tarjeta}/>
+                </div>  
                 <div>
                     {(() => {
                         switch (this.props.filtros.tarjeta) {
