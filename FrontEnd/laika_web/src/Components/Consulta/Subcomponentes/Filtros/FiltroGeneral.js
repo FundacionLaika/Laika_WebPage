@@ -1,10 +1,14 @@
 import React from "react";
+import SelectList from "../../../SharedComponents/SelectList";
 
 export default class FiltroGeneral extends React.Component {
+	state = {
+		plainArray:["Macho", "Hembra"]
+	}
 	render() {
 		return (
 			<div>
-				<label> Filtro General </label>
+				<SelectList options={this.state.plainArray} placeholder="Género"/>
 			</div>
 		);
 	}
