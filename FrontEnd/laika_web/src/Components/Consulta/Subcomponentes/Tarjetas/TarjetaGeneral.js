@@ -1,7 +1,7 @@
 import React from "react";
-import FotoFrame from "../../SharedComponents/Tarjetas/FotoFrame.js";
+import FotoFrame from "../../../SharedComponents/Tarjetas/FotoFrame.js";
 
-export default class TarjetaExpedienteMedico extends React.Component {
+export default class TarjetaGeneral extends React.Component {
 	render() {
 		return (
 			<div>
@@ -17,6 +17,9 @@ export default class TarjetaExpedienteMedico extends React.Component {
 
 						<label> Genero: </label>
 						<label> {this.props.genero} </label>
+
+						<label> Estatus: </label>
+						<label> {this.props.estatus} </label>
 					</div>
 					<div className="tarjEMf2">
 						<label> Especie: </label>
@@ -26,7 +29,9 @@ export default class TarjetaExpedienteMedico extends React.Component {
 						<label> {this.props.fechaRescate} </label>
 
 						<label> Direccion: </label>
-						<label> {this.props.direccion} </label>
+						<label>
+							{this.props.concatDate(this.props.calle, this.props.numero, this.props.colonia, this.props.municipio)}
+						</label>
 					</div>
 					<div className="tarjEMf3">
 						<label> Rescatistas: </label>
