@@ -9,18 +9,18 @@ export default class FiltroHogarTemporal extends React.Component {
 		return (
 			<div>
 				<SelectList
-					id="TipoHT"
+					id="TipoHogar"
 					options={this.state.plainArray}
 					placeholder="Tipo de HT"
 					onSelect={(selectedList, selectedItem) =>
 						this.props.onSelect(
 							selectedList,
 							selectedItem,
-							"TipoHT"
+							"TipoHogar"
 						)
 					}
 					onRemove={(selectedList, removedItem) =>
-						this.props.onRemove(selectedList, removedItem, "TipoHT")
+						this.props.onRemove(selectedList, removedItem, "TipoHogar")
 					}
 				/>
 			</div>

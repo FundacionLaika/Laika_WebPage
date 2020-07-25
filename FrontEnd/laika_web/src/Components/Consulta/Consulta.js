@@ -5,15 +5,6 @@ import "./Styles/Consulta.css";
 import Filtros from "./Subcomponentes/Filtros/Filtros";
 import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
-var vacunasTemp = { 
-	puppy: "",
-	refuerzoPuppy: "",
-	multiple: "",
-	refuerzoMultiple: "",
-	rabia: "",
-}
-var diagnostico = [0,0,0,0,0,0,0]
-var medio = [0,0,0,0,0,]
 
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
@@ -70,144 +61,27 @@ export default class Consulta extends Component {
 
 
 	selectHandler = (selectedList, selectedItem, id) => {
-		if (id === "Genero") {
-			this.setState({
-				filtros: {
-					genero: selectedItem,
-				},
-			});
-		} else if (id === "Vacunas") {
-			if (selectedItem === "Puppy") {
-				vacunasTemp["puppy"] = "1";
-			} else if (selectedItem === "Refuerzo Puppy") {
-				vacunas[1] = 1;
-			} else if (selectedItem === "Múltiple") {
-				vacunas[2] = 1;
-			} else if (selectedItem === "Refuerzo Múltiple") {
-				vacunas[3] = 1;
-			} else if (selectedItem === "Rabia") {
-				vacunas[4] = 1;
-			}
-
-			this.setState({
-				filtros: {
-					vacunas: {
-						puppy: vacunas[0],
-						refuerzoPuppy: vacunas[1],
-						multiple: vacunas[2],
-						refuerzoMultiple: vacunas[3],
-						rabia: vacunas[4],
-					},
-				},
-			});
-		} else if (id === "Esterilizado") {
-			this.setState({
-				filtros: {
-					esterilizado: selectedItem,
-				},
-			});
-		} else if (id === "Diagnostico") {
-			if (selectedItem === "Atropellamiento") {
-				vacunas[0] = 1;
-			} else if (selectedItem === "TVT") {
-				vacunas[1] = 1;
-			} else if (selectedItem === "Sarna/Piel") {
-				vacunas[2] = 1;
-			} else if (selectedItem === "Viral") {
-				vacunas[3] = 1;
-			} else if (selectedItem === "Embarazo") {
-				vacunas[4] = 1;
-			} else if (selectedItem === "Cachorros") {
-				vacunas[5] = 1;
-			} else if (selectedItem === "Hemoparásitos") {
-				vacunas[6] = 1;
-			} else if (selectedItem === "Otro") {
-				vacunas[7] = 1;
-			}
-
-			this.setState({
-				filtros: {
-					diagnostico: {
-						atropellamiento: diagnostico[0],
-						tvt: diagnostico[1],
-						sarnaPiel: diagnostico[2],
-						viral: diagnostico[3],
-						embarazo: diagnostico[4],
-						cachorros: diagnostico[5],
-						hemoparasitos: diagnostico[6],
-						otro: diagnostico[7],
-					}
-				}
-			});
-		} else if (id === "TipoHT") {
-			this.setState({
-				filtros: {
-					tipoHogar: selectedItem,
-				}
-			});
-		} else if (id === "Medio") {
-			this.setState({
-				filtros: {
-					medioAdopcion: {
-						instagram: medio[0],
-						facebook: medio[1],
-						petco: medio[2],
-						referencia: medio[3],
-						otro: medio[4],
-					}
-				}
-			});
-		}
+		const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
+		const temp = this.state.filtros;
+		
+		if(valoresCondicionales) temp[this.convert2CamelCase(id)] = selectedItem;
+		else temp[this.convert2CamelCase(id)][this.convert2CamelCase(selectedItem)] = "1";
+		
+		this.setState({
+			filtros: temp
+		},console.log(this.state));
 	};
 
-	removeHandler = (selectedList, removeItem, id) => {
-		if (id === "Genero") {
-			this.setState({
-				filtros: {
-					genero: "",
-				},
-			});
-		} else if (id === "Vacunas") {
-			if (selectedItem === "Puppy") {
-				vacunas[0] = 0;
-			} else if (selectedItem === "Refuerzo Puppy") {
-				vacunas[1] = 0;
-			} else if (selectedListItem === "Múltiple") {
-				vacunas[2] = 0;
-			} else if (selectedListItem === "Refuerzo Múltiple") {
-				vacunas[3] = 0;
-			} else if (selectedListItem === "Rabia") {
-				vacunas[4] = 0;
-			}
-
-			this.setState({
-				filtros: {
-					vacunas: {
-						puppy: vacunas[0],
-						refuerzoPuppy: vacunas[1],
-						multiple: vacunas[2],
-						refuerzoMultiple: vacunas[3],
-						rabia: vacunas[4],
-					},
-				},
-			});
-		} else if (id === "Esterilizado") {
-			this.setState({
-				filtros: {
-					esterilizado: "",
-				},
-			});
-		} else if (id === "Diagnostico") {
-			this.setState({});
-		} else if (id === "TipoHT") {
-			this.setState({
-				filtros: {
-					tipoHogar: "",
-				},
-			});
-		} else if (id === "Medio") {
-			this.setState({});
-		}
+	removeHandler = (selectedList, removedItem, id) => {
+		const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
+		const temp = this.state.filtros;
+		
+		if(valoresCondicionales) temp[this.convert2CamelCase(id)] = "";
+		else temp[this.convert2CamelCase(id)][this.convert2CamelCase(removedItem)] = "";
+		
+		this.setState({
+			filtros: temp
+		},console.log(this.state));
 	};
 
 	handleChange = (event) => {
@@ -262,6 +136,8 @@ export default class Consulta extends Component {
 	};
 
 	convert2CamelCase = (str) => {
+		if(str === "Sarna/Piel") return "sarnaPiel";
+		if(str === "TVT") return "tvt";
 		str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 		return str
 			.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
@@ -269,6 +145,7 @@ export default class Consulta extends Component {
 			})
 			.replace(/\s+/g, "");
 	};
+	
 
 	render() {
 		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data

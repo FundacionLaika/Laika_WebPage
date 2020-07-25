@@ -9,14 +9,14 @@ export default class FiltroAdopcion extends React.Component {
 		return (
 			<div>
 				<MultiSelectList
-					id="Medio"
+					id="medioAdopcion"
 					options={this.state.plainArray}
 					placeholder="Medio de adopción"
 					onSelect={(selectedList, selectedItem) =>
-						this.props.onSelect(selectedList, selectedItem, "Medio")
+						this.props.onSelect(selectedList, selectedItem, "medioAdopcion")
 					}
 					onRemove={(selectedList, removedItem) =>
-						this.props.onRemove(selectedList, removedItem, "Medio")
+						this.props.onRemove(selectedList, removedItem, "medioAdopcion")
 					}
 				/>
 			</div>

@@ -7,7 +7,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 		plainArray1: [
 			"Puppy",
 			"Refuerzo Puppy",
-			"Mútliple",
+			"Múltiple",
 			"Refuerzo Múltiple",
 			"Rabia",
 		],
