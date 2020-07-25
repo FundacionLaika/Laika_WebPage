@@ -216,9 +216,10 @@ export default class Consulta extends Component {
 		});
 	};
 
-	onButtonClicked = (event) => {
+	handleFiltroRegistros = (registroSeleccionado) => {
+		console.log("holaaaaaaa", registroSeleccionado);
 		const filtrosTemp = this.state.filtros;
-		filtrosTemp.tarjeta = event.target.name;
+		filtrosTemp.tarjeta = registroSeleccionado;
 		this.setState(
 			{
 				filtros: filtrosTemp,
@@ -260,9 +261,17 @@ export default class Consulta extends Component {
 			.catch((err) => console.log(err));
 	};
 
+	convert2CamelCase = (str) => {
+		str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+		return str
+			.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+				return index === 0 ? word.toLowerCase() : word.toUpperCase();
+			})
+			.replace(/\s+/g, "");
+	};
+
 	render() {
 		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data
-
 		return (
 			<div className="center">
 				<div>
@@ -275,6 +284,7 @@ export default class Consulta extends Component {
 							filtros={this.state.filtros}
 							onSelect={this.selectHandler}
 							onRemove={this.removeHandler}
+							handleFiltroRegistros={this.handleFiltroRegistros}
 						/>
 					</div>
 					<div>
