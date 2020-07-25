@@ -4,9 +4,6 @@ import { Multiselect } from "multiselect-react-dropdown";
 export default class SelectList extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-            plainArray: ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"],
-		};
 		this.style = {
 			chips: {
                 background: "blue",
@@ -14,8 +11,8 @@ export default class SelectList extends React.Component {
 			},
 			searchBox: {
 				border: "none",
-				"border-bottom": "1px solid blue",
-				"border-radius": "0px",
+				borderBottom: "1px solid blue",
+				borderRadius: "0px",
 			},
 			multiselectContainer: {
                 color: "blue",
@@ -27,7 +24,11 @@ export default class SelectList extends React.Component {
 		return (
 			<div>
 				<Multiselect
-                    options={this.state.plainArray}
+					id={this.props.id}
+					options={this.props.options}
+					onSelect={this.props.onSelect}
+					onRemove={this.props.onRemove}
+					placeholder={this.props.placeholder}
                     isObject={false}
 					avoidHighlightFirstOption={true}
 					emptyRecordMsg="Búsqueda no encontrada"
