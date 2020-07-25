@@ -7,6 +7,8 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
+	estaMontado = false;
+
 	state = {
 		filtros: {
 			tarjeta: "General",
@@ -101,10 +103,12 @@ export default class Consulta extends Component {
 					data: response,
 				});
 			})
-			.then((response) => {
-				this.setState({
-					transaccionCompletada: true,
-				});
+			.then(() => {
+				if (this.estaMontado) {
+					this.setState({
+						transaccionCompletada: true,
+					});
+				}
 			})
 			.catch((err) => console.log(err));
 	};
@@ -117,6 +121,14 @@ export default class Consulta extends Component {
 			})
 			.replace(/\s+/g, "");
 	};
+
+	componentDidUpdate() {
+		this.estaMontado = true;
+	}
+
+	componentWillUnmount() {
+		this.estaMontado = false;
+	}
 
 	render() {
 		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data
