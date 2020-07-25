@@ -22,6 +22,7 @@ export default class FiltroGeneral extends React.Component {
 					onRemove={(selectedList, removedItem) =>
 						this.props.onRemove(selectedList, removedItem, "Genero")
 					}
+					selectedValues={this.props.filtros.genero.length ? [this.props.filtros.genero] : ""}
 				/>
 			</div>
 		);

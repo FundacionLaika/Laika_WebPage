@@ -8,7 +8,7 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
-	estaMontado = false;
+	_isMounted = false;
 
 	state = {
 		filtros: {
@@ -20,7 +20,7 @@ export default class Consulta extends Component {
 				edadInicial: "",
 				edadFinal: "",
 			},
-			genero: "",
+			genero: "Macho",
 			vacunas: {
 				puppy: "",
 				refuerzoPuppy: "",
@@ -63,27 +63,33 @@ export default class Consulta extends Component {
 
 
 	selectHandler = (selectedList, selectedItem, id) => {
-		const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
-		const temp = this.state.filtros;
-		
-		if(valoresCondicionales) temp[this.convert2CamelCase(id)] = selectedItem;
-		else temp[this.convert2CamelCase(id)][this.convert2CamelCase(selectedItem)] = "1";
-		
-		this.setState({
-			filtros: temp
-		},console.log(this.state));
+		if (this._isMounted && this.state.transaccionCompletada) {
+			const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
+			const temp = this.state.filtros;
+			
+			if(valoresCondicionales) temp[this.convert2CamelCase(id)] = selectedItem;
+			else temp[this.convert2CamelCase(id)][this.convert2CamelCase(selectedItem)] = "1";
+
+			this.setState({
+				filtros: temp,
+			},console.log(this.state));
+		}
+
 	};
 
 	removeHandler = (selectedList, removedItem, id) => {
-		const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
-		const temp = this.state.filtros;
+		if (this._isMounted && this.state.transaccionCompletada) {
+			const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
+			const temp = this.state.filtros;
+			
+			if(valoresCondicionales) temp[this.convert2CamelCase(id)] = "";
+			else temp[this.convert2CamelCase(id)][this.convert2CamelCase(removedItem)] = "";
+			
+			this.setState({
+				filtros: temp,
+			},console.log(this.state));
+		}
 		
-		if(valoresCondicionales) temp[this.convert2CamelCase(id)] = "";
-		else temp[this.convert2CamelCase(id)][this.convert2CamelCase(removedItem)] = "";
-		
-		this.setState({
-			filtros: temp
-		},console.log(this.state));
 	};
 
 	handleChange = (event) => {
@@ -96,15 +102,18 @@ export default class Consulta extends Component {
 		console.log("holaaaaaaa", registroSeleccionado);
 		const filtrosTemp = this.state.filtros;
 		filtrosTemp.tarjeta = registroSeleccionado;
-		this.setState(
-			{
-				filtros: filtrosTemp,
-				transaccionCompletada: false,
-			},
-			() => {
-				this.handleFetch();
-			}
-		);
+
+		if (this._isMounted && this.state.transaccionCompletada) {
+			this.setState(
+				{
+					filtros: filtrosTemp,
+					transaccionCompletada: false,
+				},
+				() => {
+					this.handleFetch();
+				}
+			);
+		}
 	};
 
 	concatDate = (calle, numero, colonia, municipio) => {
@@ -130,7 +139,7 @@ export default class Consulta extends Component {
 				});
 			})
 			.then(() => {
-				if (this.estaMontado) {
+				if (this._isMounted) {
 					this.setState({
 						transaccionCompletada: true,
 					});
@@ -152,11 +161,11 @@ export default class Consulta extends Component {
 	
 
 	componentDidUpdate() {
-		this.estaMontado = true;
+		this._isMounted = true;
 	}
 
 	componentWillUnmount() {
-		this.estaMontado = false;
+		this._isMounted = false;
 	}
 
 	render() {
@@ -174,6 +183,7 @@ export default class Consulta extends Component {
 							onSelect={this.selectHandler}
 							onRemove={this.removeHandler}
 							handleFiltroRegistros={this.handleFiltroRegistros}
+							convert2CamelCase={this.convert2CamelCase}
 						/>
 					</div>
 					<div>

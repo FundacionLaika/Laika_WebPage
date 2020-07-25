@@ -22,6 +22,7 @@ export default class FiltroHogarTemporal extends React.Component {
 					onRemove={(selectedList, removedItem) =>
 						this.props.onRemove(selectedList, removedItem, "TipoHogar")
 					}
+					selectedValues={this.props.filtros.tipoHogar.length ? [this.props.filtros.tipoHogar] : ""}
 				/>
 			</div>
 		);

@@ -35,7 +35,8 @@ export default class MultiSelectList extends React.Component {
                     showCheckbox={true}
                     closeOnSelect={false}
                     style={this.style}
-                    closeIcon="cancel"
+					closeIcon="cancel"
+					selectedValues={this.props.selectedValues}
 				/>
 			</div>
 		);
