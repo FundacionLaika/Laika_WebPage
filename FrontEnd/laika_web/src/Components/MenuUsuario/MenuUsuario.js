@@ -28,6 +28,22 @@ class MenuUsuario extends Component {
         };
     }
 
+    componentDidMount() {
+        console.log("Mounting");
+        fetch("http://localhost:3000/usuarios", {
+            method: "get",
+            headers: { "Content-Type": "application/json" },
+        })
+            .then((response) => response.json())
+            .then((usuarios) => {
+                if (usuarios) {
+                    this.setState({
+                        usuarios: usuarios,
+                    });
+                }
+            });
+    }
+
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
@@ -162,9 +178,14 @@ class MenuUsuario extends Component {
     };
 
     deleteRow = (id) => {
-        this.setState((state) => ({
-            usuarios: state.usuarios.filter((row) => row.id !== id),
-        }));
+        fetch("http://localhost:3000/eliminarUsuario", {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                ID_Usuario: id,
+            }),
+        }).then((response) => response.json());
+        this.componentDidMount();
     };
 
     modifyRow = (event) => {

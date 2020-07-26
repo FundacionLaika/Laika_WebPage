@@ -10,8 +10,8 @@ class Registro extends React.Component {
             apellido: "",
             contrasena: "",
             confirmacionContrasena: "",
-            rol: "voluntario",
-            usuarioCreado: "false",
+            rol: "",
+            usuarioCreado: false,
         };
     }
 
@@ -21,6 +21,7 @@ class Registro extends React.Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
+        console.log(event.target.value);
     };
 
     onSubmitRegister = (event) => {
@@ -31,10 +32,10 @@ class Registro extends React.Component {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     nombre: this.state.nombre,
-                    apellidos: this.apellido,
+                    apellidos: this.state.apellido,
                     correo: this.state.correo,
                     contrasena: this.state.contrasena,
-                    // rol: "Voluntario",
+                    rol: this.state.rol,
                     // foto: "Laika2012",
                 }),
             })
@@ -203,6 +204,41 @@ class Registro extends React.Component {
                                     {this.state.errorConfirmacionContrasena}
                                 </div>
                             </div>
+                            <div className="Rol">
+                                <div className="select">
+                                    <select
+                                        className="select-text"
+                                        required
+                                        id="Rol"
+                                        name="rol"
+                                        value={this.tipoHT}
+                                        onChange={this.handleChange}
+                                    >
+                                        <option
+                                            className="pad"
+                                            value=""
+                                        ></option>
+                                        <option
+                                            className="pad"
+                                            value="Voluntario"
+                                            selected
+                                        >
+                                            Voluntario
+                                        </option>
+                                        <option
+                                            className="pad"
+                                            value="Administrador"
+                                        >
+                                            Administrador
+                                        </option>
+                                    </select>
+                                    <span className="select-highlight"></span>
+                                    <span className="select-bar"></span>
+                                    <label className="select-label">
+                                        Tipo de HT
+                                    </label>
+                                </div>
+                            </div>
                         </fieldset>
                         <div className="">
                             <input
@@ -211,7 +247,7 @@ class Registro extends React.Component {
                                 type="submit"
                                 value="Registrar"
                             />
-                            {!this.state.usuarioCreado ? (
+                            {this.state.usuarioCreado ? (
                                 <Redirect to="/MenuUsuario" />
                             ) : null}
                         </div>

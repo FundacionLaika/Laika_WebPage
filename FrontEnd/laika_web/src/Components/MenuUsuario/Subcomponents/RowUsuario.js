@@ -10,6 +10,16 @@ export default class RowUsuario extends React.Component {
         rol: this.props.rol,
     };
 
+    handleEliminarUsuario = (event) => {
+        // window.alert("Seguro que quieres eliminar el usuario");
+        const conf = window.confirm("Desea eliminar la cuenta");
+        if (conf) {
+            this.props.deleteRow();
+        } else {
+            console.log("Not today");
+        }
+    };
+
     render() {
         return (
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -53,7 +63,7 @@ export default class RowUsuario extends React.Component {
                     onChange={this.props.handleChange}
                     placeholder="Rol"
                 />
-                <button onClick={this.props.deleteRow}>-</button>
+                <button onClick={this.handleEliminarUsuario}>-</button>
             </div>
         );
     }

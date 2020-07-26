@@ -49,13 +49,6 @@ export default class Consulta extends Component {
                     />
                 </div>
 
-                <Link to="/Registro">
-                    <button className="BotonMedicoTransicion BotonSiguienteMedico">
-                        Registro
-                        <i className="fa fa-chevron-circle-right fa-fw"></i>
-                    </button>
-                </Link>
-
                 <div>
                     <div className="center mt4 pa0 pb0 mb0 w-two-thirds bg-light-purple flex center stretch justify-between">
                         <button

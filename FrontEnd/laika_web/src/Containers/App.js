@@ -27,7 +27,6 @@ class App extends React.Component {
 
     cambioRuta = (val) => {
         this.setState({ iniciadoSesion: auth.esAutenticado() });
-        console.log("It works!!!!!");
         //Puede tener una condicional de volver al estado original para que la cuenta se borre del estado
     };
 

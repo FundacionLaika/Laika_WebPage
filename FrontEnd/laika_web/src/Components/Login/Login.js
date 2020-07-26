@@ -60,19 +60,9 @@ class Login extends React.Component {
     };
 
     onSubmitSignIn = () => {
-        this.validate();
-        // if (
-        //     this.state.correoLogin === "Hello" &&
-        //     this.state.contrasenaLogin === "bye"
-        // ) {
-        //     auth.login(() => {
-        //         this.props.history.push("/Consulta");
-        //         console.log(auth.esAutenticado());
-        //         this.props.cambioRuta();
-        //     });
+        // this.validate();
         //          this.setState({ usuarioValido: true });
         //          this.props.cambioRuta(true);
-        // }
 
         fetch("http://localhost:3000/login", {
             method: "post",
@@ -85,12 +75,11 @@ class Login extends React.Component {
             .then((response) => response.json())
             .then((usuario) => {
                 console.log(usuario);
-                if (usuario) {
-                    // auth.login(() => {
-                    //     this.props.history.push("/Consulta");
-                    //     console.log(auth.esAutenticado());
-                    //     this.props.cambioRuta();
-                    // });
+                if (usuario.Contrasena) {
+                    auth.login(() => {
+                        this.props.history.push("/Consulta");
+                        this.props.cambioRuta();
+                    });
                 }
             });
     };
