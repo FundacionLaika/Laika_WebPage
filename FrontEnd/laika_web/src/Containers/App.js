@@ -4,6 +4,7 @@ import "./App.css";
 
 import MenuBar from "../Components/MenuBar/MenuBar";
 import Login from "../Components/Login/Login";
+import Registro from "../Components/Registro/Registro";
 import Consulta from "../Components/Consulta/Consulta";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
@@ -50,6 +51,8 @@ class App extends React.Component {
                             )}
                         />
 
+                        <Route exact path="/Registro" component={Registro} />
+
                         <ProtectedRoute
                             path="/Consulta"
                             exact
@@ -79,16 +82,16 @@ class App extends React.Component {
                             component={GenerarPDF}
                         />
 
-                        <ProtectedRoute
+                        <Route
                             path="/MenuUsuario"
-                            exact
-                            component={MenuUsuario}
-                            // render={(props) => (
-                            //     <MenuUsuario
-                            //         {...props}
-                            //         cambioRuta={this.cambioRuta}
-                            //     />
-                            // )}
+                            // exact
+                            // component={MenuUsuario}
+                            render={(props) => (
+                                <MenuUsuario
+                                    {...props}
+                                    cambioRuta={this.cambioRuta}
+                                />
+                            )}
                         />
 
                         <ProtectedRoute

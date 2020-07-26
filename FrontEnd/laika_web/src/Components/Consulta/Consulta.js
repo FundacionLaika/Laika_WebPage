@@ -5,7 +5,6 @@ import "./Consulta.css";
 import TarjetaExpedienteMedico from "./Subcomponentes/TarjetaExpedienteMedico.js";
 
 export default class Consulta extends Component {
-
     state = {
         data: [
             {
@@ -14,11 +13,12 @@ export default class Consulta extends Component {
                 edad: "5",
                 especie: "perro",
                 fechaRescate: "25/05/2019",
-                direccion: "Monterrubio #32, Paseos del Sol, Guadalajara, Jalisco",
+                direccion:
+                    "Monterrubio #32, Paseos del Sol, Guadalajara, Jalisco",
                 rescatistas: "Homero Simpson",
-                senasParticulares: "Mancha de la colita"
-            }
-        ]
+                senasParticulares: "Mancha de la colita",
+            },
+        ],
     };
 
     handleChange = (event) => {
@@ -48,6 +48,13 @@ export default class Consulta extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
+
+                <Link to="/Registro">
+                    <button className="BotonMedicoTransicion BotonSiguienteMedico">
+                        Registro
+                        <i className="fa fa-chevron-circle-right fa-fw"></i>
+                    </button>
+                </Link>
 
                 <div>
                     <div className="center mt4 pa0 pb0 mb0 w-two-thirds bg-light-purple flex center stretch justify-between">
@@ -81,8 +88,6 @@ export default class Consulta extends Component {
                         </button>
                     </div>
 
-
-
                     <div
                         className="center mv0 pv0  bg-light-gray w-two-thirds"
                         style={{ overflowY: "scroll", height: "65vh" }}
@@ -100,8 +105,6 @@ export default class Consulta extends Component {
                             />
                         ))}
                     </div>
-
-
 
                     <Link to="/GenerarPDF">
                         <button

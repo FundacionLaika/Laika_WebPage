@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import shortid from "shortid";
-import Foto from "../SharedComponents/Foto";
-import UsuarioGrid from "./UsuarioGrid";
+import InfoUsuario from "./Subcomponents/InfoUsuario";
+import UsuarioGrid from "./Subcomponents/UsuarioGrid";
+import CambiarDatos from "./Subcomponents/CambiarDatos";
 import { Link } from "react-router-dom";
 import auth from "../Auth/Auth";
 
@@ -192,136 +193,29 @@ class MenuUsuario extends Component {
     render() {
         return (
             <div className="containerUs">
-                <div className="item-amu">
-                    <h2 className="f4 b">Información del usuario</h2>
-                    <Foto
-                        id="fotoDefault"
-                        foto={this.state.usuario.fotoPerfil}
-                        imageHandler={this.imageHandler}
-                    />
-                    <div className="pa3 flex justify-center flex-column">
-                        <div className="labelD">
-                            <label>Nombre: {this.state.usuario.nombre}</label>
-                        </div>
-                        <br />
-                        <div className="labelD">
-                            <label>
-                                Apellido: {this.state.usuario.apellido}
-                            </label>
-                        </div>
-                        <br />
-                        <div className="labelD">
-                            <label>Correo: {this.state.usuario.correo}</label>
-                        </div>
-                        <br />
-                        <div className="labelD">
-                            <label>
-                                Contraseña: {this.state.usuario.contrasena}
-                            </label>
-                        </div>
-                        <br />
-                        <div className="labelD">
-                            <label>Rol: {this.state.usuario.rol}</label>
-                        </div>
-                    </div>
-                </div>
+                <InfoUsuario
+                    className="item-amu"
+                    imageHandler={this.imageHandler}
+                    fotoPerfil={this.state.usuario.fotoPerfil}
+                    nombre={this.state.usuario.nombre}
+                    apellido={this.state.usuario.apellido}
+                    correo={this.state.usuario.correo}
+                    contrasena={this.state.usuario.contrasena}
+                    rol={this.state.usuario.rol}
+                />
                 <br />
 
-                <div className="item-bmu">
-                    <div>
-                        <div className="pa2">
-                            <label className="f4 ph3 labelD">
-                                Cambiar Correo
-                            </label>
-                        </div>
-                        <div>
-                            <div className="center w-50">
-                                <label htmlFor="correoNuevo" className="inp">
-                                    <input
-                                        type="text"
-                                        name="correoNuevo"
-                                        onChange={this.handleChange}
-                                        placeholder="&nbsp;"
-                                    />
-                                    <span className="label w-33">Correo</span>
-                                    <div className="f6 red">
-                                        {this.state.errorCorreo}
-                                    </div>
-                                </label>
-                            </div>
-                            <div className="center w-50 pt30">
-                                <label
-                                    htmlFor="confirmarCorreo"
-                                    className="inp"
-                                >
-                                    <input
-                                        type="text"
-                                        name="confirmarCorreo"
-                                        onChange={this.handleChange}
-                                        placeholder="&nbsp;"
-                                    />
-                                    <span className="label w-33">
-                                        Confirmar
-                                    </span>
-                                    <div className="f6 red">
-                                        {this.state.errorConfirmarCorreo}
-                                    </div>
-                                </label>
-                            </div>
-                            <button
-                                className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba"
-                                onClick={this.onSubmit}
-                                name="cambiosCorreo"
-                            >
-                                Confirmar Correo
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="pa2">
-                        <label className="f4 ph3 labelD">
-                            Cambiar Contrasena
-                        </label>
-                    </div>
-                    <div>
-                        <div className="center w-50">
-                            <label htmlFor="Contrasena" className="inp">
-                                <input
-                                    type="text"
-                                    name="contrasenaNueva"
-                                    onChange={this.handleChange}
-                                    placeholder="&nbsp;"
-                                />
-                                <span className="label w-33">Contraseña</span>
-                                <div className="f6 red">
-                                    {this.state.errorContrasena}
-                                </div>
-                            </label>
-                        </div>
-
-                        <div className="center w-50 pt30">
-                            <label htmlFor="confirmarContra" className="inp">
-                                <input
-                                    type="text"
-                                    name="confirmarContrasena"
-                                    onChange={this.handleChange}
-                                    placeholder="&nbsp;"
-                                />
-                                <span className="label w-33">Confirmar</span>
-                                <div className="f6 red">
-                                    {this.state.errorConfirmarContrasena}
-                                </div>
-                            </label>
-                        </div>
-                        <button
-                            onClick={this.onSubmit}
-                            className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba "
-                            name="cambiosContrasena"
-                        >
-                            Confirmar Contraseñas
-                        </button>
-                    </div>
-                </div>
+                <CambiarDatos
+                    className="item-bmu"
+                    handleChange={this.handleChange}
+                    onSubmit={this.onSubmit}
+                    errorCorreo={this.state.errorCorreo}
+                    errorConfirmarCorreo={this.state.errorConfirmarCorreo}
+                    errorContrasena={this.state.errorContrasena}
+                    errorConfirmarContrasena={
+                        this.state.errorConfirmarContrasena
+                    }
+                />
 
                 {this.state.usuario.rol === "Administrador" ? (
                     <div className="item-cmu">
@@ -339,7 +233,7 @@ class MenuUsuario extends Component {
                             <Link to="/">
                                 <button
                                     className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba"
-                                    onClick={this.onSubmit}
+                                    onClick={this.props.onClick}
                                 >
                                     Cerrar Sesion
                                 </button>

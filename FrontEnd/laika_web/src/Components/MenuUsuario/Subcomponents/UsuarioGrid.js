@@ -1,6 +1,6 @@
 import React from "react";
 import RowUsuario from "./RowUsuario";
-import "./MenuUsuario.css";
+import "../Styles/MenuUsuario.css";
 
 export default class UsuarioGrid extends React.Component {
     render() {
