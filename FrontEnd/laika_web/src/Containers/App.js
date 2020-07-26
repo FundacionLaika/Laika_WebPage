@@ -4,6 +4,7 @@ import "./App.css";
 
 import MenuBar from "../Components/MenuBar/MenuBar";
 import Login from "../Components/Login/Login";
+import Registro from "../Components/Registro/Registro";
 import Consulta from "../Components/Consulta/Consulta";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
@@ -26,7 +27,6 @@ class App extends React.Component {
 
     cambioRuta = (val) => {
         this.setState({ iniciadoSesion: auth.esAutenticado() });
-        console.log("It works!!!!!");
         //Puede tener una condicional de volver al estado original para que la cuenta se borre del estado
     };
 
@@ -49,6 +49,8 @@ class App extends React.Component {
                                 <Login cambioRuta={this.cambioRuta} />
                             )}
                         />
+
+                        <Route exact path="/Registro" component={Registro} />
 
                         <ProtectedRoute
                             path="/Consulta"
@@ -79,16 +81,16 @@ class App extends React.Component {
                             component={GenerarPDF}
                         />
 
-                        <ProtectedRoute
+                        <Route
                             path="/MenuUsuario"
-                            exact
-                            component={MenuUsuario}
-                            // render={(props) => (
-                            //     <MenuUsuario
-                            //         {...props}
-                            //         cambioRuta={this.cambioRuta}
-                            //     />
-                            // )}
+                            // exact
+                            // component={MenuUsuario}
+                            render={(props) => (
+                                <MenuUsuario
+                                    {...props}
+                                    cambioRuta={this.cambioRuta}
+                                />
+                            )}
                         />
 
                         <ProtectedRoute

@@ -7,6 +7,7 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
+
 	_isMounted = false;
 
 	state = {
@@ -223,4 +224,5 @@ export default class Consulta extends Component {
 			</div>
 		);
 	}
+
 }
