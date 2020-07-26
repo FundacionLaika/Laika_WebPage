@@ -36,7 +36,8 @@ export default class SelectList extends React.Component {
                     closeOnSelect={false}
                     style={this.style}
                     selectionLimit="1"
-                    closeIcon="cancel"
+					closeIcon="cancel"
+					selectedValues={this.props.selectedValues}
 				/>
 			</div>
 		);

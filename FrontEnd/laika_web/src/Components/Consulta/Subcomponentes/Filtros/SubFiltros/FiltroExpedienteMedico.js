@@ -46,6 +46,8 @@ export default class FiltroExpedienteMedico extends React.Component {
 								"Vacunas"
 							)
 						}
+						selectedValues={this.props.multiSelectList2Array(this.props.filtros.vacunas, this.state.plainArray1)}
+
 					/>
 				</div>
 				<div>
@@ -67,6 +69,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 								"Esterilizado"
 							)
 						}
+						selectedValues={this.props.filtros.esterilizado.length ? [this.props.filtros.esterilizado] : ""}
 					/>
 				</div>
 				<div>
@@ -88,6 +91,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 								"Diagnostico"
 							)
 						}
+						selectedValues={this.props.multiSelectList2Array(this.props.filtros.diagnostico, this.state.plainArray3)}
 					/>
 				</div>
 			</div>

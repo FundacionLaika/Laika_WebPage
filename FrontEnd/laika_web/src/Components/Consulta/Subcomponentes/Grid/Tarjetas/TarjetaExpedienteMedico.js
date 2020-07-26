@@ -33,7 +33,6 @@ export default class TarjetaExpedienteMedico extends React.Component {
 					<div className="tarjEMf3">
 						<label> Vacunas Recibidas: </label>
 
-						
 							{this.props.puppy ? <li> Puppy </li> : null}
 							{this.props.refuerzoPuppy ? <li> Refuerzo Puppy </li> : null}
 							{this.props.multiple ? <li> Multiple </li> : null}
