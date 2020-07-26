@@ -11,7 +11,11 @@ export default class FiltroGeneral extends React.Component {
 	render() {
 		return (
 			<div>
-				<SelectList options={this.state.options} placeholder="Género" />
+				<SelectList
+					options={this.state.options}
+					placeholder="Género"
+					handleList={this.props.handleList}
+				/>
 			</div>
 		);
 	}

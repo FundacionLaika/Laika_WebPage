@@ -59,6 +59,10 @@ export default class Consulta extends Component {
 		transaccionCompletada: true,
 	};
 
+	handleList = (object) => {
+		console.log(object);
+	}
+
 
 	handleChange = (event) => {
 		this.setState({
@@ -124,6 +128,7 @@ export default class Consulta extends Component {
 							}
 							filtros={this.state.filtros}
 							handleFiltroRegistros={this.handleFiltroRegistros}
+							handleList={this.handleList}
 						/>
 					</div>
 					<div>

@@ -11,10 +11,12 @@ export default class SelectList extends React.Component {
 					classNamePrefix="select"
 					isClearable
 					isSearchable
+					autoFocus
 					name="color"
 					noOptionsMessage={() => 'Búsqueda no encontrada'}
 					placeholder={this.props.placeholder}
 					options={this.props.options}
+					onChange={this.props.handleList}
 				/>
 			</div>
 		);

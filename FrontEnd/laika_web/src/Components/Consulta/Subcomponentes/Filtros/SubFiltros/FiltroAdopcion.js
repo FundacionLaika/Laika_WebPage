@@ -17,6 +17,7 @@ export default class FiltroAdopcion extends React.Component {
 				<MultiSelectList
 					options={this.state.options}
 					placeholder="Medio de adopción"
+					handleList={this.props.handleList}
 				/>
 			</div>
 		);

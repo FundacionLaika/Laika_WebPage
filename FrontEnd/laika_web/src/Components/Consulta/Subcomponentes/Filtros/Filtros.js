@@ -33,6 +33,7 @@ export default class Filtros extends React.Component {
 									return (
 										<FiltroGeneral
 											filtros={this.props.filtros}
+											handleList={this.props.handleList}
 										/>
 									);
 								}
@@ -46,6 +47,7 @@ export default class Filtros extends React.Component {
 									return (
 										<FiltroExpedienteMedico
 											filtros={this.props.filtros}
+											handleList={this.props.handleList}
 										/>
 									);
 								}
@@ -59,6 +61,7 @@ export default class Filtros extends React.Component {
 									return (
 										<FiltroHogarTemporal
 											filtros={this.props.filtros}
+											handleList={this.props.handleList}
 										/>
 									);
 								}
@@ -72,6 +75,7 @@ export default class Filtros extends React.Component {
 									return (
 										<FiltroAdopcion
 											filtros={this.props.filtros}
+											handleList={this.props.handleList}
 										/>
 									);
 								}

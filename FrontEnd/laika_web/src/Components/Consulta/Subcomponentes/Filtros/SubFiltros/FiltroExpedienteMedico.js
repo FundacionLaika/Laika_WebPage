@@ -33,14 +33,17 @@ export default class FiltroExpedienteMedico extends React.Component {
 				<MultiSelectList
 					options={this.state.options1}
 					placeholder="Vacunas"
+					handleList={this.props.handleList}
 				/>
 				<SelectList
 					options={this.state.options2}
 					placeholder="Esterilizado"
+					handleList={this.props.handleList}
 				/>
 				<MultiSelectList
 					options={this.state.options3}
 					placeholder="Diagnóstico"
+					handleList={this.props.handleList}
 				/>
 			</div>
 		);
