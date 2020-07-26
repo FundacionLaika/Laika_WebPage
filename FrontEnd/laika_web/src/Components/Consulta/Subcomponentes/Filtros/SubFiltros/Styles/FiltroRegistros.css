@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap');
 
 .filtroBarRegitros {
+    grid-row: 2;
+    display: grid;
     margin: 0;
-    padding: 0;
+    padding: 1% 2% 1% 4%;
     width: 100%;
     height: 100%;
     font-family: 'Raleway', sans-serif;
+    background-color: floralwhite;
 
     --menu-item-size: 300%;
-    --green-color: #329680;
+    --green-color: #6cbead;
     --blue-color: #099c95;
     --dark-green-color: #175b52;
     --white-color: #FFF;

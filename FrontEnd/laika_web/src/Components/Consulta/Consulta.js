@@ -5,7 +5,6 @@ import "./Styles/Consulta.css";
 import Filtros from "./Subcomponentes/Filtros/Filtros";
 import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
-
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
 	_isMounted = false;
@@ -61,35 +60,47 @@ export default class Consulta extends Component {
 		transaccionCompletada: true,
 	};
 
-
 	selectHandler = (selectedList, selectedItem, id) => {
 		if (this._isMounted && this.state.transaccionCompletada) {
-			const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
+			const valoresCondicionales =
+				id === "Genero" || id === "Esterilizado" || id === "TipoHogar";
 			const temp = this.state.filtros;
-			
-			if(valoresCondicionales) temp[this.convert2CamelCase(id)] = selectedItem;
-			else temp[this.convert2CamelCase(id)][this.convert2CamelCase(selectedItem)] = "1";
 
-			this.setState({
-				filtros: temp,
-			},console.log(this.state));
+			if (valoresCondicionales)
+				temp[this.convert2CamelCase(id)] = selectedItem;
+			else
+				temp[this.convert2CamelCase(id)][
+					this.convert2CamelCase(selectedItem)
+				] = "1";
+
+			this.setState(
+				{
+					filtros: temp,
+				},
+				console.log(this.state)
+			);
 		}
-
 	};
 
 	removeHandler = (selectedList, removedItem, id) => {
 		if (this._isMounted && this.state.transaccionCompletada) {
-			const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
+			const valoresCondicionales =
+				id === "Genero" || id === "Esterilizado" || id === "TipoHogar";
 			const temp = this.state.filtros;
-			
-			if(valoresCondicionales) temp[this.convert2CamelCase(id)] = "";
-			else temp[this.convert2CamelCase(id)][this.convert2CamelCase(removedItem)] = "";
-			
-			this.setState({
-				filtros: temp,
-			},console.log(this.state));
+
+			if (valoresCondicionales) temp[this.convert2CamelCase(id)] = "";
+			else
+				temp[this.convert2CamelCase(id)][
+					this.convert2CamelCase(removedItem)
+				] = "";
+
+			this.setState(
+				{
+					filtros: temp,
+				},
+				console.log(this.state)
+			);
 		}
-		
 	};
 
 	handleChange = (event) => {
@@ -114,6 +125,14 @@ export default class Consulta extends Component {
 				}
 			);
 		}
+	};
+
+	handleKeyWord = (value) => {
+		this.setState(
+			Object.assign(this.state.filtros, {
+				keyword: value,
+			})
+		);
 	};
 
 	concatDate = (calle, numero, colonia, municipio) => {
@@ -149,8 +168,8 @@ export default class Consulta extends Component {
 	};
 
 	convert2CamelCase = (str) => {
-		if(str === "Sarna/Piel") return "sarnaPiel";
-		if(str === "TVT") return "tvt";
+		if (str === "Sarna/Piel") return "sarnaPiel";
+		if (str === "TVT") return "tvt";
 		str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 		return str
 			.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
@@ -158,7 +177,6 @@ export default class Consulta extends Component {
 			})
 			.replace(/\s+/g, "");
 	};
-	
 
 	componentDidUpdate() {
 		this._isMounted = true;
@@ -171,32 +189,27 @@ export default class Consulta extends Component {
 	render() {
 		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data
 		return (
-			<div className="center">
-				<div>
-					<div>
-						<Filtros
-							dataLength={this.state.data.length}
-							transaccionCompletada={
-								this.state.transaccionCompletada
-							}
-							filtros={this.state.filtros}
-							onSelect={this.selectHandler}
-							onRemove={this.removeHandler}
-							handleFiltroRegistros={this.handleFiltroRegistros}
-							convert2CamelCase={this.convert2CamelCase}
-						/>
-					</div>
-					<div>
-						<GridConsulta
-							data={this.state.data}
-							transaccionCompletada={
-								this.state.transaccionCompletada
-							}
-							tarjeta={this.state.filtros.tarjeta}
-							concatDate={this.concatDate}
-						/>
-					</div>
+			<div className="consulta">
+				<Filtros
+					dataLength={this.state.data.length}
+					transaccionCompletada={this.state.transaccionCompletada}
+					filtros={this.state.filtros}
+					onSelect={this.selectHandler}
+					onRemove={this.removeHandler}
+					handleFiltroRegistros={this.handleFiltroRegistros}
+					convert2CamelCase={this.convert2CamelCase}
+					handleKeyWord={this.handleKeyWord}
+				/>
 
+				<GridConsulta
+					className="gridConsulta"
+					data={this.state.data}
+					transaccionCompletada={this.state.transaccionCompletada}
+					tarjeta={this.state.filtros.tarjeta}
+					concatDate={this.concatDate}
+				/>
+
+				<div>
 					<Link to="/GenerarPDF">
 						<button
 							className="mv0 pa2 f4 bw0 bg-light-purple white"

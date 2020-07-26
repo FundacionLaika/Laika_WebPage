@@ -5,25 +5,26 @@ import FiltroGeneral from "./SubFiltros/FiltroGeneral";
 import FiltroHogarTemporal from "./SubFiltros/FiltroHogarTemporal";
 import FiltroGlobal from "./SubFiltros/FiltroGlobal";
 import FiltroRegistros from "./SubFiltros/FiltroRegistros";
+import "../../Styles/Consulta.css";
 
 export default class Filtros extends React.Component {
-
 	multiSelectList2Array = (objeto, opciones) => {
-        var opcionesSeleccionadas = [];
-        opciones.forEach((opcion) => {
-			if (objeto[this.props.convert2CamelCase(opcion)] === "1") opcionesSeleccionadas.push(opcion);
-        });
+		var opcionesSeleccionadas = [];
+		opciones.forEach((opcion) => {
+			if (objeto[this.props.convert2CamelCase(opcion)] === "1")
+				opcionesSeleccionadas.push(opcion);
+		});
 		return opcionesSeleccionadas;
 	};
 
 	render() {
 		return (
-			<div>
+			<div className="filtros">
 				<div>
-					<button> Aplicar Filtro </button>
-				</div>
-				<div>
-					<FiltroGlobal filtros={this.props.filtros} />
+					<FiltroGlobal
+						filtros={this.props.filtros}
+						handleKeyWord={this.props.handleKeyWord}
+					/>
 				</div>
 				<div>
 					<FiltroRegistros
@@ -58,8 +59,10 @@ export default class Filtros extends React.Component {
 										<FiltroExpedienteMedico
 											filtros={this.props.filtros}
 											onSelect={this.props.onSelect}
-                                            onRemove={this.props.onRemove}
-                                            multiSelectList2Array={this.multiSelectList2Array}
+											onRemove={this.props.onRemove}
+											multiSelectList2Array={
+												this.multiSelectList2Array
+											}
 										/>
 									);
 								}
@@ -89,8 +92,10 @@ export default class Filtros extends React.Component {
 										<FiltroAdopcion
 											filtros={this.props.filtros}
 											onSelect={this.props.onSelect}
-                                            onRemove={this.props.onRemove}
-                                            multiSelectList2Array={this.multiSelectList2Array}
+											onRemove={this.props.onRemove}
+											multiSelectList2Array={
+												this.multiSelectList2Array
+											}
 										/>
 									);
 								}

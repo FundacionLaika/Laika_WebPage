@@ -3,11 +3,12 @@ import GridAdopcion from "./SubGrids/GridAdopcion";
 import GridExpedienteMedico from "./SubGrids/GridExpedienteMedico";
 import GridGeneral from "./SubGrids/GridGeneral";
 import GridHogarTemporal from "./SubGrids/GridHogarTemporal";
+import "../../Styles/Consulta.css";
 
 export default class GridConsulta extends React.Component {
 	render() {
 		return (
-			<div>
+			<div className="gridConsulta">
 				{(() => {
 					switch (this.props.tarjeta) {
 						case "General":
