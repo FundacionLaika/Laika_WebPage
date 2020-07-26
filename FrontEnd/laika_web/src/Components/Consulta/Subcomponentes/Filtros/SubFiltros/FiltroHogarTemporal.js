@@ -14,7 +14,14 @@ export default class FiltroHogarTemporal extends React.Component {
 				<SelectList
 					options={this.state.options}
 					placeholder="Tipo de HT"
-					handleList={this.props.handleList}
+					handleList={(selectedOption, action) =>
+						this.props.handleList(
+							selectedOption,
+							action,
+							"tipoHogar",
+							false
+						)
+					}
 				/>
 			</div>
 		);

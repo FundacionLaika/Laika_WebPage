@@ -3,27 +3,29 @@ import SelectList from "../../../../SharedComponents/SelectList";
 import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 export default class FiltroExpedienteMedico extends React.Component {
+	color1 = '#0052CC'
+	color3 = '#FFC400'
 	state = {
 		options1: [
-			{ value: "puppy", label: "Puppy" },
-			{ value: "refuerzoPuppy", label: "Refuerzo Puppy" },
-			{ value: "multiple", label: "Múltiple" },
-			{ value: "refuerzoMultiple", label: "Refuerzo Múltiple" },
-			{ value: "rabia", label: "Rabia" },
+			{ value: "puppy", label: "Puppy", color: this.color1 },
+			{ value: "refuerzoPuppy", label: "Refuerzo Puppy",color: this.color1 },
+			{ value: "multiple", label: "Múltiple", color: this.color1 },
+			{ value: "refuerzoMultiple", label: "Refuerzo Múltiple",color:this.color1 },
+			{ value: "rabia", label: "Rabia",color: this.color1 },
 		],
 		options2: [
 			{ value: "Sí", label: "Sí" },
 			{ value: "No", label: "No" },
 		],
 		options3: [
-			{ value: "atropellamiento", label: "Atropellamiento" },
-			{ value: "tvt", label: "TVT" },
-			{ value: "sarnaPiel", label: "Sarna/Piel" },
-			{ value: "viral", label: "Viral" },
-			{ value: "embarazo", label: "Embarazo" },
-			{ value: "cachorros", label: "Cachorros" },
-			{ value: "hemoparasitos", label: "Hemoparásitos" },
-			{ value: "otro", label: "Otro" },
+			{ value: "atropellamiento", label: "Atropellamiento", color: this.color3},
+			{ value: "tvt", label: "TVT", color: this.color3},
+			{ value: "sarnaPiel", label: "Sarna/Piel", color: this.color3},
+			{ value: "viral", label: "Viral", color: this.color3},
+			{ value: "embarazo", label: "Embarazo", color: this.color3},
+			{ value: "cachorros", label: "Cachorros", color: this.color3},
+			{ value: "hemoparasitos", label: "Hemoparásitos", color: this.color3},
+			{ value: "otro", label: "Otro", color: this.color3},
 		],
 	};
 
@@ -33,17 +35,38 @@ export default class FiltroExpedienteMedico extends React.Component {
 				<MultiSelectList
 					options={this.state.options1}
 					placeholder="Vacunas"
-					handleList={this.props.handleList}
+					handleList={(selectedOption, action) =>
+						this.props.handleList(
+							selectedOption,
+							action,
+							"vacunas",
+							true
+						)
+					}
 				/>
 				<SelectList
 					options={this.state.options2}
 					placeholder="Esterilizado"
-					handleList={this.props.handleList}
+					handleList={(selectedOption, action) =>
+						this.props.handleList(
+							selectedOption,
+							action,
+							"esterilizado",
+							false
+						)
+					}
 				/>
 				<MultiSelectList
 					options={this.state.options3}
 					placeholder="Diagnóstico"
-					handleList={this.props.handleList}
+					handleList={(selectedOption, action) =>
+						this.props.handleList(
+							selectedOption,
+							action,
+							"diagnostico",
+							true
+						)
+					}
 				/>
 			</div>
 		);

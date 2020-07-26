@@ -5,7 +5,6 @@ import "./Styles/Consulta.css";
 import Filtros from "./Subcomponentes/Filtros/Filtros";
 import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
-
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
 	state = {
@@ -59,11 +58,39 @@ export default class Consulta extends Component {
 		transaccionCompletada: true,
 	};
 
-	handleList = (selectedOption,action) => {
-		console.log(selectedOption);
-		console.log(action);
-	}
+	handleOptionsReceived = (filter, itemsSelected, replaceValue) => {
+		if (!itemsSelected) return filter;
+		itemsSelected.forEach((item) => {
+			filter[item.value] = replaceValue;
+		});
 
+		return filter;
+	};
+
+	handleClear = (filter) => {
+		for (const element in filter) {
+			filter[element] = "";
+		}
+		return filter;
+	};
+
+	handleList = (selectedOption, action, id, esMultiSelect) => {
+		const temp = this.state.filtros;
+
+		if (action.action === "select-option") {
+			temp[id] = esMultiSelect
+				? this.handleOptionsReceived(temp[id], selectedOption, "1")
+				: selectedOption.value;
+		} 
+		else if (action.action === "remove-value") {
+			temp[id][action.removedValue.value] = "";
+		} 
+		else if (action.action === "clear") {
+			temp[id] = esMultiSelect ? this.handleClear(temp[id]) : "";
+		}
+
+		this.setState({ filtros: temp }, console.log(this.state));
+	};
 
 	handleChange = (event) => {
 		this.setState({

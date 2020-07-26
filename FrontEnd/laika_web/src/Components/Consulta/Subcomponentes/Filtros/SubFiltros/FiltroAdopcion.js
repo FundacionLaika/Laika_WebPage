@@ -2,13 +2,14 @@ import React from "react";
 import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 export default class FiltroAdopcion extends React.Component {
+	color = '#5243AA'
 	state = {
 		options: [
-			{ value: "instagram", label: "Instagram" },
-			{ value: "facebook", label: "Facebook" },
-			{ value: "petco", label: "Petco" },
-			{ value: "referencia", label: "Referencia" },
-			{ value: "otro", label: "Otro" },
+			{ value: "instagram", label: "Instagram",color: this.color },
+			{ value: "facebook", label: "Facebook",color:this.color },
+			{ value: "petco", label: "Petco",color: this.color },
+			{ value: "referencia", label: "Referencia", color:this.color },
+			{ value: "otro", label: "Otro", color: this.color },
 		],
 	};
 	render() {
@@ -17,7 +18,14 @@ export default class FiltroAdopcion extends React.Component {
 				<MultiSelectList
 					options={this.state.options}
 					placeholder="Medio de adopción"
-					handleList={this.props.handleList}
+					handleList={(selectedOption, action) =>
+						this.props.handleList(
+							selectedOption,
+							action,
+							"medioAdopcion",
+							true
+						)
+					}
 				/>
 			</div>
 		);
