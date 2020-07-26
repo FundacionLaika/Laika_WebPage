@@ -1,0 +1,16 @@
+.consulta {
+    background-color: white;
+    display: grid;
+}
+
+.filtros {
+    grid-row: 1;
+    background-color: blue;
+    display: grid;
+}
+
+.gridConsulta {
+    grid-row: 2;
+    background-color: green;
+    display: grid;
+}

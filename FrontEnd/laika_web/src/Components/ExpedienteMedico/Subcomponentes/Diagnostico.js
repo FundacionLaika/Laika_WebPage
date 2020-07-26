@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class Diagnostico extends Component {
+	
 	render() {
 		return (
 			<div id="diagnostico">
@@ -164,18 +165,20 @@ class Diagnostico extends Component {
 				</div>
 
 				<div id="bloqueOtro">
-					<label htmlFor="otroEspecificar" className="inp">
-						<input
-							type="text"
-							id="otroEspecificar"
-							name="otroEspecificar"
-							value={this.props.otroEspecificar}
-							onChange={this.props.handleChange}
-							placeholder="&nbsp;"
-						/>
-						<span className="label">Especificar</span>
-						<span className="focus-bg"></span>
-					</label>
+					{this.props.otro ? (
+						<label htmlFor="otroEspecificar" className="inp">
+							<input
+								type="text"
+								id="otroEspecificar"
+								name="otroEspecificar"
+								value={this.props.otroEspecificar}
+								onChange={this.props.handleChange}
+								placeholder="&nbsp;"
+							/>
+							<span className="label">Especificar</span>
+							<span className="focus-bg"></span>
+						</label>
+					) : null}
 				</div>
 			</div>
 		);
