@@ -1,17 +1,19 @@
 import React from "react";
-import SelectList from "../../../../SharedComponents/SelectList";
+import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 export default class FiltroGeneral extends React.Component {
+	color = '#FF5630'
 	state = {
 		options: [
-			{ value: "macho", label: "Macho" ,color: '#FF5630'},
-			{ value: "hembra", label: "Hembra" ,color: '#FF5630'},
+			{ value: "macho", label: "Macho" ,color: this.color, isDisabled: false},
+			{ value: "hembra", label: "Hembra" ,color: this.color, isDisabled: false},
 		],
 	};
+
 	render() {
 		return (
 			<div>
-				<SelectList
+				<MultiSelectList
 					options={this.state.options}
 					placeholder="Género"
 					handleList={(selectedOption, action) =>

@@ -77,13 +77,16 @@ export default class Consulta extends Component {
 	handleList = (selectedOption, action, id, esMultiSelect) => {
 		const temp = this.state.filtros;
 
+
 		if (action.action === "select-option") {
 			temp[id] = esMultiSelect
 				? this.handleOptionsReceived(temp[id], selectedOption, "1")
-				: selectedOption.value;
+				: selectedOption[0].value;
 		} 
 		else if (action.action === "remove-value") {
-			temp[id][action.removedValue.value] = "";
+			if (esMultiSelect) temp[id][action.removedValue.value] = "";
+			else temp[id] = "";
+
 		} 
 		else if (action.action === "clear") {
 			temp[id] = esMultiSelect ? this.handleClear(temp[id]) : "";

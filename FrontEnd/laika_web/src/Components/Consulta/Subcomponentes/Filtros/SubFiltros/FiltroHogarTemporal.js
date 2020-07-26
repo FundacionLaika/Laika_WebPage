@@ -1,5 +1,5 @@
 import React from "react";
-import SelectList from "../../../../SharedComponents/SelectList";
+import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 export default class FiltroHogarTemporal extends React.Component {
 	state = {
@@ -11,7 +11,7 @@ export default class FiltroHogarTemporal extends React.Component {
 	render() {
 		return (
 			<div>
-				<SelectList
+				<MultiSelectList
 					options={this.state.options}
 					placeholder="Tipo de HT"
 					handleList={(selectedOption, action) =>

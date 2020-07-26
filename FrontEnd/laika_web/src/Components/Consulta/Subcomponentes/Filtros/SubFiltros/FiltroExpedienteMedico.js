@@ -1,9 +1,9 @@
 import React from "react";
-import SelectList from "../../../../SharedComponents/SelectList";
 import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 export default class FiltroExpedienteMedico extends React.Component {
 	color1 = '#0052CC'
+	color2 = '#8C4966'
 	color3 = '#FF8B00'
 	state = {
 		options1: [
@@ -14,8 +14,8 @@ export default class FiltroExpedienteMedico extends React.Component {
 			{ value: "rabia", label: "Rabia",color: this.color1 },
 		],
 		options2: [
-			{ value: "Sí", label: "Sí" },
-			{ value: "No", label: "No" },
+			{ value: "Sí", label: "Sí", color: this.color2, isDisabled: false},
+			{ value: "No", label: "No", color: this.color2, isDisabled: false },
 		],
 		options3: [
 			{ value: "atropellamiento", label: "Atropellamiento", color: this.color3},
@@ -44,7 +44,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 						)
 					}
 				/>
-				<SelectList
+				<MultiSelectList
 					options={this.state.options2}
 					placeholder="Esterilizado"
 					handleList={(selectedOption, action) =>
