@@ -1,6 +1,5 @@
 const handleRegistro = (db, bcrypt) => (req, res) => {
     const { nombre, apellidos, correo, contrasena, rol, fotoPerfil } = req.body;
-    const hash = bcrypt.hashSync(contrasena);
 
     db("USUARIO")
         .insert({
@@ -8,7 +7,7 @@ const handleRegistro = (db, bcrypt) => (req, res) => {
             apellidos: apellidos,
             correo: correo,
             contrasena: contrasena,
-            rol: "Voluntario",
+            rol: rol,
             // fotoPerfil: "/iconoPerro.png",
         })
         .then((response) => {

@@ -16,18 +16,14 @@ const db = knex({
     },
 });
 
-// db.select("*")
-//     .from("USUARIO")
-//     .then((data) => {
-//         console.log(data);
-//     });
-
 app.use(express.json());
 app.use(bodyParser.json({ type: "application/*+json" }));
 app.use(cors());
 
 const login = require("./controllers/login");
 const registro = require("./controllers/registro");
+const usuarios = require("./controllers/usuarios");
+const eliminarUsuario = require("./controllers/eliminarUsuario");
 
 app.get("/", (req, res) => {
     res.send("this is working");
@@ -40,3 +36,5 @@ app.listen(3000, () => {
 //* --------- Controllers -----------
 app.post("/login", login.handleLogin(db, bcrypt)); //currying the functions
 app.post("/registro", registro.handleRegistro(db, bcrypt));
+app.get("/usuarios", usuarios.handleUsuariosGet(db));
+app.post("/eliminarUsuario", eliminarUsuario.handleEliminarUsuario(db));
