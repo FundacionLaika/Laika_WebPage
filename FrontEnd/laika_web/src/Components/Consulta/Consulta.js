@@ -59,8 +59,9 @@ export default class Consulta extends Component {
 		transaccionCompletada: true,
 	};
 
-	handleList = (object) => {
-		console.log(object);
+	handleList = (selectedOption,action) => {
+		console.log(selectedOption);
+		console.log(action);
 	}
 
 
