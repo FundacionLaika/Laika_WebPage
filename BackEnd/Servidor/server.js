@@ -7,14 +7,27 @@ const knex = require("knex");
 const app = express();
 
 const db = knex({
-    client: "",
+    client: "mysql",
     connection: {
-        host: "",
-        user: "",
-        password: "",
-        database: "",
+        host: "107.180.41.48",
+        user: "dbmanager",
+        password: "Laika2012",
+        database: "LaikaDBTest",
     },
 });
+
+// db.select("*")
+//     .from("USUARIO")
+//     .then((data) => {
+//         console.log(data);
+//     });
+
+app.use(express.json());
+app.use(bodyParser.json({ type: "application/*+json" }));
+app.use(cors());
+
+const login = require("./controllers/login");
+const registro = require("./controllers/registro");
 
 app.get("/", (req, res) => {
     res.send("this is working");
@@ -24,10 +37,6 @@ app.listen(3000, () => {
     console.log("app is running on port 3000");
 });
 
-/* 
-Controladores:
-- Login -> post
-- Registro -> post
-- consultaInfo -> get
-- 
-*/
+//* --------- Controllers -----------
+app.post("/login", login.handleLogin(db, bcrypt)); //currying the functions
+app.post("/registro", registro.handleRegistro(db, bcrypt));
