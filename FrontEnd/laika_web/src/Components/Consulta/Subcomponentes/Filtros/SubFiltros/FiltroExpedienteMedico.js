@@ -4,7 +4,7 @@ import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 export default class FiltroExpedienteMedico extends React.Component {
 	color1 = '#0052CC'
-	color3 = '#FFC400'
+	color3 = '#FF8B00'
 	state = {
 		options1: [
 			{ value: "puppy", label: "Puppy", color: this.color1 },

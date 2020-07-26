@@ -13,7 +13,7 @@ const colourStyles = {
 				: isSelected
 				? data.color
 				: isFocused
-				? color.alpha(0.1).css()
+				? color.alpha(0.3).css()
 				: null,
 			color: isDisabled
 				? "#ccc"
@@ -36,12 +36,14 @@ const colourStyles = {
 		const color = chroma(data.color);
 		return {
 			...styles,
-			backgroundColor: color.alpha(0.1).css(),
+			backgroundColor: color.alpha(0.7).css(),
+			borderRadius: 7,
+			padding: 7,
 		};
 	},
 	multiValueLabel: (styles, { data }) => ({
 		...styles,
-		color: data.color,
+		color: "white",
 	}),
 	multiValueRemove: (styles, { data }) => ({
 		...styles,
@@ -52,6 +54,7 @@ const colourStyles = {
 		},
 	}),
 };
+
 export default class MultiSelectList extends React.Component {
 	render() {
 		return (
@@ -70,6 +73,7 @@ export default class MultiSelectList extends React.Component {
 					options={this.props.options}
 					onChange={this.props.handleList}
 					styles={colourStyles}
+					tabSelectsValue
 				/>
 			</div>
 		);
