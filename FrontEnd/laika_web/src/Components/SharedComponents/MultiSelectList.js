@@ -1,41 +1,22 @@
 import React from "react";
-import { Multiselect } from "multiselect-react-dropdown";
+import Select from "react-select";
 
 export default class MultiSelectList extends React.Component {
-	constructor(props) {
-		super(props);
-		this.style = {
-			chips: {
-				background: "blue",
-			},
-			searchBox: {
-				border: "none",
-				borderBottom: "1px solid blue",
-				borderRadius: "0px",
-			},
-			multiselectContainer: {
-				color: "blue",
-			},
-		};
-	}
-
 	render() {
 		return (
 			<div>
-				<Multiselect
-					id={this.props.id}
-					onSelect={this.props.onSelect}
-					onRemove={this.props.onRemove}
-					options={this.props.options}
+				<Select
+					className="basic-single"
+					classNamePrefix="select"
+					isClearable={true}
+					isSearchable={true}
+					name="color"
+					isMulti
+					closeMenuOnSelect={false}
+					noOptionsMessage={() => "Búsqueda no encontrada"}
 					placeholder={this.props.placeholder}
-					isObject={false}
-					avoidHighlightFirstOption={true}
-					emptyRecordMsg="Búsqueda no encontrada"
-					hidePlaceholder={true}
-                    showCheckbox={true}
-                    closeOnSelect={false}
-                    style={this.style}
-                    closeIcon="cancel"
+					options={this.props.options}
+					styles={this.variable}
 				/>
 			</div>
 		);

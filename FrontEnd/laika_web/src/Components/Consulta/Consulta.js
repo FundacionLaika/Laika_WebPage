@@ -60,30 +60,6 @@ export default class Consulta extends Component {
 	};
 
 
-	selectHandler = (selectedList, selectedItem, id) => {
-		const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
-		const temp = this.state.filtros;
-		
-		if(valoresCondicionales) temp[this.convert2CamelCase(id)] = selectedItem;
-		else temp[this.convert2CamelCase(id)][this.convert2CamelCase(selectedItem)] = "1";
-		
-		this.setState({
-			filtros: temp
-		},console.log(this.state));
-	};
-
-	removeHandler = (selectedList, removedItem, id) => {
-		const valoresCondicionales = (id === "Genero" || id === "Esterilizado" || id === "TipoHogar");
-		const temp = this.state.filtros;
-		
-		if(valoresCondicionales) temp[this.convert2CamelCase(id)] = "";
-		else temp[this.convert2CamelCase(id)][this.convert2CamelCase(removedItem)] = "";
-		
-		this.setState({
-			filtros: temp
-		},console.log(this.state));
-	};
-
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value,
@@ -135,18 +111,6 @@ export default class Consulta extends Component {
 			.catch((err) => console.log(err));
 	};
 
-	convert2CamelCase = (str) => {
-		if(str === "Sarna/Piel") return "sarnaPiel";
-		if(str === "TVT") return "tvt";
-		str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-		return str
-			.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-				return index === 0 ? word.toLowerCase() : word.toUpperCase();
-			})
-			.replace(/\s+/g, "");
-	};
-	
-
 	render() {
 		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data
 		return (
@@ -159,8 +123,6 @@ export default class Consulta extends Component {
 								this.state.transaccionCompletada
 							}
 							filtros={this.state.filtros}
-							onSelect={this.selectHandler}
-							onRemove={this.removeHandler}
 							handleFiltroRegistros={this.handleFiltroRegistros}
 						/>
 					</div>

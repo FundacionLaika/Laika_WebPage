@@ -3,21 +3,20 @@ import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 
 export default class FiltroAdopcion extends React.Component {
 	state = {
-		plainArray: ["Instagram", "Facebook", "Petco", "Referencia", "Otro"],
+		options: [
+			{ value: "instagram", label: "Instagram" },
+			{ value: "facebook", label: "Facebook" },
+			{ value: "petco", label: "Petco" },
+			{ value: "referencia", label: "Referencia" },
+			{ value: "otro", label: "Otro" },
+		],
 	};
 	render() {
 		return (
 			<div>
 				<MultiSelectList
-					id="medioAdopcion"
-					options={this.state.plainArray}
+					options={this.state.options}
 					placeholder="Medio de adopción"
-					onSelect={(selectedList, selectedItem) =>
-						this.props.onSelect(selectedList, selectedItem, "medioAdopcion")
-					}
-					onRemove={(selectedList, removedItem) =>
-						this.props.onRemove(selectedList, removedItem, "medioAdopcion")
-					}
 				/>
 			</div>
 		);
