@@ -1,41 +1,79 @@
 import React from "react";
-import { Multiselect } from "multiselect-react-dropdown";
+import Select from "react-select";
+import chroma from "chroma-js";
 
-export default class MultiSelectList extends React.Component {
-	constructor(props) {
-		super(props);
-		this.style = {
-			chips: {
-				background: "blue",
-			},
-			searchBox: {
-				border: "none",
-				borderBottom: "1px solid blue",
-				borderRadius: "0px",
-			},
-			multiselectContainer: {
-				color: "blue",
+const colourStyles = {
+	control: (styles) => ({ ...styles, backgroundColor: "white" }),
+	option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+		const color = chroma(data.color);
+		return {
+			...styles,
+			backgroundColor: isDisabled
+				? null
+				: isSelected
+				? data.color
+				: isFocused
+				? color.alpha(0.3).css()
+				: null,
+			color: isDisabled
+				? "#ccc"
+				: isSelected
+				? chroma.contrast(color, "white") > 2
+					? "white"
+					: "black"
+				: data.color,
+			cursor: isDisabled ? "not-allowed" : "default",
+
+			":active": {
+				...styles[":active"],
+				backgroundColor:
+					!isDisabled &&
+					(isSelected ? data.color : color.alpha(0.3).css()),
 			},
 		};
-	}
+	},
+	multiValue: (styles, { data }) => {
+		const color = chroma(data.color);
+		return {
+			...styles,
+			backgroundColor: color.alpha(0.7).css(),
+			borderRadius: 7,
+			padding: 7,
+		};
+	},
+	multiValueLabel: (styles, { data }) => ({
+		...styles,
+		color: "white",
+	}),
+	multiValueRemove: (styles, { data }) => ({
+		...styles,
+		color: data.color,
+		":hover": {
+			backgroundColor: data.color,
+			color: "white",
+		},
+	}),
+};
 
+export default class MultiSelectList extends React.Component {
 	render() {
 		return (
 			<div>
-				<Multiselect
-					id={this.props.id}
-					onSelect={this.props.onSelect}
-					onRemove={this.props.onRemove}
-					options={this.props.options}
+				<Select
+					className="basic-single"
+					classNamePrefix="select"
+					isClearable
+					isSearchable
+					autoFocus
+					name="color"
+					isMulti
+					closeMenuOnSelect={false}
+					noOptionsMessage={() => "Búsqueda no encontrada"}
 					placeholder={this.props.placeholder}
-					isObject={false}
-					avoidHighlightFirstOption={true}
-					emptyRecordMsg="Búsqueda no encontrada"
-					hidePlaceholder={true}
-                    showCheckbox={true}
-                    closeOnSelect={false}
-                    style={this.style}
-                    closeIcon="cancel"
+					options={this.props.options}
+					onChange={this.props.handleList}
+					styles={colourStyles}
+					tabSelectsValue
 				/>
 			</div>
 		);
