@@ -12,7 +12,11 @@ export default class FiltroAdopcion extends React.Component {
 			{ value: "otro", label: "Otro", color: this.color },
 		],
 	};
+
+	
+
 	render() {
+		console.log();
 		return (
 			<div>
 				<MultiSelectList
@@ -26,6 +30,7 @@ export default class FiltroAdopcion extends React.Component {
 							true
 						)
 					}
+					selectedValues={this.props.multiSelectList2Array(this.props.filtros.medioAdopcion, this.state.plainArray)}
 				/>
 			</div>
 		);

@@ -7,7 +7,8 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
-	estaMontado = false;
+
+	_isMounted = false;
 
 	state = {
 		filtros: {
@@ -19,7 +20,7 @@ export default class Consulta extends Component {
 				edadInicial: "",
 				edadFinal: "",
 			},
-			genero: "",
+			genero: "Macho",
 			vacunas: {
 				puppy: "",
 				refuerzoPuppy: "",
@@ -107,14 +108,25 @@ export default class Consulta extends Component {
 		console.log("holaaaaaaa", registroSeleccionado);
 		const filtrosTemp = this.state.filtros;
 		filtrosTemp.tarjeta = registroSeleccionado;
+
+		if (this._isMounted && this.state.transaccionCompletada) {
+			this.setState(
+				{
+					filtros: filtrosTemp,
+					transaccionCompletada: false,
+				},
+				() => {
+					this.handleFetch();
+				}
+			);
+		}
+	};
+
+	handleKeyWord = (value) => {
 		this.setState(
-			{
-				filtros: filtrosTemp,
-				transaccionCompletada: false,
-			},
-			() => {
-				this.handleFetch();
-			}
+			Object.assign(this.state.filtros, {
+				keyword: value,
+			})
 		);
 	};
 
@@ -141,7 +153,7 @@ export default class Consulta extends Component {
 				});
 			})
 			.then(() => {
-				if (this.estaMontado) {
+				if (this._isMounted) {
 					this.setState({
 						transaccionCompletada: true,
 					});
@@ -151,41 +163,36 @@ export default class Consulta extends Component {
 	};
 
 	componentDidUpdate() {
-		this.estaMontado = true;
+		this._isMounted = true;
 	}
 
 	componentWillUnmount() {
-		this.estaMontado = false;
+		this._isMounted = false;
 	}
 
 
 	render() {
 		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data
 		return (
-			<div className="center">
-				<div>
-					<div>
-						<Filtros
-							dataLength={this.state.data.length}
-							transaccionCompletada={
-								this.state.transaccionCompletada
-							}
-							filtros={this.state.filtros}
-							handleFiltroRegistros={this.handleFiltroRegistros}
-							handleList={this.handleList}
-						/>
-					</div>
-					<div>
-						<GridConsulta
-							data={this.state.data}
-							transaccionCompletada={
-								this.state.transaccionCompletada
-							}
-							tarjeta={this.state.filtros.tarjeta}
-							concatDate={this.concatDate}
-						/>
-					</div>
+			<div className="consulta">
+				<Filtros
+					dataLength={this.state.data.length}
+					transaccionCompletada={this.state.transaccionCompletada}
+					filtros={this.state.filtros}
+					handleFiltroRegistros={this.handleFiltroRegistros}
+					handleList={this.handleList}
+					handleKeyWord={this.handleKeyWord}
+				/>
 
+				<GridConsulta
+					className="gridConsulta"
+					data={this.state.data}
+					transaccionCompletada={this.state.transaccionCompletada}
+					tarjeta={this.state.filtros.tarjeta}
+					concatDate={this.concatDate}
+				/>
+
+				<div>
 					<Link to="/GenerarPDF">
 						<button
 							className="mv0 pa2 f4 bw0 bg-light-purple white"
@@ -199,4 +206,5 @@ export default class Consulta extends Component {
 			</div>
 		);
 	}
+
 }

@@ -60,19 +60,28 @@ class Login extends React.Component {
     };
 
     onSubmitSignIn = () => {
-        this.validate();
-        if (
-            this.state.correoLogin === "Hello" &&
-            this.state.contrasenaLogin === "bye"
-        ) {
-            auth.login(() => {
-                this.props.history.push("/Consulta");
-                console.log(auth.esAutenticado());
-                this.props.cambioRuta();
+        // this.validate();
+        //          this.setState({ usuarioValido: true });
+        //          this.props.cambioRuta(true);
+
+        fetch("http://localhost:3000/login", {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                correo: this.state.correoLogin,
+                contrasena: this.state.contrasenaLogin,
+            }),
+        })
+            .then((response) => response.json())
+            .then((usuario) => {
+                console.log(usuario);
+                if (usuario.Contrasena) {
+                    auth.login(() => {
+                        this.props.history.push("/Consulta");
+                        this.props.cambioRuta();
+                    });
+                }
             });
-            // this.setState({ usuarioValido: true });
-            // this.props.cambioRuta(true);
-        }
     };
 
     render() {

@@ -5,6 +5,10 @@ const cors = require("cors");
 const knex = require("knex");
 
 const consulta = require('./controllers/consulta');
+const login = require("./controllers/login");
+const registro = require("./controllers/registro");
+const usuarios = require("./controllers/usuarios");
+const eliminarUsuario = require("./controllers/eliminarUsuario");
 
 const app = express();
 
@@ -12,6 +16,7 @@ app.use(cors())
 app.use(bodyParser.json());
 
 const db = knex({
+
 
     client: 'mysql',
     connection: {
@@ -23,8 +28,13 @@ const db = knex({
 });
 
 
+//* --------- Controllers -----------
 
 app.post('/consulta', (req, res) => { consulta.handleConsultaPost(req, res, db)})
+app.post("/login", login.handleLogin(db, bcrypt)); //currying the functions
+app.post("/registro", registro.handleRegistro(db, bcrypt));
+app.get("/usuarios", usuarios.handleUsuariosGet(db));
+app.post("/eliminarUsuario", eliminarUsuario.handleEliminarUsuario(db));
 
 app.get('/', (req,res) => {
     res.send('this is working');
