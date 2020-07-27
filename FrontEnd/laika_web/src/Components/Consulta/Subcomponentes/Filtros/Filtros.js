@@ -43,8 +43,7 @@ export default class Filtros extends React.Component {
 									return (
 										<FiltroGeneral
 											filtros={this.props.filtros}
-											onSelect={this.props.onSelect}
-											onRemove={this.props.onRemove}
+											handleList={this.props.handleList}
 										/>
 									);
 								}
@@ -58,11 +57,7 @@ export default class Filtros extends React.Component {
 									return (
 										<FiltroExpedienteMedico
 											filtros={this.props.filtros}
-											onSelect={this.props.onSelect}
-											onRemove={this.props.onRemove}
-											multiSelectList2Array={
-												this.multiSelectList2Array
-											}
+											handleList={this.props.handleList}
 										/>
 									);
 								}
@@ -76,8 +71,7 @@ export default class Filtros extends React.Component {
 									return (
 										<FiltroHogarTemporal
 											filtros={this.props.filtros}
-											onSelect={this.props.onSelect}
-											onRemove={this.props.onRemove}
+											handleList={this.props.handleList}
 										/>
 									);
 								}
@@ -91,11 +85,7 @@ export default class Filtros extends React.Component {
 									return (
 										<FiltroAdopcion
 											filtros={this.props.filtros}
-											onSelect={this.props.onSelect}
-											onRemove={this.props.onRemove}
-											multiSelectList2Array={
-												this.multiSelectList2Array
-											}
+											handleList={this.props.handleList}
 										/>
 									);
 								}

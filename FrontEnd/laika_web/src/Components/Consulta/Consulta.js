@@ -7,6 +7,7 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
+
 	_isMounted = false;
 
 	state = {
@@ -60,47 +61,41 @@ export default class Consulta extends Component {
 		transaccionCompletada: true,
 	};
 
-	selectHandler = (selectedList, selectedItem, id) => {
-		if (this._isMounted && this.state.transaccionCompletada) {
-			const valoresCondicionales =
-				id === "Genero" || id === "Esterilizado" || id === "TipoHogar";
-			const temp = this.state.filtros;
+	handleOptionsReceived = (filter, itemsSelected, replaceValue) => {
+		if (!itemsSelected) return filter;
+		itemsSelected.forEach((item) => {
+			filter[item.value] = replaceValue;
+		});
 
-			if (valoresCondicionales)
-				temp[this.convert2CamelCase(id)] = selectedItem;
-			else
-				temp[this.convert2CamelCase(id)][
-					this.convert2CamelCase(selectedItem)
-				] = "1";
-
-			this.setState(
-				{
-					filtros: temp,
-				},
-				console.log(this.state)
-			);
-		}
+		return filter;
 	};
 
-	removeHandler = (selectedList, removedItem, id) => {
-		if (this._isMounted && this.state.transaccionCompletada) {
-			const valoresCondicionales =
-				id === "Genero" || id === "Esterilizado" || id === "TipoHogar";
-			const temp = this.state.filtros;
-
-			if (valoresCondicionales) temp[this.convert2CamelCase(id)] = "";
-			else
-				temp[this.convert2CamelCase(id)][
-					this.convert2CamelCase(removedItem)
-				] = "";
-
-			this.setState(
-				{
-					filtros: temp,
-				},
-				console.log(this.state)
-			);
+	handleClear = (filter) => {
+		for (const element in filter) {
+			filter[element] = "";
 		}
+		return filter;
+	};
+
+	handleList = (selectedOption, action, id, esMultiSelect) => {
+		const temp = this.state.filtros;
+
+
+		if (action.action === "select-option") {
+			temp[id] = esMultiSelect
+				? this.handleOptionsReceived(temp[id], selectedOption, "1")
+				: selectedOption[0].value;
+		} 
+		else if (action.action === "remove-value") {
+			if (esMultiSelect) temp[id][action.removedValue.value] = "";
+			else temp[id] = "";
+
+		} 
+		else if (action.action === "clear") {
+			temp[id] = esMultiSelect ? this.handleClear(temp[id]) : "";
+		}
+
+		this.setState({ filtros: temp }, console.log(this.state));
 	};
 
 	handleChange = (event) => {
@@ -167,17 +162,6 @@ export default class Consulta extends Component {
 			.catch((err) => console.log(err));
 	};
 
-	convert2CamelCase = (str) => {
-		if (str === "Sarna/Piel") return "sarnaPiel";
-		if (str === "TVT") return "tvt";
-		str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-		return str
-			.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-				return index === 0 ? word.toLowerCase() : word.toUpperCase();
-			})
-			.replace(/\s+/g, "");
-	};
-
 	componentDidUpdate() {
 		this._isMounted = true;
 	}
@@ -185,6 +169,7 @@ export default class Consulta extends Component {
 	componentWillUnmount() {
 		this._isMounted = false;
 	}
+
 
 	render() {
 		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data
@@ -194,10 +179,8 @@ export default class Consulta extends Component {
 					dataLength={this.state.data.length}
 					transaccionCompletada={this.state.transaccionCompletada}
 					filtros={this.state.filtros}
-					onSelect={this.selectHandler}
-					onRemove={this.removeHandler}
 					handleFiltroRegistros={this.handleFiltroRegistros}
-					convert2CamelCase={this.convert2CamelCase}
+					handleList={this.handleList}
 					handleKeyWord={this.handleKeyWord}
 				/>
 
@@ -223,4 +206,5 @@ export default class Consulta extends Component {
 			</div>
 		);
 	}
+
 }
