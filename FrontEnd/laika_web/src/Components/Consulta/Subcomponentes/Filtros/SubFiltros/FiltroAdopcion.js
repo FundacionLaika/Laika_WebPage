@@ -30,7 +30,6 @@ export default class FiltroAdopcion extends React.Component {
 							true
 						)
 					}
-					selectedValues={this.props.multiSelectList2Array(this.props.filtros.medioAdopcion, this.state.plainArray)}
 				/>
 			</div>
 		);
