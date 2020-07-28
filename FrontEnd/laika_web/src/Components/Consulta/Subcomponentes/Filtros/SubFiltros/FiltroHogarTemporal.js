@@ -18,7 +18,6 @@ export default class FiltroHogarTemporal extends React.Component {
 		fechaInicioHT: null,
 		fechaFinalHT: null,
 	};
-
 	/*Manejador de dates*/
 	handleDate = (fecha, name) => {
 		this.setState({
