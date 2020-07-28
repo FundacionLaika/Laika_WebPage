@@ -30,7 +30,7 @@ class MenuUsuario extends Component {
 
     componentDidMount() {
         console.log("Mounting");
-        fetch("http://localhost:3001/usuarios", {
+        fetch("http://localhost:3000/usuarios", {
             method: "get",
             headers: { "Content-Type": "application/json" },
         })
@@ -178,7 +178,7 @@ class MenuUsuario extends Component {
     };
 
     deleteRow = (id) => {
-        fetch("http://localhost:3001/eliminarUsuario", {
+        fetch("http://localhost:3000/eliminarUsuario", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
