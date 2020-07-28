@@ -27,7 +27,7 @@ class Registro extends React.Component {
     onSubmitRegister = (event) => {
         //Todo Falta agregar funcianamiento con el servidor
         if (this.validate()) {
-            fetch("http://localhost:3001/registro", {
+            fetch("http://localhost:3000/registro", {
                 method: "post",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
