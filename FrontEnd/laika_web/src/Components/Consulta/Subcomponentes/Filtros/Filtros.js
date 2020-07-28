@@ -8,15 +8,6 @@ import FiltroRegistros from "./SubFiltros/FiltroRegistros";
 import "../../Styles/Consulta.css";
 
 export default class Filtros extends React.Component {
-	multiSelectList2Array = (objeto, opciones) => {
-		var opcionesSeleccionadas = [];
-		opciones.forEach((opcion) => {
-			if (objeto[this.props.convert2CamelCase(opcion)] === "1")
-				opcionesSeleccionadas.push(opcion);
-		});
-		return opcionesSeleccionadas;
-	};
-
 	render() {
 		return (
 			<div className="filtros">
@@ -36,60 +27,36 @@ export default class Filtros extends React.Component {
 					{(() => {
 						switch (this.props.filtros.tarjeta) {
 							case "General":
-								if (
-									this.props.dataLength &&
-									this.props.transaccionCompletada
-								) {
-									return (
-										<FiltroGeneral
-											filtros={this.props.filtros}
-											handleList={this.props.handleList}
-										/>
-									);
-								}
-								break;
+								return (
+									<FiltroGeneral
+										filtros={this.props.filtros}
+										handleList={this.props.handleList}
+									/>
+								);
 
 							case "ExpedienteMedico":
-								if (
-									this.props.dataLength &&
-									this.props.transaccionCompletada
-								) {
-									return (
-										<FiltroExpedienteMedico
-											filtros={this.props.filtros}
-											handleList={this.props.handleList}
-										/>
-									);
-								}
-								break;
+								return (
+									<FiltroExpedienteMedico
+										filtros={this.props.filtros}
+										handleList={this.props.handleList}
+									/>
+								);
 
 							case "HogarTemporal":
-								if (
-									this.props.dataLength &&
-									this.props.transaccionCompletada
-								) {
-									return (
-										<FiltroHogarTemporal
-											filtros={this.props.filtros}
-											handleList={this.props.handleList}
-										/>
-									);
-								}
-								break;
+								return (
+									<FiltroHogarTemporal
+										filtros={this.props.filtros}
+										handleList={this.props.handleList}
+									/>
+								);
 
 							case "Adopcion":
-								if (
-									this.props.dataLength &&
-									this.props.transaccionCompletada
-								) {
-									return (
-										<FiltroAdopcion
-											filtros={this.props.filtros}
-											handleList={this.props.handleList}
-										/>
-									);
-								}
-								break;
+								return (
+									<FiltroAdopcion
+										filtros={this.props.filtros}
+										handleList={this.props.handleList}
+									/>
+								);
 
 							default:
 								return null;
