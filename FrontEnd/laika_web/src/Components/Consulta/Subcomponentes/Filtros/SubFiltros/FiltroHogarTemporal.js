@@ -9,10 +9,11 @@ import es from "date-fns/locale/es";
 registerLocale("es", es);
 
 export default class FiltroHogarTemporal extends React.Component {
+	color = '#008080';
 	state = {
 		options: [
-			{ value: "persona", label: "Persona" },
-			{ value: "veterinaria", label: "Veterinaria" },
+			{ value: "persona", label: "Persona", color: this.color },
+			{ value: "veterinaria", label: "Veterinaria", color: this.color },
 		],
 		fechaInicioHT: null,
 		fechaFinalHT: null,
@@ -45,6 +46,7 @@ export default class FiltroHogarTemporal extends React.Component {
 					onChange={(date) => this.handleDate(date, "fechaInicioHT")}
 					placeholderText="Fecha Inicio"
 					customInput={<Input icon="calendar" iconPosition="left" />}
+
 				/>
 				<DatePicker
 					selectsEnd
@@ -62,6 +64,7 @@ export default class FiltroHogarTemporal extends React.Component {
 					onChange={(date) => this.handleDate(date, "fechaFinalHT")}
 					placeholderText="Fecha Final"
 					customInput={<Input icon="calendar" iconPosition="left" />}
+
 				/>
 
 				<MultiSelectList
