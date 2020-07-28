@@ -20,7 +20,18 @@ export default class Consulta extends Component {
 				edadInicial: "",
 				edadFinal: "",
 			},
-			genero: "Macho",
+			genero: "",
+			especie: {
+				canino: "",
+				felino: "",
+				otro: ""
+			},
+			estatus: {
+				activo: "",
+				fallecido: "",
+				enTratamiento: "",
+				adoptado: ""
+			},
 			vacunas: {
 				puppy: "",
 				refuerzoPuppy: "",
