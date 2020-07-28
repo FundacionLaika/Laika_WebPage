@@ -67,9 +67,12 @@ class ContactoHT extends Component {
 					</label>
 				</div>
 
-				<div>
+				<div className="fechas">
 					<div className="fechaInicio">
 						<DatePicker
+							selectsStart
+							startDate={this.props.fechaInicioHT}
+							endDate={this.props.fechaFinalHT}
 							isClearable
 							useWeekdaysShort
 							fixedHeight
@@ -88,6 +91,9 @@ class ContactoHT extends Component {
 					</div>
 					<div className="fechaFinal">
 						<DatePicker
+							selectsEnd
+							startDate={this.props.fechaInicioHT}
+							endDate={this.props.fechaFinalHT}
 							isClearable
 							useWeekdaysShort
 							fixedHeight
