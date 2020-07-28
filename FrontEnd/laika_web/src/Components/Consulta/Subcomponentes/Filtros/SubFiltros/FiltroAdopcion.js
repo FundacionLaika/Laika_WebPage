@@ -22,6 +22,14 @@ export default class FiltroAdopcion extends React.Component {
 		fechaFinalAdop: null
 	};
 
+	/*Manejador de dates*/
+	handleDate = (fecha, name) => {
+		this.setState({
+			[name]: fecha,
+		});
+		console.log(this.state);
+	};
+
 	render() {
 		console.log();
 		return (
@@ -33,7 +41,7 @@ export default class FiltroAdopcion extends React.Component {
 					isClearable
 					useWeekdaysShort
 					fixedHeight
-					autoComplete
+					autoComplete="true"
 					id="fechaInicioAdop"
 					name="fechaInicioAdop"
 					locale="es"
@@ -52,7 +60,7 @@ export default class FiltroAdopcion extends React.Component {
 					isClearable
 					useWeekdaysShort
 					fixedHeight
-					autoComplete
+					autoComplete="true"
 					id="fechaFinalAdop"
 					name="fechaFinalAdop"
 					locale="es"

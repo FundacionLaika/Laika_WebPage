@@ -9,11 +9,21 @@ import es from "date-fns/locale/es";
 registerLocale("es", es);
 
 export default class FiltroHogarTemporal extends React.Component {
-	color = '#008080';
+	color = "#008080";
 	state = {
 		options: [
-			{ value: "persona", label: "Persona", color: this.color },
-			{ value: "veterinaria", label: "Veterinaria", color: this.color },
+			{
+				value: "persona",
+				label: "Persona",
+				color: this.color,
+				isDisabled: false,
+			},
+			{
+				value: "veterinaria",
+				label: "Veterinaria",
+				color: this.color,
+				isDisabled: false,
+			},
 		],
 		fechaInicioHT: null,
 		fechaFinalHT: null,
@@ -26,6 +36,27 @@ export default class FiltroHogarTemporal extends React.Component {
 		console.log(this.state);
 	};
 
+	handleEvent = (selectedOption) => {
+		var stateCopy = this.state;
+
+		if (selectedOption == null || selectedOption.length === 0) {
+			stateCopy.options[0].isDisabled = false;
+			stateCopy.options[1].isDisabled = false;
+
+			this.setState(stateCopy);
+		} else if (selectedOption[0].value === "persona") {
+			stateCopy.options[0].isDisabled = false;
+			stateCopy.options[1].isDisabled = true;
+
+			this.setState(stateCopy);
+		} else if (selectedOption[0].value === "veterinaria") {
+			stateCopy.options[0].isDisabled = true;
+			stateCopy.options[1].isDisabled = false;
+
+			this.setState(stateCopy);
+		}
+	};
+
 	render() {
 		return (
 			<div>
@@ -36,7 +67,7 @@ export default class FiltroHogarTemporal extends React.Component {
 					isClearable
 					useWeekdaysShort
 					fixedHeight
-					autoComplete
+					autoComplete="true"
 					id="fechaInicioHT"
 					name="fechaInicioHT"
 					locale="es"
@@ -45,7 +76,6 @@ export default class FiltroHogarTemporal extends React.Component {
 					onChange={(date) => this.handleDate(date, "fechaInicioHT")}
 					placeholderText="Fecha Inicio"
 					customInput={<Input icon="calendar" iconPosition="left" />}
-
 				/>
 				<DatePicker
 					selectsEnd
@@ -54,7 +84,7 @@ export default class FiltroHogarTemporal extends React.Component {
 					isClearable
 					useWeekdaysShort
 					fixedHeight
-					autoComplete
+					autoComplete="true"
 					id="fechaFinalHT"
 					name="fechaFinalHT"
 					locale="es"
@@ -63,20 +93,20 @@ export default class FiltroHogarTemporal extends React.Component {
 					onChange={(date) => this.handleDate(date, "fechaFinalHT")}
 					placeholderText="Fecha Final"
 					customInput={<Input icon="calendar" iconPosition="left" />}
-
 				/>
 
 				<MultiSelectList
 					options={this.state.options}
 					placeholder="Tipo de HT"
-					handleList={(selectedOption, action) =>
+					handleList={(selectedOption, action) => {
 						this.props.handleList(
 							selectedOption,
 							action,
 							"tipoHogar",
 							false
-						)
-					}
+						);
+						this.handleEvent(selectedOption);
+					}}
 				/>
 			</div>
 		);
