@@ -9,7 +9,7 @@ import "./Styles/RegistroGeneral.css";
 
 export default class RegistroGeneral extends React.Component {
 	state = {
-		id: "perro",
+		id: "",
 		nombre: "",
 		edad: "",
 		genero: "",
@@ -196,14 +196,16 @@ export default class RegistroGeneral extends React.Component {
 				</div>
 
 				<div className="BarraLateralGeneral">
-					<div>
-						<label>{this.state.id}</label>
+					<div className="idLabelGeneral">
+						<label>ID:{this.state.id}</label>
 					</div>
-					<Foto
-						id="foto"
-						foto={this.state.foto}
-						imageHandler={this.imageHandler}
-					/>
+					<div className="fotoGeneral">
+						<Foto
+							id="foto"
+							foto={this.state.foto}
+							imageHandler={this.imageHandler}
+						/>
+					</div>
 				</div>
 			</div>
 		);

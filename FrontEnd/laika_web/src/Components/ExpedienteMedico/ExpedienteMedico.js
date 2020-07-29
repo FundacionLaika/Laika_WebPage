@@ -12,6 +12,9 @@ import "./Styles/ExpedienteMedico.css";
 
 class ExpedienteMedico extends Component {
 	state = {
+		/*ID*/
+		id: "",
+
 		/*Diagnóstico*/
 		atropellamiento: false,
 		tvt: false,
@@ -242,7 +245,10 @@ class ExpedienteMedico extends Component {
 					<div className="tratamiento">
 						<div className="headerTratamiento">
 							{" "}
-							<i aria-hidden="true" className="fa fa-heartbeat fa-fw separation"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-heartbeat fa-fw separation"
+							></i>
 							Tratamiento
 						</div>
 
@@ -257,19 +263,26 @@ class ExpedienteMedico extends Component {
 
 				<div className="BarraLateralMedico">
 					<Scroll>
-						<div>
+						<div className="idLabelMedico">
+							<label>ID: {this.state.id}</label>
+						</div>
+						<div className="fotoMedico1">
 							<Foto
 								id="foto1"
 								className="pt3"
 								foto={this.state.foto1}
 								imageHandler={this.imageHandler}
 							/>
+						</div>
+						<div className="fotoMedico2">
 							<Foto
 								id="foto2"
 								className="pt3"
 								foto={this.state.foto2}
 								imageHandler={this.imageHandler}
 							/>
+						</div>
+						<div className="fotoMedico3">
 							<Foto
 								id="foto3"
 								className="pt3"
@@ -284,7 +297,10 @@ class ExpedienteMedico extends Component {
 					<Link to="/RegistroGeneral">
 						<button className="BotonMedicoTransicion BotonAnteriorMedico">
 							{" "}
-							<i aria-hidden="true" className="fa fa-chevron-circle-left fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-left fa-fw"
+							></i>
 							Registro General
 						</button>
 					</Link>
@@ -292,18 +308,26 @@ class ExpedienteMedico extends Component {
 						className="BotonMedicoRestablecer BotonCentralMedico"
 						onClick={this.handleRestablecer}
 					>
-						Restablecer <i aria-hidden="true" className="fa fa-eraser fa-fw"></i>
+						Restablecer{" "}
+						<i
+							aria-hidden="true"
+							className="fa fa-eraser fa-fw"
+						></i>
 					</button>
 					<button
 						className="BotonMedicoGuardar BotonCentralMedico"
 						onClick={this.handleSubmit}
 					>
-						Guardar <i aria-hidden="true" className="fa fa-save fa-fw"></i>
+						Guardar{" "}
+						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 					<Link to="/HogarTemporal">
 						<button className="BotonMedicoTransicion BotonSiguienteMedico">
 							Hogar Temporal{" "}
-							<i aria-hidden="true" className="fa fa-chevron-circle-right fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-right fa-fw"
+							></i>
 						</button>
 					</Link>
 				</div>

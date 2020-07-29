@@ -12,6 +12,9 @@ import "../SharedComponents/Styles/SelectBox.css";
 
 class HogarTemporal extends Component {
 	state = {
+		/*ID*/
+		id: "",
+
 		/*Contacto HT*/
 		tipoHT: "Ninguno",
 		nombreHT: "",
@@ -209,11 +212,16 @@ class HogarTemporal extends Component {
 					</Link>
 				</div>
 				<div className="BarraLateralHT">
-					<Foto
-						id={"foto"}
-						foto={this.state.foto}
-						imageHandler={this.imageHandler}
-					/>
+					<div className="idLabelHogarTemporal">
+						<label>ID: {this.state.id}</label>
+					</div>
+					<div className="fotoHogarTemporal">
+						<Foto
+							id={"foto"}
+							foto={this.state.foto}
+							imageHandler={this.imageHandler}
+						/>
+					</div>
 				</div>
 			</div>
 		);

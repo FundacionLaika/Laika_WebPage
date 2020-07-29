@@ -10,6 +10,7 @@ import "./Styles/Adopcion.css";
 
 export default class Adopcion extends React.Component {
 	state = {
+		id: "",
 		visitaDeAdopcion: null,
 		adoptante: "",
 		adoptado: "",
@@ -201,11 +202,16 @@ export default class Adopcion extends React.Component {
 					</Link>
 				</div>
 				<div className="BarraLateralAdopcion">
-					<Foto
-						id="foto"
-						foto={this.state.foto}
-						imageHandler={this.imageHandler}
-					/>
+					<div className="idLabelAdopcion">
+						<label>ID: {this.state.id}</label>
+					</div>
+					<div className="fotoAdopcion">
+						<Foto
+							id="foto"
+							foto={this.state.foto}
+							imageHandler={this.imageHandler}
+						/>
+					</div>
 				</div>
 			</div>
 		);

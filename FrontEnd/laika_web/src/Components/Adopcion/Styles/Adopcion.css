@@ -64,6 +64,19 @@
 	background-color: #588da8;
 	grid-column: 4;
 	grid-row: 1 / 11;
+	display: grid;
+}
+
+.idLabelAdopcion {
+	grid-row: 1;
+	grid-column: 1;
+	background-color: red;
+}
+
+.fotoAdopcion {
+	grid-row: 2;
+	grid-column: 1;
+	background-color: blue;
 }
 
 /*Boton Restablecer*/
