@@ -56,7 +56,7 @@ class NavBarRegistros extends Component {
 								textDecoration: "inherit",
 							}}
 						>
-							<i aria-hidden="true" className="fa fa-users fa-fw separation"></i>
+							<i aria-hidden="true" className="fa fa-paw fa-fw separation"></i>
 							Adopción
 						</Link>
 					</div>
