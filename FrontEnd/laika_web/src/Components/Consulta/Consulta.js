@@ -6,28 +6,23 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
-
 	state = {
 		tarjeta: "General",
 		keyword: "",
 		filtroPorKeyWord: "nombreRescatado",
 		ordenarPor: "nombreRescatado",
 		ordenarDeMenorAMayor: true,
-		rangoEdad: {
-			edadInicial: "",
-			edadFinal: "",
-		},
 		genero: "",
-    especie: {
-		  canino: "",
+		especie: {
+			canino: "",
 			felino: "",
-			otro: ""
+			otro: "",
 		},
 		estatus: {
-      activo: "",
-      fallecido: "",
-      enTratamiento: "",
-      adoptado: ""
+			activo: "",
+			fallecido: "",
+			enTratamiento: "",
+			adoptado: "",
 		},
 		vacunas: {
 			puppy: "",
@@ -93,17 +88,16 @@ export default class Consulta extends Component {
 				});
 			} else {
 				this.setState({
-					[id]: selectedOption[0].value
+					[id]: selectedOption[0].value,
 				});
 			}
 		} else if (action.action === "remove-value") {
 			if (esMultiSelect) {
 				this.setState(
-                    Object.assign(this.state[id], {
-                        [action.removedValue.value]: "",
-                    })
+					Object.assign(this.state[id], {
+						[action.removedValue.value]: "",
+					})
 				);
-				
 			} else {
 				this.setState({
 					[id]: "",
@@ -154,11 +148,13 @@ export default class Consulta extends Component {
 	};
 
 	handleOrdenarToggle = () => {
-		this.setState({
-			ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor
-		}, console.log(this.state.ordenarDeMenorAMayor));
-	}
-
+		this.setState(
+			{
+				ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor,
+			},
+			console.log(this.state.ordenarDeMenorAMayor)
+		);
+	};
 
 	render() {
 		return (
@@ -177,8 +173,6 @@ export default class Consulta extends Component {
 					concatDate={this.concatDate}
 					filtros={this.state}
 				/>
-
-				
 			</div>
 		);
 	}

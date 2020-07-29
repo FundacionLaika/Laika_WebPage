@@ -109,8 +109,9 @@ const handleConsultaPost = (req, res, db) => {
 		filtroPorKeyWord,
 		ordenarPor,
 		ordenarDeMenorAMayor,
-		rangoEdad,
 		genero,
+		especie,
+		estatus,
 		vacunas,
 		esterilizado,
 		diagnostico,
@@ -134,14 +135,6 @@ const handleConsultaPost = (req, res, db) => {
 			orderBy += (ordenarDeMenorAMayor === "true") ? "ASC" : "DESC";
 		}
 		orderBy += ";";
-	}
-
-	if (rangoEdad.edadInicial.length) {
-		filterConditions += "AND ar.Edad >= " + rangoEdad.edadInicial + " ";
-	}
-
-	if (rangoEdad.edadFinal.length) {
-		filterConditions += "AND ar.Edad <= " + rangoEdad.edadFinal + " ";
 	}
 
 	if (genero.length) {
