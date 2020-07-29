@@ -12,7 +12,11 @@ class ContactoHT extends Component {
 	render() {
 		return (
 			<div className="contactoHT">
-				<div className="headerHT">Hogar Temporal</div>
+				<div className="headerHT">
+					{" "}
+					<i className="fa fa-home fa-fw separation"></i>
+					Hogar Temporal
+				</div>
 				<div className="tipoHT">
 					<div className="select">
 						<select

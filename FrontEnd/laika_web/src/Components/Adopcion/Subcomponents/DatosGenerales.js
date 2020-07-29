@@ -13,6 +13,7 @@ export default class DatosGenerales extends React.Component {
 		return (
 			<div className="adopcion">
 				<div className="labelAdopcion">
+					<i className="fa fa-paw fa-fw separation"></i>
 					Datos de Adopción
 				</div>
 				<div className="adoptante">
@@ -85,7 +86,7 @@ export default class DatosGenerales extends React.Component {
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
-						customInput={<DatePickerInput/>}
+						customInput={<DatePickerInput />}
 						title="Visita adopción"
 						id="visitaDeAdopcion"
 						name="visitaDeAdopcion"
@@ -103,7 +104,7 @@ export default class DatosGenerales extends React.Component {
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
-						customInput={<DatePickerInput/>}
+						customInput={<DatePickerInput />}
 						title="Fecha Adopción"
 						id="fechaAdopcion"
 						name="fechaAdopcion"
