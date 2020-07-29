@@ -1,0 +1,93 @@
+@import "https://fonts.googleapis.com/css?family=Raleway:400,700|Raleway:300,400";
+
+.gridRescatista {
+    display: grid;
+    grid-auto-columns: minmax(100%, 100%);
+}
+
+.rescatistaForm {
+    grid-row: 1;
+    background-color: green;
+    grid-column: 1;
+}
+
+.text {
+    padding-top: 10px;
+}
+
+.rowRescatista {
+    grid-row: 2;
+    grid-column: 1 / 3;
+	display: grid;
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #949494;
+    bottom: 0;
+    grid-auto-columns: minmax(25%, 25%);
+}
+
+.rowRescatistaText {
+    grid-row: 1;
+	grid-column: 1;
+    align-self: center;
+    background-color: red;
+}
+
+.rowRescatistaBorrar{
+    grid-row: 1;
+	grid-column: 2;
+    align-self: center;
+    background-color: blue;
+}
+
+.botonBorrarRescatista > button {
+    border: none !important;
+    background-color: transparent;
+}
+
+.botonBorrarRescatista > button:hover {
+	background-color: transparent;
+	border: none !important;
+}
+
+.botonBorrarRescatista > button > i:hover {
+	color: #2c00cc;
+    font-size: 160%;
+    outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
+}
+
+.botonBorrarRescatista > button:active {
+    outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
+}
+
+.botonBorrarRescatista > button > i {
+	font-size: 140%;
+}
+
+.rowRescatista > * {
+	margin: 1% 2% 1% 0;
+}
+
+.rowRescatista > * > input {
+	width: 100%;
+	resize: none;
+	box-sizing: border-box;
+	padding: 0 2% 0 2%;
+	background-color: transparent;
+	text-align: center;
+	outline: none !important;
+    border: 0px solid rgb(196, 196, 196);
+    font-family: "Raleway";
+	font-size: 16px;
+	font-weight: regular;
+}
+
+.rowRescatista > * > input:focus {
+	outline: none !important;
+	background: rgba(0, 0, 0, 0.04);
+}
+
+.rowRescatista:hover {
+	background-color: #d3e4eb;
+}

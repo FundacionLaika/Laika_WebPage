@@ -5,10 +5,13 @@ import Rescatista from "./Rescatista";
 export default class Rescatistas extends React.Component {
 	render() {
 		return (
-			<div>
-				<RescatistaForm onSubmit={this.props.agregarRescatista} />
+			<div className="gridRescatista">
+				<div className="rescatistaForm">
+					<RescatistaForm onSubmit={this.props.agregarRescatista} />
+				</div>
 				{this.props.rescatistas.map((rescatista) => (
 					<Rescatista
+						className="rowRescatista"
 						key={rescatista.id}
 						onDelete={() =>
 							this.props.eliminarRescatista(rescatista.id)
