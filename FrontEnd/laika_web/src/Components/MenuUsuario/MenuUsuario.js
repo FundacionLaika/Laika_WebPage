@@ -11,10 +11,10 @@ class MenuUsuario extends Component {
         super(props);
         this.state = {
             usuario: {
-                nombre: "Andres",
-                apellido: "Diaz de Leon",
-                correo: "Hello",
-                contrasena: "bye",
+                nombre: "",
+                apellido: "",
+                correo: "",
+                contrasena: "",
                 fotoPerfil: "/iconoPerro.png",
                 rol: "Administrador",
             },
@@ -30,12 +30,27 @@ class MenuUsuario extends Component {
 
     componentDidMount() {
         console.log("Mounting");
-        fetch("http://localhost:3000/usuarios", {
+        fetch("http://localhost:3001/usuarios", {
             method: "get",
             headers: { "Content-Type": "application/json" },
         })
             .then((response) => response.json())
             .then((usuarios) => {
+                for (let i = 0; i < usuarios.length; i++) {
+                    if (usuarios[i].Correo === this.props.correoUsuario) {
+                        this.setState(
+                            Object.assign(this.state.usuario, {
+                                nombre: usuarios[i].Nombre,
+                                apellido: usuarios[i].Apellidos,
+                                correo: usuarios[i].Nombre,
+                                contrasena: usuarios[i].Contrasena,
+                                fotoPerfil: "/iconoPerro.png",
+                                rol: usuarios[i].Rol,
+                            })
+                        );
+                        console.log(usuarios[i].Correo);
+                    }
+                }
                 if (usuarios) {
                     this.setState({
                         usuarios: usuarios,
@@ -65,7 +80,7 @@ class MenuUsuario extends Component {
             auth.logout(() => {
                 this.props.history.push("/");
             });
-            this.props.cambioRuta(false);
+            this.props.cambioRuta("");
         }
     };
 
@@ -119,14 +134,12 @@ class MenuUsuario extends Component {
                 errorConfirmarCorreo: "",
             });
         }
-        console.log(this.state);
     };
 
     validateContra = () => {
         let errorContrasena = "";
         let errorConfirmarContrasena = "";
 
-        console.log("Cambios Contra");
         if (!this.state.contrasenaNueva)
             errorContrasena = "Introduzca un correo";
 
@@ -178,7 +191,7 @@ class MenuUsuario extends Component {
     };
 
     deleteRow = (id) => {
-        fetch("http://localhost:3000/eliminarUsuario", {
+        fetch("http://localhost:3001/eliminarUsuario", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

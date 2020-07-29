@@ -17,6 +17,7 @@ import auth from "../Components/Auth/Auth";
 
 const initialState = {
     iniciadoSesion: auth.esAutenticado(),
+    correoUsuario: "",
 };
 
 class App extends React.Component {
@@ -25,8 +26,11 @@ class App extends React.Component {
         this.state = initialState;
     }
 
-    cambioRuta = (val) => {
-        this.setState({ iniciadoSesion: auth.esAutenticado() });
+    cambioRuta = (usuario) => {
+        this.setState({
+            iniciadoSesion: auth.esAutenticado(),
+            correoUsuario: usuario,
+        });
         //Puede tener una condicional de volver al estado original para que la cuenta se borre del estado
     };
 
@@ -89,6 +93,7 @@ class App extends React.Component {
                                 <MenuUsuario
                                     {...props}
                                     cambioRuta={this.cambioRuta}
+                                    correoUsuario={this.state.correoUsuario}
                                 />
                             )}
                         />

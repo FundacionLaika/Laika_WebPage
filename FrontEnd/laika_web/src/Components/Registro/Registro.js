@@ -21,13 +21,12 @@ class Registro extends React.Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
-        console.log(event.target.value);
     };
 
     onSubmitRegister = (event) => {
         //Todo Falta agregar funcianamiento con el servidor
         if (this.validate()) {
-            fetch("http://localhost:3000/registro", {
+            fetch("http://localhost:3001/registro", {
                 method: "post",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -36,7 +35,6 @@ class Registro extends React.Component {
                     correo: this.state.correo,
                     contrasena: this.state.contrasena,
                     rol: this.state.rol,
-                    // foto: "Laika2012",
                 }),
             })
                 .then((response) => response.json())

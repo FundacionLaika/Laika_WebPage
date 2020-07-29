@@ -116,7 +116,7 @@ export default class DatosGeneralesRG extends React.Component {
 				</div>
 
 				<div className="genero">
-					<label htmlFor="radio-genero">Genero: </label>
+					<label htmlFor="radio-genero">Género</label>
 					<div className="switch center">
 						<div className="quality" id="radio-especie">
 							<input
@@ -144,9 +144,9 @@ export default class DatosGeneralesRG extends React.Component {
 				</div>
 
 				<div className="especie">
-					<label htmlFor="radio-especie">Especie: </label>
+					<label htmlFor="radio-especie">Especie</label>
 					<div className="switch2 center">
-						<div className="quality quality2">
+						<div className="quality2">
 							<input
 								id="q3"
 								type="radio"
@@ -157,7 +157,7 @@ export default class DatosGeneralesRG extends React.Component {
 							/>
 							<label htmlFor="q3">Canino</label>
 						</div>
-						<div className="quality quality2">
+						<div className="quality2">
 							<input
 								id="q4"
 								type="radio"
@@ -168,7 +168,7 @@ export default class DatosGeneralesRG extends React.Component {
 							/>
 							<label htmlFor="q4">Felino</label>
 						</div>
-						<div className="quality quality2">
+						<div className="quality2">
 							<input
 								id="q5"
 								type="radio"

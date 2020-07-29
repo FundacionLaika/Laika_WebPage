@@ -10,7 +10,7 @@
 	grid-column: 1; 
 	grid-row:1;
 	text-align: left;
-	padding-left: 10%;
+	padding-left: 8%;
 	font-weight: 700;
 	font-family: inherit;
 	color: #494949;
@@ -45,13 +45,13 @@
 .fechaRescate {
 	grid-column: 1;
 	grid-row: 4;
-	padding: 15px;
+	padding: 6%;
 }
 
 .estatus {
 	grid-column: 2;
 	grid-row: 4;
-	padding: 15px;
+	padding: 6%;
 }
 
 

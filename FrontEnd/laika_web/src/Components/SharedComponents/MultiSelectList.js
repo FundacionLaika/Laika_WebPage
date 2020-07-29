@@ -60,6 +60,7 @@ export default class MultiSelectList extends React.Component {
 		return (
 			<div>
 				<Select
+					defaultValue={this.props.defaultValue}
 					className="basic-single"
 					classNamePrefix="select"
 					isClearable
