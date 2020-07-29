@@ -1,0 +1,16 @@
+.filtroHogarTemporal {
+    background-color: rgb(155, 155, 255);
+    display: grid;
+    grid-auto-columns: minmax(50%, 50%);
+}
+
+.filtroTipoHogar {
+    grid-column: 1;
+}
+
+.filtroRangoFechaHT {
+    padding-left: 5%;
+    grid-column: 2;
+    
+}
+

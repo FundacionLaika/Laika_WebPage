@@ -1,0 +1,16 @@
+.filtroAdopcion {
+    background-color: rgb(155, 155, 255);
+    display: grid;
+    grid-auto-columns: minmax(50%, 50%);
+}
+
+.filtroMedioAdopcion {
+    grid-column: 1;
+    padding-right: 5%;
+}
+
+.filtroRangoFechaAdopcion {
+    grid-column: 2;
+
+}
+

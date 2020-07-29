@@ -38,7 +38,7 @@ const colourStyles = {
 			...styles,
 			backgroundColor: color.alpha(0.7).css(),
 			borderRadius: 7,
-			padding: 7,
+			padding: 3,
 		};
 	},
 	multiValueLabel: (styles, { data }) => ({

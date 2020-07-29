@@ -1,7 +1,7 @@
 import React from "react";
 import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
-import { Input } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import "./Styles/FiltroGeneral.css";
 
 export default class FiltroGeneral extends React.Component {
 	color1 = "#FF5630";
@@ -86,47 +86,55 @@ export default class FiltroGeneral extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<Input icon="birthday cake" iconPosition="left" />
-				<MultiSelectList
-					options={this.state.options1}
-					placeholder="Género"
-					handleList={(selectedOption, action) => {
-						this.props.handleList(
-							selectedOption,
-							action,
-							"genero",
-							false
-						);
-						this.handleEvent(selectedOption);
-					}}
-				/>
-				<MultiSelectList
-					options={this.state.options2}
-					placeholder="Especie"
-					handleList={(selectedOption, action) => {
-						this.props.handleList(
-							selectedOption,
-							action,
-							"especie",
-							true
-						);
-						this.handleEvent(selectedOption);
-					}}
-				/>
-				<MultiSelectList
-					options={this.state.options3}
-					placeholder="Estatus"
-					handleList={(selectedOption, action) => {
-						this.props.handleList(
-							selectedOption,
-							action,
-							"estatus",
-							true
-						);
-						this.handleEvent(selectedOption);
-					}}
-				/>
+			<div className="filtroGeneral">
+				<div className="filtroGenero">
+					<MultiSelectList
+						options={this.state.options1}
+						placeholder="Género"
+						handleList={(selectedOption, action) => {
+							this.props.handleList(
+								selectedOption,
+								action,
+								"genero",
+								false
+							);
+							this.handleEvent(selectedOption);
+						}}
+					/>
+				</div>
+
+				<div className="filtroEspecie">
+					<MultiSelectList
+						options={this.state.options2}
+						placeholder="Especie"
+						handleList={(selectedOption, action) => {
+							this.props.handleList(
+								selectedOption,
+								action,
+								"especie",
+								true
+							);
+							this.handleEvent(selectedOption);
+						}}
+					/>
+				</div>
+
+				<div className="filtroEstatus">
+					<MultiSelectList
+						options={this.state.options3}
+						placeholder="Estatus"
+						handleList={(selectedOption, action) => {
+							this.props.handleList(
+								selectedOption,
+								action,
+								"estatus",
+								true
+							);
+							this.handleEvent(selectedOption);
+						}}
+					/>
+				</div>
+
 			</div>
 		);
 	}

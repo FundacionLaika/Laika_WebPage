@@ -1,5 +1,6 @@
 import React from "react";
 import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
+import "./Styles/FiltroExpedienteMedico.css";
 
 export default class FiltroExpedienteMedico extends React.Component {
 	color1 = "#0052CC";
@@ -66,44 +67,50 @@ export default class FiltroExpedienteMedico extends React.Component {
 	};
 	render() {
 		return (
-			<div>
-				<MultiSelectList
-					options={this.state.options1}
-					placeholder="Vacunas"
-					handleList={(selectedOption, action) =>
-						this.props.handleList(
-							selectedOption,
-							action,
-							"vacunas",
-							true
-						)
-					}
-				/>
-				<MultiSelectList
-					options={this.state.options2}
-					placeholder="Esterilizado"
-					handleList={(selectedOption, action) => {
-						this.props.handleList(
-							selectedOption,
-							action,
-							"esterilizado",
-							false
-						);
-						this.handleEvent(selectedOption);
-					}}
-				/>
-				<MultiSelectList
-					options={this.state.options3}
-					placeholder="Diagnóstico"
-					handleList={(selectedOption, action) =>
-						this.props.handleList(
-							selectedOption,
-							action,
-							"diagnostico",
-							true
-						)
-					}
-				/>
+			<div className="filtroExpedienteMedico">
+				<div className="filtroVacunas">
+					<MultiSelectList
+						options={this.state.options1}
+						placeholder="Vacunas"
+						handleList={(selectedOption, action) =>
+							this.props.handleList(
+								selectedOption,
+								action,
+								"vacunas",
+								true
+							)
+						}
+					/>
+				</div>
+				<div className="filtroEsterilizado">
+					<MultiSelectList
+						options={this.state.options2}
+						placeholder="Esterilizado"
+						handleList={(selectedOption, action) => {
+							this.props.handleList(
+								selectedOption,
+								action,
+								"esterilizado",
+								false
+							);
+							this.handleEvent(selectedOption);
+						}}
+					/>
+				</div>
+				<div className="filtroDiagnostico">
+					<MultiSelectList
+						options={this.state.options3}
+						placeholder="Diagnóstico"
+						handleList={(selectedOption, action) =>
+							this.props.handleList(
+								selectedOption,
+								action,
+								"diagnostico",
+								true
+							)
+						}
+					/>
+				</div>
 			</div>
 		);
 	}
