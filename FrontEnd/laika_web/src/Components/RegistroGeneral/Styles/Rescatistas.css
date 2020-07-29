@@ -1,34 +1,39 @@
 @import "https://fonts.googleapis.com/css?family=Raleway:400,700|Raleway:300,400";
 
-.gridRescatista {
-    display: grid;
-    grid-auto-columns: minmax(100%, 100%);
-}
-
 .rescatistaForm {
-    grid-row: 1 / 11;
+    grid-row: 1;
 	grid-column: 1;
 }
 
 .rowRescatista {
+	width:72.7%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	margin-left: 13.4%;
 	grid-column: 1;
 	display: grid;
 	background-color: #f1f1f1;
 	border-bottom: 1px solid #949494;
+	grid-auto-columns: minmax(25%,25%);
 	bottom: 0;
-	grid-auto-columns: minmax(calc(100%/10), calc(100%/10));
+}
+
+.rowRescatista:hover {
+	background-color: #d3e4eb;
 }
 
 .rowRescatistaText {
-    grid-row: 1 / 10;
-	grid-column: 1;
-	background-color: red;
+    grid-row: 1 ;
+	grid-column: 1 / 4;
 }
 
 .rowRescatistaBorrar{
     grid-row: 1;
-	grid-column: 9 / 11;
-	background-color: blue;
+	grid-column: 4;
+}
+
+.botonBorrarRescatista {
+	align-self: center;
 }
 
 .botonBorrarRescatista > button {
@@ -43,7 +48,7 @@
 
 .botonBorrarRescatista > button > i:hover {
 	color: #2c00cc;
-    font-size: 160%;
+    font-size: 140%;
     outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
 }
@@ -57,30 +62,4 @@
 	font-size: 140%;
 }
 
-.rowRescatista > * {
-	margin: 1% 2% 1% 0;
-}
-
-.rowRescatista > * > input {
-	width: 100%;
-	resize: none;
-	box-sizing: border-box;
-	padding: 0 2% 0 2%;
-	background-color: transparent;
-	text-align: center;
-	outline: none !important;
-    border: 0px solid rgb(196, 196, 196);
-    font-family: "Raleway";
-	font-size: 16px;
-	font-weight: regular;
-}
-
-.rowRescatista > * > input:focus {
-	outline: none !important;
-	background: rgba(0, 0, 0, 0.04);
-}
-
-.rowRescatista:hover {
-	background-color: #d3e4eb;
-}
 

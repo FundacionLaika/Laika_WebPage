@@ -4,8 +4,8 @@ import "../Styles/Rescatistas.css";
 export default (props) => (
 	<div className="rowRescatista">
 		<div className="rowRescatistaText">{props.rescatista.text}</div>
-		<div className="rowRescatistaBorrar">
-			<button className="botonBorrarRescatista" onClick={props.onDelete}>
+		<div className="rowRescatistaBorrar botonBorrarRescatista">
+			<button onClick={props.onDelete}>
 				<i className="fa fa-times-circle" aria-hidden="true"></i>
 			</button>
 		</div>
