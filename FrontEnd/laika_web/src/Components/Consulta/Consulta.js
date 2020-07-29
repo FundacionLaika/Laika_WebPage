@@ -8,8 +8,6 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 //var toSentenceCase = require('to-sentence-case')
 export default class Consulta extends Component {
 
-	_isMounted = false;
-
 	state = {
 		filtros: {
 			tarjeta: "General",
@@ -67,9 +65,6 @@ export default class Consulta extends Component {
 				fechaFinalAdop: "",
 			},
 		},
-
-		data: [],
-		transaccionCompletada: true,
 	};
 
 	handleOptionsReceived = (filter, itemsSelected, replaceValue) => {
@@ -89,24 +84,45 @@ export default class Consulta extends Component {
 	};
 
 	handleList = (selectedOption, action, id, esMultiSelect) => {
-		const temp = this.state.filtros;
-
-
 		if (action.action === "select-option") {
-			temp[id] = esMultiSelect
-				? this.handleOptionsReceived(temp[id], selectedOption, "1")
-				: selectedOption[0].value;
-		} 
-		else if (action.action === "remove-value") {
-			if (esMultiSelect) temp[id][action.removedValue.value] = "";
-			else temp[id] = "";
-
-		} 
-		else if (action.action === "clear") {
-			temp[id] = esMultiSelect ? this.handleClear(temp[id]) : "";
+			if (esMultiSelect) {
+				this.setState({
+					[id]: this.handleOptionsReceived(
+						this.state[id],
+						selectedOption,
+						"1"
+					),
+				});
+			} else {
+				this.setState({
+					[id]: selectedOption[0].value
+				});
+			}
+		} else if (action.action === "remove-value") {
+			if (esMultiSelect) {
+				this.setState(
+                    Object.assign(this.state[id], {
+                        [action.removedValue.value]: "",
+                    })
+				);
+				
+			} else {
+				this.setState({
+					[id]: "",
+				});
+			}
+		} else if (action.action === "clear") {
+			if (esMultiSelect) {
+				this.setState({
+					[id]: this.handleClear(this.state[id]),
+				});
+			} else {
+				this.setState({
+					[id]: "",
+				});
+			}
 		}
-
-		this.setState({ filtros: temp }, console.log(this.state));
+		console.log(this.state);
 	};
 
 	handleChange = (event) => {
@@ -117,28 +133,16 @@ export default class Consulta extends Component {
 
 	handleFiltroRegistros = (registroSeleccionado) => {
 		console.log("holaaaaaaa", registroSeleccionado);
-		const filtrosTemp = this.state.filtros;
-		filtrosTemp.tarjeta = registroSeleccionado;
 
-		if (this._isMounted && this.state.transaccionCompletada) {
-			this.setState(
-				{
-					filtros: filtrosTemp,
-					transaccionCompletada: false,
-				},
-				() => {
-					this.handleFetch();
-				}
-			);
-		}
+		this.setState({
+			tarjeta: registroSeleccionado,
+		});
 	};
 
 	handleKeyWord = (value) => {
-		this.setState(
-			Object.assign(this.state.filtros, {
-				keyword: value,
-			})
-		);
+		this.setState({
+			keyword: value,
+		});
 	};
 
 	concatDate = (calle, numero, colonia, municipio) => {
@@ -151,45 +155,12 @@ export default class Consulta extends Component {
 		return direccion;
 	};
 
-	handleFetch = () => {
-		fetch("http://localhost:3001/consulta", {
-			method: "post",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(this.state.filtros),
-		})
-			.then((response) => response.json())
-			.then((response) => {
-				this.setState({
-					data: response,
-				});
-			})
-			.then(() => {
-				if (this._isMounted) {
-					this.setState({
-						transaccionCompletada: true,
-					});
-				}
-			})
-			.catch((err) => console.log(err));
-	};
-
-	componentDidUpdate() {
-		this._isMounted = true;
-	}
-
-	componentWillUnmount() {
-		this._isMounted = false;
-	}
-
 
 	render() {
-		if (!this.state.data.length) this.handleFetch(); //Solo hace Fetch de los datos si no se tiene Data
 		return (
 			<div className="consulta">
 				<Filtros
-					dataLength={this.state.data.length}
-					transaccionCompletada={this.state.transaccionCompletada}
-					filtros={this.state.filtros}
+					filtros={this.state}
 					handleFiltroRegistros={this.handleFiltroRegistros}
 					handleList={this.handleList}
 					handleKeyWord={this.handleKeyWord}
@@ -197,10 +168,9 @@ export default class Consulta extends Component {
 
 				<GridConsulta
 					className="gridConsulta"
-					data={this.state.data}
-					transaccionCompletada={this.state.transaccionCompletada}
-					tarjeta={this.state.filtros.tarjeta}
+					tarjeta={this.state.tarjeta}
 					concatDate={this.concatDate}
+					filtros={this.state}
 				/>
 
 				<div>
@@ -217,5 +187,4 @@ export default class Consulta extends Component {
 			</div>
 		);
 	}
-
 }
