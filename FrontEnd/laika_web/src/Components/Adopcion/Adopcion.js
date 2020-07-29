@@ -200,7 +200,7 @@ export default class Adopcion extends React.Component {
 						</button>
 					</Link>
 				</div>
-				<div className="BarraLateralAdopcion flex items-center justify-center b2">
+				<div className="BarraLateralAdopcion">
 					<Foto
 						id="foto"
 						foto={this.state.foto}

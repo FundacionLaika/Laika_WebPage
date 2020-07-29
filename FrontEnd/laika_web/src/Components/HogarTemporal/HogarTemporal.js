@@ -208,7 +208,7 @@ class HogarTemporal extends Component {
 						</button>
 					</Link>
 				</div>
-				<div className="BarraLateralHT flex items-center justify-center">
+				<div className="BarraLateralHT">
 					<Foto
 						id={"foto"}
 						foto={this.state.foto}

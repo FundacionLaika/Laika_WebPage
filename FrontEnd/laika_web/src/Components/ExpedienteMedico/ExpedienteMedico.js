@@ -255,7 +255,7 @@ class ExpedienteMedico extends Component {
 					</div>
 				</div>
 
-				<div className="BarraLateralMedico flex flex-column">
+				<div className="BarraLateralMedico">
 					<Scroll>
 						<div>
 							<Foto

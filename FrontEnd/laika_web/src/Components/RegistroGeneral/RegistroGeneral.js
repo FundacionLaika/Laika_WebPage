@@ -195,7 +195,7 @@ export default class RegistroGeneral extends React.Component {
 					</Link>
 				</div>
 
-				<div className="BarraLateralGeneral flex items-center justify-around">
+				<div className="BarraLateralGeneral">
 					<div>
 						<label>{this.state.id}</label>
 					</div>
