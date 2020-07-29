@@ -12,28 +12,36 @@ export default class GridConsulta extends React.Component {
 				{(() => {
 					switch (this.props.tarjeta) {
 						case "General":
-							if (this.props.data.length && this.props.transaccionCompletada) {
-								return <GridGeneral	data={this.props.data} concatDate={this.props.concatDate}/>
-							}
-							break;
+							return (
+								<GridGeneral
+									concatDate={this.props.concatDate}
+									filtros={this.props.filtros}
+								/>
+							);
 
 						case "ExpedienteMedico":
-							if (this.props.data.length && this.props.transaccionCompletada) {
-								return <GridExpedienteMedico data={this.props.data} concatDate={this.props.concatDate}/>
-							}
-							break;
+							return (
+								<GridExpedienteMedico
+									concatDate={this.props.concatDate}
+									filtros={this.props.filtros}
+								/>
+							);
 
 						case "HogarTemporal":
-							if (this.props.data.length && this.props.transaccionCompletada) {
-								return <GridHogarTemporal data={this.props.data} concatDate={this.props.concatDate}/>
-							}
-							break;
+							return (
+								<GridHogarTemporal
+									concatDate={this.props.concatDate}
+									filtros={this.props.filtros}
+								/>
+							);
 
 						case "Adopcion":
-							if (this.props.data.length && this.props.transaccionCompletada) {
-								return <GridAdopcion data={this.props.data} concatDate={this.props.concatDate}/>
-							}
-						break;
+							return (
+								<GridAdopcion
+									concatDate={this.props.concatDate}
+									filtros={this.props.filtros}
+								/>
+							);
 
 						default:
 							return null;
