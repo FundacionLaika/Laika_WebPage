@@ -178,7 +178,7 @@ class Diagnostico extends Component {
 							<span className="label">Especificar</span>
 							<span className="focus-bg"></span>
 						</label>
-					) : null}
+					) :  <div><br/><br/><br/></div>}
 				</div>
 			</div>
 		);

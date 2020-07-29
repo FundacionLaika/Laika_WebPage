@@ -9,48 +9,61 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 export default class Consulta extends Component {
 
 	state = {
-		tarjeta: "General",
-		keyword: "",
-		filtroPorKeyWord: "",
-		ordenar: "",
-		rangoEdad: {
-			edadInicial: "",
-			edadFinal: "",
-		},
-		genero: "",
-		vacunas: {
-			puppy: "",
-			refuerzoPuppy: "",
-			multiple: "",
-			refuerzoMultiple: "",
-			rabia: "",
-		},
-		esterilizado: "",
-		diagnostico: {
-			atropellamiento: "",
-			tvt: "",
-			sarnaPiel: "",
-			viral: "",
-			embarazo: "",
-			cachorros: "",
-			hemoparasitos: "",
-			otro: "",
-		},
-		tipoHogar: "",
-		rangoFechaHT: {
-			fechaInicioHT: "",
-			fechaFinalHT: "",
-		},
-		medioAdopcion: {
-			instagram: "",
-			facebook: "",
-			petco: "",
-			referencia: "",
-			otro: "",
-		},
-		rangoFechaAdopcion: {
-			fechaInicioAdop: "",
-			fechaFinalAdop: "",
+		filtros: {
+			tarjeta: "General",
+			keyword: "",
+			filtroPorKeyWord: "",
+			ordenar: "",
+			rangoEdad: {
+				edadInicial: "",
+				edadFinal: "",
+			},
+			genero: "",
+			especie: {
+				canino: "",
+				felino: "",
+				otro: ""
+			},
+			estatus: {
+				activo: "",
+				fallecido: "",
+				enTratamiento: "",
+				adoptado: ""
+			},
+			vacunas: {
+				puppy: "",
+				refuerzoPuppy: "",
+				multiple: "",
+				refuerzoMultiple: "",
+				rabia: "",
+			},
+			esterilizado: "",
+			diagnostico: {
+				atropellamiento: "",
+				tvt: "",
+				sarnaPiel: "",
+				viral: "",
+				embarazo: "",
+				cachorros: "",
+				hemoparasitos: "",
+				otro: "",
+			},
+			tipoHogar: "",
+			rangoFechaHT: {
+				fechaInicioHT: "",
+				fechaFinalHT: "",
+			},
+			medioAdopcion: {
+				instagram: "",
+				facebook: "",
+				petco: "",
+				referencia: "",
+				otro: "",
+			},
+			rangoFechaAdopcion: {
+				fechaInicioAdop: "",
+				fechaFinalAdop: "",
+			},
 		},
 	};
 

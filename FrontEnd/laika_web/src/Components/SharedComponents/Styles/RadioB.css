@@ -1,21 +1,11 @@
 .switch {
     position: relative;
-    width: 180px;
-    height: 40px;
-    border: 3px solid purple;
-    color: purple;
-    font-size: 18px;
-    border-radius: 10px;
-}
-
-.switch2 {
-    position: relative;
     width: 210px;
     height: 40px;
-    border: 3px solid purple;
-    color: purple;
+    border: 1.5px solid rgb(189, 189, 189);
+    color: rgb(189, 189, 189);
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .quality {
@@ -26,13 +16,13 @@
     line-height: 40px;
 }
 .quality:first-child label {
-    border-radius: 5px 0 0 5px;
+    border-radius: 9px 0 0 9px;
 }
 .quality:nth-child(2) label {
     border-radius: 0;
 }
 .quality:last-child label {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 10px 10px 0;
 }
 .quality label {
     position: absolute;
@@ -42,7 +32,7 @@
     height: 100%;
     cursor: pointer;
     text-align: center;
-    transition: transform 0.4s, color 0.4s, background-color 0.4s;
+    transition: transform 0.6s, color 0.6s, background-color 0.6s;
 }
 .quality input[type="radio"] {
     appearance: none;
@@ -55,18 +45,122 @@
     outline-offset: 0;
 }
 .quality input[type="radio"]:checked ~ label {
-    background-color: pink;
+    background-color: rgb(76, 91, 221);
     color: white;
-    font-weight: bold;
 }
 .quality input[type="radio"]:active ~ label {
     transform: scale(1.05);
 }
 
+
+.switch2 {
+    position: relative;
+    width: 217px;
+    height: 40px;
+    border: 1.5px solid rgb(189, 189, 189);
+    color: rgb(189, 189, 189);
+    font-size: 18px;
+    border-radius: 15px;
+}
+
 .quality2 {
     display: inline-block;
     position: relative;
-    width: 33%;
+    width: 33.33333333333333%;
     height: 100%;
     line-height: 40px;
+}
+
+.quality2:first-child label {
+    border-radius: 9px 0 0 9px;
+}
+.quality2:nth-child(2) label {
+    border-radius: 0;
+}
+.quality2:last-child label {
+    border-radius: 0 10px 10px 0;
+}
+.quality2 label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.6s, color 0.6s, background-color 0.6s;
+}
+.quality2 input[type="radio"] {
+    appearance: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.quality2 input[type="radio"]:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+.quality2 input[type="radio"]:checked ~ label {
+    background-color: rgb(76, 91, 221);
+    color: white;
+}
+.quality2 input[type="radio"]:active ~ label {
+    transform: scale(1.05);
+}
+
+
+
+.switch3 {
+    position: relative;
+    width: 260px;
+    height: 40px;
+    border: 1.5px solid rgb(189, 189, 189);
+    color: rgb(189, 189, 189);
+    font-size: 18px;
+    border-radius: 15px;
+}
+
+.quality3 {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    line-height: 40px;
+}
+
+.quality3:first-child label {
+    border-radius: 9px 0 0 9px;
+}
+.quality3:nth-child(2) label {
+    border-radius: 0;
+}
+.quality3:last-child label {
+    border-radius: 0 10px 10px 0;
+}
+.quality3 label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.6s, color 0.6s, background-color 0.6s;
+}
+.quality3 input[type="radio"] {
+    appearance: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.quality3 input[type="radio"]:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+.quality3 input[type="radio"]:checked ~ label {
+    background-color: rgb(76, 91, 221);
+    color: white;
+}
+.quality3 input[type="radio"]:active ~ label {
+    transform: scale(1.05);
 }

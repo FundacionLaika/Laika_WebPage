@@ -17,19 +17,19 @@ class Esterilizacion extends Component {
 					<label htmlFor="radio-genero">Esterilizado</label>
 				</div>
 				<div className="inputEsterilizado">
-					<div className="switch center">
-						<div className="quality" id="radio-especie">
+					<div className="switch3 center">
+						<div className="quality3" id="radio-especie">
 							<input
 								type="radio"
 								id="idEsterilizadoSi"
 								name="esterilizado"
-								value="Si"
-								checked={this.props.esterilizado === "Si"}
+								value="Sí"
+								checked={this.props.esterilizado === "Sí"}
 								onChange={this.props.handleChange}
 							/>
-							<label htmlFor="idEsterilizadoSi">Si</label>
+							<label htmlFor="idEsterilizadoSi">Sí</label>
 						</div>
-						<div className="quality">
+						<div className="quality3">
 							<input
 								type="radio"
 								id="idEsterilizadoNo"
@@ -47,19 +47,19 @@ class Esterilizacion extends Component {
 					<label htmlFor="radio-genero">¿Desea Agendar Cita? </label>
 				</div>
 				<div className="inputCitaEsterilizacion">
-					<div className="switch center">
-						<div className="quality" id="radio-especie">
+					<div className="switch3 center">
+						<div className="quality3" id="radio-especie">
 							<input
 								type="radio"
 								id="idCitaEsterilzacionSi"
 								name="citaEsterilizacion"
-								value="Si"
-								checked={this.props.citaEsterilizacion === "Si"}
+								value="Sí"
+								checked={this.props.citaEsterilizacion === "Sí"}
 								onChange={this.props.handleChange}
 							/>
-							<label htmlFor="idCitaEsterilzacionSi">Si</label>
+							<label htmlFor="idCitaEsterilzacionSi">Sí</label>
 						</div>
-						<div className="quality">
+						<div className="quality3">
 							<input
 								type="radio"
 								id="idCitaEsterilzacionNo"
@@ -74,7 +74,7 @@ class Esterilizacion extends Component {
 				</div>
 
 				<div className="fechaEsterilizacion">
-					{this.props.citaEsterilizacion === "Si" ? (
+					{this.props.citaEsterilizacion === "Sí" ? (
 						<DatePicker
 							isClearable
 							useWeekdaysShort

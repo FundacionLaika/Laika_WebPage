@@ -12,9 +12,7 @@ class ContactoHT extends Component {
 	render() {
 		return (
 			<div className="contactoHT">
-				<div className="headerHT">
-					Hogar Temporal
-				</div>
+				<div className="headerHT">Hogar Temporal</div>
 				<div className="tipoHT">
 					<div className="select">
 						<select
@@ -72,11 +70,14 @@ class ContactoHT extends Component {
 				<div className="fechas">
 					<div className="fechaInicio">
 						<DatePicker
+							selectsStart
+							startDate={this.props.fechaInicioHT}
+							endDate={this.props.fechaFinalHT}
 							isClearable
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput/>}
+							customInput={<DatePickerInput />}
 							title="Fecha Inicio"
 							id="fechaInicioHT"
 							name="fechaInicioHT"
@@ -90,11 +91,14 @@ class ContactoHT extends Component {
 					</div>
 					<div className="fechaFinal">
 						<DatePicker
+							selectsEnd
+							startDate={this.props.fechaInicioHT}
+							endDate={this.props.fechaFinalHT}
 							isClearable
 							useWeekdaysShort
 							fixedHeight
 							autoComplete
-							customInput={<DatePickerInput/>}
+							customInput={<DatePickerInput />}
 							title="Fecha Final"
 							id="fechaFinalHT"
 							name="fechaFinalHT"

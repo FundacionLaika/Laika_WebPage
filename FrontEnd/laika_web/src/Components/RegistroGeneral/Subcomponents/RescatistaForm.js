@@ -26,13 +26,27 @@ export default class RescatismaForm extends React.Component {
 	render() {
 		return (
 			<div onSubmit={this.handleSubmit}>
-				<input
-					name="text"
-					value={this.state.text}
-					onChange={this.handleChange}
-					placeholder="Nombre del rescatista"
-				/>
-				<button onClick={this.handleSubmit}>Agregar Rescatista</button>
+				<div className="ui left icon input">
+					<input
+						type="text"
+						name="text"
+						value={this.state.text}
+						onChange={this.handleChange}
+						placeholder="Nombre del rescatista"
+					/>
+					<i aria-hidden="true" class="users icon"></i>
+					<button
+						className="ui animated button"
+						onClick={this.handleSubmit}
+					>
+						<div className="visible content">
+							Agregar Rescatista
+						</div>
+						<div className="hidden content">
+							<i aria-hidden="true" class="arrow right icon"></i>
+						</div>
+					</button>
+				</div>
 			</div>
 		);
 	}
