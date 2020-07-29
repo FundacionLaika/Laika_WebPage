@@ -32,8 +32,9 @@
 }
 
 .headerDataGridHT {
-	padding-left: 4%;
 	text-align: left;
+	padding-top: 1.8%;
+	padding-left: 4%;
 	padding-bottom: 2%;
 	font-weight: 700;
 	font-family: inherit;
