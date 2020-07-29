@@ -2,19 +2,18 @@ import React from "react";
 import Row from "./Row";
 import "../../Adopcion/Styles/Adopcion.css";
 import "./Styles/DataGrid.css";
+import "../Styles/Boton.css";
 
 export default class DataGrid extends React.Component {
 	render() {
 		return (
 			<div className="DGAArea">
-				<div className="agregarGA">
-					<button onClick={this.props.addRow}>
-                        <span>Agregar Fila
-                        <i
-							className="fa fa-plus-circle fa-fw"
-							aria-hidden="true"
-                        ></i>
-                        </span>
+				<div className="agregarDG">
+					<button
+						class="btn btn-4 btn-sep icon-plus"
+						onClick={this.props.addRow}
+					>
+						Agregar Fila
 					</button>
 				</div>
 
