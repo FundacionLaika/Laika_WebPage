@@ -11,12 +11,13 @@ export default class RowUsuario extends React.Component {
     };
 
     handleEliminarUsuario = (event) => {
-        // window.alert("Seguro que quieres eliminar el usuario");
-        const conf = window.confirm("Desea eliminar la cuenta");
-        if (conf) {
-            this.props.deleteRow();
+        console.log(this.props.cuentaPropia);
+        console.log(this.state.correo);
+        if (this.props.cuentaPropia !== this.state.correo) {
+            const conf = window.confirm("Desea eliminar la cuenta");
+            if (conf) this.props.deleteRow();
         } else {
-            console.log("Not today");
+            window.alert("No puede eliminar su propia cuenta");
         }
     };
 

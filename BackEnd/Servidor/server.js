@@ -8,7 +8,8 @@ const consulta = require("./controllers/consulta");
 const login = require("./controllers/login");
 const registro = require("./controllers/registro");
 const usuarios = require("./controllers/usuarios");
-const cargaUsuario = require("./controllers/cargarDatos");
+const cambiarCorreo = require("./controllers/cambiarCorreo");
+const cambiarContrasena = require("./controllers/cambiarContrasena");
 const eliminarUsuario = require("./controllers/eliminarUsuario");
 
 const app = express();
@@ -32,15 +33,11 @@ app.post("/consulta", (req, res) => {
     consulta.handleConsultaPost(req, res, db);
 });
 app.post("/login", login.handleLogin(db, bcrypt));
-//Todo No permitir el mismo correo
 app.post("/registro", registro.handleRegistro(db, bcrypt));
 app.get("/usuarios", usuarios.handleUsuariosGet(db));
-app.get("/cargarDatos", cargaUsuario.handleCargaUsuario(db));
-//Todo *no poder eliminar a un admin y arreglar responsividad
+app.put("/cambiarCorreo", cambiarCorreo.handleCorreo(db));
+app.put("/cambiarContrasena", cambiarContrasena.handleContrasena(db));
 app.post("/eliminarUsuario", eliminarUsuario.handleEliminarUsuario(db));
-//Controladores a agregar
-//* MenuUsuario
-// -> Modificar correo y contra
 //* PDF
 // -> Dar los datos necesarios al pdf
 // ->

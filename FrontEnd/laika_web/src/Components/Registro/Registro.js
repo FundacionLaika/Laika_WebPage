@@ -10,7 +10,7 @@ class Registro extends React.Component {
             apellido: "",
             contrasena: "",
             confirmacionContrasena: "",
-            rol: "",
+            rol: "Voluntario",
             usuarioCreado: false,
         };
     }

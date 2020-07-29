@@ -26,6 +26,7 @@ export default class UsuarioGrid extends React.Component {
                         nombre={row.Nombre}
                         apellido={row.Apellidos}
                         correo={row.Correo}
+                        cuentaPropia={this.props.cuentaPropia}
                         contrasena={row.Contrasena}
                         rol={row.Rol}
                         handleChange={this.props.modifyRow}
