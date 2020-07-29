@@ -11,7 +11,6 @@ export default class Rescatistas extends React.Component {
 				</div>
 				{this.props.rescatistas.map((rescatista) => (
 					<Rescatista
-						className="rowRescatista"
 						key={rescatista.id}
 						onDelete={() =>
 							this.props.eliminarRescatista(rescatista.id)

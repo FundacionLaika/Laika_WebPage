@@ -35,13 +35,18 @@ export default class RescatismaForm extends React.Component {
 						placeholder="Nombre del rescatista"
 					/>
 					<i aria-hidden="true" class="users icon"></i>
+					<button
+						className="ui animated button"
+						onClick={this.handleSubmit}
+					>
+						<div className="visible content">
+							Agregar Rescatista
+						</div>
+						<div className="hidden content">
+							<i aria-hidden="true" class="arrow right icon"></i>
+						</div>
+					</button>
 				</div>
-				<button className="ui animated button" onClick={this.handleSubmit}>
-					<div className="visible content">Agregar Rescatista</div>
-					<div className="hidden content">
-						<i aria-hidden="true" class="arrow right icon"></i>
-					</div>
-				</button>
 			</div>
 		);
 	}

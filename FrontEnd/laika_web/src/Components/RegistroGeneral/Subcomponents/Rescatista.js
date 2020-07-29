@@ -2,7 +2,7 @@ import React from "react";
 import "../Styles/Rescatistas.css";
 
 export default (props) => (
-	<div>
+	<div className="rowRescatista">
 		<div className="rowRescatistaText">{props.rescatista.text}</div>
 		<div className="rowRescatistaBorrar">
 			<button className="botonBorrarRescatista" onClick={props.onDelete}>
