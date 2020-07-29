@@ -188,7 +188,7 @@ export default class DatosGeneralesRG extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div className="fechaRescate">
+				<div className="fechaRescate ajusteFecha">
 					<DatePicker
 						isClearable
 						useWeekdaysShort

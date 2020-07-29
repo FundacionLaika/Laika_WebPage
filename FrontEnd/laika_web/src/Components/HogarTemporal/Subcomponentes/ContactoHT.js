@@ -11,7 +11,7 @@ registerLocale("es", es);
 class ContactoHT extends Component {
 	render() {
 		return (
-			<div className="contactoHT">
+			<div className="datosHT">
 				<div className="headerHT">
 					{" "}
 					<i
@@ -74,49 +74,47 @@ class ContactoHT extends Component {
 					</label>
 				</div>
 
-				<div className="fechas">
-					<div className="fechaInicio">
-						<DatePicker
-							selectsStart
-							startDate={this.props.fechaInicioHT}
-							endDate={this.props.fechaFinalHT}
-							isClearable
-							useWeekdaysShort
-							fixedHeight
-							autoComplete
-							customInput={<DatePickerInput />}
-							title="Fecha Inicio"
-							id="fechaInicioHT"
-							name="fechaInicioHT"
-							locale="es"
-							selected={this.props.fechaInicioHT}
-							dateFormat="dd/MM/yyyy"
-							onChange={(date) =>
-								this.props.handleDate(date, "fechaInicioHT")
-							}
-						/>
-					</div>
-					<div className="fechaFinal">
-						<DatePicker
-							selectsEnd
-							startDate={this.props.fechaInicioHT}
-							endDate={this.props.fechaFinalHT}
-							isClearable
-							useWeekdaysShort
-							fixedHeight
-							autoComplete
-							customInput={<DatePickerInput />}
-							title="Fecha Final"
-							id="fechaFinalHT"
-							name="fechaFinalHT"
-							locale="es"
-							selected={this.props.fechaFinalHT}
-							dateFormat="dd/MM/yyyy"
-							onChange={(date) =>
-								this.props.handleDate(date, "fechaFinalHT")
-							}
-						/>
-					</div>
+				<div className="fechaInicio ajusteFecha">
+					<DatePicker
+						selectsStart
+						startDate={this.props.fechaInicioHT}
+						endDate={this.props.fechaFinalHT}
+						isClearable
+						useWeekdaysShort
+						fixedHeight
+						autoComplete
+						customInput={<DatePickerInput />}
+						title="Fecha Inicio"
+						id="fechaInicioHT"
+						name="fechaInicioHT"
+						locale="es"
+						selected={this.props.fechaInicioHT}
+						dateFormat="dd/MM/yyyy"
+						onChange={(date) =>
+							this.props.handleDate(date, "fechaInicioHT")
+						}
+					/>
+				</div>
+				<div className="fechaFinal ajusteFecha">
+					<DatePicker
+						selectsEnd
+						startDate={this.props.fechaInicioHT}
+						endDate={this.props.fechaFinalHT}
+						isClearable
+						useWeekdaysShort
+						fixedHeight
+						autoComplete
+						customInput={<DatePickerInput />}
+						title="Fecha Final"
+						id="fechaFinalHT"
+						name="fechaFinalHT"
+						locale="es"
+						selected={this.props.fechaFinalHT}
+						dateFormat="dd/MM/yyyy"
+						onChange={(date) =>
+							this.props.handleDate(date, "fechaFinalHT")
+						}
+					/>
 				</div>
 			</div>
 		);

@@ -83,7 +83,7 @@ export default class DatosGenerales extends React.Component {
 						<span className="focus-bg"></span>
 					</label>
 				</div>
-				<div className="visitaDeAdopcion">
+				<div className="visitaDeAdopcion ajusteFecha">
 					<DatePicker
 						isClearable
 						useWeekdaysShort
@@ -101,7 +101,7 @@ export default class DatosGenerales extends React.Component {
 						}
 					/>
 				</div>
-				<div className="fechaAdopcion">
+				<div className="fechaAdopcion ajusteFecha">
 					<DatePicker
 						isClearable
 						useWeekdaysShort
