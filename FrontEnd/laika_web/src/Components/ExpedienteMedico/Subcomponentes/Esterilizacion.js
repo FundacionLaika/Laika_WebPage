@@ -13,7 +13,10 @@ class Esterilizacion extends Component {
 			<div id="esterilizacion">
 				<div className="headerEsterilizacion">
 					{" "}
-					<i className="fa fa-user-md fa-fw separation"></i>
+					<i
+						aria-hidden="true"
+						className="fa fa-user-md fa-fw separation"
+					></i>
 					Esterilizacion
 				</div>
 				<div className="labelEsterilizado">

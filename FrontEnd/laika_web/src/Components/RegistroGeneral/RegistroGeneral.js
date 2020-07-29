@@ -102,11 +102,10 @@ export default class RegistroGeneral extends React.Component {
 					/>
 				</div>
 
-
-				   <div
-                className="FormularioGeneral"
-                style={{ overflowY: "scroll", height: "80vh" }}
-            >
+				<div
+					className="FormularioGeneral"
+					style={{ overflowY: "scroll", height: "80vh" }}
+				>
 					<div className="DatosGenerales">
 						<DatosGeneralesRG
 							handleChange={this.handleChange}
@@ -162,7 +161,10 @@ export default class RegistroGeneral extends React.Component {
 				<div className="BotonesRegistroGeneral">
 					<Link to="/Adopcion">
 						<button className="BotonGeneralTransicion BotonAnteriorGeneral">
-							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-left fa-fw"
+							></i>
 							Adopcion
 						</button>
 					</Link>
@@ -172,14 +174,17 @@ export default class RegistroGeneral extends React.Component {
 						onClick={this.handleRestablecer}
 					>
 						Restablecer
-						<i className="fa fa-eraser fa-fw"></i>
+						<i
+							aria-hidden="true"
+							className="fa fa-eraser fa-fw"
+						></i>
 					</button>
 					<button
 						className="BotonGeneralGuardar BotonCentralGeneral"
 						onClick={this.handleSubmit}
 					>
 						Registrar
-						<i className="fa fa-save fa-fw"></i>
+						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
 					<Link to="/ExpedienteMedico">
@@ -192,9 +197,7 @@ export default class RegistroGeneral extends React.Component {
 
 				<div className="BarraLateralGeneral flex items-center justify-around">
 					<div>
-						<label>
-							{this.state.id}
-						</label>
+						<label>{this.state.id}</label>
 					</div>
 					<Foto
 						id="foto"

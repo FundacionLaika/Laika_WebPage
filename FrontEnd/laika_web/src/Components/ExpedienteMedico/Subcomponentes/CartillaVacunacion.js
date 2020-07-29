@@ -14,7 +14,10 @@ class CartillaVacunacion extends Component {
 			<div>
 				<div className="headerCartillaVacunacion">
 					{" "}
-					<i className="fa fa-medkit fa-fw separation"></i>
+					<i
+						aria-hidden="true"
+						className="fa fa-medkit fa-fw separation"
+					></i>
 					Cartilla de vacunación
 				</div>
 				<div className="cartillaVacunacion">

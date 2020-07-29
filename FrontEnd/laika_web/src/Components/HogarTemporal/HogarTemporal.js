@@ -156,7 +156,10 @@ class HogarTemporal extends Component {
 					</div>
 					<div className="dataGridHT">
 						<div className="headerDataGridHT">
-							<i className="fa fa-comments-o separation"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-comments-o separation"
+							></i>
 							Comentarios
 						</div>
 						<DataGrid
@@ -171,7 +174,10 @@ class HogarTemporal extends Component {
 				<div className="BotonesRegistroHT">
 					<Link to="/ExpedienteMedico">
 						<button className="BotonHTTransicion BotonAnteriorHT">
-							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-left fa-fw"
+							></i>
 							Expediente Médico
 						</button>
 					</Link>
@@ -180,19 +186,25 @@ class HogarTemporal extends Component {
 						onClick={this.handleRestablecer}
 					>
 						Restablecer
-						<i className="fa fa-eraser fa-fw"></i>
+						<i
+							aria-hidden="true"
+							className="fa fa-eraser fa-fw"
+						></i>
 					</button>
 					<button
 						className="BotonHTGuardar BotonCentralHT"
 						onClick={this.handleSubmit}
 					>
 						Guardar
-						<i className="fa fa-save fa-fw"></i>
+						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 					<Link to="/Adopcion">
 						<button className="BotonHTTransicion BotonSiguienteHT">
 							Adopción
-							<i className="fa fa-chevron-circle-right fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-right fa-fw"
+							></i>
 						</button>
 					</Link>
 				</div>

@@ -146,7 +146,10 @@ export default class Adopcion extends React.Component {
 					</div>
 					<div className="DataGridAdopcion">
 						<div className="labelDataGridAdopcion">
-							<i className="fa fa-comments-o separation"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-comments-o separation"
+							></i>
 							Comentarios
 						</div>
 						<DataGrid
@@ -161,7 +164,10 @@ export default class Adopcion extends React.Component {
 				<div className="BotonesRegistroAdopcion">
 					<Link to="/HogarTemporal">
 						<button className="BotonAdopcionTransicion BotonAnteriorAdopcion">
-							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-left fa-fw"
+							></i>
 							Hogar Temporal
 						</button>
 					</Link>
@@ -171,20 +177,26 @@ export default class Adopcion extends React.Component {
 						onClick={this.handleRestablecer}
 					>
 						Restablecer
-						<i className="fa fa-eraser fa-fw"></i>
+						<i
+							aria-hidden="true"
+							className="fa fa-eraser fa-fw"
+						></i>
 					</button>
 					<button
 						className="BotonAdopcionGuardar BotonCentralAdopcion"
 						onClick={this.handleSubmit}
 					>
 						Registrar
-						<i className="fa fa-save fa-fw"></i>
+						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
 					<Link to="/RegistroGeneral">
 						<button className="BotonAdopcionTransicion BotonSiguienteAdopcion">
 							Registro General
-							<i className="fa fa-chevron-circle-right fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-right fa-fw"
+							></i>
 						</button>
 					</Link>
 				</div>

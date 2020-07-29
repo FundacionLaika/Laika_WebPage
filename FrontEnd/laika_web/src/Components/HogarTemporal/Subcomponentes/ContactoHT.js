@@ -14,7 +14,10 @@ class ContactoHT extends Component {
 			<div className="contactoHT">
 				<div className="headerHT">
 					{" "}
-					<i className="fa fa-home fa-fw separation"></i>
+					<i
+						aria-hidden="true"
+						className="fa fa-home fa-fw separation"
+					></i>
 					Hogar Temporal
 				</div>
 				<div className="tipoHT">

@@ -6,7 +6,10 @@ class Diagnostico extends Component {
 			<div id="diagnostico">
 				<div className="headerDiagnostico">
 					{" "}
-					<i className="fa fa-stethoscope fa-fw separation"></i>
+					<i
+						aria-hidden="true"
+						className="fa fa-stethoscope fa-fw separation"
+					></i>
 					Diagnóstico
 				</div>
 				<div id="bloque1Diag">

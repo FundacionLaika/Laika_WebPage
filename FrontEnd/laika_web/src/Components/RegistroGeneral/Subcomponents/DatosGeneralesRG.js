@@ -15,7 +15,10 @@ export default class DatosGeneralesRG extends React.Component {
 			<div className="datosGenerales">
 				<div className="labelDatosGenerales">
 					{" "}
-					<i className="fa fa-address-book-o fa-fw separation"></i>
+					<i
+						aria-hidden="true"
+						className="fa fa-address-book-o fa-fw separation"
+					></i>
 					Datos Generales
 				</div>
 				<div className="nombre">

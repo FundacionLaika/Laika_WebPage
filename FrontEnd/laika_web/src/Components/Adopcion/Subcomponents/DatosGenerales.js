@@ -13,7 +13,10 @@ export default class DatosGenerales extends React.Component {
 		return (
 			<div className="adopcion">
 				<div className="labelAdopcion">
-					<i className="fa fa-paw fa-fw separation"></i>
+					<i
+						aria-hidden="true"
+						className="fa fa-paw fa-fw separation"
+					></i>
 					Datos de Adopción
 				</div>
 				<div className="adoptante">
@@ -80,42 +83,42 @@ export default class DatosGenerales extends React.Component {
 						<span className="focus-bg"></span>
 					</label>
 				</div>
-					<div className="visitaDeAdopcion">
-						<DatePicker
-							isClearable
-							useWeekdaysShort
-							fixedHeight
-							autoComplete
-							customInput={<DatePickerInput />}
-							title="Visita adopción"
-							id="visitaDeAdopcion"
-							name="visitaDeAdopcion"
-							locale="es"
-							selected={this.props.visitaDeAdopcion}
-							dateFormat="dd/MM/yyyy"
-							onChange={(date) =>
-								this.props.handleDate(date, "visitaDeAdopcion")
-							}
-						/>
-					</div>
-					<div className="fechaAdopcion">
-						<DatePicker
-							isClearable
-							useWeekdaysShort
-							fixedHeight
-							autoComplete
-							customInput={<DatePickerInput />}
-							title="Fecha Adopción"
-							id="fechaAdopcion"
-							name="fechaAdopcion"
-							locale="es"
-							selected={this.props.fechaAdopcion}
-							dateFormat="dd/MM/yyyy"
-							onChange={(date) =>
-								this.props.handleDate(date, "fechaAdopcion")
-							}
-						/>
-					</div>
+				<div className="visitaDeAdopcion">
+					<DatePicker
+						isClearable
+						useWeekdaysShort
+						fixedHeight
+						autoComplete
+						customInput={<DatePickerInput />}
+						title="Visita adopción"
+						id="visitaDeAdopcion"
+						name="visitaDeAdopcion"
+						locale="es"
+						selected={this.props.visitaDeAdopcion}
+						dateFormat="dd/MM/yyyy"
+						onChange={(date) =>
+							this.props.handleDate(date, "visitaDeAdopcion")
+						}
+					/>
+				</div>
+				<div className="fechaAdopcion">
+					<DatePicker
+						isClearable
+						useWeekdaysShort
+						fixedHeight
+						autoComplete
+						customInput={<DatePickerInput />}
+						title="Fecha Adopción"
+						id="fechaAdopcion"
+						name="fechaAdopcion"
+						locale="es"
+						selected={this.props.fechaAdopcion}
+						dateFormat="dd/MM/yyyy"
+						onChange={(date) =>
+							this.props.handleDate(date, "fechaAdopcion")
+						}
+					/>
+				</div>
 			</div>
 		);
 	}
