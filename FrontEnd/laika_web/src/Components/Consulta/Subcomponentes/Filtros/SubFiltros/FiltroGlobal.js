@@ -1,33 +1,79 @@
 import React from "react";
-import "./Styles/FiltroGlobal.css";
 import { Dropdown } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-export default class FiltroGlobal extends React.Component {
+import { Link } from "react-router-dom";
+import "./Styles/FiltroGlobal.css";
 
-	opciones = [
+export default class FiltroGlobal extends React.Component {
+	opcionesFiltroKeyword = [
 		{
-			key: "Nombre Rescatado (Menor a Mayor)",
-			text: "Jenny Hess",
-			value: "Jenny Hess",
+			key: "Nombre Rescatado",
+			text: "Nombre Rescatado",
+			value: "nombreRescatado",
 			image: { avatar: true, src: "/images/avatar/small/jenny.jpg" },
 		},
 		{
-			key: "Elliot Fu",
-			text: "Elliot Fu",
-			value: "Elliot Fu",
+			key: "Nombre Adoptado",
+			text: "Nombre Adoptado",
+			value: "nombreAdoptado",
 			image: { avatar: true, src: "/images/avatar/small/elliot.jpg" },
 		},
 		{
-			key: "Stevie Feliciano",
-			text: "Stevie Feliciano",
-			value: "Stevie Feliciano",
+			key: "ID",
+			text: "ID",
+			value: "id",
 			image: { avatar: true, src: "/images/avatar/small/stevie.jpg" },
 		},
 		{
-			key: "Christian",
-			text: "Christian",
-			value: "Christian",
+			key: "Nombre Adoptante",
+			text: "Nombre Adoptante",
+			value: "nombreAdoptante",
 			image: { avatar: true, src: "/images/avatar/small/christian.jpg" },
+		},
+		{
+			key: "Nombre Responsable",
+			text: "Nombre Responsable",
+			value: "nombreResponsable",
+			image: { avatar: true, src: "/images/avatar/small/stevie.jpg" },
+		},
+	];
+
+	opcionesOrdenar = [
+		{
+			key: "Nombre Rescatado",
+			text: "Nombre Rescatado",
+			value: "nombreRescatado",
+			image: { avatar: true, src: "/images/avatar/small/jenny.jpg" },
+		},
+		{
+			key: "Nombre Adoptado",
+			text: "Nombre Adoptado",
+			value: "nombreAdoptado",
+			image: { avatar: true, src: "/images/avatar/small/elliot.jpg" },
+		},
+		{
+			key: "ID",
+			text: "ID",
+			value: "id",
+			image: { avatar: true, src: "/images/avatar/small/stevie.jpg" },
+		},
+		{
+			key: "Fecha de Adopción",
+			text: "Fecha de Adopción",
+			value: "fechaAdopcion",
+			image: { avatar: true, src: "/images/avatar/small/christian.jpg" },
+		},
+		{
+			key: "Nombre Adoptante",
+			text: "Nombre Adoptante",
+			value: "nombreAdoptante",
+			image: { avatar: true, src: "/images/avatar/small/stevie.jpg" },
+		},
+		{
+			key: "Nombre Responsable",
+			text: "Nombre Responsable",
+			value: "nombreResponsable",
+			image: { avatar: true, src: "/images/avatar/small/stevie.jpg" },
 		},
 	];
 
@@ -46,27 +92,57 @@ export default class FiltroGlobal extends React.Component {
 					/>
 				</div>
 				<div className="seleccionarBusqueda">
-					<button className="search-btn" type="submit">
-						<span>Search</span>
-					</button>
-						<Dropdown
-							fluid
-							selection
-							options={this.opciones}
-							defaultValue={this.opciones[0].value}
-						/>
+					<Dropdown
+						className="dropdownBusqueda"
+						fluid
+						selection
+						options={this.opcionesFiltroKeyword}
+						defaultValue={this.opcionesFiltroKeyword[0].value}
+					/>
+					<div className="botonBuscar">
+						<button className="effect effect-1" type="submit">
+							<span>Buscar</span>
+						</button>
+					</div>
 				</div>
 
-				<span>
-					Show me posts by{" "}
-					<Dropdown
-						inline
-						options={this.opciones}
-						defaultValue={this.opciones[0].value}
-					/>
-				</span>
+				<div className="ordenarPor">
+					<span>
+						Ordenar por:{" "}
+						<Dropdown
+							inline
+							options={this.opcionesOrdenar}
+							defaultValue={this.opcionesOrdenar[0].value}
+						/>
+					</span>
 
-				<div className="exportar"></div>
+					<button
+						className={
+							this.props.filtros.ordenarDeMenorAMayor
+								? "orderBtn orderAsc"
+								: "orderBtn orderDesc"
+						}
+						onClick={this.props.handleOrdenarToggle}
+					>
+						<i className="fa fa-sort-amount-asc"></i>
+					</button>
+				</div>
+
+				<div className="exportar">
+					<Link to="/GenerarPDF">
+					<button className="botonExportar">
+					<div>
+						<div className="pencil"></div>
+						<div className="folder">
+							<div className="paper"></div>
+						</div>
+					</div>
+					Generar PDF
+				</button>
+				
+				
+					</Link>
+				</div>
 			</div>
 		);
 	}

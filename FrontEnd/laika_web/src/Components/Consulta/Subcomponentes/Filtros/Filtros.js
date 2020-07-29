@@ -15,6 +15,7 @@ export default class Filtros extends React.Component {
 					<FiltroGlobal
 						filtros={this.props.filtros}
 						handleKeyWord={this.props.handleKeyWord}
+						handleOrdenarToggle={this.props.handleOrdenarToggle}
 					/>
 				</div>
 				<div>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 // import Scroll from "../Scroll/Scroll";
 import "./Styles/Consulta.css";
 import Filtros from "./Subcomponentes/Filtros/Filtros";
@@ -11,8 +10,9 @@ export default class Consulta extends Component {
 	state = {
 		tarjeta: "General",
 		keyword: "",
-		filtroPorKeyWord: "",
-		ordenar: "",
+		filtroPorKeyWord: "nombreRescatado",
+		ordenarPor: "nombreRescatado",
+		ordenarDeMenorAMayor: true,
 		rangoEdad: {
 			edadInicial: "",
 			edadFinal: "",
@@ -142,6 +142,12 @@ export default class Consulta extends Component {
 		return direccion;
 	};
 
+	handleOrdenarToggle = () => {
+		this.setState({
+			ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor
+		}, console.log(this.state.ordenarDeMenorAMayor));
+	}
+
 
 	render() {
 		return (
@@ -151,6 +157,7 @@ export default class Consulta extends Component {
 					handleFiltroRegistros={this.handleFiltroRegistros}
 					handleList={this.handleList}
 					handleKeyWord={this.handleKeyWord}
+					handleOrdenarToggle={this.handleOrdenarToggle}
 				/>
 
 				<GridConsulta
@@ -160,17 +167,7 @@ export default class Consulta extends Component {
 					filtros={this.state}
 				/>
 
-				<div>
-					<Link to="/GenerarPDF">
-						<button
-							className="mv0 pa2 f4 bw0 bg-light-purple white"
-							name="PDF"
-							onClick={this.onButtonClicked}
-						>
-							GenerarPDF
-						</button>
-					</Link>
-				</div>
+				
 			</div>
 		);
 	}
