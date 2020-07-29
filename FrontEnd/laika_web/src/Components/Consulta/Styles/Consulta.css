@@ -5,12 +5,11 @@
 
 .filtros {
     grid-row: 1;
-    background-color: blue;
     display: grid;
 }
 
 .gridConsulta {
     grid-row: 2;
-    background-color: green;
+    background-color: rgb(178, 218, 178);
     display: grid;
 }

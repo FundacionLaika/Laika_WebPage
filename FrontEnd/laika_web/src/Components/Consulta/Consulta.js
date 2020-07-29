@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 // import Scroll from "../Scroll/Scroll";
 import "./Styles/Consulta.css";
 import Filtros from "./Subcomponentes/Filtros/Filtros";
@@ -9,61 +8,60 @@ import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
 export default class Consulta extends Component {
 
 	state = {
-		filtros: {
-			tarjeta: "General",
-			keyword: "",
-			filtroPorKeyWord: "",
-			ordenar: "",
-			rangoEdad: {
-				edadInicial: "",
-				edadFinal: "",
-			},
-			genero: "",
-			especie: {
-				canino: "",
-				felino: "",
-				otro: ""
-			},
-			estatus: {
-				activo: "",
-				fallecido: "",
-				enTratamiento: "",
-				adoptado: ""
-			},
-			vacunas: {
-				puppy: "",
-				refuerzoPuppy: "",
-				multiple: "",
-				refuerzoMultiple: "",
-				rabia: "",
-			},
-			esterilizado: "",
-			diagnostico: {
-				atropellamiento: "",
-				tvt: "",
-				sarnaPiel: "",
-				viral: "",
-				embarazo: "",
-				cachorros: "",
-				hemoparasitos: "",
-				otro: "",
-			},
-			tipoHogar: "",
-			rangoFechaHT: {
-				fechaInicioHT: "",
-				fechaFinalHT: "",
-			},
-			medioAdopcion: {
-				instagram: "",
-				facebook: "",
-				petco: "",
-				referencia: "",
-				otro: "",
-			},
-			rangoFechaAdopcion: {
-				fechaInicioAdop: "",
-				fechaFinalAdop: "",
-			},
+		tarjeta: "General",
+		keyword: "",
+		filtroPorKeyWord: "nombreRescatado",
+		ordenarPor: "nombreRescatado",
+		ordenarDeMenorAMayor: true,
+		rangoEdad: {
+			edadInicial: "",
+			edadFinal: "",
+		},
+		genero: "",
+    especie: {
+		  canino: "",
+			felino: "",
+			otro: ""
+		},
+		estatus: {
+      activo: "",
+      fallecido: "",
+      enTratamiento: "",
+      adoptado: ""
+		},
+		vacunas: {
+			puppy: "",
+			refuerzoPuppy: "",
+			multiple: "",
+			refuerzoMultiple: "",
+			rabia: "",
+		},
+		esterilizado: "",
+		diagnostico: {
+			atropellamiento: "",
+			tvt: "",
+			sarnaPiel: "",
+			viral: "",
+			embarazo: "",
+			cachorros: "",
+			hemoparasitos: "",
+			otro: "",
+		},
+		tipoHogar: "",
+		rangoFechaHT: {
+			fechaInicioHT: "",
+			fechaFinalHT: "",
+		},
+		medioAdopcion: {
+			instagram: "",
+			facebook: "",
+			petco: "",
+			referencia: "",
+			otro: "",
+		},
+		rangoFechaAdopcion: {
+			fechaInicioAdop: "",
+			fechaFinalAdop: "",
 		},
 	};
 
@@ -155,6 +153,12 @@ export default class Consulta extends Component {
 		return direccion;
 	};
 
+	handleOrdenarToggle = () => {
+		this.setState({
+			ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor
+		}, console.log(this.state.ordenarDeMenorAMayor));
+	}
+
 
 	render() {
 		return (
@@ -164,6 +168,7 @@ export default class Consulta extends Component {
 					handleFiltroRegistros={this.handleFiltroRegistros}
 					handleList={this.handleList}
 					handleKeyWord={this.handleKeyWord}
+					handleOrdenarToggle={this.handleOrdenarToggle}
 				/>
 
 				<GridConsulta
@@ -173,17 +178,7 @@ export default class Consulta extends Component {
 					filtros={this.state}
 				/>
 
-				<div>
-					<Link to="/GenerarPDF">
-						<button
-							className="mv0 pa2 f4 bw0 bg-light-purple white"
-							name="PDF"
-							onClick={this.onButtonClicked}
-						>
-							GenerarPDF
-						</button>
-					</Link>
-				</div>
+				
 			</div>
 		);
 	}
