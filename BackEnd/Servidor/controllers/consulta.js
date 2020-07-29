@@ -90,12 +90,9 @@ const handleConsultaPost = (req, res, db) => {
 		id: "ar.ID_Animal",
 		estatus: "ar.Estatus",
 		especie: "ar.Especie",
-		menorAMayorNombre: "ar.Nombre ASC",
-		mayorAMenorNombre: "ar.Nombre Desc",
-		menorAMayorID: "ar.ID_Animal ASC",
-		mayorAMenorID: "ar.ID_Animal DESC",
-		fechaAdopcionMenor: "adop.Fecha_Adopcion ASC",
-		fechaAdopcionMayor: "adop.Fecha_Adopcion DESC",
+		nombreRescatado: "ar.Nombre",
+		id: "ar.ID_Animal",
+		fechaAdopcion: "adop.Fecha_Adopcion",
 		macho: "Macho",
 		hembra: "Hembra",
 		"0": false,
@@ -110,7 +107,8 @@ const handleConsultaPost = (req, res, db) => {
 		tarjeta,
 		keyword,
 		filtroPorKeyWord,
-		ordenar,
+		ordenarPor,
+		ordenarDeMenorAMayor,
 		rangoEdad,
 		genero,
 		vacunas,
@@ -130,8 +128,12 @@ const handleConsultaPost = (req, res, db) => {
 			"AND " + hashTable[filtroPorKeyWord] + " LIKE '%" + keyword + "%' ";
 	}
 
-	if (ordenar.length) {
-		orderBy = "ORDER BY " + hashTable[ordenar] + ";";
+	if (ordenarPor.length) {
+		orderBy = "ORDER BY " + hashTable[ordenarPor] + ";";
+		if (ordenarDeMenorAMayor.length) {
+			orderBy += (ordenarDeMenorAMayor === "true") ? "ASC" : "DESC";
+		}
+		orderBy += ";";
 	}
 
 	if (rangoEdad.edadInicial.length) {

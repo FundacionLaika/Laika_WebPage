@@ -22,7 +22,7 @@ export default class FiltroGlobal extends React.Component {
 			key: "ID",
 			text: "ID",
 			value: "id",
-			image: { avatar: true, src: "/icon-id.png" },
+			image: { avatar: true, src: "/icon-id-2.png" },
 		},
 		{
 			key: "Nombre Adoptante",
@@ -55,7 +55,7 @@ export default class FiltroGlobal extends React.Component {
 			key: "ID",
 			text: "ID",
 			value: "id",
-			image: { avatar: true, src: "/icon-id.png" },
+			image: { avatar: true, src: "/icon-id-2.png" },
 		},
 		{
 			key: "Fecha de Adopción",
