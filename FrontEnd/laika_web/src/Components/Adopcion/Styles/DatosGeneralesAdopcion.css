@@ -40,14 +40,21 @@
 	padding: 15px;
 }
 
-.visitaDeAdopcion {
-	grid-column: 1;
+.fechasAdopcion {
 	grid-row: 5;
-	padding: 10%;
+	grid-column: 1 / 3;
+	display: grid;
+	grid-auto-columns: minmax(50%,50%);
+}
+
+.visitaDeAdopcion {
+	padding-top: 8%;
+	grid-column: 1;
+	grid-row: 1;
 }
 
 .fechaAdopcion {
+	padding-top: 8%;
 	grid-column: 2;
-	grid-row: 5;
-	padding: 10%;
+	grid-row: 1;
 }

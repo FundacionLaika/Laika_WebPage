@@ -80,41 +80,43 @@ export default class DatosGenerales extends React.Component {
 						<span className="focus-bg"></span>
 					</label>
 				</div>
-				<div className="visitaDeAdopcion">
-					<DatePicker
-						isClearable
-						useWeekdaysShort
-						fixedHeight
-						autoComplete
-						customInput={<DatePickerInput />}
-						title="Visita adopción"
-						id="visitaDeAdopcion"
-						name="visitaDeAdopcion"
-						locale="es"
-						selected={this.props.visitaDeAdopcion}
-						dateFormat="dd/MM/yyyy"
-						onChange={(date) =>
-							this.props.handleDate(date, "visitaDeAdopcion")
-						}
-					/>
-				</div>
-				<div className="fechaAdopcion">
-					<DatePicker
-						isClearable
-						useWeekdaysShort
-						fixedHeight
-						autoComplete
-						customInput={<DatePickerInput />}
-						title="Fecha Adopción"
-						id="fechaAdopcion"
-						name="fechaAdopcion"
-						locale="es"
-						selected={this.props.fechaAdopcion}
-						dateFormat="dd/MM/yyyy"
-						onChange={(date) =>
-							this.props.handleDate(date, "fechaAdopcion")
-						}
-					/>
+				<div className="fechasAdopcion">
+					<div className="visitaDeAdopcion">
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput />}
+							title="Visita adopción"
+							id="visitaDeAdopcion"
+							name="visitaDeAdopcion"
+							locale="es"
+							selected={this.props.visitaDeAdopcion}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(date, "visitaDeAdopcion")
+							}
+						/>
+					</div>
+					<div className="fechaAdopcion">
+						<DatePicker
+							isClearable
+							useWeekdaysShort
+							fixedHeight
+							autoComplete
+							customInput={<DatePickerInput />}
+							title="Fecha Adopción"
+							id="fechaAdopcion"
+							name="fechaAdopcion"
+							locale="es"
+							selected={this.props.fechaAdopcion}
+							dateFormat="dd/MM/yyyy"
+							onChange={(date) =>
+								this.props.handleDate(date, "fechaAdopcion")
+							}
+						/>
+					</div>
 				</div>
 			</div>
 		);
