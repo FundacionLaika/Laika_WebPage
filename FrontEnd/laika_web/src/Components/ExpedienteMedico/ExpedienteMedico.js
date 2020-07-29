@@ -71,13 +71,13 @@ class ExpedienteMedico extends Component {
 			event.target.type === "checkbox"
 				? event.target.checked
 				: event.target.value;
-		if(event.target.name === "otro") {
+		if (event.target.name === "otro") {
 			this.setState({
 				...this.state,
-				otroEspecificar:"",
+				otroEspecificar: "",
 				[event.target.name]: value,
 			});
-		} else if(event.target.id === "idCitaEsterilzacionNo") {
+		} else if (event.target.id === "idCitaEsterilzacionNo") {
 			this.setState({
 				...this.state,
 				fechaEsterilizacion: null,
@@ -89,7 +89,7 @@ class ExpedienteMedico extends Component {
 				[event.target.name]: value,
 			});
 		}
-		
+
 		console.log(event.target.name);
 		console.log(value);
 	};
@@ -240,7 +240,11 @@ class ExpedienteMedico extends Component {
 						/>
 					</div>
 					<div className="tratamiento">
-						<div className="headerTratamiento">Tratamiento</div>
+						<div className="headerTratamiento">
+							{" "}
+							<i className="fa fa-heartbeat fa-fw separation"></i>
+							Tratamiento
+						</div>
 
 						<DataGridMed
 							data={this.state.tratamiento}

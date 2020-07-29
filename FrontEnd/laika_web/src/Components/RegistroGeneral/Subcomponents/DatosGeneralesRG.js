@@ -13,7 +13,11 @@ export default class DatosGeneralesRG extends React.Component {
 	render() {
 		return (
 			<div className="datosGenerales">
-				<div className="labelDatosGenerales">Datos Generales</div>
+				<div className="labelDatosGenerales">
+					{" "}
+					<i className="fa fa-address-book-o fa-fw separation"></i>
+					Datos Generales
+				</div>
 				<div className="nombre">
 					<label htmlFor="nombre" className="inp">
 						<input

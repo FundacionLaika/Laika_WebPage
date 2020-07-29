@@ -6,7 +6,9 @@ class Direccion extends Component {
 		return (
 			<div className="direccion">
 				<div className="labelDireccion">
-					<label>Dirección</label>
+						{" "}
+						<i className="fa fa-address-card-o fa-fw separation"></i>
+						Dirección
 				</div>
 				<div className="calle">
 					<label htmlFor="calle" className="inp">

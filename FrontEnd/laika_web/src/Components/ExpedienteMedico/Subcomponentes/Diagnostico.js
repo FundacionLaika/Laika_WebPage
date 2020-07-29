@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 
 class Diagnostico extends Component {
-	
 	render() {
 		return (
 			<div id="diagnostico">
-				<div className="headerDiagnostico">Diagnóstico</div>
+				<div className="headerDiagnostico">
+					{" "}
+					<i className="fa fa-stethoscope fa-fw separation"></i>
+					Diagnóstico
+				</div>
 				<div id="bloque1Diag">
 					<div id="cbs-diag">
 						<div id="row-diag">
@@ -178,7 +181,13 @@ class Diagnostico extends Component {
 							<span className="label">Especificar</span>
 							<span className="focus-bg"></span>
 						</label>
-					) :  <div><br/><br/><br/></div>}
+					) : (
+						<div>
+							<br />
+							<br />
+							<br />
+						</div>
+					)}
 				</div>
 			</div>
 		);

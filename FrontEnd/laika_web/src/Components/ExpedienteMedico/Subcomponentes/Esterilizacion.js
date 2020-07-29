@@ -8,11 +8,14 @@ import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 class Esterilizacion extends Component {
-	
 	render() {
 		return (
 			<div id="esterilizacion">
-				<div className="headerEsterilizacion">Esterilizacion</div>
+				<div className="headerEsterilizacion">
+					{" "}
+					<i className="fa fa-user-md fa-fw separation"></i>
+					Esterilizacion
+				</div>
 				<div className="labelEsterilizado">
 					<label htmlFor="radio-genero">Esterilizado</label>
 				</div>

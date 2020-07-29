@@ -4,6 +4,10 @@
     padding: 15px;
 }
 
+.separation {
+    margin-right: 1%;
+}
+
 .labelDireccion {
     padding-top: 3.4%;
     text-align:left;
