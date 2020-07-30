@@ -10,7 +10,7 @@ export default class DataGrid extends React.Component {
 			<div className="DGAArea">
 				<div className="agregarDG">
 					<button
-						class="btn btn-4 btn-sep icon-plus"
+						className="btn btn-4 btn-sep icon-plus"
 						onClick={this.props.addRow}
 					>
 						Agregar Fila
