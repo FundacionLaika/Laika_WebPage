@@ -36,62 +36,88 @@ export default class FiltroAdopcion extends React.Component {
 		return (
 			<div className="filtroAdopcion">
 				<div className="filtroMedioAdopcion">
-					<MultiSelectList
-						options={this.state.options}
-						placeholder="Medio de adopción"
-						handleList={(selectedOption, action) =>
-							this.props.handleList(
-								selectedOption,
-								action,
-								"medioAdopcion",
-								true
-							)
-						}
-					/>
+					<div className="nombreFiltro">
+						<span>
+							{" "}
+							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+						</span>
+					</div>
+					<div className="multiselectFiltro">
+						<MultiSelectList
+							options={this.state.options}
+							placeholder="Medio de adopción"
+							handleList={(selectedOption, action) =>
+								this.props.handleList(
+									selectedOption,
+									action,
+									"medioAdopcion",
+									true
+								)
+							}
+						/>
+					</div>
 				</div>
 				<div className="filtroRangoFechaAdopcion">
-					<DatePicker
-						selectsStart
-						startDate={this.state.fechaInicioAdop}
-						endDate={this.state.fechaFinalAdop}
-						isClearable
-						useWeekdaysShort
-						fixedHeight
-						autoComplete="true"
-						id="fechaInicioAdop"
-						name="fechaInicioAdop"
-						locale="es"
-						dateFormat="dd/MM/yyyy"
-						selected={this.state.fechaInicioAdop}
-						onChange={(date) =>
-							this.handleDate(date, "fechaInicioAdop")
-						}
-						placeholderText="Fecha Inicio"
-						customInput={
-							<Input icon="calendar" iconPosition="left" />
-						}
-					/>
-					<DatePicker
-						selectsEnd
-						startDate={this.state.fechaInicioAdop}
-						endDate={this.state.fechaFinalAdop}
-						isClearable
-						useWeekdaysShort
-						fixedHeight
-						autoComplete="true"
-						id="fechaFinalAdop"
-						name="fechaFinalAdop"
-						locale="es"
-						dateFormat="dd/MM/yyyy"
-						selected={this.state.fechaFinalAdop}
-						onChange={(date) =>
-							this.handleDate(date, "fechaFinalAdop")
-						}
-						placeholderText="Fecha Final"
-						customInput={
-							<Input icon="calendar" iconPosition="left" />
-						}
-					/>
+					<div className="nombreFiltro">
+						<span>
+							{" "}
+							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+						</span>
+					</div>
+					<div className="multiselectFiltro">
+						<div className="fInicio">
+							<DatePicker
+								selectsStart
+								startDate={this.state.fechaInicioAdop}
+								endDate={this.state.fechaFinalAdop}
+								isClearable
+								useWeekdaysShort
+								fixedHeight
+								autoComplete="true"
+								id="fechaInicioAdop"
+								name="fechaInicioAdop"
+								locale="es"
+								dateFormat="dd/MM/yyyy"
+								selected={this.state.fechaInicioAdop}
+								onChange={(date) =>
+									this.handleDate(date, "fechaInicioAdop")
+								}
+								placeholderText="Fecha Inicio"
+								customInput={
+									<Input
+										icon="calendar"
+										iconPosition="left"
+									/>
+								}
+							/>
+						</div>
+						<div className="fFinal">
+							<DatePicker
+								selectsEnd
+								startDate={this.state.fechaInicioAdop}
+								endDate={this.state.fechaFinalAdop}
+								isClearable
+								useWeekdaysShort
+								fixedHeight
+								autoComplete="true"
+								id="fechaFinalAdop"
+								name="fechaFinalAdop"
+								locale="es"
+								dateFormat="dd/MM/yyyy"
+								selected={this.state.fechaFinalAdop}
+								onChange={(date) =>
+									this.handleDate(date, "fechaFinalAdop")
+								}
+								placeholderText="Fecha Final"
+								customInput={
+									<Input
+										icon="calendar"
+										iconPosition="left"
+									/>
+								}
+							/>
+						</div>
+					</div>
 				</div>
 			</div>
 		);

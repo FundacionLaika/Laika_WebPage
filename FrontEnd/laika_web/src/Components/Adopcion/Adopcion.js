@@ -170,7 +170,7 @@ export default class Adopcion extends React.Component {
                         onClick={this.handleRestablecer}
                     >
                         Restablecer
-                        <i className="fa fa-eraser fa-fw"></i>
+                        <i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i>
                     </button>
                     <button
                         className="BotonAdopcionGuardar BotonCentralAdopcion"

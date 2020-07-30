@@ -288,7 +288,7 @@ class ExpedienteMedico extends Component {
 						className="BotonMedicoRestablecer BotonCentralMedico"
 						onClick={this.handleRestablecer}
 					>
-						Restablecer <i className="fa fa-eraser fa-fw"></i>
+						Restablecer <i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i>
 					</button>
 					<button
 						className="BotonMedicoGuardar BotonCentralMedico"

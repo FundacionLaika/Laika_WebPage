@@ -70,7 +70,8 @@ export default class MultiSelectList extends React.Component {
 					isMulti
 					closeMenuOnSelect={false}
 					noOptionsMessage={() => "Búsqueda no encontrada"}
-					placeholder={this.props.placeholder}
+					//placeholder={this.props.placeholder}
+					placeholder=""
 					options={this.props.options}
 					onChange={this.props.handleList}
 					styles={colourStyles}

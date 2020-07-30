@@ -1,5 +1,4 @@
 .filtroAdopcion {
-    background-color: rgb(155, 155, 255);
     display: grid;
     grid-auto-columns: minmax(50%, 50%);
 }
@@ -12,5 +11,14 @@
 .filtroRangoFechaAdopcion {
     grid-column: 2;
 
+}
+
+.fInicio {
+    float: left;
+    padding: 0 1.5% 0 18%;
+}
+
+.fFinal {
+    float: left;
 }
 
