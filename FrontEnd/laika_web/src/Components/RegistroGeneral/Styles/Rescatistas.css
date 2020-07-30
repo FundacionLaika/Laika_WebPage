@@ -6,16 +6,13 @@
 }
 
 .rowRescatista {
-	width:72.7%;
-	padding-top: 1%;
-	padding-bottom: 1%;
-	margin-left: 13.4%;
 	grid-column: 1;
 	display: grid;
 	background-color: #f1f1f1;
 	border-bottom: 1px solid #949494;
 	grid-auto-columns: minmax(25%,25%);
 	bottom: 0;
+	padding: 1.5%;
 }
 
 .rowRescatista:hover {
@@ -62,4 +59,11 @@
 	font-size: 140%;
 }
 
+.ui.input {
+    width: 100%;
+}
+
+.ui.button {
+    margin: 0;
+}
 

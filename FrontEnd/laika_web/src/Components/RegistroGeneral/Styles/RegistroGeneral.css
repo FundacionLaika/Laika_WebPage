@@ -29,6 +29,9 @@
 .Rescatistas {
 	grid-column: 1;
 	grid-row:2;
+	display: grid;
+	grid-auto-columns: minmax(100%,100%);
+	padding: 0 10%;
 }
 
 .DireccionGeneral {
