@@ -9,7 +9,7 @@ import "./Styles/RegistroGeneral.css";
 
 export default class RegistroGeneral extends React.Component {
 	state = {
-		id: "perro",
+		id: "",
 		nombre: "",
 		edad: "",
 		genero: "",
@@ -102,11 +102,10 @@ export default class RegistroGeneral extends React.Component {
 					/>
 				</div>
 
-
-				   <div
-                className="FormularioGeneral"
-                style={{ overflowY: "scroll", height: "80vh" }}
-            >
+				<div
+					className="FormularioGeneral"
+					style={{ overflowY: "scroll", height: "80vh" }}
+				>
 					<div className="DatosGenerales">
 						<DatosGeneralesRG
 							handleChange={this.handleChange}
@@ -162,7 +161,10 @@ export default class RegistroGeneral extends React.Component {
 				<div className="BotonesRegistroGeneral">
 					<Link to="/Adopcion">
 						<button className="BotonGeneralTransicion BotonAnteriorGeneral">
-							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-left fa-fw"
+							></i>
 							Adopcion
 						</button>
 					</Link>
@@ -172,14 +174,17 @@ export default class RegistroGeneral extends React.Component {
 						onClick={this.handleRestablecer}
 					>
 						Restablecer
-						<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i>
+						<i
+							aria-hidden="true"
+							className="fa fa-eraser fa-fw"
+						></i>
 					</button>
 					<button
 						className="BotonGeneralGuardar BotonCentralGeneral"
 						onClick={this.handleSubmit}
 					>
 						Registrar
-						<i className="fa fa-save fa-fw"></i>
+						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
 					<Link to="/ExpedienteMedico">
@@ -190,17 +195,17 @@ export default class RegistroGeneral extends React.Component {
 					</Link>
 				</div>
 
-				<div className="BarraLateralGeneral flex items-center justify-around">
-					<div>
-						<label>
-							{this.state.id}
-						</label>
+				<div className="BarraLateralGeneral">
+					<div className="idLabelGeneral">
+						<label>ID:{this.state.id}</label>
 					</div>
-					<Foto
-						id="foto"
-						foto={this.state.foto}
-						imageHandler={this.imageHandler}
-					/>
+					<div className="fotoGeneral">
+						<Foto
+							id="foto"
+							foto={this.state.foto}
+							imageHandler={this.imageHandler}
+						/>
+					</div>
 				</div>
 			</div>
 		);

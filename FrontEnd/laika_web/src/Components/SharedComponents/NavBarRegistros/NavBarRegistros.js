@@ -17,7 +17,7 @@ class NavBarRegistros extends Component {
 								textDecoration: "inherit",
 							}}
 						>
-							<i className="fa fa-id-card-o fa-fw"></i>
+							<i aria-hidden="true" className="fa fa-id-card-o fa-fw separation"></i>
 							Registro General
 						</Link>
 					</div>
@@ -30,7 +30,7 @@ class NavBarRegistros extends Component {
 								textDecoration: "inherit",
 							}}
 						>
-							<i className="fa fa-medkit fa-fw"></i>
+							<i aria-hidden="true" className="fa fa-medkit fa-fw separation"></i>
 							Expediente Médico
 						</Link>
 					</div>
@@ -43,7 +43,7 @@ class NavBarRegistros extends Component {
 								textDecoration: "inherit",
 							}}
 						>
-							<i className="fa fa-home fa-fw"></i>
+							<i aria-hidden="true" className="fa fa-home fa-fw separation"></i>
 							Hogar Temporal
 						</Link>
 					</div>
@@ -56,7 +56,7 @@ class NavBarRegistros extends Component {
 								textDecoration: "inherit",
 							}}
 						>
-							<i className="fa fa-users fa-fw"></i>
+							<i aria-hidden="true" className="fa fa-paw fa-fw separation"></i>
 							Adopción
 						</Link>
 					</div>

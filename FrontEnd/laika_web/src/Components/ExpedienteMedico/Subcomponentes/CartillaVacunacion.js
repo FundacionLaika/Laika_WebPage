@@ -12,7 +12,14 @@ class CartillaVacunacion extends Component {
 	render() {
 		return (
 			<div>
-				<div className="headerCartillaVacunacion">Cartilla de vacunación</div>
+				<div className="headerCartillaVacunacion">
+					{" "}
+					<i
+						aria-hidden="true"
+						className="fa fa-medkit fa-fw separation"
+					></i>
+					Cartilla de vacunación
+				</div>
 				<div className="cartillaVacunacion">
 					<div className="puppy">
 						<div className="cb cb-cv">

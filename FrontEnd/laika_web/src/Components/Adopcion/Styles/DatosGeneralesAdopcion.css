@@ -12,41 +12,49 @@
 	grid-row: 1;
 	font-weight: 700;
 	font-family: inherit;
+	font-size: 120%;
 	color: #494949;
 }
 
 .adoptante {
 	grid-column: 1 / 3;
 	grid-row: 2;
-	padding: 15px;
+	padding: 3.3%;
 }
 
 .adoptado {
 	grid-column: 1 / 2;
 	grid-row: 3;
-	padding: 15px;
+	padding: 6%;
 }
 
 .medioAdopcion {
 	grid-column: 2 / 3;
 	grid-row: 3;
-	padding: 15px;
+	padding: 6%;
 }
 
 .telefonoAdopcion {
 	grid-column: 1 / 3;
 	grid-row: 4;
-	padding: 15px;
+	padding: 3.3%;
 }
 
 .visitaDeAdopcion {
+	padding: 6%;
 	grid-column: 1;
 	grid-row: 5;
-	padding: 10%;
 }
 
 .fechaAdopcion {
+	padding: 6%;
 	grid-column: 2;
 	grid-row: 5;
-	padding: 10%;
+}
+
+.ajusteFecha, 
+.ajusteFecha > div.react-datepicker-wrapper, 
+.ajusteFecha > div > div.react-datepicker__input-container
+.ajusteFecha > div > div.react-datepicker__input-container input {
+   width: 100%;
 }

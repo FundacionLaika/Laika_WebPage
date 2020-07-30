@@ -38,6 +38,9 @@ export default class RowMed extends React.Component {
 						name="fechaInicio"
 						locale="es"
 						selected={this.state.fechaInicio}
+						selectsStart
+						startDate={this.state.fechaInicio}
+						endDate={this.state.fechaFinal}
 						dateFormat="dd/MM/yyyy"
 						onChange={(date) =>
 							this.handleDate(date, "fechaInicio")
@@ -57,6 +60,9 @@ export default class RowMed extends React.Component {
 						name="fechaFinal"
 						locale="es"
 						selected={this.state.fechaFinal}
+						selectsEnd
+						startDate={this.state.fechaInicio}
+						endDate={this.state.fechaFinal}
 						dateFormat="dd/MM/yyyy"
 						onChange={(date) => this.handleDate(date, "fechaFinal")}
 					/>

@@ -86,72 +86,48 @@ export default class FiltroGeneral extends React.Component {
 
 	render() {
 		return (
-			<div className="filtroGeneral">
-				<div className="filtroGenero">
-					<div className="nombreFiltro"> 
-					<span> <i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género </span>
-					</div>
-					<div className="multiselectFiltro">
-						<MultiSelectList
-							options={this.state.options1}
-							placeholder="Género"
-							handleList={(selectedOption, action) => {
-								this.props.handleList(
-									selectedOption,
-									action,
-									"genero",
-									false
-								);
-								this.handleEvent(selectedOption);
-							}}
-						/>
-					</div>
-				</div>
-
-				<div className="filtroEspecie">
-
-
-				<div className="nombreFiltro"> 
-					<span> <i className="fa fa-dog fa-fw" aria-hidden="true"></i> Especie </span>
-					</div>
-				<div className="multiselectFiltro"></div>
-
-					<MultiSelectList
-						options={this.state.options2}
-						placeholder="Especie"
-						handleList={(selectedOption, action) => {
-							this.props.handleList(
-								selectedOption,
-								action,
-								"especie",
-								true
-							);
-							this.handleEvent(selectedOption);
-						}}
-					/>
-				</div>
-
-				<div className="filtroEstatus">
-
-				<div className="nombreFiltro"> 
-					<span> <i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Estatus </span>
-					</div>
-				<div className="multiselectFiltro"></div>
-
-					<MultiSelectList
-						options={this.state.options3}
-						placeholder="Estatus"
-						handleList={(selectedOption, action) => {
-							this.props.handleList(
-								selectedOption,
-								action,
-								"estatus",
-								true
-							);
-							this.handleEvent(selectedOption);
-						}}
-					/>
-				</div>
+			<div>
+				<Input icon="birthday cake" iconPosition="left" />
+				<Input icon="birthday cake" iconPosition="left" />
+				<MultiSelectList
+					options={this.state.options1}
+					placeholder="Género"
+					handleList={(selectedOption, action) => {
+						this.props.handleList(
+							selectedOption,
+							action,
+							"genero",
+							false
+						);
+						this.handleEvent(selectedOption);
+					}}
+				/>
+				<MultiSelectList
+					options={this.state.options2}
+					placeholder="Especie"
+					handleList={(selectedOption, action) => {
+						this.props.handleList(
+							selectedOption,
+							action,
+							"especie",
+							true
+						);
+						this.handleEvent(selectedOption);
+					}}
+				/>
+				<MultiSelectList
+					options={this.state.options3}
+					placeholder="Estatus"
+					handleList={(selectedOption, action) => {
+						this.props.handleList(
+							selectedOption,
+							action,
+							"estatus",
+							true
+						);
+						this.handleEvent(selectedOption);
+					}}
+				/>
 			</div>
 		);
 	}
