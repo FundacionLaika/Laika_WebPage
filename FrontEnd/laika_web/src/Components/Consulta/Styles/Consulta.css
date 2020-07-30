@@ -10,6 +10,6 @@
 
 .gridConsulta {
     grid-row: 2;
-    background-color: rgb(178, 218, 178);
     display: grid;
+    padding: 0 5%;
 }
