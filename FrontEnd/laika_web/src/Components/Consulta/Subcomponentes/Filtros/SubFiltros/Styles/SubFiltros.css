@@ -6,11 +6,11 @@
     grid-row: 1;
     font-family: "Raleway";
     font-size: 16px;
-    padding: .75rem 0;
+    padding: .75vh 0;
 
 }
 
 .multiselectFiltro {
     grid-row: 2;
-    padding-bottom: .35rem;
+    padding-bottom: .35vh;
 }
