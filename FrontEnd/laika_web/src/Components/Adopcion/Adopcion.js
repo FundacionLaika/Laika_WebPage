@@ -9,6 +9,7 @@ import shortid from "shortid";
 import "./Styles/Adopcion.css";
 
 export default class Adopcion extends React.Component {
+  
 	state = {
 		id: "",
 		visitaDeAdopcion: null,

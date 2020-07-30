@@ -1,0 +1,16 @@
+.subfiltros {
+    padding: 0% 7% 1% 6%;
+}
+
+.nombreFiltro {
+    grid-row: 1;
+    font-family: "Raleway";
+    font-size: 16px;
+    padding: .75rem 0;
+
+}
+
+.multiselectFiltro {
+    grid-row: 2;
+    padding-bottom: .35rem;
+}

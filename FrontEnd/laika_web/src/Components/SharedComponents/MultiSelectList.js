@@ -38,7 +38,7 @@ const colourStyles = {
 			...styles,
 			backgroundColor: color.alpha(0.7).css(),
 			borderRadius: 7,
-			padding: 7,
+			padding: 3,
 		};
 	},
 	multiValueLabel: (styles, { data }) => ({
@@ -70,7 +70,8 @@ export default class MultiSelectList extends React.Component {
 					isMulti
 					closeMenuOnSelect={false}
 					noOptionsMessage={() => "Búsqueda no encontrada"}
-					placeholder={this.props.placeholder}
+					//placeholder={this.props.placeholder}
+					placeholder=""
 					options={this.props.options}
 					onChange={this.props.handleList}
 					styles={colourStyles}

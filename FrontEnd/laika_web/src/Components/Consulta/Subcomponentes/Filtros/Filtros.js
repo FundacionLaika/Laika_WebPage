@@ -6,6 +6,7 @@ import FiltroHogarTemporal from "./SubFiltros/FiltroHogarTemporal";
 import FiltroGlobal from "./SubFiltros/FiltroGlobal";
 import FiltroRegistros from "./SubFiltros/FiltroRegistros";
 import "../../Styles/Consulta.css";
+import "./SubFiltros/Styles/SubFiltros.css";
 
 export default class Filtros extends React.Component {
 	render() {
@@ -24,7 +25,7 @@ export default class Filtros extends React.Component {
 						registroSeleccionado={this.props.filtros.tarjeta}
 					/>
 				</div>
-				<div>
+				<div className="subfiltros">
 					{(() => {
 						switch (this.props.filtros.tarjeta) {
 							case "General":

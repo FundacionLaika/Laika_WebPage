@@ -1,7 +1,7 @@
 import React from "react";
 import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
-import { Input } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import "./Styles/FiltroGeneral.css";
 
 export default class FiltroGeneral extends React.Component {
 	color1 = "#FF5630";

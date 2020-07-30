@@ -1,0 +1,27 @@
+.filtroGeneral {
+    display: grid;
+    grid-auto-columns: minmax(calc(100%/14), calc(100%/14));
+}
+
+.filtroGenero {
+    grid-column: 1 / 4;
+    padding-right: 5%;
+    display: grid;
+    grid-auto-columns: minmax(100%, 100%);
+}
+
+.filtroEspecie {
+    grid-column: 4 / 8;
+    padding-right: 3.75%;
+    display: grid;
+    grid-auto-columns: minmax(100%, 100%);
+
+
+}
+
+.filtroEstatus {
+    grid-column: 8 / 15;
+    display: grid;
+    grid-auto-columns: minmax(100%, 100%);
+}
+

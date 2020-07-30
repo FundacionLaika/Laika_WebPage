@@ -1,0 +1,24 @@
+.filtroAdopcion {
+    display: grid;
+    grid-auto-columns: minmax(50%, 50%);
+}
+
+.filtroMedioAdopcion {
+    grid-column: 1;
+    padding-right: 5%;
+}
+
+.filtroRangoFechaAdopcion {
+    grid-column: 2;
+
+}
+
+.fInicio {
+    float: left;
+    padding: 0 1.5% 0 18%;
+}
+
+.fFinal {
+    float: left;
+}
+
