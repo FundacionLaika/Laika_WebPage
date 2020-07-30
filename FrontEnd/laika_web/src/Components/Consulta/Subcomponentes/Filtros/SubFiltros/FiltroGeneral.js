@@ -88,6 +88,7 @@ export default class FiltroGeneral extends React.Component {
 		return (
 			<div>
 				<Input icon="birthday cake" iconPosition="left" />
+				<Input icon="birthday cake" iconPosition="left" />
 				<MultiSelectList
 					options={this.state.options1}
 					placeholder="Género"

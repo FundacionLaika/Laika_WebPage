@@ -1,20 +1,18 @@
 import React from "react";
 import RowMed from "./RowMed";
 import "../Styles/DataGridMed.css";
+import "../../SharedComponents/Styles/Boton.css";
 
 export default class DataGridMed extends React.Component {
 	render() {
 		return (
 			<div className="DGAArea">
 				<div className="agregarDG">
-					<button onClick={this.props.addRow}>
-						<span>
-							Agregar Fila
-							<i
-								className="fa fa-plus-circle fa-fw"
-								aria-hidden="true"
-							></i>
-						</span>
+					<button
+						class="btn btn-4 btn-sep icon-plus"
+						onClick={this.props.addRow}
+					>
+						Agregar Fila
 					</button>
 				</div>
 

@@ -13,6 +13,7 @@
 	padding-left: 8%;
 	font-weight: 700;
 	font-family: inherit;
+	font-size: 120%;
 	color: #494949;
 }
 
@@ -54,6 +55,12 @@
 	padding: 6%;
 }
 
+.ajusteFecha, 
+.ajusteFecha > div.react-datepicker-wrapper, 
+.ajusteFecha > div > div.react-datepicker__input-container
+.ajusteFecha > div > div.react-datepicker__input-container input {
+   width: 100%;
+}
 
 
 

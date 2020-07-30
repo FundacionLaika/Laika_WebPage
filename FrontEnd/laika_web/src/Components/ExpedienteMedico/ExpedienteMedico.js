@@ -12,6 +12,9 @@ import "./Styles/ExpedienteMedico.css";
 
 class ExpedienteMedico extends Component {
 	state = {
+		/*ID*/
+		id: "",
+
 		/*Diagnóstico*/
 		atropellamiento: false,
 		tvt: false,
@@ -71,13 +74,13 @@ class ExpedienteMedico extends Component {
 			event.target.type === "checkbox"
 				? event.target.checked
 				: event.target.value;
-		if(event.target.name === "otro") {
+		if (event.target.name === "otro") {
 			this.setState({
 				...this.state,
-				otroEspecificar:"",
+				otroEspecificar: "",
 				[event.target.name]: value,
 			});
-		} else if(event.target.id === "idCitaEsterilzacionNo") {
+		} else if (event.target.id === "idCitaEsterilzacionNo") {
 			this.setState({
 				...this.state,
 				fechaEsterilizacion: null,
@@ -89,7 +92,7 @@ class ExpedienteMedico extends Component {
 				[event.target.name]: value,
 			});
 		}
-		
+
 		console.log(event.target.name);
 		console.log(value);
 	};
@@ -240,7 +243,14 @@ class ExpedienteMedico extends Component {
 						/>
 					</div>
 					<div className="tratamiento">
-						<div className="headerTratamiento">Tratamiento</div>
+						<div className="headerTratamiento">
+							{" "}
+							<i
+								aria-hidden="true"
+								className="fa fa-heartbeat fa-fw separation"
+							></i>
+							Tratamiento
+						</div>
 
 						<DataGridMed
 							data={this.state.tratamiento}
@@ -251,21 +261,28 @@ class ExpedienteMedico extends Component {
 					</div>
 				</div>
 
-				<div className="BarraLateralMedico flex flex-column">
+				<div className="BarraLateralMedico">
 					<Scroll>
-						<div>
+						<div className="idLabelMedico">
+							<label>ID: {this.state.id}</label>
+						</div>
+						<div className="fotoMedico1">
 							<Foto
 								id="foto1"
 								className="pt3"
 								foto={this.state.foto1}
 								imageHandler={this.imageHandler}
 							/>
+						</div>
+						<div className="fotoMedico2">
 							<Foto
 								id="foto2"
 								className="pt3"
 								foto={this.state.foto2}
 								imageHandler={this.imageHandler}
 							/>
+						</div>
+						<div className="fotoMedico3">
 							<Foto
 								id="foto3"
 								className="pt3"
@@ -280,7 +297,10 @@ class ExpedienteMedico extends Component {
 					<Link to="/RegistroGeneral">
 						<button className="BotonMedicoTransicion BotonAnteriorMedico">
 							{" "}
-							<i className="fa fa-chevron-circle-left fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-left fa-fw"
+							></i>
 							Registro General
 						</button>
 					</Link>
@@ -288,18 +308,26 @@ class ExpedienteMedico extends Component {
 						className="BotonMedicoRestablecer BotonCentralMedico"
 						onClick={this.handleRestablecer}
 					>
-						Restablecer <i className="fa fa-eraser fa-fw"></i>
+						Restablecer{" "}
+						<i
+							aria-hidden="true"
+							className="fa fa-eraser fa-fw"
+						></i>
 					</button>
 					<button
 						className="BotonMedicoGuardar BotonCentralMedico"
 						onClick={this.handleSubmit}
 					>
-						Guardar <i className="fa fa-save fa-fw"></i>
+						Guardar{" "}
+						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 					<Link to="/HogarTemporal">
 						<button className="BotonMedicoTransicion BotonSiguienteMedico">
 							Hogar Temporal{" "}
-							<i className="fa fa-chevron-circle-right fa-fw"></i>
+							<i
+								aria-hidden="true"
+								className="fa fa-chevron-circle-right fa-fw"
+							></i>
 						</button>
 					</Link>
 				</div>

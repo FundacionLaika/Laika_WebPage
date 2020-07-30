@@ -13,7 +13,14 @@ export default class DatosGeneralesRG extends React.Component {
 	render() {
 		return (
 			<div className="datosGenerales">
-				<div className="labelDatosGenerales">Datos Generales</div>
+				<div className="labelDatosGenerales">
+					{" "}
+					<i
+						aria-hidden="true"
+						className="fa fa-address-book-o fa-fw separation"
+					></i>
+					Datos Generales
+				</div>
 				<div className="nombre">
 					<label htmlFor="nombre" className="inp">
 						<input
@@ -181,7 +188,7 @@ export default class DatosGeneralesRG extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div className="fechaRescate">
+				<div className="fechaRescate ajusteFecha">
 					<DatePicker
 						isClearable
 						useWeekdaysShort
