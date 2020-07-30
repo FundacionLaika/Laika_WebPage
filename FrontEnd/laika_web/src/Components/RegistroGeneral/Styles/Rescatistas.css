@@ -77,11 +77,13 @@
 	font-size: 140%;
 }
 
-.ui.input {
-    width: 100%;
+
+.ui.input > input {
+	border-radius: 1rem 0 0 0;
 }
 
 .ui.button {
-    margin: 0;
+	margin: 0;
+	border-radius: 0 1rem 0 0;
 }
 

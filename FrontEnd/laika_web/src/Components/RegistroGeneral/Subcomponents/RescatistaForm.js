@@ -26,7 +26,7 @@ export default class RescatismaForm extends React.Component {
 	render() {
 		return (
 			<div onSubmit={this.handleSubmit}>
-				<div className="ui left icon input">
+				<div className="ui left icon input fluid">
 					<input
 						type="text"
 						name="text"
