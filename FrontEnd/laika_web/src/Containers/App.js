@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
-import MenuBar from "../Components/MenuBar/MenuBar";
+import MenuBar from "../Components/SharedComponents/MenuBar";
 import Login from "../Components/Login/Login";
-import Registro from "../Components/Registro/Registro";
+import Registro from "../Components/RegistroUsuario/Registro";
 import Consulta from "../Components/Consulta/Consulta";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
@@ -12,9 +12,9 @@ import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
 import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
-import { ProtectedRoute } from "../Components/ProtectedRoute/ProtectedRoute";
+import { ProtectedRoute } from "../Components/SharedComponents/ProtectedRoute";
 import auth from "../Components/Auth/Auth";
-import DocumentoPDF from "../Components/GenerarPDF/DocumentoPDF";
+import DocumentoPDF from "../Components/SharedComponents/DocumentoPDF";
 
 const initialState = {
 	iniciadoSesion: auth.esAutenticado(),
