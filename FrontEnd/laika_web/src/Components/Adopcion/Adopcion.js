@@ -4,7 +4,7 @@ import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import "./Styles/Adopcion.css";
 
