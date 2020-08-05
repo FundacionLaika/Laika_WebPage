@@ -129,7 +129,7 @@ export default class FiltroGlobal extends React.Component {
 				</div>
 
 				<div className="exportar">
-					<Link to="/GenerarPDF">
+					<Link to="/Laika/GenerarPDF">
 					<button className="botonExportar">
 					<div>
 						<div className="pencil"></div>
