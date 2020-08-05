@@ -1,21 +1,36 @@
 @import "https://fonts.googleapis.com/css?family=Raleway:400,700|Raleway:300,400";
 
+.headerRescatistas {
+	padding-top: 6%;
+	padding-bottom: 0.5%;
+	grid-column: 1; 
+	grid-row:1;
+	text-align: left;
+	padding-left: 5%;
+	font-weight: 700;
+	font-family: inherit;
+	font-size: 120%;
+	color: #494949;
+}
+
+.gridForm {
+	display: grid;
+	grid-auto-columns: minmax(100%,100%);
+	padding: 7% 10%;
+}
 .rescatistaForm {
     grid-row: 1;
 	grid-column: 1;
 }
 
 .rowRescatista {
-	width:72.7%;
-	padding-top: 1%;
-	padding-bottom: 1%;
-	margin-left: 13.4%;
 	grid-column: 1;
 	display: grid;
 	background-color: #f1f1f1;
 	border-bottom: 1px solid #949494;
-	grid-auto-columns: minmax(25%,25%);
+	grid-auto-columns: minmax(10%,10%);
 	bottom: 0;
+	padding: 1.5%;
 }
 
 .rowRescatista:hover {
@@ -24,12 +39,12 @@
 
 .rowRescatistaText {
     grid-row: 1 ;
-	grid-column: 1 / 4;
+	grid-column: 1 / 10;
 }
 
 .rowRescatistaBorrar{
     grid-row: 1;
-	grid-column: 4;
+	grid-column: 10;
 }
 
 .botonBorrarRescatista {
@@ -62,4 +77,13 @@
 	font-size: 140%;
 }
 
+
+.ui.input > input {
+	border-radius: 1rem 0 0 0;
+}
+
+.ui.button {
+	margin: 0;
+	border-radius: 0 1rem 0 0;
+}
 

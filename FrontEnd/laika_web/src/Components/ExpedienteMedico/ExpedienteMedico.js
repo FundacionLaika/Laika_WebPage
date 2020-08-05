@@ -294,7 +294,7 @@ class ExpedienteMedico extends Component {
 				</div>
 
 				<div className="BotonesRegistroMedico">
-					<Link to="/RegistroGeneral">
+					<Link to="/Laika/RegistroGeneral">
 						<button className="BotonMedicoTransicion BotonAnteriorMedico">
 							{" "}
 							<i
@@ -321,7 +321,7 @@ class ExpedienteMedico extends Component {
 						Guardar{" "}
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
-					<Link to="/HogarTemporal">
+					<Link to="/Laika/HogarTemporal">
 						<button className="BotonMedicoTransicion BotonSiguienteMedico">
 							Hogar Temporal{" "}
 							<i

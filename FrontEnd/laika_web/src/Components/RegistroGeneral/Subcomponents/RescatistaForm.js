@@ -26,7 +26,7 @@ export default class RescatismaForm extends React.Component {
 	render() {
 		return (
 			<div onSubmit={this.handleSubmit}>
-				<div className="ui left icon input">
+				<div className="ui left icon input fluid">
 					<input
 						type="text"
 						name="text"
@@ -34,7 +34,7 @@ export default class RescatismaForm extends React.Component {
 						onChange={this.handleChange}
 						placeholder="Nombre del rescatista"
 					/>
-					<i aria-hidden="true" class="users icon"></i>
+					<i aria-hidden="true" className="users icon"></i>
 					<button
 						className="ui animated button"
 						onClick={this.handleSubmit}
@@ -43,7 +43,7 @@ export default class RescatismaForm extends React.Component {
 							Agregar Rescatista
 						</div>
 						<div className="hidden content">
-							<i aria-hidden="true" class="arrow right icon"></i>
+							<i aria-hidden="true" className="arrow right icon"></i>
 						</div>
 					</button>
 				</div>

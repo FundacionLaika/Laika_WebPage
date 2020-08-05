@@ -12,7 +12,7 @@ const MenuBar = () => {
 
                 <div>
                     <Link
-                        to="/Consulta"
+                        to="/Laika/Consulta"
                         style={{
                             color: "inherit",
                             textDecoration: "inherit",
@@ -25,7 +25,7 @@ const MenuBar = () => {
 
                 <div>
                     <Link
-                        to="/RegistroGeneral"
+                        to="/Laika/RegistroGeneral"
                         style={{
                             color: "inherit",
                             textDecoration: "inherit",
@@ -38,7 +38,7 @@ const MenuBar = () => {
 
                 <div>
                     <Link
-                        to="/MenuUsuario"
+                        to="/Laika/MenuUsuario"
                         style={{
                             color: "inherit",
                             textDecoration: "inherit",
