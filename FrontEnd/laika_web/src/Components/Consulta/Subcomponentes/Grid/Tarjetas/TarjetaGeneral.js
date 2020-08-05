@@ -2,27 +2,23 @@ import React from "react";
 import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
 import "./Styles/TarjetaGeneral.css";
 export default class TGarjetaGeneral extends React.Component {
-
 	formatDate = (date) => {
 		var d = new Date(date),
-			month = '' + (d.getMonth() + 1),
-			day = '' + d.getDate(),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
 			year = d.getFullYear();
-	
-		if (month.length < 2) 
-			month = '0' + month;
-		if (day.length < 2) 
-			day = '0' + day;
-	
-		return [day, month, year].join('-');
-	}
+
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+
+		return [day, month, year].join("-");
+	};
 	render() {
 		return (
 			<div className="tarjetaGeneral">
 				<div className="fotoFrame">
 					<div className="fotoTG">
-					<FotoFrame />
-
+						<FotoFrame />
 					</div>
 				</div>
 
@@ -55,7 +51,12 @@ export default class TGarjetaGeneral extends React.Component {
 							{this.props.especie}{" "}
 						</span>
 					</div>
+
 					<div className="fechaRescateTG">
+						<i
+							aria-hidden="true"
+							className="fa fa-save fa-fw iconoTarjeta"
+						></i>
 						<span className="nombreCampo"> Fecha de Rescate: </span>
 						<span className="campoData">
 							{" "}
@@ -91,16 +92,20 @@ export default class TGarjetaGeneral extends React.Component {
 							{this.props.senasParticulares}{" "}
 						</span>
 					</div>
+				</div>
+				<div className="panelConfiguracionT">
+					<i
+						aria-hidden="true"
+						className="fa fa-save fa-fw editarTarjeta"
+					></i>
+					<i
+						aria-hidden="true"
+						className="fa fa-save fa-fw generarPDFTarjeta"
+					></i>
 					<div className="idTG">
-						
-						<span className="campoData">
-							{" "}
-							{this.props.id}{" "}
-						</span>
-						<span className="nombreCampo">
-							{" "}
-							ID:{" "}
-						</span>
+						<span className="nombreCampo"> ID: </span>
+
+						<span className="campoData"> {this.props.id} </span>
 					</div>
 				</div>
 			</div>
