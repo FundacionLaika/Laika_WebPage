@@ -20,50 +20,74 @@ export default class TGarjetaGeneral extends React.Component {
 					<div className="fotoTG">
 						<FotoFrame />
 					</div>
+					<div className="idTG">
+						<div className="idIconT">
+							<img src="/icon-id-2.png" alt="" />
+						</div>
+						<div className="campoData">
+							<span> {this.props.id} </span>
+						</div>
+					</div>
 				</div>
 
 				<div className="infoTarjetaG">
 					<div className="nombreRescatadoTG">
+						<i
+							aria-hidden="true"
+							className="fa fa-user fa-fw iconoTarjeta"
+						></i>
 						<span className="nombreCampo"> Nombre: </span>
 						<span className="campoData"> {this.props.nombre} </span>
 					</div>
 					<div className="edadTG">
+						<i
+							aria-hidden="true"
+							className="fa fa-birthday-cake fa-fw iconoTarjeta"
+						></i>
 						<span className="nombreCampo"> Edad: </span>
 						<span className="campoData"> {this.props.edad} </span>
 					</div>
 					<div className="generoTG">
-						{" "}
+						<i
+							aria-hidden="true"
+							className="fa fa-venus-mars fa-fw iconoTarjeta"
+						></i>
 						<span className="nombreCampo"> Género: </span>
 						<span className="campoData"> {this.props.genero} </span>
 					</div>
 					<div className="estatusTG">
+						<i
+							aria-hidden="true"
+							className="fa fa-legal fa-fw iconoTarjeta"
+						></i>
 						<span className="nombreCampo"> Estatus: </span>
-						<span className="campoData">
-							{" "}
-							{this.props.estatus}{" "}
-						</span>
+						<span className="campoData">{this.props.estatus}</span>
 					</div>
 
 					<div className="especieTG">
+						<i
+							aria-hidden="true"
+							className="fa fa-paw fa-fw iconoTarjeta"
+						></i>
 						<span className="nombreCampo"> Especie: </span>
-						<span className="campoData">
-							{" "}
-							{this.props.especie}{" "}
-						</span>
+						<span className="campoData">{this.props.especie}</span>
 					</div>
 
 					<div className="fechaRescateTG">
 						<i
 							aria-hidden="true"
-							className="fa fa-save fa-fw iconoTarjeta"
+							className="fa fa-calendar fa-fw iconoTarjeta"
 						></i>
 						<span className="nombreCampo"> Fecha de Rescate: </span>
 						<span className="campoData">
-							{" "}
-							{this.formatDate(this.props.fechaRescate)}{" "}
+							{this.formatDate(this.props.fechaRescate)}
 						</span>
 					</div>
 					<div className="direccionTG">
+						<i
+							aria-hidden="true"
+							className="fa fa-address-card-o fa-fw iconoTarjeta"
+						></i>
 						<span className="nombreCampo"> Dirección: </span>
 						<span className="campoData">
 							{this.props.concatDate(
@@ -76,37 +100,37 @@ export default class TGarjetaGeneral extends React.Component {
 					</div>
 
 					<div className="rescatistasTG">
+						<i
+							aria-hidden="true"
+							className="fa fa-users fa-fw iconoTarjeta"
+						></i>
 						<span className="nombreCampo"> Rescatistas: </span>
 						<span className="campoData">
-							{" "}
-							{this.props.rescatistas}{" "}
+							{this.props.rescatistas}
 						</span>
 					</div>
 					<div className="senasParticularesTG">
-						<span className="nombreCampo">
-							{" "}
-							Señas Particulares:{" "}
-						</span>
+						<i
+							aria-hidden="true"
+							className="fa fa-bookmark fa-fw iconoTarjeta"
+						></i>
+						<span className="nombreCampo">Señas Particulares:</span>
 						<span className="campoData">
-							{" "}
-							{this.props.senasParticulares}{" "}
+							{this.props.senasParticulares}
 						</span>
 					</div>
 				</div>
 				<div className="panelConfiguracionT">
-					<i
-						aria-hidden="true"
-						className="fa fa-save fa-fw editarTarjeta"
-					></i>
-					<i
-						aria-hidden="true"
-						className="fa fa-save fa-fw generarPDFTarjeta"
-					></i>
-					<div className="idTG">
-						<span className="nombreCampo"> ID: </span>
+					<button className="editarTarjeta" title="Editar">
+						<i aria-hidden="true" className="fa fa-edit fa-fw"></i>
+					</button>
 
-						<span className="campoData"> {this.props.id} </span>
-					</div>
+					<button className="generarPDFTarjeta" title="Generar PDF">
+						<i
+							aria-hidden="true"
+							className="fa fa-file-pdf-o fa-fw"
+						></i>
+					</button>
 				</div>
 			</div>
 		);

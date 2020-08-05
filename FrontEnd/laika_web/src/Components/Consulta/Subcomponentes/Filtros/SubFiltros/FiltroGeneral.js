@@ -112,7 +112,7 @@ export default class FiltroGeneral extends React.Component {
 
 
 				<div className="nombreFiltro"> 
-					<span> <i className="fa fa-dog fa-fw" aria-hidden="true"></i> Especie </span>
+					<span> <i className="fa fa-paw fa-fw" aria-hidden="true"></i> Especie </span>
 					</div>
 				<div className="multiselectFiltro"></div>
 
@@ -134,7 +134,7 @@ export default class FiltroGeneral extends React.Component {
 				<div className="filtroEstatus">
 
 				<div className="nombreFiltro"> 
-					<span> <i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Estatus </span>
+					<span> <i className="fa fa-legal fa-fw" aria-hidden="true"></i> Estatus </span>
 					</div>
 				<div className="multiselectFiltro"></div>
 

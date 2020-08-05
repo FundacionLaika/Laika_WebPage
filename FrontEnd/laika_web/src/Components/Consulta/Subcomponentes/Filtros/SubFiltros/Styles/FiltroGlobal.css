@@ -18,21 +18,16 @@
 .seleccionarBusqueda {
 	display: grid;
 	grid-auto-columns: minmax(11%, 11%);
-	grid-column: 4 / 7;
+	grid-column: 4 / 8;
 }
 
 .ordenarPor {
-	grid-column: 7 / 10;
-    align-self: center;
-    display: flex;
-    align-items: center;
+	grid-column: 8 / 12;
+	align-self: center;
+	display: flex;
+	align-items: center;
+	padding-left: 30%;
 }
-
-.exportar {
-    grid-column: 10 / 12;
-    padding-left: 10%;
-}
-
 
 .dropdownBusqueda {
 	grid-column: 1 / 6;
@@ -40,33 +35,30 @@
 	width: 100%;
 }
 
-
 .ui.selection.dropdown {
-    width: 100%;
-    cursor: pointer;
-    word-wrap: break-word;
-    line-height: 1em;
-    white-space: normal;
-    outline: 0;
-    transform: rotateZ(0);
-    background: #fff;
-    color: rgba(0,0,0,.87);
-    box-shadow: none;
-    border: 1px solid rgba(7, 131, 255, 0.15);
-    border-radius: 0;
-    transition: box-shadow .1s ease,width .1s ease;
-    background-color: #aacfcf;
-    
+	width: 100%;
+	cursor: pointer;
+	word-wrap: break-word;
+	line-height: 1em;
+	white-space: normal;
+	outline: 0;
+	transform: rotateZ(0);
+	background: #fff;
+	color: rgba(0, 0, 0, 0.87);
+	box-shadow: none;
+	border: 1px solid rgba(7, 131, 255, 0.15);
+	border-radius: 0;
+	transition: box-shadow 0.1s ease, width 0.1s ease;
+	background-color: #aacfcf;
 }
 
 .ui.dropdown {
-    cursor: pointer;
-    outline: 0;
-    text-align: center;
-    align-self: center;
-    transition: box-shadow .1s ease,width .1s ease;
-    -webkit-tap-highlight-color: transparent;
-    
+	cursor: pointer;
+	outline: 0;
+	text-align: center;
+	align-self: center;
+	transition: box-shadow 0.1s ease, width 0.1s ease;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .ui.dropdown > .text {
@@ -184,234 +176,26 @@
 	text-indent: 0px;
 }
 
-/* Style buttons */
 .orderBtn {
-	background-color: rgb(255, 255, 255); /* Blue background */
-	border: none; /* Remove borders */
-	font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    margin: 0% 1% 0% 3%;
-    padding: 2.2% 2.2%;
-    color: black;
-    outline: none !important;
+	background-color: rgb(255, 255, 255); 
+	border: none; 
+	font-size: 16px; 
+	cursor: pointer; 
+	margin: 0% 1% 0% 3%;
+	padding: 2.2% 2.2%;
+	color: black;
+	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
 }
 
-/* Darker background on mouse-over */
 .orderBtn:hover {
 	background-color: rgb(219, 219, 219);
 }
 .orderBtn:active > i {
-    transform: rotate(180deg);
-    transition: all 0.3s linear 0s;
+	transform: rotate(180deg);
+	transition: all 0.3s linear 0s;
 }
 
 .orderDesc {
-    transform: rotate(180deg);
+	transform: rotate(180deg);
 }
-
-
-
-
-
-
-.botonExportar {
-    --color: #fff;
-    --background: #6fb1b4;
-    --background-hover: #56a2a7;
-    --background-left: #7393a7;
-    --folder: #F3E9CB;
-    --folder-inner: #BEB393;
-    --paper: #FFFFFF;
-    --paper-lines: #BBC1E1;
-    --paper-behind: #E1E6F9;
-    --pencil-cap: #fff;
-    --pencil-top: #275EFE;
-    --pencil-middle: #fff;
-    --pencil-bottom: #5C86FF;
-    --shadow: rgba(13, 15, 25, .2);
-    border: none;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 16px;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    padding: 5% 12% 6% 28%;
-    -webkit-transition: background .3s;
-    transition: background .3s;
-    color: var(--color);
-    background: var(--bg, var(--background));
-    display: flex;
-    align-items: center;
-  }
-  .botonExportar > div {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 31%;
-    position: absolute;
-    overflow: hidden;
-    border-radius: 5px 0 0 5px;
-    background: var(--background-left);
-  }
-  .botonExportar > div .folder {
-    width: 23px;
-    height: 23px;
-    position: absolute;
-    left: 28%;
-    top: 20%;
-  }
-
-  .botonExportar > div .folder .top {
-    left: 0;
-    top: 0;
-    z-index: 2;
-    position: absolute;
-    -webkit-transform: translateX(var(--fx, 0));
-            transform: translateX(var(--fx, 0));
-    -webkit-transition: -webkit-transform 0.4s ease var(--fd, 0.3s);
-    transition: -webkit-transform 0.4s ease var(--fd, 0.3s);
-    transition: transform 0.4s ease var(--fd, 0.3s);
-    transition: transform 0.4s ease var(--fd, 0.3s), -webkit-transform 0.4s ease var(--fd, 0.3s);
-  }
-  .botonExportar > div .folder .top svg {
-    width: 24px;
-    height: 27px;
-    display: block;
-    fill: var(--folder);
-    -webkit-transform-origin: 0 50%;
-            transform-origin: 0 50%;
-    -webkit-transition: -webkit-transform 0.3s ease var(--fds, 0.45s);
-    transition: -webkit-transform 0.3s ease var(--fds, 0.45s);
-    transition: transform 0.3s ease var(--fds, 0.45s);
-    transition: transform 0.3s ease var(--fds, 0.45s), -webkit-transform 0.3s ease var(--fds, 0.45s);
-    -webkit-transform: perspective(120px) rotateY(var(--fr, 0deg));
-            transform: perspective(120px) rotateY(var(--fr, 0deg));
-  }
-  .botonExportar > div .folder:before, .botonExportar > div .folder:after,
-  .botonExportar > div .folder .paper {
-    content: '';
-    position: absolute;
-    left: var(--l, 0);
-    top: var(--t, 0);
-    width: var(--w, 100%);
-    height: var(--h, 100%);
-    border-radius: 1px;
-    background: var(--b, var(--folder-inner));
-  }
-  
-  .botonExportar > div .folder:after,
-  .botonExportar > div .folder .paper {
-    --l: 1px;
-    --t: 1px;
-    --w: 21px;
-    --h: 25px;
-    --b: var(--paper-behind);
-  }
-  
-  .botonExportar > div .folder .paper {
-    z-index: 1;
-    --b: var(--paper);
-  }
-  .botonExportar > div .folder .paper:before, .botonExportar > div .folder .paper:after {
-    content: '';
-    width: var(--wp, 14px);
-    height: 2px;
-    border-radius: 1px;
-    -webkit-transform: scaleY(0.5);
-            transform: scaleY(0.5);
-    left: 3px;
-    top: var(--tp, 3px);
-    position: absolute;
-    background: var(--paper-lines);
-    box-shadow: 0 12px 0 0 var(--paper-lines), 0 24px 0 0 var(--paper-lines);
-  }
-  .botonExportar > div .folder .paper:after {
-    --tp: 6px;
-    --wp: 10px;
-  }
-  .botonExportar > div .pencil {
-    height: 2px;
-    width: 3px;
-    border-radius: 1px 1px 0 0;
-    top: 8px;
-    left: 105%;
-    position: absolute;
-    z-index: 3;
-    -webkit-transform-origin: 50% 19px;
-            transform-origin: 50% 19px;
-    background: var(--pencil-cap);
-    -webkit-transform: translateX(var(--pex, 0)) rotate(35deg);
-            transform: translateX(var(--pex, 0)) rotate(35deg);
-    -webkit-transition: -webkit-transform 0.4s ease var(--pbd, 0s);
-    transition: -webkit-transform 0.4s ease var(--pbd, 0s);
-    transition: transform 0.4s ease var(--pbd, 0s);
-    transition: transform 0.4s ease var(--pbd, 0s), -webkit-transform 0.4s ease var(--pbd, 0s);
-  }
-  .botonExportar > div .pencil:before, .botonExportar > div .pencil:after {
-    content: '';
-    position: absolute;
-    display: block;
-    background: var(--b, linear-gradient(var(--pencil-top) 55%, var(--pencil-middle) 55.1%, var(--pencil-middle) 60%, var(--pencil-bottom) 60.1%));
-    width: var(--w, 5px);
-    height: var(--h, 20px);
-    border-radius: var(--br, 2px 2px 0 0);
-    top: var(--t, 2px);
-    left: var(--l, -1px);
-  }
-  .botonExportar > div .pencil:before {
-    -webkit-clip-path: polygon(0 5%, 5px 5%, 5px 17px, 50% 20px, 0 17px);
-            clip-path: polygon(0 5%, 5px 5%, 5px 17px, 50% 20px, 0 17px);
-  }
-  .botonExportar > div .pencil:after {
-    --b: none;
-    --w: 3px;
-    --h: 6px;
-    --br: 0 2px 1px 0;
-    --t: 3px;
-    --l: 3px;
-    border-top: 1px solid var(--pencil-top);
-    border-right: 1px solid var(--pencil-top);
-  }
-  .botonExportar:before, .botonExportar:after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 2px;
-    border-radius: 1rem;
-    background: var(--color);
-    -webkit-transform-origin: 9px 1px;
-            transform-origin: 9px 1px;
-    -webkit-transform: translateX(var(--cx, 0)) scale(0.5) rotate(var(--r, -45deg));
-            transform: translateX(var(--cx, 0)) scale(0.5) rotate(var(--r, -45deg));
-    top: 50%;
-    right: 9%;
-    -webkit-transition: -webkit-transform .3s;
-    transition: -webkit-transform .3s;
-    transition: transform .3s;
-    transition: transform .3s, -webkit-transform .3s;
-  }
-  .botonExportar:after {
-    --r: 45deg;
-  }
-  .botonExportar:hover {
-    --cx: 2px;
-    --bg: var(--background-hover);
-    --fx: -40px;
-    --fr: -60deg;
-    --fd: .15s;
-    --fds: 0s;
-    --pbx: 3px;
-    --pby: -3px;
-    --pbd: .15s;
-    --pex: -24px;
-  }
-  
-
-  
-
-
