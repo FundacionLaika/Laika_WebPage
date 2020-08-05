@@ -4,7 +4,7 @@ import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import "./Styles/Adopcion.css";
 
@@ -164,7 +164,7 @@ export default class Adopcion extends React.Component {
 				</div>
 
 				<div className="BotonesRegistroAdopcion">
-					<Link to="/HogarTemporal">
+					<Link to="/Laika/HogarTemporal">
 						<button className="BotonAdopcionTransicion BotonAnteriorAdopcion">
 							<i
 								aria-hidden="true"
@@ -192,7 +192,7 @@ export default class Adopcion extends React.Component {
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
-					<Link to="/RegistroGeneral">
+					<Link to="/Laika/RegistroGeneral">
 						<button className="BotonAdopcionTransicion BotonSiguienteAdopcion">
 							Registro General
 							<i

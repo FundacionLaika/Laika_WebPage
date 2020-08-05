@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Scroll from "../Scroll/Scroll";
+import Scroll from "../SharedComponents/Scroll";
 import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import DataGridMed from "./Subcomponentes/DataGridMed";
 import Foto from "../SharedComponents/Foto";
@@ -294,7 +294,7 @@ class ExpedienteMedico extends Component {
 				</div>
 
 				<div className="BotonesRegistroMedico">
-					<Link to="/RegistroGeneral">
+					<Link to="/Laika/RegistroGeneral">
 						<button className="BotonMedicoTransicion BotonAnteriorMedico">
 							{" "}
 							<i
@@ -321,7 +321,7 @@ class ExpedienteMedico extends Component {
 						Guardar{" "}
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
-					<Link to="/HogarTemporal">
+					<Link to="/Laika/HogarTemporal">
 						<button className="BotonMedicoTransicion BotonSiguienteMedico">
 							Hogar Temporal{" "}
 							<i

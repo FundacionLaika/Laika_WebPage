@@ -3,7 +3,7 @@ import ContactoHT from "./Subcomponentes/ContactoHT";
 import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
 import { Link } from "react-router-dom";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import shortid from "shortid";
 import "../SharedComponents/Styles/InputText.css";
@@ -175,7 +175,7 @@ class HogarTemporal extends Component {
 				</div>
 
 				<div className="BotonesRegistroHT">
-					<Link to="/ExpedienteMedico">
+					<Link to="/Laika/ExpedienteMedico">
 						<button className="BotonHTTransicion BotonAnteriorHT">
 							<i
 								aria-hidden="true"
@@ -201,7 +201,7 @@ class HogarTemporal extends Component {
 						Guardar
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
-					<Link to="/Adopcion">
+					<Link to="/Laika/Adopcion">
 						<button className="BotonHTTransicion BotonSiguienteHT">
 							Adopción
 							<i
