@@ -3,7 +3,7 @@ import Rescatistas from "./Subcomponents/Rescatistas";
 import DatosGeneralesRG from "./Subcomponents/DatosGeneralesRG";
 import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
-import NavBarRegistros from "../SharedComponents/NavBarRegistros/NavBarRegistros";
+import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
 
