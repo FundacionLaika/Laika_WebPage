@@ -27,6 +27,10 @@ class App extends React.Component {
 		this.state = initialState;
 	}
 
+	componentDidMount() {
+		document.title = "Fundación Laika Protectora de Animales, A.C.";
+	}
+
 	cambioRuta = (usuario) => {
 		this.setState({
 			iniciadoSesion: auth.esAutenticado(),
