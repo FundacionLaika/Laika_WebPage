@@ -1,6 +1,7 @@
 import React from "react";
 import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
 import "./Styles/TarjetaGeneral.css";
+import "./Styles/Tarjeta.css";
 export default class TGarjetaGeneral extends React.Component {
 	formatDate = (date) => {
 		var d = new Date(date),
@@ -15,12 +16,12 @@ export default class TGarjetaGeneral extends React.Component {
 	};
 	render() {
 		return (
-			<div className="tarjetaGeneral">
+			<div className="tarjeta">
 				<div className="fotoFrame">
-					<div className="fotoTG">
+					<div className="fotoT">
 						<FotoFrame />
 					</div>
-					<div className="idTG">
+					<div className="idT">
 						<div className="idIconT">
 							<img src="/icon-id-2.png" alt="" />
 						</div>
@@ -109,7 +110,7 @@ export default class TGarjetaGeneral extends React.Component {
 							{this.props.rescatistas}
 						</span>
 					</div>
-					<div className="senasParticularesTG">
+					<div className="senasParticularesT">
 						<i
 							aria-hidden="true"
 							className="fa fa-bookmark fa-fw iconoTarjeta"
