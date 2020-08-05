@@ -159,7 +159,7 @@ export default class RegistroGeneral extends React.Component {
 				</div>
 
 				<div className="BotonesRegistroGeneral">
-					<Link to="/Adopcion">
+					<Link to="/Laika/Adopcion">
 						<button className="BotonGeneralTransicion BotonAnteriorGeneral">
 							<i
 								aria-hidden="true"
@@ -187,7 +187,7 @@ export default class RegistroGeneral extends React.Component {
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
-					<Link to="/ExpedienteMedico">
+					<Link to="/Laika/ExpedienteMedico">
 						<button className="BotonGeneralTransicion BotonSiguienteGeneral">
 							Expediente Médico
 							<i className="fa fa-chevron-circle-right fa-fw"></i>

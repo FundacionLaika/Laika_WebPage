@@ -11,7 +11,7 @@ class NavBarRegistros extends Component {
 				<div className="tab-header">
 					<div className={this.props.activePosition==="RegistroGeneral"?"active":""}>
 						<Link
-							to="/RegistroGeneral"
+							to="/Laika/RegistroGeneral"
 							style={{
 								color: "inherit",
 								textDecoration: "inherit",
@@ -24,7 +24,7 @@ class NavBarRegistros extends Component {
 
 					<div className={this.props.activePosition==="ExpedienteMedico"?"active":""}>
 						<Link
-							to="/ExpedienteMedico"
+							to="/Laika/ExpedienteMedico"
 							style={{
 								color: "inherit",
 								textDecoration: "inherit",
@@ -37,7 +37,7 @@ class NavBarRegistros extends Component {
 
 					<div className={this.props.activePosition==="HogarTemporal"?"active":""}>
 						<Link
-							to="/HogarTemporal"
+							to="/Laika/HogarTemporal"
 							style={{
 								color: "inherit",
 								textDecoration: "inherit",
@@ -50,7 +50,7 @@ class NavBarRegistros extends Component {
 
 					<div className={this.props.activePosition==="Adopcion"?"active":""}>
 						<Link
-							to="/Adopcion"
+							to="/Laika/Adopcion"
 							style={{
 								color: "inherit",
 								textDecoration: "inherit",

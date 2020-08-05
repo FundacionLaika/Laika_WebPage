@@ -175,7 +175,7 @@ class HogarTemporal extends Component {
 				</div>
 
 				<div className="BotonesRegistroHT">
-					<Link to="/ExpedienteMedico">
+					<Link to="/Laika/ExpedienteMedico">
 						<button className="BotonHTTransicion BotonAnteriorHT">
 							<i
 								aria-hidden="true"
@@ -201,7 +201,7 @@ class HogarTemporal extends Component {
 						Guardar
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
-					<Link to="/Adopcion">
+					<Link to="/Laika/Adopcion">
 						<button className="BotonHTTransicion BotonSiguienteHT">
 							Adopción
 							<i
