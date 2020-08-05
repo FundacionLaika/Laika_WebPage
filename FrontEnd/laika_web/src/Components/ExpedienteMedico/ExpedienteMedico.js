@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Scroll from "../Scroll/Scroll";
+import Scroll from "../SharedComponents/Scroll";
 import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
