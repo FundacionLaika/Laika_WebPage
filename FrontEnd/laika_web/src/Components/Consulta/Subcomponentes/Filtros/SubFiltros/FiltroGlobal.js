@@ -1,7 +1,6 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import { Link } from "react-router-dom";
 import "./Styles/FiltroGlobal.css";
 
 export default class FiltroGlobal extends React.Component {
@@ -71,7 +70,7 @@ export default class FiltroGlobal extends React.Component {
 		},
 		{
 			key: "Nombre Responsable",
-			text: "NombreResponsable",
+			text: "Nombre Responsable",
 			value: "nombreResponsable",
 			image: { avatar: true, src: "/icon-nombre-responsable.png" },
 		},
@@ -126,22 +125,6 @@ export default class FiltroGlobal extends React.Component {
 					>
 						<i className="fa fa-sort-amount-asc"></i>
 					</button>
-				</div>
-
-				<div className="exportar">
-					<Link to="/Laika/GenerarPDF">
-					<button className="botonExportar">
-					<div>
-						<div className="pencil"></div>
-						<div className="folder">
-							<div className="paper"></div>
-						</div>
-					</div>
-					Generar PDF
-				</button>
-				
-				
-					</Link>
 				</div>
 			</div>
 		);
