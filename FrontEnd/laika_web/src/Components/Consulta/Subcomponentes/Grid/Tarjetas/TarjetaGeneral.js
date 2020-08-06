@@ -3,17 +3,7 @@ import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
 import "./Styles/TarjetaGeneral.css";
 import "./Styles/Tarjeta.css";
 export default class TGarjetaGeneral extends React.Component {
-	formatDate = (date) => {
-		var d = new Date(date),
-			month = "" + (d.getMonth() + 1),
-			day = "" + d.getDate(),
-			year = d.getFullYear();
-
-		if (month.length < 2) month = "0" + month;
-		if (day.length < 2) day = "0" + day;
-
-		return [day, month, year].join("-");
-	};
+	
 	render() {
 		return (
 			<div className="tarjeta">
@@ -81,7 +71,7 @@ export default class TGarjetaGeneral extends React.Component {
 						></i>
 						<span className="nombreCampo"> Fecha de Rescate: </span>
 						<span className="campoData">
-							{this.formatDate(this.props.fechaRescate)}
+							{this.props.formatDate(this.props.fechaRescate)}
 						</span>
 					</div>
 					<div className="direccionTG">

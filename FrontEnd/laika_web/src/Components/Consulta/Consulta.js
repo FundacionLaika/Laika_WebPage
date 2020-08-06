@@ -156,6 +156,18 @@ export default class Consulta extends Component {
 		);
 	};
 
+	formatDate = (date) => {
+		var d = new Date(date),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
+			year = d.getFullYear();
+	
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+	
+		return [day, month, year].join("-");
+	};
+
 	render() {
 		return (
 			<div className="consulta">
@@ -172,6 +184,7 @@ export default class Consulta extends Component {
 					tarjeta={this.state.tarjeta}
 					concatDate={this.concatDate}
 					filtros={this.state}
+					formatDate={this.formatDate}
 				/>
 			</div>
 		);

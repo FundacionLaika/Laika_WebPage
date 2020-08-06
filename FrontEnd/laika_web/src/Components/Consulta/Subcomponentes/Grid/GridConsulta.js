@@ -6,6 +6,7 @@ import GridHogarTemporal from "./SubGrids/GridHogarTemporal";
 import "../../Styles/Consulta.css";
 
 export default class GridConsulta extends React.Component {
+	
 	render() {
 		return (
 			<div className="gridConsulta">
@@ -16,6 +17,7 @@ export default class GridConsulta extends React.Component {
 								<GridGeneral
 									concatDate={this.props.concatDate}
 									filtros={this.props.filtros}
+									formatDate={this.props.formatDate}
 								/>
 							);
 
@@ -24,6 +26,7 @@ export default class GridConsulta extends React.Component {
 								<GridExpedienteMedico
 									concatDate={this.props.concatDate}
 									filtros={this.props.filtros}
+									formatDate={this.props.formatDate}
 								/>
 							);
 
@@ -32,6 +35,7 @@ export default class GridConsulta extends React.Component {
 								<GridHogarTemporal
 									concatDate={this.props.concatDate}
 									filtros={this.props.filtros}
+									formatDate={this.props.formatDate}
 								/>
 							);
 
@@ -40,6 +44,7 @@ export default class GridConsulta extends React.Component {
 								<GridAdopcion
 									concatDate={this.props.concatDate}
 									filtros={this.props.filtros}
+									formatDate={this.props.formatDate}
 								/>
 							);
 
