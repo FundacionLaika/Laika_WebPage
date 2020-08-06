@@ -10,7 +10,7 @@ import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
-import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
+import GenerarPDF from "../Components/SharedComponents/GenerarPDF";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
 import { ProtectedRoute } from "../Components/SharedComponents/ProtectedRoute";
 import auth from "../Components/Auth/Auth";
@@ -28,7 +28,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		document.title = "Fundación Laika Protectora de Animales, A.C.";
+		document.title = "Administración | Fundación Laika";
 	}
 
 	cambioRuta = (usuario) => {
@@ -80,12 +80,6 @@ class App extends React.Component {
 							path="/Laika/HogarTemporal"
 							exact
 							component={HogarTemporal}
-						/>
-
-						<ProtectedRoute
-							path="/Laika/GenerarPDF"
-							exact
-							component={GenerarPDF}
 						/>
 
 						<ProtectedRoute
