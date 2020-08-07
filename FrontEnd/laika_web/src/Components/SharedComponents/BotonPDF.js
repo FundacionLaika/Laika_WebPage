@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Styles/BotonPDF.css";
 import {
 	Button,
@@ -9,9 +9,8 @@ import {
 	Checkbox,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import GenerarPDF from "./GenerarPDF";
 
-function exampleReducer(state, action) {
+function Reducer(state, action) {
 	switch (action.type) {
 		case "OPEN_MODAL":
 			return { open: true, dimmer: action.dimmer, size: action.size };
@@ -22,12 +21,47 @@ function exampleReducer(state, action) {
 	}
 }
 
-function ModalExampleDimmer() {
-	const [state, dispatch] = React.useReducer(exampleReducer, {
+function BotonPDF() {
+	const [state, dispatch] = React.useReducer(Reducer, {
 		open: false,
-        dimmer: undefined,
+		dimmer: undefined,
 	});
 	const { open, dimmer } = state;
+
+	const [stateCheck, setCheckbox] = useState({
+		seleccionarTodo: false,
+		datosGenerales: false,
+		expedienteMedico: false,
+		hogarTemporal: false,
+		adopcion: false,
+	});
+
+	const handleChange = (event) => {
+		if (event.name === "seleccionarTodo") {
+			setCheckbox({
+				seleccionarTodo: !event.value,
+				datosGenerales: !event.value,
+				expedienteMedico: !event.value,
+				hogarTemporal: !event.value,
+				adopcion: !event.value,
+			});
+		} else {
+			setCheckbox({
+				...stateCheck,
+				[event.name]: !event.value,
+			});
+		}
+	};
+
+	const handleRestablecer = () => {
+		setCheckbox({
+			seleccionarTodo: false,
+			datosGenerales: false,
+			expedienteMedico: false,
+			hogarTemporal: false,
+			adopcion: false,
+		});
+	};
 
 	return (
 		<div>
@@ -50,7 +84,7 @@ function ModalExampleDimmer() {
 				open={open}
 				onClose={() => dispatch({ type: "CLOSE_MODAL" })}
 			>
-				<Modal.Header>Selecciona las opciones a imprimir</Modal.Header>
+				<Modal.Header>Expedientes</Modal.Header>
 				<Modal.Content image>
 					<Image
 						size="medium"
@@ -58,27 +92,78 @@ function ModalExampleDimmer() {
 						wrapped
 					/>
 					<Modal.Description>
-						<Header>Expedientes</Header>
+						<Header>Opciones para generar PDF</Header>
 						<div>
 							<div>
 								{" "}
-								<Checkbox checked="" label="Seleccionar todo" toggle />
+								<Checkbox
+									name="seleccionarTodo"
+									checked={stateCheck.seleccionarTodo}
+									label="Seleccionar todo"
+									toggle
+									onChange={() =>
+										handleChange({
+											name: "seleccionarTodo",
+											value: stateCheck.seleccionarTodo,
+										})
+									}
+								/>
 							</div>
 							<div>
 								{" "}
-								<Checkbox checked="" label="Datos Generales" toggle />
+								<Checkbox
+									checked={stateCheck.datosGenerales}
+									label="Datos Generales"
+									toggle
+									onChange={() =>
+										handleChange({
+											name: "datosGenerales",
+											value: stateCheck.datosGenerales,
+										})
+									}
+								/>
 							</div>
 							<div>
 								{" "}
-								<Checkbox checked="" label="Expediente Médico" toggle />
+								<Checkbox
+									checked={stateCheck.expedienteMedico}
+									label="Expediente Médico"
+									toggle
+									onChange={() =>
+										handleChange({
+											name: "expedienteMedico",
+											value: stateCheck.expedienteMedico,
+										})
+									}
+								/>
 							</div>
 							<div>
 								{" "}
-								<Checkbox checked="" label="Hogar Temporal" toggle />
+								<Checkbox
+									checked={stateCheck.hogarTemporal}
+									label="Hogar Temporal"
+									toggle
+									onChange={() =>
+										handleChange({
+											name: "hogarTemporal",
+											value: stateCheck.hogarTemporal,
+										})
+									}
+								/>
 							</div>
 							<div>
 								{" "}
-								<Checkbox checked="" label="Adopción" toggle />
+								<Checkbox
+									checked={stateCheck.adopcion}
+									label="Adopción"
+									toggle
+									onChange={() =>
+										handleChange({
+											name: "adopcion",
+											value: stateCheck.adopcion,
+										})
+									}
+								/>
 							</div>
 						</div>
 					</Modal.Description>
@@ -91,7 +176,10 @@ function ModalExampleDimmer() {
 						}}
 						color="red"
 						inverted
-						onClick={() => dispatch({ type: "CLOSE_MODAL" })}
+						onClick={() => {
+							dispatch({ type: "CLOSE_MODAL" });
+							handleRestablecer();
+						}}
 					>
 						<Icon name="cancel" /> Cancelar
 					</Button>
@@ -103,8 +191,10 @@ function ModalExampleDimmer() {
 							}}
 							color="green"
 							inverted
-							icon="checkmark"
-							onClick={() => dispatch({ type: "CLOSE_MODAL" })}
+							onClick={() => {
+								dispatch({ type: "CLOSE_MODAL" });
+								handleRestablecer();
+							}}
 						>
 							<Icon name="checkmark" /> Aceptar
 						</Button>
@@ -115,4 +205,4 @@ function ModalExampleDimmer() {
 	);
 }
 
-export default ModalExampleDimmer;
+export default BotonPDF;
