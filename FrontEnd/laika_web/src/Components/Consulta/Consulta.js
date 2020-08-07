@@ -137,7 +137,7 @@ export default class Consulta extends Component {
 		});
 	};
 
-	concatDate = (calle, numero, colonia, municipio) => {
+	concatAddress = (calle, numero, colonia, municipio) => {
 		var direccion = "";
 		if (calle.length) direccion += calle;
 		if (numero.length && calle.length) direccion += " #" + numero;
@@ -182,7 +182,7 @@ export default class Consulta extends Component {
 				<GridConsulta
 					className="gridConsulta"
 					tarjeta={this.state.tarjeta}
-					concatDate={this.concatDate}
+					concatAddress={this.concatAddress}
 					filtros={this.state}
 					formatDate={this.formatDate}
 				/>

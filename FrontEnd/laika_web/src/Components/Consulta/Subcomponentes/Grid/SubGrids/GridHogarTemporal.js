@@ -37,7 +37,7 @@ export default class GridHogarTemporal extends React.Component {
 						numero={tarjeta.NumeroHT}
 						colonia={tarjeta.ColoniaHT}
 						municipio={tarjeta.MunicipioHT}
-						concatDate={this.props.concatDate}
+						concatAddress={this.props.concatAddress}
 						formatDate={this.props.formatDate}
 					/>
 				))}

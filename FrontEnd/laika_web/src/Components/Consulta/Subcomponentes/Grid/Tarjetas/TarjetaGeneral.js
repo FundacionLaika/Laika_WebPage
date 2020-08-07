@@ -81,7 +81,7 @@ export default class TGarjetaGeneral extends React.Component {
 						></i>
 						<span className="nombreCampo"> Dirección: </span>
 						<span className="campoData">
-							{this.props.concatDate(
+							{this.props.concatAddress(
 								this.props.calle,
 								this.props.numero,
 								this.props.colonia,

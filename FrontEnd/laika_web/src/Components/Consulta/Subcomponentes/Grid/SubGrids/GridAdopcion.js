@@ -38,7 +38,7 @@ export default class GridAdopcion extends React.Component {
 						numero={tarjeta.NumeroAdte}
 						colonia={tarjeta.ColoniaAdte}
 						municipio={tarjeta.MunicipioAdte}
-						concatDate={this.props.concatDate}
+						concatAddress={this.props.concatAddress}
 						formatDate={this.props.formatDate}
 					/>
 				))}

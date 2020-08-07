@@ -15,7 +15,7 @@ export default class GridConsulta extends React.Component {
 						case "General":
 							return (
 								<GridGeneral
-									concatDate={this.props.concatDate}
+									concatAddress={this.props.concatAddress}
 									filtros={this.props.filtros}
 									formatDate={this.props.formatDate}
 								/>
@@ -24,7 +24,7 @@ export default class GridConsulta extends React.Component {
 						case "ExpedienteMedico":
 							return (
 								<GridExpedienteMedico
-									concatDate={this.props.concatDate}
+									concatAddress={this.props.concatAddress}
 									filtros={this.props.filtros}
 									formatDate={this.props.formatDate}
 								/>
@@ -33,7 +33,7 @@ export default class GridConsulta extends React.Component {
 						case "HogarTemporal":
 							return (
 								<GridHogarTemporal
-									concatDate={this.props.concatDate}
+									concatAddress={this.props.concatAddress}
 									filtros={this.props.filtros}
 									formatDate={this.props.formatDate}
 								/>
@@ -42,7 +42,7 @@ export default class GridConsulta extends React.Component {
 						case "Adopcion":
 							return (
 								<GridAdopcion
-									concatDate={this.props.concatDate}
+									concatAddress={this.props.concatAddress}
 									filtros={this.props.filtros}
 									formatDate={this.props.formatDate}
 								/>

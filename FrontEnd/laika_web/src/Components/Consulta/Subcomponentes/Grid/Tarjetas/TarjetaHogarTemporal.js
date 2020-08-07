@@ -1,37 +1,120 @@
 import React from "react";
 import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
+import "./Styles/TarjetaHogarTemporal.css";
+import "./Styles/Tarjeta.css";
 
 export default class TarjetaHogarTemporal extends React.Component {
 	render() {
 		return (
-			<div>
-				<FotoFrame />													
-
-				<div>
-					<div className="tarjEMf1">
-						<label> Tipo de Hogar Temporal: </label>
-						<label> {this.props.tipoHT} </label>
-
-						<label> Responsable: </label>
-						<label> {this.props.responsableHT} </label>
-
-						<label> Telefono: </label>
-						<label> {this.props.telefonoHT} </label>
-
+			<div className="tarjeta">
+				<div className="fotoFrame">
+					<div className="fotoT">
+						<FotoFrame />
 					</div>
-					<div className="tarjEMf2">
-						<label> Fecha de Inicio: </label>
-						<label> {this.props.fechaInicioHT} </label>
-
-						<label> Fecha Final </label>
-						<label> {this.props.fechaFinalHT} </label>
-
+					<div className="idT">
+						<div className="idIconT">
+							<img src="/icon-id-2.png" alt="" />
+						</div>
+						<div className="campoData">
+							<span> {this.props.id} </span>
+						</div>
 					</div>
-					<div className="tarjEMf3">
-						<label> Direccion: </label>
-						<label> {this.props.concatDate(this.props.calle, this.props.numero, this.props.colonia, this.props.municipio)} </label>
+				</div>
+
+				<div className="infoTarjetaHT">
+					<div className="tipoHogarTHT">
+						<i
+							aria-hidden="true"
+							className="fa fa-home fa-fw iconoTarjeta"
+						></i>
+						<span className="nombreCampo">
+							{" "}
+							Tipo de Hogar Temporal:{" "}
+						</span>
+						<span className="campoData"> {this.props.tipoHT} </span>
 					</div>
-					
+
+					<div className="responsableTHT">
+						<i
+							aria-hidden="true"
+							className="fa fa-user fa-fw iconoTarjeta"
+						></i>
+						<span className="nombreCampo"> Responsable: </span>
+						<span className="campoData">
+							{" "}
+							{this.props.responsableHT}{" "}
+						</span>
+					</div>
+
+					<div className="telefonoTHT">
+						<i
+							aria-hidden="true"
+							className="fa fa-phone fa-fw iconoTarjeta"
+						></i>
+						<span className="nombreCampo"> Telefono: </span>
+						<span className="campoData">
+							{" "}
+							{this.props.telefonoHT}{" "}
+						</span>
+					</div>
+
+					<div className="fechaInicioTHT">
+						<i
+							aria-hidden="true"
+							className="fa fa-calendar fa-fw iconoTarjeta"
+						></i>
+						<span className="nombreCampo"> Fecha de Inicio:: </span>
+						<span className="campoData">
+							{" "}
+							{this.props.formatDate(
+								this.props.fechaInicioHT
+							)}{" "}
+						</span>
+					</div>
+
+					<div className="fechaFinalTHT">
+						<i
+							aria-hidden="true"
+							className="fa fa-calendar fa-fw iconoTarjeta"
+						></i>
+						<span className="nombreCampo"> Fecha Final: </span>
+						<span className="campoData">
+							{" "}
+							{this.props.formatDate(
+								this.props.fechaFinalHT
+							)}{" "}
+						</span>
+					</div>
+
+					<div className="direccionTHT">
+						<i
+							aria-hidden="true"
+							className="fa fa-address-card-o fa-fw iconoTarjeta"
+						></i>
+						<span className="nombreCampo"> Direccion: </span>
+						<span className="campoData">
+							{" "}
+							{this.props.concatAddress(
+								this.props.calle,
+								this.props.numero,
+								this.props.colonia,
+								this.props.municipio
+							)}{" "}
+						</span>
+					</div>
+				</div>
+
+				<div className="panelConfiguracionT">
+					<button className="editarTarjeta" title="Editar">
+						<i aria-hidden="true" className="fa fa-edit fa-fw"></i>
+					</button>
+
+					<button className="generarPDFTarjeta" title="Generar PDF">
+						<i
+							aria-hidden="true"
+							className="fa fa-file-pdf-o fa-fw"
+						></i>
+					</button>
 				</div>
 			</div>
 		);

@@ -42,7 +42,7 @@ export default class GridGeneral extends React.Component {
 						colonia={tarjeta.RteColonia}
 						municipio={tarjeta.RteMunicipio}
 						rescatistas={tarjeta.Rescatistas}
-						concatDate={this.props.concatDate}
+						concatAddress={this.props.concatAddress}
 						formatDate={this.props.formatDate}
 					/>
 				))}

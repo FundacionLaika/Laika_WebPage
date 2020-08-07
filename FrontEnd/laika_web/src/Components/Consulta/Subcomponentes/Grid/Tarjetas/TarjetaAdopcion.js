@@ -33,7 +33,7 @@ export default class TarjetaAdopcion extends React.Component {
 						<label> {this.props.visitaAdop} </label>
 
 						<label> Direccion: </label>
-						<label> {this.props.concatDate(this.props.calle, this.props.numero, this.props.colonia, this.props.municipio)} </label>
+						<label> {this.props.concatAddress(this.props.calle, this.props.numero, this.props.colonia, this.props.municipio)} </label>
 					</div>
 
 					
