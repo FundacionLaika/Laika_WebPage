@@ -24,8 +24,10 @@ export default class GridExpedienteMedico extends React.Component {
 		this.fetchData();
 	}
 
-	componentDidUpdate() {
-		this.fetchData();
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props.filtros !== prevProps.filtros) {
+			this.fetchData();
+		}
 	}
 
 	render() {
