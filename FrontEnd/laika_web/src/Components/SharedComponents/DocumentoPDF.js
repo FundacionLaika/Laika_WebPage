@@ -7,7 +7,6 @@ import {
 	Font,
 	Image,
 	PDFViewer,
-	View
 } from "@react-pdf/renderer";
 
 class DocumentoPDF extends React.Component {
