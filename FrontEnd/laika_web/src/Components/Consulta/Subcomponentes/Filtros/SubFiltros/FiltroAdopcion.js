@@ -39,7 +39,7 @@ export default class FiltroAdopcion extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Medio de Adopción{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -61,7 +61,7 @@ export default class FiltroAdopcion extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-calendar fa-fw" aria-hidden="true"></i> Rango de fecha de Adopción{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">

@@ -28,7 +28,7 @@ export default class TarjetaExpedienteMedico extends React.Component {
 								aria-hidden="true"
 								className="fa fa-stethoscope fa-fw iconoTarjeta"
 							></i>
-							<span className="nombreCampo"> Diagnostico: </span>
+							<span className="nombreCampo"> Diagnóstico: </span>
 						</div>
 
 			

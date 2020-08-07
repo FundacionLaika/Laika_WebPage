@@ -50,8 +50,9 @@ export default class TarjetaHogarTemporal extends React.Component {
 						<i
 							aria-hidden="true"
 							className="fa fa-phone fa-fw iconoTarjeta"
+							
 						></i>
-						<span className="nombreCampo"> Telefono: </span>
+						<span className="nombreCampo"> Télefono: </span>
 						<span className="campoData">
 							{" "}
 							{this.props.telefonoHT}{" "}
@@ -91,7 +92,7 @@ export default class TarjetaHogarTemporal extends React.Component {
 							aria-hidden="true"
 							className="fa fa-address-card-o fa-fw iconoTarjeta"
 						></i>
-						<span className="nombreCampo"> Direccion: </span>
+						<span className="nombreCampo"> Dirección: </span>
 						<span className="campoData">
 							{" "}
 							{this.props.concatAddress(

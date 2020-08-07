@@ -48,8 +48,9 @@ export default class TGarjetaGeneral extends React.Component {
 					</div>
 					<div className="estatusTG">
 						<i
+							style={{fontSize: "1.2em"}}
 							aria-hidden="true"
-							className="fa fa-legal fa-fw iconoTarjeta"
+							className="fa fa-info-circle fa-fw iconoTarjeta"
 						></i>
 						<span className="nombreCampo"> Estatus: </span>
 						<span className="campoData">{this.props.estatus}</span>

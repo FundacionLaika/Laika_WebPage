@@ -65,7 +65,7 @@ export default class FiltroHogarTemporal extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-home fa-fw" aria-hidden="true"></i> Tipo de Hogar Temporal{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -88,7 +88,7 @@ export default class FiltroHogarTemporal extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-calendar fa-fw" aria-hidden="true"></i> Rango de fecha de Hogar Temporal{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">

@@ -72,7 +72,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-medkit fa-fw" aria-hidden="true"></i> Vacunas Recibidas{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -94,7 +94,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-user-md fa-fw" aria-hidden="true"></i> Esterilizado{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -117,7 +117,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-stethoscope fa-fw" aria-hidden="true"></i> Diagnóstico {" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">

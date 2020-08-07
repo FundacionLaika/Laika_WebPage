@@ -148,7 +148,7 @@ export default class FiltroGeneral extends React.Component {
 						<span>
 							{" "}
 							<i
-								className="fa fa-legal fa-fw"
+								className="fa fa-info-circle fa-fw"
 								aria-hidden="true"
 							></i>{" "}
 							Estatus{" "}
