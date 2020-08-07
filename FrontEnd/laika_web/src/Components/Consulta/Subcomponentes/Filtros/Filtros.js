@@ -17,6 +17,7 @@ export default class Filtros extends React.Component {
 						filtros={this.props.filtros}
 						handleKeyWord={this.props.handleKeyWord}
 						handleOrdenarToggle={this.props.handleOrdenarToggle}
+						onChangeDropdown={this.props.onChangeDropdown}
 					/>
 				</div>
 				<div>
@@ -49,6 +50,7 @@ export default class Filtros extends React.Component {
 									<FiltroHogarTemporal
 										filtros={this.props.filtros}
 										handleList={this.props.handleList}
+										handleDate={this.props.handleDate}
 									/>
 								);
 
@@ -57,6 +59,8 @@ export default class Filtros extends React.Component {
 									<FiltroAdopcion
 										filtros={this.props.filtros}
 										handleList={this.props.handleList}
+										formatDate={this.props.formatDate}
+										handleDate={this.props.handleDate}
 									/>
 								);
 

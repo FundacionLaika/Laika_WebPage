@@ -97,34 +97,45 @@ export default class FiltroGlobal extends React.Component {
 						selection
 						options={this.opcionesFiltroKeyword}
 						defaultValue={this.opcionesFiltroKeyword[0].value}
+						onChange={(event, data) =>
+							this.props.onChangeDropdown(
+								"filtroPorKeyWord",
+								data.value
+							)
+						}
 					/>
-					<div className="botonBuscar">
-						<button className="effect effect-1" type="submit">
-							<span>Buscar</span>
-						</button>
-					</div>
 				</div>
 
 				<div className="ordenarPor">
-					<span>
-						Ordenar por:{" "}
-						<Dropdown
-							inline
-							options={this.opcionesOrdenar}
-							defaultValue={this.opcionesOrdenar[0].value}
-						/>
-					</span>
+					<div className="ordenarDrop">
+						<span>
+							Ordenar por:{" "}
+							<Dropdown
+								inline
+								options={this.opcionesOrdenar}
+								defaultValue={this.opcionesOrdenar[0].value}
+								onChange={(event, data) =>
+									this.props.onChangeDropdown(
+										"ordenarPor",
+										data.value
+									)
+								}
+							/>
+						</span>
+					</div>
 
-					<button
-						className={
-							this.props.filtros.ordenarDeMenorAMayor
-								? "orderBtn orderAsc"
-								: "orderBtn orderDesc"
-						}
-						onClick={this.props.handleOrdenarToggle}
-					>
-						<i className="fa fa-sort-amount-asc"></i>
-					</button>
+					<div className="ordenarToggle">
+						<button
+							className={
+								this.props.filtros.ordenarDeMenorAMayor
+									? "orderBtn orderAsc"
+									: "orderBtn orderDesc"
+							}
+							onClick={this.props.handleOrdenarToggle}
+						>
+							<i className="fa fa-sort-amount-asc"></i>
+						</button>
+					</div>
 				</div>
 			</div>
 		);
