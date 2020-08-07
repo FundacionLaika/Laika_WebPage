@@ -1,6 +1,7 @@
 import React from "react";
 import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 import "./Styles/FiltroExpedienteMedico.css";
+import "./Styles/SubFiltros.css";
 
 export default class FiltroExpedienteMedico extends React.Component {
 	color1 = "#0052CC";

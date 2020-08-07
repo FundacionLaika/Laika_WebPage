@@ -3,12 +3,10 @@ import TarjetaGeneral from "../Tarjetas/TarjetaGeneral";
 
 export default class GridGeneral extends React.Component {
 	state = {
-		
-	
 		data: []
 	}
 
-	componentDidMount() {
+	fetchData = () => {
 		fetch("http://localhost:3001/consulta", {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
@@ -21,6 +19,14 @@ export default class GridGeneral extends React.Component {
 				});
 			})
 			.catch((err) => console.log(err));
+	}
+
+	componentDidMount() {
+		this.fetchData();
+	}
+
+	componentDidUpdate() {
+		this.fetchData();
 	}
 	
 	render() {

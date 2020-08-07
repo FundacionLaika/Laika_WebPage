@@ -168,6 +168,10 @@ export default class Consulta extends Component {
 		return [day, month, year].join("-");
 	};
 
+	componentDidUpdate() {
+		console.log("holaaaaaaaaaaaaaaa");
+	}
+
 	render() {
 		return (
 			<div className="consulta">
