@@ -24,9 +24,27 @@
 .ordenarPor {
 	grid-column: 8 / 12;
 	align-self: center;
-	display: flex;
 	align-items: center;
-	padding-left: 30%;
+	display: grid;
+	grid-auto-columns: minmax(20%, 20%);
+}
+
+.ordenarDrop {
+	grid-column: 1 / 5;
+	align-self: center;
+	align-items: center;
+	padding: 0 5% 0 50%;
+	display: grid;
+	grid-auto-columns: minmax(100%, 100%);
+
+}
+
+.ordenarToggle {
+	grid-column: 5;
+}
+
+.ordenarToggle > * {
+	float: left;
 }
 
 .dropdownBusqueda {
@@ -47,7 +65,7 @@
 	color: rgba(0, 0, 0, 0.87);
 	box-shadow: none;
 	border: 1px solid rgba(7, 131, 255, 0.15);
-	border-radius: 0;
+	border-radius: 0 1.1rem 1.1rem 0;
 	transition: box-shadow 0.1s ease, width 0.1s ease;
 	background-color: #aacfcf;
 }
@@ -65,19 +83,6 @@
 	color: rgb(58, 58, 58);
 	font-family: "Raleway";
 	font-size: 15px;
-}
-
-.botonBuscar {
-	grid-column: 6 / 10;
-	padding: 0% 0%;
-	display: flex;
-}
-
-.botonBuscar > button {
-	background-color: #679b9b;
-	height: 100%;
-	width: 60%;
-	justify-self: left;
 }
 
 .search__input {
@@ -177,12 +182,11 @@
 }
 
 .orderBtn {
-	background-color: rgb(255, 255, 255); 
 	border: none; 
 	font-size: 16px; 
 	cursor: pointer; 
 	margin: 0% 1% 0% 3%;
-	padding: 2.2% 2.2%;
+	padding: 5%;
 	color: black;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);

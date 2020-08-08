@@ -26,16 +26,8 @@ export default class FiltroHogarTemporal extends React.Component {
 				isDisabled: false,
 			},
 		],
-		fechaInicioHT: null,
-		fechaFinalHT: null,
 	};
-	/*Manejador de dates*/
-	handleDate = (fecha, name) => {
-		this.setState({
-			[name]: fecha,
-		});
-		console.log(this.state);
-	};
+
 
 	handleEvent = (selectedOption) => {
 		var stateCopy = this.state;
@@ -65,7 +57,7 @@ export default class FiltroHogarTemporal extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-home fa-fw" aria-hidden="true"></i> Tipo de Hogar Temporal{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -81,6 +73,7 @@ export default class FiltroHogarTemporal extends React.Component {
 								);
 								this.handleEvent(selectedOption);
 							}}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options, this.props.filtros.tipoHogar, false)}
 						/>
 					</div>
 				</div>
@@ -88,15 +81,15 @@ export default class FiltroHogarTemporal extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-calendar fa-fw" aria-hidden="true"></i> Rango de fecha de Hogar Temporal{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
 						<div className="fInicio">
 							<DatePicker
 								selectsStart
-								startDate={this.state.fechaInicioHT}
-								endDate={this.state.fechaFinalHT}
+								startDate={this.props.filtros.rangoFechaHT.fechaInicioHT}
+								endDate={this.props.filtros.rangoFechaHT.fechaFinalHT}
 								isClearable
 								useWeekdaysShort
 								fixedHeight
@@ -105,9 +98,9 @@ export default class FiltroHogarTemporal extends React.Component {
 								name="fechaInicioHT"
 								locale="es"
 								dateFormat="dd/MM/yyyy"
-								selected={this.state.fechaInicioHT}
+								selected={this.props.filtros.rangoFechaHT.fechaInicioHT}
 								onChange={(date) =>
-									this.handleDate(date, "fechaInicioHT")
+									this.props.handleDate(date, "rangoFechaHT", "fechaInicioHT")
 								}
 								placeholderText="Fecha Inicio"
 								customInput={
@@ -122,8 +115,8 @@ export default class FiltroHogarTemporal extends React.Component {
 						<div className="fFinal">
 							<DatePicker
 								selectsEnd
-								startDate={this.state.fechaInicioHT}
-								endDate={this.state.fechaFinalHT}
+								startDate={this.props.filtros.rangoFechaHT.fechaInicioHT}
+								endDate={this.props.filtros.rangoFechaHT.fechaFinalHT}
 								isClearable
 								useWeekdaysShort
 								fixedHeight
@@ -132,9 +125,9 @@ export default class FiltroHogarTemporal extends React.Component {
 								name="fechaFinalHT"
 								locale="es"
 								dateFormat="dd/MM/yyyy"
-								selected={this.state.fechaFinalHT}
+								selected={this.props.filtros.rangoFechaHT.fechaFinalHT}
 								onChange={(date) =>
-									this.handleDate(date, "fechaFinalHT")
+									this.props.handleDate(date, "rangoFechaHT", "fechaFinalHT")
 								}
 								placeholderText="Fecha Final"
 								customInput={

@@ -5,7 +5,7 @@ export default class GridExpedienteMedico extends React.Component {
 	state = {
 		data: []	
 	}
-	componentDidMount() {
+	fetchData = () => {
 		fetch("http://localhost:3001/consulta", {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
@@ -18,6 +18,16 @@ export default class GridExpedienteMedico extends React.Component {
 				});
 			})
 			.catch((err) => console.log(err));
+	}
+
+	componentDidMount() {
+		this.fetchData();
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props.filtros !== prevProps.filtros) {
+			this.fetchData();
+		}
 	}
 
 	render() {
@@ -43,6 +53,7 @@ export default class GridExpedienteMedico extends React.Component {
 						fechaEsterilizacion={tarjeta.FechaEsterilizacion}
 						citaAgendada={tarjeta.CitaAgendada}
 						estaEsterilizado={tarjeta.EstaEsterilizado}
+						formatDate={this.props.formatDate}
 					/>
 				))}
 			</div>

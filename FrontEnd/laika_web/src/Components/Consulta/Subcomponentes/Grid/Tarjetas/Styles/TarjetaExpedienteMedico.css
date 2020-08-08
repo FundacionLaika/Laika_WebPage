@@ -1,0 +1,79 @@
+.infoTarjetaEM {
+	grid-column: 4 / 25;
+	grid-row: 1;
+	display: grid;
+	grid-auto-columns: minmax(33.33%, 33.33%);
+	padding: 0 2% 2% 2%;
+}
+
+.diagnosticoTEM {
+	grid-column: 1;
+    grid-row: 1 / 4;
+    display: grid;
+    grid-auto-columns: minmax(40%, 40%);
+}
+
+.vacunasTEM {
+	grid-column: 2;
+    grid-row: 1 / 4;
+    display: grid;
+    grid-auto-columns: minmax(50%, 50%);
+}
+
+.esterilizadoTEM {
+	grid-column: 3;
+	grid-row: 1;
+}
+
+.citaAgendadaTEM {
+	grid-column: 3;
+	grid-row: 2;
+}
+
+.fechaEsterilizacionTEM {
+	grid-column: 3;
+	grid-row: 3;
+}
+
+.nombreSeccionT {
+    grid-column: 1;
+}
+
+.listaTEMD, .listaTEMV {
+    list-style: none;
+    grid-column: 2;
+    text-align: left;
+    padding-left: 0;
+}
+
+.listTEMD > li {
+    text-align: left;
+}
+
+.listaTEMD li::before {
+	content: "";
+	background-image: url(/diagnosis-icon3.png);
+	background-size: contain;
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	position: relative;
+	top: 0.45rem;
+    margin-right: 0.2rem;
+}
+
+.listTEMV > li {
+    text-align: left;
+}
+
+.listaTEMV li::before {
+	content: "";
+	background-image: url(/vaccine-icon.png);
+	background-size: contain;
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	position: relative;
+	top: 0.45rem;
+    margin-right: 0.2rem;
+}

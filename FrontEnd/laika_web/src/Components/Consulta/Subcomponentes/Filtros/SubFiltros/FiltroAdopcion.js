@@ -19,16 +19,6 @@ export default class FiltroAdopcion extends React.Component {
 			{ value: "referencia", label: "Referencia", color: this.color },
 			{ value: "otro", label: "Otro", color: this.color },
 		],
-		fechaInicioAdop: null,
-		fechaFinalAdop: null,
-	};
-
-	/*Manejador de dates*/
-	handleDate = (fecha, name) => {
-		this.setState({
-			[name]: fecha,
-		});
-		console.log(this.state);
 	};
 
 	render() {
@@ -39,7 +29,7 @@ export default class FiltroAdopcion extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-handshake-o fa-fw" aria-hidden="true"></i> Medio de Adopción{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -54,6 +44,8 @@ export default class FiltroAdopcion extends React.Component {
 									true
 								)
 							}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options, this.props.filtros.medioAdopcion, true)}
+
 						/>
 					</div>
 				</div>
@@ -61,15 +53,15 @@ export default class FiltroAdopcion extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-calendar fa-fw" aria-hidden="true"></i> Rango de fecha de Adopción{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
 						<div className="fInicio">
 							<DatePicker
 								selectsStart
-								startDate={this.state.fechaInicioAdop}
-								endDate={this.state.fechaFinalAdop}
+								startDate={this.props.filtros.rangoFechaAdopcion.fechaInicioAdop}
+								endDate={this.props.filtros.rangoFechaAdopcion.fechaFinalAdop}
 								isClearable
 								useWeekdaysShort
 								fixedHeight
@@ -78,9 +70,9 @@ export default class FiltroAdopcion extends React.Component {
 								name="fechaInicioAdop"
 								locale="es"
 								dateFormat="dd/MM/yyyy"
-								selected={this.state.fechaInicioAdop}
+								selected={this.props.filtros.rangoFechaAdopcion.fechaInicioAdop}
 								onChange={(date) =>
-									this.handleDate(date, "fechaInicioAdop")
+									this.props.handleDate(date, "rangoFechaAdopcion", "fechaInicioAdop")
 								}
 								placeholderText="Fecha Inicio"
 								customInput={
@@ -94,8 +86,8 @@ export default class FiltroAdopcion extends React.Component {
 						<div className="fFinal">
 							<DatePicker
 								selectsEnd
-								startDate={this.state.fechaInicioAdop}
-								endDate={this.state.fechaFinalAdop}
+								startDate={this.props.filtros.rangoFechaAdopcion.fechaInicioAdop}
+								endDate={this.props.filtros.rangoFechaAdopcion.fechaFinalAdop}
 								isClearable
 								useWeekdaysShort
 								fixedHeight
@@ -104,9 +96,9 @@ export default class FiltroAdopcion extends React.Component {
 								name="fechaFinalAdop"
 								locale="es"
 								dateFormat="dd/MM/yyyy"
-								selected={this.state.fechaFinalAdop}
+								selected={this.props.filtros.rangoFechaAdopcion.fechaFinalAdop}
 								onChange={(date) =>
-									this.handleDate(date, "fechaFinalAdop")
+									this.props.handleDate(date, "rangoFechaAdopcion", "fechaFinalAdop")
 								}
 								placeholderText="Fecha Final"
 								customInput={

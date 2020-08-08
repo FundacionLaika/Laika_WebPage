@@ -137,7 +137,7 @@ export default class Consulta extends Component {
 		});
 	};
 
-	concatDate = (calle, numero, colonia, municipio) => {
+	concatAddress = (calle, numero, colonia, municipio) => {
 		var direccion = "";
 		if (calle.length) direccion += calle;
 		if (numero.length && calle.length) direccion += " #" + numero;
@@ -152,9 +152,35 @@ export default class Consulta extends Component {
 			{
 				ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor,
 			},
-			console.log(this.state.ordenarDeMenorAMayor)
+			console.log(this.state)
 		);
 	};
+
+	formatDate = (date) => {
+		var d = new Date(date),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
+			year = d.getFullYear();
+
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+
+		return [day, month, year].join("-");
+	};
+
+	handleDate = (fecha, filterName, dateName) => {
+		this.setState(
+			Object.assign(this.state[filterName], {
+				[dateName]: (fecha === null ? "" : fecha),
+			})
+		);
+	};
+
+	onChangeDropdown = (name, value) => {
+		this.setState({
+			[name]: value
+		});
+	}
 
 	render() {
 		return (
@@ -165,13 +191,16 @@ export default class Consulta extends Component {
 					handleList={this.handleList}
 					handleKeyWord={this.handleKeyWord}
 					handleOrdenarToggle={this.handleOrdenarToggle}
+					handleDate={this.handleDate}
+					onChangeDropdown={this.onChangeDropdown}
 				/>
 
 				<GridConsulta
 					className="gridConsulta"
 					tarjeta={this.state.tarjeta}
-					concatDate={this.concatDate}
+					concatAddress={this.concatAddress}
 					filtros={this.state}
+					formatDate={this.formatDate}
 				/>
 			</div>
 		);

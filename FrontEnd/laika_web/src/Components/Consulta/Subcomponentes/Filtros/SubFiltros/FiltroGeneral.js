@@ -7,6 +7,7 @@ export default class FiltroGeneral extends React.Component {
 	color1 = "#FF5630";
 	color2 = "#B6E124";
 	color3 = "#24E1AD";
+
 	state = {
 		options1: [
 			{
@@ -111,6 +112,7 @@ export default class FiltroGeneral extends React.Component {
 								);
 								this.handleEvent(selectedOption);
 							}}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options1, this.props.filtros.genero, false)}
 						/>
 					</div>
 				</div>
@@ -139,6 +141,8 @@ export default class FiltroGeneral extends React.Component {
 								);
 								this.handleEvent(selectedOption);
 							}}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options2, this.props.filtros.especie, true)}
+
 						/>
 					</div>
 				</div>
@@ -148,7 +152,7 @@ export default class FiltroGeneral extends React.Component {
 						<span>
 							{" "}
 							<i
-								className="fa fa-legal fa-fw"
+								className="fa fa-info-circle fa-fw"
 								aria-hidden="true"
 							></i>{" "}
 							Estatus{" "}
@@ -167,6 +171,7 @@ export default class FiltroGeneral extends React.Component {
 								);
 								this.handleEvent(selectedOption);
 							}}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options3, this.props.filtros.estatus, true)}
 						/>
 					</div>
 				</div>

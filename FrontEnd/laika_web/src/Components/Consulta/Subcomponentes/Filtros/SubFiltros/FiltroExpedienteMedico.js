@@ -1,6 +1,7 @@
 import React from "react";
 import MultiSelectList from "../../../../SharedComponents/MultiSelectList";
 import "./Styles/FiltroExpedienteMedico.css";
+import "./Styles/SubFiltros.css";
 
 export default class FiltroExpedienteMedico extends React.Component {
 	color1 = "#0052CC";
@@ -72,7 +73,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-medkit fa-fw" aria-hidden="true"></i> Vacunas Recibidas{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -87,6 +88,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 									true
 								)
 							}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options1, this.props.filtros.vacunas, true)}
 						/>
 					</div>
 				</div>
@@ -94,7 +96,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-user-md fa-fw" aria-hidden="true"></i> Esterilizado{" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -110,6 +112,8 @@ export default class FiltroExpedienteMedico extends React.Component {
 								);
 								this.handleEvent(selectedOption);
 							}}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options2, this.props.filtros.esterilizado, false)}
+
 						/>
 					</div>
 				</div>
@@ -117,7 +121,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 					<div className="nombreFiltro">
 						<span>
 							{" "}
-							<i className="fa fa-venus-mars fa-fw" aria-hidden="true"></i> Género{" "}
+							<i className="fa fa-stethoscope fa-fw" aria-hidden="true"></i> Diagnóstico {" "}
 						</span>
 					</div>
 					<div className="multiselectFiltro">
@@ -132,6 +136,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 									true
 								)
 							}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options3, this.props.filtros.diagnostico, true)}
 						/>
 					</div>
 				</div>

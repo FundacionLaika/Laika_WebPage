@@ -1,20 +1,26 @@
 .filtroExpedienteMedico {
     display: grid;
-    grid-auto-columns: minmax(calc(100%/14), calc(100%/14));
-}
-
-.filtroVacunas {
-    grid-column: 1 / 11;
-}
-
-.filtroEsterilizado {
-    padding-left: 5%;
-    grid-column: 11 / 15;
+    grid-auto-columns: minmax(calc(100%/7), calc(100%/3));
+    grid-column-gap: 1em;
+    padding-right: 7.5%;
 
 }
 
 .filtroDiagnostico {
-    grid-column: 1 / 11;
-    grid-row: 2;
-    padding-top: 1%;
+    grid-column: 1 / 4;
+    grid-row: 1;
 }
+
+
+.filtroVacunas {
+    grid-column: 4 / 7;
+    grid-row: 1;
+
+}
+
+.filtroEsterilizado {
+    grid-column: 7;
+    grid-row: 1;
+
+}
+

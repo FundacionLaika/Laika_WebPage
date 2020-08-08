@@ -6,7 +6,7 @@ export default class GridHogarTemporal extends React.Component {
 		data: []
 	}
 	
-	componentDidMount() {
+	fetchData = () => {
 		fetch("http://localhost:3001/consulta", {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
@@ -19,6 +19,16 @@ export default class GridHogarTemporal extends React.Component {
 				});
 			})
 			.catch((err) => console.log(err));
+	}
+
+	componentDidMount() {
+		this.fetchData();
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props.filtros !== prevProps.filtros) {
+			this.fetchData();
+		}
 	}
 
 	render() {
@@ -37,7 +47,8 @@ export default class GridHogarTemporal extends React.Component {
 						numero={tarjeta.NumeroHT}
 						colonia={tarjeta.ColoniaHT}
 						municipio={tarjeta.MunicipioHT}
-						concatDate={this.props.concatDate}
+						concatAddress={this.props.concatAddress}
+						formatDate={this.props.formatDate}
 					/>
 				))}
 			</div>

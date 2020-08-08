@@ -1,28 +1,19 @@
 import React from "react";
 import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
 import "./Styles/TarjetaGeneral.css";
+import "./Styles/Tarjeta.css";
 import BotonPDF from "../../../../SharedComponents/BotonPDF.js";
 
 export default class TGarjetaGeneral extends React.Component {
-	formatDate = (date) => {
-		var d = new Date(date),
-			month = "" + (d.getMonth() + 1),
-			day = "" + d.getDate(),
-			year = d.getFullYear();
-
-		if (month.length < 2) month = "0" + month;
-		if (day.length < 2) day = "0" + day;
-
-		return [day, month, year].join("-");
-	};
+	
 	render() {
 		return (
-			<div className="tarjetaGeneral">
+			<div className="tarjeta">
 				<div className="fotoFrame">
-					<div className="fotoTG">
+					<div className="fotoT">
 						<FotoFrame />
 					</div>
-					<div className="idTG">
+					<div className="idT">
 						<div className="idIconT">
 							<img src="/icon-id-2.png" alt="" />
 						</div>
@@ -59,8 +50,9 @@ export default class TGarjetaGeneral extends React.Component {
 					</div>
 					<div className="estatusTG">
 						<i
+							style={{fontSize: "1.2em"}}
 							aria-hidden="true"
-							className="fa fa-legal fa-fw iconoTarjeta"
+							className="fa fa-info-circle fa-fw iconoTarjeta"
 						></i>
 						<span className="nombreCampo"> Estatus: </span>
 						<span className="campoData">{this.props.estatus}</span>
@@ -82,7 +74,7 @@ export default class TGarjetaGeneral extends React.Component {
 						></i>
 						<span className="nombreCampo"> Fecha de Rescate: </span>
 						<span className="campoData">
-							{this.formatDate(this.props.fechaRescate)}
+							{this.props.formatDate(this.props.fechaRescate)}
 						</span>
 					</div>
 					<div className="direccionTG">
@@ -92,7 +84,7 @@ export default class TGarjetaGeneral extends React.Component {
 						></i>
 						<span className="nombreCampo"> Dirección: </span>
 						<span className="campoData">
-							{this.props.concatDate(
+							{this.props.concatAddress(
 								this.props.calle,
 								this.props.numero,
 								this.props.colonia,
@@ -111,7 +103,7 @@ export default class TGarjetaGeneral extends React.Component {
 							{this.props.rescatistas}
 						</span>
 					</div>
-					<div className="senasParticularesTG">
+					<div className="senasParticularesT">
 						<i
 							aria-hidden="true"
 							className="fa fa-bookmark fa-fw iconoTarjeta"

@@ -91,17 +91,30 @@ const handleConsultaPost = (req, res, db) => {
 		estatus: "ar.Estatus",
 		especie: "ar.Especie",
 		nombreRescatado: "ar.Nombre",
-		id: "ar.ID_Animal",
 		fechaAdopcion: "adop.Fecha_Adopcion",
+		nombreAdoptado: "adop.NombreAdoptado",
+		nombreAdoptante: "adte.Nombre",
+		nombreResponsable: "ht.Responsable",
 		macho: "Macho",
 		hembra: "Hembra",
 		"0": false,
 		"1": true,
 		SI: "1",
+		SÍ: "1",
 		NO: "0",
 		true: "1",
 		false: "0",
 	};
+
+	const object2Array = (objectTemp) => {
+		var arrayTemp = [];
+		for (let e in objectTemp) {
+			if (objectTemp[e] === "1") {
+				arrayTemp.push("'" + e.toUpperCase() + "'");
+			}
+		}
+		return arrayTemp;
+	}
 
 	const {
 		tarjeta,
@@ -130,15 +143,29 @@ const handleConsultaPost = (req, res, db) => {
 	}
 
 	if (ordenarPor.length) {
-		orderBy = "ORDER BY " + hashTable[ordenarPor] + ";";
-		if (ordenarDeMenorAMayor.length) {
-			orderBy += (ordenarDeMenorAMayor === "true") ? "ASC" : "DESC";
-		}
+		orderBy = "ORDER BY " + hashTable[ordenarPor] + " ";
+
+		orderBy += (ordenarDeMenorAMayor) ? "ASC" : "DESC";
+		
 		orderBy += ";";
 	}
 
 	if (genero.length) {
 		filterConditions += "AND ar.Genero = '" + genero.toUpperCase() + "' ";
+	}
+
+	if (especie) {
+		const especieFiltrada = object2Array(especie);
+		filterConditions += especieFiltrada.length
+			? "AND UPPER(ar.Especie) in (" + especieFiltrada.toString() + ") "
+			: "";
+	}
+
+	if (estatus) {
+		const estatusFiltrado = object2Array(estatus);
+		filterConditions += estatusFiltrado.length
+			? "AND REPLACE(UPPER(ar.Estatus), ' ', '') in (" + estatusFiltrado.toString() + ") "
+			: "";
 	}
 
 	if (vacunas) {
@@ -202,42 +229,37 @@ const handleConsultaPost = (req, res, db) => {
 
 	if (rangoFechaHT.fechaInicioHT.length) {
 		filterConditions +=
-			"AND DATE_FORMAT(ht.FechaInicio , '%Y-%m-%d') >= '" +
+			"AND DATE_FORMAT(ht.FechaInicio , '%Y-%m-%d') >=  DATE_FORMAT('" +
 			rangoFechaHT.fechaInicioHT +
-			"' ";
+			"' , '%Y-%m-%d') ";
 	}
 
 	if (rangoFechaHT.fechaFinalHT.length) {
 		filterConditions +=
-			"AND DATE_FORMAT(ht.FechaFinal , '%Y-%m-%d') <= '" +
+			"AND DATE_FORMAT(ht.FechaFinal , '%Y-%m-%d') <=  DATE_FORMAT('" +
 			rangoFechaHT.fechaFinalHT +
-			"' ";
+			"' , '%Y-%m-%d') ";
 	}
 
 	if (medioAdopcion) {
-		var mediosFiltrados = [];
-		for (let medio in medioAdopcion) {
-			if (medioAdopcion[medio] === "1") {
-				mediosFiltrados.push("'" + medio + "'");
-			}
-		}
+		const mediosFiltrados =  object2Array(medioAdopcion); 
 		filterConditions += mediosFiltrados.length
-			? "AND adop.Medio in (" + mediosFiltrados.toString() + ") "
+			? "AND UPPER(adop.Medio) in (" + mediosFiltrados.toString() + ") "
 			: "";
 	}
 
 	if (rangoFechaAdopcion.fechaInicioAdop.length) {
 		filterConditions +=
-			"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') >= '" +
+			"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') >=  DATE_FORMAT('" +
 			rangoFechaAdopcion.fechaInicioAdop +
-			"' ";
+			"' , '%Y-%m-%d') ";
 	}
 
 	if (rangoFechaAdopcion.fechaFinalAdop.length) {
 		filterConditions +=
-			"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') <= '" +
+			"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') <=  DATE_FORMAT('" +
 			rangoFechaAdopcion.fechaFinalAdop +
-			"' ";
+			"' , '%Y-%m-%d') ";
 	}
 
 	db.raw(

@@ -1,0 +1,130 @@
+.tarjeta {
+    margin: 0 0 2% 0;
+    display: grid;
+    grid-auto-columns: minmax(4%, 4%);
+    box-shadow: 6px 6px 21px 0px rgba(0,0,0,0.19);
+    border-radius: .9rem;
+    width: 100;
+}
+
+.tarjeta:hover {
+    transform: scale(1.01, 1.01);
+    transition: 0.3s;
+}
+
+.fotoFrame {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    display: grid;
+    grid-auto-columns: minmax(100%, 100%);
+}
+
+.fotoT {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 2vh;
+    /* margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content; */
+}
+
+
+.idT {
+    grid-column: 1;
+    grid-row: 2;
+    align-items: center;
+    align-content: center;
+}
+
+
+.idIconT {
+
+    float: left;
+    padding: 2vh 0 1vh 35%;
+
+}
+
+.idIconT > img {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+
+.iconoTarjeta {
+    float: left;
+    font-size: 1em;
+    padding: 2.2vh 0 0 0;
+    font-family: "Raleway";
+
+}
+
+.nombreCampo {
+    color: blue;
+    float: left;
+    padding: 2vh 0 0 1vh;
+    font-family: "Raleway";
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.campoData {
+    color: rgb(49, 49, 73);
+    float: left;
+    padding: 2vh 0 0 2vh;
+    font-family: "Raleway";
+    font-size: 1em;
+}
+
+.panelConfiguracionT {
+    grid-column: 25;
+    grid-row: 1;
+    display: grid;
+    grid-auto-columns: minmax(100%, 100%);
+    grid-auto-rows: minmax(33.3%, 33.3%);
+    align-content: center;
+}
+
+.editarTarjeta {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 2vh 20% 0 0vh;
+    font-size: 1.75em;
+    color: #1ba3bbbd;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none !important;
+    border:0px solid rgb(196, 196, 196); 
+}
+
+.editarTarjeta:hover {
+    font-size: 2.25em;
+    color: #1ba3bb;
+    font-weight: bold;
+}
+
+.generarPDFTarjeta {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 2vh 20% 0 0vh;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #f40e02be;
+    background-color: transparent;
+    outline: none !important;
+    border:0px solid rgb(196, 196, 196); 
+
+
+}
+
+.generarPDFTarjeta:hover {
+    font-size: 2.25em;
+    color: #f40e02;
+    font-weight: bold;
+}
+

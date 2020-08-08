@@ -65,7 +65,6 @@ export default class MultiSelectList extends React.Component {
 					classNamePrefix="select"
 					isClearable
 					isSearchable
-					autoFocus
 					name="color"
 					isMulti
 					closeMenuOnSelect={false}
