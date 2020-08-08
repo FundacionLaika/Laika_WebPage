@@ -44,6 +44,8 @@ export default class FiltroAdopcion extends React.Component {
 									true
 								)
 							}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options, this.props.filtros.medioAdopcion, true)}
+
 						/>
 					</div>
 				</div>

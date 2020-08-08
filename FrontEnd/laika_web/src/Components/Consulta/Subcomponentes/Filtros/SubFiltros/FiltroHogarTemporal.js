@@ -73,6 +73,7 @@ export default class FiltroHogarTemporal extends React.Component {
 								);
 								this.handleEvent(selectedOption);
 							}}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options, this.props.filtros.tipoHogar, false)}
 						/>
 					</div>
 				</div>

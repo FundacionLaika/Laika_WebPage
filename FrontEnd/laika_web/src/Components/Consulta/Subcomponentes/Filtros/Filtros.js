@@ -9,6 +9,20 @@ import "../../Styles/Consulta.css";
 import "./SubFiltros/Styles/SubFiltros.css";
 
 export default class Filtros extends React.Component {
+	handleMultiSelectDefaultValues = (options, filter, isMultiSelect) => {
+		var arrayFilter = [];
+
+		if (isMultiSelect) {
+			options.forEach(element => {
+				if (filter[element.value] === "1") arrayFilter.push(element)
+			});
+		} 
+		else {
+			arrayFilter = options.filter(option => option.value === filter);
+		}
+		return arrayFilter;
+	}
+
 	render() {
 		return (
 			<div className="filtros">
@@ -34,6 +48,7 @@ export default class Filtros extends React.Component {
 									<FiltroGeneral
 										filtros={this.props.filtros}
 										handleList={this.props.handleList}
+										handleMultiSelectDefaultValues={this.handleMultiSelectDefaultValues}
 									/>
 								);
 
@@ -42,6 +57,7 @@ export default class Filtros extends React.Component {
 									<FiltroExpedienteMedico
 										filtros={this.props.filtros}
 										handleList={this.props.handleList}
+										handleMultiSelectDefaultValues={this.handleMultiSelectDefaultValues}
 									/>
 								);
 
@@ -51,6 +67,7 @@ export default class Filtros extends React.Component {
 										filtros={this.props.filtros}
 										handleList={this.props.handleList}
 										handleDate={this.props.handleDate}
+										handleMultiSelectDefaultValues={this.handleMultiSelectDefaultValues}
 									/>
 								);
 
@@ -61,6 +78,7 @@ export default class Filtros extends React.Component {
 										handleList={this.props.handleList}
 										formatDate={this.props.formatDate}
 										handleDate={this.props.handleDate}
+										handleMultiSelectDefaultValues={this.handleMultiSelectDefaultValues}
 									/>
 								);
 

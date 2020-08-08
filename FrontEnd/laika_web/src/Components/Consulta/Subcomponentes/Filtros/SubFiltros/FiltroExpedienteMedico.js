@@ -88,6 +88,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 									true
 								)
 							}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options1, this.props.filtros.vacunas, true)}
 						/>
 					</div>
 				</div>
@@ -111,6 +112,8 @@ export default class FiltroExpedienteMedico extends React.Component {
 								);
 								this.handleEvent(selectedOption);
 							}}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options2, this.props.filtros.esterilizado, false)}
+
 						/>
 					</div>
 				</div>
@@ -133,6 +136,7 @@ export default class FiltroExpedienteMedico extends React.Component {
 									true
 								)
 							}
+							defaultValue={this.props.handleMultiSelectDefaultValues(this.state.options3, this.props.filtros.diagnostico, true)}
 						/>
 					</div>
 				</div>
