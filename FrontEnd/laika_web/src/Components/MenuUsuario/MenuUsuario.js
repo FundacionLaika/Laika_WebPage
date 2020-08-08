@@ -48,8 +48,17 @@ class MenuUsuario extends Component {
                             })
                         );
                     }
+                    if (usuarios[i].Foto !== null) {
+                        // console.log(usuarios[i].Foto);
+                        // this.setState(
+                        //     Object.assign(this.state.usuario, {
+                        //         fotoPerfil: usuarios[i].Foto.data,
+                        //     })
+                        // );
+                    }
                 }
                 if (usuarios) {
+                    usuarios = Array.from(usuarios);
                     this.setState({
                         usuarios: usuarios,
                     });
@@ -58,7 +67,6 @@ class MenuUsuario extends Component {
     }
 
     actualizarUsuarios() {
-        console.log("Actualizando y agus es bien gei");
         fetch("http://localhost:3001/usuarios", {
             method: "get",
             headers: { "Content-Type": "application/json" },
@@ -122,7 +130,6 @@ class MenuUsuario extends Component {
                 })
                     .then((response) => response.json())
                     .then((resp) => {
-                        console.log(resp);
                         this.setState(
                             Object.assign(this.state.usuario, {
                                 contrasena: resp,
@@ -148,8 +155,29 @@ class MenuUsuario extends Component {
                         fotoPerfil: reader.result,
                     })
                 );
+                console.log(this.state.usuario.fotoPerfil);
+
+                fetch("http://localhost:3001/subirImagenPerfil", {
+                    method: "put",
+                    headers: { "Content-Type": "application/json" },
+                    body: {
+                        correo: JSON.stringify(this.state.usuario.correo),
+                        foto: this.state.usuario.fotoPerfil,
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((resp) => {
+                        console.log(resp);
+                        this.setState(
+                            Object.assign(this.state.usuario, {
+                                fotoPerfil: resp,
+                            })
+                        );
+                    });
             }
         };
+        console.log("reader: ", this.state.usuario.fotoPerfil);
+        console.log("file: ", event.target.files[0]);
         reader.readAsDataURL(event.target.files[0]);
     };
 
