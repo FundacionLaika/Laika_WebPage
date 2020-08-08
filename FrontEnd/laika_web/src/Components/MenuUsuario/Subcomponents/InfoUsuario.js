@@ -8,6 +8,7 @@ export default class InfoUsuario extends React.Component {
                 <h2 className="f4 b">Información del usuario</h2>
                 <Foto
                     id="fotoDefault"
+                    name="foto"
                     foto={this.props.fotoPerfil}
                     imageHandler={this.props.imageHandler}
                 />
