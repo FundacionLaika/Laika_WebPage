@@ -45,6 +45,7 @@ class App extends React.Component {
 					{/* <ProtectedRoute path="/" render={() => <MenuBar />} /> */}
 
 					<Route path="/Laika" render={() => <MenuBar />} />
+
 					<Switch>
 						{/* El Switch solo hara render de un componente a la vez */}
 						{/*Login es la primera página mostrada*/}

@@ -14,12 +14,13 @@ import HogarTemporalPDF from "./HogarTemporalPDF";
 import AdopcionPDF from "./AdopcionPDF";
 
 class DocumentoPDF extends React.Component {
-	state = {
-		DatosGenerales: false,
-		ExpedienteMedico: false,
-		HogarTemporal: false,
-		Adopcion: false,
+	static state = {
+		datosGenerales: false,
+		expedienteMedico: false,
+		hogarTemporal: false,
+		adopcion: false,
 	};
+	
 	render() {
 		return (
 			<div style={{ height: "100vh" }}>
@@ -37,16 +38,16 @@ class DocumentoPDF extends React.Component {
 							<Text style={styles.author}>Agustín ID:20</Text>
 						</Page>
 						<Page style={styles.body}>
-							{this.state.DatosGenerales === true ? (
+							{DocumentoPDF.state.datosGenerales === true ? (
 								<DatosGeneralesPDF />
 							) : null}
-							{this.state.ExpedienteMedico === true ? (
+							{DocumentoPDF.state.expedienteMedico === true ? (
 								<ExpedienteMedicoPDF />
 							) : null}
-							{this.state.HogarTemporal === true ? (
+							{DocumentoPDF.state.hogarTemporal === true ? (
 								<HogarTemporalPDF />
 							) : null}
-							{this.state.Adopcion === true ? (
+							{DocumentoPDF.state.adopcion === true ? (
 								<AdopcionPDF />
 							) : null}
 
