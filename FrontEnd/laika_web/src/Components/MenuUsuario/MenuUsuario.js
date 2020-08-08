@@ -29,7 +29,6 @@ class MenuUsuario extends Component {
     }
 
     componentDidMount() {
-        console.log("Mounting");
         fetch("http://localhost:3001/usuarios", {
             method: "get",
             headers: { "Content-Type": "application/json" },
@@ -42,15 +41,38 @@ class MenuUsuario extends Component {
                             Object.assign(this.state.usuario, {
                                 nombre: usuarios[i].Nombre,
                                 apellido: usuarios[i].Apellidos,
-                                correo: usuarios[i].Nombre,
+                                correo: usuarios[i].Correo,
                                 contrasena: usuarios[i].Contrasena,
                                 fotoPerfil: "/iconoPerro.png",
                                 rol: usuarios[i].Rol,
                             })
                         );
-                        console.log(usuarios[i].Correo);
+                    }
+                    if (usuarios[i].Foto !== null) {
+                        // console.log(usuarios[i].Foto);
+                        // this.setState(
+                        //     Object.assign(this.state.usuario, {
+                        //         fotoPerfil: usuarios[i].Foto.data,
+                        //     })
+                        // );
                     }
                 }
+                if (usuarios) {
+                    usuarios = Array.from(usuarios);
+                    this.setState({
+                        usuarios: usuarios,
+                    });
+                }
+            });
+    }
+
+    actualizarUsuarios() {
+        fetch("http://localhost:3001/usuarios", {
+            method: "get",
+            headers: { "Content-Type": "application/json" },
+        })
+            .then((response) => response.json())
+            .then((usuarios) => {
                 if (usuarios) {
                     this.setState({
                         usuarios: usuarios,
@@ -70,12 +92,52 @@ class MenuUsuario extends Component {
             this.setState({
                 [event.target.name]: true,
             });
-            this.validateCorreo();
+            let esValido = this.validateCorreo();
+
+            if (esValido) {
+                fetch("http://localhost:3001/cambiarCorreo", {
+                    method: "put",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        correo: this.state.usuario.correo,
+                        correoNuevo: this.state.correoNuevo,
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((resp) => {
+                        this.setState(
+                            Object.assign(this.state.usuario, {
+                                correo: resp,
+                            })
+                        );
+                    });
+                this.actualizarUsuarios();
+            }
         } else if (event.target.name === "cambiosContrasena") {
             this.setState({
                 [event.target.name]: true,
             });
-            this.validateContra();
+            let esValido = this.validateContra();
+
+            if (esValido) {
+                fetch("http://localhost:3001/cambiarContrasena", {
+                    method: "put",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        correo: this.state.usuario.correo,
+                        contrasena: this.state.contrasenaNueva,
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((resp) => {
+                        this.setState(
+                            Object.assign(this.state.usuario, {
+                                contrasena: resp,
+                            })
+                        );
+                    });
+                this.actualizarUsuarios();
+            }
         } else {
             auth.logout(() => {
                 this.props.history.push("/");
@@ -93,8 +155,29 @@ class MenuUsuario extends Component {
                         fotoPerfil: reader.result,
                     })
                 );
+                console.log(this.state.usuario.fotoPerfil);
+
+                fetch("http://localhost:3001/subirImagenPerfil", {
+                    method: "put",
+                    headers: { "Content-Type": "application/json" },
+                    body: {
+                        correo: JSON.stringify(this.state.usuario.correo),
+                        foto: this.state.usuario.fotoPerfil,
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((resp) => {
+                        console.log(resp);
+                        this.setState(
+                            Object.assign(this.state.usuario, {
+                                fotoPerfil: resp,
+                            })
+                        );
+                    });
             }
         };
+        console.log("reader: ", this.state.usuario.fotoPerfil);
+        console.log("file: ", event.target.files[0]);
         reader.readAsDataURL(event.target.files[0]);
     };
 
@@ -102,7 +185,20 @@ class MenuUsuario extends Component {
         let errorCorreo = "";
         let errorConfirmarCorreo = "";
 
-        console.log("Cambios correo");
+        //si un mensaje fue actualiza se actualizara sus estados para poder mostrarlos o quitarlos de la tarjeta de registro
+        if (errorCorreo || errorConfirmarCorreo) {
+            this.setState({
+                errorCorreo,
+                errorConfirmarCorreo,
+            });
+            return false;
+        } else {
+            this.setState({
+                errorCorreo: "",
+                errorConfirmarCorreo: "",
+            });
+        }
+
         if (!this.state.correoNuevo) errorCorreo = "Introduzca un correo";
 
         if (!this.state.confirmarCorreo)
@@ -115,30 +211,26 @@ class MenuUsuario extends Component {
             errorCorreo = "Los correos no son iguales";
             errorConfirmarCorreo = "Los correos no son iguales";
         } else {
-            this.setState(
-                Object.assign(this.state.usuario, {
-                    correo: this.state.correoNuevo,
-                })
-            );
-        }
-
-        //si un mensaje fue actualiza se actualizara sus estados para poder mostrarlos o quitarlos de la tarjeta de registro
-        if (errorCorreo || errorConfirmarCorreo) {
-            this.setState({
-                errorCorreo,
-                errorConfirmarCorreo,
-            });
-        } else {
-            this.setState({
-                errorCorreo: "",
-                errorConfirmarCorreo: "",
-            });
+            return true;
         }
     };
 
     validateContra = () => {
         let errorContrasena = "";
         let errorConfirmarContrasena = "";
+
+        if (errorContrasena || errorConfirmarContrasena) {
+            this.setState({
+                errorContrasena,
+                errorConfirmarContrasena,
+            });
+            return false;
+        } else {
+            this.setState({
+                errorContrasena: "",
+                errorConfirmarContrasena: "",
+            });
+        }
 
         if (!this.state.contrasenaNueva)
             errorContrasena = "Introduzca un correo";
@@ -153,26 +245,10 @@ class MenuUsuario extends Component {
             errorContrasena = "Los correos no son iguales";
             errorConfirmarContrasena = "Los correos no son iguales";
         } else {
-            this.setState(
-                Object.assign(this.state.usuario, {
-                    contrasena: this.state.contrasenaNueva,
-                })
-            );
+            return true;
         }
 
         //si un mensaje fue actualiza se actualizara sus estados para poder mostrarlos o quitarlos de la tarjeta de registro
-        if (errorContrasena || errorConfirmarContrasena) {
-            this.setState({
-                errorContrasena,
-                errorConfirmarContrasena,
-            });
-        } else {
-            this.setState({
-                errorContrasena: "",
-                errorConfirmarContrasena: "",
-            });
-        }
-        console.log(this.state);
     };
 
     addRow = (event) => {
@@ -196,9 +272,10 @@ class MenuUsuario extends Component {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 ID_Usuario: id,
+                cuentaPropia: this.state.usuario.correo,
             }),
         }).then((response) => response.json());
-        this.componentDidMount();
+        this.actualizarUsuarios();
     };
 
     modifyRow = (event) => {
@@ -258,6 +335,7 @@ class MenuUsuario extends Component {
 
                             <UsuarioGrid
                                 data={this.state.usuarios}
+                                cuentaPropia={this.state.usuario.correo}
                                 modifyRow={this.modifyRow}
                                 addRow={this.addRow}
                                 deleteRow={this.deleteRow}

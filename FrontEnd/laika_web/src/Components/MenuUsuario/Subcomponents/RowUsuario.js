@@ -11,59 +11,78 @@ export default class RowUsuario extends React.Component {
     };
 
     handleEliminarUsuario = (event) => {
-        // window.alert("Seguro que quieres eliminar el usuario");
-        const conf = window.confirm("Desea eliminar la cuenta");
-        if (conf) {
-            this.props.deleteRow();
+        console.log(this.props.cuentaPropia);
+        console.log(this.state.correo);
+        if (this.props.cuentaPropia !== this.state.correo) {
+            const conf = window.confirm("Desea eliminar la cuenta");
+            if (conf) this.props.deleteRow();
         } else {
-            console.log("Not today");
+            window.alert("No puede eliminar su propia cuenta");
         }
     };
 
     render() {
         return (
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                <input
-                    id={this.props.id}
-                    type="text"
-                    name="nombre"
-                    value={this.props.nombre}
-                    onChange={this.props.handleChange}
-                    placeholder="Nombre"
-                />
-                <input
-                    id={this.props.id}
-                    type="text"
-                    name="apellido"
-                    value={this.props.apellido}
-                    onChange={this.props.handleChange}
-                    placeholder="Apellido"
-                />
-                <input
-                    id={this.props.id}
-                    type="text"
-                    name="correo"
-                    value={this.props.correo}
-                    onChange={this.props.handleChange}
-                    placeholder="Correo"
-                />
-                <input
-                    id={this.props.id}
-                    type="text"
-                    name="contrasena"
-                    value={this.props.contrasena}
-                    onChange={this.props.handleChange}
-                    placeholder="Contraseña"
-                />
-                <input
-                    id={this.props.id}
-                    type="text"
-                    name="rol"
-                    value={this.props.rol}
-                    onChange={this.props.handleChange}
-                    placeholder="Rol"
-                />
-                <button onClick={this.handleEliminarUsuario}>-</button>
+            <div className="rowDG">
+                <div className="dg-col1">
+                    <textarea
+                        id={this.props.id}
+                        type="text"
+                        name="nombre"
+                        value={this.props.nombre}
+                        onChange={this.props.handleChange}
+                        placeholder="Nombre"
+                    />
+                </div>
+                <div className="dg-col2">
+                    <textarea
+                        id={this.props.id}
+                        type="text"
+                        name="apellido"
+                        value={this.props.apellido}
+                        onChange={this.props.handleChange}
+                        placeholder="Apellido"
+                    />
+                </div>
+                <div className="dg-col3">
+                    <textarea
+                        id={this.props.id}
+                        type="text"
+                        name="correo"
+                        value={this.props.correo}
+                        onChange={this.props.handleChange}
+                        placeholder="Correo"
+                    />
+                </div>
+                <div className="dg-col4">
+                    <textarea
+                        id={this.props.id}
+                        type="text"
+                        name="contrasena"
+                        value={this.props.contrasena}
+                        onChange={this.props.handleChange}
+                        placeholder="Contraseña"
+                    />
+                </div>
+                <div className="dg-col5">
+                    <textarea
+                        id={this.props.id}
+                        type="text"
+                        name="rol"
+                        value={this.props.rol}
+                        onChange={this.props.handleChange}
+                        placeholder="Rol"
+                    />
+                </div>
+
+                <div className="botonBorrarDG">
+                    <button onClick={this.handleEliminarUsuario}>
+                        <i
+                            className="fa fa-times-circle"
+                            aria-hidden="true"
+                        ></i>
+                    </button>
+                </div>
             </div>
         );
     }
