@@ -14,6 +14,12 @@ import HogarTemporalPDF from "./HogarTemporalPDF";
 import AdopcionPDF from "./AdopcionPDF";
 
 class DocumentoPDF extends React.Component {
+	state = {
+		DatosGenerales: false,
+		ExpedienteMedico: false,
+		HogarTemporal: false,
+		Adopcion: false,
+	};
 	render() {
 		return (
 			<div style={{ height: "100vh" }}>
@@ -29,15 +35,25 @@ class DocumentoPDF extends React.Component {
 							/>
 							<Text style={styles.title}>Expedientes</Text>
 							<Text style={styles.author}>Agustín ID:20</Text>
-							<DatosGeneralesPDF />
-							<ExpedienteMedicoPDF />
-							<HogarTemporalPDF />
-							<AdopcionPDF />
+						</Page>
+						<Page style={styles.body}>
+							{this.state.DatosGenerales === true ? (
+								<DatosGeneralesPDF />
+							) : null}
+							{this.state.ExpedienteMedico === true ? (
+								<ExpedienteMedicoPDF />
+							) : null}
+							{this.state.HogarTemporal === true ? (
+								<HogarTemporalPDF />
+							) : null}
+							{this.state.Adopcion === true ? (
+								<AdopcionPDF />
+							) : null}
 
 							<Text
 								style={styles.pageNumber}
 								render={({ pageNumber, totalPages }) =>
-									`${pageNumber} / ${totalPages}`
+									`${pageNumber - 1} / ${totalPages - 1}`
 								}
 								fixed
 							/>

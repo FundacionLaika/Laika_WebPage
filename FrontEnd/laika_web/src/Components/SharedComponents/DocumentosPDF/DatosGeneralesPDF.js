@@ -5,7 +5,7 @@ class DatosGeneralesPDF extends React.Component {
 	render() {
 		return (
 			<>
-				<Text style={styles.subtitle} break>
+				<Text style={styles.subtitle}>
 					Datos Generales
 				</Text>
 				<Text style={styles.text}>Nombre del rescatado:</Text>
