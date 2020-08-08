@@ -10,11 +10,10 @@ import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
-import GenerarPDF from "../Components/GenerarPDF/GenerarPDF";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
 import { ProtectedRoute } from "../Components/SharedComponents/ProtectedRoute";
 import auth from "../Components/Auth/Auth";
-import DocumentoPDF from "../Components/SharedComponents/DocumentoPDF";
+import DocumentoPDF from "../Components/SharedComponents/DocumentosPDF/DocumentoPDF";
 
 const initialState = {
 	iniciadoSesion: auth.esAutenticado(),
@@ -28,7 +27,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		document.title = "Fundación Laika Protectora de Animales, A.C.";
+		document.title = "Administración | Fundación Laika";
 	}
 
 	cambioRuta = (usuario) => {
@@ -46,6 +45,7 @@ class App extends React.Component {
 					{/* <ProtectedRoute path="/" render={() => <MenuBar />} /> */}
 
 					<Route path="/Laika" render={() => <MenuBar />} />
+
 					<Switch>
 						{/* El Switch solo hara render de un componente a la vez */}
 						{/*Login es la primera página mostrada*/}
@@ -80,12 +80,6 @@ class App extends React.Component {
 							path="/Laika/HogarTemporal"
 							exact
 							component={HogarTemporal}
-						/>
-
-						<ProtectedRoute
-							path="/Laika/GenerarPDF"
-							exact
-							component={GenerarPDF}
 						/>
 
 						<ProtectedRoute

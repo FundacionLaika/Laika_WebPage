@@ -1,6 +1,8 @@
 import React from "react";
 import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
 import "./Styles/TarjetaGeneral.css";
+import BotonPDF from "../../../../SharedComponents/BotonPDF.js";
+
 export default class TGarjetaGeneral extends React.Component {
 	formatDate = (date) => {
 		var d = new Date(date),
@@ -124,13 +126,7 @@ export default class TGarjetaGeneral extends React.Component {
 					<button className="editarTarjeta" title="Editar">
 						<i aria-hidden="true" className="fa fa-edit fa-fw"></i>
 					</button>
-
-					<button className="generarPDFTarjeta" title="Generar PDF">
-						<i
-							aria-hidden="true"
-							className="fa fa-file-pdf-o fa-fw"
-						></i>
-					</button>
+					<BotonPDF />
 				</div>
 			</div>
 		);
