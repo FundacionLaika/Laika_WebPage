@@ -13,7 +13,7 @@ import Adopcion from "../Components/Adopcion/Adopcion";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
 import { ProtectedRoute } from "../Components/SharedComponents/ProtectedRoute";
 import auth from "../Components/Auth/Auth";
-import DocumentoPDF from "../Components/SharedComponents/DocumentoPDF";
+import DocumentoPDF from "../Components/SharedComponents/DocumentosPDF/DocumentoPDF";
 
 const initialState = {
 	iniciadoSesion: auth.esAutenticado(),
