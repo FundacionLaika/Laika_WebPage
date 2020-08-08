@@ -110,6 +110,9 @@ export default class FiltroGlobal extends React.Component {
 					<div className="ordenarDrop">
 						<span>
 							Ordenar por:{" "}
+						</span>
+
+						<div>
 							<Dropdown
 								inline
 								options={this.opcionesOrdenar}
@@ -121,7 +124,7 @@ export default class FiltroGlobal extends React.Component {
 									)
 								}
 							/>
-						</span>
+						</div>
 					</div>
 
 					<div className="ordenarToggle">

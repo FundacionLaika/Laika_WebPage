@@ -12,9 +12,9 @@ export default class Consulta extends Component {
 		filtroPorKeyWord: "nombreRescatado",
 		ordenarPor: "nombreRescatado",
 		ordenarDeMenorAMayor: true,
-		genero: "macho",
+		genero: "",
 		especie: {
-			canino: "1",
+			canino: "",
 			felino: "",
 			otro: "",
 		},

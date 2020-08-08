@@ -34,13 +34,9 @@
 	align-self: center;
 	align-items: center;
 	padding: 0 5% 0 50%;
+	display: grid;
+	grid-auto-columns: minmax(100%, 100%);
 
-}
-
-.ordenarDrop > * {
-	float: left;
-	align-self: center;
-	align-items: center;
 }
 
 .ordenarToggle {
@@ -186,12 +182,11 @@
 }
 
 .orderBtn {
-	background-color: rgb(255, 255, 255); 
 	border: none; 
 	font-size: 16px; 
 	cursor: pointer; 
 	margin: 0% 1% 0% 3%;
-	padding: 2.2% 2.2%;
+	padding: 5%;
 	color: black;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
