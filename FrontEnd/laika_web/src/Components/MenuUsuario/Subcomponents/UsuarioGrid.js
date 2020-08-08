@@ -6,32 +6,51 @@ import "../Styles/MenuUsuario.css";
 export default class UsuarioGrid extends React.Component {
     render() {
         return (
-            <div className="pt3">
+            <div className="DGAArea">
                 <Link to="/Registro">
                     <button className="f5 pa2 mb3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba ">
                         Agregar
                     </button>
                 </Link>
-                <div className="flex justify-center center w-80">
-                    <label className="fl w-20">Nombre</label>
-                    <label className="fl w-20">Apellido</label>
-                    <label className="fl w-20">Correo</label>
-                    <label className="fl w-20">Contraseña</label>
-                    <label className="fl w-20">Rol</label>
+                <div className="headerDG">
+                    <div>
+                        <label>Nombre</label>
+                    </div>
+
+                    <div>
+                        <label>Apellido</label>
+                    </div>
+
+                    <div>
+                        <label>Correo</label>
+                    </div>
+                    <div>
+                        <label>Contraseña</label>
+                    </div>
+
+                    <div>
+                        <label>Rol</label>
+                    </div>
                 </div>
-                {this.props.data.map((row) => (
-                    <RowUsuario
-                        key={row.id}
-                        id={row.id}
-                        nombre={row.Nombre}
-                        apellido={row.Apellidos}
-                        correo={row.Correo}
-                        contrasena={row.Contrasena}
-                        rol={row.Rol}
-                        handleChange={this.props.modifyRow}
-                        deleteRow={() => this.props.deleteRow(row.ID_Usuario)}
-                    />
-                ))}
+                {this.props.data.length > 0
+                    ? this.props.data.map((row) => (
+                          <RowUsuario
+                              className="rowDG"
+                              key={row.id}
+                              id={row.id}
+                              nombre={row.Nombre}
+                              apellido={row.Apellidos}
+                              correo={row.Correo}
+                              cuentaPropia={this.props.cuentaPropia}
+                              contrasena={row.Contrasena}
+                              rol={row.Rol}
+                              handleChange={this.props.modifyRow}
+                              deleteRow={() =>
+                                  this.props.deleteRow(row.ID_Usuario)
+                              }
+                          />
+                      ))
+                    : null}
             </div>
         );
     }
