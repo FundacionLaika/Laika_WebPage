@@ -1,30 +1,28 @@
 const handleImagenPerfil = (db, fs) => (req, res) => {
-    let { correo, foto } = req.body;
+    let { correo } = req.body;
     foto = req.file;
-    // const foto = req.file.path;
     console.log("foto: ", foto);
-    // const img = fs.readFileSync(req.file.path);
-    // const encode_image = img.toString("base64");
-    // const finalImg = {
-    //     contentType: req.file.mimetype,
-    //     image: encode_image,
-    // };
-    // console.log("req file: ", req.file);
-    // console.log("foto: ", foto);
-    // console.log("finalImg: ", finalImg);
+    const img = fs.readFileSync(req.file.path);
+    const encode_image = img.toString("base64");
+    const finalImg = {
+        contentType: req.file.mimetype,
+        image: encode_image,
+    };
+    console.log("foto: ", foto);
+    console.log("finalImg: ", finalImg);
 
-    // db("USUARIO")
-    //     .where("Correo", "=", correo)
-    //     .update({
-    //         Foto: foto,
-    //         thisKeyIsSkipped: undefined,
-    //     })
-    //     .then(() => {
-    //         res.json(foto);
-    //     })
-    //     .catch((err) =>
-    //         res.status(400).json("No se pudo cargar la imagen del usuario")
-    //     );
+    db("USUARIO")
+        .where("Correo", "=", correo)
+        .update({
+            Foto: img,
+            thisKeyIsSkipped: undefined,
+        })
+        .then(() => {
+            res.json(foto);
+        })
+        .catch((err) =>
+            res.status(400).json("No se pudo cargar la imagen del usuario")
+        );
 };
 
 const handleImagenMedico = (db) => (req, res) => {
