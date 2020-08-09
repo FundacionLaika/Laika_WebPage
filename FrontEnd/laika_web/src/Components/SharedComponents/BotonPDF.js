@@ -90,6 +90,10 @@ function BotonPDF() {
 			hogarTemporal: false,
 			adopcion: false,
 		});
+		datosGenerales = false;
+		expedienteMedico = false;
+		hogarTemporal = false;
+		adopcion = false;
 	};
 
 	return (

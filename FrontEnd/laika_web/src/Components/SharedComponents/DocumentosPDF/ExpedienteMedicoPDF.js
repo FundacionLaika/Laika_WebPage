@@ -78,7 +78,7 @@ class ExpedienteMedicoPDF extends React.Component {
 
 				<Text style={styles.subtitle}>Cartilla de vacunación</Text>
 				<Table data={this.state.data}>
-					<TableHeader textAlign={"center"} fontSize={12}>
+					<TableHeader textAlign={"center"} fontSize={13}>
 						<TableCell weighting={0.3}>Vacunas</TableCell>
 						<TableCell weighting={0.3}>¿Está vacunado?</TableCell>
 						<TableCell weighting={0.4}>
