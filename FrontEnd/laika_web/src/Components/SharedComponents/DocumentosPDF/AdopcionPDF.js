@@ -1,5 +1,12 @@
 import React from "react";
 import { Text, StyleSheet, Font, Image } from "@react-pdf/renderer";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHeader,
+	DataTableCell,
+} from "@david.kucsai/react-pdf-table";
 
 class AdopcionPDF extends React.Component {
 	render() {
@@ -23,6 +30,16 @@ class AdopcionPDF extends React.Component {
 					style={styles.image}
 					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
 				/>
+				<Text style={styles.subtitle} break>
+					Comentarios Adopción
+				</Text>
+				<Table>
+					<TableHeader textAlign="center">
+						<TableCell weighting="0.4">Comentarios</TableCell>
+						<TableCell weighting="0.4">Acción</TableCell>
+						<TableCell weighting="0.2">Fecha</TableCell>
+					</TableHeader>
+				</Table>
 			</>
 		);
 	}

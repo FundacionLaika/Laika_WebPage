@@ -81,25 +81,35 @@ class ExpedienteMedicoPDF extends React.Component {
 					<TableHeader textAlign={"center"} fontSize={12}>
 						<TableCell weighting={0.3}>Vacunas</TableCell>
 						<TableCell weighting={0.3}>¿Está vacunado?</TableCell>
-						<TableCell weighting={0.4}>Fecha/Cita de vacunación</TableCell>
+						<TableCell weighting={0.4}>
+							Fecha/Cita de vacunación
+						</TableCell>
 					</TableHeader>
 					<TableBody>
-						<DataTableCell weighting={0.3} getContent={(r) => r.vacuna} />
-						<DataTableCell weighting={0.3} getContent={(r) => r.estaVacunado} />
-						<DataTableCell weighting={0.4} getContent={(r) => r.fechaVacunacion} />
+						<DataTableCell
+							weighting={0.3}
+							getContent={(r) => r.vacuna}
+						/>
+						<DataTableCell
+							weighting={0.3}
+							getContent={(r) => r.estaVacunado}
+						/>
+						<DataTableCell
+							weighting={0.4}
+							getContent={(r) => r.fechaVacunacion}
+						/>
 					</TableBody>
 				</Table>
-				<Text style={styles.subtitle}>
+				<Text style={styles.subtitle} break>
 					Tratamiento
 				</Text>
 				<Table>
-					<TableHeader textAlign={"center"}>
-						<TableCell></TableCell>
-						<TableCell></TableCell>
-						<TableCell></TableCell>
-						<TableCell></TableCell>
-						<TableCell></TableCell>
-
+					<TableHeader textAlign={"center"} fontSize={12}>
+						<TableCell weighting={0.15}>Fecha Inicio</TableCell>
+						<TableCell weighting={0.15}>Fecha Final</TableCell>
+						<TableCell weighting={0.275}>Comentarios</TableCell>
+						<TableCell weighting={0.275}>Acción</TableCell>
+						<TableCell weighting={0.15}>Cita Médica</TableCell>
 					</TableHeader>
 				</Table>
 			</>
