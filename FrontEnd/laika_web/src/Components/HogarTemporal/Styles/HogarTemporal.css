@@ -84,6 +84,8 @@
 	border: 2px solid #e42d2d !important;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 .BotonHTRestablecer:hover {
 	color: #ffffff !important;
@@ -104,6 +106,8 @@
 	border: 2px solid #6ba70b !important;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 .BotonHTGuardar:hover {
 	color: #ffffff !important;
@@ -114,6 +118,8 @@
 
 .BotonCentralHT {
 	float: center;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 
 /*Botones transiciones*/
@@ -128,20 +134,28 @@
 	border: 2px solid #8c948a !important;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 .BotonHTTransicion:hover {
 	color: #ffffff !important;
 	background: #8c948a;
 	border-color: #8c948a !important;
 	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 
 /*Boton siguiente expediente*/
 .BotonSiguienteHT {
 	float: right;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 
 /*Boton expediente previo*/
 .BotonAnteriorHT {
 	float: left;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }

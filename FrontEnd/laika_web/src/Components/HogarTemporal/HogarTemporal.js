@@ -9,6 +9,7 @@ import shortid from "shortid";
 import "../SharedComponents/Styles/InputText.css";
 import "./Styles/HogarTemporal.css";
 import "../SharedComponents/Styles/SelectBox.css";
+import queryString from 'query-string';
 
 class HogarTemporal extends Component {
 	state = {
@@ -64,19 +65,41 @@ class HogarTemporal extends Component {
 
 	/*Manejador de Restablecer*/
 	handleRestablecer = () => {
-		this.setState({
-			tipoHT: "Ninguno",
-			nombreHT: "",
-			telefonoHT: "",
-			fechaInicioHT: null,
-			fechaFinalHT: null,
-			calle: "",
-			numero: "",
-			colonia: "",
-			municipio: "",
-			foto: "/iconoPerro.png",
-		});
+		this.fetchData();
 	};
+
+	fetchData = () => {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		fetch("http://localhost:3001/hogarTemporal/?id=" + params.id, {
+			method: "get",
+			headers: { "Content-Type": "application/json" },
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response);
+				for (const element in response) {
+
+					if (element.includes("fecha")) {
+						this.setState({
+							[element]: new Date(response[element])
+						});
+					}
+					else {
+						this.setState({
+							[element]: response[element]
+						});
+					}
+					
+				}
+			})
+			.catch((err) => console.log(err));
+	}
+
+	componentDidMount() {
+		this.fetchData();
+	}
 
 	addRow = (event) => {
 		event.preventDefault();
@@ -131,6 +154,8 @@ class HogarTemporal extends Component {
 					<NavBarRegistros
 						tabIndicatorPosition={"50%"}
 						activePosition={"HogarTemporal"}
+						id={this.state.id}
+
 					/>
 				</div>
 				<div
@@ -175,7 +200,7 @@ class HogarTemporal extends Component {
 				</div>
 
 				<div className="BotonesRegistroHT">
-					<Link to="/Laika/ExpedienteMedico">
+					<Link to={"/Laika/ExpedienteMedico"+this.props.location.search}>
 						<button className="BotonHTTransicion BotonAnteriorHT">
 							<i
 								aria-hidden="true"
@@ -201,7 +226,7 @@ class HogarTemporal extends Component {
 						Guardar
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
-					<Link to="/Laika/Adopcion">
+					<Link to={"/Laika/Adopcion"+this.props.location.search}>
 						<button className="BotonHTTransicion BotonSiguienteHT">
 							Adopción
 							<i

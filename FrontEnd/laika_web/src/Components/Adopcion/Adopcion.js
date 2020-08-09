@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import "./Styles/Adopcion.css";
+import queryString from 'query-string';
 
 export default class Adopcion extends React.Component {
   
@@ -83,21 +84,41 @@ export default class Adopcion extends React.Component {
 	};
 
 	handleRestablecer = () => {
-		this.setState({
-			visitaDeAdopcion: null,
-			adoptante: "",
-			adoptado: "",
-			telefono: "",
-			calle: "",
-			numero: "",
-			colonia: "",
-			municipio: "",
-			fechaAdopcion: null,
-			medioAdopcion: "",
-			comentarios: [],
-			foto: "/iconoPerro.png",
-		});
+		this.fetchData();
 	};
+
+	fetchData = () => {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		fetch("http://localhost:3001/adopcion/?id=" + params.id, {
+			method: "get",
+			headers: { "Content-Type": "application/json" },
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response);
+				for (const element in response) {
+
+					if (element.includes("fecha") || element.includes("visita")) {
+						this.setState({
+							[element]: new Date(response[element])
+						});
+					}
+					else {
+						this.setState({
+							[element]: response[element]
+						});
+					}
+					
+				}
+			})
+			.catch((err) => console.log(err));
+	}
+
+	componentDidMount() {
+		this.fetchData();
+	}
 
 	imageHandler = (event) => {
 		const reader = new FileReader();
@@ -119,6 +140,7 @@ export default class Adopcion extends React.Component {
 					<NavBarRegistros
 						tabIndicatorPosition={"75%"}
 						activePosition={"Adopcion"}
+						id={this.state.id}
 					/>
 				</div>
 				<div
@@ -164,7 +186,7 @@ export default class Adopcion extends React.Component {
 				</div>
 
 				<div className="BotonesRegistroAdopcion">
-					<Link to="/Laika/HogarTemporal">
+					<Link to={"/Laika/HogarTemporal"+this.props.location.search}>
 						<button className="BotonAdopcionTransicion BotonAnteriorAdopcion">
 							<i
 								aria-hidden="true"
@@ -192,7 +214,7 @@ export default class Adopcion extends React.Component {
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
-					<Link to="/Laika/RegistroGeneral">
+					<Link to={"/Laika/RegistroGeneral"+this.props.location.search}>
 						<button className="BotonAdopcionTransicion BotonSiguienteAdopcion">
 							Registro General
 							<i
