@@ -6,6 +6,8 @@ import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
+import queryString from 'query-string';
+
 
 export default class RegistroGeneral extends React.Component {
 	state = {
@@ -16,13 +18,13 @@ export default class RegistroGeneral extends React.Component {
 		especie: "",
 		fechaDeRescate: null,
 		estatus: "",
-		rescatistas: [],
 		calle: "",
 		numero: "",
 		colonia: "",
 		municipio: "",
 		senasParticulares: "",
 		foto: "/iconoPerro.png",
+		rescatistas: [],
 	};
 
 	handleChange = (event) => {
@@ -43,7 +45,6 @@ export default class RegistroGeneral extends React.Component {
 	};
 
 	agregarRescatista = (rescatista) => {
-		console.log(rescatista.text);
 		if (rescatista.text !== "") {
 			this.setState((state) => ({
 				rescatistas: [rescatista, ...state.rescatistas],
@@ -92,7 +93,12 @@ export default class RegistroGeneral extends React.Component {
 		});
 	};
 
+	
+
 	render() {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+		console.log(params);
 		return (
 			<div className="RegistroGeneral">
 				<div className="NavBarRegistrosGeneral">

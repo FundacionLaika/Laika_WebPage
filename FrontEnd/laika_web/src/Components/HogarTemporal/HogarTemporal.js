@@ -16,7 +16,7 @@ class HogarTemporal extends Component {
 		id: "",
 
 		/*Contacto HT*/
-		tipoHT: "Ninguno",
+		tipoHT: "Persona",
 		nombreHT: "",
 		telefonoHT: "",
 		fechaInicioHT: null,
