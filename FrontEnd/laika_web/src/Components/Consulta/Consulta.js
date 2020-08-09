@@ -44,8 +44,8 @@ export default class Consulta extends Component {
 		},
 		tipoHogar: "",
 		rangoFechaHT: {
-			fechaInicioHT: "",
-			fechaFinalHT: "",
+			fechaInicioHT: null,
+			fechaFinalHT: null,
 		},
 		medioAdopcion: {
 			instagram: "",
@@ -55,8 +55,8 @@ export default class Consulta extends Component {
 			otro: "",
 		},
 		rangoFechaAdopcion: {
-			fechaInicioAdop: "",
-			fechaFinalAdop: "",
+			fechaInicioAdop: null,
+			fechaFinalAdop: null,
 		},
 	};
 
@@ -171,16 +171,16 @@ export default class Consulta extends Component {
 	handleDate = (fecha, filterName, dateName) => {
 		this.setState(
 			Object.assign(this.state[filterName], {
-				[dateName]: (fecha === null ? "" : fecha),
+				[dateName]: fecha,
 			})
 		);
 	};
 
 	onChangeDropdown = (name, value) => {
 		this.setState({
-			[name]: value
+			[name]: value,
 		});
-	}
+	};
 
 	render() {
 		return (

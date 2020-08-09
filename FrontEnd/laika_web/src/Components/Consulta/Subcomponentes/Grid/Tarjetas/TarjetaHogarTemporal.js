@@ -2,6 +2,7 @@ import React from "react";
 import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
 import "./Styles/TarjetaHogarTemporal.css";
 import "./Styles/Tarjeta.css";
+import BotonPDF from "../../../../SharedComponents/BotonPDF.js";
 
 export default class TarjetaHogarTemporal extends React.Component {
 	render() {
@@ -110,12 +111,7 @@ export default class TarjetaHogarTemporal extends React.Component {
 						<i aria-hidden="true" className="fa fa-edit fa-fw"></i>
 					</button>
 
-					<button className="generarPDFTarjeta" title="Generar PDF">
-						<i
-							aria-hidden="true"
-							className="fa fa-file-pdf-o fa-fw"
-						></i>
-					</button>
+					<BotonPDF />
 				</div>
 			</div>
 		);

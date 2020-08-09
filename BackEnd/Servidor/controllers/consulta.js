@@ -114,7 +114,7 @@ const handleConsultaPost = (req, res, db) => {
 			}
 		}
 		return arrayTemp;
-	}
+	};
 
 	const {
 		tarjeta,
@@ -145,8 +145,8 @@ const handleConsultaPost = (req, res, db) => {
 	if (ordenarPor.length) {
 		orderBy = "ORDER BY " + hashTable[ordenarPor] + " ";
 
-		orderBy += (ordenarDeMenorAMayor) ? "ASC" : "DESC";
-		
+		orderBy += ordenarDeMenorAMayor ? "ASC" : "DESC";
+
 		orderBy += ";";
 	}
 
@@ -164,7 +164,9 @@ const handleConsultaPost = (req, res, db) => {
 	if (estatus) {
 		const estatusFiltrado = object2Array(estatus);
 		filterConditions += estatusFiltrado.length
-			? "AND REPLACE(UPPER(ar.Estatus), ' ', '') in (" + estatusFiltrado.toString() + ") "
+			? "AND REPLACE(UPPER(ar.Estatus), ' ', '') in (" +
+			  estatusFiltrado.toString() +
+			  ") "
 			: "";
 	}
 
@@ -227,39 +229,47 @@ const handleConsultaPost = (req, res, db) => {
 			"AND UPPER(ht.Tipo_HT) = '" + tipoHogar.toUpperCase() + "' ";
 	}
 
-	if (rangoFechaHT.fechaInicioHT.length) {
-		filterConditions +=
-			"AND DATE_FORMAT(ht.FechaInicio , '%Y-%m-%d') >=  DATE_FORMAT('" +
-			rangoFechaHT.fechaInicioHT +
-			"' , '%Y-%m-%d') ";
+	if (rangoFechaHT.fechaInicioHT != null) {
+		if (rangoFechaHT.fechaInicioHT.length) {
+			filterConditions +=
+				"AND DATE_FORMAT(ht.FechaInicio , '%Y-%m-%d') >=  DATE_FORMAT('" +
+				rangoFechaHT.fechaInicioHT +
+				"' , '%Y-%m-%d') ";
+		}
 	}
 
-	if (rangoFechaHT.fechaFinalHT.length) {
-		filterConditions +=
-			"AND DATE_FORMAT(ht.FechaFinal , '%Y-%m-%d') <=  DATE_FORMAT('" +
-			rangoFechaHT.fechaFinalHT +
-			"' , '%Y-%m-%d') ";
+	if (rangoFechaHT.fechaFinalHT != null) {
+		if (rangoFechaHT.fechaFinalHT.length) {
+			filterConditions +=
+				"AND DATE_FORMAT(ht.FechaFinal , '%Y-%m-%d') <=  DATE_FORMAT('" +
+				rangoFechaHT.fechaFinalHT +
+				"' , '%Y-%m-%d') ";
+		}
 	}
 
 	if (medioAdopcion) {
-		const mediosFiltrados =  object2Array(medioAdopcion); 
+		const mediosFiltrados = object2Array(medioAdopcion);
 		filterConditions += mediosFiltrados.length
 			? "AND UPPER(adop.Medio) in (" + mediosFiltrados.toString() + ") "
 			: "";
 	}
 
-	if (rangoFechaAdopcion.fechaInicioAdop.length) {
-		filterConditions +=
-			"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') >=  DATE_FORMAT('" +
-			rangoFechaAdopcion.fechaInicioAdop +
-			"' , '%Y-%m-%d') ";
+	if (rangoFechaAdopcion.fechaInicioAdop != null) {
+		if (rangoFechaAdopcion.fechaInicioAdop.length) {
+			filterConditions +=
+				"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') >=  DATE_FORMAT('" +
+				rangoFechaAdopcion.fechaInicioAdop +
+				"' , '%Y-%m-%d') ";
+		}
 	}
 
-	if (rangoFechaAdopcion.fechaFinalAdop.length) {
-		filterConditions +=
-			"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') <=  DATE_FORMAT('" +
-			rangoFechaAdopcion.fechaFinalAdop +
-			"' , '%Y-%m-%d') ";
+	if (rangoFechaAdopcion.fechaFinalAdop != null) {
+		if (rangoFechaAdopcion.fechaFinalAdop.length) {
+			filterConditions +=
+				"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') <=  DATE_FORMAT('" +
+				rangoFechaAdopcion.fechaFinalAdop +
+				"' , '%Y-%m-%d') ";
+		}
 	}
 
 	db.raw(

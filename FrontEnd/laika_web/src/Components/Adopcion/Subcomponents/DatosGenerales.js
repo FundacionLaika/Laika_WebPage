@@ -58,11 +58,11 @@ export default class DatosGenerales extends React.Component {
 							onChange={this.props.handleChange}
 						>
 							<option value=""></option>
-							<option value="instagram">Instagram</option>
-							<option value="facebook">Facebook</option>
+							<option value="Instagram">Instagram</option>
+							<option value="Facebook">Facebook</option>
 							<option value="Petco">Petco</option>
-							<option value="referencia">Referencia</option>
-							<option value="otro">Otro</option>
+							<option value="Referencia">Referencia</option>
+							<option value="Otro">Otro</option>
 						</select>
 						<span className="select-highlight"></span>
 						<span className="select-bar"></span>
