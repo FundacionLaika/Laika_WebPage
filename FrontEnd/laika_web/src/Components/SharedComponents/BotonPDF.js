@@ -8,12 +8,12 @@ import {
 	Header,
 	Checkbox,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-var datosGenerales = "false",
-	expedienteMedico = "false",
-	hogarTemporal = "false",
-	adopcion = "false";
+var datosGenerales = false,
+	expedienteMedico = false,
+	hogarTemporal = false,
+	adopcion = false;
 var url;
 
 function Reducer(state, action) {
@@ -43,6 +43,8 @@ function BotonPDF() {
 		dimmer: undefined,
 	});
 	const { open, dimmer } = state;
+
+	const [secondOpen, setSecondOpen] = React.useState(false);
 
 	const [stateCheck, setCheckbox] = useState({
 		seleccionarTodo: false,
@@ -216,7 +218,10 @@ function BotonPDF() {
 					>
 						<Icon name="cancel" /> Cancelar
 					</Button>
-					<Link to={url} target="_blank">
+					{datosGenerales === false &&
+					expedienteMedico === false &&
+					hogarTemporal === false &&
+					adopcion === false ? (
 						<Button
 							style={{
 								borderRadius: "0.4rem",
@@ -225,14 +230,66 @@ function BotonPDF() {
 							color="green"
 							inverted
 							onClick={() => {
-								dispatch({ type: "CLOSE_MODAL" });
-								handleRestablecer();
+								if (
+									datosGenerales === false &&
+									expedienteMedico === false &&
+									hogarTemporal === false &&
+									adopcion === false
+								) {
+									setSecondOpen(true);
+								} else {
+									dispatch({ type: "CLOSE_MODAL" });
+									handleRestablecer();
+								}
 							}}
 						>
 							<Icon name="checkmark" /> Aceptar
 						</Button>
-					</Link>
+					) : (
+						<Link to={url} target="_blank">
+							<Button
+								style={{
+									borderRadius: "0.4rem",
+									margin: "0% 1% 0% 0%",
+								}}
+								color="green"
+								inverted
+								onClick={() => {
+									dispatch({ type: "CLOSE_MODAL" });
+									handleRestablecer();
+								}}
+							>
+								<Icon name="checkmark" /> Aceptar
+							</Button>
+						</Link>
+					)}
 				</Modal.Actions>
+				<Modal
+					onClose={() => setSecondOpen(false)}
+					open={secondOpen}
+					size="small"
+				>
+					<Modal.Header>Selecciona al menos una opción</Modal.Header>
+					<Modal.Content>
+						<p>
+							Para la generación del archivo PDF debe al menos
+							seleccionar una de las opciones desplegadas
+						</p>
+					</Modal.Content>
+					<Modal.Actions>
+						<Button
+							style={{
+								borderRadius: "0.4rem",
+								margin: "0% 2% 0% 0%",
+							}}
+							color="red"
+							inverted
+							onClick={() => setSecondOpen(false)}
+						>
+							<Icon name="cancel" /> Continuar
+						</Button>
+					</Modal.Actions>
+				</Modal>
 			</Modal>
 		</div>
 	);
