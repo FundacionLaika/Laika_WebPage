@@ -15,7 +15,7 @@ export default class RegistroGeneral extends React.Component {
 		genero: "",
 		especie: "",
 		fechaDeRescate: null,
-		estatus: "",
+		estatus: "Adoptado",
 		rescatistas: [],
 		calle: "",
 		numero: "",

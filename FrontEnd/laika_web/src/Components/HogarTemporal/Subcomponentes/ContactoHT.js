@@ -31,10 +31,10 @@ class ContactoHT extends Component {
 							onChange={this.props.handleChange}
 						>
 							<option className="pad" value=""></option>
-							<option className="pad" value="persona">
+							<option className="pad" value="Persona">
 								Persona
 							</option>
-							<option className="pad" value="veterinaria">
+							<option className="pad" value="Veterinaria">
 								Veterinaria
 							</option>
 						</select>

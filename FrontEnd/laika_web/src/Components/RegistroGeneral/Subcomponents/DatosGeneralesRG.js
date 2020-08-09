@@ -217,16 +217,16 @@ export default class DatosGeneralesRG extends React.Component {
 							onChange={this.props.handleChange}
 						>
 							<option className="pad" value=""></option>
-							<option className="pad" value="activo">
+							<option className="pad" value="Activo">
 								Activo
 							</option>
-							<option className="pad" value="fallecido">
+							<option className="pad" value="Fallecido">
 								Fallecido
 							</option>
-							<option className="pad" value="enTratamiento">
-								En tratamiento
+							<option className="pad" value="En Tratamiento">
+								En Tratamiento
 							</option>
-							<option className="pad" value="adoptado">
+							<option className="pad" value="Adoptado">
 								Adoptado
 							</option>
 						</select>
