@@ -3,7 +3,7 @@ import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
 import "./Styles/TarjetaAdopcion.css";
 import "./Styles/Tarjeta.css";
 import BotonPDF from "../../../../SharedComponents/BotonPDF.js";
-
+import { Link } from "react-router-dom";
 
 export default class TarjetaAdopcion extends React.Component {
 	render() {
@@ -126,9 +126,14 @@ export default class TarjetaAdopcion extends React.Component {
 					</div>
 				</div>
 				<div className="panelConfiguracionT">
-					<button className="editarTarjeta" title="Editar">
-						<i aria-hidden="true" className="fa fa-edit fa-fw"></i>
-					</button>
+				<Link to={"/Laika/Adopcion?id=" + this.props.id}>
+				<button className="editarTarjeta" title="Editar">
+					<i
+						aria-hidden="true"
+						className="fa fa-edit fa-fw"
+					></i>
+				</button>
+			</Link>
 
 					<BotonPDF />
 				</div>

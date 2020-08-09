@@ -47,6 +47,7 @@
 	grid-column: 1 / 4;
 	grid-row: 10;
 	background-color: #dddddd;
+	
 }
 
 .BarraLateralMedico {
@@ -276,6 +277,8 @@
 	border: 2px solid #e42d2d !important;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 .BotonMedicoRestablecer:hover {
 	color: #ffffff !important;
@@ -296,6 +299,8 @@
 	border: 2px solid #6ba70b !important;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 .BotonMedicoGuardar:hover {
 	color: #ffffff !important;
@@ -306,6 +311,8 @@
 
 .BotonCentralMedico {
 	float: center;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 
 /*Botones transiciones*/
@@ -320,6 +327,8 @@
 	border: 2px solid #8c948a !important;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 .BotonMedicoTransicion:hover {
 	color: #ffffff !important;
@@ -331,9 +340,13 @@
 /*Boton siguiente expediente*/
 .BotonSiguienteMedico {
 	float: right;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }
 
 /*Boton expediente previo*/
 .BotonAnteriorMedico {
 	float: left;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
 }

@@ -8,6 +8,11 @@ const multer = require("multer");
 const knex = require("knex");
 
 const consulta = require("./controllers/consulta");
+const registroGeneral = require("./controllers/registroGeneral");
+const expedienteMedico = require("./controllers/expedienteMedico");
+const hogarTemporal = require("./controllers/hogarTemporal");
+const adopcion = require("./controllers/adopcion");
+
 const login = require("./controllers/login");
 const registro = require("./controllers/registro");
 const usuarios = require("./controllers/usuarios");
@@ -74,6 +79,24 @@ const db = knex({
 app.post("/consulta", (req, res) => {
     consulta.handleConsultaPost(req, res, db);
 });
+
+app.get("/registroGeneral", (req, res) => {
+    registroGeneral.handleGetRG(req, res, db);
+});
+
+
+app.get("/expedienteMedico", (req, res) => {
+    expedienteMedico.handleGetEM(req, res, db);
+});
+
+app.get("/hogarTemporal", (req, res) => {
+    hogarTemporal.handleGetHT(req, res, db);
+});
+
+app.get("/adopcion", (req, res) => {
+    adopcion.handleGetA(req, res, db);
+});
+
 app.post("/login", login.handleLogin(db, bcrypt));
 app.post("/registro", registro.handleRegistro(db, bcrypt));
 app.get("/usuarios", usuarios.handleUsuariosGet(db));

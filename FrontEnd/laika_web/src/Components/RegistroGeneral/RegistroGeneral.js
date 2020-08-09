@@ -6,6 +6,8 @@ import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
+import queryString from 'query-string';
+
 
 export default class RegistroGeneral extends React.Component {
 	state = {
@@ -16,13 +18,13 @@ export default class RegistroGeneral extends React.Component {
 		especie: "",
 		fechaDeRescate: null,
 		estatus: "",
-		rescatistas: [],
 		calle: "",
 		numero: "",
 		colonia: "",
 		municipio: "",
 		senasParticulares: "",
 		foto: "/iconoPerro.png",
+		rescatistas: [],
 	};
 
 	handleChange = (event) => {
@@ -43,7 +45,6 @@ export default class RegistroGeneral extends React.Component {
 	};
 
 	agregarRescatista = (rescatista) => {
-		console.log(rescatista.text);
 		if (rescatista.text !== "") {
 			this.setState((state) => ({
 				rescatistas: [rescatista, ...state.rescatistas],
@@ -69,28 +70,49 @@ export default class RegistroGeneral extends React.Component {
 					this.setState({ [foto]: reader.result });
 				}
 			};
-			console.log(event.target.id);
 			reader.readAsDataURL(event.target.files[0]);
 		} catch (error) {}
 	};
 
 	handleRestablecer = () => {
-		this.setState({
-			nombre: "",
-			edad: "",
-			genero: "",
-			especie: "",
-			fechaDeRescate: null,
-			estatus: "",
-			rescatistas: [],
-			calle: "",
-			numero: "",
-			colonia: "",
-			municipio: "",
-			senasParticulares: "",
-			foto: "/iconoPerro.png",
-		});
+		this.fetchData();
 	};
+
+	fetchData = () => {
+		let url = this.props.location.search;
+		console.log("url", url);
+		let params = queryString.parse(url);
+
+		fetch("http://localhost:3001/registroGeneral/?id=" + params.id, {
+			method: "get",
+			headers: { "Content-Type": "application/json" },
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response);
+				for (const element in response) {
+
+					if (element.includes("fecha")) {
+						this.setState({
+							[element]: new Date(response[element])
+						});
+					}
+					else {
+						this.setState({
+							[element]: response[element]
+						});
+					}
+					
+				}
+			})
+			.catch((err) => console.log(err));
+	}
+
+	componentDidMount() {
+		this.fetchData();
+	}
+
+	
 
 	render() {
 		return (
@@ -99,6 +121,7 @@ export default class RegistroGeneral extends React.Component {
 					<NavBarRegistros
 						tabIndicatorPosition={"0%"}
 						activePosition={"RegistroGeneral"}
+						id={this.state.id}
 					/>
 				</div>
 
@@ -143,7 +166,7 @@ export default class RegistroGeneral extends React.Component {
 									placeholder=" "
 									rows="4"
 									name="senasParticulares"
-									value={this.props.senasParticulares}
+									value={this.state.senasParticulares}
 									onChange={this.handleChange}
 								></textarea>
 								<label
@@ -159,7 +182,7 @@ export default class RegistroGeneral extends React.Component {
 				</div>
 
 				<div className="BotonesRegistroGeneral">
-					<Link to="/Laika/Adopcion">
+					<Link to={"/Laika/Adopcion"+this.props.location.search}>
 						<button className="BotonGeneralTransicion BotonAnteriorGeneral">
 							<i
 								aria-hidden="true"
@@ -187,7 +210,7 @@ export default class RegistroGeneral extends React.Component {
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
-					<Link to="/Laika/ExpedienteMedico">
+					<Link to={"/Laika/ExpedienteMedico"+this.props.location.search}>
 						<button className="BotonGeneralTransicion BotonSiguienteGeneral">
 							Expediente Médico
 							<i className="fa fa-chevron-circle-right fa-fw"></i>
