@@ -12,16 +12,13 @@ import DatosGeneralesPDF from "./DatosGeneralesPDF";
 import ExpedienteMedicoPDF from "./ExpedienteMedicoPDF";
 import HogarTemporalPDF from "./HogarTemporalPDF";
 import AdopcionPDF from "./AdopcionPDF";
+import queryString from "query-string";
 
 class DocumentoPDF extends React.Component {
-	static state = {
-		datosGenerales: false,
-		expedienteMedico: false,
-		hogarTemporal: false,
-		adopcion: false,
-	};
-	
 	render() {
+		const url = this.props.location.search;
+		const params = queryString.parse(url, { parseBooleans: true });
+
 		return (
 			<div style={{ height: "100vh" }}>
 				<PDFViewer width="100%" height="100%">
@@ -35,21 +32,17 @@ class DocumentoPDF extends React.Component {
 								src="/logoPDF.jpg"
 							/>
 							<Text style={styles.title}>Expedientes</Text>
-							<Text style={styles.author}>Agustín ID:20</Text>
+							<Text style={styles.author}>Agustín ID: 30</Text>
 						</Page>
 						<Page style={styles.body}>
-							{DocumentoPDF.state.datosGenerales === true ? (
+							{params.datosGenerales ? (
 								<DatosGeneralesPDF />
 							) : null}
-							{DocumentoPDF.state.expedienteMedico === true ? (
+							{params.expedienteMedico ? (
 								<ExpedienteMedicoPDF />
 							) : null}
-							{DocumentoPDF.state.hogarTemporal === true ? (
-								<HogarTemporalPDF />
-							) : null}
-							{DocumentoPDF.state.adopcion === true ? (
-								<AdopcionPDF />
-							) : null}
+							{params.hogarTemporal ? <HogarTemporalPDF /> : null}
+							{params.adopcion ? <AdopcionPDF /> : null}
 
 							<Text
 								style={styles.pageNumber}

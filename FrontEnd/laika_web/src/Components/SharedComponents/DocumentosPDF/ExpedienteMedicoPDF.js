@@ -1,13 +1,52 @@
 import React from "react";
 import { Text, StyleSheet, Font, Image } from "@react-pdf/renderer";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHeader,
+	DataTableCell,
+} from "@david.kucsai/react-pdf-table";
 
 class ExpedienteMedicoPDF extends React.Component {
+	state = {
+		data: [
+			{
+				vacuna: "Puppy",
+				estaVacunado: "",
+				fechaVacunacion: "08/20/2000",
+			},
+
+			{
+				vacuna: "Refuerzo Puppy",
+				estaVacunado: "",
+				fechaVacunacion: "08/20/2000",
+			},
+
+			{
+				vacuna: "Múltiple",
+				estaVacunado: "",
+				fechaVacunacion: "08/20/2000",
+			},
+
+			{
+				vacuna: "Refuerzo Múltiple",
+				estaVacunado: "",
+				fechaVacunacion: "08/20/2000",
+			},
+
+			{
+				vacuna: "Rabia",
+				estaVacunado: "",
+				fechaVacunacion: "08/20/2000",
+			},
+		],
+	};
+
 	render() {
 		return (
 			<>
-				<Text style={styles.subtitle}>
-					Expediente Médico
-				</Text>
+				<Text style={styles.subtitle}>Expediente Médico</Text>
 				<Image
 					style={styles.image}
 					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
@@ -38,6 +77,31 @@ class ExpedienteMedicoPDF extends React.Component {
 				<Text style={styles.text}>Fecha de esterilización:</Text>
 
 				<Text style={styles.subtitle}>Cartilla de vacunación</Text>
+				<Table data={this.state.data}>
+					<TableHeader textAlign={"center"} fontSize={12}>
+						<TableCell weighting={0.3}>Vacunas</TableCell>
+						<TableCell weighting={0.3}>¿Está vacunado?</TableCell>
+						<TableCell weighting={0.4}>Fecha/Cita de vacunación</TableCell>
+					</TableHeader>
+					<TableBody>
+						<DataTableCell weighting={0.3} getContent={(r) => r.vacuna} />
+						<DataTableCell weighting={0.3} getContent={(r) => r.estaVacunado} />
+						<DataTableCell weighting={0.4} getContent={(r) => r.fechaVacunacion} />
+					</TableBody>
+				</Table>
+				<Text style={styles.subtitle}>
+					Tratamiento
+				</Text>
+				<Table>
+					<TableHeader textAlign={"center"}>
+						<TableCell></TableCell>
+						<TableCell></TableCell>
+						<TableCell></TableCell>
+						<TableCell></TableCell>
+						<TableCell></TableCell>
+
+					</TableHeader>
+				</Table>
 			</>
 		);
 	}

@@ -10,6 +10,12 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
+var datosGenerales = "false",
+	expedienteMedico = "false",
+	hogarTemporal = "false",
+	adopcion = "false";
+var url;
+
 function Reducer(state, action) {
 	switch (action.type) {
 		case "OPEN_MODAL":
@@ -22,6 +28,16 @@ function Reducer(state, action) {
 }
 
 function BotonPDF() {
+	url =
+		"/PDF/?datosGenerales=" +
+		datosGenerales +
+		"&expedienteMedico=" +
+		expedienteMedico +
+		"&hogarTemporal=" +
+		hogarTemporal +
+		"&adopcion=" +
+		adopcion;
+
 	const [state, dispatch] = React.useReducer(Reducer, {
 		open: false,
 		dimmer: undefined,
@@ -45,11 +61,24 @@ function BotonPDF() {
 				hogarTemporal: !event.value,
 				adopcion: !event.value,
 			});
+			datosGenerales = !event.value;
+			expedienteMedico = !event.value;
+			hogarTemporal = !event.value;
+			adopcion = !event.value;
 		} else {
 			setCheckbox({
 				...stateCheck,
 				[event.name]: !event.value,
 			});
+			if (event.name === "datosGenerales") {
+				datosGenerales = !event.value;
+			} else if (event.name === "expedienteMedico") {
+				expedienteMedico = !event.value;
+			} else if (event.name === "hogarTemporal") {
+				hogarTemporal = !event.value;
+			} else if (event.name === "adopcion") {
+				adopcion = !event.value;
+			}
 		}
 	};
 
@@ -183,7 +212,7 @@ function BotonPDF() {
 					>
 						<Icon name="cancel" /> Cancelar
 					</Button>
-					<Link to="/PDF" target="_blank">
+					<Link to={url} target="_blank">
 						<Button
 							style={{
 								borderRadius: "0.4rem",
