@@ -17,7 +17,7 @@ import queryString from "query-string";
 class DocumentoPDF extends React.Component {
 	render() {
 		const url = this.props.location.search;
-		const params = queryString.parse(url);
+		const params = queryString.parse(url, { parseBooleans: true });
 
 		return (
 			<div style={{ height: "100vh" }}>
@@ -32,23 +32,17 @@ class DocumentoPDF extends React.Component {
 								src="/logoPDF.jpg"
 							/>
 							<Text style={styles.title}>Expedientes</Text>
-							<Text style={styles.author}>
-								Agustín ID: 30
-							</Text>
+							<Text style={styles.author}>Agustín ID: 30</Text>
 						</Page>
 						<Page style={styles.body}>
-							{params.datosGenerales === "true" ? (
+							{params.datosGenerales ? (
 								<DatosGeneralesPDF />
 							) : null}
-							{params.expedienteMedico === "true"  ? (
+							{params.expedienteMedico ? (
 								<ExpedienteMedicoPDF />
 							) : null}
-							{params.hogarTemporal === "true" ? (
-								<HogarTemporalPDF />
-							) : null}
-							{params.adopcion === "true" ? (
-								<AdopcionPDF />
-							) : null}
+							{params.hogarTemporal ? <HogarTemporalPDF /> : null}
+							{params.adopcion ? <AdopcionPDF /> : null}
 
 							<Text
 								style={styles.pageNumber}
