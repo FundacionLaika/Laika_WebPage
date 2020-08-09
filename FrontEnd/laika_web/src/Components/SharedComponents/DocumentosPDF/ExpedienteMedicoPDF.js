@@ -79,15 +79,28 @@ class ExpedienteMedicoPDF extends React.Component {
 				<Text style={styles.subtitle}>Cartilla de vacunación</Text>
 				<Table data={this.state.data}>
 					<TableHeader textAlign={"center"} fontSize={12}>
-						<TableCell weighting={0.4}>Vacunas</TableCell>
-						<TableCell weighting={0.1}>¿Está vacunado?</TableCell>
-						<TableCell weighting={0.5}>Fecha/Cita de vacunación</TableCell>
+						<TableCell weighting={0.3}>Vacunas</TableCell>
+						<TableCell weighting={0.3}>¿Está vacunado?</TableCell>
+						<TableCell weighting={0.4}>Fecha/Cita de vacunación</TableCell>
 					</TableHeader>
 					<TableBody>
-						<DataTableCell weighting={0.4} getContent={(r) => r.vacuna} />
-						<DataTableCell weighting={0.1} getContent={(r) => r.estaVacunado} />
-						<DataTableCell weighting={0.5} getContent={(r) => r.fechaVacunacion} />
+						<DataTableCell weighting={0.3} getContent={(r) => r.vacuna} />
+						<DataTableCell weighting={0.3} getContent={(r) => r.estaVacunado} />
+						<DataTableCell weighting={0.4} getContent={(r) => r.fechaVacunacion} />
 					</TableBody>
+				</Table>
+				<Text style={styles.subtitle}>
+					Tratamiento
+				</Text>
+				<Table>
+					<TableHeader textAlign={"center"}>
+						<TableCell></TableCell>
+						<TableCell></TableCell>
+						<TableCell></TableCell>
+						<TableCell></TableCell>
+						<TableCell></TableCell>
+
+					</TableHeader>
 				</Table>
 			</>
 		);

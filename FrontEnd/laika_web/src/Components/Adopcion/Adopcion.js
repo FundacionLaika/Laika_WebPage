@@ -21,7 +21,7 @@ export default class Adopcion extends React.Component {
 		colonia: "",
 		municipio: "",
 		fechaAdopcion: null,
-		medioAdopcion: "Referencia",
+		medioAdopcion: "",
 		comentarios: [],
 		foto: "/iconoPerro.png",
 	};
