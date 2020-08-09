@@ -5,13 +5,13 @@ import "./Styles/NavBarRegistros.css";
 class NavBarRegistros extends Component {
 
 	render() {
-	
+		const idQuery = (this.props.id) ? "?id=" + this.props.id : "";
 		return (
 			<div className="tabs">
 				<div className="tab-header">
 					<div className={this.props.activePosition==="RegistroGeneral"?"active":""}>
 						<Link
-							to="/Laika/RegistroGeneral"
+							to={"/Laika/RegistroGeneral" + idQuery}
 							style={{
 								color: "inherit",
 								textDecoration: "inherit",
@@ -24,7 +24,7 @@ class NavBarRegistros extends Component {
 
 					<div className={this.props.activePosition==="ExpedienteMedico"?"active":""}>
 						<Link
-							to="/Laika/ExpedienteMedico"
+							to={"/Laika/ExpedienteMedico"+idQuery}
 							style={{
 								color: "inherit",
 								textDecoration: "inherit",
@@ -37,7 +37,7 @@ class NavBarRegistros extends Component {
 
 					<div className={this.props.activePosition==="HogarTemporal"?"active":""}>
 						<Link
-							to="/Laika/HogarTemporal"
+							to={"/Laika/HogarTemporal"+idQuery}
 							style={{
 								color: "inherit",
 								textDecoration: "inherit",
@@ -50,7 +50,7 @@ class NavBarRegistros extends Component {
 
 					<div className={this.props.activePosition==="Adopcion"?"active":""}>
 						<Link
-							to="/Laika/Adopcion"
+							to={"/Laika/Adopcion"+idQuery}
 							style={{
 								color: "inherit",
 								textDecoration: "inherit",

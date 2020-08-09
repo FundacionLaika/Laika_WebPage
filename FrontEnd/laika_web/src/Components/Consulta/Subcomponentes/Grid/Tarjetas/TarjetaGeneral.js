@@ -3,6 +3,8 @@ import FotoFrame from "../../../../SharedComponents/Tarjetas/FotoFrame.js";
 import "./Styles/TarjetaGeneral.css";
 import "./Styles/Tarjeta.css";
 import BotonPDF from "../../../../SharedComponents/BotonPDF.js";
+import { Link } from "react-router-dom";
+
 
 export default class TGarjetaGeneral extends React.Component {
 	render() {
@@ -49,7 +51,7 @@ export default class TGarjetaGeneral extends React.Component {
 					</div>
 					<div className="estatusTG">
 						<i
-							style={{fontSize: "1.2em"}}
+							style={{ fontSize: "1.2em" }}
 							aria-hidden="true"
 							className="fa fa-info-circle fa-fw iconoTarjeta"
 						></i>
@@ -114,9 +116,15 @@ export default class TGarjetaGeneral extends React.Component {
 					</div>
 				</div>
 				<div className="panelConfiguracionT">
-					<button className="editarTarjeta" title="Editar">
-						<i aria-hidden="true" className="fa fa-edit fa-fw"></i>
-					</button>
+					<Link to={"/Laika/RegistroGeneral?id=" + this.props.id}>
+						<button className="editarTarjeta" title="Editar">
+							<i
+								aria-hidden="true"
+								className="fa fa-edit fa-fw"
+							></i>
+						</button>
+					</Link>
+
 					<BotonPDF />
 				</div>
 			</div>

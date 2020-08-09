@@ -58,7 +58,7 @@
 	font-size: 16px;
 	margin-top: 24px;
 	outline: 0;
-	padding: 5%;
+	padding: 2% 1% 1% 2.5%;
 	width: 100%;
 	resize: none;
 
@@ -75,9 +75,10 @@
 	transform: translateY(0);
 }
 .form-field__input:focus ~ .form-field__label,
-.form-field__textarea:focus ~ .form-field__label {
+.form-field__textarea:focus ~ .form-field__label,
+.form-field__textarea:not(:empty) ~ .form-field__label {
 	color:  #0077FF;
-	font-size: 0.75rem;
+	font-size: 1rem;
 	-webkit-transform: translateY(-14px);
     transform: translateY(-14px);
 
