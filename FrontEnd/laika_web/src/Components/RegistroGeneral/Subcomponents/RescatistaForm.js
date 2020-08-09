@@ -28,6 +28,7 @@ export default class RescatismaForm extends React.Component {
 			<div onSubmit={this.handleSubmit}>
 				<div className="ui left icon input fluid">
 					<input
+						style={{borderRadius:"1rem 0 0 0"}}
 						type="text"
 						name="text"
 						value={this.state.text}
@@ -38,6 +39,7 @@ export default class RescatismaForm extends React.Component {
 					<button
 						className="ui animated button"
 						onClick={this.handleSubmit}
+						style={{borderRadius:"0 1rem 0 0"}}
 					>
 						<div className="visible content">
 							Agregar Rescatista
