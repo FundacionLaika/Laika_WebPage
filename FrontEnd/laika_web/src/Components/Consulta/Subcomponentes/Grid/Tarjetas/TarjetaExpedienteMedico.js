@@ -33,7 +33,6 @@ export default class TarjetaExpedienteMedico extends React.Component {
 							<span className="nombreCampo"> Diagnóstico: </span>
 						</div>
 
-			
 						<ul className="listaTEMD">
 							{this.props.atropellamiento ? (
 								<li> Atropellamiento </li>
@@ -52,7 +51,6 @@ export default class TarjetaExpedienteMedico extends React.Component {
 								<li> {this.props.otro} </li>
 							) : null}
 						</ul>
-
 					</div>
 
 					<div className="vacunasTEM">
@@ -115,21 +113,23 @@ export default class TarjetaExpedienteMedico extends React.Component {
 						</span>
 						<span className="campoData">
 							{" "}
-							{this.props.formatDate(this.props.fechaEsterilizacion)}{" "}
+							{this.props.formatDate(
+								this.props.fechaEsterilizacion
+							)}{" "}
 						</span>
 					</div>
 				</div>
 				<div className="panelConfiguracionT">
-				<Link to={"/Laika/ExpedienteMedico?id=" + this.props.id}>
-				<button className="editarTarjeta" title="Editar">
-					<i
-						aria-hidden="true"
-						className="fa fa-edit fa-fw"
-					></i>
-				</button>
-			</Link>
+					<Link to={"/Laika/ExpedienteMedico?id=" + this.props.id}>
+						<button className="editarTarjeta" title="Editar">
+							<i
+								aria-hidden="true"
+								className="fa fa-edit fa-fw"
+							></i>
+						</button>
+					</Link>
 
-					<BotonPDF />
+					<BotonPDF id={this.props.id} />
 				</div>
 			</div>
 		);

@@ -15,6 +15,31 @@ import AdopcionPDF from "./AdopcionPDF";
 import queryString from "query-string";
 
 class DocumentoPDF extends React.Component {
+	fetchData = () => {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		fetch("http://localhost:3001/hogarTemporal/?id=" + params.id, {
+			method: "get",
+			headers: { "Content-Type": "application/json" },
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response);
+				for (const element in response) {
+					if (element.includes("fecha")) {
+						this.setState({
+							[element]: new Date(response[element]),
+						});
+					} else {
+						this.setState({
+							[element]: response[element],
+						});
+					}
+				}
+			})
+			.catch((err) => console.log(err));
+	};
 	render() {
 		const url = this.props.location.search;
 		const params = queryString.parse(url, { parseBooleans: true });

@@ -29,7 +29,9 @@ function Reducer(state, action) {
 
 function BotonPDF() {
 	url =
-		"/PDF/?datosGenerales=" +
+		"/PDF/?id=" +
+		this.props.id +
+		"&datosGenerales=" +
 		datosGenerales +
 		"&expedienteMedico=" +
 		expedienteMedico +
