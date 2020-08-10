@@ -5,7 +5,7 @@ const handleLogin = (db, bcrypt) => (req, res) => {
     db.select("Correo", "Contrasena")
         .from("USUARIO")
         .where("Correo", "=", correo)
-        .then((datos) => {
+        .then((datos) => {     
             if (contrasena === datos[0].Contrasena) {
                 return db
                     .select("*")

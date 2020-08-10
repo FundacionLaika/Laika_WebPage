@@ -16,7 +16,7 @@ class MenuUsuario extends Component {
                 correo: "",
                 contrasena: "",
                 fotoPerfil: "/iconoPerro.png",
-                rol: "Administrador",
+                rol: "Voluntario",
             },
             contrasenaNueva: "",
             confirmarContrasena: "",
@@ -29,6 +29,7 @@ class MenuUsuario extends Component {
     }
 
     componentDidMount() {
+        console.log("usuario: ", this.props.match.params.correoUsuario);
         fetch("http://localhost:3001/usuarios", {
             method: "get",
             headers: { "Content-Type": "application/json" },
@@ -36,7 +37,10 @@ class MenuUsuario extends Component {
             .then((response) => response.json())
             .then((usuarios) => {
                 for (let i = 0; i < usuarios.length; i++) {
-                    if (usuarios[i].Correo === this.props.correoUsuario) {
+                    if (
+                        usuarios[i].Correo ===
+                        this.props.match.params.correoUsuario
+                    ) {
                         this.setState(
                             Object.assign(this.state.usuario, {
                                 nombre: usuarios[i].Nombre,
@@ -139,10 +143,11 @@ class MenuUsuario extends Component {
                 this.actualizarUsuarios();
             }
         } else {
+            this.props.match.params.correoUsuario = "";
+            console.log(this.props.match.params.correoUsuario);
             auth.logout(() => {
                 this.props.history.push("/");
             });
-            this.props.cambioRuta("");
         }
     };
 
@@ -339,6 +344,9 @@ class MenuUsuario extends Component {
                                 modifyRow={this.modifyRow}
                                 addRow={this.addRow}
                                 deleteRow={this.deleteRow}
+                                correoUsuario={
+                                    this.props.match.params.correoUsuario
+                                }
                             />
                         </div>
                         <div className="pv5 center">
