@@ -62,19 +62,41 @@ class ExpedienteMedicoPDF extends React.Component {
 				<Text style={styles.subtitle} break>
 					Diagnóstico
 				</Text>
-				<Text style={styles.text}>Atropellamiento:</Text>
-				<Text style={styles.text}>TVT:</Text>
-				<Text style={styles.text}>Sarna/Piel:</Text>
-				<Text style={styles.text}>Viral:</Text>
-				<Text style={styles.text}>Embarazo:</Text>
-				<Text style={styles.text}>Cachorros:</Text>
-				<Text style={styles.text}>Hemoparásitos:</Text>
-				<Text style={styles.text}>Otro:</Text>
+				<Text style={styles.text}>
+					{"Atropellamiento: " + this.props.data.atropellamiento}
+				</Text>
+				<Text style={styles.text}>{"TVT: " + this.props.data.tvt}</Text>
+				<Text style={styles.text}>
+					{"Sarna/Piel: " + this.props.data.sarnaPiel}
+				</Text>
+				<Text style={styles.text}>
+					{"Viral: " + this.props.data.viral}
+				</Text>
+				<Text style={styles.text}>
+					{"Embarazo: " + this.props.data.embarazo}
+				</Text>
+				<Text style={styles.text}>
+					{"Cachorros: " + this.props.data.cachorros}
+				</Text>
+				<Text style={styles.text}>
+					{"Hemoparásitos: " + this.props.data.hemoparasitos}
+				</Text>
+				<Text style={styles.text}>
+					{"Otro: " + this.props.data.otro}
+				</Text>
 
 				<Text style={styles.subtitle}>Esterilización</Text>
-				<Text style={styles.text}>¿Está esterilizado?:</Text>
-				<Text style={styles.text}>¿Desea agendar cita?</Text>
-				<Text style={styles.text}>Fecha de esterilización:</Text>
+				<Text style={styles.text}>
+					{"¿Está esterilizado?: " + this.props.data.esterilizado}
+				</Text>
+				<Text style={styles.text}>
+					{"¿Desea agendar cita?: " +
+						this.props.data.citaEsterilizacion}
+				</Text>
+				<Text style={styles.text}>
+					{"Fecha de esterilización: " +
+						this.props.data.fechaEsterilizacion}
+				</Text>
 
 				<Text style={styles.subtitle}>Cartilla de vacunación</Text>
 				<Table data={this.state.data}>
