@@ -43,6 +43,18 @@ class ExpedienteMedicoPDF extends React.Component {
 		],
 	};
 
+	formatDate = (date) => {
+		var d = new Date(date),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
+			year = d.getFullYear();
+
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+
+		return [day, month, year].join("/");
+	};
+
 	render() {
 		return (
 			<>
@@ -91,11 +103,11 @@ class ExpedienteMedicoPDF extends React.Component {
 				</Text>
 				<Text style={styles.text}>
 					{"¿Desea agendar cita?: " +
-						this.props.data.citaEsterilizacion}
+						this.formatDate(this.props.data.citaEsterilizacion)}
 				</Text>
 				<Text style={styles.text}>
 					{"Fecha de esterilización: " +
-						this.props.data.fechaEsterilizacion}
+						this.formatDate(this.props.data.fechaEsterilizacion)}
 				</Text>
 
 				<Text style={styles.subtitle}>Cartilla de vacunación</Text>
