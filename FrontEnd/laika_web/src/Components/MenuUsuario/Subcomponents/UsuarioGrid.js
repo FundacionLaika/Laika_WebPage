@@ -9,7 +9,7 @@ export default class UsuarioGrid extends React.Component {
             <div className="DGAArea">
                 <div className="agregarDG">
                     <Link to={`/Laika/Registro/${this.props.correoUsuario}`}>
-                        <button className="f5 pa2 mb3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba">
+                        <button className="btn btn-4 btn-sep icon-plus">
                             Agregar Usuario
                         </button>
                     </Link>

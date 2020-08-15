@@ -5,6 +5,7 @@ import UsuarioGrid from "./Subcomponents/UsuarioGrid";
 import CambiarDatos from "./Subcomponents/CambiarDatos";
 import { Link } from "react-router-dom";
 import auth from "../Auth/Auth";
+import "./Styles/MenuUsuario.css";
 
 class MenuUsuario extends Component {
     constructor(props) {
@@ -160,15 +161,16 @@ class MenuUsuario extends Component {
                         fotoPerfil: reader.result,
                     })
                 );
-                console.log(this.state.usuario.fotoPerfil);
+
+                const fd = new FormData();
 
                 fetch("http://localhost:3001/subirImagenPerfil", {
                     method: "put",
                     headers: { "Content-Type": "application/json" },
-                    body: {
-                        correo: JSON.stringify(this.state.usuario.correo),
-                        foto: this.state.usuario.fotoPerfil,
-                    },
+                    body: JSON.stringify({
+                        correo: this.state.usuario.correo,
+                        foto: reader.result,
+                    }),
                 })
                     .then((response) => response.json())
                     .then((resp) => {
@@ -308,7 +310,7 @@ class MenuUsuario extends Component {
 
     render() {
         return (
-            <div className="containerUs">
+            <div className="containerUs bodMenuUsuario">
                 <InfoUsuario
                     className="item-amu"
                     imageHandler={this.imageHandler}
@@ -336,8 +338,13 @@ class MenuUsuario extends Component {
                 {this.state.usuario.rol === "Administrador" ? (
                     <div className="item-cmu">
                         <div>
-                            <h2 className="center blue">Tabla de Usuarios</h2>
-
+                            <div className="headerTablaUsuarios">
+                                <i
+                                    aria-hidden="true"
+                                    className="fa fa-users fa-fw separation"
+                                ></i>
+                                Tabla de Usuarios
+                            </div>
                             <UsuarioGrid
                                 data={this.state.usuarios}
                                 cuentaPropia={this.state.usuario.correo}
@@ -361,7 +368,7 @@ class MenuUsuario extends Component {
                         </div>
                     </div>
                 ) : (
-                    <div className="pv5 center item-cmu">
+                    <div className="pv5 center item-cmu2">
                         <Link to="/">
                             <button
                                 className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba"
