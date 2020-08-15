@@ -74,12 +74,11 @@ class Login extends React.Component {
         })
             .then((response) => response.json())
             .then((usuario) => {
-                console.log(usuario);
                 if (usuario.Contrasena) {
                     auth.login(() => {
-                        this.props.history.push("/Consulta");
-                        this.props.cambioRuta(this.state.correoLogin);
+                        this.props.history.push("/Laika/Consulta");
                     });
+                    this.props.cambioRuta(usuario.Correo);
                 }
             });
     };

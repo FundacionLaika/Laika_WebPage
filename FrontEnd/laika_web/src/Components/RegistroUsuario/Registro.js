@@ -246,7 +246,9 @@ class Registro extends React.Component {
                                 value="Registrar"
                             />
                             {this.state.usuarioCreado ? (
-                                <Redirect to="/Laika/MenuUsuario" />
+                                <Redirect
+                                    to={`/Laika/MenuUsuario/${this.props.match.params.correoUsuario}`}
+                                />
                             ) : null}
                         </div>
                     </div>
