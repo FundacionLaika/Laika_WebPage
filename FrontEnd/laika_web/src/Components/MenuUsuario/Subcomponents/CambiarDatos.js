@@ -17,7 +17,7 @@ export default class InfoUsuario extends React.Component {
                                     onChange={this.props.handleChange}
                                     placeholder="&nbsp;"
                                 />
-                                <span className="label w-33">Correo</span>
+                                <span className="label">Correo</span>
                                 <div className="f6 red">
                                     {this.props.errorCorreo}
                                 </div>
@@ -31,7 +31,7 @@ export default class InfoUsuario extends React.Component {
                                     onChange={this.props.handleChange}
                                     placeholder="&nbsp;"
                                 />
-                                <span className="label w-33">Confirmar</span>
+                                <span className="label">Confirmar</span>
                                 <div className="f6 red">
                                     {this.props.errorConfirmarCorreo}
                                 </div>
@@ -59,7 +59,7 @@ export default class InfoUsuario extends React.Component {
                                 onChange={this.props.handleChange}
                                 placeholder="&nbsp;"
                             />
-                            <span className="label w-33">Contraseña</span>
+                            <span className="label">Contraseña</span>
                             <div className="f6 red">
                                 {this.props.errorContrasena}
                             </div>
@@ -74,7 +74,7 @@ export default class InfoUsuario extends React.Component {
                                 onChange={this.props.handleChange}
                                 placeholder="&nbsp;"
                             />
-                            <span className="label w-33">Confirmar</span>
+                            <span className="label">Confirmar</span>
                             <div className="f6 red">
                                 {this.props.errorConfirmarContrasena}
                             </div>
