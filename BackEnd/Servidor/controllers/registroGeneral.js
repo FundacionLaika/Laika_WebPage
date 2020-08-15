@@ -51,6 +51,52 @@ const handleGetRG = (req, res, db) => {
 		);
 };
 
+const handlePostRG = (req, res, db) => {
+	const {
+		nombre,
+		edad,
+		genero,
+		especie,
+		fechaDeRescate,
+		estatus,
+		calle,
+		numero,
+		colonia,
+		municipio,
+		senasParticulares,
+		foto,
+	} = req.body;
+
+	db.transaction((trx) => {
+		trx.insert({
+			NOMBRE: nombre,
+			EDAD: edad,
+			GENERO: genero,
+			ESPECIE: especie,
+			SENASPARTICULARES: senasParticulares,
+			ESTATUS: estatus,
+			FOTO: foto,
+		})
+			.into("ANIMAL_RESCATADO")
+			.returning("ID_Animal")
+			.then((id) => {
+				return trx("users")
+					.returning("*")
+					.insert({
+						email: loginEmail[0],
+						name: name,
+						joined: new Date(),
+					})
+					.then((user) => {
+						res.json(user[0]);
+					});
+			})
+			.then(trx.commit)
+			.catch(trx.rollback);
+	}).catch((err) => res.status(400).json("unable to register"));
+};
+
 module.exports = {
 	handleGetRG,
+	handlePostRG,
 };

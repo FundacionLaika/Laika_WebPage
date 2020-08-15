@@ -3,8 +3,6 @@
 
 .RegistroGeneral {
 	display: grid;
-	/* grid-template-columns: repeat(3, 1fr); */
-	/* grid-gap: 10px; */
 	grid-auto-columns: minmax(25%, 25%);
 }
 
@@ -18,7 +16,7 @@
 	grid-row: 3 / 10;
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
-	background-color: #e0e7eb;
+	background-color: #dbedf8;
 }
 
 .DatosGenerales {
@@ -48,7 +46,9 @@
 .BotonesRegistroGeneral {
 	grid-column: 1 / 4;
 	grid-row: 10;
-	background-color: #dddddd;
+	padding: .5% .5%;
+	background-color:  #dbedf8;
+	
 }
 
 .BarraLateralGeneral {
@@ -61,13 +61,13 @@
 .idLabelGeneral {
 	grid-row: 1;
 	grid-column: 1;
-	background-color: red;
+	background-color: transparent;
 }
 
 .fotoGeneral {
 	grid-row: 2;
 	grid-column: 1;
-	background-color: blue;
+	background-color: transparent;
 }
 
 /*Boton Restablecer*/

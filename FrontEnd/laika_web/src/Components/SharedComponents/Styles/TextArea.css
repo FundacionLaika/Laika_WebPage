@@ -22,7 +22,7 @@
 }
 
 .form-field__control {
-	background: #e0e7eb;
+	background: transparent;
 	border-radius: 0 0 0 0;
 	overflow: hidden;
 	position: relative;
