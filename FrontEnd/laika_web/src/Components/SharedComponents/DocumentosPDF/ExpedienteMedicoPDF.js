@@ -13,32 +13,32 @@ class ExpedienteMedicoPDF extends React.Component {
 		data: [
 			{
 				vacuna: "Puppy",
-				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				estaVacunado: this.props.data.puppy,
+				fechaVacunacion: "",
 			},
 
 			{
 				vacuna: "Refuerzo Puppy",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 
 			{
 				vacuna: "Múltiple",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 
 			{
 				vacuna: "Refuerzo Múltiple",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 
 			{
 				vacuna: "Rabia",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 		],
 	};
@@ -54,6 +54,31 @@ class ExpedienteMedicoPDF extends React.Component {
 
 		return [day, month, year].join("/");
 	};
+
+	componentWillReceiveProps(props) {
+		var stateCartilla = this.state;
+		stateCartilla.data[0].estaVacunado = props.data.puppy;
+		stateCartilla.data[0].fechaVacunacion = this.formatDate(
+			props.data.fechaPuppy
+		);
+		stateCartilla.data[1].estaVacunado = props.data.refuerzoPuppy;
+		stateCartilla.data[1].fechaVacunacion = this.formatDate(
+			props.data.fechaRefuerzoPuppy
+		);
+		stateCartilla.data[2].estaVacunado = props.data.multiple;
+		stateCartilla.data[2].fechaVacunacion = this.formatDate(
+			props.data.fechaMultiple
+		);
+		stateCartilla.data[3].estaVacunado = props.data.refuerzoMultiple;
+		stateCartilla.data[3].fechaVacunacion = this.formatDate(
+			props.data.fechaRefuerzoMultiple
+		);
+		stateCartilla.data[4].estaVacunado = props.data.rabia;
+		stateCartilla.data[4].fechaVacunacion = this.formatDate(
+			props.data.fechaRabia
+		);
+		this.setState(stateCartilla);
+	}
 
 	render() {
 		return (
@@ -123,7 +148,7 @@ class ExpedienteMedicoPDF extends React.Component {
 						<DataTableCell
 							weighting={0.3}
 							getContent={(r) => r.vacuna}
-						/>
+						></DataTableCell>
 						<DataTableCell
 							weighting={0.3}
 							getContent={(r) => r.estaVacunado}
