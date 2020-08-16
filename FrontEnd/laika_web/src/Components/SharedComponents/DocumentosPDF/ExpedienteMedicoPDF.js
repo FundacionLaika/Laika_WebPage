@@ -13,7 +13,7 @@ class ExpedienteMedicoPDF extends React.Component {
 		data: [
 			{
 				vacuna: "Puppy",
-				estaVacunado: this.props.data.puppy,
+				estaVacunado: "",
 				fechaVacunacion: "",
 			},
 
