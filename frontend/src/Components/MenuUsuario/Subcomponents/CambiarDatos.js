@@ -3,7 +3,7 @@ import React from "react";
 export default class InfoUsuario extends React.Component {
     render() {
         return (
-            <div className="item-bmu">
+            <div className="item-bmu pt3">
                 <div>
                     <div className="pa2">
                         <label className="f4 ph3 labelD">Cambiar Correo</label>
@@ -17,7 +17,7 @@ export default class InfoUsuario extends React.Component {
                                     onChange={this.props.handleChange}
                                     placeholder="&nbsp;"
                                 />
-                                <span className="label w-33">Correo</span>
+                                <span className="label">Correo</span>
                                 <div className="f6 red">
                                     {this.props.errorCorreo}
                                 </div>
@@ -31,14 +31,14 @@ export default class InfoUsuario extends React.Component {
                                     onChange={this.props.handleChange}
                                     placeholder="&nbsp;"
                                 />
-                                <span className="label w-33">Confirmar</span>
+                                <span className="label">Confirmar</span>
                                 <div className="f6 red">
                                     {this.props.errorConfirmarCorreo}
                                 </div>
                             </label>
                         </div>
                         <button
-                            className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba"
+                            className="f5 pa2 mv3 br3 bw1 b--dark-blue pointer hover-bg-dark-blue hover-white b ba"
                             onClick={this.props.onSubmit}
                             name="cambiosCorreo"
                         >
@@ -59,7 +59,7 @@ export default class InfoUsuario extends React.Component {
                                 onChange={this.props.handleChange}
                                 placeholder="&nbsp;"
                             />
-                            <span className="label w-33">Contraseña</span>
+                            <span className="label">Contraseña</span>
                             <div className="f6 red">
                                 {this.props.errorContrasena}
                             </div>
@@ -74,7 +74,7 @@ export default class InfoUsuario extends React.Component {
                                 onChange={this.props.handleChange}
                                 placeholder="&nbsp;"
                             />
-                            <span className="label w-33">Confirmar</span>
+                            <span className="label">Confirmar</span>
                             <div className="f6 red">
                                 {this.props.errorConfirmarContrasena}
                             </div>
@@ -82,7 +82,7 @@ export default class InfoUsuario extends React.Component {
                     </div>
                     <button
                         onClick={this.props.onSubmit}
-                        className="f5 pa2 mv3 br3 bw1 b--blue pointer hover-bg-blue hover-white b ba "
+                        className="f5 pa2 mv3 br3 bw1 b--dark-blue pointer hover-bg-dark-blue hover-white b ba "
                         name="cambiosContrasena"
                     >
                         Confirmar Contraseñas

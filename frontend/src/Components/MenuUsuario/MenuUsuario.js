@@ -5,6 +5,7 @@ import UsuarioGrid from "./Subcomponents/UsuarioGrid";
 import CambiarDatos from "./Subcomponents/CambiarDatos";
 import { Link } from "react-router-dom";
 import auth from "../Auth/Auth";
+import "./Styles/MenuUsuario.css";
 
 class MenuUsuario extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class MenuUsuario extends Component {
                 correo: "",
                 contrasena: "",
                 fotoPerfil: "/iconoPerro.png",
-                rol: "Administrador",
+                rol: "Voluntario",
             },
             contrasenaNueva: "",
             confirmarContrasena: "",
@@ -29,6 +30,7 @@ class MenuUsuario extends Component {
     }
 
     componentDidMount() {
+        console.log("usuario: ", this.props.match.params.correoUsuario);
         fetch("http://localhost:3001/usuarios", {
             method: "get",
             headers: { "Content-Type": "application/json" },
@@ -36,7 +38,10 @@ class MenuUsuario extends Component {
             .then((response) => response.json())
             .then((usuarios) => {
                 for (let i = 0; i < usuarios.length; i++) {
-                    if (usuarios[i].Correo === this.props.correoUsuario) {
+                    if (
+                        usuarios[i].Correo ===
+                        this.props.match.params.correoUsuario
+                    ) {
                         this.setState(
                             Object.assign(this.state.usuario, {
                                 nombre: usuarios[i].Nombre,
@@ -139,10 +144,11 @@ class MenuUsuario extends Component {
                 this.actualizarUsuarios();
             }
         } else {
+            this.props.match.params.correoUsuario = "";
+            console.log(this.props.match.params.correoUsuario);
             auth.logout(() => {
                 this.props.history.push("/");
             });
-            this.props.cambioRuta("");
         }
     };
 
@@ -155,15 +161,16 @@ class MenuUsuario extends Component {
                         fotoPerfil: reader.result,
                     })
                 );
-                console.log(this.state.usuario.fotoPerfil);
+
+                const fd = new FormData();
 
                 fetch("http://localhost:3001/subirImagenPerfil", {
                     method: "put",
                     headers: { "Content-Type": "application/json" },
-                    body: {
-                        correo: JSON.stringify(this.state.usuario.correo),
-                        foto: this.state.usuario.fotoPerfil,
-                    },
+                    body: JSON.stringify({
+                        correo: this.state.usuario.correo,
+                        foto: reader.result,
+                    }),
                 })
                     .then((response) => response.json())
                     .then((resp) => {
@@ -303,7 +310,7 @@ class MenuUsuario extends Component {
 
     render() {
         return (
-            <div className="containerUs">
+            <div className="containerUs bodMenuUsuario">
                 <InfoUsuario
                     className="item-amu"
                     imageHandler={this.imageHandler}
@@ -331,14 +338,22 @@ class MenuUsuario extends Component {
                 {this.state.usuario.rol === "Administrador" ? (
                     <div className="item-cmu">
                         <div>
-                            <h2 className="center blue">Tabla de Usuarios</h2>
-
+                            <div className="headerTablaUsuarios">
+                                <i
+                                    aria-hidden="true"
+                                    className="fa fa-users fa-fw separation"
+                                ></i>
+                                Tabla de Usuarios
+                            </div>
                             <UsuarioGrid
                                 data={this.state.usuarios}
                                 cuentaPropia={this.state.usuario.correo}
                                 modifyRow={this.modifyRow}
                                 addRow={this.addRow}
                                 deleteRow={this.deleteRow}
+                                correoUsuario={
+                                    this.props.match.params.correoUsuario
+                                }
                             />
                         </div>
                         <div className="pv5 center">
@@ -353,7 +368,7 @@ class MenuUsuario extends Component {
                         </div>
                     </div>
                 ) : (
-                    <div className="pv5 center item-cmu">
+                    <div className="pv5 center item-cmu2">
                         <Link to="/">
                             <button
                                 className="f4 pa2 br3 bw1 b--black pointer hover-bg-black hover-white b ba"
