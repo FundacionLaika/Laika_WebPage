@@ -14,34 +14,71 @@ class ExpedienteMedicoPDF extends React.Component {
 			{
 				vacuna: "Puppy",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 
 			{
 				vacuna: "Refuerzo Puppy",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 
 			{
 				vacuna: "Múltiple",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 
 			{
 				vacuna: "Refuerzo Múltiple",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 
 			{
 				vacuna: "Rabia",
 				estaVacunado: "",
-				fechaVacunacion: "08/20/2000",
+				fechaVacunacion: "",
 			},
 		],
 	};
+
+	formatDate = (date) => {
+		var d = new Date(date),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
+			year = d.getFullYear();
+
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+
+		return [day, month, year].join("/");
+	};
+
+	componentWillReceiveProps(props) {
+		var stateCartilla = this.state;
+		stateCartilla.data[0].estaVacunado = props.data.puppy;
+		stateCartilla.data[0].fechaVacunacion = this.formatDate(
+			props.data.fechaPuppy
+		);
+		stateCartilla.data[1].estaVacunado = props.data.refuerzoPuppy;
+		stateCartilla.data[1].fechaVacunacion = this.formatDate(
+			props.data.fechaRefuerzoPuppy
+		);
+		stateCartilla.data[2].estaVacunado = props.data.multiple;
+		stateCartilla.data[2].fechaVacunacion = this.formatDate(
+			props.data.fechaMultiple
+		);
+		stateCartilla.data[3].estaVacunado = props.data.refuerzoMultiple;
+		stateCartilla.data[3].fechaVacunacion = this.formatDate(
+			props.data.fechaRefuerzoMultiple
+		);
+		stateCartilla.data[4].estaVacunado = props.data.rabia;
+		stateCartilla.data[4].fechaVacunacion = this.formatDate(
+			props.data.fechaRabia
+		);
+		this.setState(stateCartilla);
+	}
 
 	render() {
 		return (
@@ -62,19 +99,41 @@ class ExpedienteMedicoPDF extends React.Component {
 				<Text style={styles.subtitle} break>
 					Diagnóstico
 				</Text>
-				<Text style={styles.text}>Atropellamiento:</Text>
-				<Text style={styles.text}>TVT:</Text>
-				<Text style={styles.text}>Sarna/Piel:</Text>
-				<Text style={styles.text}>Viral:</Text>
-				<Text style={styles.text}>Embarazo:</Text>
-				<Text style={styles.text}>Cachorros:</Text>
-				<Text style={styles.text}>Hemoparásitos:</Text>
-				<Text style={styles.text}>Otro:</Text>
+				<Text style={styles.text}>
+					{"Atropellamiento: " + this.props.data.atropellamiento}
+				</Text>
+				<Text style={styles.text}>{"TVT: " + this.props.data.tvt}</Text>
+				<Text style={styles.text}>
+					{"Sarna/Piel: " + this.props.data.sarnaPiel}
+				</Text>
+				<Text style={styles.text}>
+					{"Viral: " + this.props.data.viral}
+				</Text>
+				<Text style={styles.text}>
+					{"Embarazo: " + this.props.data.embarazo}
+				</Text>
+				<Text style={styles.text}>
+					{"Cachorros: " + this.props.data.cachorros}
+				</Text>
+				<Text style={styles.text}>
+					{"Hemoparásitos: " + this.props.data.hemoparasitos}
+				</Text>
+				<Text style={styles.text}>
+					{"Otro: " + this.props.data.otro}
+				</Text>
 
 				<Text style={styles.subtitle}>Esterilización</Text>
-				<Text style={styles.text}>¿Está esterilizado?:</Text>
-				<Text style={styles.text}>¿Desea agendar cita?</Text>
-				<Text style={styles.text}>Fecha de esterilización:</Text>
+				<Text style={styles.text}>
+					{"¿Está esterilizado?: " + this.props.data.esterilizado}
+				</Text>
+				<Text style={styles.text}>
+					{"¿Desea agendar cita?: " +
+						this.formatDate(this.props.data.citaEsterilizacion)}
+				</Text>
+				<Text style={styles.text}>
+					{"Fecha de esterilización: " +
+						this.formatDate(this.props.data.fechaEsterilizacion)}
+				</Text>
 
 				<Text style={styles.subtitle}>Cartilla de vacunación</Text>
 				<Table data={this.state.data}>
@@ -89,7 +148,7 @@ class ExpedienteMedicoPDF extends React.Component {
 						<DataTableCell
 							weighting={0.3}
 							getContent={(r) => r.vacuna}
-						/>
+						></DataTableCell>
 						<DataTableCell
 							weighting={0.3}
 							getContent={(r) => r.estaVacunado}

@@ -126,16 +126,16 @@ export default class TarjetaAdopcion extends React.Component {
 					</div>
 				</div>
 				<div className="panelConfiguracionT">
-				<Link to={"/Laika/Adopcion?id=" + this.props.id}>
-				<button className="editarTarjeta" title="Editar">
-					<i
-						aria-hidden="true"
-						className="fa fa-edit fa-fw"
-					></i>
-				</button>
-			</Link>
+					<Link to={"/Laika/Adopcion?id=" + this.props.id}>
+						<button className="editarTarjeta" title="Editar">
+							<i
+								aria-hidden="true"
+								className="fa fa-edit fa-fw"
+							></i>
+						</button>
+					</Link>
 
-					<BotonPDF />
+					<BotonPDF id={this.props.id} />
 				</div>
 			</div>
 		);

@@ -14,10 +14,49 @@ import HogarTemporalPDF from "./HogarTemporalPDF";
 import AdopcionPDF from "./AdopcionPDF";
 import queryString from "query-string";
 
+var flag = true;
+
 class DocumentoPDF extends React.Component {
+	state = {
+		registroGeneral: "",
+		expedienteMedico: "",
+		hogarTemporal: "",
+		adopcion: "",
+	};
+
+	fetchData = (registro, id) => {
+		fetch("http://localhost:3001/" + registro + "/?id=" + id, {
+			method: "get",
+			headers: { "Content-Type": "application/json" },
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				this.setState({
+					[registro]: response,
+				});
+			})
+			.catch((err) => console.log(err));
+	};
+
 	render() {
 		const url = this.props.location.search;
 		const params = queryString.parse(url, { parseBooleans: true });
+
+		if (flag) {
+			if (params.datosGenerales) {
+				this.fetchData("registroGeneral", params.id);
+			}
+			if (params.expedienteMedico) {
+				this.fetchData("expedienteMedico", params.id);
+			}
+			if (params.hogarTemporal) {
+				this.fetchData("hogarTemporal", params.id);
+			}
+			if (params.adopcion) {
+				this.fetchData("adopcion", params.id);
+			}
+			flag = false;
+		}
 
 		return (
 			<div style={{ height: "100vh" }}>
@@ -32,17 +71,27 @@ class DocumentoPDF extends React.Component {
 								src="/logoPDF.jpg"
 							/>
 							<Text style={styles.title}>Expedientes</Text>
-							<Text style={styles.author}>Agustín ID: 30</Text>
+							<Text style={styles.author}>Agustín ID:30</Text>
 						</Page>
 						<Page style={styles.body}>
 							{params.datosGenerales ? (
-								<DatosGeneralesPDF />
+								<DatosGeneralesPDF
+									data={this.state.registroGeneral}
+								/>
 							) : null}
 							{params.expedienteMedico ? (
-								<ExpedienteMedicoPDF />
+								<ExpedienteMedicoPDF
+									data={this.state.expedienteMedico}
+								/>
 							) : null}
-							{params.hogarTemporal ? <HogarTemporalPDF /> : null}
-							{params.adopcion ? <AdopcionPDF /> : null}
+							{params.hogarTemporal ? (
+								<HogarTemporalPDF
+									data={this.state.hogarTemporal}
+								/>
+							) : null}
+							{params.adopcion ? (
+								<AdopcionPDF data={this.state.adopcion} />
+							) : null}
 
 							<Text
 								style={styles.pageNumber}

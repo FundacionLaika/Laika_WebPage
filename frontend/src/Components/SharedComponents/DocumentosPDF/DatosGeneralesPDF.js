@@ -2,25 +2,70 @@ import React from "react";
 import { Text, StyleSheet, Font, Image } from "@react-pdf/renderer";
 
 class DatosGeneralesPDF extends React.Component {
+	formatDate = (date) => {
+		var d = new Date(date),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
+			year = d.getFullYear();
+
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+
+		return [day, month, year].join("/");
+	};
+
+	formatRescatistas = (rescatistas) => {
+		if (!rescatistas) {
+			return "";
+		}
+		var arrayTemp = [];
+		rescatistas.forEach((rescatista) => {
+			arrayTemp.push(rescatista.text);
+		});
+		return arrayTemp.toString();
+	};
+
 	render() {
 		return (
 			<>
-				<Text style={styles.subtitle}>
-					Datos Generales
+				<Text style={styles.subtitle}>Datos Generales</Text>
+				<Text style={styles.text}>
+					{"Nombre del rescatado: " + this.props.data.nombre}
 				</Text>
-				<Text style={styles.text}>Nombre del rescatado:</Text>
-				<Text style={styles.text}>Edad:</Text>
-				<Text style={styles.text}>Género:</Text>
-				<Text style={styles.text}>Especie:</Text>
-				<Text style={styles.text}>Fecha de rescate:</Text>
-				<Text style={styles.text}>Estatus:</Text>
-				<Text style={styles.text}>Rescatistas:</Text>
+				<Text style={styles.text}>
+					{"Edad: " + this.props.data.edad}
+				</Text>
+				<Text style={styles.text}>
+					{"Género: " + this.props.data.genero}
+				</Text>
+				<Text style={styles.text}>
+					{"Especie: " + this.props.data.especie}
+				</Text>
+				<Text style={styles.text}>
+					{"Fecha de rescate: " +
+						this.formatDate(this.props.data.fechaDeRescate)}
+				</Text>
+				<Text style={styles.text}>
+					{"Estatus: " + this.props.data.estatus}
+				</Text>
+				<Text style={styles.text}>
+					{"Rescatistas: " +
+						this.formatRescatistas(this.props.data.rescatistas)}
+				</Text>
 
 				<Text style={styles.subtitle}>Dirección</Text>
-				<Text style={styles.text}>Calle:</Text>
-				<Text style={styles.text}>Número:</Text>
-				<Text style={styles.text}>Colonia:</Text>
-				<Text style={styles.text}>Municipio:</Text>
+				<Text style={styles.text}>
+					{"Calle: " + this.props.data.calle}
+				</Text>
+				<Text style={styles.text}>
+					{"Número: " + this.props.data.numero}
+				</Text>
+				<Text style={styles.text}>
+					{"Colonia: " + this.props.data.colonia}
+				</Text>
+				<Text style={styles.text}>
+					{"Municipio: " + this.props.data.municipio}
+				</Text>
 				<Image
 					style={styles.image}
 					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"

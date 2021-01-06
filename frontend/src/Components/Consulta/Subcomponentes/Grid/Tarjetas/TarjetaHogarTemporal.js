@@ -5,7 +5,6 @@ import "./Styles/Tarjeta.css";
 import BotonPDF from "../../../../SharedComponents/BotonPDF.js";
 import { Link } from "react-router-dom";
 
-
 export default class TarjetaHogarTemporal extends React.Component {
 	render() {
 		return (
@@ -53,7 +52,6 @@ export default class TarjetaHogarTemporal extends React.Component {
 						<i
 							aria-hidden="true"
 							className="fa fa-phone fa-fw iconoTarjeta"
-							
 						></i>
 						<span className="nombreCampo"> Télefono: </span>
 						<span className="campoData">
@@ -109,16 +107,16 @@ export default class TarjetaHogarTemporal extends React.Component {
 				</div>
 
 				<div className="panelConfiguracionT">
-				<Link to={"/Laika/HogarTemporal?id=" + this.props.id}>
-				<button className="editarTarjeta" title="Editar">
-					<i
-						aria-hidden="true"
-						className="fa fa-edit fa-fw"
-					></i>
-				</button>
-			</Link>
+					<Link to={"/Laika/HogarTemporal?id=" + this.props.id}>
+						<button className="editarTarjeta" title="Editar">
+							<i
+								aria-hidden="true"
+								className="fa fa-edit fa-fw"
+							></i>
+						</button>
+					</Link>
 
-					<BotonPDF />
+					<BotonPDF id={this.props.id} />
 				</div>
 			</div>
 		);

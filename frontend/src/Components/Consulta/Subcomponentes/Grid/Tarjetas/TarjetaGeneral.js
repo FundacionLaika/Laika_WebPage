@@ -125,7 +125,7 @@ export default class TGarjetaGeneral extends React.Component {
 						</button>
 					</Link>
 
-					<BotonPDF />
+					<BotonPDF id={this.props.id} />
 				</div>
 			</div>
 		);

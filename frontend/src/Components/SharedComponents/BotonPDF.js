@@ -8,7 +8,7 @@ import {
 	Header,
 	Checkbox,
 } from "semantic-ui-react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 var datosGenerales = false,
 	expedienteMedico = false,
@@ -27,9 +27,11 @@ function Reducer(state, action) {
 	}
 }
 
-function BotonPDF() {
+function BotonPDF(props) {
 	url =
-		"/PDF/?datosGenerales=" +
+		"/PDF/?id=" +
+		props.id +
+		"&datosGenerales=" +
 		datosGenerales +
 		"&expedienteMedico=" +
 		expedienteMedico +
