@@ -9,22 +9,52 @@ import {
 } from "@david.kucsai/react-pdf-table";
 
 class HogarTemporalPDF extends React.Component {
+	formatDate = (date) => {
+		var d = new Date(date),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
+			year = d.getFullYear();
+
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+
+		return [day, month, year].join("/");
+	};
+
 	render() {
 		return (
 			<>
-				<Text style={styles.subtitle} break>
-					Hogar Temporal
+				<Text style={styles.subtitle}>Hogar Temporal</Text>
+				<Text style={styles.text}>
+					{"Tipo de Hogar Temporal: " + this.props.data.tipoHT}
 				</Text>
-				<Text style={styles.text}>Tipo de Hogar Temporal:</Text>
-				<Text style={styles.text}>Nombre del responsable:</Text>
-				<Text style={styles.text}>Teléfono:</Text>
-				<Text style={styles.text}>Fecha Inicio:</Text>
-				<Text style={styles.text}>Fecha Final:</Text>
+				<Text style={styles.text}>
+					{"Nombre del responsable: " + this.props.data.nombreHT}
+				</Text>
+				<Text style={styles.text}>
+					{"Teléfono: " + this.props.data.telefonoHT}
+				</Text>
+				<Text style={styles.text}>
+					{"Fecha Inicio: " +
+						this.formatDate(this.props.data.fechaInicioHT)}
+				</Text>
+				<Text style={styles.text}>
+					{"Fecha Final: " +
+						this.formatDate(this.props.data.fechaFinalHT)}
+				</Text>
 				<Text style={styles.subtitle}>Dirección</Text>
-				<Text style={styles.text}>Calle:</Text>
-				<Text style={styles.text}>Número:</Text>
-				<Text style={styles.text}>Colonia:</Text>
-				<Text style={styles.text}>Municipio:</Text>
+				<Text style={styles.text}>
+					{"Calle: " + this.props.data.calle}
+				</Text>
+				<Text style={styles.text}>
+					{"Número: " + this.props.data.numero}
+				</Text>
+				<Text style={styles.text}>
+					{"Colonia: " + this.props.data.colonia}
+				</Text>
+				<Text style={styles.text}>
+					{"Municipio: " + this.props.data.municipio}
+				</Text>
 				<Image
 					style={styles.image}
 					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
