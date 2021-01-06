@@ -9,11 +9,11 @@ registerLocale("es", es);
 export default class RowMed extends React.Component {
 	state = {
 		id: this.props.id,
-		fechaInicio: this.props.fechaInicio,
-		fechaFinal: this.props.fechaFinal,
+		fechaInicio: this.props.fechaInicio ? new Date(this.props.fechaInicio) : this.props.fechaInicio,
+		fechaFinal: this.props.fechaFinal ? new Date(this.props.fechaFinal) : this.props.fechaFinal,
 		comentarios: this.props.comentarios,
 		accion: this.props.accion,
-		citaMedica: this.props.citaMedica,
+		citaMedica: this.props.citaMedica ? new Date(this.props.citaMedica) : this.props.citaMedica,
 	};
 
 	handleDate = (fecha, name) => {
