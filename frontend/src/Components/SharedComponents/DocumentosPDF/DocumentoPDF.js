@@ -1,5 +1,9 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { AdopcionPDF } from "./AdopcionPDF";
+import { DatosGeneralesPDF } from "./DatosGeneralesPDF";
+import { ExpedienteMedicoPDF } from "./ExpedienteMedicoPDF";
+import { HogarTemporalPDF } from "./HogarTemporalPDF";
 
 var data = {
 	registroGeneral: "",
@@ -29,36 +33,28 @@ export function PDFGenerator(
 	hogarTemporal,
 	adopcion
 ) {
-	if (datosGenerales) {
-		fetchData("registroGeneral", id);
-	}
-	if (expedienteMedico) {
-		fetchData("expedienteMedico", id);
-	}
-	if (hogarTemporal) {
-		fetchData("hogarTemporal", id);
-	}
-	if (adopcion) {
-		fetchData("adopcion", id);
-	}
-
 	var doc = new jsPDF("p", "pt");
 
 	doc.setProperties({
-		title: "Expediente de " + id,
+		title: "Expedientes LAIKA",
 	});
 
-	doc.setFont("courier", "italic");
-	doc.text(20, 20, "Agus es homosexual");
-
-	doc.autoTable({
-		head: [["Name", "Email", "Country"]],
-		body: [
-			["David", "david@example.com", "Sweden"],
-			["Castille", "castille@example.com", "Spain"],
-			// ...
-		],
-	});
+	if (datosGenerales) {
+		fetchData("registroGeneral", id);
+		DatosGeneralesPDF(doc);
+	}
+	if (expedienteMedico) {
+		fetchData("expedienteMedico", id);
+		ExpedienteMedicoPDF(doc);
+	}
+	if (hogarTemporal) {
+		fetchData("hogarTemporal", id);
+		HogarTemporalPDF(doc);
+	}
+	if (adopcion) {
+		fetchData("adopcion", id);
+		AdopcionPDF(doc);
+	}
 
 	var string = doc.output("datauristring");
 	var embed = "<embed width='100%' height='100%' src='" + string + "'/>";
