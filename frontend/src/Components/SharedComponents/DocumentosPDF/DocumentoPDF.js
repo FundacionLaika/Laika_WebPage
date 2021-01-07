@@ -1,170 +1,69 @@
-import React from "react";
-import {
-	Page,
-	Text,
-	Document,
-	StyleSheet,
-	Font,
-	Image,
-	PDFViewer,
-} from "@react-pdf/renderer";
-import DatosGeneralesPDF from "./DatosGeneralesPDF";
-import ExpedienteMedicoPDF from "./ExpedienteMedicoPDF";
-import HogarTemporalPDF from "./HogarTemporalPDF";
-import AdopcionPDF from "./AdopcionPDF";
-import queryString from "query-string";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
-var flag = true;
+var data = {
+	registroGeneral: "",
+	expedienteMedico: "",
+	hogarTemporal: "",
+	adopcion: "",
+};
 
-class DocumentoPDF extends React.Component {
-	state = {
-		registroGeneral: "",
-		expedienteMedico: "",
-		hogarTemporal: "",
-		adopcion: "",
-	};
-
-	fetchData = (registro, id) => {
-		fetch("http://localhost:3001/" + registro + "/?id=" + id, {
-			method: "get",
-			headers: { "Content-Type": "application/json" },
+const fetchData = async (registro, id) => {
+	fetch("http://localhost:3001/" + registro + "/?id=" + id, {
+		method: "get",
+		headers: { "Content-Type": "application/json" },
+	})
+		.then((response) => response.json())
+		.then((response) => {
+			data[registro] = response;
 		})
-			.then((response) => response.json())
-			.then((response) => {
-				this.setState({
-					[registro]: response,
-				});
-			})
-			.catch((err) => console.log(err));
-	};
+		.catch((err) => {
+			console.log(err);
+		});
+};
 
-	render() {
-		const url = this.props.location.search;
-		const params = queryString.parse(url, { parseBooleans: true });
-
-		if (flag) {
-			if (params.datosGenerales) {
-				this.fetchData("registroGeneral", params.id);
-			}
-			if (params.expedienteMedico) {
-				this.fetchData("expedienteMedico", params.id);
-			}
-			if (params.hogarTemporal) {
-				this.fetchData("hogarTemporal", params.id);
-			}
-			if (params.adopcion) {
-				this.fetchData("adopcion", params.id);
-			}
-			flag = false;
-		}
-
-		return (
-			<div style={{ height: "100vh" }}>
-				<PDFViewer width="100%" height="100%">
-					<Document title="Expediente">
-						<Page style={styles.body}>
-							<Text style={styles.header} fixed>
-								Fundación Laika Protectora de Animales, A.C.
-							</Text>
-							<Image
-								style={styles.imagePortada}
-								src="/logoPDF.jpg"
-							/>
-							<Text style={styles.title}>Expedientes</Text>
-							<Text style={styles.author}>Agustín ID:30</Text>
-						</Page>
-						<Page style={styles.body}>
-							{params.datosGenerales ? (
-								<DatosGeneralesPDF
-									data={this.state.registroGeneral}
-								/>
-							) : null}
-							{params.expedienteMedico ? (
-								<ExpedienteMedicoPDF
-									data={this.state.expedienteMedico}
-								/>
-							) : null}
-							{params.hogarTemporal ? (
-								<HogarTemporalPDF
-									data={this.state.hogarTemporal}
-								/>
-							) : null}
-							{params.adopcion ? (
-								<AdopcionPDF data={this.state.adopcion} />
-							) : null}
-
-							<Text
-								style={styles.pageNumber}
-								render={({ pageNumber, totalPages }) =>
-									`${pageNumber - 1} / ${totalPages - 1}`
-								}
-								fixed
-							/>
-						</Page>
-					</Document>
-				</PDFViewer>
-			</div>
-		);
+export function PDFGenerator(
+	id,
+	datosGenerales,
+	expedienteMedico,
+	hogarTemporal,
+	adopcion
+) {
+	if (datosGenerales) {
+		fetchData("registroGeneral", id);
 	}
+	if (expedienteMedico) {
+		fetchData("expedienteMedico", id);
+	}
+	if (hogarTemporal) {
+		fetchData("hogarTemporal", id);
+	}
+	if (adopcion) {
+		fetchData("adopcion", id);
+	}
+
+	var doc = new jsPDF("p", "pt");
+
+	doc.setProperties({
+		title: "Expediente de " + id,
+	});
+
+	doc.setFont("courier", "italic");
+	doc.text(20, 20, "Agus es homosexual");
+
+	doc.autoTable({
+		head: [["Name", "Email", "Country"]],
+		body: [
+			["David", "david@example.com", "Sweden"],
+			["Castille", "castille@example.com", "Spain"],
+			// ...
+		],
+	});
+
+	var string = doc.output("datauristring");
+	var embed = "<embed width='100%' height='100%' src='" + string + "'/>";
+	var x = window.open();
+	x.document.open();
+	x.document.write(embed);
+	x.document.close();
 }
-
-Font.register({
-	family: "Oswald",
-	src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
-});
-
-const styles = StyleSheet.create({
-	body: {
-		paddingTop: 35,
-		paddingBottom: 65,
-		paddingHorizontal: 35,
-	},
-	title: {
-		fontSize: 24,
-		textAlign: "center",
-		fontFamily: "Oswald",
-	},
-	author: {
-		fontSize: 12,
-		textAlign: "center",
-		marginBottom: 40,
-	},
-	subtitle: {
-		fontSize: 18,
-		margin: 12,
-		fontFamily: "Oswald",
-	},
-	text: {
-		margin: 12,
-		fontSize: 14,
-		textAlign: "justify",
-		fontFamily: "Times-Roman",
-	},
-	image: {
-		marginVertical: 15,
-		marginHorizontal: 190,
-	},
-	imagePortada: {
-		paddingTop: 100,
-		paddingBottom: 50,
-		marginVertical: 15,
-		marginHorizontal: 100,
-	},
-	header: {
-		fontSize: 12,
-		marginBottom: 20,
-		textAlign: "center",
-		color: "grey",
-	},
-	pageNumber: {
-		position: "absolute",
-		fontSize: 12,
-		bottom: 30,
-		left: 0,
-		right: 0,
-		textAlign: "center",
-		color: "grey",
-	},
-});
-
-export default DocumentoPDF;

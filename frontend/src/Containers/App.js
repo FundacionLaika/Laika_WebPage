@@ -89,12 +89,6 @@ class App extends React.Component {
                         />
 
                         <ProtectedRoute
-                            path="/PDF"
-                            exact
-                            component={DocumentoPDF}
-                        />
-
-                        <ProtectedRoute
                             path={"/Laika/MenuUsuario/:correoUsuario"}
                             exact
                             component={MenuUsuario}

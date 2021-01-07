@@ -8,13 +8,12 @@ import {
 	Header,
 	Checkbox,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { PDFGenerator } from "./DocumentosPDF/DocumentoPDF";
 
 var datosGenerales = false,
 	expedienteMedico = false,
 	hogarTemporal = false,
 	adopcion = false;
-var url;
 
 function Reducer(state, action) {
 	switch (action.type) {
@@ -28,18 +27,6 @@ function Reducer(state, action) {
 }
 
 function BotonPDF(props) {
-	url =
-		"/PDF/?id=" +
-		props.id +
-		"&datosGenerales=" +
-		datosGenerales +
-		"&expedienteMedico=" +
-		expedienteMedico +
-		"&hogarTemporal=" +
-		hogarTemporal +
-		"&adopcion=" +
-		adopcion;
-
 	const [state, dispatch] = React.useReducer(Reducer, {
 		open: false,
 		dimmer: undefined,
@@ -248,22 +235,27 @@ function BotonPDF(props) {
 							<Icon name="checkmark" /> Aceptar
 						</Button>
 					) : (
-						<Link to={url} target="_blank">
-							<Button
-								style={{
-									borderRadius: "0.4rem",
-									margin: "0% 1% 0% 0%",
-								}}
-								color="green"
-								inverted
-								onClick={() => {
-									dispatch({ type: "CLOSE_MODAL" });
-									handleRestablecer();
-								}}
-							>
-								<Icon name="checkmark" /> Aceptar
-							</Button>
-						</Link>
+						<Button
+							style={{
+								borderRadius: "0.4rem",
+								margin: "0% 1% 0% 0%",
+							}}
+							color="green"
+							inverted
+							onClick={() => {
+								dispatch({ type: "CLOSE_MODAL" });
+								PDFGenerator(
+									props.id,
+									datosGenerales,
+									expedienteMedico,
+									hogarTemporal,
+									adopcion
+								);
+								handleRestablecer();
+							}}
+						>
+							<Icon name="checkmark" /> Aceptar
+						</Button>
 					)}
 				</Modal.Actions>
 				<Modal
