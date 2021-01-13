@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const knex = require("knex");
 const fileUpload = require('express-fileupload');
-const FileType = require('file-type');
 
 const consulta = require("./controllers/consulta");
 const registroGeneral = require("./controllers/registroGeneral");

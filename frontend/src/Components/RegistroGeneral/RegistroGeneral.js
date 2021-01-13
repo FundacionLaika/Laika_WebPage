@@ -148,29 +148,15 @@ export default class RegistroGeneral extends React.Component {
 						});
 					}
 					else if (element.includes("foto")) {
-						console.log(element);
 
 
 						if (response[element]) {
 							console.log(response[element]);
 
-
-
 							var buffer = Buffer.from(response[element].data);
-							
-							console.log(buffer);
-
-							var blob = new Blob(buffer,  { type: "image/jpg" });
-
-							console.log(blob);
-							const image = new Image();
-							image.src = URL.createObjectURL(blob);
-
-							console.log(image);
 
 							this.setState({
-								
-								[element]: image,
+								[element]: buffer.toString('utf8'),
 							});
 						}
 					}
