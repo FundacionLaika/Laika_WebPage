@@ -89,6 +89,10 @@ const handleImagenAdopcion = (db) => (req, res) => {
         .catch((err) => res.status(400).json("Soy imagen de Adop"));
 };
 
+const handleUpload = (db) => (req, res) => {
+   
+}
+
 module.exports = {
     handleImagenPerfil: handleImagenPerfil,
     handleImagenRegistro: handleImagenRegistro,
