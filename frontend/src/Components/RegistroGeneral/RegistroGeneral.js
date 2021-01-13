@@ -23,7 +23,7 @@ export default class RegistroGeneral extends React.Component {
 		colonia: "",
 		municipio: "",
 		senasParticulares: "",
-		foto: "/iconoPerro.png",
+		foto: null,
 		rescatistas: [],
 	};
 
@@ -42,18 +42,18 @@ export default class RegistroGeneral extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
-		this.upload();
+		this.updateDB();
 	};
 
-	upload = () => {
+	updateDB = () => {
 		let url = this.props.location.search;
 		console.log("url", url);
 		let params = queryString.parse(url);
 
-		fetch("http://localhost:3001/upload", {
+		fetch("http://localhost:3001/registroGeneral", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
-			body: {imagen: this.state.foto}
+			body: JSON.stringify(this.state)
 		})
 			.then((response) => response.json())
 			.then((response) => {

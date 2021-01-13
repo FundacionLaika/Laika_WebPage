@@ -25,9 +25,10 @@ const subirImagen = require("./controllers/subirImagen");
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(fileUpload());
+app.use(express.json());
 
 
 const db = knex({
@@ -47,6 +48,10 @@ app.post("/consulta", (req, res) => {
 
 app.get("/registroGeneral", (req, res) => {
     registroGeneral.handleGetRG(req, res, db);
+});
+
+app.put("/registroGeneral", (req, res) => {
+    registroGeneral.handleUpdateRG(req, res, db);
 });
 
 app.get("/expedienteMedico", (req, res) => {
