@@ -11,7 +11,7 @@ export default class Row extends React.Component {
 		id: this.props.id,
 		observaciones: this.props.observaciones,
 		accion: this.props.accion,
-		fecha: this.props.fecha,
+		fecha: this.props.fecha ? new Date(this.props.fecha) : this.props.fecha,
     };
     
     handleDate = (fecha, name) => {

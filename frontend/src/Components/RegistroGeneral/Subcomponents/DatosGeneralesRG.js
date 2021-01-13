@@ -46,73 +46,68 @@ export default class DatosGeneralesRG extends React.Component {
 							onChange={this.props.handleChange}
 						>
 							<option className="pad" value=""></option>
-							<option className="pad" value="03m">
-								0 a 3 meses
+
+							<option className="pad" value="0">
+								{"Menos de 1 año"}
 							</option>
-							<option className="pad" value="46m">
-								4 a 6 meses
-							</option>
-							<option className="pad" value="711m">
-								7 a 11 meses
-							</option>
-							<option className="pad" value="1a">
+							<option className="pad" value="1">
 								1 año
 							</option>
-							<option className="pad" value="2a">
+							<option className="pad" value="2">
 								2 años
 							</option>
-							<option className="pad" value="3a">
+							<option className="pad" value="3">
 								3 años
 							</option>
-							<option className="pad" value="4a">
+							<option className="pad" value="4">
 								4 años
 							</option>
-							<option className="pad" value="5a">
+							<option className="pad" value="5">
 								5 años
 							</option>
-							<option className="pad" value="6a">
+							<option className="pad" value="6">
 								6 años
 							</option>
-							<option className="pad" value="7a">
+							<option className="pad" value="7">
 								7 años
 							</option>
-							<option className="pad" value="8a">
+							<option className="pad" value="8">
 								8 años
 							</option>
-							<option className="pad" value="9a">
+							<option className="pad" value="9">
 								9 años
 							</option>
-							<option className="pad" value="10a">
+							<option className="pad" value="10">
 								10 años
 							</option>
-							<option className="pad" value="11a">
+							<option className="pad" value="11">
 								11 años
 							</option>
-							<option className="pad" value="12a">
+							<option className="pad" value="12">
 								12 años
 							</option>
-							<option className="pad" value="13a">
+							<option className="pad" value="13">
 								13 años
 							</option>
-							<option className="pad" value="14a">
+							<option className="pad" value="14">
 								14 años
 							</option>
-							<option className="pad" value="15a">
+							<option className="pad" value="15">
 								15 años
 							</option>
-							<option className="pad" value="16a">
+							<option className="pad" value="16">
 								16 años
 							</option>
-							<option className="pad" value="17a">
+							<option className="pad" value="17">
 								17 años
 							</option>
-							<option className="pad" value="18a">
+							<option className="pad" value="18">
 								18 años
 							</option>
-							<option className="pad" value="19a">
+							<option className="pad" value="19">
 								19 años
 							</option>
-							<option className="pad" value="20aOmas">
+							<option className="pad" value="20">
 								20 años o más
 							</option>
 						</select>
