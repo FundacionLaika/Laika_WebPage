@@ -8,7 +8,7 @@ import {
 	Header,
 	Checkbox,
 } from "semantic-ui-react";
-import { PDFGenerator } from "./DocumentosPDF/DocumentoPDF";
+import { PDFGenerator, FetchAllData } from "./DocumentosPDF/DocumentoPDF";
 
 var datosGenerales = false,
 	expedienteMedico = false,
@@ -251,6 +251,7 @@ function BotonPDF(props) {
 									hogarTemporal,
 									adopcion
 								);
+								
 								handleRestablecer();
 							}}
 						>
