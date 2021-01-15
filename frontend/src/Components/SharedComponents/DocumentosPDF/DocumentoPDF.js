@@ -7,7 +7,6 @@ import { HogarTemporalPDF } from "./HogarTemporalPDF";
 import { PictureFrame } from "./Images/PictureFrame.js";
 import { LaikaLogo } from "./Images/LaikaLogo.js";
 
-
 var data = {
 	registroGeneral: {},
 	expedienteMedico: {},
@@ -58,27 +57,28 @@ export async function PDFGenerator(
 
 	var buffer = Buffer.from(data.registroGeneral.foto.data);
 
-	console.log(PictureFrame);
-	doc.addImage(LaikaLogo, "PNG", 4, 2, 30, 18);
-	doc.addImage(PictureFrame, "PNG", 53, 60, 115, 120);
-	doc.addImage(buffer.toString("utf-8"), "JPEG", 77, 83, 70, 74);
+	doc.addImage(LaikaLogo, "PNG", 4, 2, 30, 18, "", "FAST");
+	doc.addImage(PictureFrame, "PNG", 53, 60, 115, 120, "", "FAST");
+	doc.addImage(buffer.toString("utf-8"), "JPEG", 77, 83, 70, 74, "", "FAST");
 
 	doc.setFont("raleway", "bold");
 	doc.setFontSize(20);
-	doc.text("ID: " + id, 110, 190, {align: 'center'});
-    doc.text("Nombre: " + data.registroGeneral.nombre, 110, 200, {align: 'center'});
- 
+	doc.text("ID: " + id, 110, 190, { align: "center" });
+	doc.text("Nombre: " + data.registroGeneral.nombre, 110, 200, {
+		align: "center",
+	});
+
 	if (datosGenerales) {
-		DatosGeneralesPDF(doc);
+		DatosGeneralesPDF(doc, data);
 	}
 	if (expedienteMedico) {
-		ExpedienteMedicoPDF(doc);
+		ExpedienteMedicoPDF(doc, data);
 	}
 	if (hogarTemporal) {
-		HogarTemporalPDF(doc);
+		HogarTemporalPDF(doc, data);
 	}
 	if (adopcion) {
-		AdopcionPDF(doc);
+		AdopcionPDF(doc, data);
 	}
 
 	var string = doc.output("datauristring");
