@@ -5,12 +5,10 @@ export function HogarTemporalPDF(doc, data) {
 	doc.setFillColor("#51D1F6");
 	doc.rect(0, 0, 2300, 25, "F");
 
-	doc.setFont("raleway", "bold");
+	doc.setFont("Raleway-Regular", "normal");	
 	doc.setFontSize(30);
 	doc.setTextColor("#ffffff");
 	doc.text("Hogar Temporal", 10, 16);
-
-	console.log(data.hogarTemporal);
 
 	doc.setFontSize(24);
 	doc.setTextColor("#000000");

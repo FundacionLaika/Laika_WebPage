@@ -5,13 +5,22 @@ export function ExpedienteMedicoPDF(doc, data) {
 	doc.setFillColor("#51D1F6");
 	doc.rect(0, 0, 2300, 25, "F");
 
-	doc.setFont("raleway", "bold");
+	doc.setFont("Raleway-Regular", "normal");
 	doc.setFontSize(30);
 	doc.setTextColor("#ffffff");
 	doc.text("Expediente Médico", 10, 16);
 
 	doc.autoTable({
 		startY: 50,
+		columnStyles: {
+			1: { halign: "center" },
+		},
+		head: [
+			[
+				{ content: "Diagnóstico" },
+				{ content: "Aplicada", styles: { halign: "center" } },
+			],
+		],
 		body: [
 			{
 				nombre: "Atropellamiento",
@@ -47,13 +56,28 @@ export function ExpedienteMedicoPDF(doc, data) {
 			},
 		],
 		columns: [
-			{ header: "Diagnóstico", dataKey: "nombre" },
+			{
+				header: "Diagnóstico",
+				dataKey: "nombre",
+				styles: { halign: "center" },
+			},
 			{ header: "Aplicada", dataKey: "flag" },
 		],
 	});
 
 	doc.autoTable({
 		startY: 120,
+		columnStyles: {
+			1: { halign: "center" },
+			2: { halign: "center" },
+		},
+		head: [
+			[
+				{ content: "Vacunas" },
+				{ content: "Aplicada", styles: { halign: "center" } },
+				{ content: "Fecha/Cita", styles: { halign: "center" } },
+			],
+		],
 		body: [
 			{
 				nombre: "Puppy",
@@ -139,17 +163,35 @@ export function ExpedienteMedicoPDF(doc, data) {
 	data.expedienteMedico.tratamiento.map((row) => {
 		row.fechaInicio = formatDate(row.fechaInicio);
 		row.fechaFinal = formatDate(row.fechaFinal);
+		row.citaMedica = formatDate(row.citaMedica);
 	});
 
 	if (data.expedienteMedico.tratamiento.length) {
 		doc.addPage();
 		doc.autoTable({
+			columnStyles: {
+				0: { cellWidth: 24 },
+				1: { cellWidth: 24 },
+				2: { cellWidth: 56 },
+				3: { cellWidth: 56 },
+				4: { cellWidth: 24 },
+			},
+			head: [
+				[
+					{ content: "Fecha inicio", styles: { halign: "center" } },
+					{ content: "Fecha final", styles: { halign: "center" } },
+					{ content: "Comentarios", styles: { halign: "center" } },
+					{ content: "Acción", styles: { halign: "center" } },
+					{ content: "Cita médica", styles: { halign: "center" } },
+				],
+			],
 			body: data.expedienteMedico.tratamiento,
 			columns: [
 				{ header: "Fecha inicio", dataKey: "fechaInicio" },
 				{ header: "Fecha final", dataKey: "fechaFinal" },
 				{ header: "Comentarios", dataKey: "comentarios" },
 				{ header: "Acción", dataKey: "accion" },
+				{ header: "Cita médica", dataKey: "citaMedica" },
 			],
 		});
 	}

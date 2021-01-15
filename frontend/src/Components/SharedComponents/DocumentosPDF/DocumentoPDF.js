@@ -6,6 +6,7 @@ import { ExpedienteMedicoPDF } from "./ExpedienteMedicoPDF";
 import { HogarTemporalPDF } from "./HogarTemporalPDF";
 import { PictureFrame } from "./Images/PictureFrame.js";
 import { LaikaLogo } from "./Images/LaikaLogo.js";
+import "./Raleway-Regular";
 
 var data = {
 	registroGeneral: {},
@@ -61,7 +62,7 @@ export async function PDFGenerator(
 	doc.addImage(PictureFrame, "PNG", 53, 60, 115, 120, "", "FAST");
 	doc.addImage(buffer.toString("utf-8"), "JPEG", 77, 83, 70, 74, "", "FAST");
 
-	doc.setFont("raleway", "bold");
+	doc.setFont("Raleway-Regular", "normal");	
 	doc.setFontSize(20);
 	doc.text("ID: " + id, 110, 190, { align: "center" });
 	doc.text("Nombre: " + data.registroGeneral.nombre, 110, 200, {

@@ -5,7 +5,7 @@ export function DatosGeneralesPDF(doc, data) {
 	doc.setFillColor("#51D1F6");
 	doc.rect(0, 0, 2300, 25, "F");
 
-	doc.setFont("raleway", "bold");
+	doc.setFont("Raleway-Regular", "normal");	
 	doc.setFontSize(30);
 	doc.setTextColor("#ffffff");
 	doc.text("Datos Generales", 10, 16);
@@ -28,6 +28,14 @@ export function DatosGeneralesPDF(doc, data) {
 	doc.text("Municipio: " + data.registroGeneral.municipio, 10, 126);
 
 	doc.autoTable({
+		headStyles: {
+			halign: "center"
+		},
+		bodyStyles: {
+			fillColor: "#FFF8E7",
+			halign: "center",
+		},
+
 		startY: 150,
 		tableWidth: 100,
 		body: data.registroGeneral.rescatistas,
