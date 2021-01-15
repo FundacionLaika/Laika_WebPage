@@ -58,6 +58,10 @@ app.get("/expedienteMedico", (req, res) => {
     expedienteMedico.handleGetEM(req, res, db);
 });
 
+app.put("/expedienteMedico", (req, res) => {
+    expedienteMedico.handleUpdateEM(req, res, db);
+});
+
 app.get("/hogarTemporal", (req, res) => {
     hogarTemporal.handleGetHT(req, res, db);
 });
@@ -66,30 +70,7 @@ app.get("/adopcion", (req, res) => {
     adopcion.handleGetA(req, res, db);
 });
 
-app.put('/upload', async (req, res) => {
 
-    console.log(req.body)
-    const {imagen} = req.body;
-
-
-    
-    if (imagen) {
-        await db("ANIMAL_RESCATADO")
-        .where("ID_Animal", "=", 1)
-        .update({
-            Foto: imagen,
-        })
-        .then(() => {
-            console.log(imagen);
-            res.json(imagen);
-        })
-        .catch((err) => res.status(400).json("Soy imagen del med"));
-        
-
-    } else {
-        res.sendStatus(400);
-    }
-})
 
 
 

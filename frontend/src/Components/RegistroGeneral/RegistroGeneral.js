@@ -149,7 +149,6 @@ export default class RegistroGeneral extends React.Component {
 					}
 					else if (element.includes("foto")) {
 
-
 						if (response[element]) {
 							console.log(response[element]);
 

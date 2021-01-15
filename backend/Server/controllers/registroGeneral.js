@@ -97,7 +97,6 @@ const handlePostRG = (req, res, db) => {
 };
 
 handleUpdateRG = (req, res, db) => {
-	console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaa");
 	const {
 		id,
 		nombre,
@@ -119,21 +118,21 @@ handleUpdateRG = (req, res, db) => {
 		UPDATE 	ANIMAL_RESCATADO ar,
 				RESCATE r,
 				DIRECCION_RESCATE dr
-		SET ar.Nombre = "${nombre}",
-			ar.Edad = "${edad}",
-			ar.Genero = "${genero}",
-			ar.Especie = "${especie}",
-			ar.SenasParticulares = "${senasParticulares}",
-			ar.Estatus = "${estatus}",
-			ar.Foto = ${foto ? '"' + foto + '"' : null},
-			r.Fecha = "${fechaDeRescate}",
-			dr.Calle = "${calle}",
-			dr.Numero = "${numero}",
-			dr.Colonia = "${colonia}",
-			dr.Municipio = "${municipio}"
-		WHERE ar.ID_Animal = r.ID_Animal
-		AND r.ID_Rescate = dr.ID_Rescate
-		AND ar.ID_Animal = "${id}";
+		SET 	ar.Nombre = "${nombre}",
+				ar.Edad = "${edad}",
+				ar.Genero = "${genero}",
+				ar.Especie = "${especie}",
+				ar.SenasParticulares = "${senasParticulares}",
+				ar.Estatus = "${estatus}",
+				ar.Foto = ${foto ? '"' + foto + '"' : null},
+				r.Fecha = "${fechaDeRescate}",
+				dr.Calle = "${calle}",
+				dr.Numero = "${numero}",
+				dr.Colonia = "${colonia}",
+				dr.Municipio = "${municipio}"
+		WHERE 	ar.ID_Animal = r.ID_Animal
+				AND r.ID_Rescate = dr.ID_Rescate
+				AND ar.ID_Animal = "${id}";
 	`;
 
 	console.log(rescatistas);

@@ -105,6 +105,18 @@ export default class Adopcion extends React.Component {
 							[element]: new Date(response[element])
 						});
 					}
+					else if (element.includes("foto")) {
+
+						if (response[element]) {
+							console.log(response[element]);
+
+							var buffer = Buffer.from(response[element].data);
+
+							this.setState({
+								[element]: buffer.toString('utf8'),
+							});
+						}
+					}
 					else {
 						this.setState({
 							[element]: response[element]

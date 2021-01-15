@@ -9,7 +9,7 @@ import shortid from "shortid";
 import DataGridMed from "./Subcomponentes/DataGridMed";
 import Foto from "../SharedComponents/Foto";
 import "./Styles/ExpedienteMedico.css";
-import queryString from 'query-string';
+import queryString from "query-string";
 
 class ExpedienteMedico extends Component {
 	state = {
@@ -45,9 +45,9 @@ class ExpedienteMedico extends Component {
 		fechaRabia: null,
 
 		/*Fotos*/
-		foto1: "/iconoPerro.png",
-		foto2: "/iconoPerro.png",
-		foto3: "/iconoPerro.png",
+		foto1: null,
+		foto2: null,
+		foto3: null,
 
 		/*Tratamiento*/
 		tratamiento: [],
@@ -109,6 +109,24 @@ class ExpedienteMedico extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
+		this.updateDB();
+	};
+
+	updateDB = () => {
+		let url = this.props.location.search;
+		console.log("url", url);
+		let params = queryString.parse(url);
+
+		fetch("http://localhost:3001/expedienteMedico", {
+			method: "put",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(this.state),
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((err) => console.log(err));
 	};
 
 	/*Manejadores de Restablecer*/
@@ -128,22 +146,29 @@ class ExpedienteMedico extends Component {
 			.then((response) => {
 				console.log(response);
 				for (const element in response) {
-
 					if (element.includes("fecha")) {
 						this.setState({
-							[element]: new Date(response[element])
+							[element]: new Date(response[element]),
 						});
-					}
-					else {
+					} else if (element.includes("foto")) {
+						if (response[element]) {
+							console.log(response[element]);
+
+							var buffer = Buffer.from(response[element].data);
+
+							this.setState({
+								[element]: buffer.toString("utf8"),
+							});
+						}
+					} else {
 						this.setState({
-							[element]: response[element]
+							[element]: response[element],
 						});
 					}
-					
 				}
 			})
 			.catch((err) => console.log(err));
-	}
+	};
 
 	componentDidMount() {
 		this.fetchData();
@@ -154,11 +179,11 @@ class ExpedienteMedico extends Component {
 		event.preventDefault();
 		const newRow = {
 			id: shortid.generate(),
-			fechaInicio: "",
-			fechaFinal: "",
+			fechaInicio: null,
+			fechaFinal: null,
 			comentarios: "",
 			accion: "",
-			citaMedica: "",
+			citaMedica: null,
 		};
 		this.setState((state) => ({
 			tratamiento: [newRow, ...state.tratamiento],
@@ -171,24 +196,18 @@ class ExpedienteMedico extends Component {
 		}));
 	};
 
-	modifyRow = (event) => {
+	modifyRow = (id, name, value) => {
 		let dataTemp = this.state.tratamiento;
 
 		dataTemp.forEach((element) => {
-			if (element.id === event.target.id) {
-				if (event.target.name === "fechaInicio")
-					element.fechaInicio = event.target.value;
-				else if (event.target.name === "fechaFinal")
-					element.fechaFinal = event.target.value;
-				else if (event.target.name === "comentarios")
-					element.comentarios = event.target.value;
-				else if (event.target.name === "accion")
-					element.accion = event.target.value;
-				else if (event.target.name === "citaMedica")
-					element.citaMedica = event.target.value;
+			if (element.id === id) {
+				if (name === "fechaInicio") element.fechaInicio = value;
+				else if (name === "fechaFinal") element.fechaFinal = value;
+				else if (name === "comentarios") element.comentarios = value;
+				else if (name === "accion") element.accion = value;
+				else if (name === "citaMedica") element.citaMedica = value;
 			}
 		});
-
 		this.setState({
 			tratamiento: dataTemp,
 		});
@@ -203,7 +222,6 @@ class ExpedienteMedico extends Component {
 						tabIndicatorPosition={"25%"}
 						activePosition={"ExpedienteMedico"}
 						id={this.state.id}
-
 					/>
 				</div>
 
@@ -304,7 +322,12 @@ class ExpedienteMedico extends Component {
 				</div>
 
 				<div className="BotonesRegistroMedico">
-					<Link to={"/Laika/RegistroGeneral"+this.props.location.search}>
+					<Link
+						to={
+							"/Laika/RegistroGeneral" +
+							this.props.location.search
+						}
+					>
 						<button className="BotonMedicoTransicion BotonAnteriorMedico">
 							{" "}
 							<i
@@ -331,7 +354,9 @@ class ExpedienteMedico extends Component {
 						Guardar{" "}
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
-					<Link to={"/Laika/HogarTemporal"+this.props.location.search}>
+					<Link
+						to={"/Laika/HogarTemporal" + this.props.location.search}
+					>
 						<button className="BotonMedicoTransicion BotonSiguienteMedico">
 							Hogar Temporal{" "}
 							<i
