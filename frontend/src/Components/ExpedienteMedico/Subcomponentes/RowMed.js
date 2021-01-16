@@ -7,21 +7,6 @@ import { DatePickerInput2 } from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 export default class RowMed extends React.Component {
-	state = {
-		id: this.props.id,
-		fechaInicio: this.props.fechaInicio ? new Date(this.props.fechaInicio) : this.props.fechaInicio,
-		fechaFinal: this.props.fechaFinal ? new Date(this.props.fechaFinal) : this.props.fechaFinal,
-		comentarios: this.props.comentarios,
-		accion: this.props.accion,
-		citaMedica: this.props.citaMedica ? new Date(this.props.citaMedica) : this.props.citaMedica,
-	};
-
-	handleDate = (fecha, name) => {
-		this.setState({
-			[name]: fecha,
-		});
-	};
-
 	render() {
 		return (
 			<div className="rowDG">
@@ -37,14 +22,30 @@ export default class RowMed extends React.Component {
 						id={this.props.id}
 						name="fechaInicio"
 						locale="es"
-						selected={this.state.fechaInicio}
-						selectsStart
-						startDate={this.state.fechaInicio}
-						endDate={this.state.fechaFinal}
-						dateFormat="dd/MM/yyyy"
-						onChange={(date) =>
-							this.handleDate(date, "fechaInicio")
+						selected={
+							this.props.fechaInicio
+								? new Date(this.props.fechaInicio)
+								: null
 						}
+						selectsStart
+						startDate={
+							this.props.fechaInicio
+								? new Date(this.props.fechaInicio)
+								: null
+						}
+						endDate={
+							this.props.fechaFinal
+								? new Date(this.props.fechaFinal)
+								: null
+						}
+						dateFormat="dd/MM/yyyy"
+						onChange={(date) => {
+							this.props.modifyRow(
+								this.props.id,
+								"fechaInicio",
+								date
+							);
+						}}
 					/>
 				</div>
 				<div className="dg-col2 fechaDG">
@@ -59,12 +60,30 @@ export default class RowMed extends React.Component {
 						id={this.props.id}
 						name="fechaFinal"
 						locale="es"
-						selected={this.state.fechaFinal}
+						selected={
+							this.props.fechaFinal
+								? new Date(this.props.fechaFinal)
+								: null
+						}
 						selectsEnd
-						startDate={this.state.fechaInicio}
-						endDate={this.state.fechaFinal}
+						startDate={
+							this.props.fechaInicio
+								? new Date(this.props.fechaInicio)
+								: null
+						}
+						endDate={
+							this.props.fechaFinal
+								? new Date(this.props.fechaFinal)
+								: null
+						}
 						dateFormat="dd/MM/yyyy"
-						onChange={(date) => this.handleDate(date, "fechaFinal")}
+						onChange={(date) => {
+							this.props.modifyRow(
+								this.props.id,
+								"fechaFinal",
+								date
+							);
+						}}
 					/>
 				</div>
 				<div className="dg-col3">
@@ -72,8 +91,14 @@ export default class RowMed extends React.Component {
 						id={this.props.id}
 						type="text"
 						name="comentarios"
-						value={this.props.comentarios}
-						onChange={this.props.handleChange}
+						value={this.props.comentarios ? this.props.comentarios : ""}
+						onChange={(event) => {
+							this.props.modifyRow(
+								this.props.id,
+								event.target.name,
+								event.target.value
+							);
+						}}
 						rows="4"
 					/>
 				</div>
@@ -83,8 +108,14 @@ export default class RowMed extends React.Component {
 						id={this.props.id}
 						type="text"
 						name="accion"
-						value={this.props.accion}
-						onChange={this.props.handleChange}
+						value={this.props.accion ? this.props.accion : ""}
+						onChange={(event) => {
+							this.props.modifyRow(
+								this.props.id,
+								event.target.name,
+								event.target.value
+							);
+						}}
 						rows="4"
 					/>
 				</div>
@@ -101,9 +132,19 @@ export default class RowMed extends React.Component {
 						id={this.props.id}
 						name="citaMedica"
 						locale="es"
-						selected={this.state.citaMedica}
+						selected={
+							this.props.citaMedica
+								? new Date(this.props.citaMedica)
+								: null
+						}
 						dateFormat="dd/MM/yyyy"
-						onChange={(date) => this.handleDate(date, "citaMedica")}
+						onChange={(date) => {
+							this.props.modifyRow(
+								this.props.id,
+								"citaMedica",
+								date
+							);
+						}}
 					/>
 				</div>
 

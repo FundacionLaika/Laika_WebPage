@@ -46,7 +46,7 @@ export default class DataGridMed extends React.Component {
 						comentarios={row.comentarios}
 						accion={row.accion}
 						citaMedica={row.citaMedica}
-						handleChange={this.props.modifyRow}
+						modifyRow={this.props.modifyRow}
 						deleteRow={() => this.props.deleteRow(row.id)}
 					/>
 				))}

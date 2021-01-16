@@ -25,9 +25,10 @@ const subirImagen = require("./controllers/subirImagen");
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(fileUpload());
+app.use(express.json());
 
 
 const db = knex({
@@ -49,42 +50,35 @@ app.get("/registroGeneral", (req, res) => {
     registroGeneral.handleGetRG(req, res, db);
 });
 
+app.put("/registroGeneral", (req, res) => {
+    registroGeneral.handleUpdateRG(req, res, db);
+});
+
 app.get("/expedienteMedico", (req, res) => {
     expedienteMedico.handleGetEM(req, res, db);
+});
+
+app.put("/expedienteMedico", (req, res) => {
+    expedienteMedico.handleUpdateEM(req, res, db);
 });
 
 app.get("/hogarTemporal", (req, res) => {
     hogarTemporal.handleGetHT(req, res, db);
 });
 
+app.put("/hogarTemporal", (req, res) => {
+    hogarTemporal.handleUpdateHT(req, res, db);
+});
+
 app.get("/adopcion", (req, res) => {
     adopcion.handleGetA(req, res, db);
 });
 
-app.put('/upload', async (req, res) => {
+app.put("/adopcion", (req, res) => {
+    adopcion.handleUpdateA(req, res, db);
+});
 
-    console.log(req.body)
-    const {imagen} = req.body;
 
-
-    
-    if (imagen) {
-        await db("ANIMAL_RESCATADO")
-        .where("ID_Animal", "=", 1)
-        .update({
-            Foto: imagen,
-        })
-        .then(() => {
-            console.log(imagen);
-            res.json(imagen);
-        })
-        .catch((err) => res.status(400).json("Soy imagen del med"));
-        
-
-    } else {
-        res.sendStatus(400);
-    }
-})
 
 
 
