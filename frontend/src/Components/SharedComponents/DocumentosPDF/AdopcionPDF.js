@@ -1,14 +1,19 @@
 import { formatDate } from "../../SharedFunctions/PDFfunctions";
+import { IconoDefault } from "./Images/IconoDefault";
+import { LaikaLogo } from "./Images/LaikaLogo";
+import { Paw } from "./Images/Paw";
 
 export function AdopcionPDF(doc, data) {
 	doc.addPage();
 	doc.setFillColor("#51D1F6");
 	doc.rect(0, 0, 2300, 25, "F");
 
-	doc.setFont("Raleway-Regular", "normal");	
+	doc.setFont("Raleway-Regular", "normal");
 	doc.setFontSize(30);
 	doc.setTextColor("#ffffff");
-	doc.text("Adopción", 10, 16);
+	doc.text("Adopción", 30, 16);
+	doc.addImage(Paw, "PNG", 10, 6, 12, 12, "", "FAST");
+	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 
 	doc.setFontSize(24);
 	doc.setTextColor("#000000");
@@ -43,6 +48,8 @@ export function AdopcionPDF(doc, data) {
 			"",
 			"FAST"
 		);
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 8, 180, 60, 64, "", "FAST");
 	}
 
 	data.adopcion.comentarios.map((row) => {
@@ -52,6 +59,18 @@ export function AdopcionPDF(doc, data) {
 	if (data.adopcion.comentarios.length) {
 		doc.addPage();
 		doc.autoTable({
+			columnStyles: {
+				0: { cellWidth: 80 },
+				1: { cellWidth: 80 },
+				2: { cellWidth: 24 },
+			},
+			head: [
+				[
+					{ content: "Observaciones", styles: { halign: "center" } },
+					{ content: "Acción", styles: { halign: "center" } },
+					{ content: "Fecha", styles: { halign: "center" } },
+				],
+			],
 			body: data.adopcion.comentarios,
 			columns: [
 				{ header: "Observaciones", dataKey: "observaciones" },

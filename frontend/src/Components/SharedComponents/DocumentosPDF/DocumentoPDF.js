@@ -7,6 +7,7 @@ import { HogarTemporalPDF } from "./HogarTemporalPDF";
 import { PictureFrame } from "./Images/PictureFrame.js";
 import { LaikaLogo } from "./Images/LaikaLogo.js";
 import "./Raleway-Regular";
+import { IconoDefault } from "./Images/IconoDefault";
 
 var data = {
 	registroGeneral: {},
@@ -56,11 +57,16 @@ export async function PDFGenerator(
 	doc.rect(0, 0, 2300, 20, "F");
 	doc.rect(0, 250, 2300, 40, "F");
 
-	var buffer = Buffer.from(data.registroGeneral.foto.data);
-
-	doc.addImage(LaikaLogo, "PNG", 4, 2, 30, 18, "", "FAST");
+	doc.addImage(LaikaLogo, "PNG", 4, 2, 32, 18, "", "FAST");
 	doc.addImage(PictureFrame, "PNG", 53, 60, 115, 120, "", "FAST");
-	doc.addImage(buffer.toString("utf-8"), "JPEG", 77, 83, 70, 74, "", "FAST");
+
+	if(data.registroGeneral.foto) {
+		var buffer = Buffer.from(data.registroGeneral.foto.data);
+		doc.addImage(buffer.toString("utf-8"), "JPEG", 77, 83, 70, 74, "", "FAST");
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 77, 83, 70, 74, "", "FAST");
+	}
+	
 
 	doc.setFont("Raleway-Regular", "normal");	
 	doc.setFontSize(20);

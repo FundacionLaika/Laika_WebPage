@@ -1,4 +1,6 @@
 import { formatDate } from "../../SharedFunctions/PDFfunctions";
+import { LaikaLogo } from "./Images/LaikaLogo";
+import { GeneralData } from "./Images/GeneralData";
 
 export function DatosGeneralesPDF(doc, data) {
 	doc.addPage();
@@ -8,7 +10,9 @@ export function DatosGeneralesPDF(doc, data) {
 	doc.setFont("Raleway-Regular", "normal");	
 	doc.setFontSize(30);
 	doc.setTextColor("#ffffff");
-	doc.text("Datos Generales", 10, 16);
+	doc.text("Datos Generales", 30, 16);
+	doc.addImage(GeneralData, "PNG", 10, 6, 12, 12, "","FAST");
+	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 
 	doc.setFontSize(24);
 	doc.setTextColor("#000000");

@@ -1,4 +1,7 @@
 import { formatDate, boolToString } from "../../SharedFunctions/PDFfunctions";
+import { LaikaLogo } from "./Images/LaikaLogo";
+import { Medkit } from "./Images/Medkit";
+import { IconoDefault } from "./Images/IconoDefault";
 
 export function ExpedienteMedicoPDF(doc, data) {
 	doc.addPage();
@@ -8,10 +11,17 @@ export function ExpedienteMedicoPDF(doc, data) {
 	doc.setFont("Raleway-Regular", "normal");
 	doc.setFontSize(30);
 	doc.setTextColor("#ffffff");
-	doc.text("Expediente Médico", 10, 16);
+	doc.text("Expediente Médico", 30, 16);
+	doc.addImage(Medkit, "PNG", 10, 6, 12, 12, "", "FAST");
+	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
+	doc.setTextColor("#000000");
+	doc.setFontSize(16);
+	doc.text("Diagnóstico", 15, 33);
+	doc.text("Cartilla de vacunación", 15, 116);
 
 	doc.autoTable({
-		startY: 50,
+		startY: 37,
+		tableWidth: 120,
 		columnStyles: {
 			1: { halign: "center" },
 		},
@@ -67,6 +77,7 @@ export function ExpedienteMedicoPDF(doc, data) {
 
 	doc.autoTable({
 		startY: 120,
+		tableWidth: 120,
 		columnStyles: {
 			1: { halign: "center" },
 			2: { halign: "center" },
@@ -130,6 +141,8 @@ export function ExpedienteMedicoPDF(doc, data) {
 			"",
 			"FAST"
 		);
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 8, 180, 60, 64, "", "FAST");
 	}
 
 	if (data.expedienteMedico.foto2) {
@@ -144,6 +157,8 @@ export function ExpedienteMedicoPDF(doc, data) {
 			"",
 			"FAST"
 		);
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 78, 180, 60, 64, "", "FAST");
 	}
 
 	if (data.expedienteMedico.foto3) {
@@ -158,6 +173,8 @@ export function ExpedienteMedicoPDF(doc, data) {
 			"",
 			"FAST"
 		);
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 148, 180, 60, 64, "", "FAST");
 	}
 
 	data.expedienteMedico.tratamiento.map((row) => {
@@ -168,7 +185,9 @@ export function ExpedienteMedicoPDF(doc, data) {
 
 	if (data.expedienteMedico.tratamiento.length) {
 		doc.addPage();
+		doc.text("Tratamiento",10,15);
 		doc.autoTable({
+			startY: 20,
 			columnStyles: {
 				0: { cellWidth: 24 },
 				1: { cellWidth: 24 },
