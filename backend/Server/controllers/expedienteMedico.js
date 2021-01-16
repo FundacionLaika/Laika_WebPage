@@ -39,7 +39,9 @@ const handleGetEM = (req, res, db) => {
 				AND em.ID_Medico = diag.ID_Diagnostico
 				AND em.ID_Medico = est.ID_Medico
 				AND em.ID_Medico = cv.ID_Medico ` +
-		"AND ar.ID_Animal = '" + req.query.id + "';"
+			"AND ar.ID_Animal = '" +
+			req.query.id +
+			"';"
 	)
 		.then((data1) => {
 			db.raw(
@@ -75,6 +77,137 @@ const handleGetEM = (req, res, db) => {
 		);
 };
 
+handleUpdateEM = (req, res, db) => {
+	const {
+		id,
+		atropellamiento,
+		tvt,
+		sarnaPiel,
+		viral,
+		embarazo,
+		cachorros,
+		hemoparasitos,
+		otroEspecificar,
+		esterilizado,
+		citaEsterilizacion,
+		fechaEsterilizacion,
+		puppy,
+		refuerzoPuppy,
+		multiple,
+		refuerzoMultiple,
+		rabia,
+		fechaPuppy,
+		fechaRefuerzoPuppy,
+		fechaMultiple,
+		fechaRefuerzoMultiple,
+		fechaRabia,
+		foto1,
+		foto2,
+		foto3,
+		tratamiento,
+	} = req.body;
+
+	const query = `
+	UPDATE 	EXPEDIENTE_MEDICO em,
+			ANIMAL_RESCATADO ar,
+			CARTILLA_DE_VACUNACION cdv,
+			ESTERILIZACION e,
+			DIAGNOSTICO d
+	SET 	em.Foto1 = ${foto1 ? '"' + foto1 + '"' : null},
+			em.Foto2 = ${foto2 ? '"' + foto2 + '"' : null},
+			em.Foto3 = ${foto3 ? '"' + foto3 + '"' : null},
+			cdv.Puppy = ${puppy},
+			cdv.RefuerzoPuppy = ${refuerzoPuppy},
+			cdv.Multiple = ${multiple},
+			cdv.RefuerzoMultiple = ${refuerzoMultiple},
+			cdv.Rabia = ${rabia},
+			cdv.FechaPuppy = "${fechaPuppy}",
+			cdv.FechaRefuerzoPuppy = "${fechaRefuerzoPuppy}",
+			cdv.FechaMultiple = "${fechaMultiple}",
+			cdv.FechaRefuerzoMultiple = "${fechaRefuerzoMultiple}",
+			cdv.FechaRabia = "${fechaRabia}",
+			e.EstaEsterilizado = "${esterilizado}",
+			e.CitaAgendada = "${citaEsterilizacion}",
+			e.fecha = "${fechaEsterilizacion}",
+			d.Atropellamiento = ${atropellamiento},
+			d.TVT = ${tvt},
+			d.Sarna_Piel = ${sarnaPiel},
+			d.Viral = ${viral},
+			d.Embarazo = ${embarazo},
+			d.Cachorros = ${cachorros},
+			d.Hemoparasitos = ${hemoparasitos},
+			d.Otro = "${otroEspecificar}"
+	WHERE 	ar.ID_Animal = em.ID_Animal
+			AND em.ID_Medico = cdv.ID_Medico
+			AND em.ID_Medico = e.ID_Medico
+			AND em.ID_Medico = d.ID_Medico
+			AND ar.ID_Animal = "${id}";
+	`;
+
+	db.raw(query)
+		.then(() => {
+			db.raw(
+				`select ID_MEDICO from EXPEDIENTE_MEDICO where ID_Animal  = "${id}";`
+			).then((ID_Medico) => {
+				ID_Medico = ID_Medico[0][0].ID_MEDICO;
+				db.raw(
+					`DELETE FROM TRATAMIENTO 
+					WHERE ID_Medico  = "${ID_Medico}";`
+				)
+					.then(() => {
+
+						var inserts = [];
+						for (let row in tratamiento) {
+							var insertObj = { ID_Medico: ID_Medico };
+							var currRow = tratamiento[row];
+							for (col in currRow) {
+								if (currRow[col] && col !== "id") {
+									if (col !== "citaMedica")
+										insertObj[col] = currRow[col];
+									else
+										insertObj["CITA_MEDICA"] = currRow[col];
+								}
+							}
+							inserts.push(insertObj);
+						}
+
+
+							db.transaction((trx) => {
+								trx.insert(inserts)
+									.into("TRATAMIENTO")
+									.then(trx.commit)
+									.catch(() => {
+										trx.rollback;
+									});
+							}).catch((err) => {
+								res.status(400).json(
+									"unable to add row in tratamiento"
+								);
+							});
+						
+					})
+					.catch((err) => {
+						res.status(400).json(
+							"unable to add row in tratamiento"
+						);
+					});
+			});
+		})
+		.then(() => {
+			res.status(200).json(
+				"update de expediente medico realizado correctamente"
+			);
+		})
+		.catch((err) =>
+			res
+				.status(400)
+				.json(
+					"error al realizar el update del expediente medico." + err
+				)
+		);
+};
+
 module.exports = {
 	handleGetEM,
+	handleUpdateEM,
 };

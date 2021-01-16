@@ -7,18 +7,7 @@ import {DatePickerInput2} from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 export default class Row extends React.Component {
-	state = {
-		id: this.props.id,
-		observaciones: this.props.observaciones,
-		accion: this.props.accion,
-		fecha: this.props.fecha,
-    };
-    
-    handleDate = (fecha, name) => {
-        this.setState({
-          [name]: fecha,
-        });
-    };
+
 
 	render() {
 		return (
@@ -28,8 +17,14 @@ export default class Row extends React.Component {
 						id={this.props.id}
 						type="text"
 						name="observaciones"
-						value={this.props.observaciones}
-						onChange={this.props.handleChange}
+						value={this.props.observaciones ? this.props.observaciones: ""}
+						onChange={(event) => {
+							this.props.modifyRow(
+								this.props.id,
+								event.target.name,
+								event.target.value
+							);
+						}}
 						rows="3"
 					/>
 				</div>
@@ -38,8 +33,15 @@ export default class Row extends React.Component {
 						id={this.props.id}
 						type="text"
 						name="accion"
-						value={this.props.accion}
-						onChange={this.props.handleChange}
+						value={this.props.accion ? this.props.accion : ""}
+						onChange={(event) => {
+							this.props.modifyRow(
+								this.props.id,
+								event.target.name,
+								event.target.value
+							);
+						}}
+						
 						rows="3"
 					/>
 				</div>
@@ -54,11 +56,15 @@ export default class Row extends React.Component {
 						id={this.props.id}
 						name="fecha"
 						locale="es"
-						selected={this.state.fecha}
+						selected={this.props.fecha ? new Date(this.props.fecha)  : null}
 						dateFormat="dd/MM/yyyy"
-						onChange={(date) =>
-							this.handleDate(date, "fecha")
-                        }
+						onChange={(date) => {
+							this.props.modifyRow(
+								this.props.id,
+								"fecha",
+								date
+							);
+						}}
 					/>
 				</div>
 

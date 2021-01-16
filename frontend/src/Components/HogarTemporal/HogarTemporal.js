@@ -30,7 +30,7 @@ class HogarTemporal extends Component {
 		municipio: "",
 
 		/*Foto*/
-		foto: "/iconoPerro.png",
+		foto: null,
 
 		/*Comentarios*/
 		comentarios: [],
@@ -61,7 +61,26 @@ class HogarTemporal extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
+		this.updateDB();
 	};
+
+	updateDB = () => {
+		let url = this.props.location.search;
+		console.log("url", url);
+		let params = queryString.parse(url);
+
+		fetch("http://localhost:3001/hogarTemporal", {
+			method: "put",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(this.state)
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response);
+				
+			})
+			.catch((err) => console.log(err));
+	}
 
 	/*Manejador de Restablecer*/
 	handleRestablecer = () => {
@@ -86,6 +105,18 @@ class HogarTemporal extends Component {
 							[element]: new Date(response[element])
 						});
 					}
+					else if (element.includes("foto")) {
+
+						if (response[element]) {
+							console.log(response[element]);
+
+							var buffer = Buffer.from(response[element].data);
+
+							this.setState({
+								[element]: buffer.toString('utf8'),
+							});
+						}
+					}
 					else {
 						this.setState({
 							[element]: response[element]
@@ -107,7 +138,7 @@ class HogarTemporal extends Component {
 			id: shortid.generate(),
 			observaciones: "",
 			accion: "",
-			fecha: "",
+			fecha: null,
 		};
 		this.setState((state) => ({
 			comentarios: [newRow, ...state.comentarios],
@@ -120,24 +151,24 @@ class HogarTemporal extends Component {
 		}));
 	};
 
-	modifyRow = (event) => {
+
+
+	modifyRow = (id, name, value) => {
 		let dataTemp = this.state.comentarios;
+		if (!dataTemp) return;
 
 		dataTemp.forEach((element) => {
-			if (element.id === event.target.id) {
-				if (event.target.name === "observaciones")
-					element.observaciones = event.target.value;
-				else if (event.target.name === "accion")
-					element.accion = event.target.value;
-				else if (event.target.name === "fecha")
-					element.fecha = event.target.value;
+			if (element.id === id) {
+				if (name === "observaciones") element.observaciones = value;
+				else if (name === "accion") element.accion = value;
+				else if (name === "fecha") element.fecha = value;
 			}
 		});
-
 		this.setState({
 			comentarios: dataTemp,
 		});
 	};
+
 
 	/*Manejador de dates*/
 	handleDate = (fecha, name) => {

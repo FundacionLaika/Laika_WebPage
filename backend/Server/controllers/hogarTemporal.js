@@ -54,6 +54,103 @@ const handleGetHT = (req, res, db) => {
 		);
 };
 
+
+handleUpdateHT = (req, res, db) => {
+	const {
+		id,
+		tipoHT,
+		nombreHT,
+		telefonoHT,
+		fechaInicioHT,
+		fechaFinalHT,
+		calle,
+		numero,
+		colonia,
+		municipio,
+		foto,
+		comentarios
+	} = req.body;
+
+	const query = `
+	UPDATE HOGAR_TEMPORAL ht,
+	     	ANIMAL_RESCATADO ar,
+       		DIRECCION_HT dh
+	SET 	ht.Tipo_HT = "${tipoHT}",
+			ht.Telefono = "${telefonoHT}",
+			ht.Responsable = "${nombreHT}",
+			ht.FechaInicio = "${fechaInicioHT}",
+			ht.FechaFinal = "${fechaFinalHT}",
+			ht.Foto = ${foto ? '"' + foto + '"' : null},
+			dh.Calle = "${calle}",
+			dh.Numero = "${numero}",
+			dh.Colonia = "${colonia}",
+			dh.Municipio = "${municipio}"
+	WHERE 	ar.ID_Animal = ht.ID_Animal
+			AND ht.ID_HT = dh.ID_HT
+			AND ar.ID_Animal = "${id}";
+	`
+
+	db.raw(query)
+		.then(() => {
+			db.raw(
+				`select ID_HT from HOGAR_TEMPORAL where ID_Animal  = "${id}";`
+			).then((ID_HT) => {
+				ID_HT = ID_HT[0][0].ID_HT;
+				db.raw(
+					`DELETE FROM COMENTARIOS_HT 
+					WHERE ID_HT  = "${ID_HT}";`
+				)
+					.then(() => {
+
+						var inserts = [];
+						for (let row in comentarios) {
+							var insertObj = { ID_HT: ID_HT };
+							var currRow = comentarios[row];
+							for (col in currRow) {
+								if (currRow[col] && col !== "id") {
+									insertObj[col] = currRow[col];
+								}
+							}
+							inserts.push(insertObj);
+						}
+
+
+							db.transaction((trx) => {
+								trx.insert(inserts)
+									.into("COMENTARIOS_HT")
+									.then(trx.commit)
+									.catch(() => {
+										trx.rollback;
+									});
+							}).catch((err) => {
+								res.status(400).json(
+									"unable to add row in comentarios HT"
+								);
+							});
+						
+					})
+					.catch((err) => {
+						res.status(400).json(
+							"unable to add row in comentarios HT"
+						);
+					});
+			});
+		})
+		.then(() => {
+			res.status(200).json(
+				"update de hogar temporal realizado correctamente"
+			);
+		})
+		.catch((err) =>
+			res
+				.status(400)
+				.json(
+					"error al realizar el update del hogar temporal." + err
+				)
+		);
+};
+
 module.exports = {
 	handleGetHT,
+	handleUpdateHT
 };

@@ -51,6 +51,125 @@ const handleGetRG = (req, res, db) => {
 		);
 };
 
+const handlePostRG = (req, res, db) => {
+	const {
+		nombre,
+		edad,
+		genero,
+		especie,
+		fechaDeRescate,
+		estatus,
+		calle,
+		numero,
+		colonia,
+		municipio,
+		senasParticulares,
+		foto,
+	} = req.body;
+
+	db.transaction((trx) => {
+		trx.insert({
+			NOMBRE: nombre,
+			EDAD: edad,
+			GENERO: genero,
+			ESPECIE: especie,
+			SENASPARTICULARES: senasParticulares,
+			ESTATUS: estatus,
+			FOTO: foto,
+		})
+			.into("ANIMAL_RESCATADO")
+			.returning("ID_Animal")
+			.then((id) => {
+				return trx("users")
+					.returning("*")
+					.insert({
+						email: loginEmail[0],
+						name: name,
+						joined: new Date(),
+					})
+					.then((user) => {
+						res.json(user[0]);
+					});
+			})
+			.then(trx.commit)
+			.catch(trx.rollback);
+	}).catch((err) => res.status(400).json("unable to register"));
+};
+
+handleUpdateRG = (req, res, db) => {
+	const {
+		id,
+		nombre,
+		edad,
+		genero,
+		especie,
+		fechaDeRescate,
+		estatus,
+		calle,
+		numero,
+		colonia,
+		municipio,
+		senasParticulares,
+		foto,
+		rescatistas,
+	} = req.body;
+
+	const query = `
+		UPDATE 	ANIMAL_RESCATADO ar,
+				RESCATE r,
+				DIRECCION_RESCATE dr
+		SET 	ar.Nombre = "${nombre}",
+				ar.Edad = "${edad}",
+				ar.Genero = "${genero}",
+				ar.Especie = "${especie}",
+				ar.SenasParticulares = "${senasParticulares}",
+				ar.Estatus = "${estatus}",
+				ar.Foto = ${foto ? '"' + foto + '"' : null},
+				r.Fecha = "${fechaDeRescate}",
+				dr.Calle = "${calle}",
+				dr.Numero = "${numero}",
+				dr.Colonia = "${colonia}",
+				dr.Municipio = "${municipio}"
+		WHERE 	ar.ID_Animal = r.ID_Animal
+				AND r.ID_Rescate = dr.ID_Rescate
+				AND ar.ID_Animal = "${id}";
+	`;
+
+	console.log(rescatistas);
+
+	db.raw(query)
+		.then(() => {
+			db.raw(`DELETE FROM RESCATISTA WHERE ID_Animal = "${id}";`).then(
+				() => {
+					for (let rescatista in rescatistas) {
+						db.transaction((trx) => {
+							trx.insert({
+								Nombre: rescatistas[rescatista]["text"],
+								Id_Animal: id,
+							})
+								.into("RESCATISTA")
+								.then(trx.commit)
+								.catch(trx.rollback);
+						}).catch((err) => res.status(400).json("unable to add rescatista"));
+						
+					}
+				}
+			);
+		})
+		.then(() => {
+			res.status(200).json(
+				"update de registro general realizado correctamente"
+			);
+		})
+		.catch((err) =>
+			res
+				.status(400)
+				.json("error al realizar el update a registro general." + err)
+		);
+};
+
 module.exports = {
 	handleGetRG,
+	handlePostRG,
+	handleUpdateRG,
 };

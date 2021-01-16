@@ -2,10 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
-const fs = require("fs");
-const path = require("path");
-const multer = require("multer");
 const knex = require("knex");
+const fileUpload = require('express-fileupload');
 
 const consulta = require("./controllers/consulta");
 const registroGeneral = require("./controllers/registroGeneral");
@@ -18,52 +16,20 @@ const registro = require("./controllers/registro");
 const usuarios = require("./controllers/usuarios");
 const cambiarCorreo = require("./controllers/cambiarCorreo");
 const cambiarContrasena = require("./controllers/cambiarContrasena");
-const subirImagen = require("./controllers/subirImagen");
 const eliminarUsuario = require("./controllers/eliminarUsuario");
 
-const storage = multer.diskStorage({
-    destination: "uploads/",
-    filename: function (req, file, cb) {
-        //Funcion para poner una estampa de tiempo para tener un nombre unico
-        cb(
-            null,
-            file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-        );
-    },
-});
+const subirImagen = require("./controllers/subirImagen");
 
-// Init Upload
-const upload = multer({
-    storage: storage,
-    limits: { fileSize: 1024 * 1024 * 5 },
-    fileFilter: function (req, file, cb) {
-        checkFileType(file, cb);
-    },
-});
 
-// Verificar tipo de archivo
-function checkFileType(file, cb) {
-    // Formatos permitidos
-    const filetypes = /jpeg|jpg|png/;
-    // Check ext
-    const extname = filetypes.test(
-        path.extname(file.originalname).toLowerCase()
-    );
-    // Ver mime
-    const mimetype = filetypes.test(file.mimetype);
-
-    if (mimetype && extname) {
-        return cb(null, true);
-    } else {
-        cb("Error: Solo Imagenes");
-    }
-}
 
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(fileUpload());
+app.use(express.json());
+
 
 const db = knex({
     client: "mysql",
@@ -84,29 +50,43 @@ app.get("/registroGeneral", (req, res) => {
     registroGeneral.handleGetRG(req, res, db);
 });
 
+app.put("/registroGeneral", (req, res) => {
+    registroGeneral.handleUpdateRG(req, res, db);
+});
 
 app.get("/expedienteMedico", (req, res) => {
     expedienteMedico.handleGetEM(req, res, db);
+});
+
+app.put("/expedienteMedico", (req, res) => {
+    expedienteMedico.handleUpdateEM(req, res, db);
 });
 
 app.get("/hogarTemporal", (req, res) => {
     hogarTemporal.handleGetHT(req, res, db);
 });
 
+app.put("/hogarTemporal", (req, res) => {
+    hogarTemporal.handleUpdateHT(req, res, db);
+});
+
 app.get("/adopcion", (req, res) => {
     adopcion.handleGetA(req, res, db);
 });
+
+app.put("/adopcion", (req, res) => {
+    adopcion.handleUpdateA(req, res, db);
+});
+
+
+
+
 
 app.post("/login", login.handleLogin(db, bcrypt));
 app.post("/registro", registro.handleRegistro(db, bcrypt));
 app.get("/usuarios", usuarios.handleUsuariosGet(db));
 app.put("/cambiarCorreo", cambiarCorreo.handleCorreo(db));
 app.put("/cambiarContrasena", cambiarContrasena.handleContrasena(db));
-app.put(
-    "/subirImagenPerfil",
-    upload.single("foto"),
-    subirImagen.handleImagenPerfil(db, fs)
-);
 app.put("/subirImagenRegistro", subirImagen.handleImagenRegistro(db));
 app.put("/subirImagenMedico", subirImagen.handleImagenMedico(db));
 app.put("/subirImagenHogar", subirImagen.handleImagenHogar(db));
@@ -117,4 +97,3 @@ app.listen(3001, () => {
     console.log("Corriendo en el puerto 3001");
 });
 
-// const sharp = require("sharp");

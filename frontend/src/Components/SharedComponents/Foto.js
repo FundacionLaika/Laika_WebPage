@@ -5,7 +5,7 @@ class Foto extends Component {
         return (
             <div>
                 <label htmlFor={this.props.id}>
-                    <img className="mw5" src={this.props.foto} alt="Foto" />
+                    <img className="mw5" src={this.props.foto ? this.props.foto : "/iconoPerro.png"} alt="Foto" />
                 </label>
 
                 <input

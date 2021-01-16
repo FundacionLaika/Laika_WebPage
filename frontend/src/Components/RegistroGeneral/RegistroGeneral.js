@@ -23,7 +23,7 @@ export default class RegistroGeneral extends React.Component {
 		colonia: "",
 		municipio: "",
 		senasParticulares: "",
-		foto: "/iconoPerro.png",
+		foto: null,
 		rescatistas: [],
 	};
 
@@ -42,7 +42,26 @@ export default class RegistroGeneral extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
+		this.updateDB();
 	};
+
+	updateDB = () => {
+		let url = this.props.location.search;
+		console.log("url", url);
+		let params = queryString.parse(url);
+
+		fetch("http://localhost:3001/registroGeneral", {
+			method: "put",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(this.state)
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response);
+				
+			})
+			.catch((err) => console.log(err));
+	}
 
 	agregarRescatista = (rescatista) => {
 		if (rescatista.text !== "") {
@@ -78,6 +97,38 @@ export default class RegistroGeneral extends React.Component {
 		this.fetchData();
 	};
 
+
+
+
+
+	
+	convertToByteArray = (input) => {
+		var sliceSize = 512;
+		var bytes = [];
+	
+		for (var offset = 0; offset < input.length; offset += sliceSize) {
+			var slice = input.slice(offset, offset + sliceSize);
+	
+			var byteNumbers = new Array(slice.length);
+	
+			for (var i = 0; i < slice.length; i++) {
+				byteNumbers[i] = slice.charCodeAt(i);
+			}
+	
+			const byteArray = new Uint8Array(byteNumbers);
+	
+			bytes.push(byteArray);
+		}
+	
+		return bytes;
+	}
+
+
+
+
+
+
+
 	fetchData = () => {
 		let url = this.props.location.search;
 		console.log("url", url);
@@ -91,11 +142,22 @@ export default class RegistroGeneral extends React.Component {
 			.then((response) => {
 				console.log(response);
 				for (const element in response) {
-
 					if (element.includes("fecha")) {
 						this.setState({
 							[element]: new Date(response[element])
 						});
+					}
+					else if (element.includes("foto")) {
+
+						if (response[element]) {
+							console.log(response[element]);
+
+							var buffer = Buffer.from(response[element].data);
+
+							this.setState({
+								[element]: buffer.toString('utf8'),
+							});
+						}
 					}
 					else {
 						this.setState({
