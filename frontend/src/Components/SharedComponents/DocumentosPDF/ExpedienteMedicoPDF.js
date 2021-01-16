@@ -1,6 +1,11 @@
 import { formatDate, boolToString } from "../../SharedFunctions/PDFfunctions";
 import { LaikaLogo } from "./Images/LaikaLogo";
 import { Medkit } from "./Images/Medkit";
+import { Stethoscopy } from "./Images/Stethoscopy";
+import { Syringe } from "./Images/Syringe";
+import { Medician } from "./Images/Medician";
+import { CameraRetro } from "./Images/CameraRetro";
+import { Heartbeat} from "./Images/Heartbeat";
 import { IconoDefault } from "./Images/IconoDefault";
 
 export function ExpedienteMedicoPDF(doc, data) {
@@ -17,9 +22,10 @@ export function ExpedienteMedicoPDF(doc, data) {
 	doc.setTextColor("#000000");
 	doc.setFontSize(16);
 
-	doc.text("Diagnóstico", 15, 42);
+	doc.addImage(Stethoscopy, "PNG", 14, 37, 7, 7, "", "FAST");
+	doc.text("Diagnóstico", 26, 42);
 	doc.autoTable({
-		startY: 46,
+		startY: 50,
 		tableWidth: 110,
 		columnStyles: {
 			1: { halign: "center" },
@@ -74,9 +80,10 @@ export function ExpedienteMedicoPDF(doc, data) {
 		],
 	});
 
-	doc.text("Cartilla de vacunación", 15, 130);
+	doc.addImage(Syringe, "PNG", 14, 141, 7, 7, "", "FAST");
+	doc.text("Cartilla de vacunación", 26, 146);
 	doc.autoTable({
-		startY: 134,
+		startY: 154,
 		tableWidth: 110,
 		columnStyles: {
 			1: { halign: "center" },
@@ -129,15 +136,15 @@ export function ExpedienteMedicoPDF(doc, data) {
 		],
 	});
 
-
-	doc.text("Esterilización", 15, 198);
+	doc.addImage(Medician, "PNG", 14, 233, 7, 7, "", "FAST");
+	doc.text("Esterilización", 26, 238);
 	doc.autoTable({
-		startY: 202,
+		startY: 246,
 		tableWidth: 110,
 		columnStyles: {
 			1: { halign: "center" },
 			2: { halign: "center" },
-			3: { halign: "center" }
+			3: { halign: "center" },
 		},
 		head: [
 			[
@@ -148,9 +155,15 @@ export function ExpedienteMedicoPDF(doc, data) {
 		],
 		body: [
 			{
-				estaEsterilizado: boolToString(data.expedienteMedico.esterilizado),
-				citaEsterilizacion: boolToString(data.expedienteMedico.citaEsterilizacion),
-				fechaEsterilizacion: formatDate(data.expedienteMedico.fechaEsterilizacion)
+				estaEsterilizado: boolToString(
+					data.expedienteMedico.esterilizado
+				),
+				citaEsterilizacion: boolToString(
+					data.expedienteMedico.citaEsterilizacion
+				),
+				fechaEsterilizacion: formatDate(
+					data.expedienteMedico.fechaEsterilizacion
+				),
 			},
 		],
 		columns: [
@@ -160,20 +173,22 @@ export function ExpedienteMedicoPDF(doc, data) {
 		],
 	});
 
+	doc.addImage(CameraRetro, "PNG", 144, 37, 7, 7, "", "FAST");
+	doc.text("Progreso", 156, 42);
 	if (data.expedienteMedico.foto1) {
-		var foto1 = Buffer.from(data.expedienteMedico.foto2.data);
+		var foto1 = Buffer.from(data.expedienteMedico.foto1.data);
 		doc.addImage(
 			foto1.toString("utf-8"),
 			"JPEG",
 			144,
-			37.4,
+			50,
 			60,
 			64,
 			"",
 			"FAST"
 		);
 	} else {
-		doc.addImage(IconoDefault, "JPEG", 8, 180, 60, 64, "", "FAST");
+		doc.addImage(IconoDefault, "JPEG", 144, 50, 60, 64, "", "FAST");
 	}
 
 	if (data.expedienteMedico.foto2) {
@@ -182,14 +197,14 @@ export function ExpedienteMedicoPDF(doc, data) {
 			foto2.toString("utf-8"),
 			"JPEG",
 			144,
-			117.4,
+			123.5,
 			60,
 			64,
 			"",
 			"FAST"
 		);
 	} else {
-		doc.addImage(IconoDefault, "JPEG", 78, 180, 60, 64, "", "FAST");
+		doc.addImage(IconoDefault, "JPEG", 144, 123.5, 60, 64, "", "FAST");
 	}
 
 	if (data.expedienteMedico.foto3) {
@@ -205,7 +220,7 @@ export function ExpedienteMedicoPDF(doc, data) {
 			"FAST"
 		);
 	} else {
-		doc.addImage(IconoDefault, "JPEG", 148, 180, 60, 64, "", "FAST");
+		doc.addImage(IconoDefault, "JPEG", 144, 197.4, 60, 64, "", "FAST");
 	}
 
 	data.expedienteMedico.tratamiento.map((row) => {
@@ -216,9 +231,10 @@ export function ExpedienteMedicoPDF(doc, data) {
 
 	if (data.expedienteMedico.tratamiento.length) {
 		doc.addPage();
-		doc.text("Tratamiento",10,15);
+		doc.addImage(Heartbeat, "JPEG", 14, 13, 7, 7, "", "FAST");
+		doc.text("Tratamiento", 26, 18);
 		doc.autoTable({
-			startY: 20,
+			startY: 26,
 			columnStyles: {
 				0: { cellWidth: 24 },
 				1: { cellWidth: 24 },
