@@ -16,12 +16,11 @@ export function ExpedienteMedicoPDF(doc, data) {
 	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 	doc.setTextColor("#000000");
 	doc.setFontSize(16);
-	doc.text("Diagnóstico", 15, 33);
-	doc.text("Cartilla de vacunación", 15, 116);
 
+	doc.text("Diagnóstico", 15, 42);
 	doc.autoTable({
-		startY: 37,
-		tableWidth: 120,
+		startY: 46,
+		tableWidth: 110,
 		columnStyles: {
 			1: { halign: "center" },
 		},
@@ -75,9 +74,10 @@ export function ExpedienteMedicoPDF(doc, data) {
 		],
 	});
 
+	doc.text("Cartilla de vacunación", 15, 130);
 	doc.autoTable({
-		startY: 120,
-		tableWidth: 120,
+		startY: 134,
+		tableWidth: 110,
 		columnStyles: {
 			1: { halign: "center" },
 			2: { halign: "center" },
@@ -129,13 +129,44 @@ export function ExpedienteMedicoPDF(doc, data) {
 		],
 	});
 
+
+	doc.text("Esterilización", 15, 198);
+	doc.autoTable({
+		startY: 202,
+		tableWidth: 110,
+		columnStyles: {
+			1: { halign: "center" },
+			2: { halign: "center" },
+			3: { halign: "center" }
+		},
+		head: [
+			[
+				{ content: "¿Está esterilizado?" },
+				{ content: "Cita agendada", styles: { halign: "center" } },
+				{ content: "Fecha agendada", styles: { halign: "center" } },
+			],
+		],
+		body: [
+			{
+				estaEsterilizado: boolToString(data.expedienteMedico.esterilizado),
+				citaEsterilizacion: boolToString(data.expedienteMedico.citaEsterilizacion),
+				fechaEsterilizacion: formatDate(data.expedienteMedico.fechaEsterilizacion)
+			},
+		],
+		columns: [
+			{ header: "¿Está esterilizado?", dataKey: "estaEsterilizado" },
+			{ header: "Cita agendada", dataKey: "citaEsterilizacion" },
+			{ header: "Fecha agendada", dataKey: "fechaEsterilizacion" },
+		],
+	});
+
 	if (data.expedienteMedico.foto1) {
-		var foto1 = Buffer.from(data.expedienteMedico.foto1.data);
+		var foto1 = Buffer.from(data.expedienteMedico.foto2.data);
 		doc.addImage(
 			foto1.toString("utf-8"),
 			"JPEG",
-			8,
-			180,
+			144,
+			37.4,
 			60,
 			64,
 			"",
@@ -150,8 +181,8 @@ export function ExpedienteMedicoPDF(doc, data) {
 		doc.addImage(
 			foto2.toString("utf-8"),
 			"JPEG",
-			78,
-			180,
+			144,
+			117.4,
 			60,
 			64,
 			"",
@@ -166,8 +197,8 @@ export function ExpedienteMedicoPDF(doc, data) {
 		doc.addImage(
 			foto3.toString("utf-8"),
 			"JPEG",
-			148,
-			180,
+			144,
+			197.4,
 			60,
 			64,
 			"",
