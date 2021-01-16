@@ -66,8 +66,16 @@ app.get("/hogarTemporal", (req, res) => {
     hogarTemporal.handleGetHT(req, res, db);
 });
 
+app.put("/hogarTemporal", (req, res) => {
+    hogarTemporal.handleUpdateHT(req, res, db);
+});
+
 app.get("/adopcion", (req, res) => {
     adopcion.handleGetA(req, res, db);
+});
+
+app.put("/adopcion", (req, res) => {
+    adopcion.handleUpdateA(req, res, db);
 });
 
 

@@ -91,7 +91,7 @@ export default class RowMed extends React.Component {
 						id={this.props.id}
 						type="text"
 						name="comentarios"
-						value={this.props.comentarios}
+						value={this.props.comentarios ? this.props.comentarios : ""}
 						onChange={(event) => {
 							this.props.modifyRow(
 								this.props.id,
@@ -108,7 +108,7 @@ export default class RowMed extends React.Component {
 						id={this.props.id}
 						type="text"
 						name="accion"
-						value={this.props.accion}
+						value={this.props.accion ? this.props.accion : ""}
 						onChange={(event) => {
 							this.props.modifyRow(
 								this.props.id,

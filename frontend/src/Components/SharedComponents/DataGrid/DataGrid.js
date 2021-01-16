@@ -38,7 +38,7 @@ export default class DataGrid extends React.Component {
 						observaciones={row.observaciones}
 						accion={row.accion}
 						fecha={row.fecha}
-						handleChange={this.props.modifyRow}
+						modifyRow={this.props.modifyRow}
 						deleteRow={() => this.props.deleteRow(row.id)}
 					/>
 				))}

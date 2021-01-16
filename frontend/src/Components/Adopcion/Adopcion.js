@@ -24,7 +24,7 @@ export default class Adopcion extends React.Component {
 		fechaAdopcion: null,
 		medioAdopcion: "",
 		comentarios: [],
-		foto: "/iconoPerro.png",
+		foto: null,
 	};
 
 	handleChange = (event) => {
@@ -43,6 +43,25 @@ export default class Adopcion extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(this.state);
+		this.updateDB();
+	};
+
+	updateDB = () => {
+		let url = this.props.location.search;
+		console.log("url", url);
+		let params = queryString.parse(url);
+
+		fetch("http://localhost:3001/adopcion", {
+			method: "put",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(this.state)
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response);
+				
+			})
+			.catch((err) => console.log(err));
 	};
 
 	addRow = (event) => {
@@ -51,7 +70,7 @@ export default class Adopcion extends React.Component {
 			id: shortid.generate(),
 			observaciones: "",
 			accion: "",
-			fecha: "",
+			fecha: null,
 		};
 		this.setState((state) => ({
 			comentarios: [newRow, ...state.comentarios],
@@ -64,20 +83,17 @@ export default class Adopcion extends React.Component {
 		}));
 	};
 
-	modifyRow = (event) => {
+	modifyRow = (id, name, value) => {
 		let dataTemp = this.state.comentarios;
+		if (!dataTemp) return;
 
 		dataTemp.forEach((element) => {
-			if (element.id === event.target.id) {
-				if (event.target.name === "observaciones")
-					element.observaciones = event.target.value;
-				else if (event.target.name === "accion")
-					element.accion = event.target.value;
-				else if (event.target.name === "fecha")
-					element.fecha = event.target.value;
+			if (element.id === id) {
+				if (name === "observaciones") element.observaciones = value;
+				else if (name === "accion") element.accion = value;
+				else if (name === "fecha") element.fecha = value;
 			}
 		});
-
 		this.setState({
 			comentarios: dataTemp,
 		});

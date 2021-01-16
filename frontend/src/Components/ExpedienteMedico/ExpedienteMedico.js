@@ -198,6 +198,7 @@ class ExpedienteMedico extends Component {
 
 	modifyRow = (id, name, value) => {
 		let dataTemp = this.state.tratamiento;
+		if (!dataTemp) return;
 
 		dataTemp.forEach((element) => {
 			if (element.id === id) {
