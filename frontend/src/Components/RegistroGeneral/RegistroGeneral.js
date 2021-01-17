@@ -27,6 +27,8 @@ export default class RegistroGeneral extends React.Component {
 		rescatistas: [],
 	};
 
+	restablecido = false
+
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value,
@@ -40,15 +42,23 @@ export default class RegistroGeneral extends React.Component {
 	};
 
 	handleSubmit = (event) => {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		console.log(params.id ? "Registrado" :"Sin registrar");
+
+
 		event.preventDefault();
 		console.log(this.state);
+
 		this.updateDB();
 	};
 
+	insertDB = () => {
+
+	}
+
 	updateDB = () => {
-		let url = this.props.location.search;
-		console.log("url", url);
-		let params = queryString.parse(url);
 
 		fetch("http://localhost:3001/registroGeneral", {
 			method: "put",
@@ -56,10 +66,6 @@ export default class RegistroGeneral extends React.Component {
 			body: JSON.stringify(this.state)
 		})
 			.then((response) => response.json())
-			.then((response) => {
-				console.log(response);
-				
-			})
 			.catch((err) => console.log(err));
 	}
 
@@ -98,40 +104,8 @@ export default class RegistroGeneral extends React.Component {
 	};
 
 
-
-
-
-	
-	convertToByteArray = (input) => {
-		var sliceSize = 512;
-		var bytes = [];
-	
-		for (var offset = 0; offset < input.length; offset += sliceSize) {
-			var slice = input.slice(offset, offset + sliceSize);
-	
-			var byteNumbers = new Array(slice.length);
-	
-			for (var i = 0; i < slice.length; i++) {
-				byteNumbers[i] = slice.charCodeAt(i);
-			}
-	
-			const byteArray = new Uint8Array(byteNumbers);
-	
-			bytes.push(byteArray);
-		}
-	
-		return bytes;
-	}
-
-
-
-
-
-
-
 	fetchData = () => {
 		let url = this.props.location.search;
-		console.log("url", url);
 		let params = queryString.parse(url);
 
 		fetch("http://localhost:3001/registroGeneral/?id=" + params.id, {
@@ -140,7 +114,6 @@ export default class RegistroGeneral extends React.Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
 				for (const element in response) {
 					if (element.includes("fecha")) {
 						this.setState({
@@ -150,7 +123,6 @@ export default class RegistroGeneral extends React.Component {
 					else if (element.includes("foto")) {
 
 						if (response[element]) {
-							console.log(response[element]);
 
 							var buffer = Buffer.from(response[element].data);
 
@@ -170,8 +142,48 @@ export default class RegistroGeneral extends React.Component {
 			.catch((err) => console.log(err));
 	}
 
+	componentDidUpdate() {
+		console.log("holaaaaaaaaaa");
+
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		if (!params.id && !this.restablecido) {
+			this.restablecido = true
+			this.setState({
+				id: "",
+				nombre: "",
+				edad: "",
+				genero: "",
+				especie: "",
+				fechaDeRescate: null,
+				estatus: "",
+				calle: "",
+				numero: "",
+				colonia: "",
+				municipio: "",
+				senasParticulares: "",
+				foto: null,
+				rescatistas: [],
+			}, 
+			)
+		}
+
+	}
+
 	componentDidMount() {
-		this.fetchData();
+		
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		this.setState({
+			estaRegistrado: params.id ? true : false
+		}, console.log(this.state))
+
+		if (params.id) {
+			console.log("haciendo fetchhhhhhhhhh");
+			this.fetchData();
+		}
 	}
 
 	
