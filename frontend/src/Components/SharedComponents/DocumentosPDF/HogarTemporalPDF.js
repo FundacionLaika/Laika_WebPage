@@ -2,6 +2,10 @@ import { formatDate } from "../../SharedFunctions/PDFfunctions";
 import { Casa } from "./Images/Casa";
 import { LaikaLogo } from "./Images/LaikaLogo";
 import { IconoDefault } from "./Images/IconoDefault";
+import { MapMarked } from "./Images/MapMarked";
+import { AddressBook } from "./Images/AddressBook";
+import { CameraRetro } from "./Images/CameraRetro";
+import { Comments } from "./Images/Comments";
 
 export function HogarTemporalPDF(doc, data) {
 	doc.addPage();
@@ -15,40 +19,52 @@ export function HogarTemporalPDF(doc, data) {
 	doc.addImage(Casa, "PNG", 10, 6, 12, 12, "", "FAST");
 	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 
-	doc.setFontSize(24);
+	doc.setFontSize(19);
 	doc.setTextColor("#000000");
-	doc.text("Tipo de HT: " + data.hogarTemporal.tipoHT, 10, 36);
-	doc.text("Nombre de HT: " + data.hogarTemporal.nombreHT, 10, 46);
-	doc.text("Teléfono: " + data.hogarTemporal.telefonoHT, 10, 56);
+	doc.addImage(AddressBook, "PNG", 15, 34, 7, 7, "", "FAST");
+	doc.text("Datos HT", 27, 40);
+	doc.setFontSize(14);
+	doc.text("Tipo de HT: " + data.hogarTemporal.tipoHT, 15, 53);
+	doc.text("Nombre: " + data.hogarTemporal.nombreHT, 15, 63);
+	doc.text("Teléfono: " + data.hogarTemporal.telefonoHT, 15, 73);
 	doc.text(
 		"Fecha inicio: " + formatDate(data.hogarTemporal.fechaInicioHT),
-		10,
-		66
+		115,
+		53
 	);
 	doc.text(
 		"Fecha final: " + formatDate(data.hogarTemporal.fechaFinalHT),
-		10,
-		76
+		115,
+		73
 	);
-	doc.text("Calle: " + data.hogarTemporal.calle, 10, 96);
-	doc.text("Número: " + data.hogarTemporal.numero, 10, 106);
-	doc.text("Colonia: " + data.hogarTemporal.colonia, 10, 116);
-	doc.text("Municipio: " + data.hogarTemporal.municipio, 10, 126);
 
+
+	doc.setFontSize(19);
+	doc.addImage(MapMarked, "PNG", 15, 99, 7, 7, "", "FAST");
+	doc.text("Dirección HT", 27, 105);
+	doc.setFontSize(14);
+	doc.text("Calle: " + data.hogarTemporal.calle, 15, 118);
+	doc.text("Número: " + data.hogarTemporal.numero, 115, 118);
+	doc.text("Colonia: " + data.hogarTemporal.colonia, 15, 128);
+	doc.text("Municipio: " + data.hogarTemporal.municipio, 115, 128);
+
+	doc.setFontSize(19);
+	doc.addImage(CameraRetro, "PNG", 15, 153, 7, 7, "", "FAST");
+	doc.text("Foto HT", 27, 159);
 	if (data.hogarTemporal.foto) {
 		var foto = Buffer.from(data.hogarTemporal.foto.data);
 		doc.addImage(
 			foto.toString("utf-8"),
 			"JPEG",
-			8,
-			180,
-			60,
-			64,
+			69,
+			173,
+			80,
+			84,
 			"",
 			"FAST"
 		);
 	} else {
-		doc.addImage(IconoDefault, "JPEG", 8, 180, 60, 64, "", "FAST");
+		doc.addImage(IconoDefault, "JPEG", 69, 173, 80, 84, "", "FAST");
 	}
 
 	data.hogarTemporal.comentarios.map((row) => {
@@ -57,7 +73,10 @@ export function HogarTemporalPDF(doc, data) {
 
 	if (data.hogarTemporal.comentarios.length) {
 		doc.addPage();
+		doc.addImage(Comments, "JPEG", 14, 13, 7, 7, "", "FAST");
+		doc.text("Comentarios", 26, 18);
 		doc.autoTable({
+			startY: 26,
 			columnStyles: {
 				0: { cellWidth: 80 },
 				1: { cellWidth: 80 },

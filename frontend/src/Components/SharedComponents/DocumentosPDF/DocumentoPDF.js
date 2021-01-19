@@ -67,7 +67,6 @@ export async function PDFGenerator(
 		doc.addImage(IconoDefault, "JPEG", 77, 83, 70, 74, "", "FAST");
 	}
 	
-
 	doc.setFont("Raleway-Regular", "normal");	
 	doc.setFontSize(20);
 	doc.text("ID: " + id, 110, 190, { align: "center" });
