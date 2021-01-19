@@ -21,6 +21,7 @@ export function ExpedienteMedicoPDF(doc, data) {
 	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 	doc.setTextColor("#000000");
 	doc.setFontSize(16);
+	doc.setFont("Raleway-Bold", "bold");	
 
 	doc.addImage(Stethoscopy, "PNG", 14, 37, 7, 7, "", "FAST");
 	doc.text("Diagnóstico", 26, 42);

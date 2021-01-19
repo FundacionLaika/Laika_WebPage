@@ -7,6 +7,7 @@ import { HogarTemporalPDF } from "./HogarTemporalPDF";
 import { PictureFrame } from "./Images/PictureFrame.js";
 import { LaikaLogo } from "./Images/LaikaLogo.js";
 import "./Raleway-Regular";
+import "./Raleway-Bold";
 import { IconoDefault } from "./Images/IconoDefault";
 
 var data = {

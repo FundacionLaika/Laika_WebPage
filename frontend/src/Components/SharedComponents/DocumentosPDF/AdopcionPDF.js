@@ -20,10 +20,12 @@ export function AdopcionPDF(doc, data) {
 	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 
 	doc.setFontSize(19);
+	doc.setFont("Raleway-Bold", "bold");	
 	doc.setTextColor("#000000");
 	doc.addImage(AddressBook, "PNG", 15, 34, 7, 7, "", "FAST");
 	doc.text("Datos adopción", 27, 40);
 	doc.setFontSize(14);
+	doc.setFont("Raleway-Regular", "normal");	
 	doc.text("Adoptante: " + data.adopcion.adoptante, 15, 53);
 	doc.text("Adoptado: " + data.adopcion.adoptado, 15, 63);
 	doc.text("Medio de adopción: " + data.adopcion.medioAdopcion, 15, 73);
@@ -40,15 +42,18 @@ export function AdopcionPDF(doc, data) {
 	);
 
 	doc.setFontSize(19);
+	doc.setFont("Raleway-Bold", "bold");	
 	doc.addImage(MapMarked, "PNG", 15, 99, 7, 7, "", "FAST");
 	doc.text("Dirección Adoptante", 27, 105);
 	doc.setFontSize(14);
+	doc.setFont("Raleway-Regular", "normal");	
 	doc.text("Calle: " + data.adopcion.calle, 15, 118);
 	doc.text("Número: " + data.adopcion.numero, 115, 118);
 	doc.text("Colonia: " + data.adopcion.colonia, 15, 128);
 	doc.text("Municipio: " + data.adopcion.municipio, 115, 128);
 
 	doc.setFontSize(19);
+	doc.setFont("Raleway-Bold", "bold");	
 	doc.addImage(CameraRetro, "PNG", 15, 153, 7, 7, "", "FAST");
 	doc.text("Foto adopción", 27, 159);
 	if (data.adopcion.foto) {

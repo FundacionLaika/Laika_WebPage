@@ -21,7 +21,9 @@ export function DatosGeneralesPDF(doc, data) {
 	doc.setFontSize(19);
 	doc.setTextColor("#000000");
 	doc.addImage(AddressBook, "PNG", 15, 34, 7, 7, "", "FAST");
+	doc.setFont("Raleway-Bold", "bold");	
 	doc.text("Datos generales", 27, 40);
+	doc.setFont("Raleway-Regular", "normal");	
 	doc.setFontSize(14);
 	doc.text("Nombre: " + data.registroGeneral.nombre, 15, 53);
 	doc.text("Edad: " + data.registroGeneral.edad, 115, 53);
@@ -36,7 +38,9 @@ export function DatosGeneralesPDF(doc, data) {
 
 	doc.setFontSize(19);
 	doc.addImage(MapMarked, "PNG", 15, 99, 7, 7, "", "FAST");
+	doc.setFont("Raleway-Bold", "bold");	
 	doc.text("Dirección de rescate", 27, 105);
+	doc.setFont("Raleway-Regular", "normal");	
 	doc.setFontSize(14);
 	doc.text("Calle: " + data.registroGeneral.calle, 15, 118);
 	doc.text("Número: " + data.registroGeneral.numero, 115, 118);
@@ -46,6 +50,7 @@ export function DatosGeneralesPDF(doc, data) {
 
 	doc.setFontSize(19);
 	doc.addImage(Search, "PNG", 15, 154, 7, 7, "", "FAST");
+	doc.setFont("Raleway-Bold", "bold");	
 	doc.text("Señas particulares", 27, 160);
 	doc.autoTable({
 		headStyles: {
