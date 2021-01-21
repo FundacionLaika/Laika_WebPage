@@ -1,0 +1,184 @@
+
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap");
+/* 
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Rubik", sans-serif;
+} */
+
+.container {
+	display: flex;
+	height: 100vh;
+	background-color: #ebecf0;
+}
+
+.rightSide {
+	margin-top: 5vh;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	/* justify-content: center; */
+	animation-name: left;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-delay: 1s;
+}
+
+.leftSide {
+	flex: 1;
+	display: grid;
+	grid-auto-columns: minmax(100%,100%);
+	transition: 1s;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.logoLogin {
+	width: 100%;
+	background-color: red;	
+}
+
+.header {
+	margin-top: 5vh;
+}
+
+.header > h2 {
+	width: 100%;
+	padding-bottom: 5vh;
+	color: #4f46a5;
+}
+
+.header > h4 {
+	margin-top: 10px;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.formLogin {
+	font-family: FontAwesome;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.formLogin > p {
+	text-align: right;
+}
+
+.formLogin > p > a {
+	color: #000;
+	font-size: 14px;
+}
+
+.formF {
+	display: block;
+    margin-bottom: 7%;
+	border: 0;
+	outline: 0;
+	font-size: 16px;
+	border-radius: 320px;
+	padding: 16px;
+	background-color: #ebecf0;
+	text-shadow: 1px 1px 0 #fff;
+	margin-right: 8px;
+	box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+	width: 100%;
+	box-sizing: border-box;
+	transition: all 0.2s ease-in-out;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.formField:focus {
+	box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.buttonForm {
+	border: 0;
+	outline: 0;
+	font-size: 16px;
+	border-radius: 320px;
+	padding: 16px;
+	background-color: #faf2f2;
+	text-shadow: 1px 1px 0 #fff;
+
+	color: #61677c;
+	font-weight: bold;
+	box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.buttonForm:hover {
+	box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+.buttonForm:active {
+	box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.animation {
+	animation-name: move;
+	animation-duration: 0.4s;
+	animation-fill-mode: both;
+	animation-delay: 2s;
+}
+
+.a1 {
+	animation-delay: 2s;
+}
+
+.a2 {
+	animation-delay: 2.1s;
+}
+
+.a3 {
+	animation-delay: 2.2s;
+}
+
+.a4 {
+	animation-delay: 2.3s;
+}
+
+.a5 {
+	animation-delay: 2.4s;
+}
+
+.a6 {
+	animation-delay: 2.5s;
+}
+
+@keyframes move {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-40px);
+	}
+
+	100% {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+}
+
+@keyframes left {
+	0% {
+		opacity: 0;
+		width: 0;
+	}
+
+	100% {
+		opacity: 1;
+		padding: 2% 4%;
+		width: 32%;
+	}
+}
+
