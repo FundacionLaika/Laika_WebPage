@@ -3,13 +3,13 @@ import Direccion from "../SharedComponents/Direccion";
 import DatosGenerales from "./Subcomponents/DatosGenerales";
 import Foto from "../SharedComponents/Foto";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import "./Styles/Adopcion.css";
 import queryString from 'query-string';
 
-export default class Adopcion extends React.Component {
+class Adopcion extends React.Component {
   
 	state = {
 		id: "",
@@ -268,3 +268,5 @@ export default class Adopcion extends React.Component {
 		);
 	}
 }
+
+export default withRouter(Adopcion);
