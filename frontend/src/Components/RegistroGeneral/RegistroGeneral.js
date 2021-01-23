@@ -6,8 +6,7 @@ import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import { Link } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
-import queryString from 'query-string';
-
+import queryString from "query-string";
 
 export default class RegistroGeneral extends React.Component {
 	state = {
@@ -27,7 +26,8 @@ export default class RegistroGeneral extends React.Component {
 		rescatistas: [],
 	};
 
-	restablecido = false
+	restablecido = false;
+	estaRegistrado = false;
 
 	handleChange = (event) => {
 		this.setState({
@@ -45,29 +45,34 @@ export default class RegistroGeneral extends React.Component {
 		let url = this.props.location.search;
 		let params = queryString.parse(url);
 
-		console.log(params.id ? "Registrado" :"Sin registrar");
-
+		console.log(params.id ? "Registradou" : "Sin registrar");
 
 		event.preventDefault();
 		console.log(this.state);
 
-		this.updateDB();
+		this.estaRegistrado ? this.updateDB() : this.insertDB();
 	};
 
 	insertDB = () => {
-
-	}
+		fetch("http://localhost:3001/registroGeneral", {
+			method: "post",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(this.state),
+		})
+			.then((response) => response.json())
+			.then(console.log)
+			.catch((err) => console.log(err));
+	};
 
 	updateDB = () => {
-
 		fetch("http://localhost:3001/registroGeneral", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(this.state)
+			body: JSON.stringify(this.state),
 		})
 			.then((response) => response.json())
 			.catch((err) => console.log(err));
-	}
+	};
 
 	agregarRescatista = (rescatista) => {
 		if (rescatista.text !== "") {
@@ -100,56 +105,8 @@ export default class RegistroGeneral extends React.Component {
 	};
 
 	handleRestablecer = () => {
-		this.fetchData();
-	};
-
-
-	fetchData = () => {
-		let url = this.props.location.search;
-		let params = queryString.parse(url);
-
-		fetch("http://localhost:3001/registroGeneral/?id=" + params.id, {
-			method: "get",
-			headers: { "Content-Type": "application/json" },
-		})
-			.then((response) => response.json())
-			.then((response) => {
-				for (const element in response) {
-					if (element.includes("fecha")) {
-						this.setState({
-							[element]: new Date(response[element])
-						});
-					}
-					else if (element.includes("foto")) {
-
-						if (response[element]) {
-
-							var buffer = Buffer.from(response[element].data);
-
-							this.setState({
-								[element]: buffer.toString('utf8'),
-							});
-						}
-					}
-					else {
-						this.setState({
-							[element]: response[element]
-						});
-					}
-					
-				}
-			})
-			.catch((err) => console.log(err));
-	}
-
-	componentDidUpdate() {
-		console.log("holaaaaaaaaaa");
-
-		let url = this.props.location.search;
-		let params = queryString.parse(url);
-
-		if (!params.id && !this.restablecido) {
-			this.restablecido = true
+		if (this.estaRegistrado) this.fetchData();
+		else {
 			this.setState({
 				id: "",
 				nombre: "",
@@ -165,28 +122,73 @@ export default class RegistroGeneral extends React.Component {
 				senasParticulares: "",
 				foto: null,
 				rescatistas: [],
-			}, 
-			)
+			});
 		}
+	};
 
-	}
-
-	componentDidMount() {
-		
+	fetchData = () => {
 		let url = this.props.location.search;
 		let params = queryString.parse(url);
 
-		this.setState({
-			estaRegistrado: params.id ? true : false
-		}, console.log(this.state))
+		fetch("http://localhost:3001/registroGeneral/?id=" + params.id, {
+			method: "get",
+			headers: { "Content-Type": "application/json" },
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				for (const element in response) {
+					if (element.includes("fecha")) {
+						const date = response[element];
+						if (!date || date === "" || date === "0000-00-00") continue;
+						this.setState({
+							[element]: new Date(date),
+						});
+					} else if (element.includes("foto")) {
+						if (response[element]) {
+							var buffer = Buffer.from(response[element].data);
+
+							this.setState({
+								[element]: buffer.toString("utf8"),
+							});
+						}
+					} else {
+						this.setState({
+							[element]: response[element],
+						});
+					}
+				}
+			})
+			.catch((err) => console.log(err));
+	};
+
+	componentDidUpdate() {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		this.estaRegistrado = params.id ? true : false;
+
+		if (!this.estaRegistrado && !this.restablecido) {
+			this.restablecido = true;
+			this.handleRestablecer();
+		}
+	}
+
+	componentDidMount() {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		this.setState(
+			{
+				estaRegistrado: params.id ? true : false,
+			},
+			console.log(this.state)
+		);
 
 		if (params.id) {
 			console.log("haciendo fetchhhhhhhhhh");
 			this.fetchData();
 		}
 	}
-
-	
 
 	render() {
 		return (
@@ -256,7 +258,7 @@ export default class RegistroGeneral extends React.Component {
 				</div>
 
 				<div className="BotonesRegistroGeneral">
-					<Link to={"/Laika/Adopcion"+this.props.location.search}>
+					<Link to={"/Laika/Adopcion" + this.props.location.search}>
 						<button className="BotonGeneralTransicion BotonAnteriorGeneral">
 							<i
 								aria-hidden="true"
@@ -280,11 +282,16 @@ export default class RegistroGeneral extends React.Component {
 						className="BotonGeneralGuardar BotonCentralGeneral"
 						onClick={this.handleSubmit}
 					>
-						Registrar
+						{this.estaRegistrado ? "Guardar" : "Registrar"}
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
-					<Link to={"/Laika/ExpedienteMedico"+this.props.location.search}>
+					<Link
+						to={
+							"/Laika/ExpedienteMedico" +
+							this.props.location.search
+						}
+					>
 						<button className="BotonGeneralTransicion BotonSiguienteGeneral">
 							Expediente Médico
 							<i className="fa fa-chevron-circle-right fa-fw"></i>
@@ -308,3 +315,4 @@ export default class RegistroGeneral extends React.Component {
 		);
 	}
 }
+
