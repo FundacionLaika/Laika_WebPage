@@ -28,7 +28,7 @@ function getData() {
 }
 
 function App() {
-	const [isAuth, setIsAuth] = useState(false);
+	const [isAuth, setIsAuth] = useState(true);
 
 	function setAuth(boolean) {
 		setIsAuth(boolean);
