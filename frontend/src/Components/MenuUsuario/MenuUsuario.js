@@ -3,6 +3,7 @@ import "./Styles/MenuUsuario.css";
 import { withRouter } from "react-router-dom";
 import UserInfo from "./Subcomponents/UserInfo";
 import SecurityInfo from "./Subcomponents/SecurityInfo";
+import AdminInfo from "./Subcomponents/AdminInfo";
 
 function MenuUsuario() {
 	const [borderState, setBorderState] = useState({
@@ -120,7 +121,7 @@ function MenuUsuario() {
 			<div className="dataUsuario">
 				{foregroundState.btnGeneral && <UserInfo />}
 				{foregroundState.btnSeguridad && <SecurityInfo />}
-
+				{foregroundState.btnAdmin && <AdminInfo />}
 			</div>
 		</div>
 	);
