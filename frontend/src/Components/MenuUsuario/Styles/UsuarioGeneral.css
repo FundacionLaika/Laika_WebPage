@@ -7,8 +7,8 @@
 .blockGeneralFoto {
     display: grid;
     grid-template-columns:50%, 50%;
-    width: 35%;
-    padding-top: 5vh;
+    width: 40%;
+    margin-top: 5vh;
     font-family: FontAwesome, 'Raleway', sans-serif;
     font-size: 120%;
     font-weight: bold;
@@ -19,32 +19,31 @@
     grid-column: 1;
     grid-row: 1 / 3;
     text-align: right;
-    padding-left: 10%;
 }
 
 .blockLabel {
     grid-column: 2;
     grid-row: 1;
-    width: 500%;
+    width: 300%;
     text-align: left;
-    padding-left: 15%;
-    padding-top: 30%;
+    margin-top: 5vh;
+    margin-left: 1vw;
 }
 
 .blockLabel2 {
     grid-column: 2;
     grid-row: 2;
+    width: 300%;
     text-align: left;
-    width: 500%;
-    padding-left: 15%;
-    padding-bottom: 30%;
+    margin-bottom: 5vh;
+    margin-left: 1vw;
 }
 
 .blockGeneral {
     display: grid;
     grid-template-columns: 50%,50%;
-    padding-left: 10%;
-    padding-top: 10vh;
+    margin-left: 10%;
+    margin-top: 10vh;
 }
 
 .blockDatosUsuario {
@@ -58,7 +57,7 @@
 }
 
 .blockGuardarUsuario {
-    padding-top: 7%;
+    margin-top: 6.8%;
 }
 
 .btnGuardarUsuario {

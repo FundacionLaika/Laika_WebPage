@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FotoUsuario from "../../SharedComponents/FotoUsuario";
+import FotoUsuario from "./FotoUsuario";
 import "../Styles/UsuarioGeneral.css";
 
 function UserInfo() {
@@ -18,14 +18,15 @@ function UserInfo() {
 		});
 	}
 
-	const imageHandler = (event) => {
+	function imageHandler(event) {
+		console.log("hola");
 		try {
 			const reader = new FileReader();
 			const foto = event.target.id;
 
 			reader.onload = () => {
 				if (reader.readyState === 2) {
-					this.setState({ [foto]: reader.result });
+					setState({ ...state,[foto]: reader.result });
 				}
 			};
 			reader.readAsDataURL(event.target.files[0]);
@@ -37,6 +38,7 @@ function UserInfo() {
 			<div className="blockGeneralFoto">
 				<div className="blockFoto">
 					<FotoUsuario
+						id="foto"
 						imageHandler={imageHandler}
 						foto={state.foto}
 					/>
