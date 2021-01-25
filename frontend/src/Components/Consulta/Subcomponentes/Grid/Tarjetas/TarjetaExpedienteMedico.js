@@ -46,7 +46,7 @@ export default class TarjetaExpedienteMedico extends React.Component {
 						!this.props.embarazo &&
 						!this.props.cachorros &&
 						!this.props.hemoparasitos &&
-						(!this.props.otro || this.props.length == 0) ? (
+						(!this.props.otro || this.props.length === 0) ? (
 							<div
 								style={{ paddingTop: "2vh", textAlign: "left" }}
 							>
