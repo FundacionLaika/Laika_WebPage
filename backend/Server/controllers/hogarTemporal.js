@@ -1,4 +1,5 @@
 const handleGetHT = (req, res, db) => {
+	console.log("id animal", req.query.id);
 	db.raw(
 		`select  ar.ID_Animal as id, 
 			ht.Tipo_HT as tipoHT,
@@ -15,13 +16,14 @@ const handleGetHT = (req, res, db) => {
 			HOGAR_TEMPORAL ht,
 			DIRECCION_HT dirht
 		where   ar.ID_Animal = ht.ID_Animal
-				AND ht.ID_HT = dirht.ID_Direccion_HT
+				AND ht.ID_HT = dirht.ID_HT
          ` +
 			"AND ar.ID_Animal = '" +
 			req.query.id +
 			"';"
 	)
 		.then((data1) => {
+			console.log("data 1", data1)
 			db.raw(
 				`SELECT c.ID_Comentarios_HT as id,
 						c.Observaciones as observaciones, 
@@ -91,11 +93,15 @@ handleUpdateHT = (req, res, db) => {
 	`
 
 	db.raw(query)
+	.catch(err => console.log(err))
 		.then(() => {
 			db.raw(
 				`select ID_HT from HOGAR_TEMPORAL where ID_Animal  = "${id}";`
 			).then((ID_HT) => {
+				console.log("idddddd:", id);
 				ID_HT = ID_HT[0][0].ID_HT;
+
+				console.log("ID HT", ID_HT);
 				db.raw(
 					`DELETE FROM COMENTARIOS_HT 
 					WHERE ID_HT  = "${ID_HT}";`

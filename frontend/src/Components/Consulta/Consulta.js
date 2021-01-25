@@ -139,12 +139,12 @@ export default class Consulta extends Component {
 
 	concatAddress = (calle, numero, colonia, municipio) => {
 		var direccion = "";
-		if (calle.length) direccion += calle;
-		if (numero.length && calle.length) direccion += " #" + numero;
-		if (colonia.length)
+		if (calle && calle.length) direccion += calle;
+		if (numero && numero.length && calle && calle.length) direccion += " #" + numero;
+		if (colonia && colonia.length)
 			direccion += (direccion.length ? ", " : "") + colonia;
-		direccion += (direccion.length ? ", " : "") + municipio + ".";
-		return direccion;
+		direccion += (direccion && direccion.length ? ", " : "") + municipio + ".";
+		return direccion !== "." ? direccion : "No hay Información";
 	};
 
 	handleOrdenarToggle = () => {
@@ -157,6 +157,7 @@ export default class Consulta extends Component {
 	};
 
 	formatDate = (date) => {
+		if (!date || date === "0000-00-00") return "No hay Información";
 		var d = new Date(date),
 			month = "" + (d.getMonth() + 1),
 			day = "" + d.getDate(),

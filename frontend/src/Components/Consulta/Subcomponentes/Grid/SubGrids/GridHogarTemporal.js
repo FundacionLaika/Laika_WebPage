@@ -14,6 +14,8 @@ export default class GridHogarTemporal extends React.Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
+				console.log(response);
+
 				this.setState({
 					data: response,
 				});
