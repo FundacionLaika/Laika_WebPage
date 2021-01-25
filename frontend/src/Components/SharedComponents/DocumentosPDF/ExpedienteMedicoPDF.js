@@ -1,238 +1,265 @@
-import React from "react";
-import { Text, StyleSheet, Font, Image } from "@react-pdf/renderer";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHeader,
-	DataTableCell,
-} from "@david.kucsai/react-pdf-table";
+import { formatDate, boolToString } from "../../SharedFunctions/PDFfunctions";
+import { LaikaLogo } from "./Images/LaikaLogo";
+import { Medkit } from "./Images/Medkit";
+import { Stethoscopy } from "./Images/Stethoscopy";
+import { Syringe } from "./Images/Syringe";
+import { Medician } from "./Images/Medician";
+import { CameraRetro } from "./Images/CameraRetro";
+import { Heartbeat} from "./Images/Heartbeat";
+import { IconoDefault } from "./Images/IconoDefault";
 
-class ExpedienteMedicoPDF extends React.Component {
-	state = {
-		data: [
+export function ExpedienteMedicoPDF(doc, data) {
+	doc.addPage();
+	doc.setFillColor("#51D1F6");
+	doc.rect(0, 0, 2300, 25, "F");
+
+	doc.setFont("Raleway-Regular", "normal");
+	doc.setFontSize(30);
+	doc.setTextColor("#ffffff");
+	doc.text("Expediente Médico", 30, 16);
+	doc.addImage(Medkit, "PNG", 10, 6, 12, 12, "", "FAST");
+	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
+	doc.setTextColor("#000000");
+	doc.setFontSize(16);
+	doc.setFont("Raleway-Bold", "bold");	
+
+	doc.addImage(Stethoscopy, "PNG", 14, 37, 7, 7, "", "FAST");
+	doc.text("Diagnóstico", 26, 42);
+	doc.autoTable({
+		startY: 50,
+		tableWidth: 110,
+		columnStyles: {
+			1: { halign: "center" },
+		},
+		head: [
+			[
+				{ content: "Diagnóstico" },
+				{ content: "Aplicada", styles: { halign: "center" } },
+			],
+		],
+		body: [
 			{
-				vacuna: "Puppy",
-				estaVacunado: "",
-				fechaVacunacion: "",
+				nombre: "Atropellamiento",
+				flag: boolToString(data.expedienteMedico.atropellamiento),
 			},
-
 			{
-				vacuna: "Refuerzo Puppy",
-				estaVacunado: "",
-				fechaVacunacion: "",
+				nombre: "TVT",
+				flag: boolToString(data.expedienteMedico.tvt),
 			},
-
 			{
-				vacuna: "Múltiple",
-				estaVacunado: "",
-				fechaVacunacion: "",
+				nombre: "Sarna/Piel",
+				flag: boolToString(data.expedienteMedico.sarnaPiel),
 			},
-
 			{
-				vacuna: "Refuerzo Múltiple",
-				estaVacunado: "",
-				fechaVacunacion: "",
+				nombre: "Viral",
+				flag: boolToString(data.expedienteMedico.viral),
 			},
-
 			{
-				vacuna: "Rabia",
-				estaVacunado: "",
-				fechaVacunacion: "",
+				nombre: "Embarazo",
+				flag: boolToString(data.expedienteMedico.embarazo),
+			},
+			{
+				nombre: "Cachorros",
+				flag: boolToString(data.expedienteMedico.cachorros),
+			},
+			{
+				nombre: "Hemoparásitos",
+				flag: boolToString(data.expedienteMedico.hemoparasitos),
+			},
+			{
+				nombre: "Otro",
+				flag: boolToString(data.expedienteMedico.otroEspecificar),
 			},
 		],
-	};
+		columns: [
+			{
+				header: "Diagnóstico",
+				dataKey: "nombre",
+				styles: { halign: "center" },
+			},
+			{ header: "Aplicada", dataKey: "flag" },
+		],
+	});
 
-	formatDate = (date) => {
-		var d = new Date(date),
-			month = "" + (d.getMonth() + 1),
-			day = "" + d.getDate(),
-			year = d.getFullYear();
+	doc.addImage(Syringe, "PNG", 14, 141, 7, 7, "", "FAST");
+	doc.text("Cartilla de vacunación", 26, 146);
+	doc.autoTable({
+		startY: 154,
+		tableWidth: 110,
+		columnStyles: {
+			1: { halign: "center" },
+			2: { halign: "center" },
+		},
+		head: [
+			[
+				{ content: "Vacunas" },
+				{ content: "Aplicada", styles: { halign: "center" } },
+				{ content: "Fecha/Cita", styles: { halign: "center" } },
+			],
+		],
+		body: [
+			{
+				nombre: "Puppy",
+				flag: boolToString(data.expedienteMedico.puppy),
+				fechaVacunacion: formatDate(data.expedienteMedico.fechaPuppy),
+			},
+			{
+				nombre: "Refuerzo Puppy",
+				flag: boolToString(data.expedienteMedico.refuerzoPuppy),
+				fechaVacunacion: formatDate(
+					data.expedienteMedico.fechaRefuerzoPuppy
+				),
+			},
+			{
+				nombre: "Múltiple",
+				flag: boolToString(data.expedienteMedico.multiple),
+				fechaVacunacion: formatDate(
+					data.expedienteMedico.fechaMultiple
+				),
+			},
+			{
+				nombre: "Refuerzo Múltiple",
+				flag: boolToString(data.expedienteMedico.refuerzoMultiple),
+				fechaVacunacion: formatDate(
+					data.expedienteMedico.fechaRefuerzoMultiple
+				),
+			},
+			{
+				nombre: "Rabia",
+				flag: boolToString(data.expedienteMedico.rabia),
+				fechaVacunacion: formatDate(data.expedienteMedico.fechaRabia),
+			},
+		],
+		columns: [
+			{ header: "Vacunas", dataKey: "nombre" },
+			{ header: "Aplicada", dataKey: "flag" },
+			{ header: "Fecha/Cita", dataKey: "fechaVacunacion" },
+		],
+	});
 
-		if (month.length < 2) month = "0" + month;
-		if (day.length < 2) day = "0" + day;
+	doc.addImage(Medician, "PNG", 14, 233, 7, 7, "", "FAST");
+	doc.text("Esterilización", 26, 238);
+	doc.autoTable({
+		startY: 246,
+		tableWidth: 110,
+		columnStyles: {
+			1: { halign: "center" },
+			2: { halign: "center" },
+			3: { halign: "center" },
+		},
+		head: [
+			[
+				{ content: "¿Está esterilizado?" },
+				{ content: "Cita agendada", styles: { halign: "center" } },
+				{ content: "Fecha agendada", styles: { halign: "center" } },
+			],
+		],
+		body: [
+			{
+				estaEsterilizado: boolToString(
+					data.expedienteMedico.esterilizado
+				),
+				citaEsterilizacion: boolToString(
+					data.expedienteMedico.citaEsterilizacion
+				),
+				fechaEsterilizacion: formatDate(
+					data.expedienteMedico.fechaEsterilizacion
+				),
+			},
+		],
+		columns: [
+			{ header: "¿Está esterilizado?", dataKey: "estaEsterilizado" },
+			{ header: "Cita agendada", dataKey: "citaEsterilizacion" },
+			{ header: "Fecha agendada", dataKey: "fechaEsterilizacion" },
+		],
+	});
 
-		return [day, month, year].join("/");
-	};
-
-	componentWillReceiveProps(props) {
-		var stateCartilla = this.state;
-		stateCartilla.data[0].estaVacunado = props.data.puppy;
-		stateCartilla.data[0].fechaVacunacion = this.formatDate(
-			props.data.fechaPuppy
+	doc.addImage(CameraRetro, "PNG", 144, 37, 7, 7, "", "FAST");
+	doc.text("Progreso", 156, 42);
+	if (data.expedienteMedico.foto1) {
+		var foto1 = Buffer.from(data.expedienteMedico.foto1.data);
+		doc.addImage(
+			foto1.toString("utf-8"),
+			"JPEG",
+			144,
+			50,
+			60,
+			64,
+			"",
+			"FAST"
 		);
-		stateCartilla.data[1].estaVacunado = props.data.refuerzoPuppy;
-		stateCartilla.data[1].fechaVacunacion = this.formatDate(
-			props.data.fechaRefuerzoPuppy
-		);
-		stateCartilla.data[2].estaVacunado = props.data.multiple;
-		stateCartilla.data[2].fechaVacunacion = this.formatDate(
-			props.data.fechaMultiple
-		);
-		stateCartilla.data[3].estaVacunado = props.data.refuerzoMultiple;
-		stateCartilla.data[3].fechaVacunacion = this.formatDate(
-			props.data.fechaRefuerzoMultiple
-		);
-		stateCartilla.data[4].estaVacunado = props.data.rabia;
-		stateCartilla.data[4].fechaVacunacion = this.formatDate(
-			props.data.fechaRabia
-		);
-		this.setState(stateCartilla);
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 144, 50, 60, 64, "", "FAST");
 	}
 
-	render() {
-		return (
-			<>
-				<Text style={styles.subtitle}>Expediente Médico</Text>
-				<Image
-					style={styles.image}
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
-				/>
-				<Image
-					style={styles.image}
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
-				/>
-				<Image
-					style={styles.image}
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
-				/>
-				<Text style={styles.subtitle} break>
-					Diagnóstico
-				</Text>
-				<Text style={styles.text}>
-					{"Atropellamiento: " + this.props.data.atropellamiento}
-				</Text>
-				<Text style={styles.text}>{"TVT: " + this.props.data.tvt}</Text>
-				<Text style={styles.text}>
-					{"Sarna/Piel: " + this.props.data.sarnaPiel}
-				</Text>
-				<Text style={styles.text}>
-					{"Viral: " + this.props.data.viral}
-				</Text>
-				<Text style={styles.text}>
-					{"Embarazo: " + this.props.data.embarazo}
-				</Text>
-				<Text style={styles.text}>
-					{"Cachorros: " + this.props.data.cachorros}
-				</Text>
-				<Text style={styles.text}>
-					{"Hemoparásitos: " + this.props.data.hemoparasitos}
-				</Text>
-				<Text style={styles.text}>
-					{"Otro: " + this.props.data.otro}
-				</Text>
-
-				<Text style={styles.subtitle}>Esterilización</Text>
-				<Text style={styles.text}>
-					{"¿Está esterilizado?: " + this.props.data.esterilizado}
-				</Text>
-				<Text style={styles.text}>
-					{"¿Desea agendar cita?: " +
-						this.formatDate(this.props.data.citaEsterilizacion)}
-				</Text>
-				<Text style={styles.text}>
-					{"Fecha de esterilización: " +
-						this.formatDate(this.props.data.fechaEsterilizacion)}
-				</Text>
-
-				<Text style={styles.subtitle}>Cartilla de vacunación</Text>
-				<Table data={this.state.data}>
-					<TableHeader textAlign={"center"} fontSize={13}>
-						<TableCell weighting={0.3}>Vacunas</TableCell>
-						<TableCell weighting={0.3}>¿Está vacunado?</TableCell>
-						<TableCell weighting={0.4}>
-							Fecha/Cita de vacunación
-						</TableCell>
-					</TableHeader>
-					<TableBody>
-						<DataTableCell
-							weighting={0.3}
-							getContent={(r) => r.vacuna}
-						></DataTableCell>
-						<DataTableCell
-							weighting={0.3}
-							getContent={(r) => r.estaVacunado}
-						/>
-						<DataTableCell
-							weighting={0.4}
-							getContent={(r) => r.fechaVacunacion}
-						/>
-					</TableBody>
-				</Table>
-				<Text style={styles.subtitle} break>
-					Tratamiento
-				</Text>
-				<Table>
-					<TableHeader textAlign={"center"} fontSize={12}>
-						<TableCell weighting={0.15}>Fecha Inicio</TableCell>
-						<TableCell weighting={0.15}>Fecha Final</TableCell>
-						<TableCell weighting={0.275}>Comentarios</TableCell>
-						<TableCell weighting={0.275}>Acción</TableCell>
-						<TableCell weighting={0.15}>Cita Médica</TableCell>
-					</TableHeader>
-				</Table>
-			</>
+	if (data.expedienteMedico.foto2) {
+		var foto2 = Buffer.from(data.expedienteMedico.foto2.data);
+		doc.addImage(
+			foto2.toString("utf-8"),
+			"JPEG",
+			144,
+			123.5,
+			60,
+			64,
+			"",
+			"FAST"
 		);
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 144, 123.5, 60, 64, "", "FAST");
+	}
+
+	if (data.expedienteMedico.foto3) {
+		var foto3 = Buffer.from(data.expedienteMedico.foto3.data);
+		doc.addImage(
+			foto3.toString("utf-8"),
+			"JPEG",
+			144,
+			197.4,
+			60,
+			64,
+			"",
+			"FAST"
+		);
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 144, 197.4, 60, 64, "", "FAST");
+	}
+
+	data.expedienteMedico.tratamiento.map((row) => {
+		row.fechaInicio = formatDate(row.fechaInicio);
+		row.fechaFinal = formatDate(row.fechaFinal);
+		row.citaMedica = formatDate(row.citaMedica);
+	});
+
+	if (data.expedienteMedico.tratamiento.length) {
+		doc.addPage();
+		doc.addImage(Heartbeat, "JPEG", 14, 13, 7, 7, "", "FAST");
+		doc.text("Tratamiento", 26, 18);
+		doc.autoTable({
+			startY: 26,
+			columnStyles: {
+				0: { cellWidth: 24 },
+				1: { cellWidth: 24 },
+				2: { cellWidth: 56 },
+				3: { cellWidth: 56 },
+				4: { cellWidth: 24 },
+			},
+			head: [
+				[
+					{ content: "Fecha inicio", styles: { halign: "center" } },
+					{ content: "Fecha final", styles: { halign: "center" } },
+					{ content: "Comentarios", styles: { halign: "center" } },
+					{ content: "Acción", styles: { halign: "center" } },
+					{ content: "Cita médica", styles: { halign: "center" } },
+				],
+			],
+			body: data.expedienteMedico.tratamiento,
+			columns: [
+				{ header: "Fecha inicio", dataKey: "fechaInicio" },
+				{ header: "Fecha final", dataKey: "fechaFinal" },
+				{ header: "Comentarios", dataKey: "comentarios" },
+				{ header: "Acción", dataKey: "accion" },
+				{ header: "Cita médica", dataKey: "citaMedica" },
+			],
+		});
 	}
 }
-
-Font.register({
-	family: "Oswald",
-	src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
-});
-
-const styles = StyleSheet.create({
-	body: {
-		paddingTop: 35,
-		paddingBottom: 65,
-		paddingHorizontal: 35,
-	},
-	title: {
-		fontSize: 24,
-		textAlign: "center",
-		fontFamily: "Oswald",
-	},
-	author: {
-		fontSize: 12,
-		textAlign: "center",
-		marginBottom: 40,
-	},
-	subtitle: {
-		fontSize: 18,
-		margin: 12,
-		fontFamily: "Oswald",
-	},
-	text: {
-		margin: 12,
-		fontSize: 14,
-		textAlign: "justify",
-		fontFamily: "Times-Roman",
-	},
-	image: {
-		marginVertical: 15,
-		marginHorizontal: 190,
-	},
-	imagePortada: {
-		paddingTop: 100,
-		paddingBottom: 50,
-		marginVertical: 15,
-		marginHorizontal: 100,
-	},
-	header: {
-		fontSize: 12,
-		marginBottom: 20,
-		textAlign: "center",
-		color: "grey",
-	},
-	pageNumber: {
-		position: "absolute",
-		fontSize: 12,
-		bottom: 30,
-		left: 0,
-		right: 0,
-		textAlign: "center",
-		color: "grey",
-	},
-});
-
-export default ExpedienteMedicoPDF;

@@ -1,136 +1,105 @@
-import React from "react";
-import { Text, StyleSheet, Font, Image } from "@react-pdf/renderer";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHeader,
-	DataTableCell,
-} from "@david.kucsai/react-pdf-table";
+import { formatDate } from "../../SharedFunctions/PDFfunctions";
+import { Casa } from "./Images/Casa";
+import { LaikaLogo } from "./Images/LaikaLogo";
+import { IconoDefault } from "./Images/IconoDefault";
+import { MapMarked } from "./Images/MapMarked";
+import { AddressBook } from "./Images/AddressBook";
+import { CameraRetro } from "./Images/CameraRetro";
+import { Comments } from "./Images/Comments";
 
-class HogarTemporalPDF extends React.Component {
-	formatDate = (date) => {
-		var d = new Date(date),
-			month = "" + (d.getMonth() + 1),
-			day = "" + d.getDate(),
-			year = d.getFullYear();
+export function HogarTemporalPDF(doc, data) {
+	doc.addPage();
+	doc.setFillColor("#51D1F6");
+	doc.rect(0, 0, 2300, 25, "F");
 
-		if (month.length < 2) month = "0" + month;
-		if (day.length < 2) day = "0" + day;
+	doc.setFont("Raleway-Regular", "normal");
+	doc.setFontSize(30);
+	doc.setTextColor("#ffffff");
+	doc.text("Hogar Temporal", 30, 16);
+	doc.addImage(Casa, "PNG", 10, 6, 12, 12, "", "FAST");
+	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 
-		return [day, month, year].join("/");
-	};
+	doc.setFontSize(19);
+	doc.setTextColor("#000000");
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.addImage(AddressBook, "PNG", 15, 34, 7, 7, "", "FAST");
+	doc.text("Datos HT", 27, 40);
+	doc.setFontSize(14);
+	doc.setFont("Raleway-Regular", "normal");	
+	doc.text("Tipo de HT: " + data.hogarTemporal.tipoHT, 15, 53);
+	doc.text("Nombre: " + data.hogarTemporal.nombreHT, 15, 63);
+	doc.text("Teléfono: " + data.hogarTemporal.telefonoHT, 15, 73);
+	doc.text(
+		"Fecha inicio: " + formatDate(data.hogarTemporal.fechaInicioHT),
+		115,
+		53
+	);
+	doc.text(
+		"Fecha final: " + formatDate(data.hogarTemporal.fechaFinalHT),
+		115,
+		73
+	);
 
-	render() {
-		return (
-			<>
-				<Text style={styles.subtitle}>Hogar Temporal</Text>
-				<Text style={styles.text}>
-					{"Tipo de Hogar Temporal: " + this.props.data.tipoHT}
-				</Text>
-				<Text style={styles.text}>
-					{"Nombre del responsable: " + this.props.data.nombreHT}
-				</Text>
-				<Text style={styles.text}>
-					{"Teléfono: " + this.props.data.telefonoHT}
-				</Text>
-				<Text style={styles.text}>
-					{"Fecha Inicio: " +
-						this.formatDate(this.props.data.fechaInicioHT)}
-				</Text>
-				<Text style={styles.text}>
-					{"Fecha Final: " +
-						this.formatDate(this.props.data.fechaFinalHT)}
-				</Text>
-				<Text style={styles.subtitle}>Dirección</Text>
-				<Text style={styles.text}>
-					{"Calle: " + this.props.data.calle}
-				</Text>
-				<Text style={styles.text}>
-					{"Número: " + this.props.data.numero}
-				</Text>
-				<Text style={styles.text}>
-					{"Colonia: " + this.props.data.colonia}
-				</Text>
-				<Text style={styles.text}>
-					{"Municipio: " + this.props.data.municipio}
-				</Text>
-				<Image
-					style={styles.image}
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
-				/>
-				<Text style={styles.subtitle} break>
-					Comentarios Hogar Temporal
-				</Text>
-				<Table>
-					<TableHeader textAlign="center">
-						<TableCell weighting="0.4">Comentarios</TableCell>
-						<TableCell weighting="0.4">Acción</TableCell>
-						<TableCell weighting="0.2">Fecha</TableCell>
-					</TableHeader>
-				</Table>
-			</>
+
+	doc.setFontSize(19);
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.addImage(MapMarked, "PNG", 15, 99, 7, 7, "", "FAST");
+	doc.text("Dirección HT", 27, 105);
+	doc.setFontSize(14);
+	doc.setFont("Raleway-Regular", "normal");	
+	doc.text("Calle: " + data.hogarTemporal.calle, 15, 118);
+	doc.text("Número: " + data.hogarTemporal.numero, 115, 118);
+	doc.text("Colonia: " + data.hogarTemporal.colonia, 15, 128);
+	doc.text("Municipio: " + data.hogarTemporal.municipio, 115, 128);
+
+	doc.setFontSize(19);
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.addImage(CameraRetro, "PNG", 15, 153, 7, 7, "", "FAST");
+	doc.text("Foto HT", 27, 159);
+	if (data.hogarTemporal.foto) {
+		var foto = Buffer.from(data.hogarTemporal.foto.data);
+		doc.addImage(
+			foto.toString("utf-8"),
+			"JPEG",
+			69,
+			173,
+			80,
+			84,
+			"",
+			"FAST"
 		);
+	} else {
+		doc.addImage(IconoDefault, "JPEG", 69, 173, 80, 84, "", "FAST");
+	}
+
+	data.hogarTemporal.comentarios.map((row) => {
+		row.fecha = formatDate(row.fecha);
+	});
+
+	if (data.hogarTemporal.comentarios.length) {
+		doc.addPage();
+		doc.addImage(Comments, "JPEG", 14, 13, 7, 7, "", "FAST");
+		doc.text("Comentarios", 26, 18);
+		doc.autoTable({
+			startY: 26,
+			columnStyles: {
+				0: { cellWidth: 80 },
+				1: { cellWidth: 80 },
+				2: { cellWidth: 24 },
+			},
+			head: [
+				[
+					{ content: "Observaciones", styles: { halign: "center" } },
+					{ content: "Acción", styles: { halign: "center" } },
+					{ content: "Fecha", styles: { halign: "center" } },
+				],
+			],
+			body: data.hogarTemporal.comentarios,
+			columns: [
+				{ header: "Observaciones", dataKey: "observaciones" },
+				{ header: "Acción", dataKey: "accion" },
+				{ header: "Fecha", dataKey: "fecha" },
+			],
+		});
 	}
 }
-
-Font.register({
-	family: "Oswald",
-	src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
-});
-
-const styles = StyleSheet.create({
-	body: {
-		paddingTop: 35,
-		paddingBottom: 65,
-		paddingHorizontal: 35,
-	},
-	title: {
-		fontSize: 24,
-		textAlign: "center",
-		fontFamily: "Oswald",
-	},
-	author: {
-		fontSize: 12,
-		textAlign: "center",
-		marginBottom: 40,
-	},
-	subtitle: {
-		fontSize: 18,
-		margin: 12,
-		fontFamily: "Oswald",
-	},
-	text: {
-		margin: 12,
-		fontSize: 14,
-		textAlign: "justify",
-		fontFamily: "Times-Roman",
-	},
-	image: {
-		marginVertical: 15,
-		marginHorizontal: 190,
-	},
-	imagePortada: {
-		paddingTop: 100,
-		paddingBottom: 50,
-		marginVertical: 15,
-		marginHorizontal: 100,
-	},
-	header: {
-		fontSize: 12,
-		marginBottom: 20,
-		textAlign: "center",
-		color: "grey",
-	},
-	pageNumber: {
-		position: "absolute",
-		fontSize: 12,
-		bottom: 30,
-		left: 0,
-		right: 0,
-		textAlign: "center",
-		color: "grey",
-	},
-});
-
-export default HogarTemporalPDF;

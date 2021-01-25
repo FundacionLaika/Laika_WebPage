@@ -1,156 +1,99 @@
-import React from "react";
-import { Redirect, withRouter } from "react-router-dom";
-import "./Login.css";
-import auth from "../Auth/Auth";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./Styles/Login.css";
+import "./Styles/Images.css";
+import image1 from "./Images/image1.jpg";
+import image2 from "./Images/image2.jpg";
+import image3 from "./Images/image3.jpg";
+import image4 from "./Images/image4.jpg";
 
-//Todo crear un arreglo de las diferentes páginas
-
-class Login extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            correoLogin: "",
-            contrasenaLogin: "",
-            usuarioValido: false,
-            arrImg: [
-                "pup1.jpg",
-                "pup2.jpg",
-                "pup3.jpg",
-                "pup4.jpg",
-                "pup5.jpg",
-                "pup6.jpg",
-                "pup7.jpg",
-                "pup8.jpg",
-                "pup9.jpg",
-                "pup10.jpg",
-            ],
-        };
-    }
-
-    //Actualiza el estado de los inputs.
-    //cuando un input es actualizado llama a esta función y con el nombre los inputs identifica cual debe de modificar
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value,
-        });
-    };
-
-    //Valida si se metieron datos correctos a la página
-    //Todo: Esta función después será tarea del servidor
-    validate = () => {
-        let errorCorreo = "";
-        let errorContrasena = "";
-
-        //TODO Agregar después la validacion -> !this.state.correoLogin.includes("@") ||
-        if (this.state.correoLogin !== "Hello") {
-            errorCorreo = "Correo invalido";
-        }
-
-        if (this.state.contrasenaLogin !== "bye") {
-            errorContrasena = "Contraseña invalida";
-        }
-
-        if (errorCorreo || errorContrasena) {
-            this.setState({ errorCorreo, errorContrasena });
-            return false;
-        } else {
-            this.setState({ errorCorreo: "", errorContrasena: "" });
-        }
-        return true;
-    };
-
-    onSubmitSignIn = () => {
-        // this.validate();
-        //          this.setState({ usuarioValido: true });
-        //          this.props.cambioRuta(true);
-
-        fetch("http://localhost:3001/login", {
-            method: "post",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                correo: this.state.correoLogin,
-                contrasena: this.state.contrasenaLogin,
-            }),
-        })
-            .then((response) => response.json())
-            .then((usuario) => {
-                if (usuario.Contrasena) {
-                    auth.login(() => {
-                        this.props.history.push("/Laika/Consulta");
-                    });
-                    this.props.cambioRuta(usuario.Correo);
-                }
-            });
-    };
-
-    render() {
-        return (
-            <div>
-                <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 bg-light-green center">
-                    <main className="pa4 black-80">
-                        <div className="measure">
-                            <fieldset
-                                id="sign_up"
-                                className="ba b--transparent ph0 mh0"
-                            >
-                                <legend className="f1 fw6 ph0 mh0">
-                                    Iniciar Sesión
-                                </legend>
-                                <div className="mt3">
-                                    <label
-                                        className="db fw6 lh-copy f6"
-                                        htmlFor="email-address"
-                                    >
-                                        Correo
-                                    </label>
-                                    <input
-                                        className="b pa2 input-reset ba bg-transparent hover-white w-100"
-                                        type="email"
-                                        name="correoLogin"
-                                        id="correoLogin"
-                                        placeholder="Ingresa tu correo"
-                                        onChange={this.handleChange} //En cada cambio del input se llamara la funcion onPasswordChange
-                                    />
-                                    <div style={{ fontSize: 12, color: "red" }}>
-                                        {this.state.errorCorreo}
-                                    </div>
-                                </div>
-                                <div className="mv3">
-                                    <label
-                                        className="db fw6 lh-copy f6"
-                                        htmlFor="password"
-                                    >
-                                        Contraseña
-                                    </label>
-                                    <input
-                                        className="b pa2 input-reset ba bg-transparent hover-white w-100"
-                                        type="password"
-                                        name="contrasenaLogin"
-                                        placeholder="Ingresa tu contraseña"
-                                        onChange={this.handleChange} //En cada cambio del input se llamara la funcion onPasswordChange
-                                    />
-                                    <div style={{ fontSize: 12, color: "red" }}>
-                                        {this.state.errorContrasena}
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <div className="">
-                                <input
-                                    onClick={this.onSubmitSignIn} // Llama a la función onSubmitSignIn cada vez que se da click al boton
-                                    className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                                    type="submit"
-                                    value="SignIn"
-                                />
-                            </div>
-                            {this.state.usuarioValido === true ? (
-                                <Redirect to="/Laika/Consulta" />
-                            ) : null}
-                        </div>
-                    </main>
-                </article>
-            </div>
-        );
-    }
+async function fetchData(state) {
+	var response = await fetch(
+		"http://localhost:3001/Login",
+		{
+			method: "post",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(state),
+		}
+	);
+	return response;
 }
 
-export default withRouter(Login);
+function Login(props) {
+	const [state, setState] = useState({correo:"", contrasena: ""});
+
+	const history = useHistory();
+
+	function handleClick() {
+		history.push("/Laika/Consulta");
+	}
+
+	function handleChange(event) {
+		state[event.target.name] = event.target.value;
+	}
+
+	return (
+		<div className="container">
+			<div className="leftSide">
+				<div className="box box1">
+					<img className="slide-1" src={image1}></img>
+				</div>
+				<div className="box box2">
+					<img className="slide-2" src={image2}></img>
+				</div>
+				<div className="box box3">
+					<img className="slide-3" src={image3}></img>
+				</div>
+				<div className="box box4">
+					<img className="slide-4" src={image4}></img>
+				</div>
+			</div>
+			<div className="rightSide">
+				<div className="LogoLogin">
+					<img src="/laikalogo.png" alt="laika" width="80%"></img>
+				</div>
+				<div className="header">
+					<h2 className="animation a1">Iniciar sesión</h2>
+					{/* <h4 className="animation a2">
+						Log in to your account using email and password
+					</h4> */}
+				</div>
+				<div className="formLogin">
+					<input
+						type="email"
+						className="formF animation a3"
+						placeholder="  &#xf0e0;   Correo electrónico"
+						onChange={handleChange}
+						name="correo"
+					/>
+					<input
+						type="password"
+						className="formF animation a4"
+						placeholder="  &#xf084;   Contraseña"
+						onChange={handleChange}
+						name="contrasena"
+					/>
+					{/* <p className="animation a5">
+						<a href="#">Forgot Password</a>
+					</p> */}
+					<button
+						className="buttonForm animation a6"
+						onClick={ async () => {
+							const data = await fetchData(state);
+							console.log(data);
+							console.log(data.status);
+
+							if (data.status === 200) {
+								props.setAuth(true);
+								handleClick();
+							} 
+						}}
+					>
+						Ingresar
+					</button>
+				</div>
+			</div>
+		</div>
+	);
+}
+export default Login;

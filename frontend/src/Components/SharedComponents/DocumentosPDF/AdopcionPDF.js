@@ -1,139 +1,105 @@
-import React from "react";
-import { Text, StyleSheet, Font, Image } from "@react-pdf/renderer";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHeader,
-	DataTableCell,
-} from "@david.kucsai/react-pdf-table";
+import { formatDate } from "../../SharedFunctions/PDFfunctions";
+import { IconoDefault } from "./Images/IconoDefault";
+import { LaikaLogo } from "./Images/LaikaLogo";
+import { Paw } from "./Images/Paw";
+import { MapMarked } from "./Images/MapMarked";
+import { Comments } from "./Images/Comments";
+import { AddressBook } from "./Images/AddressBook";
+import { CameraRetro } from "./Images/CameraRetro";
 
-class AdopcionPDF extends React.Component {
-	formatDate = (date) => {
-		var d = new Date(date),
-			month = "" + (d.getMonth() + 1),
-			day = "" + d.getDate(),
-			year = d.getFullYear();
+export function AdopcionPDF(doc, data) {
+	doc.addPage();
+	doc.setFillColor("#51D1F6");
+	doc.rect(0, 0, 2300, 25, "F");
 
-		if (month.length < 2) month = "0" + month;
-		if (day.length < 2) day = "0" + day;
+	doc.setFont("Raleway-Regular", "normal");
+	doc.setFontSize(30);
+	doc.setTextColor("#ffffff");
+	doc.text("Adopción", 30, 16);
+	doc.addImage(Paw, "PNG", 10, 6, 12, 12, "", "FAST");
+	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 
-		return [day, month, year].join("/");
-	};
+	doc.setFontSize(19);
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.setTextColor("#000000");
+	doc.addImage(AddressBook, "PNG", 15, 34, 7, 7, "", "FAST");
+	doc.text("Datos adopción", 27, 40);
+	doc.setFontSize(14);
+	doc.setFont("Raleway-Regular", "normal");	
+	doc.text("Adoptante: " + data.adopcion.adoptante, 15, 53);
+	doc.text("Adoptado: " + data.adopcion.adoptado, 15, 63);
+	doc.text("Medio de adopción: " + data.adopcion.medioAdopcion, 15, 73);
+	doc.text("Teléfono: " + data.adopcion.telefono, 115, 53);
+	doc.text(
+		"Visita de adopción: " + formatDate(data.adopcion.visitaDeAdopcion),
+		115,
+		63
+	);
+	doc.text(
+		"Fecha de adopción: " + formatDate(data.adopcion.fechaAdopcion),
+		115,
+		73
+	);
 
-	render() {
-		return (
-			<>
-				<Text style={styles.subtitle}>Adopción</Text>
-				<Text style={styles.text}>
-					{"Adoptante: " + this.props.data.adoptante}
-				</Text>
-				<Text style={styles.text}>
-					{"Adoptado: " + this.props.data.adoptado}
-				</Text>
-				<Text style={styles.text}>
-					{"Medio: " + this.props.data.medioAdopcion}
-				</Text>
-				<Text style={styles.text}>
-					{"Teléfono: " + this.props.data.telefono}
-				</Text>
-				<Text style={styles.text}>
-					{"Visita de adopción: " +
-						this.formatDate(this.props.data.visitaDeAdopcion)}
-				</Text>
-				<Text style={styles.text}>
-					{"Fecha de adopción: " +
-						this.formatDate(this.props.data.fechaAdopcion)}
-				</Text>
-				<Text style={styles.subtitle}>Dirección</Text>
-				<Text style={styles.text}>
-					{"Calle: " + this.props.data.calle}
-				</Text>
-				<Text style={styles.text}>
-					{"Número: " + this.props.data.numero}
-				</Text>
-				<Text style={styles.text}>
-					{"Colonia: " + this.props.data.colonia}
-				</Text>
-				<Text style={styles.text}>
-					{"Municipio: " + this.props.data.municipio}
-				</Text>
-				<Image
-					style={styles.image}
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
-				/>
-				<Text style={styles.subtitle} break>
-					Comentarios Adopción
-				</Text>
-				<Table>
-					<TableHeader textAlign="center">
-						<TableCell weighting="0.4">Comentarios</TableCell>
-						<TableCell weighting="0.4">Acción</TableCell>
-						<TableCell weighting="0.2">Fecha</TableCell>
-					</TableHeader>
-				</Table>
-			</>
+	doc.setFontSize(19);
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.addImage(MapMarked, "PNG", 15, 99, 7, 7, "", "FAST");
+	doc.text("Dirección Adoptante", 27, 105);
+	doc.setFontSize(14);
+	doc.setFont("Raleway-Regular", "normal");	
+	doc.text("Calle: " + data.adopcion.calle, 15, 118);
+	doc.text("Número: " + data.adopcion.numero, 115, 118);
+	doc.text("Colonia: " + data.adopcion.colonia, 15, 128);
+	doc.text("Municipio: " + data.adopcion.municipio, 115, 128);
+
+	doc.setFontSize(19);
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.addImage(CameraRetro, "PNG", 15, 153, 7, 7, "", "FAST");
+	doc.text("Foto adopción", 27, 159);
+	if (data.adopcion.foto) {
+		var foto = Buffer.from(data.adopcion.foto.data);
+		doc.addImage(
+			foto.toString("utf-8"),
+			"JPEG",
+			69,
+			173,
+			80,
+			84,
+			"",
+			"FAST"
 		);
+	} else {
+		doc.addImage(IconoDefault, "JPEG",  69, 173, 80, 84, "", "FAST");
+	}
+
+	data.adopcion.comentarios.map((row) => {
+		row.fecha = formatDate(row.fecha);
+	});
+
+	if (data.adopcion.comentarios.length) {
+		doc.addPage();
+		doc.addImage(Comments, "JPEG", 14, 13, 7, 7, "", "FAST");
+		doc.text("Comentarios", 26, 18);
+		doc.autoTable({
+			startY: 26,
+			columnStyles: {
+				0: { cellWidth: 80 },
+				1: { cellWidth: 80 },
+				2: { cellWidth: 24 },
+			},
+			head: [
+				[
+					{ content: "Observaciones", styles: { halign: "center" } },
+					{ content: "Acción", styles: { halign: "center" } },
+					{ content: "Fecha", styles: { halign: "center" } },
+				],
+			],
+			body: data.adopcion.comentarios,
+			columns: [
+				{ header: "Observaciones", dataKey: "observaciones" },
+				{ header: "Acción", dataKey: "accion" },
+				{ header: "Fecha", dataKey: "fecha" },
+			],
+		});
 	}
 }
-
-Font.register({
-	family: "Oswald",
-	src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
-});
-
-const styles = StyleSheet.create({
-	body: {
-		paddingTop: 35,
-		paddingBottom: 65,
-		paddingHorizontal: 35,
-	},
-	title: {
-		fontSize: 24,
-		textAlign: "center",
-		fontFamily: "Oswald",
-	},
-	author: {
-		fontSize: 12,
-		textAlign: "center",
-		marginBottom: 40,
-	},
-	subtitle: {
-		fontSize: 18,
-		margin: 12,
-		fontFamily: "Oswald",
-	},
-	text: {
-		margin: 12,
-		fontSize: 14,
-		textAlign: "justify",
-		fontFamily: "Times-Roman",
-	},
-	image: {
-		marginVertical: 15,
-		marginHorizontal: 190,
-	},
-	imagePortada: {
-		paddingTop: 100,
-		paddingBottom: 50,
-		marginVertical: 15,
-		marginHorizontal: 100,
-	},
-	header: {
-		fontSize: 12,
-		marginBottom: 20,
-		textAlign: "center",
-		color: "grey",
-	},
-	pageNumber: {
-		position: "absolute",
-		fontSize: 12,
-		bottom: 30,
-		left: 0,
-		right: 0,
-		textAlign: "center",
-		color: "grey",
-	},
-});
-
-export default AdopcionPDF;

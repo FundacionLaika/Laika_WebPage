@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ContactoHT from "./Subcomponentes/ContactoHT";
 import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
-import { Link } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import DataGrid from "../SharedComponents/DataGrid/DataGrid";
 import shortid from "shortid";
@@ -287,4 +287,4 @@ class HogarTemporal extends Component {
 	}
 }
 
-export default HogarTemporal;
+export default withRouter(HogarTemporal);

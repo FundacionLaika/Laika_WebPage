@@ -4,11 +4,11 @@ import DatosGeneralesRG from "./Subcomponents/DatosGeneralesRG";
 import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
 import queryString from "query-string";
 
-export default class RegistroGeneral extends React.Component {
+class RegistroGeneral extends React.Component {
 	state = {
 		id: "",
 		nombre: "",
@@ -124,7 +124,8 @@ export default class RegistroGeneral extends React.Component {
 				rescatistas: [],
 			});
 		}
-	};
+
+	}
 
 	fetchData = () => {
 		let url = this.props.location.search;
@@ -314,4 +315,5 @@ export default class RegistroGeneral extends React.Component {
 		);
 	}
 }
+export default withRouter(RegistroGeneral);
 

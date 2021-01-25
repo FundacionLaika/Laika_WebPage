@@ -1,137 +1,89 @@
-import React from "react";
-import { Text, StyleSheet, Font, Image } from "@react-pdf/renderer";
+import { formatDate } from "../../SharedFunctions/PDFfunctions";
+import { LaikaLogo } from "./Images/LaikaLogo";
+import { GeneralData } from "./Images/GeneralData";
+import { AddressBook } from "./Images/AddressBook";
+import { MapMarked } from "./Images/MapMarked";
+import { Users } from "./Images/Users";
+import { Search } from "./Images/Search";
 
-class DatosGeneralesPDF extends React.Component {
-	formatDate = (date) => {
-		var d = new Date(date),
-			month = "" + (d.getMonth() + 1),
-			day = "" + d.getDate(),
-			year = d.getFullYear();
+export function DatosGeneralesPDF(doc, data) {
+	doc.addPage();
+	doc.setFillColor("#51D1F6");
+	doc.rect(0, 0, 2300, 25, "F");
 
-		if (month.length < 2) month = "0" + month;
-		if (day.length < 2) day = "0" + day;
+	doc.setFont("Raleway-Regular", "normal");	
+	doc.setFontSize(30);
+	doc.setTextColor("#ffffff");
+	doc.text("Registro General", 30, 16);
+	doc.addImage(GeneralData, "PNG", 10, 6, 12, 12, "","FAST");
+	doc.addImage(LaikaLogo, "PNG", 180, 4, 32, 18, "", "FAST");
 
-		return [day, month, year].join("/");
-	};
+	doc.setFontSize(19);
+	doc.setTextColor("#000000");
+	doc.addImage(AddressBook, "PNG", 15, 34, 7, 7, "", "FAST");
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.text("Datos generales", 27, 40);
+	doc.setFont("Raleway-Regular", "normal");	
+	doc.setFontSize(14);
+	doc.text("Nombre: " + data.registroGeneral.nombre, 15, 53);
+	doc.text("Edad: " + data.registroGeneral.edad, 115, 53);
+	doc.text("Género: " + data.registroGeneral.genero, 15, 63);
+	doc.text("Especie: " + data.registroGeneral.especie, 115, 63);
+	doc.text(
+		"Fecha de rescate: " + formatDate(data.registroGeneral.fechaDeRescate),
+		15,
+		73
+	);
+	doc.text("Estatus: " + data.registroGeneral.estatus, 115, 73);
 
-	formatRescatistas = (rescatistas) => {
-		if (!rescatistas) {
-			return "";
-		}
-		var arrayTemp = [];
-		rescatistas.forEach((rescatista) => {
-			arrayTemp.push(rescatista.text);
-		});
-		return arrayTemp.toString();
-	};
+	doc.setFontSize(19);
+	doc.addImage(MapMarked, "PNG", 15, 99, 7, 7, "", "FAST");
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.text("Dirección de rescate", 27, 105);
+	doc.setFont("Raleway-Regular", "normal");	
+	doc.setFontSize(14);
+	doc.text("Calle: " + data.registroGeneral.calle, 15, 118);
+	doc.text("Número: " + data.registroGeneral.numero, 115, 118);
+	doc.text("Colonia: " + data.registroGeneral.colonia, 15, 128);
+	doc.text("Municipio: " + data.registroGeneral.municipio, 115, 128);
 
-	render() {
-		return (
-			<>
-				<Text style={styles.subtitle}>Datos Generales</Text>
-				<Text style={styles.text}>
-					{"Nombre del rescatado: " + this.props.data.nombre}
-				</Text>
-				<Text style={styles.text}>
-					{"Edad: " + this.props.data.edad}
-				</Text>
-				<Text style={styles.text}>
-					{"Género: " + this.props.data.genero}
-				</Text>
-				<Text style={styles.text}>
-					{"Especie: " + this.props.data.especie}
-				</Text>
-				<Text style={styles.text}>
-					{"Fecha de rescate: " +
-						this.formatDate(this.props.data.fechaDeRescate)}
-				</Text>
-				<Text style={styles.text}>
-					{"Estatus: " + this.props.data.estatus}
-				</Text>
-				<Text style={styles.text}>
-					{"Rescatistas: " +
-						this.formatRescatistas(this.props.data.rescatistas)}
-				</Text>
 
-				<Text style={styles.subtitle}>Dirección</Text>
-				<Text style={styles.text}>
-					{"Calle: " + this.props.data.calle}
-				</Text>
-				<Text style={styles.text}>
-					{"Número: " + this.props.data.numero}
-				</Text>
-				<Text style={styles.text}>
-					{"Colonia: " + this.props.data.colonia}
-				</Text>
-				<Text style={styles.text}>
-					{"Municipio: " + this.props.data.municipio}
-				</Text>
-				<Image
-					style={styles.image}
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
-				/>
-			</>
-		);
-	}
+	doc.setFontSize(19);
+	doc.addImage(Search, "PNG", 15, 154, 7, 7, "", "FAST");
+	doc.setFont("Raleway-Bold", "bold");	
+	doc.text("Señas particulares", 27, 160);
+	doc.autoTable({
+		headStyles: {
+			halign: "center"
+		},
+		bodyStyles: {
+			fillColor: "#FFF8E7",
+			halign: "center",
+		},
+		startY: 170,
+		margin: {left: 12.6},
+		tableWidth: 90,
+		body: [{senasParticulares: data.registroGeneral.senasParticulares}],
+		columns: [{ header: "Señas particulares", dataKey: "senasParticulares" }],
+	});
+
+	var startingPage =  doc.internal.getCurrentPageInfo().pageNumber;
+	doc.setPage(startingPage);
+
+	doc.addImage(Users, "PNG", 115, 154, 7, 7, "", "FAST");
+	doc.text("Rescatistas", 127, 160);
+	doc.autoTable({
+		headStyles: {
+			halign: "center"
+		},
+		bodyStyles: {
+			fillColor: "#FFF8E7",
+			halign: "center",
+		},
+		startY: 170,
+		margin: { left: 112.6},
+		tableWidth: 90,
+		body: data.registroGeneral.rescatistas,
+		columns: [{ header: "Rescatistas", dataKey: "text" }],
+	});
 }
-
-Font.register({
-	family: "Oswald",
-	src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
-});
-
-const styles = StyleSheet.create({
-	body: {
-		paddingTop: 35,
-		paddingBottom: 65,
-		paddingHorizontal: 35,
-	},
-	title: {
-		fontSize: 24,
-		textAlign: "center",
-		fontFamily: "Oswald",
-	},
-	author: {
-		fontSize: 12,
-		textAlign: "center",
-		marginBottom: 40,
-	},
-	subtitle: {
-		fontSize: 18,
-		margin: 12,
-		fontFamily: "Oswald",
-	},
-	text: {
-		margin: 12,
-		fontSize: 14,
-		textAlign: "justify",
-		fontFamily: "Times-Roman",
-	},
-	image: {
-		marginVertical: 15,
-		marginHorizontal: 190,
-	},
-	imagePortada: {
-		paddingTop: 100,
-		paddingBottom: 50,
-		marginVertical: 15,
-		marginHorizontal: 100,
-	},
-	header: {
-		fontSize: 12,
-		marginBottom: 20,
-		textAlign: "center",
-		color: "grey",
-	},
-	pageNumber: {
-		position: "absolute",
-		fontSize: 12,
-		bottom: 30,
-		left: 0,
-		right: 0,
-		textAlign: "center",
-		color: "grey",
-	},
-});
-
-export default DatosGeneralesPDF;

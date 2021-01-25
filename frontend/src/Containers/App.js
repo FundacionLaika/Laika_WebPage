@@ -1,130 +1,108 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	useHistory,
+} from "react-router-dom";
 import "./App.css";
 
 import MenuBar from "../Components/SharedComponents/MenuBar";
 import Login from "../Components/Login/Login";
-import Registro from "../Components/RegistroUsuario/Registro";
 import Consulta from "../Components/Consulta/Consulta";
 import RegistroGeneral from "../Components/RegistroGeneral/RegistroGeneral";
 import ExpedienteMedico from "../Components/ExpedienteMedico/ExpedienteMedico";
 import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
-import { ProtectedRoute } from "../Components/SharedComponents/ProtectedRoute";
-import auth from "../Components/Auth/Auth";
-import DocumentoPDF from "../Components/SharedComponents/DocumentosPDF/DocumentoPDF";
+import ProtectedRoute from "../Components/SharedComponents/ProtectedRoute";
 
-const initialState = {
-    iniciadoSesion: auth.esAutenticado(),
-    correoUsuario: "",
-};
+function setData(obj) {
+	sessionStorage.setItem("data", JSON.stringify(obj));
+}
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = initialState;
-    }
+function getData() {
+	const tokenString = sessionStorage.getItem("data");
+	const userToken = JSON.parse(tokenString);
+	console.log(userToken);
+}
 
-    componentDidMount() {
-        document.title = "Administración | Fundación Laika";
-    }
+function App() {
+	const [isAuth, setIsAuth] = useState(true);
 
-    cambioRuta = (usuario) => {
-        this.setState({
-            iniciadoSesion: auth.esAutenticado(),
-            correoUsuario: usuario,
-        });
-    };
+	function setAuth(boolean) {
+		setIsAuth(boolean);
+	}
 
-    render() {
-        return (
-            <div className="App">
-                <Router>
-                    <Route
-                        path="/Laika"
-                        render={() => (
-                            <MenuBar correoUsuario={this.state.correoUsuario} />
-                        )}
-                    />
+	useEffect(() => {
+		document.title = "Administración | Fundación Laika";
+	});
 
-                    <Switch>
-                        {/* El Switch solo hara render de un componente a la vez */}
-                        {/*Login es la primera página mostrada*/}
-                        <Route
-                            exact
-                            path="/"
-                            render={() => (
-                                <Login cambioRuta={this.cambioRuta} />
-                            )}
-                        />
+	return (
+		<div className="App">
+			<Router>
+				<Route path="/Laika" render={MenuBar} />
 
-                        <ProtectedRoute
-                            exact
-                            path="/Laika/Registro/:correoUsuario"
-                            component={Registro}
-                        />
+				<Switch>
+					<Route path="/" exact>
+						<Login setAuth={setAuth} />
+					</Route>
 
-                        <ProtectedRoute
-                            path="/Laika/Consulta"
-                            exact
-                            component={Consulta}
-                        />
-                        {/* <Route /> */}
-                        <ProtectedRoute
-                            path="/Laika/RegistroGeneral"
-                            exact
-                            component={RegistroGeneral}
-                        />
-                        <ProtectedRoute
-                            path="/Laika/ExpedienteMedico"
-                            exact
-                            component={ExpedienteMedico}
-                        />
+					<ProtectedRoute
+						path="/Laika/Consulta"
+						exact
+						component={Consulta}
+						isAuth={isAuth}
+					/>
 
-                        <ProtectedRoute
-                            path="/Laika/HogarTemporal"
-                            exact
-                            component={HogarTemporal}
-                        />
+					<ProtectedRoute
+						path="/Laika/RegistroGeneral"
+						exact
+						component={RegistroGeneral}
+						isAuth={isAuth}
+					/>
+					<ProtectedRoute
+						path="/Laika/ExpedienteMedico"
+						exact
+						component={ExpedienteMedico}
+						isAuth={isAuth}
+					/>
 
-                        <ProtectedRoute
-                            path="/PDF"
-                            exact
-                            component={DocumentoPDF}
-                        />
+					<ProtectedRoute
+						path="/Laika/HogarTemporal"
+						exact
+						component={HogarTemporal}
+						isAuth={isAuth}
+					/>
 
-                        <ProtectedRoute
-                            path={"/Laika/MenuUsuario/:correoUsuario"}
-                            exact
-                            component={MenuUsuario}
-                        />
+					<ProtectedRoute
+						path={"/Laika/MenuUsuario"}
+						exact
+						component={MenuUsuario}
+						isAuth={isAuth}
+					/>
 
-                        <ProtectedRoute
-                            path="/Laika/Adopcion"
-                            exact
-                            component={Adopcion}
-                        />
+					<ProtectedRoute
+						path="/Laika/Adopcion"
+						exact
+						component={Adopcion}
+						isAuth={isAuth}
+					/>
 
-                        {/* Primer Render de la app */}
-                        <Route
-                            path="/"
-                            render={() => (
-                                <div>
-                                    <div className="App-header">
-                                        <h1>
-                                            Pagina no
-                                            <p className="red">Disponible</p>
-                                        </h1>
-                                    </div>
-                                </div>
-                            )}
-                        />
-                    </Switch>
-                </Router>
-            </div>
-        );
-    }
+					<Route>
+						<div>
+							<div className="App-header">
+								<h1>
+									Pagina no
+									<p className="red">Disponible</p>
+								</h1>
+							</div>
+						</div>
+					</Route>
+				</Switch>
+			</Router>
+		</div>
+	);
 }
 
 export default App;

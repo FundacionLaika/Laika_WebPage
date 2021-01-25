@@ -3,7 +3,7 @@ import Scroll from "../SharedComponents/Scroll";
 import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import DataGridMed from "./Subcomponentes/DataGridMed";
@@ -374,4 +374,4 @@ class ExpedienteMedico extends Component {
 	}
 }
 
-export default ExpedienteMedico;
+export default withRouter(ExpedienteMedico);
