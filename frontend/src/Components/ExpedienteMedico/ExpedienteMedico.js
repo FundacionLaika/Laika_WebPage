@@ -147,8 +147,10 @@ class ExpedienteMedico extends Component {
 				console.log(response);
 				for (const element in response) {
 					if (element.includes("fecha")) {
+						const date = response[element];
+						if (!date || date === "" || date === "0000-00-00") continue;
 						this.setState({
-							[element]: new Date(response[element]),
+							[element]: new Date(date),
 						});
 					} else if (element.includes("foto")) {
 						if (response[element]) {

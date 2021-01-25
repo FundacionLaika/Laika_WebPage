@@ -74,11 +74,11 @@ const handleConsultaPost = (req, res, db) => {
                             AND ar.ID_Animal = rte.ID_Animal
                             AND rte.ID_RESCATE = dirrte.ID_Rescate
                             AND ar.ID_Animal = em.ID_Animal
-                            AND em.ID_Medico = diag.ID_Diagnostico
+                            AND em.ID_Medico = diag.ID_Medico
                             AND em.ID_Medico = est.ID_Medico
                             AND em.ID_Medico = cv.ID_Medico
                             AND ar.ID_Animal = ht.ID_Animal
-                            AND ht.ID_HT = dirht.ID_Direccion_HT
+                            AND ht.ID_HT = dirht.ID_HT
                             AND ar.ID_Animal = adop.ID_Animal
                             AND adop.ID_Adopcion = adte.ID_Adopcion
                             AND adte.ID_Adoptante = diradte.ID_Adoptante `;

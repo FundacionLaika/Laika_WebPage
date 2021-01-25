@@ -6,8 +6,7 @@ import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import { Link, withRouter } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
-import queryString from 'query-string';
-
+import queryString from "query-string";
 
 class RegistroGeneral extends React.Component {
 	state = {
@@ -27,6 +26,9 @@ class RegistroGeneral extends React.Component {
 		rescatistas: [],
 	};
 
+	restablecido = false;
+	estaRegistrado = false;
+
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value,
@@ -40,28 +42,37 @@ class RegistroGeneral extends React.Component {
 	};
 
 	handleSubmit = (event) => {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		console.log(params.id ? "Registradou" : "Sin registrar");
+
 		event.preventDefault();
 		console.log(this.state);
-		this.updateDB();
+
+		this.estaRegistrado ? this.updateDB() : this.insertDB();
+	};
+
+	insertDB = () => {
+		fetch("http://localhost:3001/registroGeneral", {
+			method: "post",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(this.state),
+		})
+			.then((response) => response.json())
+			.then(console.log)
+			.catch((err) => console.log(err));
 	};
 
 	updateDB = () => {
-		let url = this.props.location.search;
-		console.log("url", url);
-		let params = queryString.parse(url);
-
 		fetch("http://localhost:3001/registroGeneral", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(this.state)
+			body: JSON.stringify(this.state),
 		})
 			.then((response) => response.json())
-			.then((response) => {
-				console.log(response);
-				
-			})
 			.catch((err) => console.log(err));
-	}
+	};
 
 	agregarRescatista = (rescatista) => {
 		if (rescatista.text !== "") {
@@ -94,38 +105,30 @@ class RegistroGeneral extends React.Component {
 	};
 
 	handleRestablecer = () => {
-		this.fetchData();
-	};
-
-
-
-
-
-	
-	convertToByteArray = (input) => {
-		var sliceSize = 512;
-		var bytes = [];
-	
-		for (var offset = 0; offset < input.length; offset += sliceSize) {
-			var slice = input.slice(offset, offset + sliceSize);
-	
-			var byteNumbers = new Array(slice.length);
-	
-			for (var i = 0; i < slice.length; i++) {
-				byteNumbers[i] = slice.charCodeAt(i);
-			}
-	
-			const byteArray = new Uint8Array(byteNumbers);
-	
-			bytes.push(byteArray);
+		if (this.estaRegistrado) this.fetchData();
+		else {
+			this.setState({
+				id: "",
+				nombre: "",
+				edad: "",
+				genero: "",
+				especie: "",
+				fechaDeRescate: null,
+				estatus: "",
+				calle: "",
+				numero: "",
+				colonia: "",
+				municipio: "",
+				senasParticulares: "",
+				foto: null,
+				rescatistas: [],
+			});
 		}
-	
-		return bytes;
+
 	}
 
 	fetchData = () => {
 		let url = this.props.location.search;
-		console.log("url", url);
 		let params = queryString.parse(url);
 
 		fetch("http://localhost:3001/registroGeneral/?id=" + params.id, {
@@ -134,38 +137,57 @@ class RegistroGeneral extends React.Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
 				for (const element in response) {
 					if (element.includes("fecha")) {
+						const date = response[element];
+						if (!date || date === "" || date === "0000-00-00") continue;
 						this.setState({
-							[element]: new Date(response[element])
+							[element]: new Date(date),
 						});
-					}
-					else if (element.includes("foto")) {
-
+					} else if (element.includes("foto")) {
 						if (response[element]) {
-							console.log(response[element]);
-
 							var buffer = Buffer.from(response[element].data);
 
 							this.setState({
-								[element]: buffer.toString('utf8'),
+								[element]: buffer.toString("utf8"),
 							});
 						}
-					}
-					else {
+					} else {
 						this.setState({
-							[element]: response[element]
+							[element]: response[element],
 						});
 					}
-					
 				}
 			})
 			.catch((err) => console.log(err));
+	};
+
+	componentDidUpdate() {
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		this.estaRegistrado = params.id ? true : false;
+
+		if (!this.estaRegistrado && !this.restablecido) {
+			this.restablecido = true;
+			this.handleRestablecer();
+		}
 	}
 
 	componentDidMount() {
-		this.fetchData();
+		let url = this.props.location.search;
+		let params = queryString.parse(url);
+
+		this.setState(
+			{
+				estaRegistrado: params.id ? true : false,
+			},
+			console.log(this.state)
+		);
+
+		if (params.id) {
+			this.fetchData();
+		}
 	}
 
 	render() {
@@ -236,7 +258,7 @@ class RegistroGeneral extends React.Component {
 				</div>
 
 				<div className="BotonesRegistroGeneral">
-					<Link to={"/Laika/Adopcion"+this.props.location.search}>
+					<Link to={"/Laika/Adopcion" + this.props.location.search}>
 						<button className="BotonGeneralTransicion BotonAnteriorGeneral">
 							<i
 								aria-hidden="true"
@@ -260,11 +282,16 @@ class RegistroGeneral extends React.Component {
 						className="BotonGeneralGuardar BotonCentralGeneral"
 						onClick={this.handleSubmit}
 					>
-						Registrar
+						{this.estaRegistrado ? "Guardar" : "Registrar"}
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
-					<Link to={"/Laika/ExpedienteMedico"+this.props.location.search}>
+					<Link
+						to={
+							"/Laika/ExpedienteMedico" +
+							this.props.location.search
+						}
+					>
 						<button className="BotonGeneralTransicion BotonSiguienteGeneral">
 							Expediente Médico
 							<i className="fa fa-chevron-circle-right fa-fw"></i>
@@ -289,3 +316,4 @@ class RegistroGeneral extends React.Component {
 	}
 }
 export default withRouter(RegistroGeneral);
+

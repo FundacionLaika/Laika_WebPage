@@ -54,6 +54,10 @@ app.put("/registroGeneral", (req, res) => {
     registroGeneral.handleUpdateRG(req, res, db);
 });
 
+app.post("/registroGeneral", (req, res) => {
+    registroGeneral.handlePostRG(req, res, db);
+});
+
 app.get("/expedienteMedico", (req, res) => {
     expedienteMedico.handleGetEM(req, res, db);
 });

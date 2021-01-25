@@ -36,7 +36,7 @@ const handleGetEM = (req, res, db) => {
 				CARTILLA_DE_VACUNACION cv,
 				ESTERILIZACION est
 		where 	ar.ID_Animal = em.ID_Animal
-				AND em.ID_Medico = diag.ID_Diagnostico
+				AND em.ID_Medico = diag.ID_Medico
 				AND em.ID_Medico = est.ID_Medico
 				AND em.ID_Medico = cv.ID_Medico ` +
 			"AND ar.ID_Animal = '" +
