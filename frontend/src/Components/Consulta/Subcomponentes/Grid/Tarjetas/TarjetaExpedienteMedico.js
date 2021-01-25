@@ -6,6 +6,12 @@ import BotonPDF from "../../../../SharedComponents/BotonPDF.js";
 import { Link } from "react-router-dom";
 
 export default class TarjetaExpedienteMedico extends React.Component {
+	bool2string = (data) => {
+		if (data === "1") return "Si";
+		else if (data === "0") return "No";
+		else return "No hay Información";
+	};
+
 	render() {
 		return (
 			<div className="tarjeta">
@@ -33,6 +39,21 @@ export default class TarjetaExpedienteMedico extends React.Component {
 							<span className="nombreCampo"> Diagnóstico: </span>
 						</div>
 
+						{!this.props.atropellamiento &&
+						!this.props.tvt &&
+						!this.props.sarnaPiel &&
+						!this.props.viral &&
+						!this.props.embarazo &&
+						!this.props.cachorros &&
+						!this.props.hemoparasitos &&
+						(!this.props.otro || this.props.length == 0) ? (
+							<div
+								style={{ paddingTop: "2vh", textAlign: "left" }}
+							>
+								{" "}
+								{"Ninguno"}{" "}
+							</div>
+						) : null}
 						<ul className="listaTEMD">
 							{this.props.atropellamiento ? (
 								<li> Atropellamiento </li>
@@ -47,7 +68,7 @@ export default class TarjetaExpedienteMedico extends React.Component {
 							{this.props.hemoparasitos ? (
 								<li> Hemoparasitos </li>
 							) : null}
-							{this.props.otro.length ? (
+							{this.props.otro && this.props.otro.length ? (
 								<li> {this.props.otro} </li>
 							) : null}
 						</ul>
@@ -64,6 +85,18 @@ export default class TarjetaExpedienteMedico extends React.Component {
 								Vacunas Recibidas:{" "}
 							</span>
 						</div>
+						{!this.props.puppy &&
+						!this.props.refuerzoPuppy &&
+						!this.props.multiple &&
+						!this.props.refuerzoMultiple &&
+						!this.props.rabia ? (
+							<div
+								style={{ paddingTop: "2vh", textAlign: "left" }}
+							>
+								{" "}
+								{"Ninguna"}{" "}
+							</div>
+						) : null}
 						<ul className="listaTEMV">
 							{this.props.puppy ? <li> Puppy </li> : null}
 							{this.props.refuerzoPuppy ? (
@@ -85,9 +118,7 @@ export default class TarjetaExpedienteMedico extends React.Component {
 						<span className="nombreCampo"> Esterilizado: </span>
 						<span className="campoData">
 							{" "}
-							{this.props.estaEsterilizado === "1"
-								? "Si"
-								: "No"}{" "}
+							{this.bool2string(this.props.estaEsterilizado)}{" "}
 						</span>
 					</div>
 
@@ -99,7 +130,10 @@ export default class TarjetaExpedienteMedico extends React.Component {
 						<span className="nombreCampo"> Cita Agendada: </span>
 						<span className="campoData">
 							{" "}
-							{this.props.citaAgendada}{" "}
+							{this.props.citaAgendada &&
+							this.props.citaAgendada.length
+								? this.props.citaAgendada
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 					<div className="fechaEsterilizacionTEM">

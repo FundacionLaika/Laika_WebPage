@@ -33,7 +33,7 @@ export default class TarjetaHogarTemporal extends React.Component {
 							{" "}
 							Tipo de Hogar Temporal:{" "}
 						</span>
-						<span className="campoData"> {this.props.tipoHT} </span>
+						<span className="campoData"> {this.props.tipoHT ? this.props.tipoHT : "No hay Información"} </span>
 					</div>
 
 					<div className="responsableTHT">
@@ -44,7 +44,7 @@ export default class TarjetaHogarTemporal extends React.Component {
 						<span className="nombreCampo"> Responsable: </span>
 						<span className="campoData">
 							{" "}
-							{this.props.responsableHT}{" "}
+							{this.props.responsableHT ? this.props.responsableHT : "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -56,7 +56,7 @@ export default class TarjetaHogarTemporal extends React.Component {
 						<span className="nombreCampo"> Télefono: </span>
 						<span className="campoData">
 							{" "}
-							{this.props.telefonoHT}{" "}
+							{this.props.telefonoHT ? this.props.telefonoHT : "No hay Información"}{" "}
 						</span>
 					</div>
 

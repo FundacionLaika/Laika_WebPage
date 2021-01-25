@@ -185,7 +185,6 @@ export default class RegistroGeneral extends React.Component {
 		);
 
 		if (params.id) {
-			console.log("haciendo fetchhhhhhhhhh");
 			this.fetchData();
 		}
 	}
