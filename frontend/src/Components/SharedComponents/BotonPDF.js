@@ -8,7 +8,7 @@ import {
 	Header,
 	Checkbox,
 } from "semantic-ui-react";
-import { PDFGenerator, FetchAllData } from "./DocumentosPDF/DocumentoPDF";
+import { PDFGenerator } from "./DocumentosPDF/DocumentoPDF";
 
 var datosGenerales = false,
 	expedienteMedico = false,

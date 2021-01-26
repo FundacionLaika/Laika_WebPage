@@ -49,7 +49,6 @@ class Adopcion extends React.Component {
 	updateDB = () => {
 		let url = this.props.location.search;
 		console.log("url", url);
-		let params = queryString.parse(url);
 
 		fetch("http://localhost:3001/adopcion", {
 			method: "put",

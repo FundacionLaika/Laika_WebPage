@@ -1,4 +1,4 @@
-import { formatDate } from "../../SharedFunctions/PDFfunctions";
+import { formatDate, validInfo } from "../../SharedFunctions/PDFfunctions";
 import { IconoDefault } from "./Images/IconoDefault";
 import { LaikaLogo } from "./Images/LaikaLogo";
 import { Paw } from "./Images/Paw";
@@ -26,10 +26,10 @@ export function AdopcionPDF(doc, data) {
 	doc.text("Datos adopción", 27, 40);
 	doc.setFontSize(14);
 	doc.setFont("Raleway-Regular", "normal");	
-	doc.text("Adoptante: " + data.adopcion.adoptante, 15, 53);
-	doc.text("Adoptado: " + data.adopcion.adoptado, 15, 63);
-	doc.text("Medio de adopción: " + data.adopcion.medioAdopcion, 15, 73);
-	doc.text("Teléfono: " + data.adopcion.telefono, 115, 53);
+	doc.text("Adoptante: " + validInfo(data.adopcion.adoptante), 15, 53);
+	doc.text("Adoptado: " + validInfo(data.adopcion.adoptado), 15, 63);
+	doc.text("Medio de adopción: " + validInfo(data.adopcion.medioAdopcion), 15, 73);
+	doc.text("Teléfono: " + validInfo(data.adopcion.telefono), 115, 53);
 	doc.text(
 		"Visita de adopción: " + formatDate(data.adopcion.visitaDeAdopcion),
 		115,
@@ -47,10 +47,10 @@ export function AdopcionPDF(doc, data) {
 	doc.text("Dirección Adoptante", 27, 105);
 	doc.setFontSize(14);
 	doc.setFont("Raleway-Regular", "normal");	
-	doc.text("Calle: " + data.adopcion.calle, 15, 118);
-	doc.text("Número: " + data.adopcion.numero, 115, 118);
-	doc.text("Colonia: " + data.adopcion.colonia, 15, 128);
-	doc.text("Municipio: " + data.adopcion.municipio, 115, 128);
+	doc.text("Calle: " + validInfo(data.adopcion.calle), 15, 118);
+	doc.text("Número: " + validInfo(data.adopcion.numero), 115, 118);
+	doc.text("Colonia: " + validInfo(data.adopcion.colonia), 15, 128);
+	doc.text("Municipio: " + validInfo(data.adopcion.municipio), 115, 128);
 
 	doc.setFontSize(19);
 	doc.setFont("Raleway-Bold", "bold");	
@@ -72,7 +72,7 @@ export function AdopcionPDF(doc, data) {
 		doc.addImage(IconoDefault, "JPEG",  69, 173, 80, 84, "", "FAST");
 	}
 
-	data.adopcion.comentarios.map((row) => {
+	data.adopcion.comentarios.forEach((row) => {
 		row.fecha = formatDate(row.fecha);
 	});
 

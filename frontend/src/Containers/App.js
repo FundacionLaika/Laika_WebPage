@@ -3,7 +3,6 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Switch,
-	useHistory,
 } from "react-router-dom";
 import "./App.css";
 
@@ -17,15 +16,15 @@ import Adopcion from "../Components/Adopcion/Adopcion";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
 import ProtectedRoute from "../Components/SharedComponents/ProtectedRoute";
 
-function setData(obj) {
-	sessionStorage.setItem("data", JSON.stringify(obj));
-}
+// function setData(obj) {
+// 	sessionStorage.setItem("data", JSON.stringify(obj));
+// }
 
-function getData() {
-	const tokenString = sessionStorage.getItem("data");
-	const userToken = JSON.parse(tokenString);
-	console.log(userToken);
-}
+// function getData() {
+// 	const tokenString = sessionStorage.getItem("data");
+// 	const userToken = JSON.parse(tokenString);
+// 	console.log(userToken);
+// }
 
 function App() {
 	const [isAuth, setIsAuth] = useState(true);

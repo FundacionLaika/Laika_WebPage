@@ -29,23 +29,23 @@ function Login(props) {
 	}
 
 	function handleChange(event) {
-		state[event.target.name] = event.target.value;
+		setState({...state, [event.target.name]: event.target.value});
 	}
 
 	return (
 		<div className="container">
 			<div className="leftSide">
 				<div className="box box1">
-					<img className="slide-1" src={image1}></img>
+					<img className="slide-1" src={image1} alt="foto1"></img>
 				</div>
 				<div className="box box2">
-					<img className="slide-2" src={image2}></img>
+					<img className="slide-2" src={image2} alt="foto2"></img>
 				</div>
 				<div className="box box3">
-					<img className="slide-3" src={image3}></img>
+					<img className="slide-3" src={image3} alt="foto3"></img>
 				</div>
 				<div className="box box4">
-					<img className="slide-4" src={image4}></img>
+					<img className="slide-4" src={image4} alt="foto4"></img>
 				</div>
 			</div>
 			<div className="rightSide">

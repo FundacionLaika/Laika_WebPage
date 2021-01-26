@@ -115,7 +115,6 @@ class ExpedienteMedico extends Component {
 	updateDB = () => {
 		let url = this.props.location.search;
 		console.log("url", url);
-		let params = queryString.parse(url);
 
 		fetch("http://localhost:3001/expedienteMedico", {
 			method: "put",
