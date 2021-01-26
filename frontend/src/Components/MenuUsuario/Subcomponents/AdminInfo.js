@@ -6,7 +6,7 @@ function AdminInfo() {
 		<div className="adminContainer">
 			<div className="adminTitle">
 				<div className="adminTitle1">
-					<i class="fa fa-users"></i>
+					<i className="fa fa-users"></i>
 				</div>
 				<div className="adminTitle2">Administración de usuarios</div>
 			</div>

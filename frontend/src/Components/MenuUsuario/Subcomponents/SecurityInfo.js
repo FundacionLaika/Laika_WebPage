@@ -15,7 +15,7 @@ function SecurityInfo() {
 		<div className="securityContainer">
 			<div className="securityTitle">
 				<div className="secTitle1">
-					<i class="fa fa-key"></i>
+					<i className="fa fa-key"></i>
 				</div>
 				<div className="secTitle2">
 					<label>Cambiar contraseña</label>

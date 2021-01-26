@@ -60,7 +60,7 @@ function MenuUsuario() {
 					<div className="sideBarIcon">
 						<i
 							style={{ color: foregroundState.btnSeguridad }}
-							class="fa fa-lock fa-2x iconUsuario"
+							className="fa fa-lock fa-2x iconUsuario"
 						></i>
 					</div>
 					<div className="sideBarBtn">
@@ -85,7 +85,7 @@ function MenuUsuario() {
 					<div className="sideBarIcon">
 						<i
 							style={{ color: foregroundState.btnAdmin }}
-							class="fa fa-address-book fa-2x iconUsuario"
+							className="fa fa-address-book fa-2x iconUsuario"
 						></i>
 					</div>
 					<div className="sideBarBtn">
@@ -105,7 +105,7 @@ function MenuUsuario() {
 					<div className="sideBarIcon">
 						<i
 							style={{ color: "red" }}
-							class="fa fa-sign-out fa-2x iconUsuario"
+							className="fa fa-sign-out fa-2x iconUsuario"
 						></i>
 					</div>
 					<div className="sideBarBtn">
