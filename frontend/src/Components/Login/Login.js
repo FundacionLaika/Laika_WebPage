@@ -80,9 +80,7 @@ function Login(props) {
 						className="buttonForm animation a6"
 						onClick={ async () => {
 							const data = await fetchData(state);
-							console.log(data);
-							console.log(data.status);
-
+							
 							if (data.status === 200) {
 								props.setAuth(true);
 								handleClick();
