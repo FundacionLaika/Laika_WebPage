@@ -162,7 +162,6 @@ function BotonPDF(props) {
 								/>
 							</div>
 							<div>
-								{" "}
 								<Checkbox
 									checked={stateCheck.hogarTemporal}
 									label="Hogar Temporal"
@@ -176,7 +175,6 @@ function BotonPDF(props) {
 								/>
 							</div>
 							<div>
-								{" "}
 								<Checkbox
 									checked={stateCheck.adopcion}
 									label="Adopción"

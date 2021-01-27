@@ -43,7 +43,7 @@
     display: grid;
     grid-template-columns: 50%,50%;
     margin-left: 10%;
-    margin-top: 10vh;
+    margin-top: 7vh;
 }
 
 .blockDatosUsuario {
@@ -57,7 +57,10 @@
 }
 
 .blockGuardarUsuario {
-    margin-top: 6.8%;
+    position: absolute;
+    width: 65vw;
+    left: 33vw;
+    top: 82vh;
 }
 
 .btnGuardarUsuario {
