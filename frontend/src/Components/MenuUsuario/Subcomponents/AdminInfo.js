@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styles/AdminInfo.css";
-import ModalAdminRG from "./ModalAdminRG";
+import ModalAdmin from "./ModalAdmin";
 
 function AdminInfo() {
 	return (
@@ -12,7 +12,7 @@ function AdminInfo() {
 				<div className="adminTitle2">Administración de usuarios</div>
 			</div>
 			<div className="gridUsuarios">
-				<ModalAdminRG/>	
+				<ModalAdmin/>	
 			</div>
 			<div className="btnGuardarAdmin"></div>
 		</div>

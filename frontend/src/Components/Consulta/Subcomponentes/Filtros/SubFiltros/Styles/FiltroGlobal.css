@@ -53,38 +53,6 @@
 	width: 100%;
 }
 
-.ui.selection.dropdown {
-	width: 100%;
-	cursor: pointer;
-	word-wrap: break-word;
-	line-height: 1em;
-	white-space: normal;
-	outline: 0;
-	transform: rotateZ(0);
-	background: #fff;
-	color: rgba(0, 0, 0, 0.87);
-	box-shadow: none;
-	border: 1px solid rgba(7, 131, 255, 0.15);
-	border-radius: 0 1.1rem 1.1rem 0;
-	transition: box-shadow 0.1s ease, width 0.1s ease;
-	background-color: #aacfcf;
-}
-
-.ui.dropdown {
-	cursor: pointer;
-	outline: 0;
-	text-align: center;
-	align-self: center;
-	transition: box-shadow 0.1s ease, width 0.1s ease;
-	-webkit-tap-highlight-color: transparent;
-}
-
-.ui.dropdown > .text {
-	color: rgb(58, 58, 58);
-	font-family: "Raleway";
-	font-size: 15px;
-}
-
 .search__input {
 	width: 100%;
 	height: 100%;

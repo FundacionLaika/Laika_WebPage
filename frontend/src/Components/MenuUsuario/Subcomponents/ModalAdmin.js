@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import { Button, Modal, Icon, Image, Header, Input } from "semantic-ui-react";
-import "../Styles/ModalAdminRG.css";
+import {
+	Button,
+	Modal,
+	Icon,
+	Dropdown,
+	Header,
+	Input,
+} from "semantic-ui-react";
+import "../Styles/ModalAdmin.css";
 import FotoUsuarioModal from "./FotoUsuarioModal";
 
 function Reducer(state, action) {
@@ -14,7 +21,7 @@ function Reducer(state, action) {
 	}
 }
 
-function ModalAdminRG(props) {
+function ModalAdmin(props) {
 	const [state, dispatch] = React.useReducer(Reducer, {
 		open: false,
 		dimmer: undefined,
@@ -33,8 +40,17 @@ function ModalAdminRG(props) {
 		foto: null,
 	});
 
+	const countryOptions = [
+		{ key: "voluntario", value: "voluntario", text: "Voluntario" },
+		{ key: "administrador", value: "administrador", text: "Administrador" },
+	];
+
 	function handleChange(event) {
 		setStateUser({ ...stateUser, [event.target.name]: event.target.value });
+	}
+
+	function handleSelect(event, data) {
+		setStateUser({ ...stateUser, rol: data.value });
 	}
 
 	function handleRestablecer() {
@@ -135,13 +151,21 @@ function ModalAdminRG(props) {
 								/>
 							</div>
 							<div className="block1RG">
-								<Input
-									size="large"
-									icon="group"
-									iconPosition="left"
-									placeholder="Rol"
+								<Dropdown
+									style={{
+										width: "82%",
+										height: "59%",
+										fontSize: "1em",
+									}}
+									button
 									name="rol"
-									onChange={handleChange}
+									selection
+									className="icon selectRol"
+									labeled
+									icon="group"
+									options={countryOptions}
+									placeholder="Rol"
+									onChange={handleSelect}
 								/>
 							</div>
 							<div className="block2RG">
@@ -198,7 +222,7 @@ function ModalAdminRG(props) {
 							}
 						}}
 					>
-						<Icon name="checkmark" /> Aceptar
+						<Icon name="checkmark" /> Registrar
 					</Button>
 				</Modal.Actions>
 				<Modal
@@ -232,4 +256,4 @@ function ModalAdminRG(props) {
 	);
 }
 
-export default ModalAdminRG;
+export default ModalAdmin;
