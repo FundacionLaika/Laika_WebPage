@@ -153,8 +153,8 @@ function ModalAdmin(props) {
 							<div className="block1RG">
 								<Dropdown
 									style={{
-										width: "82%",
-										height: "59%",
+										width: "17vw",
+										height: "6.8vh",
 										fontSize: "1em",
 									}}
 									button
