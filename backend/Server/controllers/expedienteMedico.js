@@ -9,7 +9,7 @@ const handleGetEM = (req, res, db) => {
 			diag.Cachorros as cachorros,
 			diag.Hemoparasitos as hemoparasitos, 
 			diag.Otro as otroEspecificar,
-			CASE WHEN diag.Otro = ''
+			CASE WHEN diag.Otro IS NULL OR diag.Otro = ''
 				 THEN false
 				 ELSE true
 	 		END AS otro,

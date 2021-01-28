@@ -244,7 +244,7 @@ class Adopcion extends React.Component {
 							}
 						}}
 					>
-						Registrar
+						Guardar
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 

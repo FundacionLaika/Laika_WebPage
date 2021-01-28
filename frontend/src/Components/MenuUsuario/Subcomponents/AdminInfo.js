@@ -1,5 +1,6 @@
 import React from "react";
 import "../Styles/AdminInfo.css";
+import UserCard from "./UserCard.js";
 import ModalAdmin from "./ModalAdmin";
 
 function AdminInfo() {
@@ -11,6 +12,18 @@ function AdminInfo() {
 				</div>
 				<div className="adminTitle2">Administración de usuarios</div>
 			</div>
+
+			<div className="user-cards">
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+			</div>
+
 			<div className="gridUsuarios">
 				<ModalAdmin/>	
 			</div>

@@ -331,7 +331,6 @@ const handlePostRG = (req, res, db) => {
 					})
 
 					.catch(trx.rollback);
-					
 			})
 			.then(trx.commit)
 			.then(() => {
