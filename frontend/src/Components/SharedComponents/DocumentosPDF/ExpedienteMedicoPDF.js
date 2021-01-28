@@ -224,7 +224,7 @@ export function ExpedienteMedicoPDF(doc, data) {
 		doc.addImage(IconoDefault, "JPEG", 144, 197.4, 60, 64, "", "FAST");
 	}
 
-	data.expedienteMedico.tratamiento.map((row) => {
+	data.expedienteMedico.tratamiento.forEach((row) => {
 		row.fechaInicio = formatDate(row.fechaInicio);
 		row.fechaFinal = formatDate(row.fechaFinal);
 		row.citaMedica = formatDate(row.citaMedica);

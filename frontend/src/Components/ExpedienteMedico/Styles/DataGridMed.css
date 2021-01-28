@@ -41,6 +41,10 @@
 	grid-auto-columns: minmax(calc(100%/26), calc(100%/26));
 }
 
+.rowDGInvalid {
+	background-color: red;
+}
+
 .dg-col1 {
 	grid-column: 1/6;
 }

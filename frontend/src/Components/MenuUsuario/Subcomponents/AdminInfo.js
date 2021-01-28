@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/AdminInfo.css";
 import UserCard from "./UserCard.js";
+import ModalAdmin from "./ModalAdmin";
 
 function AdminInfo() {
 	return (
@@ -23,6 +24,9 @@ function AdminInfo() {
 				<UserCard />
 			</div>
 
+			<div className="gridUsuarios">
+				<ModalAdmin/>	
+			</div>
 			<div className="btnGuardarAdmin"></div>
 		</div>
 	);

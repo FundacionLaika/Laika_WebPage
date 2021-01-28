@@ -7,10 +7,10 @@ import { Link, withRouter } from "react-router-dom";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import shortid from "shortid";
 import "./Styles/Adopcion.css";
-import queryString from 'query-string';
+import queryString from "query-string";
+import { validationAdop } from "./Functions/validationAdop";
 
 class Adopcion extends React.Component {
-  
 	state = {
 		id: "",
 		visitaDeAdopcion: null,
@@ -49,17 +49,15 @@ class Adopcion extends React.Component {
 	updateDB = () => {
 		let url = this.props.location.search;
 		console.log("url", url);
-		let params = queryString.parse(url);
 
 		fetch("http://localhost:3001/adopcion", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(this.state)
+			body: JSON.stringify(this.state),
 		})
 			.then((response) => response.json())
 			.then((response) => {
 				console.log(response);
-				
 			})
 			.catch((err) => console.log(err));
 	};
@@ -115,36 +113,35 @@ class Adopcion extends React.Component {
 			.then((response) => {
 				console.log(response);
 				for (const element in response) {
-
-					if (element.includes("fecha") || element.includes("visita")) {
+					if (
+						element.includes("fecha") ||
+						element.includes("visita")
+					) {
 						const date = response[element];
-						if (!date || date === "" || date === "0000-00-00") continue;
+						if (!date || date === "" || date === "0000-00-00")
+							continue;
 						this.setState({
 							[element]: new Date(date),
 						});
-					}
-					else if (element.includes("foto")) {
-
+					} else if (element.includes("foto")) {
 						if (response[element]) {
 							console.log(response[element]);
 
 							var buffer = Buffer.from(response[element].data);
 
 							this.setState({
-								[element]: buffer.toString('utf8'),
+								[element]: buffer.toString("utf8"),
 							});
 						}
-					}
-					else {
+					} else {
 						this.setState({
-							[element]: response[element]
+							[element]: response[element],
 						});
 					}
-					
 				}
 			})
 			.catch((err) => console.log(err));
-	}
+	};
 
 	componentDidMount() {
 		this.fetchData();
@@ -216,7 +213,9 @@ class Adopcion extends React.Component {
 				</div>
 
 				<div className="BotonesRegistroAdopcion">
-					<Link to={"/Laika/HogarTemporal"+this.props.location.search}>
+					<Link
+						to={"/Laika/HogarTemporal" + this.props.location.search}
+					>
 						<button className="BotonAdopcionTransicion BotonAnteriorAdopcion">
 							<i
 								aria-hidden="true"
@@ -238,13 +237,23 @@ class Adopcion extends React.Component {
 					</button>
 					<button
 						className="BotonAdopcionGuardar BotonCentralAdopcion"
-						onClick={this.handleSubmit}
+						onClick={(event) => {
+							if (validationAdop(this.state)) {
+								this.handleSubmit(event);
+								alert("Registro exitoso");
+							}
+						}}
 					>
 						Guardar
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 
-					<Link to={"/Laika/RegistroGeneral"+this.props.location.search}>
+					<Link
+						to={
+							"/Laika/RegistroGeneral" +
+							this.props.location.search
+						}
+					>
 						<button className="BotonAdopcionTransicion BotonSiguienteAdopcion">
 							Registro General
 							<i

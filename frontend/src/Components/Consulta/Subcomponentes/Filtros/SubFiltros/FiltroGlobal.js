@@ -92,6 +92,14 @@ export default class FiltroGlobal extends React.Component {
 				</div>
 				<div className="seleccionarBusqueda">
 					<Dropdown
+						style={{
+							backgroundColor: "#aacfcf",
+							borderRadius: "0 1.1rem 1.1rem 0",
+							textAlign: "center",
+							alignSelf: "center",
+							fontFamily: "Raleway",
+							fontSize: "1em",
+						}}
 						className="dropdownBusqueda"
 						fluid
 						selection
@@ -108,9 +116,7 @@ export default class FiltroGlobal extends React.Component {
 
 				<div className="ordenarPor">
 					<div className="ordenarDrop">
-						<span>
-							Ordenar por:{" "}
-						</span>
+						<span>Ordenar por: </span>
 
 						<div>
 							<Dropdown
