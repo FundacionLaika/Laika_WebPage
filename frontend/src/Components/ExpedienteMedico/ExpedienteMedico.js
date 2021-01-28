@@ -10,6 +10,7 @@ import DataGridMed from "./Subcomponentes/DataGridMed";
 import Foto from "../SharedComponents/Foto";
 import "./Styles/ExpedienteMedico.css";
 import queryString from "query-string";
+import { validationExpMed } from "./Functions/validationExpMed";
 
 class ExpedienteMedico extends Component {
 	state = {
@@ -115,7 +116,6 @@ class ExpedienteMedico extends Component {
 	updateDB = () => {
 		let url = this.props.location.search;
 		console.log("url", url);
-		let params = queryString.parse(url);
 
 		fetch("http://localhost:3001/expedienteMedico", {
 			method: "put",
@@ -148,7 +148,8 @@ class ExpedienteMedico extends Component {
 				for (const element in response) {
 					if (element.includes("fecha")) {
 						const date = response[element];
-						if (!date || date === "" || date === "0000-00-00") continue;
+						if (!date || date === "" || date === "0000-00-00")
+							continue;
 						this.setState({
 							[element]: new Date(date),
 						});
@@ -352,7 +353,12 @@ class ExpedienteMedico extends Component {
 					</button>
 					<button
 						className="BotonMedicoGuardar BotonCentralMedico"
-						onClick={this.handleSubmit}
+						onClick={(event) => {
+							if (validationExpMed(this.state)) {
+								this.handleSubmit(event);
+								alert("Registro exitoso");
+							}
+						}}
 					>
 						Guardar{" "}
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>

@@ -1,0 +1,25 @@
+.containerUserRG {
+    display: grid;
+    width: 42vw;
+    height: 40vh;
+}
+
+.block1RG {
+    grid-column: 1;
+}
+
+.block2RG {
+    grid-column: 2;
+}
+
+.fotoUsuarioModal {
+    width: 40vh;
+    border-radius: 2rem;
+    height:40vh;
+    margin-left: 3%;
+    cursor: pointer;
+}
+
+.descriptionRG {
+    margin-left: 5%;
+}

@@ -1,4 +1,4 @@
-import { formatDate } from "../../SharedFunctions/PDFfunctions";
+import { formatDate, validInfo } from "../../SharedFunctions/PDFfunctions";
 import { Casa } from "./Images/Casa";
 import { LaikaLogo } from "./Images/LaikaLogo";
 import { IconoDefault } from "./Images/IconoDefault";
@@ -26,9 +26,9 @@ export function HogarTemporalPDF(doc, data) {
 	doc.text("Datos HT", 27, 40);
 	doc.setFontSize(14);
 	doc.setFont("Raleway-Regular", "normal");	
-	doc.text("Tipo de HT: " + data.hogarTemporal.tipoHT, 15, 53);
-	doc.text("Nombre: " + data.hogarTemporal.nombreHT, 15, 63);
-	doc.text("Teléfono: " + data.hogarTemporal.telefonoHT, 15, 73);
+	doc.text("Tipo de HT: " + validInfo(data.hogarTemporal.tipoHT), 15, 53);
+	doc.text("Nombre: " + validInfo(data.hogarTemporal.nombreHT), 15, 63);
+	doc.text("Teléfono: " + validInfo(data.hogarTemporal.telefonoHT), 15, 73);
 	doc.text(
 		"Fecha inicio: " + formatDate(data.hogarTemporal.fechaInicioHT),
 		115,
@@ -47,10 +47,10 @@ export function HogarTemporalPDF(doc, data) {
 	doc.text("Dirección HT", 27, 105);
 	doc.setFontSize(14);
 	doc.setFont("Raleway-Regular", "normal");	
-	doc.text("Calle: " + data.hogarTemporal.calle, 15, 118);
-	doc.text("Número: " + data.hogarTemporal.numero, 115, 118);
-	doc.text("Colonia: " + data.hogarTemporal.colonia, 15, 128);
-	doc.text("Municipio: " + data.hogarTemporal.municipio, 115, 128);
+	doc.text("Calle: " + validInfo(data.hogarTemporal.calle), 15, 118);
+	doc.text("Número: " + validInfo(data.hogarTemporal.numero), 115, 118);
+	doc.text("Colonia: " + validInfo(data.hogarTemporal.colonia), 15, 128);
+	doc.text("Municipio: " + validInfo(data.hogarTemporal.municipio), 115, 128);
 
 	doc.setFontSize(19);
 	doc.setFont("Raleway-Bold", "bold");	
@@ -72,7 +72,7 @@ export function HogarTemporalPDF(doc, data) {
 		doc.addImage(IconoDefault, "JPEG", 69, 173, 80, 84, "", "FAST");
 	}
 
-	data.hogarTemporal.comentarios.map((row) => {
+	data.hogarTemporal.comentarios.forEach((row) => {
 		row.fecha = formatDate(row.fecha);
 	});
 

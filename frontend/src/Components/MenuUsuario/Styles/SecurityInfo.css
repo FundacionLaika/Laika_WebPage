@@ -17,14 +17,15 @@
 
 .secTitle1 {
 	grid-column: 1;
-    text-align: right;
-    padding-right: 5%;
+	align-self: center;
+	justify-self: right;
+	margin-right: 5%;
 }
 
 .secTitle2 {
 	grid-column: 2;
     text-align: left;
-    padding-right: 5%;
+    margin-right: 5%;
 }
 
 .securityPWD {
@@ -46,8 +47,10 @@
 }
 
 .btnSecurityBlock {
-    margin-top:16.5vh;
-    grid-row: 4;
+	position: absolute;
+    width: 65vw;
+    left: 33vw;
+    top: 82vh;
 }
 
 .btnSecurity {

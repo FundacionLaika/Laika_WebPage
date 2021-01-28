@@ -7,9 +7,18 @@ import { DatePickerInput2 } from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 export default class RowMed extends React.Component {
+	validateRow = () => {
+		return (
+			this.props.fechaInicio &&
+			this.props.fechaFinal &&
+			this.props.comentarios.trim() &&
+			this.props.accion.trim()
+		);
+	};
+
 	render() {
 		return (
-			<div className="rowDG">
+			<div className={"rowDG " + (this.validateRow() ? "" : "rowDGInvalid")}>
 				<div className="dg-col1 fechaDG">
 					<DatePicker
 						useWeekdaysShort
@@ -91,7 +100,9 @@ export default class RowMed extends React.Component {
 						id={this.props.id}
 						type="text"
 						name="comentarios"
-						value={this.props.comentarios ? this.props.comentarios : ""}
+						value={
+							this.props.comentarios ? this.props.comentarios : ""
+						}
 						onChange={(event) => {
 							this.props.modifyRow(
 								this.props.id,

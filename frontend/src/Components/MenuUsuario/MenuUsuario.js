@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./Styles/MenuUsuario.css";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import UserInfo from "./Subcomponents/UserInfo";
 import SecurityInfo from "./Subcomponents/SecurityInfo";
 import AdminInfo from "./Subcomponents/AdminInfo";
 
-function MenuUsuario() {
+function MenuUsuario(props) {
 	const [borderState, setBorderState] = useState({
 		btnGeneral: "3px solid blue",
 		btnSeguridad: "",
@@ -60,7 +60,7 @@ function MenuUsuario() {
 					<div className="sideBarIcon">
 						<i
 							style={{ color: foregroundState.btnSeguridad }}
-							class="fa fa-lock fa-2x iconUsuario"
+							className="fa fa-lock fa-2x iconUsuario"
 						></i>
 					</div>
 					<div className="sideBarBtn">
@@ -85,7 +85,7 @@ function MenuUsuario() {
 					<div className="sideBarIcon">
 						<i
 							style={{ color: foregroundState.btnAdmin }}
-							class="fa fa-address-book fa-2x iconUsuario"
+							className="fa fa-address-book fa-2x iconUsuario"
 						></i>
 					</div>
 					<div className="sideBarBtn">
@@ -101,22 +101,25 @@ function MenuUsuario() {
 					</div>
 				</div>
 
-				<div className="sideBarBlock btnLogout">
-					<div className="sideBarIcon">
-						<i
-							style={{ color: "red" }}
-							class="fa fa-sign-out fa-2x iconUsuario"
-						></i>
+				<Link to="/">
+					<div className="sideBarBlock btnLogout">
+						<div className="sideBarIcon">
+							<i
+								style={{ color: "red" }}
+								className="fa fa-sign-out fa-2x iconUsuario"
+							></i>
+						</div>
+						<div className="sideBarBtn">
+							<input
+								style={{ color: "red" }}
+								type="button"
+								className="btnMenuUsuario"
+								value="Log out"
+								onClick={()=> {}}
+							/>
+						</div>
 					</div>
-					<div className="sideBarBtn">
-						<input
-							style={{ color: "red" }}
-							type="button"
-							className="btnMenuUsuario"
-							value="Log out"
-						/>
-					</div>
-				</div>
+				</Link>
 			</div>
 			<div className="dataUsuario">
 				{foregroundState.btnGeneral && <UserInfo />}

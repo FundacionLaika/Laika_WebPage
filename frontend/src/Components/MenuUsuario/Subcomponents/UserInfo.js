@@ -19,7 +19,6 @@ function UserInfo() {
 	}
 
 	function imageHandler(event) {
-		console.log("hola");
 		try {
 			const reader = new FileReader();
 			const foto = event.target.id;
@@ -31,7 +30,7 @@ function UserInfo() {
 			};
 			reader.readAsDataURL(event.target.files[0]);
 		} catch (error) {}
-	};
+	}
 
 	return (
 		<div className="datosGeneralesUsuario">
