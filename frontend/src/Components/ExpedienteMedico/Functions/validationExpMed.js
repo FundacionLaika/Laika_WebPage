@@ -1,6 +1,6 @@
 export function validationExpMed(state) {
     var msg = "Faltan por llenar los siguientes campos\n";
-    if (state.otro && !state.otroEspecificar) msg += "- Otro/Especificar\n"; 
+    if (state.otro && !state.otroEspecificar.trim()) msg += "- Otro/Especificar\n"; 
     if (state.citaEsterilizacion && !state.fechaEsterilizacion) msg += "- Fecha de esterilización\n"; 
 
     if (state.puppy && !state.fechaPuppy) msg += "- Fecha puppy\n"; 
@@ -10,7 +10,7 @@ export function validationExpMed(state) {
     if (state.rabia && !state.fechaRabia) msg += "- Fecha rabia\n"; 
 
     state.tratamiento.forEach((row) => {
-        if (!(row.fechaInicio && row.fechaFinal && row.comentarios && row.accion)) {
+        if (!(row.fechaInicio && row.fechaFinal && row.comentarios.trim() && row.accion.trim())) {
             msg += "- Completar campos en tratamiento";
             return;
         }

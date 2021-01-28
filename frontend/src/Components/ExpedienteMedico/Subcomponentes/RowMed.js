@@ -11,8 +11,8 @@ export default class RowMed extends React.Component {
 		return (
 			this.props.fechaInicio &&
 			this.props.fechaFinal &&
-			this.props.comentarios &&
-			this.props.accion
+			this.props.comentarios.trim() &&
+			this.props.accion.trim()
 		);
 	};
 

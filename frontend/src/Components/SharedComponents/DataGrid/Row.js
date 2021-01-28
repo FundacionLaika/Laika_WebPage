@@ -9,8 +9,8 @@ registerLocale("es", es);
 export default class Row extends React.Component {
 	validateRow = () => {
 		return (
-			this.props.observaciones &&
-			this.props.accion &&
+			this.props.observaciones.trim() &&
+			this.props.accion.trim() &&
 			this.props.fecha 
 		);
 	};
