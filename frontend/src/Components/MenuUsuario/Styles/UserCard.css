@@ -1,0 +1,90 @@
+.user-card {
+	background: #fff;
+	height: 45vh;
+	border-radius: .9em;
+	box-shadow: 0px 4px 7px 0px #ebebeb;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 1.2em 1.5em;
+	padding-bottom: 0px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.user-card:hover {
+    box-shadow: 0px 3px 14px 7px #ebebeb;
+}
+
+.user-card  i {
+	align-self: flex-end;
+	cursor: pointer;
+    margin-bottom: auto;
+    font-size: 1.5em;
+}
+
+.user-card i:hover {
+	font-size: 1.75em;
+}
+
+.user-card .image-wrapper {
+	border-radius: 50%;
+	height: 100px;
+	width: 100px;
+	margin-bottom: auto;
+}
+.user-card .image-wrapper img {
+	border-radius: 50%;
+	height: 100%;
+	width: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+.user-card .user-name {
+	color: #131340;
+	font-size: 1.4em;
+	font-weight: 600;
+	margin-bottom: auto;
+}
+.user-card .user-mail {
+	color: #9391ad;
+	font-size: 1em;
+}
+
+.user-cards .user-card .user-role {
+	background: #6161fc;
+	border-top: 1px solid #ecedf6;
+	color: #ffffff;
+	align-self: stretch;
+	margin: 0px -20px;
+	text-align: center;
+	margin-top: auto;
+    padding: 10px 0px;
+    border-radius: 0 0 0.9em 0.9em;
+}
+
+.userInfo {
+    display: grid;
+    width: 100%;
+}
+
+.rowUser {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding-top: 3vh;
+}
+
+.rowUser > i {
+    grid-column: 1;
+    float: left;
+    font-size: 1.5em;
+}
+
+.rowUser > i:hover {
+    font-size: 1.5em;
+}
+
+.rowUser > p {
+    grid-column: 2;
+}

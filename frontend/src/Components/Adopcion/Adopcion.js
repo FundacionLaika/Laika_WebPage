@@ -240,7 +240,7 @@ class Adopcion extends React.Component {
 						className="BotonAdopcionGuardar BotonCentralAdopcion"
 						onClick={this.handleSubmit}
 					>
-						Registrar
+						Guardar
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
 

@@ -144,7 +144,7 @@ class ExpedienteMedico extends Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
+				console.log("otro",response.otro);
 				for (const element in response) {
 					if (element.includes("fecha")) {
 						const date = response[element];
