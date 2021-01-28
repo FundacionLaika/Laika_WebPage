@@ -9,7 +9,8 @@ import shortid from "shortid";
 import "../SharedComponents/Styles/InputText.css";
 import "./Styles/HogarTemporal.css";
 import "../SharedComponents/Styles/SelectBox.css";
-import queryString from 'query-string';
+import queryString from "query-string";
+import { validationHT } from "./Functions/validationHT";
 
 class HogarTemporal extends Component {
 	state = {
@@ -71,15 +72,14 @@ class HogarTemporal extends Component {
 		fetch("http://localhost:3001/hogarTemporal", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(this.state)
+			body: JSON.stringify(this.state),
 		})
 			.then((response) => response.json())
 			.then((response) => {
 				console.log(response);
-				
 			})
 			.catch((err) => console.log(err));
-	}
+	};
 
 	/*Manejador de Restablecer*/
 	handleRestablecer = () => {
@@ -98,40 +98,35 @@ class HogarTemporal extends Component {
 			.then((response) => {
 				console.log(response);
 				for (const element in response) {
-
 					if (element.includes("fecha")) {
 						const date = response[element];
-						if (!date || date === "" || date === "0000-00-00") continue;
+						if (!date || date === "" || date === "0000-00-00")
+							continue;
 						this.setState({
 							[element]: new Date(date),
 						});
-					}
-					else if (element.includes("foto")) {
-
+					} else if (element.includes("foto")) {
 						if (response[element]) {
 							console.log(response[element]);
 
 							var buffer = Buffer.from(response[element].data);
 
 							this.setState({
-								[element]: buffer.toString('utf8'),
+								[element]: buffer.toString("utf8"),
 							});
 						}
-					}
-					else {
+					} else {
 						this.setState({
-							[element]: response[element]
+							[element]: response[element],
 						});
 					}
-					
 				}
 			})
 			.catch((err) => console.log(err));
-	}
+	};
 
 	componentDidMount() {
 		this.fetchData();
-		
 	}
 
 	addRow = (event) => {
@@ -153,8 +148,6 @@ class HogarTemporal extends Component {
 		}));
 	};
 
-
-
 	modifyRow = (id, name, value) => {
 		let dataTemp = this.state.comentarios;
 		if (!dataTemp) return;
@@ -170,7 +163,6 @@ class HogarTemporal extends Component {
 			comentarios: dataTemp,
 		});
 	};
-
 
 	/*Manejador de dates*/
 	handleDate = (fecha, name) => {
@@ -188,7 +180,6 @@ class HogarTemporal extends Component {
 						tabIndicatorPosition={"50%"}
 						activePosition={"HogarTemporal"}
 						id={this.state.id}
-
 					/>
 				</div>
 				<div
@@ -233,7 +224,12 @@ class HogarTemporal extends Component {
 				</div>
 
 				<div className="BotonesRegistroHT">
-					<Link to={"/Laika/ExpedienteMedico"+this.props.location.search}>
+					<Link
+						to={
+							"/Laika/ExpedienteMedico" +
+							this.props.location.search
+						}
+					>
 						<button className="BotonHTTransicion BotonAnteriorHT">
 							<i
 								aria-hidden="true"
@@ -254,12 +250,17 @@ class HogarTemporal extends Component {
 					</button>
 					<button
 						className="BotonHTGuardar BotonCentralHT"
-						onClick={this.handleSubmit}
+						onClick={(event) => {
+							if (validationHT(this.state)) {
+								this.handleSubmit(event);
+								alert("Registro exitoso");
+							}
+						}}
 					>
 						Guardar
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
 					</button>
-					<Link to={"/Laika/Adopcion"+this.props.location.search}>
+					<Link to={"/Laika/Adopcion" + this.props.location.search}>
 						<button className="BotonHTTransicion BotonSiguienteHT">
 							Adopción
 							<i

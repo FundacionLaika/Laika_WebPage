@@ -41,6 +41,10 @@
 	grid-auto-columns: minmax(2%, 2%);
 }
 
+.rowGAInvalid {
+	background-color: red;
+}
+
 .observacionesGA {
 	grid-row: 1;
 	grid-column: 1/17;

@@ -7,6 +7,7 @@ import NavBarRegistros from "../SharedComponents/NavBarRegistros";
 import { Link, withRouter } from "react-router-dom";
 import "./Styles/RegistroGeneral.css";
 import queryString from "query-string";
+import { validationRG } from "./Functions/ValidationRG";
 
 class RegistroGeneral extends React.Component {
 	state = {
@@ -124,8 +125,7 @@ class RegistroGeneral extends React.Component {
 				rescatistas: [],
 			});
 		}
-
-	}
+	};
 
 	fetchData = () => {
 		let url = this.props.location.search;
@@ -140,7 +140,8 @@ class RegistroGeneral extends React.Component {
 				for (const element in response) {
 					if (element.includes("fecha")) {
 						const date = response[element];
-						if (!date || date === "" || date === "0000-00-00") continue;
+						if (!date || date === "" || date === "0000-00-00")
+							continue;
 						this.setState({
 							[element]: new Date(date),
 						});
@@ -280,7 +281,12 @@ class RegistroGeneral extends React.Component {
 					</button>
 					<button
 						className="BotonGeneralGuardar BotonCentralGeneral"
-						onClick={this.handleSubmit}
+						onClick={(event) => {
+							if (validationRG(this.state)) {
+								this.handleSubmit(event);
+								alert("Registro exitoso");
+							} 
+						}}
 					>
 						{this.estaRegistrado ? "Guardar" : "Registrar"}
 						<i aria-hidden="true" className="fa fa-save fa-fw"></i>
@@ -316,4 +322,3 @@ class RegistroGeneral extends React.Component {
 	}
 }
 export default withRouter(RegistroGeneral);
-

@@ -3,21 +3,31 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
-import {DatePickerInput2} from "../../SharedComponents/DatePickerInput.js";
+import { DatePickerInput2 } from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 export default class Row extends React.Component {
-
+	validateRow = () => {
+		return (
+			this.props.observaciones &&
+			this.props.accion &&
+			this.props.fecha 
+		);
+	};
 
 	render() {
 		return (
-			<div className="rowGA">
+			<div className={"rowGA " + (this.validateRow() ? "" : "rowGAInvalid")}>
 				<div className="observacionesGA">
 					<textarea
 						id={this.props.id}
 						type="text"
 						name="observaciones"
-						value={this.props.observaciones ? this.props.observaciones: ""}
+						value={
+							this.props.observaciones
+								? this.props.observaciones
+								: ""
+						}
 						onChange={(event) => {
 							this.props.modifyRow(
 								this.props.id,
@@ -41,7 +51,6 @@ export default class Row extends React.Component {
 								event.target.value
 							);
 						}}
-						
 						rows="3"
 					/>
 				</div>
@@ -51,25 +60,25 @@ export default class Row extends React.Component {
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
-						customInput={<DatePickerInput2 className="fechaPicker"/>}
+						customInput={
+							<DatePickerInput2 className="fechaPicker" />
+						}
 						title="Fecha"
 						id={this.props.id}
 						name="fecha"
 						locale="es"
-						selected={this.props.fecha ? new Date(this.props.fecha)  : null}
+						selected={
+							this.props.fecha ? new Date(this.props.fecha) : null
+						}
 						dateFormat="dd/MM/yyyy"
 						onChange={(date) => {
-							this.props.modifyRow(
-								this.props.id,
-								"fecha",
-								date
-							);
+							this.props.modifyRow(this.props.id, "fecha", date);
 						}}
 					/>
 				</div>
 
 				<div className="botonBorrar">
-                    <button onClick={this.props.deleteRow}>
+					<button onClick={this.props.deleteRow}>
 						<i
 							className="fa fa-times-circle"
 							aria-hidden="true"
