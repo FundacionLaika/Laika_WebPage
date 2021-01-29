@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const cors = require("cors");
 const knex = require("knex");
 const fileUpload = require('express-fileupload');
@@ -12,15 +12,10 @@ const hogarTemporal = require("./controllers/hogarTemporal");
 const adopcion = require("./controllers/adopcion");
 
 const login = require("./controllers/login");
-const registro = require("./controllers/registro");
+const signup = require("./controllers/signup");
+const changePassword = require("./controllers/changePassword");
 const usuarios = require("./controllers/usuarios");
-const cambiarCorreo = require("./controllers/cambiarCorreo");
-const cambiarContrasena = require("./controllers/cambiarContrasena");
 const eliminarUsuario = require("./controllers/eliminarUsuario");
-
-const subirImagen = require("./controllers/subirImagen");
-
-
 
 const app = express();
 
@@ -82,19 +77,19 @@ app.put("/adopcion", (req, res) => {
     adopcion.handleUpdateA(req, res, db);
 });
 
+app.get("/usuarios", usuarios.handleGetUsuarios(db));
 
+app.get("/usuario", usuarios.handleGetUsuario(db));
 
+app.post("/updateUsuario", usuarios.handleUpdateUsuario(db, bcrypt));
 
 
 app.post("/login", login.handleLogin(db, bcrypt));
-app.post("/registro", registro.handleRegistro(db, bcrypt));
-app.get("/usuarios", usuarios.handleUsuariosGet(db));
-app.put("/cambiarCorreo", cambiarCorreo.handleCorreo(db));
-app.put("/cambiarContrasena", cambiarContrasena.handleContrasena(db));
-app.put("/subirImagenRegistro", subirImagen.handleImagenRegistro(db));
-app.put("/subirImagenMedico", subirImagen.handleImagenMedico(db));
-app.put("/subirImagenHogar", subirImagen.handleImagenHogar(db));
-app.put("/subirImagenAdopcion", subirImagen.handleImagenAdopcion(db));
+
+app.post("/signup", signup.handleSignUp(db, bcrypt));
+
+app.post("/changePassword", changePassword.handleChangePassword(db, bcrypt));
+
 app.post("/eliminarUsuario", eliminarUsuario.handleEliminarUsuario(db));
 
 app.listen(3001, () => {
