@@ -1,11 +1,11 @@
 export function validationAdop(state) {
-    var msg = "Faltan por llenar los siguientes campos\n";
-    if (!state.adoptante.trim()) msg += "- Nombre adoptante\n"; 
-    if (!state.telefono.trim()) msg += "- Teléfono\n"; 
-    if (!state.medioAdopcion) msg += "- Medio de adopción\n"; 
-    if (!state.visitaAdopcion) msg += "- Visita de adopción\n"; 
-    if (!state.municipio.trim()) msg += "- Municipio\n";
-    if (!state.foto) msg += "- Foto\n"; 
+    var msg = "";
+    if (!state.adoptante.trim()) msg += "- Nombre adoptante"; 
+    if (!state.telefono.trim()) msg += "- Teléfono"; 
+    if (!state.medioAdopcion) msg += "- Medio de adopción"; 
+    if (!state.visitaDeAdopcion) msg += "- Visita de adopción"; 
+    if (!state.municipio.trim()) msg += "- Municipio";
+    if (!state.foto) msg += "- Foto"; 
 
     state.comentarios.forEach((row) => {
         if (!(row.observaciones.trim() && row.accion.trim() && row.fecha)) {
@@ -14,10 +14,9 @@ export function validationAdop(state) {
         }
     });
 
-    if (msg === "Faltan por llenar los siguientes campos\n") {
-        return true;
+    if (msg) {
+        return {isValid: false, msg: msg};
     } else {
-        alert(msg);
-        return false;
+        return {isValid: true};
     }
 }

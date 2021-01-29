@@ -21,14 +21,19 @@
 	background-color: #f9ecec;
 }
 
+.alertHT {
+	grid-row: 1;
+	grid-column: 1 / 3;
+}
+
 .contactoHT {
 	grid-column: 1;
-	grid-row: 1;
+	grid-row: 2;
 }
 
 .direccionHT {
 	grid-column: 2;
-	grid-row: 1;
+	grid-row: 2;
 }
 
 .headerDataGridHT {
@@ -44,7 +49,7 @@
 
 .dataGridHT {
 	grid-column: 1 / 3;
-	grid-row: 2;
+	grid-row: 3;
 }
 
 .BotonesRegistroHT {

@@ -11,6 +11,9 @@ import "./Styles/HogarTemporal.css";
 import "../SharedComponents/Styles/SelectBox.css";
 import queryString from "query-string";
 import { validationHT } from "./Functions/validationHT";
+import AlertTitle from "@material-ui/lab/AlertTitle";
+import Collapse from "@material-ui/core/Collapse";
+import Alert from "@material-ui/lab/Alert";
 
 class HogarTemporal extends Component {
 	state = {
@@ -35,6 +38,10 @@ class HogarTemporal extends Component {
 
 		/*Comentarios*/
 		comentarios: [],
+
+		openError: false,
+		openSuccess: false,
+		msg: "",
 	};
 
 	/*Manejador de fotos*/
@@ -171,6 +178,23 @@ class HogarTemporal extends Component {
 		});
 	};
 
+	handleAlert(e, msg) {
+		if (e === "openSuccess") {
+			this.setState({
+				...this.state,
+				openError: false,
+				openSuccess: true,
+			});
+		} else if (e === "openError") {
+			this.setState({
+				...this.state,
+				openError: true,
+				openSuccess: false,
+				msg: msg,
+			});
+		}
+	}
+
 	/*Expediente Hogar Temporal*/
 	render() {
 		return (
@@ -186,6 +210,40 @@ class HogarTemporal extends Component {
 					className="FormularioHT"
 					style={{ overflowY: "scroll", height: "80vh" }}
 				>
+					<div className="alertHT">
+						<Collapse in={this.state.openError}>
+							<Alert
+								onClose={() => {
+									this.setState({
+										...this.state,
+										openError: false,
+									});
+								}}
+								variant="outlined"
+								severity="error"
+							>
+								<AlertTitle>
+									Error - Faltan llenar los siguientes campos
+								</AlertTitle>
+								{this.state.msg}
+							</Alert>
+						</Collapse>
+
+						<Collapse in={this.state.openSuccess}>
+							<Alert
+								onClose={() => {
+									this.setState({
+										...this.state,
+										openSuccess: false,
+									});
+								}}
+								variant="outlined"
+								severity="success"
+							>
+								<AlertTitle>Datos guardados</AlertTitle>
+							</Alert>
+						</Collapse>
+					</div>
 					<div className="contactoHT">
 						<ContactoHT
 							tipoHT={this.state.tipoHT}
@@ -251,9 +309,12 @@ class HogarTemporal extends Component {
 					<button
 						className="BotonHTGuardar BotonCentralHT"
 						onClick={(event) => {
-							if (validationHT(this.state)) {
-								this.handleSubmit(event);
-								alert("Registro exitoso");
+							const alert = validationHT(this.state);
+							if (alert.isValid) {
+								// this.handleSubmit(event);
+								this.handleAlert("openSuccess");
+							} else {
+								this.handleAlert("openError", alert.msg);
 							}
 						}}
 					>
