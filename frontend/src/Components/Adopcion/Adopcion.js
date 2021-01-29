@@ -9,6 +9,10 @@ import shortid from "shortid";
 import "./Styles/Adopcion.css";
 import queryString from "query-string";
 import { validationAdop } from "./Functions/validationAdop";
+import AlertTitle from "@material-ui/lab/AlertTitle";
+import Collapse from "@material-ui/core/Collapse";
+import Alert from "@material-ui/lab/Alert";
+
 
 class Adopcion extends React.Component {
 	state = {
@@ -25,6 +29,10 @@ class Adopcion extends React.Component {
 		medioAdopcion: "",
 		comentarios: [],
 		foto: null,
+
+		openError: false,
+		openSuccess: false,
+		msg: "",
 	};
 
 	handleChange = (event) => {
@@ -160,6 +168,23 @@ class Adopcion extends React.Component {
 		reader.readAsDataURL(event.target.files[0]);
 	};
 
+	handleAlert(e, msg) {
+		if (e === "openSuccess") {
+			this.setState({
+				...this.state,
+				openError: false,
+				openSuccess: true,
+			});
+		} else if (e === "openError") {
+			this.setState({
+				...this.state,
+				openError: true,
+				openSuccess: false,
+				msg: msg,
+			});
+		}
+	}
+
 	render() {
 		return (
 			<div className="RegistroAdopcion">
@@ -174,6 +199,40 @@ class Adopcion extends React.Component {
 					className="FormularioAdopcion"
 					style={{ overflowY: "scroll", height: "80vh" }}
 				>
+					<div className="alertAdop">
+						<Collapse in={this.state.openError}>
+							<Alert
+								onClose={() => {
+									this.setState({
+										...this.state,
+										openError: false,
+									});
+								}}
+								variant="outlined"
+								severity="error"
+							>
+								<AlertTitle>
+									Error - Faltan llenar los siguientes campos
+								</AlertTitle>
+								{this.state.msg}
+							</Alert>
+						</Collapse>
+
+						<Collapse in={this.state.openSuccess}>
+							<Alert
+								onClose={() => {
+									this.setState({
+										...this.state,
+										openSuccess: false,
+									});
+								}}
+								variant="outlined"
+								severity="success"
+							>
+								<AlertTitle>Datos guardados</AlertTitle>
+							</Alert>
+						</Collapse>
+					</div>
 					<div className="DatosGeneralesAdopcion">
 						<DatosGenerales
 							handleChange={this.handleChange}
@@ -238,9 +297,12 @@ class Adopcion extends React.Component {
 					<button
 						className="BotonAdopcionGuardar BotonCentralAdopcion"
 						onClick={(event) => {
-							if (validationAdop(this.state)) {
-								this.handleSubmit(event);
-								alert("Registro exitoso");
+							const alert = validationAdop(this.state);
+							if (alert.isValid) {
+								// this.handleSubmit(event);
+								this.handleAlert("openSuccess");
+							} else {
+								this.handleAlert("openError", alert.msg);
 							}
 						}}
 					>

@@ -1,5 +1,5 @@
 export function validationRG(state) {
-    var msg = "";
+    var msg = "Faltan por llenar los siguientes campos\n";
     if (!state.nombre.trim()) msg += "- Nombre\n"; 
     if (!state.edad.trim()) msg += "- Edad\n"; 
     if (!state.genero) msg += "- Género\n"; 
@@ -14,9 +14,10 @@ export function validationRG(state) {
     if (!state.rescatistas.length) msg += "- Rescatistas\n"; 
     if (!state.foto) msg += "- Foto\n"; 
 
-    if (msg) {
-        return {isValid: false, msg: msg};
+    if (msg === "Faltan por llenar los siguientes campos\n") {
+        return true;
     } else {
-        return {isValid: true};
+        alert(msg);
+        return false;
     }
 }

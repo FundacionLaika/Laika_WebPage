@@ -19,27 +19,31 @@
 	background-color: #dbedf8;
 }
 
+.alertRG {
+	grid-row: 1;
+	grid-column: 1 / 3;
+}
+
 .DatosGenerales {
 	grid-column:1;
-	grid-row:1;
+	grid-row:2;
 }
 
 .Rescatistas {
 	grid-column: 2;
-	grid-row:2;
+	grid-row:3;
 	display: grid;
 	grid-auto-columns: minmax(100%,100%);
 }
 
 .DireccionGeneral {
 	grid-column: 2;
-	grid-row:1;
-	
+	grid-row:2;
 }
 
 .SenasParticulares {
 	grid-column: 1;
-	grid-row: 2;
+	grid-row: 3;
 	padding: 5%;
 }
 
