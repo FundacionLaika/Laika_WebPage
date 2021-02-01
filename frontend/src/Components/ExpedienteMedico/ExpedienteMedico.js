@@ -11,6 +11,9 @@ import Foto from "../SharedComponents/Foto";
 import "./Styles/ExpedienteMedico.css";
 import queryString from "query-string";
 import { validationExpMed } from "./Functions/validationExpMed";
+import AlertTitle from "@material-ui/lab/AlertTitle";
+import Collapse from "@material-ui/core/Collapse";
+import Alert from "@material-ui/lab/Alert";
 
 class ExpedienteMedico extends Component {
 	state = {
@@ -52,6 +55,10 @@ class ExpedienteMedico extends Component {
 
 		/*Tratamiento*/
 		tratamiento: [],
+
+		openError: false,
+		openSuccess: false,
+		msg: "",
 	};
 
 	/*Manejador de imágenes*/
@@ -144,7 +151,7 @@ class ExpedienteMedico extends Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log("otro",response.otro);
+				console.log("otro", response.otro);
 				for (const element in response) {
 					if (element.includes("fecha")) {
 						const date = response[element];
@@ -217,6 +224,23 @@ class ExpedienteMedico extends Component {
 		});
 	};
 
+	handleAlert(e, msg) {
+		if (e === "openSuccess") {
+			this.setState({
+				...this.state,
+				openError: false,
+				openSuccess: true,
+			});
+		} else if (e === "openError") {
+			this.setState({
+				...this.state,
+				openError: true,
+				openSuccess: false,
+				msg: msg,
+			});
+		}
+	}
+
 	/*Expediente Médico*/
 	render() {
 		return (
@@ -229,10 +253,46 @@ class ExpedienteMedico extends Component {
 					/>
 				</div>
 
+				<div className="alertExp">
+						<Collapse in={this.state.openError}>
+							<Alert
+								onClose={() => {
+									this.setState({
+										...this.state,
+										openError: false,
+									});
+								}}
+								variant="outlined"
+								severity="error"
+							>
+								<AlertTitle>
+									Error - Faltan llenar los siguientes campos
+								</AlertTitle>
+								{this.state.msg}
+							</Alert>
+						</Collapse>
+
+						<Collapse in={this.state.openSuccess}>
+							<Alert
+								onClose={() => {
+									this.setState({
+										...this.state,
+										openSuccess: false,
+									});
+								}}
+								variant="outlined"
+								severity="success"
+							>
+								<AlertTitle>Datos guardados</AlertTitle>
+							</Alert>
+						</Collapse>
+					</div>
+
 				<div
 					className="FormularioMedico"
 					style={{ overflowY: "scroll", height: "85vh" }}
 				>
+					
 					<div className="diagnostico">
 						<Diagnostico
 							atropellamiento={this.state.atropellamiento}
@@ -354,9 +414,12 @@ class ExpedienteMedico extends Component {
 					<button
 						className="BotonMedicoGuardar BotonCentralMedico"
 						onClick={(event) => {
-							if (validationExpMed(this.state)) {
-								this.handleSubmit(event);
-								alert("Registro exitoso");
+							const alert = validationExpMed(this.state);
+							if (alert.isValid) {
+								// this.handleSubmit(event);
+								this.handleAlert("openSuccess");
+							} else {
+								this.handleAlert("openError", alert.msg);
 							}
 						}}
 					>

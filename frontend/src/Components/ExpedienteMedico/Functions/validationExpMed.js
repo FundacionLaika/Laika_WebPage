@@ -1,5 +1,5 @@
 export function validationExpMed(state) {
-    var msg = "Faltan por llenar los siguientes campos\n";
+    var msg = "";
     if (state.otro && !state.otroEspecificar.trim()) msg += "- Otro/Especificar\n"; 
     if (state.citaEsterilizacion && !state.fechaEsterilizacion) msg += "- Fecha de esterilización\n"; 
 
@@ -16,10 +16,9 @@ export function validationExpMed(state) {
         }
     });
 
-    if (msg === "Faltan por llenar los siguientes campos\n") {
-        return true;
+    if (msg) {
+        return { isValid: false, msg: msg};
     } else {
-        alert(msg);
-        return false;
+        return { isValid: true };
     }
 }
