@@ -108,75 +108,84 @@ function ModalAdmin(props) {
 						foto={stateUser.foto}
 					/>
 					<Modal.Description className="descriptionRG">
-						<Header>Datos de usuario</Header>
+						<Header style={{ marginLeft: "10.5%" }}>
+							Datos de usuario
+						</Header>
 						<div className="containerUserRG">
-							<div className="block1RG">
-								<Input
-									size="large"
-									icon="address card"
-									iconPosition="left"
-									placeholder="Nombre"
-									name="nombre"
-									onChange={handleChange}
-								/>
+							<div className="blockModal">
+								<div className="block1RG">
+									<Input
+										size="large"
+										icon="address card"
+										iconPosition="left"
+										placeholder="Nombre"
+										name="nombre"
+										onChange={handleChange}
+									/>
+								</div>
+								<div className="block2RG">
+									<Input
+										size="large"
+										icon="address book"
+										iconPosition="left"
+										placeholder="Apellidos"
+										name="apellidos"
+										onChange={handleChange}
+									/>
+								</div>
 							</div>
-							<div className="block2RG">
-								<Input
-									size="large"
-									icon="address book"
-									iconPosition="left"
-									placeholder="Apellidos"
-									name="apellidos"
-									onChange={handleChange}
-								/>
+
+							<div className="blockModal">
+								<div className="block1RG">
+									<Input
+										size="large"
+										icon="envelope"
+										iconPosition="left"
+										placeholder="Correo"
+										name="correo"
+										onChange={handleChange}
+									/>
+								</div>
+								<div className="block2RG">
+									<Input
+										size="large"
+										icon="call"
+										iconPosition="left"
+										placeholder="Teléfono"
+										name="telefono"
+										onChange={handleChange}
+									/>
+								</div>
 							</div>
-							<div className="block1RG">
-								<Input
-									size="large"
-									icon="envelope"
-									iconPosition="left"
-									placeholder="Correo"
-									name="correo"
-									onChange={handleChange}
-								/>
-							</div>
-							<div className="block2RG">
-								<Input
-									size="large"
-									icon="call"
-									iconPosition="left"
-									placeholder="Teléfono"
-									name="telefono"
-									onChange={handleChange}
-								/>
-							</div>
-							<div className="block1RG">
-								<Dropdown
-									style={{
-										width: "17vw",
-										height: "6.8vh",
-										fontSize: "1em",
-									}}
-									button
-									name="rol"
-									selection
-									className="icon selectRol"
-									labeled
-									icon="group"
-									options={countryOptions}
-									placeholder="Rol"
-									onChange={handleSelect}
-								/>
-							</div>
-							<div className="block2RG">
-								<Input
-									size="large"
-									icon="key"
-									iconPosition="left"
-									placeholder="Contraseña"
-									name="contrasena"
-									onChange={handleChange}
-								/>
+
+							<div className="blockModal">
+								<div className="block1RG">
+									<Dropdown
+										style={{
+											width: "74.5%",
+											height: "105%",
+										}}
+										button
+										name="rol"
+										selection
+										className="icon selectRol"
+										labeled
+										icon="group"
+										options={countryOptions}
+										placeholder="Rol"
+										onChange={handleSelect}
+									/>
+								</div>
+								<div className="block2RG">
+									<Input
+										size="large"
+										icon="key"
+										iconPosition="left"
+										placeholder="Contraseña"
+										name="contrasena"
+										onChange={handleChange}
+									/>
+								</div>
 							</div>
 						</div>
 					</Modal.Description>
