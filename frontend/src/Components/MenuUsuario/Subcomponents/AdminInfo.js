@@ -19,32 +19,32 @@ async function fetchUsers() {
 			foto = buffer.toString("utf8");
 		}
 		user.Foto = foto;
-	})
-	
+	});
 
 	return users;
 }
 
 function AdminInfo(props) {
 	const [state, setState] = useState({
-		users: []
+		users: [],
 	});
+
+	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		async function fetchData() {
 			const usersData = await fetchUsers();
 
 			setState({
-				users: usersData
+				users: usersData,
 			});
 		}
 		fetchData();
 	}, [props]);
-  
-  function close() {
+
+	function close() {
 		setState(false);
 	}
-
 
 	return (
 		<div className="adminContainer">
@@ -56,11 +56,9 @@ function AdminInfo(props) {
 			</div>
 
 			<div className="user-cards">
-			{state.users.map((user) => (
-				<UserCard
-					user={user}
-				/>
-			))}
+				{state.users.map((user) => (
+					<UserCard user={user} />
+				))}
 			</div>
 
 			<div className="gridUsuarios">
@@ -68,7 +66,7 @@ function AdminInfo(props) {
 					className="generarPDFTarjeta"
 					title="Generar PDF"
 					onClick={() => {
-						setState(true);
+						setOpen(true);
 					}}
 				>
 					<i
@@ -76,7 +74,7 @@ function AdminInfo(props) {
 						className="fa fa-file-pdf-o fa-fw"
 					></i>
 				</button>
-				{state ? <ModalAdmin close={close}/> : null}
+				{open ? <ModalAdmin close={close} /> : null}
 			</div>
 			<div className="btnGuardarAdmin"></div>
 		</div>
