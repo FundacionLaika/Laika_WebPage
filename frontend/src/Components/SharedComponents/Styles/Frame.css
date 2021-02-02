@@ -1,0 +1,13 @@
+.frame {
+    width: 80%;
+    height: 50%;
+    border: 3px solid #ccc;
+    background: #eee;
+    margin: auto;
+    padding: 15px 10px;
+  }
+
+  .sizeFoto {
+      width: 41vh;
+      height: 38vh;
+  } 

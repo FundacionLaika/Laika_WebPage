@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/AdminInfo.css";
 import UserCard from "./UserCard.js";
 import ModalAdmin from "./ModalAdmin";
 
 function AdminInfo() {
+	const [state, setState] = useState(false);
+	
+	function close() {
+		setState(false);
+	}
+
 	return (
 		<div className="adminContainer">
 			<div className="adminTitle">
@@ -25,7 +31,19 @@ function AdminInfo() {
 			</div>
 
 			<div className="gridUsuarios">
-				<ModalAdmin/>	
+				<button
+					className="generarPDFTarjeta"
+					title="Generar PDF"
+					onClick={() => {
+						setState(true);
+					}}
+				>
+					<i
+						aria-hidden="true"
+						className="fa fa-file-pdf-o fa-fw"
+					></i>
+				</button>
+				{state ? <ModalAdmin close={close}/> : null}
 			</div>
 			<div className="btnGuardarAdmin"></div>
 		</div>
