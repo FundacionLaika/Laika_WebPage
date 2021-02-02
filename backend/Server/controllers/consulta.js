@@ -1,6 +1,7 @@
 const handleConsultaPost = (req, res, db) => {
 	const selectClause = {
 		General: `select    ar.ID_Animal,
+									ar.Foto,
                                     ar.Nombre,
                                     ar.Edad,
                                     ar.Genero,
@@ -15,6 +16,7 @@ const handleConsultaPost = (req, res, db) => {
                                     GROUP_CONCAT(rta.Nombre separator ', ') AS Rescatistas `,
 
 		ExpedienteMedico: `select   ar.ID_Animal,
+									em.Foto1 as Foto,
                                     diag.Atropellamiento,
                                     diag.TVT, 
                                     diag.Sarna_Piel,
@@ -33,6 +35,7 @@ const handleConsultaPost = (req, res, db) => {
                                     est.EstaEsterilizado `,
 
 		HogarTemporal: `select     ar.ID_Animal,
+									ht.Foto,
                                     ht.Tipo_HT,
                                     ht.Responsable AS ResponsableHT,
                                     ht.Telefono AS TelefonoHT,
@@ -44,6 +47,7 @@ const handleConsultaPost = (req, res, db) => {
                                     dirht.Municipio AS MunicipioHT `,
 
 		Adopcion: `select     ar.ID_Animal,
+									adop.Foto,
                                     adte.Nombre AS NombreAdte,
                                     adte.Telefono AS TelefonoAdte,
                                     adop.NombreAdoptado AS Adoptado,

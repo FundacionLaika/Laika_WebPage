@@ -40,6 +40,7 @@ export default class GridHogarTemporal extends React.Component {
 					<TarjetaHogarTemporal
 						key={tarjeta.ID_Animal}
 						id={tarjeta.ID_Animal}
+						foto={tarjeta.Foto}
 						tipoHT={tarjeta.Tipo_HT}
 						responsableHT={tarjeta.ResponsableHT}
 						telefonoHT={tarjeta.TelefonoHT}

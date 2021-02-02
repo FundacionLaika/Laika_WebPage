@@ -38,6 +38,7 @@ export default class GridGeneral extends React.Component {
 					<TarjetaGeneral
 						key={tarjeta.ID_Animal}
 						id={tarjeta.ID_Animal}
+						foto={tarjeta.Foto}
 						nombre={tarjeta.Nombre}
 						edad={tarjeta.Edad}
 						genero={tarjeta.Genero}

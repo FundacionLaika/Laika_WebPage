@@ -45,7 +45,7 @@ function UserInfo(props) {
 			const userData = await fetchUser(props.ID_Usuario);
 
 			var foto = null;
-			if (userData.Foto) {
+			if (userData && userData.Foto) {
 				var buffer = Buffer.from(userData.Foto.data);
 				foto = buffer.toString("utf8");
 			}

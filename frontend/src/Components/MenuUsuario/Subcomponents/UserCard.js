@@ -2,6 +2,10 @@ import React from "react";
 import "../Styles/UserCard.css";
 import ModalAdmin from "./ModalAdmin";
 
+function validateData(data) {
+	return data ? data : "No hay Información";
+}
+
 export default function UserCard(props) {
 	return (
 		<div className="user-card">
@@ -12,20 +16,20 @@ export default function UserCard(props) {
 			</div>
 
 			<div className="userInfo">
-				<p className="user-name"> {props.user.Nombre + " " + props.user.Apellidos} </p>
+				<p className="user-name"> {props.user.Nombre && props.user.Apellidos ? props.user.Nombre + " " + props.user.Apellidos :  "No hay Información"} </p>
 
 				<div className="rowUser">
 					<i aria-hidden="true" className="fa fa-envelope"></i>
-					<p> {props.user.Correo} </p>
+					<p> {validateData(props.user.Correo)} </p>
 				</div>
 
 				<div className="rowUser">
 					<i aria-hidden="true" className="fas fa-phone"></i>
-					<p> {props.user.Telefono} </p>
+					<p> {validateData(props.user.Telefono)} </p>
 				</div>
 			</div>
 
-			<p className="user-role"> {props.user.Rol} </p>
+			<p className="user-role"> {validateData(props.user.Rol)} </p>
 		</div>
 	);
 }

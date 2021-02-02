@@ -5,6 +5,7 @@
     box-shadow: 6px 6px 21px 0px rgba(0,0,0,0.19);
     border-radius: .9rem;
     width: 100;
+    height: 25vh;
 }
 
 .tarjeta:hover {
@@ -20,18 +21,28 @@
     position: relative;
     display: grid;
     grid-auto-columns: minmax(100%, 100%);
+    height: 22vh;
+    margin-left: .75vw;
 }
 
 .fotoT {
     grid-column: 1;
     grid-row: 1;
-    padding-top: 2vh;
+    height: 22vh;
+    padding-top: 4vh;
+
     /* margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: max-content; */
+}
+
+.fotoT  img {
+
+    height: 18vh;
+    width: auto;
 }
 
 
