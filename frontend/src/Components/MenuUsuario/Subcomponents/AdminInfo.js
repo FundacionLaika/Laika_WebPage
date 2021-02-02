@@ -40,6 +40,10 @@ function AdminInfo(props) {
 		}
 		fetchData();
 	}, [props]);
+  
+  function close() {
+		setState(false);
+	}
 
 
 	return (
@@ -60,7 +64,19 @@ function AdminInfo(props) {
 			</div>
 
 			<div className="gridUsuarios">
-				<ModalAdmin/>	
+				<button
+					className="generarPDFTarjeta"
+					title="Generar PDF"
+					onClick={() => {
+						setState(true);
+					}}
+				>
+					<i
+						aria-hidden="true"
+						className="fa fa-file-pdf-o fa-fw"
+					></i>
+				</button>
+				{state ? <ModalAdmin close={close}/> : null}
 			</div>
 			<div className="btnGuardarAdmin"></div>
 		</div>

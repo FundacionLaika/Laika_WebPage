@@ -12,22 +12,12 @@ import {
 import "../Styles/ModalAdmin.css";
 import FotoUsuarioModal from "./FotoUsuarioModal";
 
-function Reducer(state, action) {
-	switch (action.type) {
-		case "OPEN_MODAL":
-			return { open: true, dimmer: action.dimmer, size: action.size };
-		case "CLOSE_MODAL":
-			return { open: false };
-		default:
-			throw new Error();
-	}
-}
-
 function ModalAdmin(props) {
-	const [state, dispatch] = React.useReducer(Reducer, {
-		open: false,
-		dimmer: undefined,
+	const [state, setState] = React.useState({
+		open: true,
+		dimmer: "blurring",
 	});
+
 	const { open, dimmer } = state;
 
 	const [secondOpen, setSecondOpen] = React.useState(false);
@@ -84,23 +74,14 @@ function ModalAdmin(props) {
 	}
 
 	return (
-		<div className="editUser">
-			<i
-				aria-hidden="true"
-				className="fas fa-pencil"
-				onClick={() =>
-					dispatch({
-						type: "OPEN_MODAL",
-						dimmer: "blurring",
-						size: "fullscreen",
-					})
-				}
-			></i>
-
+		<div>
 			<Modal
 				dimmer={dimmer}
 				open={open}
-				onClose={() => dispatch({ type: "CLOSE_MODAL" })}
+				onClose={() => {
+					props.close();
+					setState({ open: false });
+				}}
 			>
 				<Modal.Header>Resgistrar usuario</Modal.Header>
 				<Modal.Content image>
@@ -110,75 +91,84 @@ function ModalAdmin(props) {
 						foto={stateUser.foto}
 					/>
 					<Modal.Description className="descriptionRG">
-						<Header>Datos de usuario</Header>
+						<Header style={{ marginLeft: "10.5%" }}>
+							Datos de usuario
+						</Header>
 						<div className="containerUserRG">
-							<div className="block1RG">
-								<Input
-									size="large"
-									icon="address card"
-									iconPosition="left"
-									placeholder="Nombre"
-									name="nombre"
-									onChange={handleChange}
-								/>
+							<div className="blockModal">
+								<div className="block1RG">
+									<Input
+										size="large"
+										icon="address card"
+										iconPosition="left"
+										placeholder="Nombre"
+										name="nombre"
+										onChange={handleChange}
+									/>
+								</div>
+								<div className="block2RG">
+									<Input
+										size="large"
+										icon="address book"
+										iconPosition="left"
+										placeholder="Apellidos"
+										name="apellidos"
+										onChange={handleChange}
+									/>
+								</div>
 							</div>
-							<div className="block2RG">
-								<Input
-									size="large"
-									icon="address book"
-									iconPosition="left"
-									placeholder="Apellidos"
-									name="apellidos"
-									onChange={handleChange}
-								/>
+
+							<div className="blockModal">
+								<div className="block1RG">
+									<Input
+										size="large"
+										icon="envelope"
+										iconPosition="left"
+										placeholder="Correo"
+										name="correo"
+										onChange={handleChange}
+									/>
+								</div>
+								<div className="block2RG">
+									<Input
+										size="large"
+										icon="call"
+										iconPosition="left"
+										placeholder="Teléfono"
+										name="telefono"
+										onChange={handleChange}
+									/>
+								</div>
 							</div>
-							<div className="block1RG">
-								<Input
-									size="large"
-									icon="envelope"
-									iconPosition="left"
-									placeholder="Correo"
-									name="correo"
-									onChange={handleChange}
-								/>
-							</div>
-							<div className="block2RG">
-								<Input
-									size="large"
-									icon="call"
-									iconPosition="left"
-									placeholder="Teléfono"
-									name="telefono"
-									onChange={handleChange}
-								/>
-							</div>
-							<div className="block1RG">
-								<Dropdown
-									style={{
-										width: "17vw",
-										height: "6.8vh",
-										fontSize: "1em",
-									}}
-									button
-									name="rol"
-									selection
-									className="icon selectRol"
-									labeled
-									icon="group"
-									options={countryOptions}
-									placeholder="Rol"
-									onChange={handleSelect}
-								/>
-							</div>
-							<div className="block2RG">
-								<Input
-									size="large"
-									icon="key"
-									iconPosition="left"
-									placeholder="Contraseña"
-									name="contrasena"
-									onChange={handleChange}
-								/>
+
+							<div className="blockModal">
+								<div className="block1RG">
+									<Dropdown
+										style={{
+											width: "78.5%",
+											height: "97%",
+										}}
+										button
+										name="rol"
+										selection
+										className="icon selectRol"
+										labeled
+										icon="group"
+										options={countryOptions}
+										placeholder="Rol"
+										onChange={handleSelect}
+									/>
+								</div>
+								<div className="block2RG">
+									<Input
+										size="large"
+										icon="key"
+										iconPosition="left"
+										placeholder="Contraseña"
+										name="contrasena"
+										onChange={handleChange}
+									/>
+								</div>
 							</div>
 						</div>
 					</Modal.Description>
@@ -192,7 +182,8 @@ function ModalAdmin(props) {
 						color="red"
 						inverted
 						onClick={() => {
-							dispatch({ type: "CLOSE_MODAL" });
+							props.close();
+							setState({ open: false });
 							handleRestablecer();
 						}}
 					>
@@ -216,7 +207,8 @@ function ModalAdmin(props) {
 								stateUser.contrasena &&
 								stateUser.foto
 							) {
-								dispatch({ type: "CLOSE_MODAL" });
+								props.close();
+								setState({ open: false });
 								handleRestablecer();
 								// Funcion de insertar nuevo usuario
 							} else {
