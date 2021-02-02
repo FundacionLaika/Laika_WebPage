@@ -79,16 +79,16 @@ app.put("/adopcion", (req, res) => {
 
 app.get("/usuarios", usuarios.handleGetUsuarios(db));
 
-app.get("/usuario", usuarios.handleGetUsuario(db));
+app.post("/usuario", usuarios.handleGetUsuario(db));
 
-app.post("/updateUsuario", usuarios.handleUpdateUsuario(db, bcrypt));
+app.put("/usuario", usuarios.handleUpdateUsuario(db, bcrypt));
 
 
 app.post("/login", login.handleLogin(db, bcrypt));
 
 app.post("/signup", signup.handleSignUp(db, bcrypt));
 
-app.post("/changePassword", changePassword.handleChangePassword(db, bcrypt));
+app.put("/changePassword", changePassword.handleChangePassword(db, bcrypt));
 
 app.post("/eliminarUsuario", eliminarUsuario.handleEliminarUsuario(db));
 

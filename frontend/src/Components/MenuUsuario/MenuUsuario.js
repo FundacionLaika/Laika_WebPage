@@ -6,6 +6,7 @@ import SecurityInfo from "./Subcomponents/SecurityInfo";
 import AdminInfo from "./Subcomponents/AdminInfo";
 
 function MenuUsuario(props) {
+
 	const [borderState, setBorderState] = useState({
 		btnGeneral: "3px solid blue",
 		btnSeguridad: "",
@@ -115,16 +116,22 @@ function MenuUsuario(props) {
 								type="button"
 								className="btnMenuUsuario"
 								value="Log out"
-								onClick={()=> {}}
+								onClick={() => {}}
 							/>
 						</div>
 					</div>
 				</Link>
 			</div>
 			<div className="dataUsuario">
-				{foregroundState.btnGeneral && <UserInfo />}
-				{foregroundState.btnSeguridad && <SecurityInfo />}
-				{foregroundState.btnAdmin && <AdminInfo />}
+				{foregroundState.btnGeneral && (
+					<UserInfo ID_Usuario={props.ID_Usuario} />
+				)}
+				{foregroundState.btnSeguridad && (
+					<SecurityInfo ID_Usuario={props.ID_Usuario} />
+				)}
+				{foregroundState.btnAdmin && (
+					<AdminInfo ID_Usuario={props.ID_Usuario} />
+				)}
 			</div>
 		</div>
 	);

@@ -38,6 +38,7 @@ export default class GridExpedienteMedico extends React.Component {
 					<TarjetaExpedienteMedico
 						key={tarjeta.ID_Animal}
 						id={tarjeta.ID_Animal}
+						foto={tarjeta.Foto}
 						atropellamiento={tarjeta.Atropellamiento}
 						tvt={tarjeta.TVT}
 						sarnaPiel={tarjeta.Sarna_Piel}

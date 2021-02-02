@@ -5,7 +5,9 @@ const handleLogin = (db, bcrypt) => (req, res) => {
 		return res.status(400).json("Faltan campos requeridos");
 	}
 
-	db.raw(`SELECT CONTRASENA FROM USUARIO WHERE CORREO = '${correo}'`)
+	db.raw(
+		`SELECT ID_USUARIO, CONTRASENA FROM USUARIO WHERE CORREO = '${correo}'`
+	)
 		.then((userData) => {
 			userData = userData[0][0];
 			bcrypt.compare(
@@ -13,7 +15,9 @@ const handleLogin = (db, bcrypt) => (req, res) => {
 				userData.CONTRASENA,
 				function (err, result) {
 					if (result)
-						res.status(200).json("Inicio de sesión exitoso");
+						res.status(200).json({
+							ID_Usuario: userData.ID_USUARIO,
+						});
 					else res.status(404).json("Contraseña inválida");
 				}
 			);

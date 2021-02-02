@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FotoUsuario from "./FotoUsuario";
 import "../Styles/UsuarioGeneral.css";
 import { validationUserInfo } from "../Functions/validationUserInfo";
@@ -6,20 +6,67 @@ import AlertTitle from "@material-ui/lab/AlertTitle";
 import Collapse from "@material-ui/core/Collapse";
 import Alert from "@material-ui/lab/Alert";
 
-function UserInfo() {
+async function fetchUser(ID_Usuario) {
+	var response = await fetch("http://localhost:3001/usuario", {
+		method: "post",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ ID_Usuario }),
+	});
+
+	if (response.status !== 200) return null;
+	var json = await response.json();
+
+	return json;
+}
+
+async function updateUser(ID_Usuario, state) {
+	console.log({ ID_Usuario, ...state });
+	var response = await fetch("http://localhost:3001/usuario", {
+		method: "put",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ ID_Usuario, ...state }),
+	});
+
+	return response.status;
+}
+
+function UserInfo(props) {
 	const [state, setState] = useState({
 		nombre: "",
 		apellidos: "",
 		correo: "",
 		telefono: "",
+		rol: "",
 		foto: null,
 	});
+
+	useEffect(() => {
+		async function fetchData() {
+			const userData = await fetchUser(props.ID_Usuario);
+
+			var foto = null;
+			if (userData && userData.Foto) {
+				var buffer = Buffer.from(userData.Foto.data);
+				foto = buffer.toString("utf8");
+			}
+
+			setState({
+				nombre: userData.Nombre,
+				apellidos: userData.Apellidos,
+				correo: userData.Correo,
+				telefono: userData.Telefono,
+				rol: userData.Rol,
+				foto: foto,
+			});
+		}
+		fetchData();
+	}, [props]);
 
 	const [openError, setOpenError] = React.useState(false);
 	const [openSuccess, setOpenSuccess] = React.useState(false);
 	const [message, setMsg] = React.useState("");
 
-	function onChage(event) {
+	function onChange(event) {
 		setState({
 			...state,
 			[event.target.name]: event.target.value,
@@ -65,7 +112,7 @@ function UserInfo() {
 					variant="outlined"
 					severity="success"
 				>
-					<AlertTitle>Registro exitoso</AlertTitle>
+					<AlertTitle> Datos guardados exitosamente.</AlertTitle>
 				</Alert>
 			</Collapse>
 
@@ -78,10 +125,10 @@ function UserInfo() {
 					/>
 				</div>
 				<div className="blockLabel">
-					<label>Nombre:</label>
+					<label> Nombre: {state.nombre}</label>
 				</div>
 				<div className="blockLabel2">
-					<label>Rol:</label>
+					<label>Rol: {state.rol} </label>
 				</div>
 			</div>
 
@@ -93,7 +140,7 @@ function UserInfo() {
 							type="text"
 							name="nombre"
 							value={state.nombre}
-							onChange={onChage}
+							onChange={onChange}
 							placeholder="&nbsp;"
 						/>
 						<span className="label">Nombre</span>
@@ -107,7 +154,7 @@ function UserInfo() {
 							type="text"
 							name="apellidos"
 							value={state.apellidos}
-							onChange={onChage}
+							onChange={onChange}
 							placeholder="&nbsp;"
 						/>
 						<span className="label">Apellidos</span>
@@ -124,7 +171,7 @@ function UserInfo() {
 							type="text"
 							name="correo"
 							value={state.correo}
-							onChange={onChage}
+							onChange={onChange}
 							placeholder="&nbsp;"
 						/>
 						<span className="label">Correo electrónico</span>
@@ -138,7 +185,7 @@ function UserInfo() {
 							type="text"
 							name="telefono"
 							value={state.telefono}
-							onChange={onChage}
+							onChange={onChange}
 							placeholder="&nbsp;"
 						/>
 						<span className="label">Télefono</span>
@@ -151,12 +198,24 @@ function UserInfo() {
 					className="btnGuardarUsuario"
 					type="button"
 					value="Guardar"
-					onClick={() => {
+					onClick={async () => {
 						const valid = validationUserInfo(state);
 						if (valid.isValid) {
-							// do submit
-							setOpenError(false);
-							setOpenSuccess(true);
+							const status = await updateUser(
+								props.ID_Usuario,
+								state
+							);
+							console.log("staus", status);
+							if (status === 200) {
+								setOpenError(false);
+								setOpenSuccess(true);
+							} else {
+								valid.msg =
+									"No se ha podido actualizar el usuario. Error en el servidor.";
+								setMsg(valid.msg);
+								setOpenSuccess(false);
+								setOpenError(true);
+							}
 						} else {
 							setMsg(valid.msg);
 							setOpenSuccess(false);

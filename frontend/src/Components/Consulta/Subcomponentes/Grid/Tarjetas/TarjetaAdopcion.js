@@ -11,7 +11,7 @@ export default class TarjetaAdopcion extends React.Component {
 			<div className="tarjeta">
 				<div className="fotoFrame">
 					<div className="fotoT">
-						<FotoFrame />
+						<FotoFrame  foto={this.props.foto}/>
 					</div>
 					<div className="idT">
 						<div className="idIconT">

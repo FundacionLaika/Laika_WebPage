@@ -8,19 +8,16 @@ import image3 from "./Images/image3.jpg";
 import image4 from "./Images/image4.jpg";
 
 async function fetchData(state) {
-	var response = await fetch(
-		"http://localhost:3001/Login",
-		{
-			method: "post",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(state),
-		}
-	);
+	var response = await fetch("http://localhost:3001/Login", {
+		method: "post",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(state),
+	});
 	return response;
 }
 
 function Login(props) {
-	const [state, setState] = useState({correo:"", contrasena: ""});
+	const [state, setState] = useState({ correo: "", contrasena: "" });
 
 	const history = useHistory();
 
@@ -29,7 +26,7 @@ function Login(props) {
 	}
 
 	function handleChange(event) {
-		setState({...state, [event.target.name]: event.target.value});
+		setState({ ...state, [event.target.name]: event.target.value });
 	}
 
 	return (
@@ -78,13 +75,18 @@ function Login(props) {
 					</p> */}
 					<button
 						className="buttonForm animation a6"
-						onClick={ async () => {
+						onClick={async () => {
 							const data = await fetchData(state);
-							
+							const json = await data.json();
+
 							if (data.status === 200) {
 								props.setAuth(true);
+								props.saveUserSession(
+									json.ID_Usuario,
+									true
+								);
 								handleClick();
-							} 
+							}
 						}}
 					>
 						Ingresar
