@@ -43,6 +43,7 @@ function UserInfo(props) {
 	useEffect(() => {
 		async function fetchData() {
 			const userData = await fetchUser(props.ID_Usuario);
+			if (!userData) return;
 
 			var foto = null;
 			if (userData && userData.Foto) {
