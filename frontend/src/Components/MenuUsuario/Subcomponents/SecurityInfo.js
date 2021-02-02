@@ -5,7 +5,7 @@ import AlertTitle from "@material-ui/lab/AlertTitle";
 import Collapse from "@material-ui/core/Collapse";
 import Alert from "@material-ui/lab/Alert";
 
-function SecurityInfo() {
+function SecurityInfo(props) {
 	const [state, setState] = useState({
 		contrasena: "",
 		confirmacion: "",
@@ -17,6 +17,17 @@ function SecurityInfo() {
 
 	function handleChange(event) {
 		setState({ ...state, [event.target.name]: event.target.value });
+	}
+
+	async function updatePassword(ID_Usuario, contrasena) {
+		console.log({ ID_Usuario, contrasena });
+		var response = await fetch("http://localhost:3001/changePassword", {
+			method: "put",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ ID_Usuario, contrasena }),
+		});
+	
+		return response.status;
 	}
 
 	return (
@@ -45,7 +56,7 @@ function SecurityInfo() {
 						variant="outlined"
 						severity="success"
 					>
-						<AlertTitle>Contraseña cambiada</AlertTitle>
+						<AlertTitle>Contraseña cambiada exitosamente</AlertTitle>
 					</Alert>
 				</Collapse>
 			</div>
@@ -91,12 +102,25 @@ function SecurityInfo() {
 					className="btnSecurity"
 					type="button"
 					value="Guardar"
-					onClick={() => {
+					onClick={async () => {
 						const valid = validationSecInfo(state);
 						if (valid.isValid) {
-							// do submit
-							setOpenError(false);
-							setOpenSuccess(true);
+							const status = await updatePassword(
+								props.ID_Usuario,
+								state.contrasena
+							);
+							console.log("staus", status);
+							if (status === 200) {
+								setOpenError(false);
+								setOpenSuccess(true);
+							} else {
+								valid.msg =
+									"No se ha podido actualizar la contraseña. Error en el servidor.";
+								setMsg(valid.msg);
+								setOpenSuccess(false);
+								setOpenError(true);
+							}
+
 						} else {
 							setMsg(valid.msg);
 							setOpenSuccess(false);

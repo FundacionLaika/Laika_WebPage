@@ -7,7 +7,7 @@ function ProtectedRoute({isAuth: isAutho, component: Component, ...rest}) {
 			{...rest}
 			render={(props) => {
 				if (isAutho) {
-					return <Component />;
+					return <Component {...rest}/>;
 				} else {
 					return (
 						<Redirect

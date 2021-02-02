@@ -1,9 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/AdminInfo.css";
 import UserCard from "./UserCard.js";
 import ModalAdmin from "./ModalAdmin";
 
-function AdminInfo() {
+async function fetchUsers() {
+	var response = await fetch("http://localhost:3001/usuarios", {
+		method: "get",
+		headers: { "Content-Type": "application/json" },
+	});
+
+	if (response.status !== 200) return [];
+	var users = await response.json();
+
+	users.forEach((user) => {
+		var foto = null;
+		if (user.Foto) {
+			var buffer = Buffer.from(user.Foto.data);
+			foto = buffer.toString("utf8");
+		}
+		user.Foto = foto;
+	})
+	
+
+	return users;
+}
+
+function AdminInfo(props) {
+	const [state, setState] = useState({
+		users: []
+	});
+
+	useEffect(() => {
+		async function fetchData() {
+			const usersData = await fetchUsers();
+
+			setState({
+				users: usersData
+			});
+		}
+		fetchData();
+	}, [props]);
+
+
 	return (
 		<div className="adminContainer">
 			<div className="adminTitle">
@@ -14,14 +52,11 @@ function AdminInfo() {
 			</div>
 
 			<div className="user-cards">
-				<UserCard />
-				<UserCard />
-				<UserCard />
-				<UserCard />
-				<UserCard />
-				<UserCard />
-				<UserCard />
-				<UserCard />
+			{state.users.map((user) => (
+				<UserCard
+					user={user}
+				/>
+			))}
 			</div>
 
 			<div className="gridUsuarios">

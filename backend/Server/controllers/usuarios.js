@@ -41,22 +41,12 @@ const handleUpdateUsuario = (db, bcrypt) => (req, res) => {
 		telefono,
 	} = req.body;
 
-	if (
-		!ID_Usuario ||
-		!nombre ||
-		!apellidos ||
-		!correo ||
-		!contrasena ||
-		!rol
-	) {
-		return res.status(400).json("Campos obligatorios incompletos.");
-	}
 
 	db.select("CONTRASENA")
 		.from("USUARIO")
 		.where("ID_Usuario", "=", ID_Usuario)
 		.then((ID) => {
-			if (ID[0].CONTRASENA === contrasena) {
+			if (!contrasena || ID[0].CONTRASENA === contrasena) {
 				db("USUARIO")
 					.where("ID_Usuario", "=", ID_Usuario)
 					.update({
@@ -68,7 +58,7 @@ const handleUpdateUsuario = (db, bcrypt) => (req, res) => {
 						telefono,
 					})
 					.then(() => {
-						res.json("Update al usuario realizado correctamente");
+						res.status(200).json("Update al usuario realizado correctamente");
 					})
 					.catch((err) =>
 						res.status(400).json(err+"No se pudo actualizar el usuario")
@@ -91,7 +81,7 @@ const handleUpdateUsuario = (db, bcrypt) => (req, res) => {
 							})
 							.then(() => {
 								console.log(hash);
-								res.json(
+								res.status(200).json(
 									"Update al usuario realizado correctamente"
 								);
 							})

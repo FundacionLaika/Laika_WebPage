@@ -14,7 +14,7 @@ const handleChangePassword = (db, bcrypt) => (req, res) => {
 					contrasena: hash,
 				})
 				.then(() => {
-					res.json("Contrasena cambiada");
+					res.status(200).json("Contrasena cambiada");
 				})
 				.catch((err) =>
 					res.status(400).json("No se pudo cambiar la contraseña")

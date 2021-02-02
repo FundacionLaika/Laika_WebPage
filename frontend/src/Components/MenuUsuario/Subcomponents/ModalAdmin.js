@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "../Styles/UserCard.css";
+
 import {
 	Button,
 	Modal,
@@ -31,14 +33,16 @@ function ModalAdmin(props) {
 	const [secondOpen, setSecondOpen] = React.useState(false);
 
 	const [stateUser, setStateUser] = useState({
-		nombre: "",
-		apellidos: "",
-		correo: "",
-		telefono: "",
-		rol: "",
-		contrasena: "",
-		foto: null,
+		nombre: props.user ? props.user.Nombre : "",
+		apellidos: props.user ? props.user.Apellidos : "",
+		correo: props.user ? props.user.Correo : "",
+		telefono: props.user ? props.user.Telefono : "",
+		rol: props.user ? props.user.Rol : "",
+		contrasena: props.user ? props.user.Contrasena : "",
+		foto: props.user ? props.user.Foto : "",
 	});
+
+	console.log(props.user);
 
 	const countryOptions = [
 		{ key: "voluntario", value: "voluntario", text: "Voluntario" },
@@ -80,10 +84,10 @@ function ModalAdmin(props) {
 	}
 
 	return (
-		<div>
-			<button
-				className="generarPDFTarjeta"
-				title="Generar PDF"
+		<div className="editUser">
+			<i
+				aria-hidden="true"
+				className="fas fa-pencil"
 				onClick={() =>
 					dispatch({
 						type: "OPEN_MODAL",
@@ -91,9 +95,7 @@ function ModalAdmin(props) {
 						size: "fullscreen",
 					})
 				}
-			>
-				<i aria-hidden="true" className="fa fa-file-pdf-o fa-fw"></i>
-			</button>
+			></i>
 
 			<Modal
 				dimmer={dimmer}

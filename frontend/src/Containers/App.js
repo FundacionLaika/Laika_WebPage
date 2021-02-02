@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-	BrowserRouter as Router,
-	Route,
-	Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import MenuBar from "../Components/SharedComponents/MenuBar";
@@ -16,18 +12,37 @@ import Adopcion from "../Components/Adopcion/Adopcion";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
 import ProtectedRoute from "../Components/SharedComponents/ProtectedRoute";
 
-// function setData(obj) {
-// 	sessionStorage.setItem("data", JSON.stringify(obj));
-// }
+function saveUserSession(ID_User, isAuth) {
+	sessionStorage.setItem(
+		"userSession",
+		JSON.stringify({
+			ID_User,
+			isAuth,
+		})
+	);
+}
 
-// function getData() {
-// 	const tokenString = sessionStorage.getItem("data");
-// 	const userToken = JSON.parse(tokenString);
-// 	console.log(userToken);
-// }
+function getUserSession() {
+	const tokenString = sessionStorage.getItem("userSession");
+	const userToken = JSON.parse(tokenString);
+	return userToken;
+}
 
 function App() {
-	const [isAuth, setIsAuth] = useState(true);
+	const userSession = getUserSession();
+	var authenticated = false;
+	var ID_Usuario = "";
+
+	if (userSession) {
+		const { ID_User, isAuth } = userSession;
+		if (ID_User && isAuth) {
+			authenticated = isAuth;
+			ID_Usuario = ID_User;
+		}
+	}
+
+
+	const [isAuth, setIsAuth] = useState(authenticated);
 
 	function setAuth(boolean) {
 		setIsAuth(boolean);
@@ -44,7 +59,11 @@ function App() {
 
 				<Switch>
 					<Route path="/" exact>
-						<Login setAuth={setAuth} />
+						<Login
+							setAuth={setAuth}
+							saveUserSession={saveUserSession}
+							
+						/>
 					</Route>
 
 					<ProtectedRoute
@@ -79,6 +98,7 @@ function App() {
 						exact
 						component={MenuUsuario}
 						isAuth={isAuth}
+						ID_Usuario={ID_Usuario}
 					/>
 
 					<ProtectedRoute
