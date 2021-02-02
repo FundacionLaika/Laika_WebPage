@@ -10,22 +10,12 @@ import {
 import "../Styles/ModalAdmin.css";
 import FotoUsuarioModal from "./FotoUsuarioModal";
 
-function Reducer(state, action) {
-	switch (action.type) {
-		case "OPEN_MODAL":
-			return { open: true, dimmer: action.dimmer, size: action.size };
-		case "CLOSE_MODAL":
-			return { open: false };
-		default:
-			throw new Error();
-	}
-}
-
 function ModalAdmin(props) {
-	const [state, dispatch] = React.useReducer(Reducer, {
-		open: false,
-		dimmer: undefined,
+	const [state, setState] = React.useState({
+		open: true,
+		dimmer: "blurring",
 	});
+
 	const { open, dimmer } = state;
 
 	const [secondOpen, setSecondOpen] = React.useState(false);
@@ -81,24 +71,13 @@ function ModalAdmin(props) {
 
 	return (
 		<div>
-			<button
-				className="generarPDFTarjeta"
-				title="Generar PDF"
-				onClick={() =>
-					dispatch({
-						type: "OPEN_MODAL",
-						dimmer: "blurring",
-						size: "fullscreen",
-					})
-				}
-			>
-				<i aria-hidden="true" className="fa fa-file-pdf-o fa-fw"></i>
-			</button>
-
 			<Modal
 				dimmer={dimmer}
 				open={open}
-				onClose={() => dispatch({ type: "CLOSE_MODAL" })}
+				onClose={() => {
+					props.close();
+					setState({ open: false });
+				}}
 			>
 				<Modal.Header>Resgistrar usuario</Modal.Header>
 				<Modal.Content image>
@@ -199,7 +178,8 @@ function ModalAdmin(props) {
 						color="red"
 						inverted
 						onClick={() => {
-							dispatch({ type: "CLOSE_MODAL" });
+							props.close();
+							setState({ open: false });
 							handleRestablecer();
 						}}
 					>
@@ -223,7 +203,8 @@ function ModalAdmin(props) {
 								stateUser.contrasena &&
 								stateUser.foto
 							) {
-								dispatch({ type: "CLOSE_MODAL" });
+								props.close();
+								setState({ open: false });
 								handleRestablecer();
 								// Funcion de insertar nuevo usuario
 							} else {
