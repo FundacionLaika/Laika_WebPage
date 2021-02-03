@@ -56,6 +56,8 @@ export default class GridExpedienteMedico extends React.Component {
 						citaAgendada={tarjeta.CitaAgendada}
 						estaEsterilizado={tarjeta.EstaEsterilizado}
 						formatDate={this.props.formatDate}
+						openModal={this.props.openModal}
+						setID={this.props.setID}
 					/>
 				))}
 			</div>

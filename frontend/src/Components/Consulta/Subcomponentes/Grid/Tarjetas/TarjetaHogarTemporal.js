@@ -11,7 +11,7 @@ export default class TarjetaHogarTemporal extends React.Component {
 			<div className="tarjeta">
 				<div className="fotoFrame">
 					<div className="fotoT">
-						<FotoFrame  foto={this.props.foto}/>
+						<FotoFrame foto={this.props.foto} />
 					</div>
 					<div className="idT">
 						<div className="idIconT">
@@ -33,7 +33,12 @@ export default class TarjetaHogarTemporal extends React.Component {
 							{" "}
 							Tipo de Hogar Temporal:{" "}
 						</span>
-						<span className="campoData"> {this.props.tipoHT ? this.props.tipoHT : "No hay Información"} </span>
+						<span className="campoData">
+							{" "}
+							{this.props.tipoHT
+								? this.props.tipoHT
+								: "No hay Información"}{" "}
+						</span>
 					</div>
 
 					<div className="responsableTHT">
@@ -44,7 +49,9 @@ export default class TarjetaHogarTemporal extends React.Component {
 						<span className="nombreCampo"> Responsable: </span>
 						<span className="campoData">
 							{" "}
-							{this.props.responsableHT ? this.props.responsableHT : "No hay Información"}{" "}
+							{this.props.responsableHT
+								? this.props.responsableHT
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -56,7 +63,9 @@ export default class TarjetaHogarTemporal extends React.Component {
 						<span className="nombreCampo"> Télefono: </span>
 						<span className="campoData">
 							{" "}
-							{this.props.telefonoHT ? this.props.telefonoHT : "No hay Información"}{" "}
+							{this.props.telefonoHT
+								? this.props.telefonoHT
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -116,7 +125,11 @@ export default class TarjetaHogarTemporal extends React.Component {
 						</button>
 					</Link>
 
-					<BotonPDF id={this.props.id} />
+					<BotonPDF
+						id={this.props.id}
+						openModal={this.props.openModal}
+						setID={this.props.setID}
+					/>
 				</div>
 			</div>
 		);

@@ -3,8 +3,8 @@ import TarjetaAdopcion from "../Tarjetas/TarjetaAdopcion";
 
 export default class GridAdopcion extends React.Component {
 	state = {
-		data: []	
-	}
+		data: [],
+	};
 
 	fetchData = () => {
 		fetch("http://localhost:3001/consulta", {
@@ -19,7 +19,7 @@ export default class GridAdopcion extends React.Component {
 				});
 			})
 			.catch((err) => console.log(err));
-	}
+	};
 
 	componentDidMount() {
 		this.fetchData();
@@ -30,7 +30,7 @@ export default class GridAdopcion extends React.Component {
 			this.fetchData();
 		}
 	}
-	
+
 	render() {
 		return (
 			<div>
@@ -51,6 +51,8 @@ export default class GridAdopcion extends React.Component {
 						municipio={tarjeta.MunicipioAdte}
 						concatAddress={this.props.concatAddress}
 						formatDate={this.props.formatDate}
+						openModal={this.props.openModal}
+						setID={this.props.setID}
 					/>
 				))}
 			</div>

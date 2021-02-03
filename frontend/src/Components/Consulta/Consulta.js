@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import "./Styles/Consulta.css";
 import Filtros from "./Subcomponentes/Filtros/Filtros";
 import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
+import ModalConsulta from "./Subcomponentes/ModalConsulta";
 
 //var toSentenceCase = require('to-sentence-case')
 class Consulta extends Component {
@@ -59,6 +60,9 @@ class Consulta extends Component {
 			fechaInicioAdop: null,
 			fechaFinalAdop: null,
 		},
+
+		open: false,
+		id: null
 	};
 
 	handleOptionsReceived = (filter, itemsSelected, replaceValue) => {
@@ -141,10 +145,12 @@ class Consulta extends Component {
 	concatAddress = (calle, numero, colonia, municipio) => {
 		var direccion = "";
 		if (calle && calle.length) direccion += calle;
-		if (numero && numero.length && calle && calle.length) direccion += " #" + numero;
+		if (numero && numero.length && calle && calle.length)
+			direccion += " #" + numero;
 		if (colonia && colonia.length)
 			direccion += (direccion.length ? ", " : "") + colonia;
-		direccion += (direccion && direccion.length ? ", " : "") + municipio + ".";
+		direccion +=
+			(direccion && direccion.length ? ", " : "") + municipio + ".";
 		return direccion !== "." ? direccion : "No hay Información";
 	};
 
@@ -184,9 +190,27 @@ class Consulta extends Component {
 		});
 	};
 
+	closeModal = () => {
+		this.setState({...this.state, open: false});
+	};
+
+	openModal = () => {
+		this.setState({...this.state, open: true});
+	};
+
+	setID = (id) => {
+		this.setState({...this.state, id: id});
+	}
+
 	render() {
 		return (
 			<div className="consulta">
+				{this.state.open ? (
+					<ModalConsulta
+						closeModal={this.closeModal}
+						id={this.state.id}
+					/>
+				) : null}
 				<Filtros
 					filtros={this.state}
 					handleFiltroRegistros={this.handleFiltroRegistros}
@@ -203,6 +227,8 @@ class Consulta extends Component {
 					concatAddress={this.concatAddress}
 					filtros={this.state}
 					formatDate={this.formatDate}
+					openModal={this.openModal}
+					setID={this.setID}
 				/>
 			</div>
 		);
