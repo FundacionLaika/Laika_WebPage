@@ -6,7 +6,13 @@ class FotoUsuarioModal extends Component {
         return (
             <div>
                 <label htmlFor={this.props.id}>
-                    <img className="fotoUsuarioModal" src={this.props.foto ? this.props.foto : "/user_new.png"} alt="Foto" />
+                    <img
+                        className="fotoUsuarioModal"
+                        src={
+                            this.props.foto ? this.props.foto : "/user_new.png"
+                        }
+                        alt="Foto"
+                    />
                 </label>
 
                 <input

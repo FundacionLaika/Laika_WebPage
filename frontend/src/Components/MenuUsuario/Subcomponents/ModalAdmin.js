@@ -1,253 +1,368 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/UserCard.css";
 
 import {
-	Button,
-	Modal,
-	Icon,
-	Dropdown,
-	Header,
-	Input,
+    Button,
+    Modal,
+    Icon,
+    Dropdown,
+    Header,
+    Input,
 } from "semantic-ui-react";
 import "../Styles/ModalAdmin.css";
 import FotoUsuarioModal from "./FotoUsuarioModal";
 
+async function fetchUser(userID) {
+    var response = await fetch("http://localhost:3001/usuario", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ID_Usuario: userID }),
+    });
+
+    if (response.status !== 200) return null;
+    var user = await response.json();
+
+    if (user.Foto) {
+        const buffer = Buffer.from(user.Foto.data);
+        const foto = buffer.toString("utf8");
+        user.Foto = foto;
+    }
+
+    return user;
+}
+
+async function updateUser(userID, userData) {
+    var response = await fetch("http://localhost:3001/usuario", {
+        method: "put",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ID_Usuario: userID, ...userData }),
+    });
+
+    if (response.status !== 200) return false;
+
+    return true;
+}
+
+async function createUser(userData) {
+    var response = await fetch("http://localhost:3001/signup", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+    });
+
+    if (response.status !== 200) return false;
+
+    return true;
+}
+
+function validateData(data) {
+    return data ? data : "";
+}
+
 function ModalAdmin(props) {
-	const [state, setState] = React.useState({
-		open: true,
-		dimmer: "blurring",
-	});
+    const [state, setState] = React.useState({
+        open: true,
+        dimmer: "blurring",
+    });
 
-	const { open, dimmer } = state;
+    const { open, dimmer } = state;
 
-	const [secondOpen, setSecondOpen] = React.useState(false);
+    const [secondOpen, setSecondOpen] = React.useState(false);
 
-	const [stateUser, setStateUser] = useState({
-		nombre: props.user ? props.user.Nombre : "",
-		apellidos: props.user ? props.user.Apellidos : "",
-		correo: props.user ? props.user.Correo : "",
-		telefono: props.user ? props.user.Telefono : "",
-		rol: props.user ? props.user.Rol : "",
-		contrasena: props.user ? props.user.Contrasena : "",
-		foto: props.user ? props.user.Foto : "",
-	});
+	const [message, setMessage] = React.useState("");
+	
+	const [success, setSuccess] = React.useState(true);
 
-	console.log(props.user);
+    console.log("userID", props.userID);
 
-	const countryOptions = [
-		{ key: "voluntario", value: "voluntario", text: "Voluntario" },
-		{ key: "administrador", value: "administrador", text: "Administrador" },
-	];
+    const [stateUser, setStateUser] = useState({
+        nombre: "",
+        apellidos: "",
+        correo: "",
+        telefono: "",
+        rol: "",
+        contrasena: "",
+        foto: null,
+    });
 
-	function handleChange(event) {
-		setStateUser({ ...stateUser, [event.target.name]: event.target.value });
-	}
+    function handleChange(event) {
+        setStateUser({ ...stateUser, [event.target.name]: event.target.value });
+    }
 
-	function handleSelect(event, data) {
-		setStateUser({ ...stateUser, rol: data.value });
-	}
+    function handleSelect(event, data) {
+        setStateUser({ ...stateUser, rol: data.value });
+    }
 
-	function handleRestablecer() {
-		setStateUser({
-			nombre: "",
-			apellidos: "",
-			correo: "",
-			telefono: "",
-			rol: "",
-			contrasena: "",
-			foto: null,
-		});
-	}
+    useEffect(() => {
+        if (!props.userID) return;
+        async function fetchData() {
+            const userData = await fetchUser(props.userID);
+            console.log("userData:", userData);
+            setStateUser({
+                nombre: validateData(userData.Nombre),
+                apellidos: validateData(userData.Apellidos),
+                correo: validateData(userData.Correo),
+                telefono: validateData(userData.Telefono),
+                rol: validateData(userData.Rol),
+                contrasena: validateData(userData.CONTRASENA),
+                foto: userData.Foto,
+            });
+        }
+        fetchData();
+    }, [props]);
 
-	function imageHandler(event) {
-		try {
-			const reader = new FileReader();
-			const foto = event.target.id;
+    const rolesOptions = [
+        { key: "Voluntario", value: "Voluntario", text: "Voluntario" },
+        { key: "Administrador", value: "Administrador", text: "Administrador" },
+    ];
 
-			reader.onload = () => {
-				if (reader.readyState === 2) {
-					setStateUser({ ...stateUser, [foto]: reader.result });
-				}
-			};
-			reader.readAsDataURL(event.target.files[0]);
-		} catch (error) {}
-	}
+    function handleRestablecer() {
+        setStateUser({
+            nombre: "",
+            apellidos: "",
+            correo: "",
+            telefono: "",
+            rol: "",
+            contrasena: "",
+            foto: null,
+        });
+    }
 
-	return (
-		<div>
-			<Modal
-				dimmer={dimmer}
-				open={open}
-				onClose={() => {
-					props.close();
-					setState({ open: false });
-				}}
-			>
-				<Modal.Header>Resgistrar usuario</Modal.Header>
-				<Modal.Content image>
-					<FotoUsuarioModal
-						id="foto"
-						imageHandler={imageHandler}
-						foto={stateUser.foto}
-					/>
-					<Modal.Description className="descriptionRG">
-						<Header style={{ marginLeft: "10.5%" }}>
-							Datos de usuario
-						</Header>
-						<div className="containerUserRG">
-							<div className="blockModal">
-								<div className="block1RG">
-									<Input
-										size="large"
-										icon="address card"
-										iconPosition="left"
-										placeholder="Nombre"
-										name="nombre"
-										onChange={handleChange}
-									/>
-								</div>
-								<div className="block2RG">
-									<Input
-										size="large"
-										icon="address book"
-										iconPosition="left"
-										placeholder="Apellidos"
-										name="apellidos"
-										onChange={handleChange}
-									/>
-								</div>
-							</div>
+    function imageHandler(event) {
+        try {
+            const reader = new FileReader();
+            const foto = event.target.id;
 
-							<div className="blockModal">
-								<div className="block1RG">
-									<Input
-										size="large"
-										icon="envelope"
-										iconPosition="left"
-										placeholder="Correo"
-										name="correo"
-										onChange={handleChange}
-									/>
-								</div>
-								<div className="block2RG">
-									<Input
-										size="large"
-										icon="call"
-										iconPosition="left"
-										placeholder="Teléfono"
-										name="telefono"
-										onChange={handleChange}
-									/>
-								</div>
-							</div>
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setStateUser({ ...stateUser, [foto]: reader.result });
+                }
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        } catch (error) {}
+    }
 
-							<div className="blockModal">
-								<div className="block1RG">
-									<Dropdown
-										style={{
-											width: "78.5%",
-											height: "97%",
-										}}
-										button
-										name="rol"
-										selection
-										className="icon selectRol"
-										labeled
-										icon="group"
-										options={countryOptions}
-										placeholder="Rol"
-										onChange={handleSelect}
-									/>
-								</div>
-								<div className="block2RG">
-									<Input
-										size="large"
-										icon="key"
-										iconPosition="left"
-										placeholder="Contraseña"
-										name="contrasena"
-										onChange={handleChange}
-									/>
-								</div>
-							</div>
-						</div>
-					</Modal.Description>
-				</Modal.Content>
-				<Modal.Actions>
-					<Button
-						style={{
-							borderRadius: "0.4rem",
-							margin: "0% 2% 0% 0%",
-						}}
-						color="red"
-						inverted
-						onClick={() => {
-							props.close();
-							setState({ open: false });
-							handleRestablecer();
-						}}
-					>
-						<Icon name="cancel" /> Cancelar
-					</Button>
+    return (
+        <div>
+            <Modal
+                dimmer={dimmer}
+                open={open}
+                onClose={() => {
+                    props.closeModal();
+                    setState({ open: false });
+                }}
+            >
+                <Modal.Header>Resgistrar usuario</Modal.Header>
+                <Modal.Content image>
+                    <FotoUsuarioModal
+                        id="foto"
+                        imageHandler={imageHandler}
+                        foto={stateUser.foto}
+                    />
+                    <Modal.Description className="descriptionRG">
+                        <Header style={{ marginLeft: "10.5%" }}>
+                            Datos de usuario
+                        </Header>
+                        <div className="containerUserRG">
+                            <div className="blockModal">
+                                <div className="block1RG">
+                                    <Input
+                                        size="large"
+                                        icon="address card"
+                                        iconPosition="left"
+                                        placeholder="Nombre"
+                                        name="nombre"
+                                        onChange={handleChange}
+                                        value={stateUser.nombre}
+                                    />
+                                </div>
+                                <div className="block2RG">
+                                    <Input
+                                        size="large"
+                                        icon="address book"
+                                        iconPosition="left"
+                                        placeholder="Apellidos"
+                                        name="apellidos"
+                                        onChange={handleChange}
+                                        value={stateUser.apellidos}
+                                    />
+                                </div>
+                            </div>
 
-					<Button
-						style={{
-							borderRadius: "0.4rem",
-							margin: "0% 1% 0% 0%",
-						}}
-						color="green"
-						inverted
-						onClick={() => {
-							if (
-								stateUser.nombre &&
-								stateUser.apellidos &&
-								stateUser.correo &&
-								stateUser.telefono &&
-								stateUser.rol &&
-								stateUser.contrasena &&
-								stateUser.foto
-							) {
-								props.close();
-								setState({ open: false });
-								handleRestablecer();
-								// Funcion de insertar nuevo usuario
-							} else {
-								setSecondOpen(true);
-							}
-						}}
-					>
-						<Icon name="checkmark" /> Registrar
-					</Button>
-				</Modal.Actions>
-				<Modal
-					onClose={() => setSecondOpen(false)}
-					open={secondOpen}
-					size="small"
-				>
-					<Modal.Header>Registro de usuario</Modal.Header>
-					<Modal.Content>
-						<p>
-							Debe llenar todos los campos para que el registro
-							sea exitoso
-						</p>
-					</Modal.Content>
-					<Modal.Actions>
-						<Button
-							style={{
-								borderRadius: "0.4rem",
-								margin: "0% 2% 0% 0%",
+                            <div className="blockModal">
+                                <div className="block1RG">
+                                    <Input
+                                        size="large"
+                                        icon="envelope"
+                                        iconPosition="left"
+                                        placeholder="Correo"
+                                        name="correo"
+                                        onChange={handleChange}
+                                        value={stateUser.correo}
+                                    />
+                                </div>
+                                <div className="block2RG">
+                                    <Input
+                                        size="large"
+                                        icon="call"
+                                        iconPosition="left"
+                                        placeholder="Teléfono"
+                                        name="telefono"
+                                        onChange={handleChange}
+                                        value={stateUser.telefono}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="blockModal">
+                                <div className="block1RG">
+                                    <Dropdown
+                                        style={{
+                                            width: "78.5%",
+                                            height: "97%",
+                                        }}
+                                        button
+                                        name="rol"
+                                        selection
+                                        className="icon selectRol"
+                                        labeled
+                                        icon="group"
+                                        options={rolesOptions}
+                                        placeholder="Rol"
+                                        onChange={handleSelect}
+                                        value={stateUser.rol}
+                                    />
+                                </div>
+                                <div className="block2RG">
+                                    <Input
+                                        size="large"
+                                        icon="key"
+                                        iconPosition="left"
+                                        placeholder="Contraseña"
+                                        name="contrasena"
+                                        onChange={handleChange}
+                                        value={stateUser.contrasena}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Description>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button
+                        style={{
+                            borderRadius: "0.4rem",
+                            margin: "0% 2% 0% 0%",
+                        }}
+                        color="red"
+                        inverted
+                        onClick={() => {
+                            props.closeModal();
+                            setState({ open: false });
+                            handleRestablecer();
+                        }}
+                    >
+                        <Icon name="cancel" /> Cancelar
+                    </Button>
+
+                    <Button
+                        style={{
+                            borderRadius: "0.4rem",
+                            margin: "0% 1% 0% 0%",
+                        }}
+                        color="green"
+                        inverted
+                        onClick={async () => {
+                            if (
+                                stateUser.nombre &&
+                                stateUser.apellidos &&
+                                stateUser.correo &&
+                                stateUser.telefono &&
+                                stateUser.rol &&
+                                stateUser.contrasena
+                            ) {
+                                if (props.userID) {
+                                    var success = await  updateUser(
+                                        props.userID,
+                                        stateUser
+									);
+									setSuccess(success);
+                                    if (success) {
+                                        setMessage(
+                                            "Actualizacion de datos del usuario exitosa!"
+                                        );
+                                    } else {
+                                        setMessage(
+                                            "Ha ocurrido un error al actualizar el usuario! Verifique que el correo sea unico."
+                                        );
+									}
+									
+                                    console.log("success?", success);
+                                } else {
+									var success = await createUser(stateUser);
+									setSuccess(success);
+
+                                    if (success) {
+                                        setMessage(
+                                            "Se ha creado el usuario de manera exitosa!"
+                                        );
+                                    } else {
+                                        setMessage(
+                                            "Ha ocurrido un error al crear el usuario! Verifique que el correo sea unico."
+                                        );
+                                    }
+
+                                    console.log("success?", success);
+                                }
+                                // Funcion de insertar nuevo usuario
+                            } else {
+                                setMessage(
+                                    "Debe llenar todos los campos para que el registro sea exitoso"
+								);
+								setSuccess(false);
+                            }
+
+                            setSecondOpen(true);
+                        }}
+                    >
+                        <Icon name="checkmark" />{" "}
+                        {props.userID ? "Guardar" : "Registrar"}
+                    </Button>
+                </Modal.Actions>
+                <Modal
+                    onClose={() => setSecondOpen(false)}
+                    open={secondOpen}
+                    size="small"
+                >
+                    <Modal.Header>Registro de usuario</Modal.Header>
+                    <Modal.Content>
+                        <p>{message}</p>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button
+                            style={{
+                                borderRadius: "0.4rem",
+                                margin: "0% 2% 0% 0%",
+                            }}
+                            color="red"
+                            inverted
+                            onClick={() => {
+								setSecondOpen(false);
+								if (success) {
+									handleRestablecer();
+									setState({open: false});
+									props.closeModal();
+									props.fetchUsers();
+								}
 							}}
-							color="red"
-							inverted
-							onClick={() => setSecondOpen(false)}
-						>
-							<Icon name="cancel" /> Continuar
-						</Button>
-					</Modal.Actions>
-				</Modal>
-			</Modal>
-		</div>
-	);
+                        >
+                            <Icon name="cancel" /> Cerrar
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
+            </Modal>
+        </div>
+    );
 }
 
 export default ModalAdmin;

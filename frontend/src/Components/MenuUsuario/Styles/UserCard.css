@@ -24,14 +24,14 @@
 	height: 1vh;
 }
 
-.editUser > i {
+.user-card  i {
 	align-self: flex-end;
 	cursor: pointer;
     margin-bottom: auto;
     font-size: 1.5em;
 }
 
-.editUser >  i:hover {
+.user-card i:hover {
 	font-size: 1.75em;
 }
 
