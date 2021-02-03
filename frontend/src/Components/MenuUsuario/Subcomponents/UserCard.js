@@ -17,7 +17,7 @@ export default function UserCard(props) {
 				}}
             ></i>
             <div className="image-wrapper">
-                <img src={props.user.Foto} alt="" />
+                <img src={props.user.Foto ? props.user.Foto : "/defaultUser.png"} alt="" />
             </div>
 
             <div className="userInfo">

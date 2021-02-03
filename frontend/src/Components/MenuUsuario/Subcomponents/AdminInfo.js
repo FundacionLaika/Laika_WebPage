@@ -19,8 +19,8 @@ async function fetchUsers() {
             foto = buffer.toString("utf8");
         }
         user.Foto = foto;
-	});
-	
+    });
+
     return users;
 }
 
@@ -56,6 +56,46 @@ function AdminInfo(props) {
         setOpen(true);
     }
 
+    function addUser(newUser) {
+        const newUserM = {
+            ID_Usuario: newUser.ID_Usuario,
+            Nombre: newUser.nombre,
+            Apellidos: newUser.apellidos,
+            Correo: newUser.correo,
+            Telefono: newUser.telefono,
+            Rol: newUser.rol,
+            CONTRASENA: newUser.contrasena,
+            Foto: newUser.foto,
+        }
+        setState(
+			(state) => ({
+				users: [newUserM, ...state.users],
+			})
+		);
+    }
+
+    function modifyUser(newUser) {
+        setState((state) => ({
+            users: state.users.map((user) => {
+                if (user.ID_Usuario === newUser.ID_Usuario) {
+                    return {
+                        ID_Usuario: newUser.ID_Usuario,
+                        Nombre: newUser.nombre,
+                        Apellidos: newUser.apellidos,
+                        Correo: newUser.correo,
+                        Telefono: newUser.telefono,
+                        Rol: newUser.rol,
+                        CONTRASENA: newUser.contrasena,
+                        Foto: newUser.foto,
+                    }
+                } 
+                else {
+                    return user;
+                }
+            }),
+        }));
+    }
+
     return (
         <div className="adminContainer">
             <div className="adminTitle">
@@ -68,7 +108,7 @@ function AdminInfo(props) {
             <div className="user-cards">
                 {state.users.map((user) => (
                     <UserCard
-						key={user.ID_Usuario}
+                        key={user.ID_Usuario}
                         user={user}
                         openModal={openModal}
                         changeUserID={changeUserID}
@@ -81,7 +121,7 @@ function AdminInfo(props) {
                     className="generarPDFTarjeta"
                     title="Generar PDF"
                     onClick={() => {
-						setUserID("");
+                        setUserID("");
                         setOpen(true);
                     }}
                 >
@@ -89,9 +129,16 @@ function AdminInfo(props) {
                         aria-hidden="true"
                         className="fa fa-file-pdf-o fa-fw"
                     ></i>
+                    <p> Registrar nuevo usuario</p>
                 </button>
                 {open ? (
-                    <ModalAdmin closeModal={closeModal} userID={userID} fetchUsers={fetchUsers} />
+                    <ModalAdmin
+                        closeModal={closeModal}
+                        userID={userID}
+                        fetchUsers={fetchUsers}
+                        modifyUser={modifyUser}
+                        addUser={addUser}
+                    />
                 ) : null}
             </div>
             <div className="btnGuardarAdmin"></div>
