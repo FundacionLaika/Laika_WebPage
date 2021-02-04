@@ -119,7 +119,6 @@ class Consulta extends Component {
 				});
 			}
 		}
-		console.log(this.state);
 	};
 
 	handleChange = (event) => {
@@ -129,7 +128,6 @@ class Consulta extends Component {
 	};
 
 	handleFiltroRegistros = (registroSeleccionado) => {
-		console.log("holaaaaaaa", registroSeleccionado);
 
 		this.setState({
 			tarjeta: registroSeleccionado,
@@ -159,7 +157,6 @@ class Consulta extends Component {
 			{
 				ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor,
 			},
-			console.log(this.state)
 		);
 	};
 

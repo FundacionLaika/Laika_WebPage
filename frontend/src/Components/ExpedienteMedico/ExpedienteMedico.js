@@ -72,7 +72,6 @@ class ExpedienteMedico extends Component {
 					this.setState({ [foto]: reader.result });
 				}
 			};
-			console.log(event.target.id);
 			reader.readAsDataURL(event.target.files[0]);
 		} catch (error) {}
 	};
@@ -102,8 +101,7 @@ class ExpedienteMedico extends Component {
 			});
 		}
 
-		console.log(event.target.name);
-		console.log(value);
+	
 	};
 
 	/*Manejador de dates*/
@@ -116,14 +114,10 @@ class ExpedienteMedico extends Component {
 	/*Manejador del botón submit*/
 	handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(this.state);
 		this.updateDB();
 	};
 
 	updateDB = () => {
-		let url = this.props.location.search;
-		console.log("url", url);
-
 		fetch("http://localhost:3001/expedienteMedico", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
@@ -131,7 +125,6 @@ class ExpedienteMedico extends Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
 			})
 			.catch((err) => console.log(err));
 	};
@@ -151,7 +144,6 @@ class ExpedienteMedico extends Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log("otro", response.otro);
 				for (const element in response) {
 					if (element.includes("fecha")) {
 						const date = response[element];
@@ -162,7 +154,6 @@ class ExpedienteMedico extends Component {
 						});
 					} else if (element.includes("foto")) {
 						if (response[element]) {
-							console.log(response[element]);
 
 							var buffer = Buffer.from(response[element].data);
 

@@ -50,13 +50,7 @@ class RegistroGeneral extends React.Component {
 	};
 
 	handleSubmit = (event) => {
-		let url = this.props.location.search;
-		let params = queryString.parse(url);
-
-		console.log(params.id ? "Registradou" : "Sin registrar");
-
 		event.preventDefault();
-		console.log(this.state);
 
 		this.estaRegistrado ? this.updateDB() : this.insertDB();
 	};
@@ -190,7 +184,6 @@ class RegistroGeneral extends React.Component {
 			{
 				estaRegistrado: params.id ? true : false,
 			},
-			console.log(this.state)
 		);
 
 		if (params.id) {

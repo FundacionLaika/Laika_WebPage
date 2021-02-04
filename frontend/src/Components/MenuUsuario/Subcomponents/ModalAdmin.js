@@ -73,7 +73,6 @@ function ModalAdmin(props) {
 	
 	const [success, setSuccess] = React.useState(true);
 
-    console.log("userID", props.userID);
 
     const [stateUser, setStateUser] = useState({
         nombre: "",
@@ -97,7 +96,6 @@ function ModalAdmin(props) {
         if (!props.userID) return;
         async function fetchData() {
             const userData = await fetchUser(props.userID);
-            console.log("userData:", userData);
             setStateUser({
                 nombre: validateData(userData.Nombre),
                 apellidos: validateData(userData.Apellidos),
@@ -297,7 +295,6 @@ function ModalAdmin(props) {
                                         );
 									}
 									
-                                    console.log("success?", success);
                                 } else {
 									var success = await createUser(stateUser);
 									setSuccess(success);
@@ -312,7 +309,6 @@ function ModalAdmin(props) {
                                         );
                                     }
 
-                                    console.log("success?", success);
                                 }
                                 // Funcion de insertar nuevo usuario
                             } else {
