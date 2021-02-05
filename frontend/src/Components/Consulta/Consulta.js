@@ -61,8 +61,10 @@ class Consulta extends Component {
 			fechaFinalAdop: null,
 		},
 
+		//Modal
 		open: false,
-		id: null
+		id: null,
+		fotoModal: null,
 	};
 
 	handleOptionsReceived = (filter, itemsSelected, replaceValue) => {
@@ -128,7 +130,6 @@ class Consulta extends Component {
 	};
 
 	handleFiltroRegistros = (registroSeleccionado) => {
-
 		this.setState({
 			tarjeta: registroSeleccionado,
 		});
@@ -153,11 +154,9 @@ class Consulta extends Component {
 	};
 
 	handleOrdenarToggle = () => {
-		this.setState(
-			{
-				ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor,
-			},
-		);
+		this.setState({
+			ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor,
+		});
 	};
 
 	formatDate = (date) => {
@@ -188,16 +187,22 @@ class Consulta extends Component {
 	};
 
 	closeModal = () => {
-		this.setState({...this.state, open: false});
+		this.setState({ ...this.state, open: false });
 	};
 
 	openModal = () => {
-		this.setState({...this.state, open: true});
+		this.setState({ ...this.state, open: true });
 	};
 
-	setID = (id) => {
-		this.setState({...this.state, id: id});
-	}
+	setID = (id, foto) => {
+		if (foto) {
+			var buffer = Buffer.from(foto.data);
+			foto = buffer.toString("utf8");
+			this.setState({ ...this.state, id: id, fotoModal: foto });
+		} else {
+			this.setState({ ...this.state, id: id, fotoModal: null });
+		}
+	};
 
 	render() {
 		return (
@@ -206,6 +211,7 @@ class Consulta extends Component {
 					<ModalConsulta
 						closeModal={this.closeModal}
 						id={this.state.id}
+						fotoModal={this.state.fotoModal}
 					/>
 				) : null}
 				<Filtros

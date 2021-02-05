@@ -8,7 +8,7 @@ function BotonPDF(props) {
 				className="generarPDFTarjeta"
 				title="Generar PDF"
 				onClick={async () => {
-					await props.setID(props.id);
+					await props.setID(props.id, props.foto);
 					props.openModal();
 				}}
 			>

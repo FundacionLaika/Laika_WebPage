@@ -128,6 +128,7 @@ export default class TGarjetaGeneral extends React.Component {
 						id={this.props.id}
 						openModal={this.props.openModal}
 						setID={this.props.setID}
+						foto={this.props.foto}
 					/>
 				</div>
 			</div>

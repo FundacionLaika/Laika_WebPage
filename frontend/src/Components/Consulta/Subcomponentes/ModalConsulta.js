@@ -87,82 +87,102 @@ function ModalConsulta(props) {
 			>
 				<Modal.Header>Expedientes</Modal.Header>
 				<Modal.Content image>
-					<Image
-						size="medium"
-						src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
-						wrapped
-					/>
-					<Modal.Description>
-						<Header>Opciones para generar PDF</Header>
-						<div>
+					<div
+						style={{
+							width: "35%",
+							height: "300px",
+						}}
+					>
+						<Image
+							circular
+							style={{
+								width: "100%",
+								height: "100%",
+							}}
+							size="medium"
+							src={
+								props.fotoModal
+									? props.fotoModal
+									: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Icecat1-300x300.svg/1200px-Icecat1-300x300.svg.png"
+							}
+						/>
+					</div>
+					<div>
+						<Modal.Description>
+							<Header>Opciones para generar PDF</Header>
 							<div>
-								<Checkbox
-									name="seleccionarTodo"
-									checked={stateCheck.seleccionarTodo}
-									label="Seleccionar todo"
-									toggle
-									onChange={() =>
-										handleChange({
-											name: "seleccionarTodo",
-											value: stateCheck.seleccionarTodo,
-										})
-									}
-								/>
+								<div>
+									<Checkbox
+										name="seleccionarTodo"
+										checked={stateCheck.seleccionarTodo}
+										label="Seleccionar todo"
+										toggle
+										onChange={() =>
+											handleChange({
+												name: "seleccionarTodo",
+												value:
+													stateCheck.seleccionarTodo,
+											})
+										}
+									/>
+								</div>
+								<div>
+									<Checkbox
+										checked={stateCheck.datosGenerales}
+										label="Datos Generales"
+										toggle
+										onChange={() =>
+											handleChange({
+												name: "datosGenerales",
+												value:
+													stateCheck.datosGenerales,
+											})
+										}
+									/>
+								</div>
+								<div>
+									<Checkbox
+										checked={stateCheck.expedienteMedico}
+										label="Expediente Médico"
+										toggle
+										onChange={() =>
+											handleChange({
+												name: "expedienteMedico",
+												value:
+													stateCheck.expedienteMedico,
+											})
+										}
+									/>
+								</div>
+								<div>
+									<Checkbox
+										checked={stateCheck.hogarTemporal}
+										label="Hogar Temporal"
+										toggle
+										onChange={() =>
+											handleChange({
+												name: "hogarTemporal",
+												value: stateCheck.hogarTemporal,
+											})
+										}
+									/>
+								</div>
+								<div>
+									<Checkbox
+										checked={stateCheck.adopcion}
+										label="Adopción"
+										toggle
+										onChange={() =>
+											handleChange({
+												name: "adopcion",
+												value: stateCheck.adopcion,
+											})
+										}
+									/>
+								</div>
 							</div>
-							<div>
-								<Checkbox
-									checked={stateCheck.datosGenerales}
-									label="Datos Generales"
-									toggle
-									onChange={() =>
-										handleChange({
-											name: "datosGenerales",
-											value: stateCheck.datosGenerales,
-										})
-									}
-								/>
-							</div>
-							<div>
-								<Checkbox
-									checked={stateCheck.expedienteMedico}
-									label="Expediente Médico"
-									toggle
-									onChange={() =>
-										handleChange({
-											name: "expedienteMedico",
-											value: stateCheck.expedienteMedico,
-										})
-									}
-								/>
-							</div>
-							<div>
-								<Checkbox
-									checked={stateCheck.hogarTemporal}
-									label="Hogar Temporal"
-									toggle
-									onChange={() =>
-										handleChange({
-											name: "hogarTemporal",
-											value: stateCheck.hogarTemporal,
-										})
-									}
-								/>
-							</div>
-							<div>
-								<Checkbox
-									checked={stateCheck.adopcion}
-									label="Adopción"
-									toggle
-									onChange={() =>
-										handleChange({
-											name: "adopcion",
-											value: stateCheck.adopcion,
-										})
-									}
-								/>
-							</div>
-						</div>
-					</Modal.Description>
+						</Modal.Description>
+					</div>
 				</Modal.Content>
 				<Modal.Actions>
 					<Button
