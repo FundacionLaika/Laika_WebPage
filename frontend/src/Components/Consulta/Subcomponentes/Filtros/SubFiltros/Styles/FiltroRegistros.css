@@ -8,12 +8,11 @@
     width: 100%;
     height: 100%;
     font-family: 'Raleway', sans-serif;
-    background-color: white;
+    background-color: transparent;
 
     --menu-item-size: 300%;
-    --green-color: #6cbead;
-    --blue-color: #099c95;
-    --dark-green-color: #175b52;
+    --botonInactivo: #c3aed6;
+    --botonActivo: #8675a9;
     --white-color: #FFF;
     --gray-color: #EDEDED;
     --container-width: 100%;
@@ -38,11 +37,12 @@
     padding: 0 4%;
     margin: .1%;
     transition: 0.5s linear all;
-    background: var(--green-color);
-    color: var(--dark-green-color);
+    background: var(--botonInactivo);
+    color: var(--botonActivo);
     cursor: pointer;
     font-size: 16px;
     user-select: none;
+    font-weight: bold;
 }
 
 .main-menu > li:not(.with-submenu) {
@@ -67,25 +67,25 @@
 }
 
 .main-menu > li:hover:not(.active) {
-    background: linear-gradient(to right, var(--green-color), var(--blue-color));
+    background: var(--botonInactivo);
     color: var(--white-color);
 }
 
 .main-menu > li:active:not(.active),
 .main-menu > li:active:not(.with-submenu){
-    background: var(--blue-color);
+    background: var(--botonActivo);
     color: var(--white-color);
 }
 
 .main-menu > li:hover i:not(li.active) {
-    color: #175c58;
+    color: #ffffff;
 }
 
 .main-menu .active {
     color: var(--white-color);
-    background: var(--blue-color);
+    background: var(--botonActivo);
     cursor: default;
-    text-shadow: 1px 1px 1px var(--dark-green-color);
+    text-shadow: 1px 1px 1px var(--botonActivo);
     font-size: 16px;
 }
 

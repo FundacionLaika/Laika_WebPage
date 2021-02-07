@@ -24,15 +24,42 @@
 	height: 1vh;
 }
 
-.user-card  i {
-	align-self: flex-end;
-	cursor: pointer;
-    margin-bottom: auto;
-    font-size: 1.5em;
+.cardIcons {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	width: 100%;
+	height: 1.75em;
 }
 
+.editIcon {
+
+	cursor: pointer;
+    margin-bottom: auto;
+	font-size: 1.5em;
+	grid-row: 1;
+	grid-column: 1;
+}
+
+.editIcon > i {
+	float: left;
+}
+
+.deleteIcon {
+	cursor: pointer;
+    margin-bottom: auto;
+	font-size: 1.5em;
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.deleteIcon > i {
+	float: right;
+}
+
+
+
 .user-card i:hover {
-	font-size: 1.75em;
+	font-size: 1.5em;
 }
 
 .user-card .image-wrapper {

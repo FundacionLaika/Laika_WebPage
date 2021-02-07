@@ -282,8 +282,9 @@ function ModalAdmin(props) {
                                 stateUser.rol &&
                                 stateUser.contrasena
                             ) {
+                                var success;
                                 if (props.userID) {
-                                    var success = await  updateUser(
+                                    success = await  updateUser(
                                         props.userID,
                                         stateUser,
                                         props.modifyUser
@@ -301,7 +302,7 @@ function ModalAdmin(props) {
 									
                                     console.log("success?", success);
                                 } else {
-									var success = await createUser(stateUser, props.addUser);
+									success = await createUser(stateUser, props.addUser);
 									setSuccess(success);
 
                                     if (success) {

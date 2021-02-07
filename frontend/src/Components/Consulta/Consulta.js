@@ -186,7 +186,7 @@ class Consulta extends Component {
 
 	render() {
 		return (
-			<div className="consulta">
+			<div className="consulta" style={{backgroundImage: `url("/9.png")`}}>
 				<Filtros
 					filtros={this.state}
 					handleFiltroRegistros={this.handleFiltroRegistros}

@@ -96,6 +96,15 @@ function AdminInfo(props) {
         }));
     }
 
+    function removeUser(userID) {
+        console.log("hay hola", userID, state);
+        setState(
+			(state) => ({
+				users: state.users.filter((user) => user.ID_Usuario !== userID),
+			})
+		);
+    }
+
     return (
         <div className="adminContainer">
             <div className="adminTitle">
@@ -112,6 +121,7 @@ function AdminInfo(props) {
                         user={user}
                         openModal={openModal}
                         changeUserID={changeUserID}
+                        removeUser={removeUser}
                     />
                 ))}
             </div>
