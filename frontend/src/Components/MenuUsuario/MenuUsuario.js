@@ -8,7 +8,7 @@ import AdminInfo from "./Subcomponents/AdminInfo";
 function MenuUsuario(props) {
 
 	const [borderState, setBorderState] = useState({
-		btnGeneral: "3px solid blue",
+		btnGeneral: "3px solid #00acee",
 		btnSeguridad: "",
 		btnAdmin: "",
 	});
@@ -20,7 +20,7 @@ function MenuUsuario(props) {
 	});
 
 	function handleClick(name) {
-		setBorderState({ [name]: "3px solid blue" });
+		setBorderState({ [name]: "3px solid #00acee" });
 		setForegroundState({ [name]: "#000" });
 	}
 

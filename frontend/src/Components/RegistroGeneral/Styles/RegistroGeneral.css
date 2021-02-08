@@ -53,14 +53,17 @@
 	padding: .5% .5%;
 	background-color:  white;
 	
+	
 }
 
 .BarraLateralGeneral {
-	background-color: #588da8;
+	background-color: #8ac6d1;
 	grid-column: 4;
 	grid-row: 1 / 11;
 	display: grid;
 }
+
+
 
 .idLabelGeneral {
 	grid-row: 1;

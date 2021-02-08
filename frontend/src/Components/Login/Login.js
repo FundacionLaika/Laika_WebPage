@@ -80,11 +80,11 @@ function Login(props) {
 							const json = await data.json();
 
 							if (data.status === 200) {
-								props.setAuth(true);
 								props.saveUserSession(
 									json.ID_Usuario,
 									true
 								);
+								props.setAuth(true);
 								handleClick();
 							}
 						}}

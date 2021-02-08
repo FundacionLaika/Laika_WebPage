@@ -1,6 +1,6 @@
 .user-card {
 	background: #fff;
-	height: 45vh;
+	height: 100%;
 	border-radius: .9em;
 	box-shadow: 0px 4px 7px 0px #ebebeb;
 	display: flex;
@@ -59,14 +59,13 @@
 
 
 .user-card i:hover {
-	font-size: 1.5em;
-}
+transform: scale(1.25);}
 
 .user-card .image-wrapper {
 	border-radius: 50%;
 	height: 100px;
 	width: 100px;
-	margin-bottom: auto;
+	margin-bottom: 10%;
 }
 .user-card .image-wrapper img {
 	border-radius: 50%;
@@ -94,7 +93,7 @@
 	margin: 0px -20px;
 	text-align: center;
 	margin-top: auto;
-    padding: 10px 0px;
+    padding: 5% 0px;
     border-radius: 0 0 0.9em 0.9em;
 }
 
@@ -106,7 +105,7 @@
 .rowUser {
     display: grid;
     grid-template-columns: 20% 80%;
-    padding-top: 3vh;
+    padding: 7.5%;
 }
 
 .rowUser > i {

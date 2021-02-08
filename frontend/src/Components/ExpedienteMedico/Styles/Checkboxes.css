@@ -1,6 +1,6 @@
 .cb > label {
 	display: inline-block;
-	color: #fff;
+	color: rgb(255, 0, 0);
 	cursor: pointer;
 	position: relative;
 }
@@ -11,7 +11,7 @@
 	width: 25px;
 	height: 25px;
 	transform-origin: center;
-	border: 2px solid #fff;
+	border: 2px solid rgb(61, 61, 61);
 	border-radius: 50%;
 	vertical-align: -6px;
 	margin-right: 10px;
@@ -23,11 +23,11 @@
 	width: 0px;
 	height: 2px;
 	border-radius: 2px;
-	background: #fff;
+	background: rgb(71, 71, 71);
 	position: absolute;
 	transform: rotate(45deg);
-	top: 13px;
-	left: 9px;
+	top: .8em;
+	left: .5em;
 	transition: width 50ms ease 50ms;
 	transform-origin: 0% 0%;
 }
@@ -36,11 +36,11 @@
 	width: 0;
 	height: 2px;
 	border-radius: 2px;
-	background: #fff;
+	background: rgb(71, 71, 71);
 	position: absolute;
 	transform: rotate(305deg);
-	top: 16px;
-	left: 10px;
+	top: 1em;
+	left: .6em;
 	transition: width 50ms ease;
 	transform-origin: 0% 0%;
 }
@@ -71,8 +71,8 @@ label:hover span:after {
 	transition: width 150ms ease 100ms;
 }
 .cb > input[type="checkbox"]:checked + label:hover span {
-	background-color: #fff;
-	transform: scale(1);
+	background-color: rgb(255, 255, 255);
+	transform: scale(1.1);
 }
 .cb > input[type="checkbox"]:checked + label:hover span:after {
 	width: 10px;

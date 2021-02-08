@@ -126,10 +126,10 @@ function UserInfo(props) {
 					/>
 				</div>
 				<div className="blockLabel">
-					<label> Nombre: {state.nombre}</label>
+					<label> Nombre: <span> {state.nombre} </span></label>
 				</div>
 				<div className="blockLabel2">
-					<label>Rol: {state.rol} </label>
+					<label>Rol: <span> {state.rol} </span> </label>
 				</div>
 			</div>
 

@@ -8,6 +8,7 @@ class Foto extends Component {
 				<label htmlFor={this.props.id}>
 					<div className={this.props.foto ? "frame" : ""}>
 						<img
+							style={{ cursor: "pointer"}}
 							className={this.props.foto ? "sizeFoto" : "mw5"}
 							src={
 								this.props.foto

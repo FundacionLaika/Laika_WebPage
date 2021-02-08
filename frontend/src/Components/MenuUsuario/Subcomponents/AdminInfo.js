@@ -66,12 +66,10 @@ function AdminInfo(props) {
             Rol: newUser.rol,
             CONTRASENA: newUser.contrasena,
             Foto: newUser.foto,
-        }
-        setState(
-			(state) => ({
-				users: [newUserM, ...state.users],
-			})
-		);
+        };
+        setState((state) => ({
+            users: [newUserM, ...state.users],
+        }));
     }
 
     function modifyUser(newUser) {
@@ -87,9 +85,8 @@ function AdminInfo(props) {
                         Rol: newUser.rol,
                         CONTRASENA: newUser.contrasena,
                         Foto: newUser.foto,
-                    }
-                } 
-                else {
+                    };
+                } else {
                     return user;
                 }
             }),
@@ -98,11 +95,9 @@ function AdminInfo(props) {
 
     function removeUser(userID) {
         console.log("hay hola", userID, state);
-        setState(
-			(state) => ({
-				users: state.users.filter((user) => user.ID_Usuario !== userID),
-			})
-		);
+        setState((state) => ({
+            users: state.users.filter((user) => user.ID_Usuario !== userID),
+        }));
     }
 
     return (
@@ -112,6 +107,19 @@ function AdminInfo(props) {
                     <i className="fa fa-users"></i>
                 </div>
                 <div className="adminTitle2">Administración de usuarios</div>
+            </div>
+
+            <div className="btnGuardarAdmin">
+                <button
+                    className="btn btn-4 btn-sep icon-plus"
+                    onClick={() => {
+                        setUserID("");
+                        setOpen(true);
+                    }}
+                >
+                    Agregar Usuario
+                </button>
+
             </div>
 
             <div className="user-cards">
@@ -126,32 +134,15 @@ function AdminInfo(props) {
                 ))}
             </div>
 
-            <div className="gridUsuarios">
-                <button
-                    className="generarPDFTarjeta"
-                    title="Generar PDF"
-                    onClick={() => {
-                        setUserID("");
-                        setOpen(true);
-                    }}
-                >
-                    <i
-                        aria-hidden="true"
-                        className="fa fa-file-pdf-o fa-fw"
-                    ></i>
-                    <p> Registrar nuevo usuario</p>
-                </button>
-                {open ? (
-                    <ModalAdmin
-                        closeModal={closeModal}
-                        userID={userID}
-                        fetchUsers={fetchUsers}
-                        modifyUser={modifyUser}
-                        addUser={addUser}
-                    />
-                ) : null}
-            </div>
-            <div className="btnGuardarAdmin"></div>
+            {open ? (
+                <ModalAdmin
+                    closeModal={closeModal}
+                    userID={userID}
+                    fetchUsers={fetchUsers}
+                    modifyUser={modifyUser}
+                    addUser={addUser}
+                />
+            ) : null}
         </div>
     );
 }

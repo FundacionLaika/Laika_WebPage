@@ -18,7 +18,7 @@
 }
 
 .btn:after {
-    content: '';
+    content: "";
     position: absolute;
     z-index: -1;
     -webkit-transition: all 0.3s;
@@ -28,7 +28,7 @@
 
 /* Pseudo elements for icons */
 .btn:before {
-    font-family: 'FontAwesome';
+    font-family: "FontAwesome";
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -38,14 +38,13 @@
     -webkit-font-smoothing: antialiased;
 }
 
-
 /* Icon separator */
 .btn-sep {
     padding: 1% 1.5% 1% 7.5%;
 }
 
 .btn-sep:before {
-    background: rgba(0,0,0,0.15);
+    background: rgba(0, 0, 0, 0.15);
 }
 
 /* Button 4 */
@@ -75,22 +74,10 @@
 
 /* Icons */
 
-.icon-cart:before {
-    content: "\f07a";
-}
-
-.icon-heart:before {
-    content: "\f55a";
-}
-
-.icon-info:before {
-    content: "\f05a";
-}
-
-.icon-send:before {
-    content: "\f1d8";
-}
-
 .icon-plus:before {
     content: "\f055";
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
 }
