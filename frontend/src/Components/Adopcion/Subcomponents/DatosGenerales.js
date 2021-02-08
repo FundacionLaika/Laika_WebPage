@@ -21,7 +21,7 @@ export default class DatosGenerales extends React.Component {
 				</div>
 				<div className="adoptante">
 					<label htmlFor="adoptante" className="inp">
-						<input
+						<input autocomplete="off"
 							type="text"
 							id="adoptante"
 							name="adoptante"
@@ -35,7 +35,7 @@ export default class DatosGenerales extends React.Component {
 				</div>
 				<div className="adoptado">
 					<label htmlFor="adoptado" className="inp">
-						<input
+						<input autocomplete="off"
 							type="text"
 							id="adoptado"
 							name="adoptado"
@@ -71,7 +71,7 @@ export default class DatosGenerales extends React.Component {
 				</div>
 				<div className="telefonoAdopcion">
 					<label htmlFor="telefono" className="inp">
-						<input
+						<input autocomplete="off"
 							type="text"
 							id="telefono"
 							name="telefono"

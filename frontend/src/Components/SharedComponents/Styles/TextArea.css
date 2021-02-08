@@ -30,7 +30,7 @@
 }
 
 .form-field__bar {
-	border-bottom: 2px solid  #0077FF;
+	border-bottom: 2px solid  #00acee;
 	bottom: 0;
 	content: "";
 	display: block;
@@ -77,7 +77,7 @@
 .form-field__input:focus ~ .form-field__label,
 .form-field__textarea:focus ~ .form-field__label,
 .form-field__textarea:not(:empty) ~ .form-field__label {
-	color:  #0077FF;
+	color:  #00acee;
 	font-size: 1rem;
 	-webkit-transform: translateY(-14px);
     transform: translateY(-14px);
@@ -85,7 +85,7 @@
 }
 .form-field__input:focus ~ .form-field__bar,
 .form-field__textarea:focus ~ .form-field__bar {
-	border-bottom: 2px solid  #0077FF;
+	border-bottom: 2px solid  #00acee;
 	-webkit-transform: scaleX(150);
     transform: scaleX(150);
     

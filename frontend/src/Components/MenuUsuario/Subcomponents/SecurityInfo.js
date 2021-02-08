@@ -70,7 +70,7 @@ function SecurityInfo(props) {
 			</div>
 			<div className="securityPWD">
 				<label htmlFor="contrasena" className="inp">
-					<input
+					<input autocomplete="off"
 						id="contrasena"
 						type="password"
 						name="contrasena"
@@ -84,7 +84,7 @@ function SecurityInfo(props) {
 			</div>
 			<div className="securityCPWD">
 				<label htmlFor="confirmacion" className="inp">
-					<input
+					<input autocomplete="off"
 						id="confirmacion"
 						type="password"
 						name="confirmacion"
@@ -97,7 +97,7 @@ function SecurityInfo(props) {
 				</label>
 			</div>
 			<div className="btnSecurityBlock">
-				<input
+				<input autocomplete="off"
 					className="btnSecurity"
 					type="button"
 					value="Guardar"

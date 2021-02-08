@@ -8,6 +8,7 @@ class Foto extends Component {
 				<label htmlFor={this.props.id}>
 					<div className={this.props.foto ? "frame" : ""}>
 						<img
+							style={{ cursor: "pointer"}}
 							className={this.props.foto ? "sizeFoto" : "mw5"}
 							src={
 								this.props.foto
@@ -19,7 +20,7 @@ class Foto extends Component {
 					</div>
 				</label>
 
-				<input
+				<input autocomplete="off"
 					type="file"
 					style={{ display: "none" }}
 					id={this.props.id}

@@ -46,7 +46,7 @@ class ContactoHT extends Component {
 
 				<div className="nombreHT">
 					<label htmlFor="nombreHT" className="inp">
-						<input
+						<input autocomplete="off"
 							type="text"
 							id="nombreHT"
 							name="nombreHT"
@@ -61,7 +61,7 @@ class ContactoHT extends Component {
 
 				<div className="telefonoHT">
 					<label htmlFor="telefonoHT" className="inp">
-						<input
+						<input autocomplete="off"
 							type="text"
 							id="telefonoHT"
 							name="telefonoHT"

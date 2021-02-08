@@ -25,7 +25,7 @@ class Esterilizacion extends Component {
 				<div className="inputEsterilizado">
 					<div className="switch3 center">
 						<div className="quality3" id="radio-especie">
-							<input
+							<input autocomplete="off"
 								type="radio"
 								id="idEsterilizadoSi"
 								name="esterilizado"
@@ -36,7 +36,7 @@ class Esterilizacion extends Component {
 							<label htmlFor="idEsterilizadoSi">Sí</label>
 						</div>
 						<div className="quality3">
-							<input
+							<input autocomplete="off"
 								type="radio"
 								id="idEsterilizadoNo"
 								name="esterilizado"
@@ -55,7 +55,7 @@ class Esterilizacion extends Component {
 				<div className="inputCitaEsterilizacion">
 					<div className="switch3 center">
 						<div className="quality3" id="radio-especie">
-							<input
+							<input autocomplete="off"
 								type="radio"
 								id="idCitaEsterilzacionSi"
 								name="citaEsterilizacion"
@@ -66,7 +66,7 @@ class Esterilizacion extends Component {
 							<label htmlFor="idCitaEsterilzacionSi">Sí</label>
 						</div>
 						<div className="quality3">
-							<input
+							<input autocomplete="off"
 								type="radio"
 								id="idCitaEsterilzacionNo"
 								name="citaEsterilizacion"

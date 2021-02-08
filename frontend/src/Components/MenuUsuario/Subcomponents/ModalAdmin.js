@@ -27,11 +27,10 @@ async function fetchUser(userID) {
         const foto = buffer.toString("utf8");
         user.Foto = foto;
     }
-
     return user;
 }
 
-async function updateUser(userID, userData) {
+async function updateUser(userID, userData, modifyUser) {
     var response = await fetch("http://localhost:3001/usuario", {
         method: "put",
         headers: { "Content-Type": "application/json" },
@@ -40,10 +39,11 @@ async function updateUser(userID, userData) {
 
     if (response.status !== 200) return false;
 
+    modifyUser({ ID_Usuario: userID, ...userData });
     return true;
 }
 
-async function createUser(userData) {
+async function createUser(userData, addUser) {
     var response = await fetch("http://localhost:3001/signup", {
         method: "post",
         headers: { "Content-Type": "application/json" },
@@ -52,6 +52,9 @@ async function createUser(userData) {
 
     if (response.status !== 200) return false;
 
+    var userID = await response.json();
+    userID = userID[0];
+    addUser({ ID_Usuario: userID, ...userData });
     return true;
 }
 
@@ -73,8 +76,7 @@ function ModalAdmin(props) {
 	
 	const [success, setSuccess] = React.useState(true);
 
-
-    const [stateUser, setStateUser] = useState({
+   const [stateUser, setStateUser] = useState({
         nombre: "",
         apellidos: "",
         correo: "",
@@ -92,7 +94,7 @@ function ModalAdmin(props) {
         setStateUser({ ...stateUser, rol: data.value });
     }
 
-    useEffect(() => {
+    useEffect(() => {           
         if (!props.userID) return;
         async function fetchData() {
             const userData = await fetchUser(props.userID);
@@ -164,7 +166,7 @@ function ModalAdmin(props) {
                         <div className="containerUserRG">
                             <div className="blockModal">
                                 <div className="block1RG">
-                                    <Input
+                                    <input autocomplete="off"
                                         size="large"
                                         icon="address card"
                                         iconPosition="left"
@@ -175,7 +177,7 @@ function ModalAdmin(props) {
                                     />
                                 </div>
                                 <div className="block2RG">
-                                    <Input
+                                    <input autocomplete="off"
                                         size="large"
                                         icon="address book"
                                         iconPosition="left"
@@ -189,7 +191,7 @@ function ModalAdmin(props) {
 
                             <div className="blockModal">
                                 <div className="block1RG">
-                                    <Input
+                                    <input autocomplete="off"
                                         size="large"
                                         icon="envelope"
                                         iconPosition="left"
@@ -200,7 +202,7 @@ function ModalAdmin(props) {
                                     />
                                 </div>
                                 <div className="block2RG">
-                                    <Input
+                                    <input autocomplete="off"
                                         size="large"
                                         icon="call"
                                         iconPosition="left"
@@ -232,7 +234,7 @@ function ModalAdmin(props) {
                                     />
                                 </div>
                                 <div className="block2RG">
-                                    <Input
+                                    <input autocomplete="off"
                                         size="large"
                                         icon="key"
                                         iconPosition="left"
@@ -279,10 +281,12 @@ function ModalAdmin(props) {
                                 stateUser.rol &&
                                 stateUser.contrasena
                             ) {
+                                var success;
                                 if (props.userID) {
-                                    var success = await  updateUser(
+                                    success = await  updateUser(
                                         props.userID,
-                                        stateUser
+                                        stateUser,
+                                        props.modifyUser
 									);
 									setSuccess(success);
                                     if (success) {
@@ -296,7 +300,7 @@ function ModalAdmin(props) {
 									}
 									
                                 } else {
-									var success = await createUser(stateUser);
+									success = await createUser(stateUser, props.addUser);
 									setSuccess(success);
 
                                     if (success) {
@@ -348,7 +352,6 @@ function ModalAdmin(props) {
 									handleRestablecer();
 									setState({open: false});
 									props.closeModal();
-									props.fetchUsers();
 								}
 							}}
                         >

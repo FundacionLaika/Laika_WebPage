@@ -18,7 +18,7 @@
 	grid-row: 3 / 10;
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
-	background-color: #f9ecec;
+	background-color: white;
 }
 
 .alertHT {
@@ -55,11 +55,11 @@
 .BotonesRegistroHT {
 	grid-column: 1 / 4;
 	grid-row: 10;
-	background-color: #f9ecec;
+	background-color: white;
 }
 
 .BarraLateralHT {
-	background-color: #ffb4ac;
+	background-color: #8ac6d1;
 	grid-column: 4;
 	grid-row: 1 / 11;
 	display: grid;

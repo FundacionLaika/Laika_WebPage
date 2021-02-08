@@ -18,7 +18,7 @@
 	grid-row: 3 / 10;
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
-	background-color: #f4eeff;
+	background-color: white;
 }
 
 .alertAdop {
@@ -61,11 +61,11 @@
 .BotonesRegistroAdopcion {
 	grid-column: 1 / 4;
 	grid-row: 10;
-	background-color: #dddddd;
+	background-color: white;
 }
 
 .BarraLateralAdopcion {
-	background-color: #a374d5;
+	background-color: #8ac6d1;
 	grid-column: 4;
 	grid-row: 1 / 11;
 	display: grid;

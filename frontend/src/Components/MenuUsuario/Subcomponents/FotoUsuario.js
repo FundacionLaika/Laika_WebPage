@@ -9,7 +9,7 @@ class FotoUsuario extends Component {
                     <img className="fotoUsuario1" src={this.props.foto ? this.props.foto : "/user_new.png"} alt="Foto" />
                 </label>
 
-                <input
+                <input autocomplete="off"
                     type="file"
                     style={{ display: "none" }}
                     id={this.props.id}

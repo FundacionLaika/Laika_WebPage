@@ -73,7 +73,7 @@
 /* active state */
 .select-text:focus ~ .select-label,
 .select-text:valid ~ .select-label {
-    color: #0077ff;
+    color: #00acee;
     top: -8px;
     transition: 0.2s ease all;
     font-size: 14px;
@@ -93,7 +93,7 @@
     width: 0;
     bottom: 1px;
     position: absolute;
-    background: #0077ff;
+    background: #00acee;
     transition: 0.2s ease all;
 }
 

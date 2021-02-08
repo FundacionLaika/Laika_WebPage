@@ -19,8 +19,8 @@ async function fetchUsers() {
             foto = buffer.toString("utf8");
         }
         user.Foto = foto;
-	});
-	
+    });
+
     return users;
 }
 
@@ -56,6 +56,50 @@ function AdminInfo(props) {
         setOpen(true);
     }
 
+    function addUser(newUser) {
+        const newUserM = {
+            ID_Usuario: newUser.ID_Usuario,
+            Nombre: newUser.nombre,
+            Apellidos: newUser.apellidos,
+            Correo: newUser.correo,
+            Telefono: newUser.telefono,
+            Rol: newUser.rol,
+            CONTRASENA: newUser.contrasena,
+            Foto: newUser.foto,
+        };
+        setState((state) => ({
+            users: [newUserM, ...state.users],
+        }));
+    }
+
+    function modifyUser(newUser) {
+        setState((state) => ({
+            users: state.users.map((user) => {
+                if (user.ID_Usuario === newUser.ID_Usuario) {
+                    return {
+                        ID_Usuario: newUser.ID_Usuario,
+                        Nombre: newUser.nombre,
+                        Apellidos: newUser.apellidos,
+                        Correo: newUser.correo,
+                        Telefono: newUser.telefono,
+                        Rol: newUser.rol,
+                        CONTRASENA: newUser.contrasena,
+                        Foto: newUser.foto,
+                    };
+                } else {
+                    return user;
+                }
+            }),
+        }));
+    }
+
+    function removeUser(userID) {
+        console.log("hay hola", userID, state);
+        setState((state) => ({
+            users: state.users.filter((user) => user.ID_Usuario !== userID),
+        }));
+    }
+
     return (
         <div className="adminContainer">
             <div className="adminTitle">
@@ -65,36 +109,40 @@ function AdminInfo(props) {
                 <div className="adminTitle2">Administración de usuarios</div>
             </div>
 
+            <div className="btnGuardarAdmin">
+                <button
+                    className="btn btn-4 btn-sep icon-plus"
+                    onClick={() => {
+                        setUserID("");
+                        setOpen(true);
+                    }}
+                >
+                    Agregar Usuario
+                </button>
+
+            </div>
+
             <div className="user-cards">
                 {state.users.map((user) => (
                     <UserCard
-						key={user.ID_Usuario}
+                        key={user.ID_Usuario}
                         user={user}
                         openModal={openModal}
                         changeUserID={changeUserID}
+                        removeUser={removeUser}
                     />
                 ))}
             </div>
 
-            <div className="gridUsuarios">
-                <button
-                    className="generarPDFTarjeta"
-                    title="Generar PDF"
-                    onClick={() => {
-						setUserID("");
-                        setOpen(true);
-                    }}
-                >
-                    <i
-                        aria-hidden="true"
-                        className="fa fa-file-pdf-o fa-fw"
-                    ></i>
-                </button>
-                {open ? (
-                    <ModalAdmin closeModal={closeModal} userID={userID} fetchUsers={fetchUsers} />
-                ) : null}
-            </div>
-            <div className="btnGuardarAdmin"></div>
+            {open ? (
+                <ModalAdmin
+                    closeModal={closeModal}
+                    userID={userID}
+                    fetchUsers={fetchUsers}
+                    modifyUser={modifyUser}
+                    addUser={addUser}
+                />
+            ) : null}
         </div>
     );
 }

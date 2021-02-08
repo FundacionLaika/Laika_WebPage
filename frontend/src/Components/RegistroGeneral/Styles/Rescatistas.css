@@ -34,7 +34,7 @@
 }
 
 .rowRescatista:hover {
-	background-color: #d3e4eb;
+	background-color: #00abee56;
 }
 
 .rowRescatistaText {
@@ -54,6 +54,7 @@
 .botonBorrarRescatista > button {
     border: none !important;
     background-color: transparent;
+	cursor: pointer;
 }
 
 .botonBorrarRescatista > button:hover {
@@ -62,7 +63,7 @@
 }
 
 .botonBorrarRescatista > button > i:hover {
-	color: #2c00cc;
+	color: #ff3c00;
     font-size: 140%;
     outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
@@ -75,4 +76,8 @@
 
 .botonBorrarRescatista > button > i {
 	font-size: 140%;
+}
+
+.ui.button {
+	margin: 0;
 }

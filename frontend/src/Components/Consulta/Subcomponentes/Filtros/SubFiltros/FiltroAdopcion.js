@@ -75,7 +75,7 @@ export default class FiltroAdopcion extends React.Component {
 								}
 								placeholderText="Fecha Inicio"
 								customInput={
-									<Input
+									<input autocomplete="off"
 										icon="calendar"
 										iconPosition="left"
 									/>
@@ -101,7 +101,7 @@ export default class FiltroAdopcion extends React.Component {
 								}
 								placeholderText="Fecha Final"
 								customInput={
-									<Input
+									<input autocomplete="off"
 										icon="calendar"
 										iconPosition="left"
 									/>

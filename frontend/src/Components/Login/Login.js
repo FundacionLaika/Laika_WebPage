@@ -81,14 +81,14 @@ function Login(props) {
 					</h4> */}
 				</div>
 				<div className="formLogin">
-					<input
+					<input autocomplete="off"
 						type="email"
 						className="formF animation a3"
 						placeholder="  &#xf0e0;   Correo electrónico"
 						onChange={handleChange}
 						name="correo"
 					/>
-					<input
+					<input autocomplete="off"
 						type="password"
 						className="formF animation a4"
 						placeholder="  &#xf084;   Contraseña"
@@ -105,8 +105,12 @@ function Login(props) {
 							const json = await data.json();
 
 							if (data.status === 200) {
+								props.saveUserSession(
+									json.ID_Usuario,
+									true
+								);
 								props.setAuth(true);
-								props.saveUserSession(json.ID_Usuario, true);
+
 								handleClick();
 							} else if (data.status === 404) {
 								setAlertState({

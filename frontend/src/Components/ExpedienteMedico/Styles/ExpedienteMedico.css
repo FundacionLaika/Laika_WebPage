@@ -38,7 +38,7 @@
 	grid-row: 4 / 10;
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
-	background-color: #e0ece4;
+	background-color: white;
 }
 
 .alertExp {
@@ -49,11 +49,11 @@
 .BotonesRegistroMedico {
 	grid-column: 1 / 4;
 	grid-row: 10;
-	background-color: #e0ece4;
+	background-color: white;
 }
 
 .BarraLateralMedico {
-	background-color: #89c9b8;
+	background-color: #8ac6d1;
 	grid-column: 4;
 	grid-row: 1 / 11;
 	display: grid;

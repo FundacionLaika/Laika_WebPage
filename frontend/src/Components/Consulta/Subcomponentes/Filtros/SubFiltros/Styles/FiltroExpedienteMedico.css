@@ -2,7 +2,11 @@
     display: grid;
     grid-auto-columns: minmax(calc(100%/7), calc(100%/3));
     grid-column-gap: 1em;
+    padding: 2% 3%;
     padding-right: 7.5%;
+    background-color: rgba(0, 0, 0, 0.493);
+
+    border-radius: 1.2em;
 
 }
 

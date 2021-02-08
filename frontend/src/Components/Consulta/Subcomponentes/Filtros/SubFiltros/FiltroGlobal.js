@@ -80,7 +80,7 @@ export default class FiltroGlobal extends React.Component {
 		return (
 			<div className="filtroGlobal">
 				<div className="barraBusqueda">
-					<input
+					<input autocomplete="off"
 						className="search__input"
 						type="text"
 						placeholder="Buscar"
@@ -93,13 +93,16 @@ export default class FiltroGlobal extends React.Component {
 				<div className="seleccionarBusqueda">
 					<Dropdown
 						style={{
-							backgroundColor: "#aacfcf",
+							backgroundColor: "#3c9099",
 							borderRadius: "0 1.1rem 1.1rem 0",
 							textAlign: "center",
 							alignSelf: "center",
 							fontFamily: "Raleway",
 							fontSize: "1em",
+							color: "white",
+							
 						}}
+
 						className="dropdownBusqueda"
 						fluid
 						selection

@@ -206,7 +206,8 @@ class Consulta extends Component {
 
 	render() {
 		return (
-			<div className="consulta">
+
+			<div className="consulta"  style={{backgroundImage: `url("/9.png")`}}>
 				{this.state.open ? (
 					<ModalConsulta
 						closeModal={this.closeModal}
@@ -214,7 +215,8 @@ class Consulta extends Component {
 						fotoModal={this.state.fotoModal}
 					/>
 				) : null}
-				<Filtros
+
+    <Filtros
 					filtros={this.state}
 					handleFiltroRegistros={this.handleFiltroRegistros}
 					handleList={this.handleList}

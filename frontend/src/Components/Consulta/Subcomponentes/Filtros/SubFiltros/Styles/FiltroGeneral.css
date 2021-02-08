@@ -1,6 +1,9 @@
 .filtroGeneral {
     display: grid;
     grid-auto-columns: minmax(calc(100%/14), calc(100%/14));
+    background-color: rgba(0, 0, 0, 0.493);
+    padding: 2% 3%;
+    border-radius: 1.2em;
 }
 
 .filtroGenero {
