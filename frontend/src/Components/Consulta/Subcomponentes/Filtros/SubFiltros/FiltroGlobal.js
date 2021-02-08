@@ -80,7 +80,7 @@ export default class FiltroGlobal extends React.Component {
 		return (
 			<div className="filtroGlobal">
 				<div className="barraBusqueda">
-					<input
+					<input autocomplete="off"
 						className="search__input"
 						type="text"
 						placeholder="Buscar"

@@ -48,7 +48,7 @@ export default class RowForm extends React.Component {
 					onChange={this.handleChange}
 					placeholder="Accion"
 				/>
-				<input
+				<input autocomplete="off"
 					id="fecha"
 					type="date"
 					name="fecha"

@@ -16,7 +16,7 @@ class Diagnostico extends Component {
 					<div id="cbs-diag">
 						<div id="row-diag">
 							<div className="cb cb-diag">
-								<input
+								<input autocomplete="off"
 									type="checkbox"
 									id="atropellamiento"
 									name="atropellamiento"
@@ -35,7 +35,7 @@ class Diagnostico extends Component {
 
 						<div id="row-diag">
 							<div className="cb cb-diag">
-								<input
+								<input autocomplete="off"
 									type="checkbox"
 									name="tvt"
 									id="tvt"
@@ -54,7 +54,7 @@ class Diagnostico extends Component {
 
 						<div id="row-diag">
 							<div className="cb cb-diag">
-								<input
+								<input autocomplete="off"
 									type="checkbox"
 									name="sarnaPiel"
 									value="sarnaPiel"
@@ -73,7 +73,7 @@ class Diagnostico extends Component {
 
 						<div id="row-diag">
 							<div className="cb cb-diag">
-								<input
+								<input autocomplete="off"
 									type="checkbox"
 									id="viral"
 									name="viral"
@@ -95,7 +95,7 @@ class Diagnostico extends Component {
 				<div id="bloque2Diag">
 					<div id="row-diag">
 						<div className="cb cb-diag">
-							<input
+							<input autocomplete="off"
 								type="checkbox"
 								id="embarazo"
 								name="embarazo"
@@ -114,7 +114,7 @@ class Diagnostico extends Component {
 
 					<div id="row-diag">
 						<div className="cb cb-diag">
-							<input
+							<input autocomplete="off"
 								type="checkbox"
 								id="cachorros"
 								name="cachorros"
@@ -133,7 +133,7 @@ class Diagnostico extends Component {
 
 					<div id="row-diag">
 						<div className="cb cb-diag">
-							<input
+							<input autocomplete="off"
 								id="hemoparasitos"
 								type="checkbox"
 								name="hemoparasitos"
@@ -152,7 +152,7 @@ class Diagnostico extends Component {
 
 					<div id="row-diag">
 						<div className="cb cb-diag">
-							<input
+							<input autocomplete="off"
 								id="otro"
 								type="checkbox"
 								name="otro"
@@ -173,7 +173,7 @@ class Diagnostico extends Component {
 				<div id="bloqueOtro">
 					{this.props.otro ? (
 						<label htmlFor="otroEspecificar" className="inp">
-							<input
+							<input autocomplete="off"
 								type="text"
 								id="otroEspecificar"
 								name="otroEspecificar"

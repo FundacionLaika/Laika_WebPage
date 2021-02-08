@@ -23,7 +23,7 @@ export default class DatosGeneralesRG extends React.Component {
 				</div>
 				<div className="nombre">
 					<label htmlFor="nombre" className="inp">
-						<input
+						<input autocomplete="off"
 							id="nombre"
 							type="text"
 							name="nombre"
@@ -121,7 +121,7 @@ export default class DatosGeneralesRG extends React.Component {
 					<label htmlFor="radio-genero">Género</label>
 					<div className="switch center">
 						<div className="quality" id="radio-especie">
-							<input
+							<input autocomplete="off"
 								id="q1"
 								name="genero"
 								type="radio"
@@ -132,7 +132,7 @@ export default class DatosGeneralesRG extends React.Component {
 							<label htmlFor="q1">Hembra</label>
 						</div>
 						<div className="quality">
-							<input
+							<input autocomplete="off"
 								id="q2"
 								name="genero"
 								type="radio"
@@ -149,7 +149,7 @@ export default class DatosGeneralesRG extends React.Component {
 					<label htmlFor="radio-especie">Especie</label>
 					<div className="switch2 center">
 						<div className="quality2">
-							<input
+							<input autocomplete="off"
 								id="q3"
 								type="radio"
 								value="Canino"
@@ -160,7 +160,7 @@ export default class DatosGeneralesRG extends React.Component {
 							<label htmlFor="q3">Canino</label>
 						</div>
 						<div className="quality2">
-							<input
+							<input autocomplete="off"
 								id="q4"
 								type="radio"
 								value="Felino"
@@ -171,7 +171,7 @@ export default class DatosGeneralesRG extends React.Component {
 							<label htmlFor="q4">Felino</label>
 						</div>
 						<div className="quality2">
-							<input
+							<input autocomplete="off"
 								id="q5"
 								type="radio"
 								value="Otro"

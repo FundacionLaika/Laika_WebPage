@@ -20,7 +20,7 @@ class Foto extends Component {
 					</div>
 				</label>
 
-				<input
+				<input autocomplete="off"
 					type="file"
 					style={{ display: "none" }}
 					id={this.props.id}

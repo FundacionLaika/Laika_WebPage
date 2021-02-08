@@ -27,7 +27,7 @@ export default class RescatismaForm extends React.Component {
 		return (
 			<div onSubmit={this.handleSubmit}>
 				<div className="ui left icon input fluid">
-					<input
+					<input autocomplete="off"
 						style={{borderRadius:"1rem 0 0 0"}}
 						type="text"
 						name="text"
