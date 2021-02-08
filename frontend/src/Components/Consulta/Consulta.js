@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import "./Styles/Consulta.css";
 import Filtros from "./Subcomponentes/Filtros/Filtros";
 import GridConsulta from "./Subcomponentes/Grid/GridConsulta";
+import ModalConsulta from "./Subcomponentes/ModalConsulta";
 
 //var toSentenceCase = require('to-sentence-case')
 class Consulta extends Component {
@@ -59,6 +60,11 @@ class Consulta extends Component {
 			fechaInicioAdop: null,
 			fechaFinalAdop: null,
 		},
+
+		//Modal
+		open: false,
+		id: null,
+		fotoModal: null,
 	};
 
 	handleOptionsReceived = (filter, itemsSelected, replaceValue) => {
@@ -115,7 +121,6 @@ class Consulta extends Component {
 				});
 			}
 		}
-		console.log(this.state);
 	};
 
 	handleChange = (event) => {
@@ -125,8 +130,6 @@ class Consulta extends Component {
 	};
 
 	handleFiltroRegistros = (registroSeleccionado) => {
-		console.log("holaaaaaaa", registroSeleccionado);
-
 		this.setState({
 			tarjeta: registroSeleccionado,
 		});
@@ -141,20 +144,19 @@ class Consulta extends Component {
 	concatAddress = (calle, numero, colonia, municipio) => {
 		var direccion = "";
 		if (calle && calle.length) direccion += calle;
-		if (numero && numero.length && calle && calle.length) direccion += " #" + numero;
+		if (numero && numero.length && calle && calle.length)
+			direccion += " #" + numero;
 		if (colonia && colonia.length)
 			direccion += (direccion.length ? ", " : "") + colonia;
-		direccion += (direccion && direccion.length ? ", " : "") + municipio + ".";
+		direccion +=
+			(direccion && direccion.length ? ", " : "") + municipio + ".";
 		return direccion !== "." ? direccion : "No hay Información";
 	};
 
 	handleOrdenarToggle = () => {
-		this.setState(
-			{
-				ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor,
-			},
-			console.log(this.state)
-		);
+		this.setState({
+			ordenarDeMenorAMayor: !this.state.ordenarDeMenorAMayor,
+		});
 	};
 
 	formatDate = (date) => {
@@ -184,10 +186,37 @@ class Consulta extends Component {
 		});
 	};
 
+	closeModal = () => {
+		this.setState({ ...this.state, open: false });
+	};
+
+	openModal = () => {
+		this.setState({ ...this.state, open: true });
+	};
+
+	setID = (id, foto) => {
+		if (foto) {
+			var buffer = Buffer.from(foto.data);
+			foto = buffer.toString("utf8");
+			this.setState({ ...this.state, id: id, fotoModal: foto });
+		} else {
+			this.setState({ ...this.state, id: id, fotoModal: null });
+		}
+	};
+
 	render() {
 		return (
-			<div className="consulta" style={{backgroundImage: `url("/9.png")`}}>
-				<Filtros
+
+			<div className="consulta"  style={{backgroundImage: `url("/9.png")`}}>
+				{this.state.open ? (
+					<ModalConsulta
+						closeModal={this.closeModal}
+						id={this.state.id}
+						fotoModal={this.state.fotoModal}
+					/>
+				) : null}
+
+    <Filtros
 					filtros={this.state}
 					handleFiltroRegistros={this.handleFiltroRegistros}
 					handleList={this.handleList}
@@ -203,6 +232,8 @@ class Consulta extends Component {
 					concatAddress={this.concatAddress}
 					filtros={this.state}
 					formatDate={this.formatDate}
+					openModal={this.openModal}
+					setID={this.setID}
 				/>
 			</div>
 		);

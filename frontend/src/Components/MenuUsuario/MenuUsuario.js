@@ -116,7 +116,9 @@ function MenuUsuario(props) {
 								type="button"
 								className="btnMenuUsuario"
 								value="Log out"
-								onClick={() => {}}
+								onClick={() => {
+									sessionStorage.clear();
+								}}
 							/>
 						</div>
 					</div>

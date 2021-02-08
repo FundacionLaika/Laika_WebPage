@@ -20,7 +20,6 @@ async function fetchUser(ID_Usuario) {
 }
 
 async function updateUser(ID_Usuario, state) {
-	console.log({ ID_Usuario, ...state });
 	var response = await fetch("http://localhost:3001/usuario", {
 		method: "put",
 		headers: { "Content-Type": "application/json" },
@@ -206,7 +205,6 @@ function UserInfo(props) {
 								props.ID_Usuario,
 								state
 							);
-							console.log("staus", status);
 							if (status === 200) {
 								setOpenError(false);
 								setOpenSuccess(true);

@@ -3,9 +3,9 @@ import TarjetaHogarTemporal from "../Tarjetas/TarjetaHogarTemporal";
 
 export default class GridHogarTemporal extends React.Component {
 	state = {
-		data: []
-	}
-	
+		data: [],
+	};
+
 	fetchData = () => {
 		fetch("http://localhost:3001/consulta", {
 			method: "post",
@@ -14,14 +14,13 @@ export default class GridHogarTemporal extends React.Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
 
 				this.setState({
 					data: response,
 				});
 			})
 			.catch((err) => console.log(err));
-	}
+	};
 
 	componentDidMount() {
 		this.fetchData();
@@ -52,6 +51,8 @@ export default class GridHogarTemporal extends React.Component {
 						municipio={tarjeta.MunicipioHT}
 						concatAddress={this.props.concatAddress}
 						formatDate={this.props.formatDate}
+						openModal={this.props.openModal}
+						setID={this.props.setID}
 					/>
 				))}
 			</div>

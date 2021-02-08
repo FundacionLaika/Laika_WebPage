@@ -5,14 +5,13 @@ import "./Styles/Tarjeta.css";
 import BotonPDF from "../../../../SharedComponents/BotonPDF.js";
 import { Link } from "react-router-dom";
 
-
 export default class TGarjetaGeneral extends React.Component {
 	render() {
 		return (
 			<div className="tarjeta">
 				<div className="fotoFrame">
 					<div className="fotoT">
-						<FotoFrame foto={this.props.foto}/>
+						<FotoFrame foto={this.props.foto} />
 					</div>
 					<div className="idT">
 						<div className="idIconT">
@@ -125,7 +124,12 @@ export default class TGarjetaGeneral extends React.Component {
 						</button>
 					</Link>
 
-					<BotonPDF id={this.props.id} />
+					<BotonPDF
+						id={this.props.id}
+						openModal={this.props.openModal}
+						setID={this.props.setID}
+						foto={this.props.foto}
+					/>
 				</div>
 			</div>
 		);
