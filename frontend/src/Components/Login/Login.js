@@ -6,6 +6,9 @@ import image1 from "./Images/image1.jpg";
 import image2 from "./Images/image2.jpg";
 import image3 from "./Images/image3.jpg";
 import image4 from "./Images/image4.jpg";
+import AlertTitle from "@material-ui/lab/AlertTitle";
+import Collapse from "@material-ui/core/Collapse";
+import Alert from "@material-ui/lab/Alert";
 
 async function fetchData(state) {
 	var response = await fetch("http://localhost:3001/Login", {
@@ -18,6 +21,11 @@ async function fetchData(state) {
 
 function Login(props) {
 	const [state, setState] = useState({ correo: "", contrasena: "" });
+
+	const [alertState, setAlertState] = useState({
+		openError: false,
+		msg: "",
+	});
 
 	const history = useHistory();
 
@@ -46,6 +54,23 @@ function Login(props) {
 				</div>
 			</div>
 			<div className="rightSide">
+				<div className="alertLogin">
+					<Collapse in={alertState.openError}>
+						<Alert
+							onClose={() => {
+								setAlertState({
+									...alertState,
+									openError: false,
+								});
+							}}
+							variant="outlined"
+							severity="error"
+						>
+							<AlertTitle>Error</AlertTitle>
+							{alertState.msg}
+						</Alert>
+					</Collapse>
+				</div>
 				<div className="LogoLogin">
 					<img src="/laikalogo.png" alt="laika" width="80%"></img>
 				</div>
@@ -81,11 +106,14 @@ function Login(props) {
 
 							if (data.status === 200) {
 								props.setAuth(true);
-								props.saveUserSession(
-									json.ID_Usuario,
-									true
-								);
+								props.saveUserSession(json.ID_Usuario, true);
 								handleClick();
+							} else if (data.status === 404) {
+								setAlertState({
+									...alertState,
+									openError: true,
+									msg: "Correo y contraseña inválidos",
+								});
 							}
 						}}
 					>

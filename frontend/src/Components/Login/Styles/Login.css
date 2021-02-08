@@ -17,15 +17,23 @@ body {
 
 .rightSide {
 	margin-top: 5vh;
-	overflow: hidden;
+	/* overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
-	flex-direction: column;
+	flex-direction: column; */
 	/* justify-content: center; */
 	animation-name: left;
 	animation-duration: 1s;
 	animation-fill-mode: both;
 	animation-delay: 1s;
+}
+
+.alertLogin {
+	background-color: red;
+	position: relative;
+	right:17.4%;
+	width:135%;
+	bottom:11%;
 }
 
 .leftSide {

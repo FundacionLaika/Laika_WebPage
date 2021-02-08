@@ -17,7 +17,7 @@ export default class TarjetaExpedienteMedico extends React.Component {
 			<div className="tarjeta">
 				<div className="fotoFrame">
 					<div className="fotoT">
-						<FotoFrame  foto={this.props.foto}/>
+						<FotoFrame foto={this.props.foto} />
 					</div>
 					<div className="idT">
 						<div className="idIconT">
@@ -163,7 +163,12 @@ export default class TarjetaExpedienteMedico extends React.Component {
 						</button>
 					</Link>
 
-					<BotonPDF id={this.props.id} />
+					<BotonPDF
+						id={this.props.id}
+						openModal={this.props.openModal}
+						setID={this.props.setID}
+						foto={this.props.foto}
+					/>
 				</div>
 			</div>
 		);

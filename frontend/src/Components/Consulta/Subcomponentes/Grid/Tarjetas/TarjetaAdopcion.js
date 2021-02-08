@@ -11,7 +11,7 @@ export default class TarjetaAdopcion extends React.Component {
 			<div className="tarjeta">
 				<div className="fotoFrame">
 					<div className="fotoT">
-						<FotoFrame  foto={this.props.foto}/>
+						<FotoFrame foto={this.props.foto} />
 					</div>
 					<div className="idT">
 						<div className="idIconT">
@@ -32,7 +32,9 @@ export default class TarjetaAdopcion extends React.Component {
 						<span className="nombreCampo"> Adoptante: </span>
 						<span className="campoData">
 							{" "}
-							{this.props.nombreAdte ? this.props.nombreAdte : "No hay Información"}{" "}
+							{this.props.nombreAdte
+								? this.props.nombreAdte
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -47,7 +49,9 @@ export default class TarjetaAdopcion extends React.Component {
 						</span>
 						<span className="campoData">
 							{" "}
-							{this.props.telefonoAdte ? this.props.telefonoAdte : "No hay Información"}{" "}
+							{this.props.telefonoAdte
+								? this.props.telefonoAdte
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -59,7 +63,9 @@ export default class TarjetaAdopcion extends React.Component {
 						<span className="nombreCampo"> Adoptado: </span>
 						<span className="campoData">
 							{" "}
-							{this.props.adoptado? this.props.adoptado : "No hay Información"}{" "}
+							{this.props.adoptado
+								? this.props.adoptado
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -74,7 +80,9 @@ export default class TarjetaAdopcion extends React.Component {
 						</span>
 						<span className="campoData">
 							{" "}
-							{this.props.medioAdop ? this.props.medioAdop : "No hay Información"}{" "}
+							{this.props.medioAdop
+								? this.props.medioAdop
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -89,7 +97,9 @@ export default class TarjetaAdopcion extends React.Component {
 						</span>
 						<span className="campoData">
 							{" "}
-							{this.props.fechaAdop ? this.props.formatDate(this.props.fechaAdop) : "No hay Información"}{" "}
+							{this.props.fechaAdop
+								? this.props.formatDate(this.props.fechaAdop)
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -104,7 +114,9 @@ export default class TarjetaAdopcion extends React.Component {
 						</span>
 						<span className="campoData">
 							{" "}
-							{this.props.visitaAdop ? this.props.formatDate(this.props.visitaAdop) : "No hay Información"}{" "}
+							{this.props.visitaAdop
+								? this.props.formatDate(this.props.visitaAdop)
+								: "No hay Información"}{" "}
 						</span>
 					</div>
 
@@ -135,7 +147,12 @@ export default class TarjetaAdopcion extends React.Component {
 						</button>
 					</Link>
 
-					<BotonPDF id={this.props.id} />
+					<BotonPDF
+						id={this.props.id}
+						openModal={this.props.openModal}
+						setID={this.props.setID}
+						foto={this.props.foto}
+					/>
 				</div>
 			</div>
 		);

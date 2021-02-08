@@ -1,6 +1,5 @@
 export function validationRG(state) {
     var msg = "";
-    console.log(state);
     if (!state.nombre.trim()) msg += "•  Nombre\n"; 
     if (!state.edad) msg += "•  Edad\n"; 
     if (!state.genero) msg += "•  Género\n"; 

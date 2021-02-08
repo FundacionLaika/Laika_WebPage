@@ -53,7 +53,6 @@ class HogarTemporal extends Component {
 				this.setState({ [foto]: reader.result });
 			}
 		};
-		console.log(event.target.id);
 		reader.readAsDataURL(event.target.files[0]);
 	};
 
@@ -62,20 +61,15 @@ class HogarTemporal extends Component {
 		this.setState({
 			[event.target.name]: event.target.value,
 		});
-		console.log(event.target.name);
 	};
 
 	/*Manejador del botón submit*/
 	handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(this.state);
 		this.updateDB();
 	};
 
 	updateDB = () => {
-		let url = this.props.location.search;
-		console.log("url", url);
-
 		fetch("http://localhost:3001/hogarTemporal", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
@@ -83,7 +77,6 @@ class HogarTemporal extends Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
 			})
 			.catch((err) => console.log(err));
 	};
@@ -103,7 +96,6 @@ class HogarTemporal extends Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
 				for (const element in response) {
 					if (element.includes("fecha")) {
 						const date = response[element];
@@ -114,7 +106,6 @@ class HogarTemporal extends Component {
 						});
 					} else if (element.includes("foto")) {
 						if (response[element]) {
-							console.log(response[element]);
 
 							var buffer = Buffer.from(response[element].data);
 

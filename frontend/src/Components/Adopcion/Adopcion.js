@@ -50,23 +50,16 @@ class Adopcion extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(this.state);
 		this.updateDB();
 	};
 
 	updateDB = () => {
-		let url = this.props.location.search;
-		console.log("url", url);
-
 		fetch("http://localhost:3001/adopcion", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(this.state),
 		})
 			.then((response) => response.json())
-			.then((response) => {
-				console.log(response);
-			})
 			.catch((err) => console.log(err));
 	};
 
@@ -119,7 +112,6 @@ class Adopcion extends React.Component {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
 				for (const element in response) {
 					if (
 						element.includes("fecha") ||
@@ -133,7 +125,6 @@ class Adopcion extends React.Component {
 						});
 					} else if (element.includes("foto")) {
 						if (response[element]) {
-							console.log(response[element]);
 
 							var buffer = Buffer.from(response[element].data);
 
@@ -164,7 +155,6 @@ class Adopcion extends React.Component {
 				this.setState({ [foto]: reader.result });
 			}
 		};
-		console.log(event.target.id);
 		reader.readAsDataURL(event.target.files[0]);
 	};
 

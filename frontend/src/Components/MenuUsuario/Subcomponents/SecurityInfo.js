@@ -20,7 +20,6 @@ function SecurityInfo(props) {
 	}
 
 	async function updatePassword(ID_Usuario, contrasena) {
-		console.log({ ID_Usuario, contrasena });
 		var response = await fetch("http://localhost:3001/changePassword", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
@@ -109,7 +108,6 @@ function SecurityInfo(props) {
 								props.ID_Usuario,
 								state.contrasena
 							);
-							console.log("staus", status);
 							if (status === 200) {
 								setOpenError(false);
 								setOpenSuccess(true);
