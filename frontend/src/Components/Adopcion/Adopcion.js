@@ -289,7 +289,7 @@ class Adopcion extends React.Component {
 						onClick={(event) => {
 							const alert = validationAdop(this.state);
 							if (alert.isValid) {
-								// this.handleSubmit(event);
+								this.handleSubmit(event);
 								this.handleAlert("openSuccess");
 							} else {
 								this.handleAlert("openError", alert.msg);

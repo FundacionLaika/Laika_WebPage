@@ -104,7 +104,7 @@ export default class FiltroHogarTemporal extends React.Component {
 								}
 								placeholderText="Fecha Inicio"
 								customInput={
-									<input autocomplete="off"
+									<Input autocomplete="off"
 										icon="calendar"
 										iconPosition="left"
 									/>
@@ -131,7 +131,7 @@ export default class FiltroHogarTemporal extends React.Component {
 								}
 								placeholderText="Fecha Final"
 								customInput={
-									<input autocomplete="off"
+									<Input autocomplete="off"
 										icon="calendar"
 										iconPosition="left"
 									/>
