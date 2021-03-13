@@ -81,14 +81,14 @@ function Login(props) {
 					</h4> */}
 				</div>
 				<div className="formLogin">
-					<input autocomplete="off"
+					<input autoComplete="off"
 						type="email"
 						className="formF animation a3"
 						placeholder="  &#xf0e0;   Correo electrónico"
 						onChange={handleChange}
 						name="correo"
 					/>
-					<input autocomplete="off"
+					<input autoComplete="off"
 						type="password"
 						className="formF animation a4"
 						placeholder="  &#xf084;   Contraseña"
