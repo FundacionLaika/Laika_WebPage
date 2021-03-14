@@ -33,7 +33,7 @@ class RegistroGeneral extends React.Component {
         openError: false,
         openSuccess: false,
         msg: "",
-		showErrorPage: false
+        showErrorPage: false,
     };
 
     restablecido = false;
@@ -64,7 +64,11 @@ class RegistroGeneral extends React.Component {
             body: JSON.stringify(this.state),
         })
             .then((response) => response.json())
-            .then(console.log)
+            .then((ID_Animal) => {
+                console.log(ID_Animal);
+                this.props.location.search = "/Laika/RegistroGeneral?id='+ID_Animal";
+                this.props.history.push('/Laika/RegistroGeneral?id='+ID_Animal);
+            })
             .catch((err) => console.log(err));
     };
 
@@ -126,7 +130,7 @@ class RegistroGeneral extends React.Component {
                 senasParticulares: "",
                 foto: null,
                 rescatistas: [],
-				showErrorPage: false
+                showErrorPage: false,
             });
         }
     };
@@ -141,12 +145,12 @@ class RegistroGeneral extends React.Component {
         })
             .then((response) => response.json())
             .then((response) => {
-				if (Object.keys(response).length === 1) {
-					this.setState({
-						showErrorPage: true
-					});
-					return
-				}
+                if (Object.keys(response).length === 1) {
+                    this.setState({
+                        showErrorPage: true,
+                    });
+                    return;
+                }
                 for (const element in response) {
                     if (element.includes("fecha")) {
                         const date = response[element];
@@ -216,7 +220,10 @@ class RegistroGeneral extends React.Component {
     }
 
     render() {
-		if (this.state.showErrorPage) return (<ErrorPage />);
+        let url = this.props.location.search;
+        let params = queryString.parse(url);
+
+        if (this.state.showErrorPage) return <ErrorPage />;
         return (
             <div className="RegistroGeneral">
                 {this.state.estaRegistrado ? (
@@ -224,7 +231,7 @@ class RegistroGeneral extends React.Component {
                         <NavBarRegistros
                             tabIndicatorPosition={"0%"}
                             activePosition={"RegistroGeneral"}
-                            id={this.state.id}
+                            id={params.id}
                         />
                     </div>
                 ) : null}

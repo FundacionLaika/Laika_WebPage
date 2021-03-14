@@ -336,7 +336,7 @@ const handlePostRG = (req, res, db) => {
 			.then(() => {
 				console.log("post EXITOSO");
 				res.status(200).json(
-					"POST exitoso. ID_Animal:" + ids.ID_Animal
+					ids.ID_Animal
 				);
 			})
 			.catch(trx.rollback);
