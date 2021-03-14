@@ -72,7 +72,7 @@ function Login(props) {
 					</Collapse>
 				</div>
 				<div className="LogoLogin">
-					<img src="/laikalogo.png" alt="laika" width="80%"></img>
+					<img src="/laikaLogo.png" alt="laika" width="80%"></img>
 				</div>
 				<div className="header">
 					<h2 className="animation a1">Iniciar sesión</h2>

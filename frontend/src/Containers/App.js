@@ -11,6 +11,7 @@ import HogarTemporal from "../Components/HogarTemporal/HogarTemporal";
 import Adopcion from "../Components/Adopcion/Adopcion";
 import MenuUsuario from "../Components/MenuUsuario/MenuUsuario";
 import ProtectedRoute from "../Components/SharedComponents/ProtectedRoute";
+import ErrorPage from "../Components/SharedComponents/ErrorPage";
 
 function saveUserSession(ID_User, isAuth) {
 	sessionStorage.setItem(
@@ -109,14 +110,7 @@ function App() {
 					/>
 
 					<Route>
-						<div>
-							<div className="App-header">
-								<h1>
-									Pagina no
-									<p className="red">Disponible</p>
-								</h1>
-							</div>
-						</div>
+						<ErrorPage />
 					</Route>
 				</Switch>
 			</Router>

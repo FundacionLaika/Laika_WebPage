@@ -7,7 +7,7 @@ function MenuBar() {
 		<div className="navBar">
 			<div className="navBar-header">
 				<div>
-					<img src="/laikalogo.png" alt="logo" id="logo" />
+					<img src="/laikaLogo.png" alt="logo" id="logo" />
 				</div>
 
 				<div>
