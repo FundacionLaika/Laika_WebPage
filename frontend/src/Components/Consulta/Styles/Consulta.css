@@ -1,6 +1,7 @@
 .consulta {
     background-color: white;
     display: grid;
+    min-height: 100vh;
 }
 
 .filtros {
