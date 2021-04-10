@@ -5,12 +5,14 @@ function ModalBorrarUsuario(props) {
 	const [state, setState] = React.useState({
 		open: true,
 		dimmer: "blurring",
+		size: "tiny",
 	});
 	const { open, dimmer } = state;
 
 	return (
 		<div>
 			<Modal
+				size={state.size}
 				dimmer={dimmer}
 				open={open}
 				onClose={() => {
@@ -45,13 +47,18 @@ function ModalBorrarUsuario(props) {
 							);
 
 							if (success) {
-								console.log("Success");
+								props.setMsgDeleteUser(
+									"Usuario borrado con éxito"
+								);
 							} else {
-								console.log("False");
+								props.setMsgDeleteUser(
+									"EL usuario no pudo ser borrado"
+								);
 							}
 
 							props.closeModal2();
 							setState({ open: false });
+							props.openModal3();
 						}}
 					>
 						<Icon name="checkmark" /> Aceptar

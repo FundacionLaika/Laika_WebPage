@@ -3,6 +3,7 @@ import "../Styles/AdminInfo.css";
 import UserCard from "./UserCard.js";
 import ModalAdmin from "./ModalAdmin";
 import ModalBorrarUsuario from "./ModalBorrarUsuario";
+import ModalBorrarUsuarioCon from "./ModalBorrarUsuarioCon";
 
 async function fetchUsers() {
 	var response = await fetch("http://localhost:3001/usuarios", {
@@ -46,8 +47,11 @@ function AdminInfo(props) {
 
 	const [open, setOpen] = useState(false);
 	const [open2, setOpen2] = useState(false);
+    const [open3, setOpen3] = useState(false);
+
 
 	const [userID, setUserID] = useState("");
+    const [msgDeleteUser, setMsgDeleteUser] = useState("");
 
 	function changeUserID(id) {
 		setUserID(id);
@@ -81,6 +85,13 @@ function AdminInfo(props) {
 		setOpen2(true);
 	}
 
+    function closeModal3() {
+		setOpen3(false);
+	}
+
+	function openModal3() {
+		setOpen3(true);
+	}
 	function addUser(newUser) {
 		const newUserM = {
 			ID_Usuario: newUser.ID_Usuario,
@@ -173,6 +184,14 @@ function AdminInfo(props) {
 					userID={userID}
 					removeUser={removeUser}
                     deleteUser={deleteUser}
+                    setMsgDeleteUser={setMsgDeleteUser}
+                    openModal3={openModal3}
+				/>
+			) : null}
+            {open3 ? (
+				<ModalBorrarUsuarioCon
+                    closeModal3={closeModal3}
+                    msgDeleteUser={msgDeleteUser}
 				/>
 			) : null}
 		</div>
