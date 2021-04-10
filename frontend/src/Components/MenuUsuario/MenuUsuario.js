@@ -186,7 +186,7 @@ function MenuUsuario(props) {
 					<SecurityInfo ID_Usuario={props.ID_Usuario} />
 				)}
 				{foregroundState.btnAdmin && (
-					<AdminInfo ID_Usuario={props.ID_Usuario} />
+					<AdminInfo ID_Usuario={props.ID_Usuario} state={state} />
 				)}
 			</div>
 		</div>

@@ -40,10 +40,7 @@ function AdminInfo(props) {
     useEffect(() => {
         async function fetchData() {
             const usersData = await fetchUsers();
-
-            setState({
-                users: usersData,
-            });
+            setState({ users: usersData.filter((item) => item.Correo !== props.state.correo)});
         }
         fetchData();
     }, [props]);
@@ -94,7 +91,6 @@ function AdminInfo(props) {
     }
 
     function removeUser(userID) {
-        console.log("hay hola", userID, state);
         setState((state) => ({
             users: state.users.filter((user) => user.ID_Usuario !== userID),
         }));
