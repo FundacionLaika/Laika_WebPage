@@ -30,7 +30,7 @@ function getUserSession() {
 
 function App() {
 	const userSession = getUserSession();
-	var authenticated = true;
+	var authenticated = false;
 	var ID_Usuario = "";
 
 	if (userSession) {
