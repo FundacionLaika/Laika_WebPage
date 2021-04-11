@@ -8,6 +8,40 @@ import { CameraRetro } from "./Images/CameraRetro";
 import { Heartbeat} from "./Images/Heartbeat";
 import { IconoDefault } from "./Images/IconoDefault";
 
+function decodificarVacuna(vacuna, especie) {
+    if (!vacuna || !especie) return "";
+
+    const decoder = {
+        vacuna1: {
+            Canino: "Puppy",
+            Felino: "Triple Viral Felina",
+            Otro: "Vacuna 1",
+        },
+        vacuna2: {
+            Canino: "Refuerzo Puppy",
+            Felino: "Refuerzo Triple Viral Felina",
+            Otro: "Vacuna 2",
+        },
+        vacuna3: {
+            Canino: "Multiple",
+            Felino: "Leucemia",
+            Otro: "Vacuna 3",
+        },
+        vacuna4: {
+            Canino: "Refuerzo Multiple",
+            Felino: "Desparasitacion",
+            Otro: "Vacuna 4",
+        },
+        vacuna5: {
+            Canino: "Rabia",
+            Felino: "Rabia",
+            Otro: "Vacuna 5",
+        },
+    };
+
+    return decoder[vacuna][especie];
+};
+
 export function ExpedienteMedicoPDF(doc, data) {
 	doc.addPage();
 	doc.setFillColor("#51D1F6");
@@ -73,7 +107,7 @@ export function ExpedienteMedicoPDF(doc, data) {
 		],
 		columns: [
 			{
-				header: "Diagnóstico",
+				header: "Diagnóstico",	
 				dataKey: "nombre",
 				styles: { halign: "center" },
 			},
@@ -99,36 +133,31 @@ export function ExpedienteMedicoPDF(doc, data) {
 		],
 		body: [
 			{
-				nombre: "Puppy",
-				flag: boolToString(data.expedienteMedico.puppy),
-				fechaVacunacion: formatDate(data.expedienteMedico.fechaPuppy),
+				nombre: decodificarVacuna("vacuna1", data.expedienteMedico.especie),
+				flag: boolToString(data.expedienteMedico.vacuna1),
+				fechaVacunacion: formatDate(data.expedienteMedico.fechaVacuna1),
 			},
 			{
-				nombre: "Refuerzo Puppy",
-				flag: boolToString(data.expedienteMedico.refuerzoPuppy),
-				fechaVacunacion: formatDate(
-					data.expedienteMedico.fechaRefuerzoPuppy
-				),
+				nombre: decodificarVacuna("vacuna2", data.expedienteMedico.especie),
+				flag: boolToString(data.expedienteMedico.vacuna2),
+				fechaVacunacion: formatDate(data.expedienteMedico.fechaVacuna2),
 			},
 			{
-				nombre: "Múltiple",
-				flag: boolToString(data.expedienteMedico.multiple),
-				fechaVacunacion: formatDate(
-					data.expedienteMedico.fechaMultiple
-				),
+				nombre: decodificarVacuna("vacuna3", data.expedienteMedico.especie),
+				flag: boolToString(data.expedienteMedico.vacuna3),
+				fechaVacunacion: formatDate(data.expedienteMedico.fechaVacuna3),
 			},
 			{
-				nombre: "Refuerzo Múltiple",
-				flag: boolToString(data.expedienteMedico.refuerzoMultiple),
-				fechaVacunacion: formatDate(
-					data.expedienteMedico.fechaRefuerzoMultiple
-				),
+				nombre: decodificarVacuna("vacuna4", data.expedienteMedico.especie),
+				flag: boolToString(data.expedienteMedico.vacuna4),
+				fechaVacunacion: formatDate(data.expedienteMedico.fechaVacuna4),
 			},
 			{
-				nombre: "Rabia",
-				flag: boolToString(data.expedienteMedico.rabia),
-				fechaVacunacion: formatDate(data.expedienteMedico.fechaRabia),
+				nombre: decodificarVacuna("vacuna5", data.expedienteMedico.especie),
+				flag: boolToString(data.expedienteMedico.vacuna5),
+				fechaVacunacion: formatDate(data.expedienteMedico.fechaVacuna5),
 			},
+			
 		],
 		columns: [
 			{ header: "Vacunas", dataKey: "nombre" },

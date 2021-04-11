@@ -5,6 +5,7 @@ const handleGetA = (req, res, db) => {
 				adte.Telefono AS telefono,
 				adop.NombreAdoptado AS adoptado,
 				adop.Medio AS medioAdopcion,
+				adop.ID_PETCO AS idPETCO,
 				adop.Fecha_Adopcion AS fechaAdopcion,
 				adop.Visita_De_Adopcion AS visitaDeAdopcion,
 				diradte.Calle AS calle,
@@ -60,6 +61,7 @@ const handleGetA = (req, res, db) => {
 handleUpdateA = (req, res, db) => {
 	const {
 		id,
+		idPETCO,
 		visitaDeAdopcion,
 		adoptante,
 		adoptado,
@@ -84,6 +86,7 @@ handleUpdateA = (req, res, db) => {
 			a.Visita_De_Adopcion = "${visitaDeAdopcion}",
 			a.Medio = "${medioAdopcion}",
 			a.Foto = ${foto ? '"' + foto + '"' : null},
+			A.ID_PETCO = "${idPETCO}",
 			adte.Nombre = "${adoptante}",
 			adte.Telefono = "${telefono}",
 			da.Calle = "${calle}",

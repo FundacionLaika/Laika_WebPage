@@ -218,27 +218,27 @@
 	padding-right: 10px;
 }
 
-.puppy {
+.vacuna1 {
 	grid-row: 1;
 	grid-column: 1;
 }
 
-.refuerzoPuppy {
+.vacuna2 {
 	grid-row: 1;
 	grid-column: 2;
 }
 
-.multiple {
+.vacuna3 {
 	grid-row: 1;
 	grid-column: 3;
 }
 
-.refuerzoMultiple {
+.vacuna4 {
 	grid-row: 1;
 	grid-column: 4;
 }
 
-.rabia {
+.vacuna5 {
 	grid-row: 1;
 	grid-column: 5;
 }

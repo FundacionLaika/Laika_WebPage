@@ -57,11 +57,12 @@ export default class GridExpedienteMedico extends React.Component {
                             cachorros={tarjeta.Cachorros}
                             hemoparasitos={tarjeta.Hemoparasitos}
                             otro={tarjeta.Otro}
-                            puppy={tarjeta.Puppy}
-                            refuerzoPuppy={tarjeta.RefuerzoPuppy}
-                            multiple={tarjeta.Multiple}
-                            refuerzoMultiple={tarjeta.RefuerzoMultiple}
-                            rabia={tarjeta.Rabia}
+                            especie={tarjeta.Especie}
+                            vacuna1={tarjeta.Vacuna1}
+                            vacuna2={tarjeta.Vacuna2}
+                            vacuna3={tarjeta.vacuna3}
+                            vacuna4={tarjeta.Vacuna4}
+                            vacuna5={tarjeta.Vacuna5}
                             fechaEsterilizacion={tarjeta.FechaEsterilizacion}
                             citaAgendada={tarjeta.CitaAgendada}
                             estaEsterilizado={tarjeta.EstaEsterilizado}

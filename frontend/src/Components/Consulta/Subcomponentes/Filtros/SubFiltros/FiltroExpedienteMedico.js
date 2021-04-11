@@ -9,19 +9,12 @@ export default class FiltroExpedienteMedico extends React.Component {
 	color3 = "#FF8B00";
 	state = {
 		options1: [
-			{ value: "puppy", label: "Puppy", color: this.color1 },
-			{
-				value: "refuerzoPuppy",
-				label: "Refuerzo Puppy",
-				color: this.color1,
-			},
-			{ value: "multiple", label: "Múltiple", color: this.color1 },
-			{
-				value: "refuerzoMultiple",
-				label: "Refuerzo Múltiple",
-				color: this.color1,
-			},
-			{ value: "rabia", label: "Rabia", color: this.color1 },
+			{ value: "vacuna1", label: "Vacuna 1", color: this.color1 },
+			{ value: "vacuna2", label: "Vacuna 2", color: this.color1 },
+			{ value: "vacuna3", label: "Vacuna 3", color: this.color1 },
+			{ value: "vacuna4", label: "Vacuna 4", color: this.color1 },
+			{ value: "vacuna5", label: "Vacuna 5", color: this.color1 },
+
 		],
 		options2: [
 			{ value: "Sí", label: "Sí", color: this.color2, isDisabled: false },

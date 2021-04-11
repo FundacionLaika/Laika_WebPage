@@ -49,6 +49,7 @@ export default class GridAdopcion extends React.Component {
                         <TarjetaAdopcion
                             key={tarjeta.ID_Animal}
                             id={tarjeta.ID_Animal}
+                            idPETCO={tarjeta.ID_PETCO}
                             foto={tarjeta.Foto}
                             nombreAdte={tarjeta.NombreAdte}
                             telefonoAdte={tarjeta.TelefonoAdte}
