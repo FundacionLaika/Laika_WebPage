@@ -207,7 +207,7 @@ class Consulta extends Component {
 	render() {
 		return (
 
-			<div className="consulta"  style={{backgroundImage: `url("/9.png")`}}>
+			<div className="consulta">
 				{this.state.open ? (
 					<ModalConsulta
 						closeModal={this.closeModal}
