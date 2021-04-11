@@ -37,6 +37,19 @@ function MenuBar() {
 				</div>
 
 				<div>
+					<Link
+						to="/Laika/Calendario"
+						style={{
+							color: "inherit",
+							textDecoration: "inherit",
+						}}
+					>
+						<i className="fa fa-calendar fa-fw pointer"></i>
+						Calendario
+					</Link>
+				</div>
+
+				<div>
 					<Link to={"/Laika/MenuUsuario"}>
 						<img
 							src="/user.ico"

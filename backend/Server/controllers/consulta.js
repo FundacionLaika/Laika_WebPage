@@ -25,11 +25,11 @@ const handleConsultaPost = (req, res, db) => {
                                     diag.Cachorros,
                                     diag.Hemoparasitos, 
                                     diag.Otro,
-                                    cv.Puppy,
-                                    cv.RefuerzoPuppy,
-                                    cv.Multiple,
-                                    cv.RefuerzoMultiple,
-                                    cv.Rabia,
+									cv.Vacuna1,
+                                    cv.Vacuna2,
+									cv.Vacuna3,
+									cv.Vacuna4,
+									cv.Vacuna5,
                                     est.Fecha AS FechaEsterilizacion,
                                     est.CitaAgendada,
                                     est.EstaEsterilizado `,
@@ -141,12 +141,12 @@ const handleConsultaPost = (req, res, db) => {
     var filterConditions = "";
     var orderBy = "";
 
-    if (filtroPorKeyWord.length && keyword.length) {
+    if (filtroPorKeyWord && keyword) {
         filterConditions +=
             "AND " + hashTable[filtroPorKeyWord] + " LIKE '%" + keyword + "%' ";
     }
 
-    if (ordenarPor.length) {
+    if (ordenarPor) {
         orderBy = "ORDER BY " + hashTable[ordenarPor] + " ";
 
         orderBy += ordenarDeMenorAMayor ? "ASC" : "DESC";
@@ -154,7 +154,7 @@ const handleConsultaPost = (req, res, db) => {
         orderBy += ";";
     }
 
-    if (genero.length) {
+    if (genero) {
         filterConditions += "AND ar.Genero = '" + genero.toUpperCase() + "' ";
     }
 
@@ -192,7 +192,7 @@ const handleConsultaPost = (req, res, db) => {
             : "";
     }
 
-    if (esterilizado.length) {
+    if (esterilizado) {
         filterConditions +=
             "AND est.EstaEsterilizado = '" +
             hashTable[esterilizado.toUpperCase()] +
@@ -228,28 +228,26 @@ const handleConsultaPost = (req, res, db) => {
             : "";
     }
 
-    if (tipoHogar.length) {
+    if (tipoHogar) {
         filterConditions +=
             "AND UPPER(ht.Tipo_HT) = '" + tipoHogar.toUpperCase() + "' ";
     }
 
-    if (rangoFechaHT.fechaInicioHT != null) {
-        if (rangoFechaHT.fechaInicioHT.length) {
+    if (rangoFechaHT) {
+        if (rangoFechaHT.fechaInicioHT) {
             filterConditions +=
                 "AND DATE_FORMAT(ht.FechaInicio , '%Y-%m-%d') >=  DATE_FORMAT('" +
                 rangoFechaHT.fechaInicioHT +
                 "' , '%Y-%m-%d') ";
         }
-    }
-
-    if (rangoFechaHT.fechaFinalHT != null) {
-        if (rangoFechaHT.fechaFinalHT.length) {
+		if (rangoFechaHT.fechaFinalHT) {
             filterConditions +=
                 "AND DATE_FORMAT(ht.FechaFinal , '%Y-%m-%d') <=  DATE_FORMAT('" +
                 rangoFechaHT.fechaFinalHT +
                 "' , '%Y-%m-%d') ";
         }
     }
+
 
     if (medioAdopcion) {
         const mediosFiltrados = object2Array(medioAdopcion);
@@ -258,23 +256,21 @@ const handleConsultaPost = (req, res, db) => {
             : "";
     }
 
-    if (rangoFechaAdopcion.fechaInicioAdop != null) {
-        if (rangoFechaAdopcion.fechaInicioAdop.length) {
+    if (rangoFechaAdopcion) {
+        if (rangoFechaAdopcion.fechaInicioAdop) {
             filterConditions +=
                 "AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') >=  DATE_FORMAT('" +
                 rangoFechaAdopcion.fechaInicioAdop +
                 "' , '%Y-%m-%d') ";
         }
-    }
-
-    if (rangoFechaAdopcion.fechaFinalAdop != null) {
-        if (rangoFechaAdopcion.fechaFinalAdop.length) {
+		if (rangoFechaAdopcion.fechaFinalAdop) {
             filterConditions +=
                 "AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') <=  DATE_FORMAT('" +
                 rangoFechaAdopcion.fechaFinalAdop +
                 "' , '%Y-%m-%d') ";
         }
     }
+
 
     db.raw(
         selectClause[tarjeta] +
