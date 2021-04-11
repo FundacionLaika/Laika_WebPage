@@ -249,6 +249,7 @@ class Adopcion extends React.Component {
 							adoptante={this.state.adoptante}
 							adoptado={this.state.adoptado}
 							telefono={this.state.telefono}
+							idPETCO={this.state.idPETCO}
 							fechaAdopcion={this.state.fechaAdopcion}
 							medioAdopcion={this.state.medioAdopcion}
 						/>

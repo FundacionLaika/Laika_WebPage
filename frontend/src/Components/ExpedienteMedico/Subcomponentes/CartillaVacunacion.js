@@ -20,7 +20,7 @@ class CartillaVacunacion extends Component {
             },
             vacuna2: {
                 Canino: "Refuerzo Puppy",
-                Felino: "Refuerzo Triple Viral Felina",
+                Felino: "Refuerzo TV Felina",
                 Otro: "Vacuna 2",
             },
             vacuna3: {
@@ -43,9 +43,6 @@ class CartillaVacunacion extends Component {
         return decoder[vacuna][especie];
     };
 
-	componentDidUpdate() {
-		console.log("aaaaaaaaaaa", this.props);
-	}
 
     render() {
         return (
@@ -91,13 +88,7 @@ class CartillaVacunacion extends Component {
                                 fixedHeight
                                 autoComplete
                                 customInput={<DatePickerInput />}
-                                title={
-                                    "Fecha " +
-                                    this.decodificarVacuna(
-                                        "vacuna1",
-                                        this.props.especie
-                                    )
-                                }
+                                title={"Fecha"}
                                 id="fechaVacuna1"
                                 name="fechaVacuna1"
                                 locale="es"
@@ -142,13 +133,7 @@ class CartillaVacunacion extends Component {
                                 fixedHeight
                                 autoComplete
                                 customInput={<DatePickerInput />}
-                                title={
-                                    "Fecha " +
-                                    this.decodificarVacuna(
-                                        "vacuna2",
-                                        this.props.especie
-                                    )
-                                }
+                                title={"Fecha"}
                                 id="fechaVacuna2"
                                 name="fechaVacuna2"
                                 locale="es"
@@ -161,7 +146,7 @@ class CartillaVacunacion extends Component {
                         </div>
                     </div>
 
-					<div className="vacuna3">
+                    <div className="vacuna3">
                         <div className="cb cb-cv">
                             <input
                                 autoComplete="off"
@@ -193,13 +178,7 @@ class CartillaVacunacion extends Component {
                                 fixedHeight
                                 autoComplete
                                 customInput={<DatePickerInput />}
-                                title={
-                                    "Fecha " +
-                                    this.decodificarVacuna(
-                                        "vacuna3",
-                                        this.props.especie
-                                    )
-                                }
+                                title={"Fecha"}
                                 id="fechaVacuna3"
                                 name="fechaVacuna3"
                                 locale="es"
@@ -212,7 +191,7 @@ class CartillaVacunacion extends Component {
                         </div>
                     </div>
 
-					<div className="vacuna4">
+                    <div className="vacuna4">
                         <div className="cb cb-cv">
                             <input
                                 autoComplete="off"
@@ -244,13 +223,7 @@ class CartillaVacunacion extends Component {
                                 fixedHeight
                                 autoComplete
                                 customInput={<DatePickerInput />}
-                                title={
-                                    "Fecha " +
-                                    this.decodificarVacuna(
-                                        "vacuna4",
-                                        this.props.especie
-                                    )
-                                }
+                                title={"Fecha"}
                                 id="fechaVacuna4"
                                 name="fechaVacuna4"
                                 locale="es"
@@ -263,7 +236,7 @@ class CartillaVacunacion extends Component {
                         </div>
                     </div>
 
-					<div className="vacuna5">
+                    <div className="vacuna5">
                         <div className="cb cb-cv">
                             <input
                                 autoComplete="off"
@@ -295,13 +268,7 @@ class CartillaVacunacion extends Component {
                                 fixedHeight
                                 autoComplete
                                 customInput={<DatePickerInput />}
-                                title={
-                                    "Fecha " +
-                                    this.decodificarVacuna(
-                                        "vacuna5",
-                                        this.props.especie
-                                    )
-                                }
+                                title={"Fecha"}
                                 id="fechaVacuna5"
                                 name="fechaVacuna5"
                                 locale="es"

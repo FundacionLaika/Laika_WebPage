@@ -5,6 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
 
 import "./Styles/Calendario.css";
+import { setHours } from "date-fns";
 
 require("moment/locale/es.js");
 
@@ -23,10 +24,12 @@ async function fetchEvents() {
 }
 
 function generateEvent(message, animalId, animalName, date) {
+	const eventDate = new Date(date);
+	eventDate.setHours(12,0,0,0);
 	const generatedEvent = {
 		title: message + animalName + " (ID: " + animalId + ")",
-		start: new Date(date),
-		end: new Date(date),
+		start: eventDate,
+		end: eventDate,
 	};
 	return generatedEvent;
 }
@@ -108,6 +111,7 @@ function decodeEvents(encodedEvents) {
 						citaMedica
 					);
 					eventsList.push(generatedEvent);
+					console.log(generatedEvent);
 				});
 			} else {
 				if (!decoder[event]) continue;
