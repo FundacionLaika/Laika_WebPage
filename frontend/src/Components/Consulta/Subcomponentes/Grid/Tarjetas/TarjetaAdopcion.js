@@ -136,6 +136,17 @@ export default class TarjetaAdopcion extends React.Component {
 							)}{" "}
 						</span>
 					</div>
+
+					<div className="idPETCO">
+						<i
+							aria-hidden="true"
+							className="fa fa-address-card-o fa-fw iconoTarjeta"
+						></i>
+						<span className="nombreCampo"> ID Petco: </span>
+						<span className="campoData">
+							{this.props.idPETCO ? this.props.idPETCO : "No hay Información"}
+						</span>
+					</div>
 				</div>
 				<div className="panelConfiguracionT">
 					<Link to={"/Laika/Adopcion?id=" + this.props.id}>

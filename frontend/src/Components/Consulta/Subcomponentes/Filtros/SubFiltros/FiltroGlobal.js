@@ -24,6 +24,12 @@ export default class FiltroGlobal extends React.Component {
 			image: { avatar: true, src: "/icon-id-2.png" },
 		},
 		{
+			key: "ID_PETCO",
+			text: "ID PETCO",
+			value: "idPETCO",
+			image: { avatar: true, src: "/logoPetco.jpg" },
+		},
+		{
 			key: "Nombre Adoptante",
 			text: "Nombre Adoptante",
 			value: "nombreAdoptante",
@@ -55,6 +61,12 @@ export default class FiltroGlobal extends React.Component {
 			text: "ID",
 			value: "id",
 			image: { avatar: true, src: "/icon-id-2.png" },
+		},
+		{
+			key: "ID_PETCO",
+			text: "ID PETCO",
+			value: "idPETCO",
+			image: { avatar: true, src: "/logoPetco.jpg" },
 		},
 		{
 			key: "Fecha de Adopción",

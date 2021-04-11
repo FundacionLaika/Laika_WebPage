@@ -46,19 +46,20 @@ const handleConsultaPost = (req, res, db) => {
                                     dirht.Colonia AS ColoniaHT,
                                     dirht.Municipio AS MunicipioHT `,
 
-        Adopcion: `select     ar.ID_Animal,
-									adop.Foto,
-                                    adte.Nombre AS NombreAdte,
-                                    adte.Telefono AS TelefonoAdte,
-                                    adop.NombreAdoptado AS Adoptado,
-                                    adop.Medio AS MedioAdop,
-                                    adop.Fecha_Adopcion AS FechaAdop,
-                                    adop.Visita_De_Adopcion AS VisitaAdop,
-                                    diradte.Calle AS CalleAdte,
-                                    diradte.Numero AS NumeroAdte,
-                                    diradte.Colonia AS ColoniaAdte,
-                                    diradte.Municipio AS MunicipioAdte `,
-    };
+        Adopcion: `select       ar.ID_Animal,
+                                adop.Foto,
+                                adop.ID_PETCO,
+                                adte.Nombre AS NombreAdte,
+                                adte.Telefono AS TelefonoAdte,
+                                adop.NombreAdoptado AS Adoptado,
+                                adop.Medio AS MedioAdop,
+                                adop.Fecha_Adopcion AS FechaAdop,
+                                adop.Visita_De_Adopcion AS VisitaAdop,
+                                diradte.Calle AS CalleAdte,
+                                diradte.Numero AS NumeroAdte,
+                                diradte.Colonia AS ColoniaAdte,
+                                diradte.Municipio AS MunicipioAdte `,
+};
 
     const fromClause = `from    ANIMAL_RESCATADO ar,
                                 RESCATISTA rta,
@@ -99,6 +100,7 @@ const handleConsultaPost = (req, res, db) => {
         nombreAdoptado: "adop.NombreAdoptado",
         nombreAdoptante: "adte.Nombre",
         nombreResponsable: "ht.Responsable",
+        idPETCO: "adop.ID_PETCO",
         macho: "Macho",
         hembra: "Hembra",
         0: false,
@@ -175,20 +177,20 @@ const handleConsultaPost = (req, res, db) => {
     }
 
     if (vacunas) {
-        filterConditions += hashTable[vacunas.puppy]
-            ? "AND cv.Puppy = '" + vacunas.puppy + "' "
+        filterConditions += hashTable[vacunas.vacuna1]
+            ? "AND cv.Vacuna1 = '" + vacunas.vacuna1 + "' "
             : "";
-        filterConditions += hashTable[vacunas.refuerzoPuppy]
-            ? "AND cv.RefuerzoPuppy = '" + vacunas.refuerzoPuppy + "' "
+        filterConditions += hashTable[vacunas.vacuna2]
+            ? "AND cv.Vacuna2 = '" + vacunas.vacuna2+ "' "
             : "";
-        filterConditions += hashTable[vacunas.multiple]
-            ? "AND cv.Multiple = '" + vacunas.multiple + "' "
+        filterConditions += hashTable[vacunas.vacuna3]
+            ? "AND cv.Vacuna3 = '" + vacunas.vacuna3+ "' "
             : "";
-        filterConditions += hashTable[vacunas.refuerzoMultiple]
-            ? "AND cv.RefuerzoMultiple = '" + vacunas.refuerzoMultiple + "' "
+        filterConditions += hashTable[vacunas.vacuna4]
+            ? "AND cv.Vacuna4 = '" + vacunas.vacuna4 + "' "
             : "";
-        filterConditions += hashTable[vacunas.rabia]
-            ? "AND cv.Rabia = '" + vacunas.rabia + "' "
+        filterConditions += hashTable[vacunas.vacuna5]
+            ? "AND cv.Vacuna5 = '" + vacunas.vacuna5 + "' "
             : "";
     }
 
