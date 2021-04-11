@@ -18,7 +18,11 @@ export default class RowMed extends React.Component {
 
 	render() {
 		return (
-			<div className={"rowDG " + (this.validateRow() ? "" : "rowDGInvalid")}>
+			<div
+				className={
+					"rowDG " + (this.validateRow() ? "" : "rowDGInvalid")
+				}
+			>
 				<div className="dg-col1 fechaDG">
 					<DatePicker
 						useWeekdaysShort
@@ -133,6 +137,7 @@ export default class RowMed extends React.Component {
 
 				<div className="dg-col5 fechaDG">
 					<DatePicker
+						isClearable
 						useWeekdaysShort
 						fixedHeight
 						autoComplete
