@@ -34,8 +34,10 @@ function decodificarVacuna(vacuna, especie) {
 
 export function validationExpMed(state) {
     var msg = "";
+
+    console.log(state);
     if (state.otro && !state.otroEspecificar.trim()) msg += "- Otro/Especificar\n"; 
-    if (state.citaEsterilizacion && !state.fechaEsterilizacion) msg += "- Fecha de esterilización\n"; 
+    if (state.citaEsterilizacion === "Sí" && !state.fechaEsterilizacion) msg += "- Fecha de esterilización\n"; 
 
     if (state.vacuna1 && !state.fechaVacuna1) msg += "- Fecha" + decodificarVacuna("vacuna1", state.especie) + "\n"; 
     if (state.vacuna2 && !state.fechaVacuna2) msg += "- Fecha" + decodificarVacuna("vacuna2", state.especie) + "\n"; 
