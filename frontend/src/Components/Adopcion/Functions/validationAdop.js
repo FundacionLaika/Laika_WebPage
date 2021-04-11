@@ -2,6 +2,7 @@ export function validationAdop(state) {
     var msg = "";
     if (!state.adoptante.trim()) msg += "- Nombre adoptante"; 
     if (!state.telefono.trim()) msg += "- Teléfono"; 
+    if (!state.idPETCO.trim()) msg += "- ID Petco";
     if (!state.medioAdopcion) msg += "- Medio de adopción"; 
     if (!state.visitaDeAdopcion) msg += "- Visita de adopción"; 
     if (!state.municipio.trim()) msg += "- Municipio";
