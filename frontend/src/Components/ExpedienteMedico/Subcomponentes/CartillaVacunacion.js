@@ -9,220 +9,314 @@ import DatePickerInput from "../../SharedComponents/DatePickerInput.js";
 registerLocale("es", es);
 
 class CartillaVacunacion extends Component {
-	render() {
-		return (
-			<div>
-				<div className="headerCartillaVacunacion">
-					{" "}
-					<i
-						aria-hidden="true"
-						className="fa fa-medkit fa-fw separation"
-					></i>
-					Cartilla de vacunación
-				</div>
-				<div className="cartillaVacunacion">
-					<div className="puppy">
-						<div className="cb cb-cv">
-							<input autoComplete="off"
-								type="checkbox"
-								id="puppy"
-								name="puppy"
-								value="puppy"
-								checked={this.props.puppy}
-								onChange={this.props.handleChange}
-							/>
-							<label htmlFor="puppy">
-								<span></span>
-							</label>
-						</div>
+    decodificarVacuna = (vacuna, especie) => {
+        if (!vacuna || !especie) return "";
 
-						<div id="lb">
-							<label>Puppy</label>
-						</div>
+        const decoder = {
+            vacuna1: {
+                Canino: "Puppy",
+                Felino: "Triple Viral Felina",
+                Otro: "Vacuna 1",
+            },
+            vacuna2: {
+                Canino: "Refuerzo Puppy",
+                Felino: "Refuerzo Triple Viral Felina",
+                Otro: "Vacuna 2",
+            },
+            vacuna3: {
+                Canino: "Multiple",
+                Felino: "Leucemia",
+                Otro: "Vacuna 3",
+            },
+            vacuna4: {
+                Canino: "Refuerzo Multiple",
+                Felino: "Desparasitacion",
+                Otro: "Vacuna 4",
+            },
+            vacuna5: {
+                Canino: "Rabia",
+                Felino: "Rabia",
+                Otro: "Vacuna 5",
+            },
+        };
 
-						<div id="dt">
-							<DatePicker
-								isClearable
-								useWeekdaysShort
-								fixedHeight
-								autoComplete
-								customInput={<DatePickerInput />}
-								title="Fecha Puppy"
-								id="fechaPuppy"
-								name="fechaPuppy"
-								locale="es"
-								selected={this.props.fechaPuppy}
-								dateFormat="dd/MM/yyyy"
-								onChange={(date) =>
-									this.props.handleDate(date, "fechaPuppy")
-								}
-							/>
-						</div>
-					</div>
+        return decoder[vacuna][especie];
+    };
 
-					<div className="refuerzoPuppy">
-						<div className="cb cb-cv">
-							<input autoComplete="off"
-								type="checkbox"
-								id="refuerzoPuppy"
-								name="refuerzoPuppy"
-								value="refuerzoPuppy"
-								checked={this.props.refuerzoPuppy}
-								onChange={this.props.handleChange}
-							/>
-							<label htmlFor="refuerzoPuppy">
-								<span></span>
-							</label>
-						</div>
-
-						<div id="lb">
-							<label>Refuerzo Puppy</label>
-						</div>
-
-						<div id="dt">
-							<DatePicker
-								isClearable
-								useWeekdaysShort
-								fixedHeight
-								autoComplete
-								customInput={<DatePickerInput />}
-								title="Fecha RP"
-								id="fechaRefuerzoPuppy"
-								name="fechaRefuerzoPuppy"
-								locale="es"
-								selected={this.props.fechaRefuerzoPuppy}
-								dateFormat="dd/MM/yyyy"
-								onChange={(date) =>
-									this.props.handleDate(
-										date,
-										"fechaRefuerzoPuppy"
-									)
-								}
-							/>
-						</div>
-					</div>
-
-					<div className="multiple">
-						<div className="cb cb-cv">
-							<input autoComplete="off"
-								type="checkbox"
-								id="multiple"
-								name="multiple"
-								value="multiple"
-								checked={this.props.multiple}
-								onChange={this.props.handleChange}
-							/>
-							<label htmlFor="multiple">
-								<span></span>
-							</label>
-						</div>
-
-						<div id="lb">
-							<label>Múltiple</label>
-						</div>
-
-						<div id="dt">
-							<DatePicker
-								isClearable
-								useWeekdaysShort
-								fixedHeight
-								autoComplete
-								customInput={<DatePickerInput />}
-								title="Fecha Múltiple"
-								id="fechaMultiple"
-								name="fechaMultiple"
-								locale="es"
-								selected={this.props.fechaMultiple}
-								dateFormat="dd/MM/yyyy"
-								onChange={(date) =>
-									this.props.handleDate(date, "fechaMultiple")
-								}
-							/>
-						</div>
-					</div>
-					<div className="refuerzoMultiple">
-						<div className="cb cb-cv">
-							<input autoComplete="off"
-								type="checkbox"
-								id="refuerzoMultiple"
-								name="refuerzoMultiple"
-								value="refuerzoMultiple"
-								checked={this.props.refuerzoMultiple}
-								onChange={this.props.handleChange}
-							/>
-							<label htmlFor="refuerzoMultiple">
-								<span></span>
-							</label>
-						</div>
-
-						<div id="lb">
-							<label>Refuerzo Múltiple</label>
-						</div>
-
-						<div id="dt">
-							<DatePicker
-								isClearable
-								useWeekdaysShort
-								fixedHeight
-								autoComplete
-								customInput={<DatePickerInput />}
-								title="Fecha RM"
-								id="fechaRefuerzoMultiple"
-								name="fechaRefuerzoMultiple"
-								locale="es"
-								selected={this.props.fechaRefuerzoMultiple}
-								dateFormat="dd/MM/yyyy"
-								onChange={(date) =>
-									this.props.handleDate(
-										date,
-										"fechaRefuerzoMultiple"
-									)
-								}
-							/>
-						</div>
-					</div>
-					<div className="rabia">
-						<div className="cb cb-cv">
-							<input autoComplete="off"
-								type="checkbox"
-								id="rabia"
-								name="rabia"
-								value="rabia"
-								checked={this.props.rabia}
-								onChange={this.props.handleChange}
-							/>
-							<label htmlFor="rabia">
-								<span></span>
-							</label>
-						</div>
-
-						<div id="lb">
-							<label>Rabia</label>
-						</div>
-
-						<div id="dt">
-							<DatePicker
-								isClearable
-								useWeekdaysShort
-								fixedHeight
-								autoComplete
-								customInput={<DatePickerInput />}
-								title="Fecha Rabia"
-								id="fechaRabia"
-								name="fechaRabia"
-								locale="es"
-								selected={this.props.fechaRabia}
-								dateFormat="dd/MM/yyyy"
-								onChange={(date) =>
-									this.props.handleDate(date, "fechaRabia")
-								}
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
-		);
+	componentDidUpdate() {
+		console.log("aaaaaaaaaaa", this.props);
 	}
+
+    render() {
+        return (
+            <div>
+                <div className="headerCartillaVacunacion">
+                    {" "}
+                    <i
+                        aria-hidden="true"
+                        className="fa fa-medkit fa-fw separation"
+                    ></i>
+                    Cartilla de vacunación
+                </div>
+                <div className="cartillaVacunacion">
+                    <div className="vacuna1">
+                        <div className="cb cb-cv">
+                            <input
+                                autoComplete="off"
+                                type="checkbox"
+                                id="vacuna1"
+                                name="vacuna1"
+                                value="vacuna1"
+                                checked={this.props.vacuna1}
+                                onChange={this.props.handleChange}
+                            />
+                            <label htmlFor="vacuna1">
+                                <span></span>
+                            </label>
+                        </div>
+
+                        <div id="lb">
+                            <label>
+                                {this.decodificarVacuna(
+                                    "vacuna1",
+                                    this.props.especie
+                                )}
+                            </label>
+                        </div>
+
+                        <div id="dt">
+                            <DatePicker
+                                isClearable
+                                useWeekdaysShort
+                                fixedHeight
+                                autoComplete
+                                customInput={<DatePickerInput />}
+                                title={
+                                    "Fecha " +
+                                    this.decodificarVacuna(
+                                        "vacuna1",
+                                        this.props.especie
+                                    )
+                                }
+                                id="fechaVacuna1"
+                                name="fechaVacuna1"
+                                locale="es"
+                                selected={this.props.fechaVacuna1}
+                                dateFormat="dd/MM/yyyy"
+                                onChange={(date) =>
+                                    this.props.handleDate(date, "fechaVacuna1")
+                                }
+                            />
+                        </div>
+                    </div>
+
+                    <div className="vacuna2">
+                        <div className="cb cb-cv">
+                            <input
+                                autoComplete="off"
+                                type="checkbox"
+                                id="vacuna2"
+                                name="vacuna2"
+                                value="vacuna2"
+                                checked={this.props.vacuna2}
+                                onChange={this.props.handleChange}
+                            />
+                            <label htmlFor="vacuna2">
+                                <span></span>
+                            </label>
+                        </div>
+
+                        <div id="lb">
+                            <label>
+                                {this.decodificarVacuna(
+                                    "vacuna2",
+                                    this.props.especie
+                                )}
+                            </label>
+                        </div>
+
+                        <div id="dt">
+                            <DatePicker
+                                isClearable
+                                useWeekdaysShort
+                                fixedHeight
+                                autoComplete
+                                customInput={<DatePickerInput />}
+                                title={
+                                    "Fecha " +
+                                    this.decodificarVacuna(
+                                        "vacuna2",
+                                        this.props.especie
+                                    )
+                                }
+                                id="fechaVacuna2"
+                                name="fechaVacuna2"
+                                locale="es"
+                                selected={this.props.fechaVacuna2}
+                                dateFormat="dd/MM/yyyy"
+                                onChange={(date) =>
+                                    this.props.handleDate(date, "fechaVacuna2")
+                                }
+                            />
+                        </div>
+                    </div>
+
+					<div className="vacuna3">
+                        <div className="cb cb-cv">
+                            <input
+                                autoComplete="off"
+                                type="checkbox"
+                                id="vacuna3"
+                                name="vacuna3"
+                                value="vacuna3"
+                                checked={this.props.vacuna3}
+                                onChange={this.props.handleChange}
+                            />
+                            <label htmlFor="vacuna3">
+                                <span></span>
+                            </label>
+                        </div>
+
+                        <div id="lb">
+                            <label>
+                                {this.decodificarVacuna(
+                                    "vacuna3",
+                                    this.props.especie
+                                )}
+                            </label>
+                        </div>
+
+                        <div id="dt">
+                            <DatePicker
+                                isClearable
+                                useWeekdaysShort
+                                fixedHeight
+                                autoComplete
+                                customInput={<DatePickerInput />}
+                                title={
+                                    "Fecha " +
+                                    this.decodificarVacuna(
+                                        "vacuna3",
+                                        this.props.especie
+                                    )
+                                }
+                                id="fechaVacuna3"
+                                name="fechaVacuna3"
+                                locale="es"
+                                selected={this.props.fechaVacuna3}
+                                dateFormat="dd/MM/yyyy"
+                                onChange={(date) =>
+                                    this.props.handleDate(date, "fechaVacuna3")
+                                }
+                            />
+                        </div>
+                    </div>
+
+					<div className="vacuna4">
+                        <div className="cb cb-cv">
+                            <input
+                                autoComplete="off"
+                                type="checkbox"
+                                id="vacuna4"
+                                name="vacuna4"
+                                value="vacuna4"
+                                checked={this.props.vacuna4}
+                                onChange={this.props.handleChange}
+                            />
+                            <label htmlFor="vacuna4">
+                                <span></span>
+                            </label>
+                        </div>
+
+                        <div id="lb">
+                            <label>
+                                {this.decodificarVacuna(
+                                    "vacuna4",
+                                    this.props.especie
+                                )}
+                            </label>
+                        </div>
+
+                        <div id="dt">
+                            <DatePicker
+                                isClearable
+                                useWeekdaysShort
+                                fixedHeight
+                                autoComplete
+                                customInput={<DatePickerInput />}
+                                title={
+                                    "Fecha " +
+                                    this.decodificarVacuna(
+                                        "vacuna4",
+                                        this.props.especie
+                                    )
+                                }
+                                id="fechaVacuna4"
+                                name="fechaVacuna4"
+                                locale="es"
+                                selected={this.props.fechaVacuna4}
+                                dateFormat="dd/MM/yyyy"
+                                onChange={(date) =>
+                                    this.props.handleDate(date, "fechaVacuna4")
+                                }
+                            />
+                        </div>
+                    </div>
+
+					<div className="vacuna5">
+                        <div className="cb cb-cv">
+                            <input
+                                autoComplete="off"
+                                type="checkbox"
+                                id="vacuna5"
+                                name="vacuna5"
+                                value="vacuna5"
+                                checked={this.props.vacuna5}
+                                onChange={this.props.handleChange}
+                            />
+                            <label htmlFor="vacuna5">
+                                <span></span>
+                            </label>
+                        </div>
+
+                        <div id="lb">
+                            <label>
+                                {this.decodificarVacuna(
+                                    "vacuna5",
+                                    this.props.especie
+                                )}
+                            </label>
+                        </div>
+
+                        <div id="dt">
+                            <DatePicker
+                                isClearable
+                                useWeekdaysShort
+                                fixedHeight
+                                autoComplete
+                                customInput={<DatePickerInput />}
+                                title={
+                                    "Fecha " +
+                                    this.decodificarVacuna(
+                                        "vacuna5",
+                                        this.props.especie
+                                    )
+                                }
+                                id="fechaVacuna5"
+                                name="fechaVacuna5"
+                                locale="es"
+                                selected={this.props.fechaVacuna5}
+                                dateFormat="dd/MM/yyyy"
+                                onChange={(date) =>
+                                    this.props.handleDate(date, "fechaVacuna5")
+                                }
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default CartillaVacunacion;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Styles/ErrorPage.css";
 
 // Code taken from: https://codepen.io/ckroll17/pen/MzWgLo

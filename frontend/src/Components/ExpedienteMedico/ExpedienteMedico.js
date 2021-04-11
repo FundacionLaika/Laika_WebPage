@@ -39,16 +39,17 @@ class ExpedienteMedico extends Component {
 		fechaEsterilizacion: null,
 
 		/*Cartilla de Vacunación*/
-		puppy: false,
-		refuerzoPuppy: false,
-		multiple: false,
-		refuerzoMultiple: false,
-		rabia: false,
-		fechaPuppy: null,
-		fechaRefuerzoPuppy: null,
-		fechaMultiple: null,
-		fechaRefuerzoMultiple: null,
-		fechaRabia: null,
+		vacuna1: false,
+		vacuna2: false,
+		vacuna3: false,
+		vacuna4: false,
+		vacuna5: false,
+
+		fechaVacuna1: null,
+		fechaVacuna2: null,
+		fechaVacuna3: null,
+		fechaVacuna4: null,
+		fechaVacuna5: null,
 
 		/*Fotos*/
 		foto1: null,
@@ -58,11 +59,15 @@ class ExpedienteMedico extends Component {
 		/*Tratamiento*/
 		tratamiento: [],
 
+		especie: "",
+
 		openError: false,
 		openSuccess: false,
 		msg: "",
 		showErrorPage: false
 	};
+
+	
 
 	/*Manejador de imágenes*/
 	imageHandler = (event) => {
@@ -103,8 +108,6 @@ class ExpedienteMedico extends Component {
 				[event.target.name]: value,
 			});
 		}
-
-	
 	};
 
 	/*Manejador de dates*/
@@ -168,7 +171,8 @@ class ExpedienteMedico extends Component {
 						this.setState({
 							[element]: new Date(date),
 						});
-					} else if (element.includes("foto")) {
+					} 
+					else if (element.includes("foto")) {
 						if (response[element]) {
 
 							var buffer = Buffer.from(response[element].data);
@@ -177,7 +181,8 @@ class ExpedienteMedico extends Component {
 								[element]: buffer.toString("utf8"),
 							});
 						}
-					} else {
+					} 
+					else {
 						this.setState({
 							[element]: response[element],
 						});
@@ -327,20 +332,21 @@ class ExpedienteMedico extends Component {
 					</div>
 					<div className="cartillaVacunacion">
 						<CartillaVacunacion
-							puppy={this.state.puppy}
-							refuerzoPuppy={this.state.refuerzoPuppy}
-							multiple={this.state.multiple}
-							refuerzoMultiple={this.state.refuerzoMultiple}
-							rabia={this.state.rabia}
-							fechaPuppy={this.state.fechaPuppy}
-							fechaRefuerzoPuppy={this.state.fechaRefuerzoPuppy}
-							fechaMultiple={this.state.fechaMultiple}
-							fechaRefuerzoMultiple={
-								this.state.fechaRefuerzoMultiple
-							}
-							fechaRabia={this.state.fechaRabia}
+							vacuna1={this.state.vacuna1}
+							vacuna2={this.state.vacuna2}
+							vacuna3={this.state.vacuna3}
+							vacuna4={this.state.vacuna4}
+							vacuna5={this.state.vacuna5}
+
+							fechaVacuna1={this.state.fechaVacuna1}
+							fechaVacuna2={this.state.fechaVacuna2}
+							fechaVacuna3={this.state.fechaVacuna3}
+							fechaVacuna4={this.state.fechaVacuna4}
+							fechaVacuna5={this.state.fechaVacuna5}
+
 							handleChange={this.handleChange}
 							handleDate={this.handleDate}
+							especie={this.state.especie}
 						/>
 					</div>
 					<div className="tratamiento">

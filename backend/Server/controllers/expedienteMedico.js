@@ -1,6 +1,7 @@
 const handleGetEM = (req, res, db) => {
 	db.raw(
 		`select  ar.ID_Animal as id,
+			ar.Especie as especie,
 			diag.Atropellamiento as atropellamiento,
 			diag.TVT as tvt, 
 			diag.Sarna_Piel as sarnaPiel,

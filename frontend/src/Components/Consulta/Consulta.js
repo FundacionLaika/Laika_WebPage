@@ -27,11 +27,11 @@ class Consulta extends Component {
 			adoptado: "",
 		},
 		vacunas: {
-			puppy: "",
-			refuerzoPuppy: "",
-			multiple: "",
-			refuerzoMultiple: "",
-			rabia: "",
+			vacuna1: "",
+			vacuna2: "",
+			vacuna3: "",
+			vacuna4: "",
+			vacuna5: "",
 		},
 		esterilizado: "",
 		diagnostico: {
