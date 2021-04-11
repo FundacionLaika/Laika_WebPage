@@ -1,11 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import "./Styles/MenuUsuario.css";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import UserInfo from "./Subcomponents/UserInfo";
 import SecurityInfo from "./Subcomponents/SecurityInfo";
 import AdminInfo from "./Subcomponents/AdminInfo";
 
+async function fetchUser(ID_Usuario) {
+	var response = await fetch("http://localhost:3001/usuario", {
+		method: "post",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ ID_Usuario }),
+	});
+
+	if (response.status !== 200) return null;
+	var json = await response.json();
+
+	return json;
+}
+
 function MenuUsuario(props) {
+	const [state, setState] = useState({
+		nombre: "",
+		apellidos: "",
+		correo: "",
+		telefono: "",
+		rol: "",
+		foto: null,
+	});
 
 	const [borderState, setBorderState] = useState({
 		btnGeneral: "3px solid #00acee",
@@ -18,6 +40,37 @@ function MenuUsuario(props) {
 		btnSeguridad: "",
 		btnAdmin: "",
 	});
+
+	const history = useHistory();
+
+	function logoutSession () {
+		sessionStorage.clear();
+		window.location.reload();
+		history.push("/");
+	}
+
+	useEffect(() => {
+		async function fetchData() {
+			const userData = await fetchUser(props.ID_Usuario);
+			if (!userData) return;
+
+			var foto = null;
+			if (userData && userData.Foto) {
+				var buffer = Buffer.from(userData.Foto.data);
+				foto = buffer.toString("utf8");
+			}
+
+			setState({
+				nombre: userData.Nombre,
+				apellidos: userData.Apellidos,
+				correo: userData.Correo,
+				telefono: userData.Telefono,
+				rol: userData.Rol,
+				foto: foto,
+			});
+		}
+		fetchData();
+	}, [props]);
 
 	function handleClick(name) {
 		setBorderState({ [name]: "3px solid #00acee" });
@@ -41,6 +94,7 @@ function MenuUsuario(props) {
 					</div>
 					<div className="sideBarBtn">
 						<input autoComplete="off"
+
 							style={{
 								borderRight: borderState.btnGeneral,
 								color: foregroundState.btnGeneral,
@@ -66,6 +120,7 @@ function MenuUsuario(props) {
 					</div>
 					<div className="sideBarBtn">
 						<input autoComplete="off"
+
 							style={{
 								borderRight: borderState.btnSeguridad,
 								color: foregroundState.btnSeguridad,
@@ -77,7 +132,7 @@ function MenuUsuario(props) {
 					</div>
 				</div>
 
-				<div
+				{state.rol === "Administrador" ? <div
 					className="sideBarBlock"
 					onClick={() => {
 						handleClick("btnAdmin");
@@ -91,6 +146,7 @@ function MenuUsuario(props) {
 					</div>
 					<div className="sideBarBtn">
 						<input autoComplete="off"
+
 							style={{
 								borderRight: borderState.btnAdmin,
 								color: foregroundState.btnAdmin,
@@ -100,9 +156,9 @@ function MenuUsuario(props) {
 							value="Administración"
 						/>
 					</div>
-				</div>
+				</div>: null}
 
-				<Link to="/">
+
 					<div className="sideBarBlock btnLogout">
 						<div className="sideBarIcon">
 							<i
@@ -112,17 +168,15 @@ function MenuUsuario(props) {
 						</div>
 						<div className="sideBarBtn">
 							<input autoComplete="off"
+
 								style={{ color: "red" }}
 								type="button"
 								className="btnMenuUsuario"
 								value="Log out"
-								onClick={() => {
-									sessionStorage.clear();
-								}}
+								onClick={logoutSession}
 							/>
 						</div>
 					</div>
-				</Link>
 			</div>
 			<div className="dataUsuario">
 				{foregroundState.btnGeneral && (
@@ -132,7 +186,7 @@ function MenuUsuario(props) {
 					<SecurityInfo ID_Usuario={props.ID_Usuario} />
 				)}
 				{foregroundState.btnAdmin && (
-					<AdminInfo ID_Usuario={props.ID_Usuario} />
+					<AdminInfo ID_Usuario={props.ID_Usuario} state={state} />
 				)}
 			</div>
 		</div>

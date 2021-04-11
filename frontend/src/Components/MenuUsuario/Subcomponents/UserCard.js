@@ -6,21 +6,6 @@ function validateData(data) {
 }
 
 export default function UserCard(props) {
-    
-    async function deleteUser(userID, removeUser) {
-        console.log("userID", userID);
-        var response = await fetch("http://localhost:3001/eliminarUsuario", {
-            method: "post",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ "ID_Usuario": userID }),
-        });
-
-        if (response.status !== 200) return false;
-        removeUser(userID)
-        
-        return true;
-    }
-
     return (
         <div className="user-card">
             <div className="cardIcons">
@@ -39,7 +24,8 @@ export default function UserCard(props) {
                         aria-hidden="true"
                         className="fa fa-trash"
                         onClick={async () => {
-                            deleteUser(props.user.ID_Usuario, props.removeUser);
+                            props.changeUserID(props.user.ID_Usuario);
+                            props.openModal2();
                         }}
                     ></i>
                 </div>

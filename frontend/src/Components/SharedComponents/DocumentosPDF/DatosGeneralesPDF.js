@@ -77,7 +77,6 @@ export function DatosGeneralesPDF(doc, data) {
 			halign: "center"
 		},
 		bodyStyles: {
-			fillColor: "#FFF8E7",
 			halign: "center",
 		},
 		startY: 170,

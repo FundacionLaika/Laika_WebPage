@@ -83,6 +83,20 @@ export default class DatosGenerales extends React.Component {
 						<span className="focus-bg"></span>
 					</label>
 				</div>
+				<div className="petcoIDAdopcion">
+					<label htmlFor="petcoID" className="inp">
+						<input autocomplete="off"
+							type="text"
+							id="petcoID"
+							name="petcoID"
+							value={this.props.petcoID}
+							onChange={this.props.handleChange}
+							placeholder="&nbsp;"
+						/>
+						<span className="label">ID Petco</span>
+						<span className="focus-bg"></span>
+					</label>
+				</div>
 				<div className="visitaDeAdopcion ajusteFecha">
 					<DatePicker
 						isClearable
