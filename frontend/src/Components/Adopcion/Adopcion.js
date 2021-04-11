@@ -19,6 +19,7 @@ import ErrorPage from "../SharedComponents/ErrorPage";
 class Adopcion extends React.Component {
 	state = {
 		id: "",
+		idPETCO: "",
 		visitaDeAdopcion: null,
 		adoptante: "",
 		adoptado: "",
