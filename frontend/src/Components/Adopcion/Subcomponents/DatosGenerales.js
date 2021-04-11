@@ -88,8 +88,8 @@ export default class DatosGenerales extends React.Component {
 						<input autocomplete="off"
 							type="text"
 							id="petcoID"
-							name="petcoID"
-							value={this.props.petcoID}
+							name="idPETCO"
+							value={this.props.idPETCO}
 							onChange={this.props.handleChange}
 							placeholder="&nbsp;"
 						/>

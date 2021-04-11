@@ -86,7 +86,7 @@ handleUpdateA = (req, res, db) => {
 			a.Visita_De_Adopcion = "${visitaDeAdopcion}",
 			a.Medio = "${medioAdopcion}",
 			a.Foto = ${foto ? '"' + foto + '"' : null},
-			A.ID_PETCO = "${idPETCO}",
+			a.ID_PETCO = "${idPETCO}",
 			adte.Nombre = "${adoptante}",
 			adte.Telefono = "${telefono}",
 			da.Calle = "${calle}",
