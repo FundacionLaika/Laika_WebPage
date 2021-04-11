@@ -1,5 +1,15 @@
+.calendarComponent {
+	position: fixed;
+	top: 50px;
+	bottom: 0;
+    min-width: 100%;
+    max-height: 100%;
+    background-image: url("/9.png");
+}
+
 .calendario {
-    height: 90vh;
+    height:100%;
     width: 100%;
-    padding: 1%;
+    padding: 3%;
+    background-color: rgba(255, 255, 255, 0.900);
 }
