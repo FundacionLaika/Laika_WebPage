@@ -25,6 +25,7 @@ const handleConsultaPost = (req, res, db) => {
                                     diag.Cachorros,
                                     diag.Hemoparasitos, 
                                     diag.Otro,
+                                    ar.Especie,
 									cv.Vacuna1,
                                     cv.Vacuna2,
 									cv.Vacuna3,
