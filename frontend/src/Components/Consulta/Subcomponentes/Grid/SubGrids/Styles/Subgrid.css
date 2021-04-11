@@ -1,0 +1,11 @@
+.animalCounter {
+    padding: 1.5% 0;
+    display: flex;
+}
+
+.animalCounter > span {
+    font-size: 1.2em;
+    font-family: "Raleway";
+    font-weight: bold;
+    color: #6a8caf;
+}

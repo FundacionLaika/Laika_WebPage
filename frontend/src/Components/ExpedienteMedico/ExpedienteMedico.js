@@ -14,6 +14,8 @@ import { validationExpMed } from "./Functions/validationExpMed";
 import AlertTitle from "@material-ui/lab/AlertTitle";
 import Collapse from "@material-ui/core/Collapse";
 import Alert from "@material-ui/lab/Alert";
+import ErrorPage from "../SharedComponents/ErrorPage";
+
 
 class ExpedienteMedico extends Component {
 	state = {
@@ -59,6 +61,7 @@ class ExpedienteMedico extends Component {
 		openError: false,
 		openSuccess: false,
 		msg: "",
+		showErrorPage: false
 	};
 
 	/*Manejador de imágenes*/
@@ -138,12 +141,25 @@ class ExpedienteMedico extends Component {
 		let url = this.props.location.search;
 		let params = queryString.parse(url);
 
+		if (!params.id) {
+			this.setState({
+				showErrorPage: true
+			});
+			return;
+		}
+
 		fetch("http://localhost:3001/expedienteMedico/?id=" + params.id, {
 			method: "get",
 			headers: { "Content-Type": "application/json" },
 		})
 			.then((response) => response.json())
 			.then((response) => {
+				if (Object.keys(response).length === 1) {
+					this.setState({
+						showErrorPage: true
+					});
+					return
+				}
 				for (const element in response) {
 					if (element.includes("fecha")) {
 						const date = response[element];
@@ -234,6 +250,8 @@ class ExpedienteMedico extends Component {
 
 	/*Expediente Médico*/
 	render() {
+		if (this.state.showErrorPage) return (<ErrorPage />);
+
 		return (
 			<div className="RegistroMedico">
 				<div className="NavBarRegistrosMedico">

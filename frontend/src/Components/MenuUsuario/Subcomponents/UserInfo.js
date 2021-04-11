@@ -135,7 +135,7 @@ function UserInfo(props) {
 			<div className="blockGeneral">
 				<div className="blockDatosUsuario">
 					<label htmlFor="nombreUsuario" className="inp">
-						<input autocomplete="off"
+						<input autoComplete="off"
 							id="nombreUsuario"
 							type="text"
 							name="nombre"
@@ -149,7 +149,7 @@ function UserInfo(props) {
 				</div>
 				<div className="blockDatosUsuario2">
 					<label htmlFor="appellidosUsuario" className="inp">
-						<input autocomplete="off"
+						<input autoComplete="off"
 							id="apellidosUsuario"
 							type="text"
 							name="apellidos"
@@ -166,7 +166,7 @@ function UserInfo(props) {
 			<div className="blockGeneral">
 				<div className="blockDatosUsuario">
 					<label htmlFor="correoUsuario" className="inp">
-						<input autocomplete="off"
+						<input autoComplete="off"
 							id="correoUsuario"
 							type="text"
 							name="correo"
@@ -180,7 +180,7 @@ function UserInfo(props) {
 				</div>
 				<div className="blockDatosUsuario2">
 					<label htmlFor="telUsuario" className="inp">
-						<input autocomplete="off"
+						<input autoComplete="off"
 							id="telUsuario"
 							type="text"
 							name="telefono"
@@ -194,7 +194,7 @@ function UserInfo(props) {
 				</div>
 			</div>
 			<div className="blockGuardarUsuario">
-				<input autocomplete="off"
+				<input autoComplete="off"
 					className="btnGuardarUsuario"
 					type="button"
 					value="Guardar"

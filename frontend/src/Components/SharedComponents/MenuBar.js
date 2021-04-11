@@ -7,7 +7,7 @@ function MenuBar() {
 		<div className="navBar">
 			<div className="navBar-header">
 				<div>
-					<img src="/laikalogo.png" alt="logo" id="logo" />
+					<img src="/laikaLogo.png" alt="logo" id="logo" />
 				</div>
 
 				<div>
@@ -33,6 +33,19 @@ function MenuBar() {
 					>
 						<i className="fa fa-pencil-square-o fa-fw pointer"></i>
 						Registro
+					</Link>
+				</div>
+
+				<div>
+					<Link
+						to="/Laika/Calendario"
+						style={{
+							color: "inherit",
+							textDecoration: "inherit",
+						}}
+					>
+						<i className="fa fa-calendar fa-fw pointer"></i>
+						Calendario
 					</Link>
 				</div>
 

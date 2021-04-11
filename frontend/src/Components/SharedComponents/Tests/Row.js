@@ -18,7 +18,7 @@ export default props => (
 				defaultValue={props.row.accion}
 				placeholder="Accion"
 			/>
-			<input autocomplete="off"
+			<input autoComplete="off"
 				id="fecha"
 				type="date"
 				name="fecha"

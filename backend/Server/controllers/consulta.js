@@ -1,6 +1,6 @@
 const handleConsultaPost = (req, res, db) => {
-	const selectClause = {
-		General: `select    ar.ID_Animal,
+    const selectClause = {
+        General: `select    ar.ID_Animal,
 									ar.Foto,
                                     ar.Nombre,
                                     ar.Edad,
@@ -15,7 +15,7 @@ const handleConsultaPost = (req, res, db) => {
                                     dirrte.Municipio AS RteMunicipio,
                                     GROUP_CONCAT(rta.Nombre separator ', ') AS Rescatistas `,
 
-		ExpedienteMedico: `select   ar.ID_Animal,
+        ExpedienteMedico: `select   ar.ID_Animal,
 									em.Foto1 as Foto,
                                     diag.Atropellamiento,
                                     diag.TVT, 
@@ -25,16 +25,16 @@ const handleConsultaPost = (req, res, db) => {
                                     diag.Cachorros,
                                     diag.Hemoparasitos, 
                                     diag.Otro,
-                                    cv.Puppy,
-                                    cv.RefuerzoPuppy,
-                                    cv.Multiple,
-                                    cv.RefuerzoMultiple,
-                                    cv.Rabia,
+									cv.Vacuna1,
+                                    cv.Vacuna2,
+									cv.Vacuna3,
+									cv.Vacuna4,
+									cv.Vacuna5,
                                     est.Fecha AS FechaEsterilizacion,
                                     est.CitaAgendada,
                                     est.EstaEsterilizado `,
 
-		HogarTemporal: `select     ar.ID_Animal,
+        HogarTemporal: `select     ar.ID_Animal,
 									ht.Foto,
                                     ht.Tipo_HT,
                                     ht.Responsable AS ResponsableHT,
@@ -46,7 +46,7 @@ const handleConsultaPost = (req, res, db) => {
                                     dirht.Colonia AS ColoniaHT,
                                     dirht.Municipio AS MunicipioHT `,
 
-		Adopcion: `select     ar.ID_Animal,
+        Adopcion: `select     ar.ID_Animal,
 									adop.Foto,
                                     adte.Nombre AS NombreAdte,
                                     adte.Telefono AS TelefonoAdte,
@@ -58,9 +58,9 @@ const handleConsultaPost = (req, res, db) => {
                                     diradte.Numero AS NumeroAdte,
                                     diradte.Colonia AS ColoniaAdte,
                                     diradte.Municipio AS MunicipioAdte `,
-	};
+    };
 
-	const fromClause = `from    ANIMAL_RESCATADO ar,
+    const fromClause = `from    ANIMAL_RESCATADO ar,
                                 RESCATISTA rta,
                                 RESCATE rte,
                                 DIRECCION_RESCATE dirrte,
@@ -74,7 +74,7 @@ const handleConsultaPost = (req, res, db) => {
                                 ADOPTANTE adte,
                                 DIRECCION_ADOPTANTE diradte`;
 
-	const joinConditions = ` where ar.ID_Animal = rta.ID_Animal
+    const joinConditions = ` where ar.ID_Animal = rta.ID_Animal
                             AND ar.ID_Animal = rte.ID_Animal
                             AND rte.ID_RESCATE = dirrte.ID_Rescate
                             AND ar.ID_Animal = em.ID_Animal
@@ -87,211 +87,208 @@ const handleConsultaPost = (req, res, db) => {
                             AND adop.ID_Adopcion = adte.ID_Adopcion
                             AND adte.ID_Adoptante = diradte.ID_Adoptante `;
 
-	const groupBy = ` group by ar.Nombre `;
+    const groupBy = ` group by ar.Nombre `;
 
-	const hashTable = {
-		nombre: "ar.Nombre",
-		id: "ar.ID_Animal",
-		estatus: "ar.Estatus",
-		especie: "ar.Especie",
-		nombreRescatado: "ar.Nombre",
-		fechaAdopcion: "adop.Fecha_Adopcion",
-		nombreAdoptado: "adop.NombreAdoptado",
-		nombreAdoptante: "adte.Nombre",
-		nombreResponsable: "ht.Responsable",
-		macho: "Macho",
-		hembra: "Hembra",
-		"0": false,
-		"1": true,
-		SI: "1",
-		SÍ: "1",
-		NO: "0",
-		true: "1",
-		false: "0",
-	};
+    const hashTable = {
+        nombre: "ar.Nombre",
+        id: "ar.ID_Animal",
+        estatus: "ar.Estatus",
+        especie: "ar.Especie",
+        nombreRescatado: "ar.Nombre",
+        fechaAdopcion: "adop.Fecha_Adopcion",
+        nombreAdoptado: "adop.NombreAdoptado",
+        nombreAdoptante: "adte.Nombre",
+        nombreResponsable: "ht.Responsable",
+        macho: "Macho",
+        hembra: "Hembra",
+        0: false,
+        1: true,
+        SI: "1",
+        SÍ: "1",
+        NO: "0",
+        true: "1",
+        false: "0",
+    };
 
-	const object2Array = (objectTemp) => {
-		var arrayTemp = [];
-		for (let e in objectTemp) {
-			if (objectTemp[e] === "1") {
-				arrayTemp.push("'" + e.toUpperCase() + "'");
-			}
-		}
-		return arrayTemp;
-	};
+    const object2Array = (objectTemp) => {
+        var arrayTemp = [];
+        for (let e in objectTemp) {
+            if (objectTemp[e] === "1") {
+                arrayTemp.push("'" + e.toUpperCase() + "'");
+            }
+        }
+        return arrayTemp;
+    };
 
-	const {
-		tarjeta,
-		keyword,
-		filtroPorKeyWord,
-		ordenarPor,
-		ordenarDeMenorAMayor,
-		genero,
-		especie,
-		estatus,
-		vacunas,
-		esterilizado,
-		diagnostico,
-		tipoHogar,
-		rangoFechaHT,
-		medioAdopcion,
-		rangoFechaAdopcion,
-	} = req.body;
+    const {
+        tarjeta,
+        keyword,
+        filtroPorKeyWord,
+        ordenarPor,
+        ordenarDeMenorAMayor,
+        genero,
+        especie,
+        estatus,
+        vacunas,
+        esterilizado,
+        diagnostico,
+        tipoHogar,
+        rangoFechaHT,
+        medioAdopcion,
+        rangoFechaAdopcion,
+    } = req.body;
 
-	var filterConditions = "";
-	var orderBy = "";
+    var filterConditions = "";
+    var orderBy = "";
 
-	if (filtroPorKeyWord.length && keyword.length) {
-		filterConditions +=
-			"AND " + hashTable[filtroPorKeyWord] + " LIKE '%" + keyword + "%' ";
-	}
+    if (filtroPorKeyWord && keyword) {
+        filterConditions +=
+            "AND " + hashTable[filtroPorKeyWord] + " LIKE '%" + keyword + "%' ";
+    }
 
-	if (ordenarPor.length) {
-		orderBy = "ORDER BY " + hashTable[ordenarPor] + " ";
+    if (ordenarPor) {
+        orderBy = "ORDER BY " + hashTable[ordenarPor] + " ";
 
-		orderBy += ordenarDeMenorAMayor ? "ASC" : "DESC";
+        orderBy += ordenarDeMenorAMayor ? "ASC" : "DESC";
 
-		orderBy += ";";
-	}
+        orderBy += ";";
+    }
 
-	if (genero.length) {
-		filterConditions += "AND ar.Genero = '" + genero.toUpperCase() + "' ";
-	}
+    if (genero) {
+        filterConditions += "AND ar.Genero = '" + genero.toUpperCase() + "' ";
+    }
 
-	if (especie) {
-		const especieFiltrada = object2Array(especie);
-		filterConditions += especieFiltrada.length
-			? "AND UPPER(ar.Especie) in (" + especieFiltrada.toString() + ") "
-			: "";
-	}
+    if (especie) {
+        const especieFiltrada = object2Array(especie);
+        filterConditions += especieFiltrada.length
+            ? "AND UPPER(ar.Especie) in (" + especieFiltrada.toString() + ") "
+            : "";
+    }
 
-	if (estatus) {
-		const estatusFiltrado = object2Array(estatus);
-		filterConditions += estatusFiltrado.length
-			? "AND REPLACE(UPPER(ar.Estatus), ' ', '') in (" +
-			  estatusFiltrado.toString() +
-			  ") "
-			: "";
-	}
+    if (estatus) {
+        const estatusFiltrado = object2Array(estatus);
+        filterConditions += estatusFiltrado.length
+            ? "AND REPLACE(UPPER(ar.Estatus), ' ', '') in (" +
+              estatusFiltrado.toString() +
+              ") "
+            : "";
+    }
 
-	if (vacunas) {
-		filterConditions += hashTable[vacunas.puppy]
-			? "AND cv.Puppy = '" + vacunas.puppy + "' "
-			: "";
-		filterConditions += hashTable[vacunas.refuerzoPuppy]
-			? "AND cv.RefuerzoPuppy = '" + vacunas.refuerzoPuppy + "' "
-			: "";
-		filterConditions += hashTable[vacunas.multiple]
-			? "AND cv.Multiple = '" + vacunas.multiple + "' "
-			: "";
-		filterConditions += hashTable[vacunas.refuerzoMultiple]
-			? "AND cv.RefuerzoMultiple = '" + vacunas.refuerzoMultiple + "' "
-			: "";
-		filterConditions += hashTable[vacunas.rabia]
-			? "AND cv.Rabia = '" + vacunas.rabia + "' "
-			: "";
-	}
+    if (vacunas) {
+        filterConditions += hashTable[vacunas.puppy]
+            ? "AND cv.Puppy = '" + vacunas.puppy + "' "
+            : "";
+        filterConditions += hashTable[vacunas.refuerzoPuppy]
+            ? "AND cv.RefuerzoPuppy = '" + vacunas.refuerzoPuppy + "' "
+            : "";
+        filterConditions += hashTable[vacunas.multiple]
+            ? "AND cv.Multiple = '" + vacunas.multiple + "' "
+            : "";
+        filterConditions += hashTable[vacunas.refuerzoMultiple]
+            ? "AND cv.RefuerzoMultiple = '" + vacunas.refuerzoMultiple + "' "
+            : "";
+        filterConditions += hashTable[vacunas.rabia]
+            ? "AND cv.Rabia = '" + vacunas.rabia + "' "
+            : "";
+    }
 
-	if (esterilizado.length) {
-		filterConditions +=
-			"AND est.EstaEsterilizado = '" +
-			hashTable[esterilizado.toUpperCase()] +
-			"' ";
-	}
+    if (esterilizado) {
+        filterConditions +=
+            "AND est.EstaEsterilizado = '" +
+            hashTable[esterilizado.toUpperCase()] +
+            "' ";
+    }
 
-	if (diagnostico) {
-		filterConditions += hashTable[diagnostico.atropellamiento]
-			? "AND diag.Atropellamiento = '" +
-			  diagnostico.atropellamiento +
-			  "' "
-			: "";
-		filterConditions += hashTable[diagnostico.tvt]
-			? "AND diag.TVT = '" + diagnostico.tvt + "' "
-			: "";
-		filterConditions += hashTable[diagnostico.sarnaPiel]
-			? "AND diag.Sarna_Piel = '" + diagnostico.sarnaPiel + "' "
-			: "";
-		filterConditions += hashTable[diagnostico.viral]
-			? "AND diag.Viral = '" + diagnostico.viral + "' "
-			: "";
-		filterConditions += hashTable[diagnostico.embarazo]
-			? "AND diag.Embarazo = '" + diagnostico.embarazo + "' "
-			: "";
-		filterConditions += hashTable[diagnostico.cachorros]
-			? "AND diag.Cachorros = '" + diagnostico.cachorros + "' "
-			: "";
-		filterConditions += hashTable[diagnostico.hemoparasitos]
-			? "AND diag.Hemoparasitos = '" + diagnostico.hemoparasitos + "' "
-			: "";
-		filterConditions += hashTable[diagnostico.otro]
-			? "AND diag.Otro <> ''"
-			: "";
-	}
+    if (diagnostico) {
+        filterConditions += hashTable[diagnostico.atropellamiento]
+            ? "AND diag.Atropellamiento = '" +
+              diagnostico.atropellamiento +
+              "' "
+            : "";
+        filterConditions += hashTable[diagnostico.tvt]
+            ? "AND diag.TVT = '" + diagnostico.tvt + "' "
+            : "";
+        filterConditions += hashTable[diagnostico.sarnaPiel]
+            ? "AND diag.Sarna_Piel = '" + diagnostico.sarnaPiel + "' "
+            : "";
+        filterConditions += hashTable[diagnostico.viral]
+            ? "AND diag.Viral = '" + diagnostico.viral + "' "
+            : "";
+        filterConditions += hashTable[diagnostico.embarazo]
+            ? "AND diag.Embarazo = '" + diagnostico.embarazo + "' "
+            : "";
+        filterConditions += hashTable[diagnostico.cachorros]
+            ? "AND diag.Cachorros = '" + diagnostico.cachorros + "' "
+            : "";
+        filterConditions += hashTable[diagnostico.hemoparasitos]
+            ? "AND diag.Hemoparasitos = '" + diagnostico.hemoparasitos + "' "
+            : "";
+        filterConditions += hashTable[diagnostico.otro]
+            ? "AND diag.Otro <> ''"
+            : "";
+    }
 
-	if (tipoHogar.length) {
-		filterConditions +=
-			"AND UPPER(ht.Tipo_HT) = '" + tipoHogar.toUpperCase() + "' ";
-	}
+    if (tipoHogar) {
+        filterConditions +=
+            "AND UPPER(ht.Tipo_HT) = '" + tipoHogar.toUpperCase() + "' ";
+    }
 
-	if (rangoFechaHT.fechaInicioHT != null) {
-		if (rangoFechaHT.fechaInicioHT.length) {
-			filterConditions +=
-				"AND DATE_FORMAT(ht.FechaInicio , '%Y-%m-%d') >=  DATE_FORMAT('" +
-				rangoFechaHT.fechaInicioHT +
-				"' , '%Y-%m-%d') ";
-		}
-	}
+    if (rangoFechaHT) {
+        if (rangoFechaHT.fechaInicioHT) {
+            filterConditions +=
+                "AND DATE_FORMAT(ht.FechaInicio , '%Y-%m-%d') >=  DATE_FORMAT('" +
+                rangoFechaHT.fechaInicioHT +
+                "' , '%Y-%m-%d') ";
+        }
+		if (rangoFechaHT.fechaFinalHT) {
+            filterConditions +=
+                "AND DATE_FORMAT(ht.FechaFinal , '%Y-%m-%d') <=  DATE_FORMAT('" +
+                rangoFechaHT.fechaFinalHT +
+                "' , '%Y-%m-%d') ";
+        }
+    }
 
-	if (rangoFechaHT.fechaFinalHT != null) {
-		if (rangoFechaHT.fechaFinalHT.length) {
-			filterConditions +=
-				"AND DATE_FORMAT(ht.FechaFinal , '%Y-%m-%d') <=  DATE_FORMAT('" +
-				rangoFechaHT.fechaFinalHT +
-				"' , '%Y-%m-%d') ";
-		}
-	}
 
-	if (medioAdopcion) {
-		const mediosFiltrados = object2Array(medioAdopcion);
-		filterConditions += mediosFiltrados.length
-			? "AND UPPER(adop.Medio) in (" + mediosFiltrados.toString() + ") "
-			: "";
-	}
+    if (medioAdopcion) {
+        const mediosFiltrados = object2Array(medioAdopcion);
+        filterConditions += mediosFiltrados.length
+            ? "AND UPPER(adop.Medio) in (" + mediosFiltrados.toString() + ") "
+            : "";
+    }
 
-	if (rangoFechaAdopcion.fechaInicioAdop != null) {
-		if (rangoFechaAdopcion.fechaInicioAdop.length) {
-			filterConditions +=
-				"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') >=  DATE_FORMAT('" +
-				rangoFechaAdopcion.fechaInicioAdop +
-				"' , '%Y-%m-%d') ";
-		}
-	}
+    if (rangoFechaAdopcion) {
+        if (rangoFechaAdopcion.fechaInicioAdop) {
+            filterConditions +=
+                "AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') >=  DATE_FORMAT('" +
+                rangoFechaAdopcion.fechaInicioAdop +
+                "' , '%Y-%m-%d') ";
+        }
+		if (rangoFechaAdopcion.fechaFinalAdop) {
+            filterConditions +=
+                "AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') <=  DATE_FORMAT('" +
+                rangoFechaAdopcion.fechaFinalAdop +
+                "' , '%Y-%m-%d') ";
+        }
+    }
 
-	if (rangoFechaAdopcion.fechaFinalAdop != null) {
-		if (rangoFechaAdopcion.fechaFinalAdop.length) {
-			filterConditions +=
-				"AND DATE_FORMAT(adop.Fecha_Adopcion , '%Y-%m-%d') <=  DATE_FORMAT('" +
-				rangoFechaAdopcion.fechaFinalAdop +
-				"' , '%Y-%m-%d') ";
-		}
-	}
 
-	db.raw(
-		selectClause[tarjeta] +
-			fromClause +
-			joinConditions +
-			filterConditions +
-			groupBy +
-			orderBy
-	)
-		.then((data) => {
-			res.json(data[0]);
-		})
-		.catch((err) =>
-			res.status(400).json("error obteniendo consulta" + err)
-		);
+    db.raw(
+        selectClause[tarjeta] +
+            fromClause +
+            joinConditions +
+            filterConditions +
+            groupBy +
+            orderBy
+    )
+        .then((data) => {
+            res.json(data[0]);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(400).json("error obteniendo consulta");
+        });
 };
 
 module.exports = {
-	handleConsultaPost,
+    handleConsultaPost,
 };

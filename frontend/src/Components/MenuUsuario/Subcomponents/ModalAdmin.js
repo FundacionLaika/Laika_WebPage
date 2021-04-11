@@ -173,7 +173,7 @@ function ModalAdmin(props) {
                         <div className="containerUserRG">
                             <div className="blockModal">
                                 <div className="block1RG">
-                                    <Input autocomplete="off"
+                                    <Input autoComplete="off"
                                         size="large"
                                         icon="address card"
                                         iconPosition="left"
@@ -184,7 +184,7 @@ function ModalAdmin(props) {
                                     />
                                 </div>
                                 <div className="block2RG">
-                                    <Input autocomplete="off"
+                                    <Input autoComplete="off"
                                         size="large"
                                         icon="address book"
                                         iconPosition="left"
@@ -198,7 +198,7 @@ function ModalAdmin(props) {
 
                             <div className="blockModal">
                                 <div className="block1RG">
-                                    <Input autocomplete="off"
+                                    <Input autoComplete="off"
                                         size="large"
                                         icon="envelope"
                                         iconPosition="left"
@@ -209,7 +209,7 @@ function ModalAdmin(props) {
                                     />
                                 </div>
                                 <div className="block2RG">
-                                    <Input autocomplete="off"
+                                    <Input autoComplete="off"
                                         size="large"
                                         icon="call"
                                         iconPosition="left"
@@ -241,7 +241,7 @@ function ModalAdmin(props) {
                                     />
                                 </div>
                                 <div className="block2RG">
-                                    <Input autocomplete="off"
+                                    <Input autoComplete="off"
                                         size="large"
                                         icon="key"
                                         iconPosition="left"

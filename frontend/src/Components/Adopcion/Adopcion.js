@@ -12,6 +12,8 @@ import { validationAdop } from "./Functions/validationAdop";
 import AlertTitle from "@material-ui/lab/AlertTitle";
 import Collapse from "@material-ui/core/Collapse";
 import Alert from "@material-ui/lab/Alert";
+import ErrorPage from "../SharedComponents/ErrorPage";
+
 
 
 class Adopcion extends React.Component {
@@ -106,12 +108,25 @@ class Adopcion extends React.Component {
 		let url = this.props.location.search;
 		let params = queryString.parse(url);
 
+		if (!params.id) {
+			this.setState({
+				showErrorPage: true
+			});
+			return;
+		}
+
 		fetch("http://localhost:3001/adopcion/?id=" + params.id, {
 			method: "get",
 			headers: { "Content-Type": "application/json" },
 		})
 			.then((response) => response.json())
 			.then((response) => {
+				if (Object.keys(response).length === 1) {
+					this.setState({
+						showErrorPage: true
+					});
+					return
+				}
 				for (const element in response) {
 					if (
 						element.includes("fecha") ||
@@ -176,6 +191,8 @@ class Adopcion extends React.Component {
 	}
 
 	render() {
+		if (this.state.showErrorPage) return (<ErrorPage />);
+
 		return (
 			<div className="RegistroAdopcion">
 				<div className="NavBarRegistrosAdopcion">

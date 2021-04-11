@@ -11,6 +11,8 @@ const expedienteMedico = require("./controllers/expedienteMedico");
 const hogarTemporal = require("./controllers/hogarTemporal");
 const adopcion = require("./controllers/adopcion");
 
+const events = require("./controllers/events");
+
 const login = require("./controllers/login");
 const signup = require("./controllers/signup");
 const changePassword = require("./controllers/changePassword");
@@ -76,6 +78,10 @@ app.get("/adopcion", (req, res) => {
 app.put("/adopcion", (req, res) => {
     adopcion.handleUpdateA(req, res, db);
 });
+
+
+app.get("/events", events.handleGetEvents(db));
+
 
 app.get("/usuarios", usuarios.handleGetUsuarios(db));
 

@@ -4,7 +4,7 @@ import "./DataGrid/Styles/DataGrid.css";
 const DatePickerInput = React.forwardRef((props, ref) => (
 	<div ref={ref} className="fecha">
 		<label htmlFor={props.id} className="inp">
-			<input autocomplete="off"
+			<input autoComplete="off"
 				id={props.id}
 				type="text"
 				name={props.id}
@@ -21,7 +21,7 @@ const DatePickerInput = React.forwardRef((props, ref) => (
 
 export const DatePickerInput2 = React.forwardRef((props, ref) => (
 	<div ref={ref} className="fechaPicker">
-		<input autocomplete="off"
+		<input autoComplete="off"
 			id={props.id}
 			type="text"
 			name={props.id}

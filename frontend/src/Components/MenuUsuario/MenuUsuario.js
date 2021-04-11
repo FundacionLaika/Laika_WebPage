@@ -93,8 +93,8 @@ function MenuUsuario(props) {
 						></i>
 					</div>
 					<div className="sideBarBtn">
-						<input
-							autocomplete="off"
+						<input autoComplete="off"
+
 							style={{
 								borderRight: borderState.btnGeneral,
 								color: foregroundState.btnGeneral,
@@ -119,8 +119,8 @@ function MenuUsuario(props) {
 						></i>
 					</div>
 					<div className="sideBarBtn">
-						<input
-							autocomplete="off"
+						<input autoComplete="off"
+
 							style={{
 								borderRight: borderState.btnSeguridad,
 								color: foregroundState.btnSeguridad,
@@ -145,8 +145,8 @@ function MenuUsuario(props) {
 						></i>
 					</div>
 					<div className="sideBarBtn">
-						<input
-							autocomplete="off"
+						<input autoComplete="off"
+
 							style={{
 								borderRight: borderState.btnAdmin,
 								color: foregroundState.btnAdmin,
@@ -167,8 +167,8 @@ function MenuUsuario(props) {
 							></i>
 						</div>
 						<div className="sideBarBtn">
-							<input
-								autocomplete="off"
+							<input autoComplete="off"
+
 								style={{ color: "red" }}
 								type="button"
 								className="btnMenuUsuario"

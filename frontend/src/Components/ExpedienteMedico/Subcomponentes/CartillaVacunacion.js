@@ -23,7 +23,7 @@ class CartillaVacunacion extends Component {
 				<div className="cartillaVacunacion">
 					<div className="puppy">
 						<div className="cb cb-cv">
-							<input autocomplete="off"
+							<input autoComplete="off"
 								type="checkbox"
 								id="puppy"
 								name="puppy"
@@ -62,7 +62,7 @@ class CartillaVacunacion extends Component {
 
 					<div className="refuerzoPuppy">
 						<div className="cb cb-cv">
-							<input autocomplete="off"
+							<input autoComplete="off"
 								type="checkbox"
 								id="refuerzoPuppy"
 								name="refuerzoPuppy"
@@ -104,7 +104,7 @@ class CartillaVacunacion extends Component {
 
 					<div className="multiple">
 						<div className="cb cb-cv">
-							<input autocomplete="off"
+							<input autoComplete="off"
 								type="checkbox"
 								id="multiple"
 								name="multiple"
@@ -142,7 +142,7 @@ class CartillaVacunacion extends Component {
 					</div>
 					<div className="refuerzoMultiple">
 						<div className="cb cb-cv">
-							<input autocomplete="off"
+							<input autoComplete="off"
 								type="checkbox"
 								id="refuerzoMultiple"
 								name="refuerzoMultiple"
@@ -183,7 +183,7 @@ class CartillaVacunacion extends Component {
 					</div>
 					<div className="rabia">
 						<div className="cb cb-cv">
-							<input autocomplete="off"
+							<input autoComplete="off"
 								type="checkbox"
 								id="rabia"
 								name="rabia"

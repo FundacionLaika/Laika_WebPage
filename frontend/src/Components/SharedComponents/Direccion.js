@@ -15,7 +15,7 @@ class Direccion extends Component {
 				</div>
 				<div className="calle">
 					<label htmlFor="calle" className="inp">
-						<input autocomplete="off"
+						<input autoComplete="off"
 							type="text"
 							id="calle"
 							name="calle"
@@ -29,7 +29,7 @@ class Direccion extends Component {
 				</div>
 				<div className="numero">
 					<label htmlFor="numero" className="inp">
-						<input autocomplete="off"
+						<input autoComplete="off"
 							type="text"
 							id="numero"
 							name="numero"
@@ -43,7 +43,7 @@ class Direccion extends Component {
 				</div>
 				<div className="colonia">
 					<label htmlFor="colonia" className="inp">
-						<input autocomplete="off"
+						<input autoComplete="off"
 							type="text"
 							id="colonia"
 							name="colonia"
@@ -57,7 +57,7 @@ class Direccion extends Component {
 				</div>
 				<div className="municipio">
 					<label htmlFor="municipio" className="inp">
-						<input autocomplete="off"
+						<input autoComplete="off"
 							type="text"
 							id="municipio"
 							name="municipio"
