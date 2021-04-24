@@ -99,6 +99,11 @@ class HogarTemporal extends Component {
 			});
 			return;
 		}
+		else {
+			this.setState({
+				id: params.id
+			});
+		}
 
 		fetch("http://localhost:3001/hogarTemporal/?id=" + params.id, {
 			method: "get",
@@ -217,7 +222,6 @@ class HogarTemporal extends Component {
 				</div>
 				<div
 					className="FormularioHT"
-					style={{ overflowY: "scroll", height: "80vh" }}
 				>
 					<div className="alertHT">
 						<Collapse in={this.state.openError}>

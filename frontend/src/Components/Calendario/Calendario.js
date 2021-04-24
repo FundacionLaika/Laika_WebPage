@@ -5,7 +5,6 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
 
 import "./Styles/Calendario.css";
-import { setHours } from "date-fns";
 
 require("moment/locale/es.js");
 

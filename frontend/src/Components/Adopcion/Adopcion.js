@@ -115,6 +115,11 @@ class Adopcion extends React.Component {
 			});
 			return;
 		}
+		else {
+			this.setState({
+				id: params.id
+			});
+		}
 
 		fetch("http://localhost:3001/adopcion/?id=" + params.id, {
 			method: "get",
@@ -205,7 +210,6 @@ class Adopcion extends React.Component {
 				</div>
 				<div
 					className="FormularioAdopcion"
-					style={{ overflowY: "scroll", height: "80vh" }}
 				>
 					<div className="alertAdop">
 						<Collapse in={this.state.openError}>

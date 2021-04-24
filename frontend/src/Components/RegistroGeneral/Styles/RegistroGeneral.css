@@ -17,6 +17,8 @@
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
 	background-color: white;
+	overflow-y: scroll;
+	height: 80vh;
 }
 
 .alertRG {
@@ -52,8 +54,6 @@
 	grid-row: 10;
 	padding: .5% .5%;
 	background-color:  white;
-	
-	
 }
 
 .BarraLateralGeneral {
