@@ -86,7 +86,7 @@
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
-	border: 2px solid #e42d2d !important;
+	border: 2px solid #f68012 !important;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
 	outline: none !important;
@@ -94,8 +94,8 @@
 }
 .BotonHTRestablecer:hover {
 	color: #ffffff !important;
-	background: #e42d2d;
-	border-color: #e42d2d !important;
+	background: #f68012;
+	border-color: #f68012 !important;
 	transition: all 0.4s ease 0s;
 }
 
