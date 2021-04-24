@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Scroll from "../SharedComponents/Scroll";
 import Diagnostico from "./Subcomponentes/Diagnostico";
 import Esterilizacion from "./Subcomponentes/Esterilizacion";
 import CartillaVacunacion from "./Subcomponentes/CartillaVacunacion";
@@ -310,7 +309,6 @@ class ExpedienteMedico extends Component {
 
 				<div
 					className="FormularioMedico"
-					style={{ overflowY: "scroll", height: "85vh" }}
 				>
 					
 					<div className="diagnostico">
@@ -375,7 +373,6 @@ class ExpedienteMedico extends Component {
 				</div>
 
 				<div className="BarraLateralMedico">
-					<Scroll>
 						<div className="idLabelMedico">
 							<label>ID: {this.state.id}</label>
 						</div>
@@ -403,7 +400,6 @@ class ExpedienteMedico extends Component {
 								imageHandler={this.imageHandler}
 							/>
 						</div>
-					</Scroll>
 				</div>
 
 				<div className="BotonesRegistroMedico">

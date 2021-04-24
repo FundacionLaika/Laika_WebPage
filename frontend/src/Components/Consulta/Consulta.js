@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-// import Scroll from "../Scroll/Scroll";
 import "./Styles/Consulta.css";
 import Filtros from "./Subcomponentes/Filtros/Filtros";
 import GridConsulta from "./Subcomponentes/Grid/GridConsulta";

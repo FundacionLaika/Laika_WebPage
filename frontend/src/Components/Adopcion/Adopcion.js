@@ -210,7 +210,6 @@ class Adopcion extends React.Component {
 				</div>
 				<div
 					className="FormularioAdopcion"
-					style={{ overflowY: "scroll", height: "80vh" }}
 				>
 					<div className="alertAdop">
 						<Collapse in={this.state.openError}>

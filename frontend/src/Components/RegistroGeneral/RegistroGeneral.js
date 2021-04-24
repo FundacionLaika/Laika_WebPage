@@ -244,7 +244,6 @@ class RegistroGeneral extends React.Component {
 
                 <div
                     className="FormularioGeneral"
-                    style={{ overflowY: "scroll", height: "80vh" }}
                 >
                     <div className="alertRG">
                         <Collapse in={this.state.openError}>

@@ -222,7 +222,6 @@ class HogarTemporal extends Component {
 				</div>
 				<div
 					className="FormularioHT"
-					style={{ overflowY: "scroll", height: "80vh" }}
 				>
 					<div className="alertHT">
 						<Collapse in={this.state.openError}>

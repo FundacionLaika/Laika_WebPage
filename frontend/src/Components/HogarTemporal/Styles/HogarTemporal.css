@@ -19,6 +19,8 @@
 	display: grid;
 	grid-auto-columns: minmax(50%, 50%);
 	background-color: white;
+	overflow-y: scroll;
+	height: 80vh;
 }
 
 .alertHT {
@@ -56,6 +58,7 @@
 	grid-column: 1 / 4;
 	grid-row: 10;
 	background-color: white;
+	padding: .5% .5%;
 }
 
 .BarraLateralHT {
