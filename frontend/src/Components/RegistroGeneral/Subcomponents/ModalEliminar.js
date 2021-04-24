@@ -23,7 +23,7 @@ const ModalExampleSize = () => {
 	return (
 		<>
 			<button
-				className="BotonGeneralRestablecer BotonCentralGeneral"
+				className="BotonGeneralEliminar BotonCentralEliminar"
 				onClick={() =>
 					dispatch({ type: "open", size: "mini", dimmer: "blurring" })
 				}
