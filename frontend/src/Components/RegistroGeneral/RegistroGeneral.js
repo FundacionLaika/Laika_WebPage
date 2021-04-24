@@ -239,7 +239,7 @@ class RegistroGeneral extends React.Component {
         if (this.state.showErrorPage) return <ErrorPage />;
         return (
             <div className="RegistroGeneral">
-                {this.state.estaRegistrado ? (
+                {this.estaRegistrado ? (
                     <div className="NavBarRegistrosGeneral">
                         <NavBarRegistros
                             tabIndicatorPosition={"0%"}
@@ -250,7 +250,7 @@ class RegistroGeneral extends React.Component {
                 ) : null}
 
                 <div
-                    className="FormularioGeneral"
+                    className="FormularioGeneral" style={{height: this.estaRegistrado ? "80vh" : "85.98245614vh"}}
                 >
                     <div className="alertRG">
                         <Collapse in={this.state.openError}>

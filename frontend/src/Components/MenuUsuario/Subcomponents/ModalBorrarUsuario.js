@@ -21,7 +21,7 @@ function ModalBorrarUsuario(props) {
 				}}
 			>
 				<Modal.Header>
-					¿Seguro que quieres borrar al usuario?
+					¿Seguro que desea borrar al usuario?
 				</Modal.Header>
 				<Modal.Content>
 					Una vez borrado el usuario los cambios no podrán recuperarse
