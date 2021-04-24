@@ -139,6 +139,12 @@ class RegistroGeneral extends React.Component {
         let url = this.props.location.search;
         let params = queryString.parse(url);
 
+        
+        this.setState({
+            id: params.id
+        });
+		
+
         fetch("http://localhost:3001/registroGeneral/?id=" + params.id, {
             method: "get",
             headers: { "Content-Type": "application/json" },

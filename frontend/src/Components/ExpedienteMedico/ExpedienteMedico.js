@@ -151,6 +151,12 @@ class ExpedienteMedico extends Component {
 			return;
 		}
 
+		else {
+			this.setState({
+				id: params.id
+			});
+		}
+
 		fetch("http://localhost:3001/expedienteMedico/?id=" + params.id, {
 			method: "get",
 			headers: { "Content-Type": "application/json" },

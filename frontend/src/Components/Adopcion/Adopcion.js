@@ -115,6 +115,11 @@ class Adopcion extends React.Component {
 			});
 			return;
 		}
+		else {
+			this.setState({
+				id: params.id
+			});
+		}
 
 		fetch("http://localhost:3001/adopcion/?id=" + params.id, {
 			method: "get",

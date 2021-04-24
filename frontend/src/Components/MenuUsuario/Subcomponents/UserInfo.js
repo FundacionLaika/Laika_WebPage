@@ -7,11 +7,11 @@ import Collapse from "@material-ui/core/Collapse";
 import Alert from "@material-ui/lab/Alert";
 
 async function fetchUser(ID_Usuario) {
-	var response = await fetch("http://localhost:3001/usuario", {
-		method: "post",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ ID_Usuario }),
-	});
+		var response = await fetch("http://localhost:3001/usuario", {
+			method: "post",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ ID_Usuario }),
+		});
 
 	if (response.status !== 200) return null;
 	var json = await response.json();

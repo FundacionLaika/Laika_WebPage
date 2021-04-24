@@ -5,6 +5,7 @@ import "./Styles/NavBarRegistros.css";
 class NavBarRegistros extends Component {
 
 	render() {
+		
 		const idQuery = (this.props.id) ? "?id=" + this.props.id : "";
 		return (
 			<div className="tabs">
