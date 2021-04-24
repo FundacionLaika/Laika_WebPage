@@ -1,6 +1,7 @@
 import React from "react";
 import Rescatistas from "./Subcomponents/Rescatistas";
 import DatosGeneralesRG from "./Subcomponents/DatosGeneralesRG";
+import ModalEliminar from "./Subcomponents/ModalEliminar";
 import Direccion from "../SharedComponents/Direccion";
 import Foto from "../SharedComponents/Foto";
 import NavBarRegistros from "../SharedComponents/NavBarRegistros";
@@ -131,6 +132,10 @@ class RegistroGeneral extends React.Component {
                 foto: null,
                 rescatistas: [],
                 showErrorPage: false,
+              
+              	openError: false,
+                openSuccess: false,
+                msg: "",
             });
         }
     };
@@ -182,6 +187,8 @@ class RegistroGeneral extends React.Component {
             })
             .catch((err) => console.log(err));
     };
+
+
 
     componentDidUpdate() {
         let url = this.props.location.search;
@@ -367,6 +374,7 @@ class RegistroGeneral extends React.Component {
                         {this.estaRegistrado ? "Guardar" : "Registrar"}
                         <i aria-hidden="true" className="fa fa-save fa-fw"></i>
                     </button>
+                    {this.estaRegistrado ? <ModalEliminar /> : null}
 
                     <Link
                         to={
@@ -396,5 +404,6 @@ class RegistroGeneral extends React.Component {
             </div>
         );
     }
+
 }
 export default withRouter(RegistroGeneral);

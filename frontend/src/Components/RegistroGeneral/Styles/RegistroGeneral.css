@@ -86,13 +86,36 @@
 	text-decoration: none;
 	background: #ffffff;
 	padding: 12px;
-	border: 2px solid #e42d2d !important;
+	border: 2px solid #f68012 !important;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
 }
 .BotonGeneralRestablecer:hover {
+	color: #ffffff !important;
+	background: #f68012;
+	border-color: #f68012 !important;
+	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
+}
+
+.BotonGeneralEliminar {
+	color: #494949 !important;
+	font-family: "Raleway";
+	font-weight: bold;
+	border-radius: 50px;
+	text-decoration: none;
+	background: #ffffff;
+	padding: 12px;
+	border: 2px solid #e42d2d !important;
+	display: inline-block;
+	transition: all 0.4s ease 0s;
+	outline: none !important;
+	border: 0px solid rgb(196, 196, 196);
+}
+.BotonGeneralEliminar:hover {
 	color: #ffffff !important;
 	background: #e42d2d;
 	border-color: #e42d2d !important;

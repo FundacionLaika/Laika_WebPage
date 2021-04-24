@@ -29,6 +29,7 @@ export function AdopcionPDF(doc, data) {
 	doc.text("Adoptante: " + validInfo(data.adopcion.adoptante), 15, 53);
 	doc.text("Adoptado: " + validInfo(data.adopcion.adoptado), 15, 63);
 	doc.text("Medio de adopción: " + validInfo(data.adopcion.medioAdopcion), 15, 73);
+	doc.text("Petco ID: " + validInfo(data.adopcion.idPETCO), 15, 83);
 	doc.text("Teléfono: " + validInfo(data.adopcion.telefono), 115, 53);
 	doc.text(
 		"Visita de adopción: " + formatDate(data.adopcion.visitaDeAdopcion),
@@ -43,14 +44,14 @@ export function AdopcionPDF(doc, data) {
 
 	doc.setFontSize(19);
 	doc.setFont("Raleway-Bold", "bold");	
-	doc.addImage(MapMarked, "PNG", 15, 99, 7, 7, "", "FAST");
-	doc.text("Dirección Adoptante", 27, 105);
+	doc.addImage(MapMarked, "PNG", 15, 103, 7, 7, "", "FAST");
+	doc.text("Dirección Adoptante", 27, 109);
 	doc.setFontSize(14);
 	doc.setFont("Raleway-Regular", "normal");	
-	doc.text("Calle: " + validInfo(data.adopcion.calle), 15, 118);
-	doc.text("Número: " + validInfo(data.adopcion.numero), 115, 118);
-	doc.text("Colonia: " + validInfo(data.adopcion.colonia), 15, 128);
-	doc.text("Municipio: " + validInfo(data.adopcion.municipio), 115, 128);
+	doc.text("Calle: " + validInfo(data.adopcion.calle), 15, 122);
+	doc.text("Número: " + validInfo(data.adopcion.numero), 115, 122);
+	doc.text("Colonia: " + validInfo(data.adopcion.colonia), 15, 132);
+	doc.text("Municipio: " + validInfo(data.adopcion.municipio), 115, 132);
 
 	doc.setFontSize(19);
 	doc.setFont("Raleway-Bold", "bold");	
