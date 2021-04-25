@@ -374,7 +374,7 @@ class RegistroGeneral extends React.Component {
                         {this.estaRegistrado ? "Guardar" : "Registrar"}
                         <i aria-hidden="true" className="fa fa-save fa-fw"></i>
                     </button>
-                    {this.estaRegistrado ? <ModalEliminar /> : null}
+                    {this.estaRegistrado ? <ModalEliminar idAnimal={this.state.id}/> : null}
 
                     <Link
                         to={
