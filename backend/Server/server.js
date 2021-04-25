@@ -18,6 +18,7 @@ const signup = require("./controllers/signup");
 const changePassword = require("./controllers/changePassword");
 const usuarios = require("./controllers/usuarios");
 const eliminarUsuario = require("./controllers/eliminarUsuario");
+const eliminarAnimal = require("./controllers/eliminarAnimal");
 
 const app = express();
 
@@ -78,6 +79,9 @@ app.get("/adopcion", (req, res) => {
 app.put("/adopcion", (req, res) => {
     adopcion.handleUpdateA(req, res, db);
 });
+
+app.post("/eliminarAnimal", eliminarAnimal.handleEliminarAnimal(db));
+
 
 
 app.get("/events", events.handleGetEvents(db));

@@ -91,6 +91,8 @@
 	transition: all 0.4s ease 0s;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }
 .BotonGeneralRestablecer:hover {
 	color: #ffffff !important;
@@ -99,6 +101,8 @@
 	transition: all 0.4s ease 0s;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }
 
 .BotonGeneralEliminar {
@@ -114,6 +118,8 @@
 	transition: all 0.4s ease 0s;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }
 .BotonGeneralEliminar:hover {
 	color: #ffffff !important;
@@ -122,6 +128,8 @@
 	transition: all 0.4s ease 0s;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }
 
 /*Boton Guardar*/
@@ -138,18 +146,24 @@
 	transition: all 0.4s ease 0s;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }
 .BotonGeneralGuardar:hover {
 	color: #ffffff !important;
 	background: #6ba70b;
 	border-color: #6ba70b !important;
 	transition: all 0.4s ease 0s;
+	cursor: pointer;
+
 }
 
 .BotonCentralGeneral {
 	float: center;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }
 
 /*Botones transiciones*/
@@ -166,12 +180,16 @@
 	transition: all 0.4s ease 0s;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }
 .BotonGeneralTransicion:hover {
 	color: #ffffff !important;
 	background: #8c948a;
 	border-color: #8c948a !important;
 	transition: all 0.4s ease 0s;
+	cursor: pointer;
+
 }
 
 /*Boton siguiente expediente*/
@@ -179,6 +197,8 @@
 	float: right;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }
 
 /*Boton expediente previo*/
@@ -186,4 +206,6 @@
 	float: left;
 	outline: none !important;
 	border: 0px solid rgb(196, 196, 196);
+	cursor: pointer;
+
 }

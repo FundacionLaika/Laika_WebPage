@@ -20,7 +20,7 @@ function ModalBorrarUsuarioCon(props) {
 					setState({ open: false });
 				}}
 			>
-				<Modal.Header>Elimincación de usuario</Modal.Header>
+				<Modal.Header>Eliminación de usuario</Modal.Header>
 				<Modal.Content>{props.msgDeleteUser}</Modal.Content>
 				<Modal.Actions>
 					<Button
@@ -31,7 +31,7 @@ function ModalBorrarUsuarioCon(props) {
 							setState({ open: false });
 						}}
 					>
-						<Icon name="cancel" /> Cancelar
+						<Icon name="close" /> Cerrar
 					</Button>
 				</Modal.Actions>
 			</Modal>
