@@ -150,7 +150,8 @@ const handleConsultaPost = (req, res, db) => {
     }
 
     if (ordenarPor) {
-        orderBy = "ORDER BY " + hashTable[ordenarPor] + " ";
+        const column = hashTable[ordenarPor];
+        orderBy = "ORDER BY " + "if(" + column + "= '' or " + column + " is null,1,0)," + column + " ";
 
         orderBy += ordenarDeMenorAMayor ? "ASC" : "DESC";
 
