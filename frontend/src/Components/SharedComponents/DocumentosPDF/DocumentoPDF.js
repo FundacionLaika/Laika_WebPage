@@ -88,10 +88,5 @@ export async function PDFGenerator(
 		AdopcionPDF(doc, data);
 	}
 
-	var string = doc.output("datauristring");
-	var embed = "<embed width='100%' height='100%' src='" + string + "'/>";
-	var x = window.open();
-	x.document.open();
-	x.document.write(embed);
-	x.document.close();
+	window.open(doc.output('bloburl'))
 }
