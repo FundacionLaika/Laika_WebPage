@@ -11,7 +11,7 @@ require("moment/locale/es.js");
 const localizer = momentLocalizer(moment);
 
 async function fetchEvents() {
-	var response = await fetch("http://localhost:3001/events", {
+	var response = await fetch("https://fundacionlaika.herokuapp.com/events", {
 		method: "get",
 		headers: { "Content-Type": "application/json" },
 	});

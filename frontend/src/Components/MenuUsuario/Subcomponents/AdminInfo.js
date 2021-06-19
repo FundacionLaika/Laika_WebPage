@@ -6,7 +6,7 @@ import ModalBorrarUsuario from "./ModalBorrarUsuario";
 import ModalBorrarUsuarioCon from "./ModalBorrarUsuarioCon";
 
 async function fetchUsers() {
-	var response = await fetch("http://localhost:3001/usuarios", {
+	var response = await fetch("https://fundacionlaika.herokuapp.com/usuarios", {
 		method: "get",
 		headers: { "Content-Type": "application/json" },
 	});
@@ -28,7 +28,7 @@ async function fetchUsers() {
 
 async function deleteUser(userID, removeUser) {
 	console.log("userID", userID);
-	var response = await fetch("http://localhost:3001/eliminarUsuario", {
+	var response = await fetch("https://fundacionlaika.herokuapp.com/eliminarUsuario", {
 		method: "post",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({ ID_Usuario: userID }),

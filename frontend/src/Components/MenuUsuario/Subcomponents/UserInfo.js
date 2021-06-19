@@ -7,7 +7,7 @@ import Collapse from "@material-ui/core/Collapse";
 import Alert from "@material-ui/lab/Alert";
 
 async function fetchUser(ID_Usuario) {
-		var response = await fetch("http://localhost:3001/usuario", {
+		var response = await fetch("https://fundacionlaika.herokuapp.com/usuario", {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ ID_Usuario }),
@@ -20,7 +20,7 @@ async function fetchUser(ID_Usuario) {
 }
 
 async function updateUser(ID_Usuario, state) {
-	var response = await fetch("http://localhost:3001/usuario", {
+	var response = await fetch("https://fundacionlaika.herokuapp.com/usuario", {
 		method: "put",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({ ID_Usuario, ...state }),

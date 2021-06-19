@@ -73,7 +73,7 @@ class HogarTemporal extends Component {
 	};
 
 	updateDB = () => {
-		fetch("http://localhost:3001/hogarTemporal", {
+		fetch("https://fundacionlaika.herokuapp.com/hogarTemporal", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(this.state),
@@ -105,7 +105,7 @@ class HogarTemporal extends Component {
 			});
 		}
 
-		fetch("http://localhost:3001/hogarTemporal/?id=" + params.id, {
+		fetch("https://fundacionlaika.herokuapp.com/hogarTemporal/?id=" + params.id, {
 			method: "get",
 			headers: { "Content-Type": "application/json" },
 		})

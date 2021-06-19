@@ -19,7 +19,7 @@ var data = {
 
 async function fetchData(registro, id) {
 	var response = await fetch(
-		"http://localhost:3001/" + registro + "/?id=" + id,
+		"https://fundacionlaika.herokuapp.com/" + registro + "/?id=" + id,
 		{
 			method: "get",
 			headers: { "Content-Type": "application/json" },

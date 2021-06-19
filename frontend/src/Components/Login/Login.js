@@ -11,7 +11,7 @@ import Collapse from "@material-ui/core/Collapse";
 import Alert from "@material-ui/lab/Alert";
 
 async function fetchData(state) {
-	var response = await fetch("http://localhost:3001/Login", {
+	var response = await fetch("https://fundacionlaika.herokuapp.com/Login", {
 		method: "post",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(state),

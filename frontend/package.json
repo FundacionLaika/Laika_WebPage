@@ -17,7 +17,7 @@
     "@testing-library/user-event": "^7.1.2",
     "chroma-js": "^2.1.0",
     "date-fns": "^2.14.0",
-    "jspdf": "^2.2.0",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.5.13",
     "jss": "^10.3.0",
     "material-components-web": "^7.0.0",

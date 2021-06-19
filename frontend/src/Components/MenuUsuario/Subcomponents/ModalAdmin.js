@@ -13,7 +13,7 @@ import "../Styles/ModalAdmin.css";
 import FotoUsuarioModal from "./FotoUsuarioModal";
 
 async function fetchUser(userID) {
-    var response = await fetch("http://localhost:3001/usuario", {
+    var response = await fetch("https://fundacionlaika.herokuapp.com/usuario", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ID_Usuario: userID }),
@@ -31,7 +31,7 @@ async function fetchUser(userID) {
 }
 
 async function updateUser(userID, userData, modifyUser) {
-    var response = await fetch("http://localhost:3001/usuario", {
+    var response = await fetch("https://fundacionlaika.herokuapp.com/usuario", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ID_Usuario: userID, ...userData }),
@@ -44,7 +44,7 @@ async function updateUser(userID, userData, modifyUser) {
 }
 
 async function createUser(userData, addUser) {
-    var response = await fetch("http://localhost:3001/signup", {
+    var response = await fetch("https://fundacionlaika.herokuapp.com/signup", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),

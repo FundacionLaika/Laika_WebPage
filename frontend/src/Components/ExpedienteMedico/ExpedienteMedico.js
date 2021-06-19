@@ -123,7 +123,7 @@ class ExpedienteMedico extends Component {
 	};
 
 	updateDB = () => {
-		fetch("http://localhost:3001/expedienteMedico", {
+		fetch("https://fundacionlaika.herokuapp.com/expedienteMedico", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(this.state),
@@ -156,7 +156,7 @@ class ExpedienteMedico extends Component {
 			});
 		}
 
-		fetch("http://localhost:3001/expedienteMedico/?id=" + params.id, {
+		fetch("https://fundacionlaika.herokuapp.com/expedienteMedico/?id=" + params.id, {
 			method: "get",
 			headers: { "Content-Type": "application/json" },
 		})

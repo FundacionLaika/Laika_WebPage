@@ -20,7 +20,7 @@ function SecurityInfo(props) {
 	}
 
 	async function updatePassword(ID_Usuario, contrasena) {
-		var response = await fetch("http://localhost:3001/changePassword", {
+		var response = await fetch("https://fundacionlaika.herokuapp.com/changePassword", {
 			method: "put",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ ID_Usuario, contrasena }),
